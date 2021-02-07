@@ -146,6 +146,7 @@ SSp.append(np.conj(SPp0))
 SSq.append(np.conj(SQq0))
 
 # go over all positions where we could have a capacitor (from bus 2 to 102)
+"""
 for ii in range(2, n_buses):
     SKk1 = np.zeros(n_buses, dtype=complex)  # power amplitude, in this case, it will be reactive
     SKk1[ii] = Qmax * 1j  # put a 1 because only one capacitor at a time. This is the maximum capacitor power
@@ -156,6 +157,22 @@ for ii in range(2, n_buses):
     SSk.append(np.conj(SKk1))
     SSp.append(np.conj(SPp1))
     SSq.append(np.conj(SQq1))
+"""
+# keep it simple, consider by now less cases
+# ----------
+SKk1 = np.zeros(n_buses, dtype=complex)
+SKk1[0] = Qmax * 1j
+SPp1 = np.ones(n_buses)
+SPp1[0] = 0
+SPp1[1] = 0
+SQq1 = np.arange(Qmin, Qmax, Qmax / n_scale)
+
+SSk.append(np.conj(SKk1))
+SSp.append(np.conj(SPp1))
+SSq.append(np.conj(SQq1))
+# ----------
+
+
 
 # DECOMPOSITION OF VOLTAGES
 Kkv = np.ones(n_buses, dtype=complex)  # amplitude vector
@@ -215,8 +232,7 @@ for gg in range(n_gg):  # outer loop
         # initialize the residues we have to find
         IIk1 = np.random.rand(n_buses)  # could also try to set IIk1 = VVk1
         if gg == 0 and mm == 0:
-            # IIk1 = np.ones(n_buses, dtype=complex)
-            VVk[0]
+            IIk1 = np.ones(n_buses, dtype=complex)
         IIp1 = np.random.rand(n_buses)
         IIq1 = np.random.rand(n_scale)
 
@@ -238,9 +254,10 @@ for gg in range(n_gg):  # outer loop
                 LHSk += prodLK * VVk[ii]
 
             IIk1 = RHSk / LHSk
-            if gg == 0 and mm == 0 and kk == 0:
-                print(RHSk)
-                print(LHSk)
+            # if gg == 0 and mm == 0 and kk >= 0:
+                # print(RHSk[:10])
+                # print(LHSk[:10])
+                # print(CCp[:])
 
             # compute IIp1 (residues on Ip)
             prodRP = 0
@@ -257,11 +274,16 @@ for gg in range(n_gg):  # outer loop
 
             IIp1 = RHSp / LHSp
 
+            # if gg == 0 and mm == 0 and kk >= 0:
+                # print(RHSp[:10])
+                # print(LHSp[:10])
+                # print(CCp[:])
+
 
             # compute IIq1 (residues on Iq)
             prodRQ = 0
             RHSq = np.zeros(n_scale, dtype= complex)
-            for ii in range(Nv):
+            for ii in range(Nc):
                 prodRQ = np.dot(IIk1, CCk[ii]) * np.dot(IIp1, CCp[ii])
                 RHSq += prodRQ * CCq[ii]
 
@@ -273,8 +295,19 @@ for gg in range(n_gg):  # outer loop
 
             IIq1 = RHSq / LHSq
 
+            # if gg == 0 and mm == 0 and kk >= 0:
+                # print(RHSq[:10])
+                # print(LHSq[:10])
+                # print(CCp[:])
+
             # if gg == 0 and mm == 0:
             #     print(IIk1)
+
+            if gg == 0 and mm == 0 and kk == 0:
+                print(IIk1)
+                print(IIp1)
+                print(IIq1)
+
 
         IIk.append(IIk1)
         IIp.append(IIp1)

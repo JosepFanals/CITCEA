@@ -194,12 +194,17 @@ for k in range(10):  # we could choose more iterations
     prodC1 = np.dot(IIp1, CCp1) * np.dot(IIq1, CCq1)
     prodC2 = np.dot(IIp1, CCp2) * np.dot(IIq1, CCq2)
     RHS = prodC1 * CCk1 + prodC2 * CCk2
-    if k == 0:
-        print(RHS)
 
     prodL1 = np.dot(IIp1, VVp1 * IIp1) * np.dot(IIq1, VVq1 * IIq1)
     LHS = prodL1 * VVk1
     IIk1 = RHS / LHS
+
+    # if k >= 0:
+        # print(RHS[:10])
+        # print(LHS[:10])
+        # print(CCp1)
+        # print(CCp2)
+
 
     # compute IIp1
     prodC1 = np.dot(IIk1, CCk1) * np.dot(IIq1, CCq1)
@@ -210,6 +215,13 @@ for k in range(10):  # we could choose more iterations
     LHS = prodL1 * VVp1
     IIp1 = RHS / LHS
 
+    # if k >= 0:
+        # print(RHS[:10])
+        # print(LHS[:10])
+        # print(IIp1)
+        # print(CCp1)
+        # print(CCp2)
+
     # compute IIq1
     prodC1 = np.dot(IIk1, CCk1) * np.dot(IIp1, CCp1)
     prodC2 = np.dot(IIk1, CCk2) * np.dot(IIp1, CCp2)
@@ -219,7 +231,16 @@ for k in range(10):  # we could choose more iterations
     LHS = prodL1 * VVq1
     IIq1 = RHS / LHS
     # print(IIq1)
-    print(IIq1)
+    # print(IIq1)
+
+    if k >= 0:
+        print(RHS[:10])
+        print(LHS[:10])
+        print(IIk1)
+        print(IIp1)
+        print(IIq1)
+        # print(CCp1)
+        # print(CCp2)
 
 # another iteration of the intermediate loop
 CCk3 = - VVk1 * IIk1  # negative sign because S* - V*I
