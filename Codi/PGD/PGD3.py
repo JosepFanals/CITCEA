@@ -234,11 +234,11 @@ for k in range(10):  # we could choose more iterations
     # print(IIq1)
 
     if k >= 0:
-        print(RHS[:10])
-        print(LHS[:10])
-        print(IIk1)
-        print(IIp1)
-        print(IIq1)
+        # print(RHS[:10])
+        # print(LHS[:10])
+        print(IIk1[:10])
+        print(IIp1[:10])
+        print(IIq1[:10])
         # print(CCp1)
         # print(CCp2)
 

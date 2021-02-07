@@ -216,7 +216,7 @@ def fun_C(SSk, SSp, SSq, VVk, VVp, VVq, IIk, IIp, IIq):
 # DEFINITION OF NUMBER OF ITERATIONS, CAN CHANGE ARBITRARILY
 n_gg = 15  # outer
 n_mm = 10  # intermediate
-n_kk = 10  # inner
+n_kk = 3  # inner
 
 
 for gg in range(n_gg):  # outer loop
@@ -236,8 +236,6 @@ for gg in range(n_gg):  # outer loop
         IIp1 = np.random.rand(n_buses)
         IIq1 = np.random.rand(n_scale)
 
-        # print(np.shape(IIq1))
-
         for kk in range(n_kk):  # inner loop
             # compute IIk1 (residues on Ik)
 
@@ -254,10 +252,7 @@ for gg in range(n_gg):  # outer loop
                 LHSk += prodLK * VVk[ii]
 
             IIk1 = RHSk / LHSk
-            # if gg == 0 and mm == 0 and kk >= 0:
-                # print(RHSk[:10])
-                # print(LHSk[:10])
-                # print(CCp[:])
+
 
             # compute IIp1 (residues on Ip)
             prodRP = 0
@@ -273,11 +268,6 @@ for gg in range(n_gg):  # outer loop
                 LHSp += prodLP * VVp[ii]
 
             IIp1 = RHSp / LHSp
-
-            # if gg == 0 and mm == 0 and kk >= 0:
-                # print(RHSp[:10])
-                # print(LHSp[:10])
-                # print(CCp[:])
 
 
             # compute IIq1 (residues on Iq)
@@ -295,18 +285,10 @@ for gg in range(n_gg):  # outer loop
 
             IIq1 = RHSq / LHSq
 
-            # if gg == 0 and mm == 0 and kk >= 0:
-                # print(RHSq[:10])
-                # print(LHSq[:10])
-                # print(CCp[:])
-
-            # if gg == 0 and mm == 0:
-            #     print(IIk1)
-
-            if gg == 0 and mm == 0 and kk == 0:
-                print(IIk1)
-                print(IIp1)
-                print(IIq1)
+            if gg == 0 and mm == 0 and kk >= 0:
+                print(IIk1[:10])
+                # print(IIp1[:10])
+                # print(IIq1[:10])
 
 
         IIk.append(IIk1)
@@ -326,11 +308,21 @@ for gg in range(n_gg):  # outer loop
         # VVp = np.copy(IIp)
         # VVq = np.copy(IIq)
 
+    print(VVk[0][:10])
+    print(VVk[1][:10])
+
     # try to add I0 this way:
     VVk.append(np.conj(np.dot(Yinv, I0_pq)))
     VVp.append(PP1)
     VVq.append(QQ1)
 
 
+full_map = np.multiply.outer(VVk[0], np.multiply.outer(VVp[0], VVq[0]))
+for i in range(1, len(VVk)):
+    full_map += np.multiply.outer(VVk[i], np.multiply.outer(VVp[i], VVq[i]))
+
+print(full_map)
+Map_df = pd.DataFrame(full_map[:][0][:])
+Map_df.to_excel("Map1.xlsx")  
 
 
