@@ -153,28 +153,42 @@
 \section{Holomorphic Embedding Load Flow Method (HELM)}
 \subsection{Basics}
 \begin{frame}{Basics}
-
-\end{frame}
-
-\begin{frame}{Basics}
-	
+Unkowns are no longer numbers as such, but series with an arbitrary number of coefficients. Multiple ways to embed the equations for the power flow. For example:
+	\begin{equation}
+		\sum_{j=1}^n Y_{ij}V_j(s) = s\frac{S^*_i}{V_i^*(s)}
+	\end{equation}
+	If we define $X_i(s)=1/V_i(s)$ and expand the series:
+	\begin{equation}
+		\begin{split}
+		Y_{i1}&(V_1[0] + sV_1[1] +...+ s^cV_1[c]) \\
+		+...+& Y_{ii}(V_i[0] + sV_i[1] +...+ s^cV_i[c])\\
+		+...+& Y_{in}(V_n[0] + sV_n[1] +...+ s^cV_n[c]) = sS_i^*(X_i[0] + sX_i[1] +...+ s^{c-1}X_i[c-1])
+		\end{split}
+	\end{equation}
+	This way we get to a linear system with a constant matrix. The coefficients to compute only depend on past terms!
 \end{frame}
 
 
 \subsection{Overview}
 \begin{frame}{Overview}
-	
+	\ink{helm}{0.55}{Perspective of the HELM. Basic reffers to obtaining the final solution whereas the tools complement the results.}
 \end{frame}
 
 
 \subsection{Sigma approximants}
 \begin{frame}{Sigma approximants}
-	
+\begin{itemize}
+	\item Sigma plot of the IEEE30 system when active power changes.
+	\item Sigma plot of the IEEE30 system when reactive power changes.
+\end{itemize}	
 \end{frame}
 
 \subsection{GridCal}
 \begin{frame}{GridCal}
-	
+	\begin{figure}
+		\includegraphics[width=12.5cm]{figures/GridCal.png}
+		\caption{General view of GridCal with its GUI}
+	\end{figure}
 \end{frame}
 
 
@@ -188,7 +202,7 @@
 		\caption{Flexible General Branch Model to model any element. Reference: Bustos, A. A. and Kazemtabrizi, B. (2018) 'Flexible general branch model unified power flow algorithm for future flexible AC/DC networks.' in 2018 IEEE International Conference on Environment and Electrical Engineering and 2018 IEEE Industrial and Commercial Power Systems Euroope (EEEIC / ICPS Europe): 12-15 June 2018, Palermo, Italy. Conference proceedings. Piscataway, NJ: IEEE.}
 	\end{figure}
 	\begin{table}\footnotesize
-		\begin{tabular}{cc}
+		\begin{tabular}{cc} 
 			\hline
 			Variable & Control \\
 			\hline
