@@ -145,6 +145,8 @@ SSk.append(np.conj(SKk0))
 SSp.append(np.conj(SPp0))
 SSq.append(np.conj(SQq0))
 
+print(SSk)
+
 # go over all positions where we could have a capacitor (from bus 2 to 102)
 """
 for ii in range(2, n_buses):
@@ -162,7 +164,7 @@ for ii in range(2, n_buses):
 # ----------
 SKk1 = np.zeros(n_buses, dtype=complex)
 # SKk1[0] = Qmax * 1j
-SKk1[0] = Qmax * (-1)  # trying with only active power
+SKk1[0] = Qmax * (-0.00000001)  # trying with only active power, in this case, practically null
 SPp1 = np.zeros(n_buses)
 # for ii in range(2, n_buses):
 for ii in range(n_buses):  # only a few buses
@@ -173,6 +175,8 @@ SQq1 = np.arange(Qmin, Qmax, Qmax / n_scale)
 SSk.append(np.conj(SKk1))
 SSp.append(np.conj(SPp1))
 SSq.append(np.conj(SQq1))
+
+print(SSk)
 # ----------
 
 
@@ -205,9 +209,12 @@ def fun_C(SSk, SSp, SSq, VVk, VVp, VVq, IIk, IIp, IIq):
     Nv = len(VVk)
     n = len(IIk)
     Nc = Ns + Nv * n
-    CCk = SSk  # initialize with the S* decomposed variables
-    CCp = SSp
-    CCq = SSq
+    # CCk = SSk  # initialize with the S* decomposed variables
+    # CCp = SSp
+    # CCq = SSq
+    CCk = SSk.copy()
+    CCp = SSp.copy()
+    CCq = SSq.copy() 
     for ii in range(Nv):
         for jj in range(n):
             CCk.append(- VVk[ii] * IIk[jj])
@@ -217,9 +224,9 @@ def fun_C(SSk, SSp, SSq, VVk, VVp, VVq, IIk, IIp, IIq):
 
 
 # DEFINITION OF NUMBER OF ITERATIONS, CAN CHANGE ARBITRARILY
-n_gg = 20  # outer
-n_mm = 15  # intermediate
-n_kk = 5  # inner
+n_gg = 2  # outer
+n_mm = 2  # intermediate
+n_kk = 2  # inner
 
 
 for gg in range(n_gg):  # outer loop
@@ -326,17 +333,37 @@ for gg in range(n_gg):  # outer loop
     VVq.append(QQ1)
 
 
+# CHART OF VOLTAGES 
 # full_map = np.multiply.outer(VVk[0], np.multiply.outer(VVp[0], VVq[0]))  # initial tridimensional representation
-full_map = np.multiply.outer(np.multiply.outer(VVp[0], VVk[0]), VVq[0])  # the tridimensional representation I am looking for
+V_map = np.multiply.outer(np.multiply.outer(VVp[0], VVk[0]), VVq[0])  # the tridimensional representation I am looking for
 for i in range(1, len(VVk)):
-    # full_map += np.multiply.outer(VVk[i], np.multiply.outer(VVp[i], VVq[i]))  # the other tridimensional representation
-    full_map += np.multiply.outer(np.multiply.outer(VVp[i], VVk[i]), VVq[i])  # the tridimensional representation I am looking for
-
-print(full_map)
-
-writer = pd.ExcelWriter('Map.xlsx', engine='xlsxwriter')
+    V_map += np.multiply.outer(np.multiply.outer(VVp[i], VVk[i]), VVq[i])  # the tridimensional representation I am looking for
+writer = pd.ExcelWriter('Map_V.xlsx', engine='xlsxwriter')
 for i in range(n_buses):
-    Map_df = pd.DataFrame(full_map[:][i][:])
-    Map_df.to_excel(writer, sheet_name=str(i))  
-
+    V_map_df = pd.DataFrame(V_map[:][i][:])
+    V_map_df.to_excel(writer, sheet_name=str(i))  
 writer.save()
+
+# CHART OF CURRENTS
+I_map = np.multiply.outer(np.multiply.outer(IIp[0], IIk[0]), IIq[0])
+for i in range(1, len(IIk)):
+    I_map += np.multiply.outer(np.multiply.outer(IIp[i], IIk[i]), IIq[i])
+writer = pd.ExcelWriter('Map_I.xlsx', engine='xlsxwriter')
+for i in range(n_buses):
+    I_map_df = pd.DataFrame(I_map[:][i][:])
+    I_map_df.to_excel(writer, sheet_name=str(i))
+writer.save()
+
+
+# CHART OF POWERS
+S_map = np.multiply.outer(np.multiply.outer(SSp[0], SSk[0]), SSq[0])
+for i in range(1, len(SSk)):
+    S_map += np.multiply.outer(np.multiply.outer(SSp[i], SSk[i]), SSq[i])
+writer = pd.ExcelWriter('Map_S.xlsx', engine='xlsxwriter')
+for i in range(n_buses):
+    S_map_df = pd.DataFrame(S_map[:][i][:])
+    S_map_df.to_excel(writer, sheet_name=str(i))
+writer.save()
+
+print(np.shape(SSk))
+print(n_buses)
