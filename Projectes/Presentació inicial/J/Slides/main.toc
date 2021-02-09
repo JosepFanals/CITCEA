@@ -10,4 +10,4 @@
 \beamer@subsectionintoc {3}{1}{Formulation}{13}{0}{3}
 \beamer@sectionintoc {4}{Proper Generalised Decomposition (PGD)}{14}{0}{4}
 \beamer@subsectionintoc {4}{1}{Multidimensional power flow}{15}{0}{4}
-\beamer@subsectionintoc {4}{2}{Algorithm}{16}{0}{4}
+\beamer@subsectionintoc {4}{2}{Algorithm PGD + ASD}{16}{0}{4}

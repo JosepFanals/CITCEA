@@ -74,13 +74,12 @@
 \usepackage{pdfpages}
 \usepackage{transparent}
 
-\newcommand{\ink}[5]{%
-  \begin{figure}[H] #5
+\newcommand{\ink}[3]{%
+  \begin{figure}[H]
     \centering
     \def\svgscale{#2}
     \import{./figures/}{#1.pdf_tex}
     \caption{#3}
-    \label{#4}
   \end{figure}
   \normalsize
 }
@@ -119,7 +118,9 @@
 }
 
 \usepackage{tikz}
-    
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\arraystretch}{0.95}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,20 +193,81 @@
 \section{Alternating Search Directions (ASD)}
 \subsection{Formulation}
 \begin{frame}{Formulation}
-	
+	We define the problem in two steps.
+	\begin{itemize}
+		\item Admittances side:
+	\end{itemize}
+	\begin{equation}
+		\begin{cases}
+			I^{l+\frac{1}{2}}-I^{l} = \alpha(V^{l+\frac{1}{2}} - V^l),\\
+			YV^{l+\frac{1}{2}} = I_0 + I^{l+\frac{1}{2}}. 
+		\end{cases}
+	\end{equation}
+	\begin{itemize}
+		\item Load/generator side:
+	\end{itemize}
+	\begin{equation}
+		\begin{cases}
+			I^{l+1} - I^{l+\frac{1}{2}} = \beta(V^{l+1} - V^{l+\frac{1}{2}}),\\
+			(V^{l+1})^*I^{l+1}=S^*.
+		\end{cases}
+	\end{equation}
+	Matrices $\alpha$ and $\beta$ can be arbitrarily defined, but for instance:
+	\begin{equation}
+		\begin{cases}
+			\alpha = \text{diag}(S^*/|V|^2),\\
+			\beta = \text{diag}(Y+\alpha).
+		\end{cases}
+	\end{equation}
+	These are constant matrices. Contrary to the typical NR, there are no inverses as such (expensive computation with $\mathcal{O}(n^3)$).
+	%complexity!
 \end{frame}
 
 
 \section{Proper Generalised Decomposition (PGD)}
 \subsection{Multidimensional power flow}
 \begin{frame}{Multidimensional power flow}
- % equation with tensor, figure of cube, show code or excel	
+	\begin{itemize}
+		\item Dimensions: position (nodes), changes in power, time...
+		\item Voltages expressed in the separated form: $V(x,q,t)=\sum_{m=1}^M V_m \otimes Q_m \otimes T_m$. 
+	\end{itemize}
+
+\ink{cube1}{0.6}{Representation of the cube of solutions}
+
+	\begin{itemize}
+\item Need to compute $M (n_{\text{buses}} + n_{\text{powers}} + n_{\text{time}})$ instead of $n_{\text{buses}} \cdot n_{\text{powers}} \cdot n_{\text{time}}$ cases. 
+
+\item Can it be adapted for changes in the topology so that we can employ it for contingency analysis ($N-1$, $N-2$...)?
+	\end{itemize}
 \end{frame}
 
-\subsection{Algorithm}
+\subsection{Algorithm PGD + ASD}
 \begin{frame}{Algorithm}
-	
+The outer loop follows the ASD procedure while the inner one is based on the alternating directions technique.
+\begin{algorithm}[H]
+\begin{algorithmic}[1]
+\FOR{$\gamma=1$ to $N_\gamma$}
+\STATE Compute power side of the problem with PGD: $I=S^* \oslash V^{*[\gamma]}$
+\FOR{$m=1$ to $M$}
+\STATE Define $I=\sum_{m=1}^{M-1} I_m \otimes Q_m \otimes T_m + I_M \otimes Q_M \otimes T_M$
+\FOR{$k=1$ to $N_k$}
+\STATE Compute $I_M^{[k+1]}$ with $Q_M^{[k]}$ and $T_M^{[k]}$.   
+\STATE Compute $Q_M^{[k+1]}$ with $I_M^{[k+1]}$ and $T_M^{[k]}$.   
+\STATE Compute $T_M^{[k+1]}$ with $I_M^{[k+1]}$ and $Q_M^{[k+1]}$.   
+\ENDFOR
+\ENDFOR
+\STATE Compute admittances side of the problem directly: $V^{[\gamma+1]}=Y^{-1}(I+I_0)$.
+\ENDFOR
+\end{algorithmic}
+\caption{Pseudocode for the PGD combined with ASD}
+\label{alg:seq}
+\end{algorithm}
+\vspace{-0.5cm}
+\begin{itemize}
+	\item Show code and results.
+\end{itemize}
 \end{frame}
+	
 
 
 \frame{\titlepage}
