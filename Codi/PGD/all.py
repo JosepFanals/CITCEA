@@ -8,8 +8,8 @@ from numpy.linalg import norm
 pd.options.display.precision = 2
 pd.set_option('display.precision', 2)
 
-df_b = pd.read_excel('data_10PQnegative.xlsx', sheet_name="buses")
-df_l = pd.read_excel('data_10PQnegative.xlsx', sheet_name="lines")
+df_b = pd.read_excel('data_10PQ.xlsx', sheet_name="buses")
+df_l = pd.read_excel('data_10PQ.xlsx', sheet_name="lines")
 
 # BEGIN INITIALIZATION OF DATA
 n_b = 0
@@ -161,7 +161,8 @@ for ii in range(2, n_buses):
 # keep it simple, consider by now less cases
 # ----------
 SKk1 = np.zeros(n_buses, dtype=complex)
-SKk1[0] = Qmax * 1j
+# SKk1[0] = Qmax * 1j
+SKk1[0] = Qmax * (-1)  # trying with only active power
 SPp1 = np.zeros(n_buses)
 # for ii in range(2, n_buses):
 for ii in range(n_buses):  # only a few buses
@@ -216,9 +217,9 @@ def fun_C(SSk, SSp, SSq, VVk, VVp, VVq, IIk, IIp, IIq):
 
 
 # DEFINITION OF NUMBER OF ITERATIONS, CAN CHANGE ARBITRARILY
-n_gg = 15  # outer
-n_mm = 10  # intermediate
-n_kk = 3  # inner
+n_gg = 20  # outer
+n_mm = 15  # intermediate
+n_kk = 5  # inner
 
 
 for gg in range(n_gg):  # outer loop
@@ -237,12 +238,12 @@ for gg in range(n_gg):  # outer loop
         [CCk, CCp, CCq, Nc, Nv, n] = fun_C(SSk, SSp, SSq, VVk, VVp, VVq, IIk, IIp, IIq)
 
         # initialize the residues we have to find
-        IIk1 = np.random.rand(n_buses) * 0.1  # could also try to set IIk1 = VVk1
+        IIk1 = (np.random.rand(n_buses) - np.random.rand(n_buses)) * 1  # could also try to set IIk1 = VVk1
         # if gg == 0 and mm == 0:
         # if mm == 0:
             # IIk1 = np.ones(n_buses, dtype=complex)
-        IIp1 = np.random.rand(n_buses) * 0.1
-        IIq1 = np.random.rand(n_scale) * 0.1
+        IIp1 = (np.random.rand(n_buses) - np.random.rand(n_buses)) * 1
+        IIq1 = (np.random.rand(n_scale) - np.random.rand(n_scale)) * 1
 
         for kk in range(n_kk):  # inner loop
             # compute IIk1 (residues on Ik)
