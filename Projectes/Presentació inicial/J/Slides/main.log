@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  9 FEB 2021 20:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  9 FEB 2021 22:17
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/main.tex"
 ("c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/main.tex"
@@ -1358,30 +1358,55 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <6.5> not available
 
 ] ("c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.toc") [9
 
-] [10
-
-] [11
-
-] ("c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.toc") [12
-
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 224.
+<figures/fgbm.PNG, id=312, 371.13657pt x 160.34906pt>
+File: figures/fgbm.PNG Graphic file (type png)
+<use figures/fgbm.PNG>
+Package pdftex.def Info: figures/fgbm.PNG  used on input line 222.
+(pdftex.def)             Requested size: 170.71652pt x 73.759pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 222.
  (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 224.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 222.
  (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 224.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 222.
  (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
-) [13
+)
+Overfull \vbox (0.94621pt too high) detected at line 222
+ []
+
+[10
+
+ <c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/figures/fgbm.PNG>]
+
+pdfTeX warning: pdflatex (file c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/figures/converter.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
+<figures/converter.pdf, id=335, 198.8519pt x 88.91418pt>
+File: figures/converter.pdf Graphic file (type pdf)
+<use figures/converter.pdf>
+Package pdftex.def Info: figures/converter.pdf  used on input line 236.
+(pdftex.def)             Requested size: 142.26378pt x 63.61385pt.
+
+
+pdfTeX warning: pdflatex (file c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/figures/conv2.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
+<figures/conv2.pdf, id=336, 207.61163pt x 177.82736pt>
+File: figures/conv2.pdf Graphic file (type pdf)
+<use figures/conv2.pdf>
+Package pdftex.def Info: figures/conv2.pdf  used on input line 236.
+(pdftex.def)             Requested size: 142.26378pt x 121.85442pt.
+[11
+
+ <c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/figures/converter.pdf> <c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/figures/conv2.pdf>] ("c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.toc") [12
+
+] [13
 
 ] ("c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.toc") [14
 
 ] (figures/cube1.pdf_tex
-<./figures//cube1.pdf, id=435, page=1, 382.45853pt x 141.97937pt>
+<./figures//cube1.pdf, id=533, page=1, 382.45853pt x 141.97937pt>
 File: ./figures//cube1.pdf Graphic file (type pdf)
 <use ./figures//cube1.pdf, page 1>
 Package pdftex.def Info: ./figures//cube1.pdf , page1 used on input line 56.
@@ -1402,12 +1427,7 @@ Package pdftex.def Info: ./figures//cube1.pdf , page1 used on input line 56.
 \tf@snm=\write8
 \openout8 = `main.snm'.
 
-
-
-Package caption Warning: Unused \captionsetup[table] on input line 44.
-See the caption package documentation for explanation.
-
-("c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.aux")
+ ("c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.aux")
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 79B087D51B72E0ACB68CDB7FEB696BDB;868.
 
@@ -1417,17 +1437,17 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 43228 strings out of 479696
- 1038971 string characters out of 19617135
+ 43253 strings out of 479696
+ 1039465 string characters out of 19617135
  21488414 words of memory out of 40000000
- 59174 multiletter control sequences out of 15000+200000
- 410785 words of font info for 53 fonts, out of 20000000 for 9000
+ 59194 multiletter control sequences out of 15000+200000
+ 411826 words of font info for 57 fonts, out of 20000000 for 9000
  1141 hyphenation exceptions out of 8191
  125i,16n,126p,773b,813s stack positions out of 5000i,500n,10000p,20000000b,50000s
-<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.pdf" (17 pages, 220792 bytes).
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
+Output written on "c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.pdf" (17 pages, 432660 bytes).
 PDF statistics:
- 548 PDF objects out of 1000 (max. 8388607)
+ 660 PDF objects out of 1000 (max. 8388607)
  49 named destinations out of 1000 (max. 500000)
- 252 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 267 words of extra memory for PDF output out of 10000 (max. 10000000)
 

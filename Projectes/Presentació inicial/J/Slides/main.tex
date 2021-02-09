@@ -182,12 +182,57 @@
 \section{Flexible General Branch Model (FGBM)}
 \subsection{Modelling}
 \begin{frame}{Modelling}
+	We are interested in a generic model for power lines, transformers and converters.
+	\begin{figure}
+		\includegraphics[width=6cm]{figures/fgbm.PNG}
+		\caption{Flexible General Branch Model to model any element. Reference: Bustos, A. A. and Kazemtabrizi, B. (2018) 'Flexible general branch model unified power flow algorithm for future flexible AC/DC networks.' in 2018 IEEE International Conference on Environment and Electrical Engineering and 2018 IEEE Industrial and Commercial Power Systems Euroope (EEEIC / ICPS Europe): 12-15 June 2018, Palermo, Italy. Conference proceedings. Piscataway, NJ: IEEE.}
+	\end{figure}
+	\begin{table}\footnotesize
+		\begin{tabular}{cc}
+			\hline
+			Variable & Control \\
+			\hline
+			$\theta_{sh}$ & $\theta_{sh}$ \\
+			$\theta_{sh}$ & $P_f$ \\
+			$m_a$ & $v_t$ \\
+			$m_a$ & $Q_t$ \\
+			$B_{eq}$ & $v_{dc}$ \\
+			$B_{eq}$ & \text{Zero } $Q$ \text{constraint}\\
+			\hline 
+		\end{tabular}
+		\hspace{1cm}
+		\begin{tabular}{cccc}
+			\hline
+			Mode & Constraint 1 & Constraint 2 & VSC control\\
+			\hline
+			1 & $\theta_{sh}$ & $v_{ac}$ & I\\
+			2 & $P_f$ & $Q_{ac}$ & I\\
+			3 & $P_f$ & $v_{ac}$ & I\\
+			\hline
+			4 & $v_{dc}$ & $Q_{ac}$ & II\\
+			5 & $v_{dc}$ & $v_{ac}$ & II\\
+			\hline
+			6 & $v_{dc}$ droop & $Q_{ac}$ & III\\
+			7 & $v_{dc}$ droop & $v_{ac}$ & III\\
+			\hline
+		\end{tabular}
+		\caption{VSC control models and relationship between the variables and the controlled magnitude}
+	\end{table}	
 	
 \end{frame}
 
 \subsection{FGBM + HELM}
 \begin{frame}{FGBM + HELM}
-	
+	\begin{figure}
+		\includegraphics[width=5cm]{figures/converter.pdf}
+		\includegraphics[width=5cm]{figures/conv2.pdf}
+		\caption{Left: simple system with a VSC converter. Right: maximum error depending on the number of coefficients in the series.}
+	\end{figure}
+	One embedded equation becomes for instance:
+	\begin{equation}
+		I_f(s) = y_sV_2(s) - y_sV_1(s) + sj\frac{b_c}{2}V_2(s) + sjB_{eq} V_2(s) + sGI_f^{re}(s)I_f^{re}(s)I_f^{im}(s)I_f^{im}(s)V_2(s)
+	\end{equation}
+	HELM is also suitable to solve rather complicated equations like this one.
 \end{frame}
 
 \section{Alternating Search Directions (ASD)}
