@@ -1,0 +1,136 @@
+\documentclass[10pt]{article}
+
+\usepackage[left=20mm, right=20mm]{geometry}
+%\usepackage[scale=4]{draftwatermark}
+
+\usepackage[backend=biber]{biblatex} % per la bibliografia
+\setlength\bibitemsep{\baselineskip} % per tenir més espai entre bibliografia
+\addbibresource{bib.bib} % carregar el fitxer de bibliografia
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[activate={true, noncompatibility}]{microtype}
+
+\begin{document}
+\section{Proper Generalized Decomposition}
+The Proper Generalized Decomposition (PGD) is a technique to efficiently solve  a multidimensional problem. It relies on progressive enrichments performed not on each individual case of the problem, but on the structure of the problem as a whole \cite{chinesta2010recent}. The outcome of the PGD becomes a potentially well-refined solution for various scenarios that have not been computed directly. Indeed, this comes with an associated saving of time. 
+\subsection{Definitions}
+As defined in \cite{garcia2016reduced}, in the power flow problem we are mainly concerned with three magnitudes: voltages denoted by $\bm{V}$, currents represented by $\bm{I}$ and the apparent powers given by $\bm{S}$. 
+
+The first important idea here has to do with their tensorial representation. This arises from the crossing of multiple vectors, each describing a dimension of the form 
+\begin{equation}
+	\bm{Z} (\bm{x},\bm{t},\bm{p_1},\bm{p_2},...,\bm{p_n}) = \sum_{m=1}^{M}X(\bm{x})\otimes T(\bm{t})\otimes P_1(\bm{p_1})\otimes P_2(\bm{p_2})\otimes ... \otimes P_n(\bm{p_n}),
+\label{eq:full}
+\end{equation}
+where $Z$ represents either $V$, $I$ or $S$. Note the dependence on position ($\bm{x}$), time ($\bm{t}$) and the parameters meant to change ($\bm{p_1}$ to $\bm{p_n}$). In the power flow problem, $\bm{x}$ stands for the number of bus while the parameters can be for instance variations in power in several buses. Changes in impedance could also be parametrized, although it is not clear how the PGD should be adapted to it. Notice also that the final tensor is the result of the sum of multiple tensors with the same dimensions. One tensor could represent the stationary power we predict, while another one could be the variations we introduce, for instance.
+
+Recall that by definition solving the power flow means solving
+\begin{equation}
+\bm{Y}\bm{V}=\frac{\bm{S^*}}{\bm{V^*}},
+\label{eq:YV0}
+\end{equation}
+for $\bm{V}$. Considering the presence of a slack bus, where the voltage is already known 
+\begin{equation}
+\bm{YV} = \bm{I_0} + \bm{\frac{S^*}{V^*}}.
+\label{eq:YV}
+\end{equation}
+which translates into the following in compact for
+\begin{equation}
+	\bm{V} = \bm{Y^{-1}}(\bm{I_0}+\bm{S^*}\oslash\bm{V}),
+\label{eq:V1}
+\end{equation}
+where $\oslash$ denotes the Hadamard division, that is, the element-wise division. As described in \cite{garcia2016reduced}, the power flow problem can be solved with the so-called alternating search directions (ASD). This has the advantage of combining quite adequately with the PGD methodology due to its speed, but mainly, because of the linear relationship between voltages and currents during one of the two steps in which the PGD is divided. 
+
+The two steps we are referring to are first of all the non-linear connection between voltages and currents:
+\begin{equation}
+	\bm{I}=\bm{S^*}\oslash \bm{V^*}^{[\gamma]}.
+\label{eq:In}
+\end{equation}
+
+Here the variables are in fact tensors. Note that the traditional way to solve \ref{eq:In} would be to compute all the cases, one by one. However, this is not beneficial and it is not the point of the PGD. In fact, the PGD tries to circumvent this problem. 
+
+The second step to perform is described by 
+\begin{equation}
+	\bm{V}^{[\gamma+1]} = \bm{Y^{-1}}(\bm{I}+I_0).
+\label{eq:Vg1}
+\end{equation}
+The procedure consists of first computing $\bm{I}$ from Equation \ref{eq:In} using the PGD method. Once this is done, we proceed to update $\bm{V}$. In the end it follows the same structure as $\bm{I}$, which saves computation time.
+
+The complexity of solving this problem lies in Equation \ref{eq:In}, since the second step is direct. Recall that $\bm{Z}$ represents in a general form $\bm{S}$, $\bm{V}$ and $\bm{I}$. Hence, we define $ \bm{u^T}\bm{V^*}\bm{I} = \bm{u^T}\bm{S^*}$, where in fact 
+\begin{equation}
+	\bm{I}=\sum_{i=1}^{n}\bm{i_1}\otimes \bm{i_2} \otimes ... \otimes \bm{i_D} + \bm{R_1}\otimes ... \otimes \bm{R_D}.
+\label{eq:decomp}
+\end{equation}
+The so-called test field is 
+\begin{equation}
+\bm{u} = \bm{R_1}^*\otimes \bm{R_2} \otimes ... \otimes \bm{R_D} + ... + \bm{R_1}\otimes \bm{R_2} \otimes ... \otimes \bm{R_D}^*.
+\label{eq:decomp2}
+\end{equation}
+This implies the following, in extended form:
+
+\begin{equation}
+	\begin{split}
+		\sum_{i=1}^{N_v}\sum_{j=1}^{n} & \bm{R_1^{T*} V_1^{i*} i_{1}^{j}} \times ... \times \bm{R_D^{T}V_D^{i*}i_D^j }  + ... + \sum_{i=1}^{N_v}\sum_{j=1}^{n}\bm{R_1^{T} V_1^{i*} i_{1}^{j}} \times ... \times  \bm{R_D^{T*}V_D^{i*}i_D^j } \\
+					       & + \sum_{i=1}^{N_v}\bm{R_1^{T*}V_1^{i*}R_1} \times ... \times \bm{R_D^{T}V_D^{i*} R_D } + ... + \sum_{i=1}^{N_v}\bm{R_1^{T}V_1^{i*}R_1} \times ... \times \bm{R_D^{T*}V_D^{i*} R_D } = \\
+					       & \sum_{i=1}^{N_s}\left(\bm{R_1^{T*}S_1^{i*}}\times ... \times \bm{R_D^T S_D^{i*}} + ... + \bm{R_1^T S_1^{i*}} \times ... \times \bm{R_D^{T*}S_D^{i*}}\right). 
+		\end{split}
+\label{eq:full2}
+\end{equation}
+This can be compacted by defining 
+\begin{equation}
+	\sum_{i=1}^{N_c}\bm{C_1^i}\otimes ... \otimes \bm{C_D^i} = \sum_{i=1}^{N_s}\bm{S_1^{i*}}\otimes ... \otimes \bm{S_D^{i*}} - \sum_{i=1}^{N_v}\sum_{j=1}^n \bm{V_1^{i*}i_1^{j}}\otimes ... \otimes \bm{V_D^{i*}i_D^{j}} ,
+\label{eq:full3}
+\end{equation}
+where $N_c=N_s + N_vn$. This way, the problem described by Equation \ref{eq:full2} takes the form of 
+\begin{equation}
+	\begin{split}
+		\sum_{i=1}^{N_v}& \bm{R_1^{T*}V_1^{i*}R_1} \times ... \times \bm{R_D^{T}V_D^{i*} R_D } + ... + \sum_{i=1}^{N_v}\bm{R_1^{T}V_1^{i*}R_1} \times ... \times \bm{R_D^{T*}V_D^{i*} R_D } = \\
+				& \left(\bm{R_1^{T*}}\otimes ... \otimes \bm{R_D^{T}} + ... + \bm{R_1^T}\otimes ... \otimes \bm{R_D^{T*}}  \right)	\sum_{i=1}^{N_c}\bm{C_1^i}\otimes ... \otimes \bm{C_D^i}.
+	\end{split}
+\label{eq:full4}
+\end{equation}
+Now is when the alternating directions method comes into play. It serves the purpose to find the multiple $\bm{R_i^{[\Gamma]}}$ for $i=1,...,D$. The iteration number of this inner loop is denoted by $k$. This way, there are three loops. The outer one is the ASD as such, that is, the algorithm responsible for solving the power flow problem. The intermediate one deals with finding the residues at every superposition of the $\bm{I}$ tensor. To do so, the last and most inner loop is the one that goes over the several $\Gamma$ to iterate and find convenient residues. This can be summarized by:
+\begin{itemize}
+	\item Outer loop: iterate on $\gamma$ to solve the power flow as such.
+	\item Intermediate loop: iterate on $i$ to find the superposition of terms of the  $\bm{I}$ tensor.
+	\item Inner loop: iterate on $\Gamma$ to find the residues.
+\end{itemize}
+
+Finally, the residues $R_k$ are computed from 
+\begin{equation}
+	\left(\sum_{i=1}^{N_v}\bm{V_k^{i*}}\prod_{j\neq k}^D \bm{R_j^TV_j^{i*}R_j}\right)\bm{R_k} = \sum_{i=1}^{N_c}\bm{C_k^i}\prod_{j\neq k}^D\bm{R_j^TC_j^i}.
+\label{eq:residue1}
+\end{equation}
+From here we compute $R_k\forall k$. This constitutes an iteration in the inner loop. Note that the subscript $\Gamma$ has been avoided in Equation \ref{eq:residue1} to alleviate the notation. But the point is that $R_k$ is computed from the previous known residues, which will be as updated as possible. We iterate several times to improve the results. We also iterate as many times in the intermediate loop as we like. That is, in \cite{garcia2016reduced}, the parameter $M$ is arbitrary and can change from time to time. Once $I$ is fully build, we then update the voltages and keep iterating.
+
+% now program
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\printbibliography
+
+
+\end{document}
