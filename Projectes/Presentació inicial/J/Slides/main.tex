@@ -1,0 +1,215 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% document class
+%\documentclass{beamer}
+% \documentclass[aspectratio=169]{beamer}
+\documentclass[handout, aspectratio=169, 9pt]{beamer}
+\usepackage[utf8x]{inputenc}
+\usepackage{textcomp}
+\usepackage{eurosym}
+
+%% packages
+\input{settings/packages}
+ 
+%% page settings
+\input{settings/page}
+
+%% new commands
+\input{settings/macros}
+
+% Animations
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{pdfpagemode=FullScreen}
+\usepackage{ifthen}
+\usepackage{animate}
+%
+\newcounter{angle}
+\setcounter{angle}{0}
+%
+ 
+% Càlculs
+\usetikzlibrary{calc}
+\usepackage{amsmath}
+\usepackage{pgfplots} % Animacions
+
+\usepackage[font=tiny]{caption}
+\setbeamertemplate{caption}[numbered]
+\captionsetup[figure]{labelfont={},name={},labelsep=period} %\renewcommand{\figurename}{Figura} % ho tinc amb caption
+\renewcommand{\thefigure}{Figure \arabic{figure}}
+
+\usepackage[font=tiny]{caption}
+\setbeamertemplate{caption}[numbered]
+\captionsetup[table]{labelfont={},name={},labelsep=period} %\renewcommand{\figurename}{Figura} % ho tinc amb caption
+\renewcommand{\thetable}{Table \arabic{table}}
+\renewcommand{\arraystretch}{0.5}
+
+\usepackage{amsmath} % \numberwithin{equation} doesn't exist without this package.
+\numberwithin{equation}{section} % This line resets equation numbering when starting a new section.
+\renewcommand{\theequation}{Eq. \arabic{equation}} % This line ads "Eq." in front of your equation numbering.
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\usepackage{tikz-3dplot}
+\pgfmathsetmacro{\radius}{1}
+\pgfmathsetmacro{\thetavec}{0}
+\pgfmathsetmacro{\phivec}{0}
+\usepackage{tkz-graph} % Petri diagrams
+\usetikzlibrary{intersections}
+\usepackage{tkz-euclide}
+\usetikzlibrary{positioning,shapes,arrows,arrows.meta}
+
+\usepackage[parfill]{parskip}
+\setlength{\parskip}{8pt}
+
+\usepackage{setspace}
+\renewcommand*{\arraystretch}{1.25}
+
+% Castel, figures. https://castel.dev/post/lecture-notes-2/
+\usepackage{calc}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\ink}[5]{%
+  \begin{figure}[H] #5
+    \centering
+    \def\svgscale{#2}
+    \import{./figures/}{#1.pdf_tex}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+  \normalsize
+}
+
+\pgfplotsset{compat=1.16}
+\usetikzlibrary{arrows}
+\usepackage[geometry]{ifsym}
+\usepackage{termcal}
+\usepackage{pgfplots} % subplots
+\usetikzlibrary{pgfplots.groupplots}
+\pgfkeys{/pgf/number format/.cd,use comma}
+
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage[demo]{graphicx}
+\usepackage{subfig}
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of contents}
+		% \tableofcontents[currentsection]
+		
+    \begin{columns}
+    % \begin{minipage}[t][0.5\textheight]{0.95\textwidth}
+    \begin{minipage}[t][0.85\textheight]{0.95\textwidth}
+	  % \tableofcontents
+
+	    \tableofcontents[currentsection]
+    \end{minipage}\hfill
+    \end{columns}
+
+    \end{frame}
+}
+
+\usepackage{tikz}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\arraystretch}{0.95}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\let\texteuro\euro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[]{Josep Fanals}
+\title[]{\large POWER SYSTEMS CALCULATION}
+\institute{CITCEA}
+
+
+\date{02/2021}
+\frame{\titlepage}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{spacing}{2.5}
+
+% \end{spacing}
+\begin{frame}{Table of contents}
+    \begin{columns}
+    % \begin{minipage}[t][0.5\textheight]{0.95\textwidth}
+    \begin{minipage}[t][0.85\textheight]{0.95\textwidth}
+      \tableofcontents
+    \end{minipage}\hfill
+    \end{columns}
+\end{frame}
+
+\section{Holomorphic Embedding Load Flow Method (HELM)}
+\subsection{Basics}
+\begin{frame}{Basics}
+
+\end{frame}
+
+\begin{frame}{Basics}
+	
+\end{frame}
+
+
+\subsection{Overview}
+\begin{frame}{Overview}
+	
+\end{frame}
+
+
+\subsection{Sigma approximants}
+\begin{frame}{Sigma approximants}
+	
+\end{frame}
+
+\subsection{GridCal}
+\begin{frame}{GridCal}
+	
+\end{frame}
+
+
+
+\section{Flexible General Branch Model (FGBM)}
+\subsection{Modelling}
+\begin{frame}{Modelling}
+	
+\end{frame}
+
+\subsection{FGBM + HELM}
+\begin{frame}{FGBM + HELM}
+	
+\end{frame}
+
+\section{Alternating Search Directions (ASD)}
+\subsection{Formulation}
+\begin{frame}{Formulation}
+	
+\end{frame}
+
+
+\section{Proper Generalised Decomposition (PGD)}
+\subsection{Multidimensional power flow}
+\begin{frame}{Multidimensional power flow}
+ % equation with tensor, figure of cube, show code or excel	
+\end{frame}
+
+\subsection{Algorithm}
+\begin{frame}{Algorithm}
+	
+\end{frame}
+
+
+\frame{\titlepage}
+
+
+\end{document}
+

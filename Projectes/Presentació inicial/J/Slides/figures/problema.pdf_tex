@@ -1,0 +1,86 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'problema.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{725.78735637bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.53461137)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{problema.pdf}}%
+    \put(0.04846345,0.34560236){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}DVL\end{tabular}}}}%
+    \put(0.15341578,0.49459666){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}GPS\end{tabular}}}}%
+    \put(0.20434572,0.33073522){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor de pressió\end{tabular}}}}%
+    \put(0.01088609,0.27731773){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensor de pressió\end{tabular}}}}%
+    \put(0.71234547,0.17289731){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Filtre de \\navegació actual\\\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{problema.pdf}}%
+    \put(0.92076425,0.17636291){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Solució de navegació\\x, v, $\psi$\\\end{tabular}}}}%
+    \put(0.9169036,0.4035382){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Solució de navegació\\x, v, $\psi$\\\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{problema.pdf}}%
+    \put(0.18326138,0.29347592){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}GPS\end{tabular}}}}%
+    \put(0.24420854,0.02678528){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}DVL\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{problema.pdf}}%
+    \put(0.54670954,0.24132465){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2.000 €\\\end{tabular}}}}%
+    \put(0.49743151,0.49771249){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}40.000 € \\\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{problema.pdf}}%
+    \put(0.47309748,0.22461554){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Inertial Measurement Unit (IMU)\end{tabular}}}}%
+    \put(0.41078661,0.47807559){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Inertial Navigation System (INS)\end{tabular}}}}%
+    \put(0.14892271,0.52339241){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sparus II\end{tabular}}}}%
+    \put(0.13844699,0.00022941){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Girona 500\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{problema.pdf}}%
+    \put(0.51572373,0.07920955){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Acceleròmetre\\Giroscopi\\Magnetòmetre\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{problema.pdf}}%
+    \put(0.51488357,0.3512461){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Acceleròmetre\\Giroscopi\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{problema.pdf}}%
+    \put(0.65901966,0.36724169){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-Bon hardware\\-Bones equacions\end{tabular}}}}%
+    \put(0.66530766,0.10366661){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-Hardware de baix cost\\-Equacions millorables\end{tabular}}}}%
+    \put(0.43359011,0.08010217){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Sensors\\inercials\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{problema.pdf}}%
+  \end{picture}%
+\endgroup%

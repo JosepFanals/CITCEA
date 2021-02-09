@@ -1,0 +1,159 @@
+%% Theme
+\usetheme[width=2.5cm]{Berkeley} % theme for slides and width
+%\usetheme{Frankfurt}
+% \usetheme{Madrid}
+
+%% Colors
+%\usecolortheme{rose} % color for slides
+% \usecolortheme{default}
+\definecolor{c1}{rgb}{0.161,0.502,0.725} % some green: {0,0.7,0.6}
+\definecolor{c2}{rgb}{0.86,0.86,0.86} % some gray: {0.9,0.9,0.9}
+% see http://www.sharelatex.com/learn/Beamer
+\setbeamercolor*{palette primary}{fg=white,bg=c1} % upper part
+\setbeamercolor*{palette secondary}{bg=c2} % left part (background)
+\setbeamercolor*{sidebar left}{fg=white,bg=c1} % left part with links
+
+\setbeamerfont{section number projected}{ % section numbers
+  family=\rmfamily,
+  series=\bfseries,
+  size=\normalsize
+  }
+\setbeamercolor{section number projected}{bg=c1} % color of section numbers and others (fg: Fontm, bg:Hintergrund)
+
+
+\setbeamerfont{subsection number projected}{ % section numbers
+  family=\rmfamily,
+  series=\bfseries,
+  size=\normalsize
+  }
+\setbeamercolor{subsection number projected}{bg=c1} % color of section numbers and others (fg: Fontm, bg:Hintergrund)
+
+
+\setbeamercolor{item projected}{bg=c1}
+\setbeamercolor{itemize item}{fg=c1}
+\setbeamercolor{author in sidebar}{fg=white}
+\setbeamercolor{footlinecolor}{fg=black,bg=c2}
+
+%% Fonts
+\usefonttheme{professionalfonts} % changes fonts
+
+%% Head
+\makeatletter
+\beamer@headheight=1.65\baselineskip
+%\beamer@headwidth=1.5\baselineskip
+\makeatother
+
+%% Sidebar
+\makeatletter
+\setbeamerfont{section in sidebar}{
+	size=\scriptsize,
+}
+
+\setbeamerfont{subsection in sidebar}{
+	size=\tiny,
+}
+
+\setbeamerfont{section in sidebar}{size=\fontsize{7}{7}\selectfont}
+\setbeamerfont{subsection in sidebar}{size=\fontsize{6.5}{6.5}\selectfont}
+
+
+\setbeamertemplate{sidebar left}{\insertverticalnavigation{\beamer@sidebarwidth}} % move sidebar content upwards
+
+%\setbeamertemplate{sidebar left}{\insertverticalnavigation{\beamer@sidebarwidth}}
+\makeatother
+
+
+%% Foot
+\usenavigationsymbolstemplate{} % deafult controls off
+\setbeamertemplate{footline}[frame number] % slide number at the bottom
+\setbeamertemplate{footline}
+{%
+	\leavevmode%
+	\hbox{%
+	\begin{beamercolorbox}[wd=.55\paperwidth,ht=3ex,dp=1.5ex,left,leftskip=1.50mm]{footlinecolor}%
+    % Llorenç Fanals Batllori
+    Josep Fanals
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.25\paperwidth,ht=3ex,dp=1.5ex,left,leftskip=0mm]{footlinecolor}%
+		% \href{https://github.com/LFanals/RotacionsCameres}{Tècniques de rotació de les càmeres} 
+    % Avaluació d'un sistema de navegació inercial per a un robot submarí
+    Power systems calculation
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.2\paperwidth,ht=3ex,dp=1.5ex,right,rightskip=2mm]{footlinecolor}%
+		\insertframenumber{} / \inserttotalframenumber%
+	\end{beamercolorbox}%
+	}%
+	\vskip0pt%
+}
+
+
+
+
+\makeatletter
+  \setbeamertemplate{sidebar \beamer@sidebarside}
+  {
+    \beamer@tempdim=\beamer@sidebarwidth%
+    \advance\beamer@tempdim by -6pt%
+    \vskip0.85em%
+    \insertverticalnavigation{\beamer@sidebarwidth}%
+    \vfill
+    \ifx\beamer@sidebarside\beamer@lefttext%
+    \else%
+      \usebeamercolor{normal text}%
+      \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+      \vskip2pt%
+    \fi%
+  }%
+
+%   \ifx\beamer@sidebarside\beamer@lefttext%
+%     \defbeamertemplate*{sidebar right}{sidebar theme}
+%     {%
+%       \vfill%
+%       \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+%       \vskip2pt}
+%   \fi
+
+\setbeamertemplate{section in sidebar}%{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar}{\insertsectionheadnumber
+~\insertsectionhead}%
+  }%
+}
+\setbeamertemplate{section in sidebar shaded}%{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar shaded}{\insertsectionheadnumber
+~\insertsectionhead}%
+  }%
+}
+
+
+
+\setbeamertemplate{subsection in sidebar}%{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \hskip1ex%
+    \beamer@sidebarformat{3pt}{subsection in sidebar}{\insertsectionheadnumber.\insertsubsectionheadnumber
+~\insertsubsectionhead}%
+  }%
+}
+\setbeamertemplate{subsection in sidebar shaded}%{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \hskip1ex%
+    \beamer@sidebarformat{3pt}{subsection in sidebar shaded}{\insertsectionheadnumber.\insertsubsectionheadnumber
+~\insertsubsectionhead}%
+  }%
+}
+
+
+
+
+\makeatother
+
+
