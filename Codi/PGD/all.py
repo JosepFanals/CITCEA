@@ -224,9 +224,9 @@ def fun_C(SSk, SSp, SSq, VVk, VVp, VVq, IIk, IIp, IIq):
 
 
 # DEFINITION OF NUMBER OF ITERATIONS, CAN CHANGE ARBITRARILY
-n_gg = 2  # outer
-n_mm = 2  # intermediate
-n_kk = 2  # inner
+n_gg = 20  # outer
+n_mm = 20  # intermediate
+n_kk = 20  # inner
 
 
 for gg in range(n_gg):  # outer loop
