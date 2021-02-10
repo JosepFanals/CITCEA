@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  10 FEB 2021 12:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  10 FEB 2021 13:49
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/main.tex"
 ("c:/Users/Josep/Desktop/CITCEA/Projectes/Presentació inicial/J/Slides/main.tex"
@@ -1385,7 +1385,7 @@ pdfTeX warning: pdflatex (file ./figures//helm.pdf): PDF inclusion: multiple pdf
 <figures/GridCal.png, id=253, 1269.543pt x 637.582pt>
 File: figures/GridCal.png Graphic file (type png)
 <use figures/GridCal.png>
-Package pdftex.def Info: figures/GridCal.png  used on input line 192.
+Package pdftex.def Info: figures/GridCal.png  used on input line 193.
 (pdftex.def)             Requested size: 355.65944pt x 178.6093pt.
  [7
 
@@ -1395,10 +1395,10 @@ Package pdftex.def Info: figures/GridCal.png  used on input line 192.
 <figures/fgbm.PNG, id=306, 371.13657pt x 160.34906pt>
 File: figures/fgbm.PNG Graphic file (type png)
 <use figures/fgbm.PNG>
-Package pdftex.def Info: figures/fgbm.PNG  used on input line 236.
+Package pdftex.def Info: figures/fgbm.PNG  used on input line 237.
 (pdftex.def)             Requested size: 170.71652pt x 73.759pt.
 
-Overfull \vbox (0.94621pt too high) detected at line 236
+Overfull \vbox (0.94621pt too high) detected at line 237
  []
 
 [9
@@ -1409,7 +1409,7 @@ pdfTeX warning: pdflatex (file c:/Users/Josep/Desktop/CITCEA/Projectes/Presentac
 <figures/converter.pdf, id=327, 198.8519pt x 88.91418pt>
 File: figures/converter.pdf Graphic file (type pdf)
 <use figures/converter.pdf>
-Package pdftex.def Info: figures/converter.pdf  used on input line 250.
+Package pdftex.def Info: figures/converter.pdf  used on input line 251.
 (pdftex.def)             Requested size: 142.26378pt x 63.61385pt.
 
 
@@ -1417,7 +1417,7 @@ pdfTeX warning: pdflatex (file c:/Users/Josep/Desktop/CITCEA/Projectes/Presentac
 <figures/conv2.pdf, id=328, 207.61163pt x 177.82736pt>
 File: figures/conv2.pdf Graphic file (type pdf)
 <use figures/conv2.pdf>
-Package pdftex.def Info: figures/conv2.pdf  used on input line 250.
+Package pdftex.def Info: figures/conv2.pdf  used on input line 251.
 (pdftex.def)             Requested size: 142.26378pt x 121.85442pt.
 [10
 
@@ -1467,7 +1467,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  125i,16n,126p,773b,960s stack positions out of 5000i,500n,10000p,20000000b,50000s
 <C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.pdf" (16 pages, 792007 bytes).
+Output written on "c:/Users\Josep\Desktop\CITCEA\Projectes\Presentació inicial\J\Slides\main.pdf" (16 pages, 792209 bytes).
 PDF statistics:
  646 PDF objects out of 1000 (max. 8388607)
  47 named destinations out of 1000 (max. 500000)
