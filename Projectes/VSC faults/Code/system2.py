@@ -39,17 +39,17 @@ def Vabc_to_012(Vabc):
 
 
 def fIa(Ipre, Ipim, Inre, Inim):
-    valor = 1 / 9 * (Ipre ** 2 + Inre ** 2 + 2 * Ipre * Inre + Ipim ** 2 + Inim ** 2 - 2 * Ipim * Inim)
+    valor = Ipre ** 2 + Inre ** 2 + Ipim ** 2 + Inim ** 2 + 2 * Ipre * Inre - 2 * Ipim * Inim
     return np.sqrt(valor)
 
 
 def fIb(Ipre, Ipim, Inre, Inim):
-    valor = 1 / 9 * (Ipre ** 2 + Inre ** 2 + Ipim ** 2 + Inim ** 2 - Ipre * Inre + Ipim * Inim - np.sqrt(3) * Ipre * Inim - np.sqrt(3) * Ipim * Inre)
+    valor = Ipre ** 2 + Inre ** 2 + Ipim ** 2 + Inim ** 2 - Ipre * Inre + np.sqrt(3) * Ipre * Inim + np.sqrt(3) * Inre * Ipim + Ipim * Inim
     return np.sqrt(valor)
 
 
 def fIc(Ipre, Ipim, Inre, Inim):
-    valor = 1 / 9 * (Ipre ** 2 + Inre ** 2 + Ipim ** 2 + Inim ** 2 - Ipre * Inre + Ipim * Inim + np.sqrt(3) * Ipre * Inim + np.sqrt(3) * Ipim * Inre)
+    valor = Ipre ** 2 + Inre ** 2 + Ipim ** 2 + Inim ** 2 - Ipre * Inre - np.sqrt(3) * Ipre * Inim - np.sqrt(3) * Inre * Ipim + Ipim * Inim
     return np.sqrt(valor)
 
 
@@ -59,10 +59,10 @@ X = 0.1
 Vgp = 0.8
 Vgn = 0.1 
 
-Ipre = 0.1
-Ipim = 0.5
-Inre = 0.5
-Inim = 0.2
+Ipre = 0.4
+Ipim = 0.0
+Inre = 0.4
+Inim = 0.0
 
 Vcp = R * Ipre + X * Ipim + np.sqrt(Vgp ** 2 - (X * Ipre - R * Ipim) ** 2)
 Vcn = R * Inre - X * Inim + np.sqrt(Vgn ** 2 - (R * Inim + X * Inre) ** 2)
