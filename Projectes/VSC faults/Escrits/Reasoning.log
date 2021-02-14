@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  14 FEB 2021 21:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  15 FEB 2021 00:31
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.tex"
 ("c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.tex"
@@ -583,26 +583,88 @@ File: pgfmodulematrix.code.tex 2020/12/01 v3.1.7a (3.1.7a)
 \tikz@expandcount=\count415
  (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2020/12/01 v3.1.7a (3.1.7a)
-)))
-\@quotelevel=\count416
-\@quotereset=\count417
+))) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/latex/circuitikz\circuitikz.sty
+Package: circuitikz 2020/12/16{} The CircuiTikz circuit drawing package version 1.2.6
+ (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+) (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfarrowinset=\dimen265
+\pgfarrowlength=\dimen266
+\pgfarrowwidth=\dimen267
+\pgfarrowlinewidth=\dimen268
+) (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarybending.code.tex
+File: tikzlibrarybending.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+ (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulebending.code.tex
+File: pgfmodulebending.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+ (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulenonlineartransformations.code.tex
+File: pgfmodulenonlineartransformations.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgftransformnonlinearflatness=\dimen269
+) (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibrarycurvilinear.code.tex
+File: pgflibrarycurvilinear.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@curvilinear@time@a=\dimen270
+\pgf@curvilinear@length@a=\dimen271
+\pgf@curvilinear@length@b=\dimen272
+\pgf@curvilinear@length@c=\dimen273
+\pgf@curvilinear@length@d=\dimen274
+)
+\pgf@arrows@the@rigidity=\dimen275
+)) (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfpu.code.tex (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcirc.defines.tex
+\pgf@circ@count@a=\count416
+\pgf@circ@count@b=\count417
+\pgf@circ@count@c=\count418
+\pgf@circ@res@up=\dimen276
+\pgf@circ@res@down=\dimen277
+\pgf@circ@res@zero=\dimen278
+\pgf@circ@res@left=\dimen279
+\pgf@circ@res@right=\dimen280
+\pgf@circ@res@other=\dimen281
+\pgf@circ@res@step=\dimen282
+\pgf@circ@res@temp=\dimen283
+\pgf@circ@Rlen=\dimen284
+\pgf@circ@scaled@Rlen=\dimen285
+\pgfstartlinewidth=\dimen286
+) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircutils.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircshapes.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircmonopoles.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircbipoles.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcirctripoles.tex
+\pgf@circ@res@count=\count419
+) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircquadpoles.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircmultipoles.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcirclabel.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircvoltage.tex
+\pgfcirc@labelshift=\dimen287
+) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcirccurrent.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircflow.tex) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/generic/circuitikz\pgfcircpath.tex)
+
+Package circuitikz Warning: You did not specify one of the voltage directions:
+(circuitikz)                  oldvoltagedirection, nooldvoltagedirection, 
+(circuitikz)                  RPvoltages or EFvoltages 
+(circuitikz)                Default directions may have changed, 
+(circuitikz)                please check the manual.
+
+) (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup7
+\symAMSb=\mathgroup8
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+\@quotelevel=\count420
+\@quotereset=\count421
  ("c:/Users\Josep\Desktop\CITCEA\Projectes\VSC faults\Escrits\Reasoning.aux")
 \openout1 = `Reasoning.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -651,16 +713,16 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Reasoning.bbl' found.
  ("c:/Users\Josep\Desktop\CITCEA\Projectes\VSC faults\Escrits\Reasoning.bbl")
-Package biblatex Info: Reference section=0 on input line 14.
-Package biblatex Info: Reference segment=0 on input line 14.
-LaTeX Info: Redefining \microtypecontext on input line 14.
+Package biblatex Info: Reference section=0 on input line 16.
+Package biblatex Info: Reference segment=0 on input line 16.
+LaTeX Info: Redefining \microtypecontext on input line 16.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 14.
+LaTeX Info: Redefining \showhyphens on input line 16.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -668,39 +730,51 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count418
-\scratchdimen=\dimen265
+\scratchcounter=\count422
+\scratchdimen=\dimen288
 \scratchbox=\box61
-\nofMPsegments=\count419
-\nofMParguments=\count420
+\nofMPsegments=\count423
+\nofMParguments=\count424
 \everyMPshowfont=\toks35
-\MPscratchCnt=\count421
-\MPscratchDim=\dimen266
-\MPnumerator=\count422
-\makeMPintoPDFobject=\count423
+\MPscratchCnt=\count425
+\MPscratchDim=\dimen289
+\MPnumerator=\count426
+\makeMPintoPDFobject=\count427
 \everyMPtoPDFconversion=\toks36
 ) (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
+ (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
+ (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (C:\Users\Josep\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
-{C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] ("c:/Users\Josep\Desktop\CITCEA\Projectes\VSC faults\Escrits\Reasoning.aux")
+{C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3] [4] ("c:/Users\Josep\Desktop\CITCEA\Projectes\VSC faults\Escrits\Reasoning.aux")
 Package logreq Info: Writing requests to 'Reasoning.run.xml'.
 \openout1 = `Reasoning.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21590 strings out of 479696
- 427817 string characters out of 19617135
- 21125999 words of memory out of 40000000
- 38375 multiletter control sequences out of 15000+200000
- 404412 words of font info for 36 fonts, out of 20000000 for 9000
+ 36084 strings out of 479696
+ 853690 string characters out of 19617135
+ 21710031 words of memory out of 40000000
+ 52690 multiletter control sequences out of 15000+200000
+ 411230 words of font info for 89 fonts, out of 20000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,5n,111p,803b,755s stack positions out of 5000i,500n,10000p,20000000b,50000s
-<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\Projectes\VSC faults\Escrits\Reasoning.pdf" (1 page, 26841 bytes).
+ 108i,8n,111p,1090b,1186s stack positions out of 5000i,500n,10000p,20000000b,50000s
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "c:/Users\Josep\Desktop\CITCEA\Projectes\VSC faults\Escrits\Reasoning.pdf" (4 pages, 124308 bytes).
 PDF statistics:
- 17 PDF objects out of 1000 (max. 8388607)
+ 58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18445 words of extra memory for PDF output out of 20736 (max. 10000000)
 

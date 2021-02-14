@@ -3,13 +3,15 @@
 \usepackage[left=25mm, right=25mm]{geometry}
 %\usepackage[scale=4]{draftwatermark}
 
-\usepackage[backend=biber]{biblatex} % per la bibliografia
+\usepackage[backend=biber, sorting=none]{biblatex} % per la bibliografia
 \setlength\bibitemsep{\baselineskip} % per tenir més espai entre bibliografia
 \addbibresource{bib.bib} % carregar el fitxer de bibliografia
 \usepackage{bm}
 \usepackage{amsmath}
 \usepackage[activate={true, noncompatibility}]{microtype}
 \usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{amssymb}
 
 \begin{document}
 
@@ -26,13 +28,86 @@
 \end{center}
 
 \section{Introduction}
-This is just a bit of text
+Grid faults constitute a group of unfortunate events that cause severe perturbations in the grid. The voltages can take values below the established minimum, or on the contrary, exceed the maximum in non-faulted phases. The currents are also susceptible to vary considerably. Traditional power systems based on synchronous generators could experiment currents surpassing the nominal values, and therefore, the fault could be clearly detected. However, the increasing integration of renewables \cite{anees2012grid} supposes a change of paradigm, in which currents can be controlled but they are limited so as not to damage the Isolated-Gate Bipolar Transistors (IGBT) found in the Voltage Source Converter (VSC) \cite{abdou2013improving}. 
+
+Transmission System Operators (TSO) are responsible for imposing requirements related to the operation under voltage sags to generators and converters \cite{tsili2009review, iov2007mapping}. Such requirements are gathered in the respective grid codes. There seems to be no clear consensus on how to restore the voltage. In this sense, even if for instance the Low Voltage Ride Through (LVRT) profiles present similarities \cite{conroy2007low}, analysis aimed at determining analytically the optimal injection of positive and negative sequence currents are not numerous. As far as the author is aware, only Camacho et al. offer an optimal solution regarding the injection of active and reactive powers \cite{camacho2017positive}. 
+
+Consequently, this work focuses on finding the most convenient positive and negative sequence currents (and not powers) to raise the voltage at the point of common coupling. First, a simple modelling is discussed, and then, the results are shown together with the corresponent discussion. The challenge to solve the optimization problem in a closed form is specially described.
 
 \section{Modelling}
+Given a simplistic three-wire system formed by two buses, it can be studied separately employing the concept of symmetrical components. Figure \ref{fig:sys_p} shows the positive and negative sequence equivalent circuits. Note that no homopolar component is considered here, since in a system without neutral they are inexistent \cite{rodriguez2006independent, camacho2012flexible}.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [sV, v_=$\underline{V}^-_z$] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}^-_z$, i=$\underline{I}^-$, *-] (0,2);
+\draw (-0.25,0) to [short] (0.25,0);
+\node at (-3,1.7) {PCC};
+\node at (-3,2.3) {$\underline{V}^-_c$};
+
+\draw (-7,0) to [sV, v_=$\underline{V}^+_z$] (-7,2);
+\draw (-10,2) to [R, l=$\underline{Z}^+_z$, i=$\underline{I}^+$, *-] (-7,2);
+\draw (-7.25,0) to [short] (-6.75,0);
+\node at (-10,1.7) {PCC};
+\node at (-10,2.3) {$\underline{V}^+_c$};
+
+\end{circuitikz}
+\caption{Positive and negative sequence separated representations of the two-bus system}
+\label{fig:sys_p}
+\end{figure}
+The point of common coupling (PCC) is where the VSC together with its filter would be connected. There are two restrictions to take into account in a VSC, one related to the maximum current and another to the voltage. The current limitation is likely the most relevant when operating under faults. Since the current is limited and the filter used to connect the VSC to the PCC takes rather low values, we can expect the voltage drop to not be substantial. Because of that, and taking into consideration the voltage sag at the grid side, the voltage limit is hardly ever surpassed. Thus, in the analysis that follows, we only impose the current restriction. In a future work we could also add the voltage limitations as a constraint, although probably the conclusions will not vary from the ones extracted here.
+
+Considering that voltages $\underline{V}^+_z$ and $\underline{V}^-_z$ are given in order to model the fault suffered at the grid, the first step is to express the voltages at the PCC ($\underline{V}^+_c$ and $\underline{V}^-_c$) as a function of the injected currents $\underline{I}^+$ and $\underline{I}^-$. These currents are provided by the VSC with the objective of raising the positive sequence voltage and reducing the negative sequence voltage. The strategy to choose can take many forms. For instance, in \cite{camacho2017positive}, three strategies are detailed. One consists of increasing the positive sequence voltage as much as possible, another tried to reduce the negative sequence voltage, and a third one was concerned with obtaining the maximum difference between the positive and the negative sequence voltages. Even though this last one seems the most interesting one, we could improve its flexibility. We will soon see what this means.
+
+Before developing the expressions, some intuition can be provided. We will assume the impedances $\underline{Z}^+_z$ and $\underline{Z}^-_z$ to be equal, with a small $R/X$ ratio. We can also expect that the voltages present a small phase. Hence, to boost the positive sequence voltage at the PCC, the converter should inject a delayed reactive current with respect to the voltage. So in all likelihood, the imaginary part of the current ought to take a negative value. When it comes to the negative sequence voltage, the reactive current should be positive. This way, there is a negative voltage drop so that $\underline{V}^-_c$ becomes smaller than $\underline{V}^-_z$ in magnitude.
+
+For convenience, the currents are expressed as:
+\begin{equation}
+    \begin{cases}
+        \underline{I}^+ = I^+_{re} - j I^+_{im},\\
+        \underline{I}^- = I^-_{re} + j I^-_{im}.\\
+    \end{cases}
+\end{equation}
+Notice the difference in signs in the imaginary part, as we expect $I^+_{im}$ and $I^-_{im}$ to take positive values. In any case, these definitions could be expressed the other way around without loss of generality. By Kirchoff's law, the absolute value of the voltages at the PCC becomes:
+\begin{equation}
+    \begin{cases}
+        V^+_c = RI^+_{re} + XI^+_{im} + \sqrt{|\underline{V}^+_z|^2 - (XI^+_{re} - RI^+_{im})^2},\\
+        V^-_c = RI^-_{re} - XI^-_{im} + \sqrt{|\underline{V}^-_z|^2 - (XI^-_{re} + RI^-_{im})^2},\\
+    \end{cases}
+    \label{eq:VV}
+\end{equation}
+where $R$ and $X$ are the real and imaginary part of $\underline{Z}_z$ respectively (both for positive and negative sequence). As expected, the positive sequence voltage only depends on the positive sequence current, and the same applies for the negative sequences. Despite not finding a coupling between sequences in Equation \ref{eq:VV}, there is indeed a trade-off situation. The challenge comes when having to choose the currents under the restriction that none of the $abc$ currents can surpass the maximum imposed by the IGBTs. For instance, using a null negative sequence current means we can increase the positive sequence voltage, but unfortunately, the negative sequence voltage will be the same as in the grid. Maybe it is more appropriate to balance the currents, so some of the VSC capacity is used to increase the positive sequence voltage, and another part to diminish the negative sequence voltage. As it will be shown in the results, this balanced situation becomes the most sound option. 
+
+There are at least a couple of ways to find the optimal currents. One way is to brute force it; to calculate multiple combinations of $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$ values in order to obtain solution in which the difference between positive and negative sequence voltage is maximized. Opting for this possibility can become time-consuming. Besides, we can only pick the solutions where the current limit is not met.
+
+A neat way to approach the optimization problem under constraints is to define a Lagrangian. This is based on the one hand on the objective function
+\begin{equation}
+    f(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) = \lambda_+V^+_c(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) - \lambda_-V^-_c(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}),
+\end{equation}
+where $\lambda_+$ and $\lambda_- \in \mathbb{R}$. In principle, both parameters take positive values if the goal is to increase the positive sequence voltage and reduce the negative sequence one. In any case, this formulation allows us to be flexible, in a way that we can prioritize one voltage over the other by the factor we desire. 
+
+On the other hand, in this particular case the Lagrangian takes into account the constraint
+\begin{equation}
+    g(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) = \text{max}(I_a(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}), I_b(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}), I_c(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im})).
+\end{equation}
+The $abc$ currents are related to the real and imaginary parts of the positive and negative sequence by Fortescue's transformation
+
+% posar la formula de la transf de fortescue, les expressions de les intensitats Ia, Ib, Ic en funcio de les I+ i I- de manera explicita. Despres, explicar mes sobre el lagrangia
+
+% encara que amb el lagrangia no mhagi anat be, escriure les expressions. Els resultats els puc treure per forca bruta i despres dir que mirare de tambe treurels amb el lagrangia.
+
+
 
 \section{Results and discussion}
+% posar grafics, dir que les intensitats han de ser reactives, i que no necessariament les dues han de ser iguals. Avaluar per diferents impedancies i voltatges de la grid.
 
-\section{Conclusion}
+\section{Conclusions}
+
+
+\newpage
+\printbibliography
 
 
 \end{document}

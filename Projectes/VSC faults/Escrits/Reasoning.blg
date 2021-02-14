@@ -1,9 +1,15 @@
 [0] Config.pm:312> INFO - This is Biber 2.15 (beta)
 [0] Config.pm:315> INFO - Logfile is 'Reasoning.blg'
-[86] biber-MSWIN64:330> INFO - === 
-[104] Biber.pm:415> INFO - Reading 'Reasoning.bcf'
-[197] Biber.pm:952> INFO - Found 0 citekeys in bib section 0
-[202] Utils.pm:395> WARN - The file 'Reasoning.bcf' does not contain any citations!
-[212] bbl.pm:651> INFO - Writing 'Reasoning.bbl' with encoding 'UTF-8'
-[212] bbl.pm:754> INFO - Output to Reasoning.bbl
-[213] Biber.pm:128> INFO - WARNINGS: 1
+[149] biber-MSWIN64:330> INFO - === 
+[191] Biber.pm:415> INFO - Reading 'Reasoning.bcf'
+[283] Biber.pm:952> INFO - Found 8 citekeys in bib section 0
+[298] Biber.pm:4334> INFO - Processing section 0
+[320] Biber.pm:4523> INFO - Looking for bibtex format file 'bib.bib' for section 0
+[329] bibtex.pm:1682> INFO - LaTeX decoding ...
+[348] bibtex.pm:1494> INFO - Found BibTeX data source 'bib.bib'
+[434] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[434] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[434] Biber.pm:4162> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[434] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
+[440] bbl.pm:651> INFO - Writing 'Reasoning.bbl' with encoding 'UTF-8'
+[445] bbl.pm:754> INFO - Output to Reasoning.bbl
