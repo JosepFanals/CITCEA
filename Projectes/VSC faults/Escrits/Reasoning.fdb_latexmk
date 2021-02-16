@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber Reasoning"] 1613427162 "Reasoning.bcf" "Reasoning.bbl" "Reasoning" 1613434326
-  "Reasoning.bcf" 1613434326 106713 961e3f6554cdabd7a0080a3bedcdb8ce "pdflatex"
+["biber Reasoning"] 1613427162 "Reasoning.bcf" "Reasoning.bbl" "Reasoning" 1613466016
+  "Reasoning.bcf" 1613466016 106713 961e3f6554cdabd7a0080a3bedcdb8ce "pdflatex"
   "bib.bib" 1613340196 2824 39a25db6b27dda0eab0b3b81d4990216 ""
   (generated)
   "Reasoning.bbl"
   "Reasoning.blg"
-["pdflatex"] 1613434322 "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.tex" "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.pdf" "Reasoning" 1613434326
+["pdflatex"] 1613466012 "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.tex" "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.pdf" "Reasoning" 1613466016
   "C:/Users/Josep/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1609172257 9258828 5dd0ab4e26541be02491e4983b78ef70 ""
   "C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1613400683 118732 8aed45904751f26df4cc59b78fe498e0 ""
   "C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1233951848 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -233,17 +233,17 @@
   "Data/Ipim2.csv" 1613433641 340 ce84e6799ecd7306e309873899869e0b ""
   "Data/Ipre.csv" 1613426893 440 b424c60431a92369ab1160d3ab63d98d ""
   "Data/Ipre2.csv" 1613433625 335 c038611d610a86a1641f8cbedf7dbd24 ""
-  "Reasoning.aux" 1613434326 4999 7fceeaf486255b3412687c26816a38c0 "pdflatex"
+  "Reasoning.aux" 1613466016 4999 7fceeaf486255b3412687c26816a38c0 "pdflatex"
   "Reasoning.bbl" 1613427163 14053 747403909376fdd675cdfcd46c2e54b4 "biber Reasoning"
-  "Reasoning.run.xml" 1613434326 2371 013787737e7f4a868a7a6636d1f0403b "pdflatex"
-  "Reasoning.tex" 1613434317 30709 00d88d391a3ef4490915413963154bf2 ""
-  "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.aux" 1613434326 4999 7fceeaf486255b3412687c26816a38c0 ""
-  "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.tex" 1613434317 30709 00d88d391a3ef4490915413963154bf2 ""
+  "Reasoning.run.xml" 1613466016 2371 013787737e7f4a868a7a6636d1f0403b "pdflatex"
+  "Reasoning.tex" 1613466011 30721 9d0472aaf26e6565ed92f00c2c12cd00 ""
+  "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.aux" 1613466016 4999 7fceeaf486255b3412687c26816a38c0 ""
+  "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.tex" 1613466011 30721 9d0472aaf26e6565ed92f00c2c12cd00 ""
   (generated)
-  "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.log"
-  "Reasoning.pdf"
-  "Reasoning.bcf"
-  "Reasoning.run.xml"
-  "Reasoning.log"
   "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.pdf"
+  "Reasoning.bcf"
+  "Reasoning.log"
+  "Reasoning.pdf"
+  "c:/Users/Josep/Desktop/CITCEA/Projectes/VSC faults/Escrits/Reasoning.log"
+  "Reasoning.run.xml"
   "Reasoning.aux"
