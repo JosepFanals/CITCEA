@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 
-\usepackage[left=25mm, right=25mm]{geometry}
+\usepackage[left=30mm, right=30mm]{geometry}
 %\usepackage[scale=4]{draftwatermark}
 
 \usepackage[backend=biber, sorting=none]{biblatex} % per la bibliografia
@@ -12,6 +12,9 @@
 \usepackage{tikz}
 \usepackage{circuitikz}
 \usepackage{amssymb}
+\usepackage{diagbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
 
 \begin{document}
 
@@ -69,6 +72,7 @@ For convenience, the currents are expressed as:
         \underline{I}^+ = I^+_{re} - j I^+_{im},\\
         \underline{I}^- = I^-_{re} + j I^-_{im}.\\
     \end{cases}
+    \label{eq:curr}
 \end{equation}
 Notice the difference in signs in the imaginary part, as we expect $I^+_{im}$ and $I^-_{im}$ to take positive values. In any case, these definitions could be expressed the other way around without loss of generality. By Kirchoff's law, the absolute value of the voltages at the PCC becomes:
 \begin{equation}
@@ -84,7 +88,7 @@ There are at least a couple of ways to find the optimal currents. One way is to 
 
 A neat way to approach the optimization problem under constraints is to define a Lagrangian. This is based on the one hand on the objective function
 \begin{equation}
-    f(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) = \lambda_+V^+_c(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) - \lambda_-V^-_c(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}),
+    f(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) = \lambda_+V^+_c(I^+_{re}, I^+_{im}) - \lambda_-V^-_c(I^-_{re}, I^-_{im}),
 \end{equation}
 where $\lambda_+$ and $\lambda_- \in \mathbb{R}$. In principle, both parameters take positive values if the goal is to increase the positive sequence voltage and reduce the negative sequence one. In any case, this formulation allows us to be flexible, in a way that we can prioritize one voltage over the other by the factor we desire. 
 
@@ -92,18 +96,287 @@ On the other hand, in this particular case the Lagrangian takes into account the
 \begin{equation}
     g(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) = \text{max}(I_a(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}), I_b(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}), I_c(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im})).
 \end{equation}
-The $abc$ currents are related to the real and imaginary parts of the positive and negative sequence by Fortescue's transformation
-
-% posar la formula de la transf de fortescue, les expressions de les intensitats Ia, Ib, Ic en funcio de les I+ i I- de manera explicita. Despres, explicar mes sobre el lagrangia
-
-% encara que amb el lagrangia no mhagi anat be, escriure les expressions. Els resultats els puc treure per forca bruta i despres dir que mirare de tambe treurels amb el lagrangia.
-
-
+The $abc$ currents are related to the real and imaginary parts of the positive and negative sequence by Fortescue's transformation:
+\begin{equation}
+    \begin{bmatrix}
+        \underline{I}_a\\
+        \underline{I}_b\\
+        \underline{I}_c
+    \end{bmatrix} =
+    \begin{bmatrix}
+        1 & 1 & 1\\ 
+        1 & a^2 & a\\
+        1 & a & a^2
+    \end{bmatrix}
+    \begin{bmatrix}
+        0\\
+        I^+_{re} - jI^+_{im}\\
+        I^-_{re} + jI^-_{im}\\
+    \end{bmatrix},
+\end{equation}
+where $a=e^{j2\pi/3}$. By developing this, the absolute value of the currents result in
+\begin{equation}
+    \begin{cases}
+        |\underline{I_a}|^2 = I^{2+}_{re} + I^{2-}_{re} + I^{2+}_{im} + I^{2-}_{im} + 2I^{+}_{re}I^{-}_{re} - 2I^{+}_{im}I^{-}_{im},\\
+        |\underline{I_b}|^2 = I^{2+}_{re} + I^{2-}_{re} + I^{2+}_{im} + I^{2-}_{im} - I^{+}_{re}I^{-}_{re} + \sqrt{3}I^+_{re}I^-_{im} + \sqrt{3}I^-_{re}I^+_{im} + I^+_{im}I^-_{im},\\
+        |\underline{I_c}|^2 = I^{2+}_{re} + I^{2-}_{re} + I^{2+}_{im} + I^{2-}_{im} - I^{+}_{re}I^-_{re} - \sqrt{3}I^+_{re}I^-_{im} - \sqrt{3}I^-_{re}I^+_{im} + I^+_{im}I^-_{im}.
+    \end{cases}
+\end{equation}
+The Lagrangian takes the generic form as follows:
+\begin{equation}
+    \mathcal{L}(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}, \lambda) = f(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}) - \lambda g(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}),
+\end{equation}
+where $\lambda$ is the Langrange multiplier and has nothing to do with $\lambda_+$ or $\lambda_-$. The optimal solution comes from computing the gradient and setting it equal to the null vector:
+\begin{equation}
+    \nabla \mathcal{L}(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}, \lambda) = \left(\frac{\partial \mathcal{L}}{\partial I^+_{re}}, \frac{\partial \mathcal{L}}{\partial I^+_{im}}, \frac{\partial \mathcal{L}}{\partial I^-_{re}}, \frac{\partial \mathcal{L}}{\partial I^-_{im}},  \frac{\partial \mathcal{L}}{\partial \lambda}, \right)^T = \mathbf{0}.
+    \label{eq:lag}
+\end{equation}
+For now, I have not been able to solve in closed form the solutions to Equation \ref{eq:lag}. Even though they probably have a solution, first of all they are non-linear, and even if we linearize them and iterate, the matrix of the system becomes ill-conditioned. Due to this, the equations regarding the Lagrangian are expanded in the annex A but they will not be used to compute the results. As a future work, it would be interesting to check if the results match with either methodology.
 
 \section{Results and discussion}
-% posar grafics, dir que les intensitats han de ser reactives, i que no necessariament les dues han de ser iguals. Avaluar per diferents impedancies i voltatges de la grid.
+The following results are computed with brute force. That is, the four unknown currents take multiple values and we have to evalute the objective function for every combination. As discussed, this objective function can take many forms but for now it will be $V^{+}_c - V^{-}_c$. 
+
+The solution is expected to vary depending on the voltages at the grid and its impedance, as Equation \ref{eq:VV} would suggest. Thus, to get a general picture of the influence of the optimal injected currents, diverse values for $V^+_z$ and $V^-_z$ will be taken, and the same applies to $R$ and $X$. Unless otherwise indicated, $V^+=0.8$, $V^-_z=0.1$, $R=0.01$, $X=0.1$ and $I_{max}=1$. To have representative results, six tables are shown (from Table \ref{tab:vv} to Table \ref{tab:vnx}). They describe what the optimal $[I^+_{re},I^+_{im},I^-_{re},I^-_{im}]$ vector is according to various combinations. Currents vary in intervals of 0.05. These interval could be smaller, but the computational time would increase dramatically. Therefore, it serves the purpose to provide us with an approximate idea of the optimal solution.
+
+\begin{table}[!htb]
+  \centering
+  \caption{Optimal currents $[I^+_{re},I^+_{im},I^-_{re},I^-_{im}]$ with variations in $V^+_z$ and $V^-_z$}
+    \begin{tabular}{|r|llll|}
+        \hline
+    \diagbox[width=1.5cm, height=0.7cm]{$V^+_z$}{$V^-_z$} & {0.05} & {0.1} & {0.15} & {0.3} \\
+    \hline
+    0.4   & 0.00;0.65;0.00;0.50 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 \\
+    0.6   & 0.00;0.65;0.00;0.50 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 \\
+    0.8   & 0.00;0.65;0.00;0.50 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 \\
+    0.9   & 0.00;0.65;0.00;0.50 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 \\
+    \hline
+    \end{tabular}%
+  \label{tab:vv}%
+\end{table}%
+
+\begin{table}[!htb]
+  \centering
+  \caption{Optimal currents $[I^+_{re};I^+_{im};I^-_{re};I^-_{im}]$ with variations in $R$ and $X$}
+    \begin{tabular}{|r|llll|}
+        \hline
+    \diagbox[width=1.5cm, height=0.7cm]{$R$}{$X$} & {0.03} & {0.06} & {0.1} & {0.2} \\
+    \hline
+    0.01  & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 \\
+    0.02  & 0.30;0.40;-0.40;0.50 & 0.20;0.45;-0.25;0.60 & 0.15;0.55;-0.15;0.55 & 0.00;0.65;0.00;0.50 \\
+    0.05  & 0.40;0.30;-0.50;0.40 & 0.40;0.50;-0.30;0.40 & 0.20;0.45;-0.25;0.60 & 0.15;0.65;-0.10;0.45 \\
+    0.1   & 0.40;0.10;-0.70;0.15 & 0.40;0.30;-0.50;0.40 & 0.30;0.40;-0.40;0.50 & 0.25;0.65;-0.15;0.40 \\
+    \hline
+    \end{tabular}%
+  \label{tab:rx}%
+\end{table}%
+
+\begin{table}[!htb]
+  \centering
+  \caption{Optimal currents $[I^+_{re};I^+_{im};I^-_{re};I^-_{im}]$ with variations in $V^+_z$ and $R$}
+    \begin{tabular}{|r|llll|}
+        \hline
+    \diagbox[width=1.5cm, height=0.7cm]{$V^+_z$}{$R$} & {0.01} & {0.02} & {0.05} & {0.1} \\
+    \hline
+    0.4   & 0.00;0.50;0.00;0.65 & 0.15;0.55;-0.15;0.55 & 0.20;0.45;-0.25;0.60 & 0.30;0.40;-0.40;0.50 \\
+    0.6   & 0.00;0.50;0.00;0.65 & 0.15;0.55;-0.15;0.55 & 0.20;0.45;-0.25;0.60 & 0.30;0.40;-0.40;0.50 \\
+    0.8   & 0.00;0.50;0.00;0.65 & 0.15;0.55;-0.15;0.55 & 0.20;0.45;-0.25;0.60 & 0.30;0.40;-0.40;0.50 \\
+    0.9   & 0.00;0.50;0.00;0.65 & 0.15;0.55;-0.15;0.55 & 0.20;0.45;-0.25;0.60 & 0.30;0.40;-0.40;0.50 \\
+    \hline
+    \end{tabular}%
+  \label{tab:vpr}%
+\end{table}%
+
+\begin{table}[!htb]
+  \centering
+  \caption{Optimal currents $[I^+_{re};I^+_{im};I^-_{re};I^-_{im}]$ with variations in $V^+_z$ and $X$}
+    \begin{tabular}{|r|llll|}
+    \hline
+     \diagbox[width=1.5cm, height=0.7cm]{$V^+_z$}{$X$} & {0.03} & {0.06} & {0.1} & {0.2} \\
+    \hline
+    0.4   & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.65;0.00;0.50 \\
+    0.6   & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.65;0.00;0.50 \\
+    0.8   & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.65;0.00;0.50 \\
+    0.9   & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.65;0.00;0.50 \\
+    \hline
+    \end{tabular}%
+  \label{tab:vpx}%
+\end{table}%
+
+\begin{table}[!htb]
+  \centering
+  \caption{Optimal currents $[I^+_{re};I^+_{im};I^-_{re};I^-_{im}]$ with variations in $V^-_z$ and $R$}
+    \begin{tabular}{|r|llll|}
+        \hline
+    \diagbox[width=1.5cm, height=0.7cm]{$V^-_z$}{$R$} & {0.01} & {0.02} & {0.05} & {0.1} \\
+    \hline
+    0.05  & 0.00;0.65;0.00;0.50 & 0.15;0.70;-0.10;0.40 & 0.25;0.65;-0.15;0.40 & 0.45;0.60;-0.20;0.30 \\
+    0.1   & 0.00;0.50;0.00;0.65 & 0.15;0.55;-0.15;0.55 & 0.20;0.45;-0.25;0.60 & 0.30;0.40;-0.40;0.50 \\
+    0.15  & 0.00;0.50;0.00;0.65 & 0.15;0.55;-0.15;0.55 & 0.20;0.45;-0.25;0.60 & 0.30;0.40;-0.40;0.50 \\
+    0.3   & 0.00;0.50;0.00;0.65 & 0.15;0.55;-0.15;0.55 & 0.20;0.45;-0.25;0.60 & 0.30;0.40;-0.40;0.50 \\
+    \hline
+    \end{tabular}%
+  \label{tab:vnr}%
+\end{table}%
+
+\begin{table}[!htb]
+  \centering
+  \caption{Optimal currents $[I^+_{re};I^+_{im};I^-_{re};I^-_{im}]$ with variations in $V^-_z$ and $X$}
+    \begin{tabular}{|r|llll|}
+    \hline
+     \diagbox[width=1.5cm, height=0.7cm]{$V^-_z$}{$X$}    & {0.03} & {0.06} & {0.1} & {0.2} \\
+    \hline
+    0.05  & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.65;0.00;0.50 & 0.00;0.85;0.00;0.25 \\
+    0.1   & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.65;0.00;0.50 \\
+    0.15  & 0.25;0.60;-0.20;0.45 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 \\
+    0.3   & 0.20;0.45;-0.25;0.60 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 & 0.00;0.50;0.00;0.65 \\
+    \hline
+    \end{tabular}%
+  \label{tab:vnx}%
+\end{table}%
+The results suggest that the optimal currents do not vary much when the voltages at the grid change. Even though only a small subset of voltages have been studied, it can be foreseen that the optimality in currents may not be strongly linked to the fault. Substantial variations take place when the impedance of the grid is altered. When it becomes mainly resistive, real positive and negative sequence currents have to be injected. In fact, real positive sequence currents become positive to cause a positive voltage drop and increase $V^+_c$, whereas the real positive negative sequence currents turn out to be negative in order to decrease $V^-_c$. Once the impedance is more inductive, imaginary positive and negative sequence have to be injected. Notice that $I^+_{im}$ is greater than 0 due to the way it has been defined in Equation \ref{eq:curr}; so in reality, it becomes negative. The $I^-_{im}$ current takes positive values, which makes sense considering that it has to produce a negative voltage drop to decrease the negative sequence voltage at the PCC.
+
+It is valuable to plot the evolution of currents against the $R/X$ ratio, or rather, leave $R$ constant at 0.1 and vary $X$ from 0.01 to 0.4 in steps of 0.01. The result is plotted in Figure \ref{fig:Ip}. 
+
+\begin{figure}[!htb] \centering
+        \begin{tikzpicture}
+            \pgfplotsset{width=12cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$X$ (pu)}, ylabel={Current (pu)}, /pgf/number format/.cd, xtick={0,0.05,...,0.4}, ytick={-1, -0.8,...,1.0}, xmin=0, xmax=0.4, /pgf/number format/.cd, legend style={at={(1.02,0.15)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}]
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=semicolon] {Data/Ipre.csv};
+            \addplot[very thick, gray] table[x=x, y=y, col sep=semicolon] {Data/Ipim.csv};
+            \addplot[very thick, black, dashed] table[x=x, y=y, col sep=semicolon] {Data/Inre.csv};
+            \addplot[very thick, black] table[x=x, y=y, col sep=semicolon] {Data/Inim.csv};
+            \legend{$I^+_{re}$, $I^+_{im}$, $I^-_{re}$, $I^-_{im}$}
+            \end{axis}
+        \end{tikzpicture}
+    \vfill
+    \caption{Evolution of currents depending on $X$ for $R=0.1$, $V^+_z=0.8$ and $V^-_z=0.1$}
+    \label{fig:Ip}
+\end{figure}
+Figure \ref{fig:Ip} reveals the somewhat caothic profile of the currents. The plots suggest that the rudimentary optimization technique may not be the best choice, as currents do not follow continuous trends. Take for instance $I^-_{im}$; for small values of $X$ it grows, and then, the trend is reversed. Employing an optimization methodology like the presented Lagrangian could probably generate finer results. Figure \ref{fig:Ip} also suggests that $I^+_{im}$ ought to take considerably higher values than $I^-_{im}$, even though in the previous analysis (shown in Tables from \ref{tab:vv} to \ref{tab:vnx}) they were more balanced. The only difference is that now $R=0.1$. 
+
+In any case, a similar pattern as before is discovered. The real positive sequence current takes positive values but it approaches zero when $X>>R$. On the other side, initially the real negative sequence current becomes smaller than zero. As it has been discussed, the signs make sense when taking into account the objective function to increase the positive sequence voltage while decreasing the negative sequence one. For the imaginary part of the currents, only the positive sequence grows. The other, remains more or less constant at around 0.3.
+
+The final study we carry has to do with varying the negative sequence voltage. We have observed that when the negative sequence voltage tends to grow, both imaginary positive and negative sequence currents have to be injected in a more or less balanced way, while the real parts come close to zero. However, when the negative sequence voltage remains close to zero, this is not exactly the case. Figure \ref{fig:Vn} shows the evolution of the currents when modifying $V^-_z$.
+
+\begin{figure}[!htb] \centering
+        \begin{tikzpicture}
+            \pgfplotsset{width=12cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$V^-_z$ (pu)}, ylabel={Current (pu)}, /pgf/number format/.cd, xtick={0,0.01,...,0.07}, ytick={-1, -0.8,...,1.0}, xmin=0, xmax=0.07, /pgf/number format/.cd, legend style={at={(1.02,0.15)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}]
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=semicolon] {Data/Ipre2.csv};
+            \addplot[very thick, gray] table[x=x, y=y, col sep=semicolon] {Data/Ipim2.csv};
+            \addplot[very thick, black, dashed] table[x=x, y=y, col sep=semicolon] {Data/Inre2.csv};
+            \addplot[very thick, black] table[x=x, y=y, col sep=semicolon] {Data/Inim2.csv};
+            \legend{$I^+_{re}$, $I^+_{im}$, $I^-_{re}$, $I^-_{im}$}
+            \end{axis}
+        \end{tikzpicture}
+    \vfill
+    \caption{Evolution of currents depending on $V^-_z$ for $R=0.01$, $X=0.1$ and $V^+_z=0.5$}
+    \label{fig:Vn}
+\end{figure}
+When the negative sequence voltage is practically null, the most convenient strategy is to increase the positive sequence voltage at the PCC with $I^+_{im}$. There is no point in reducing the negative sequence voltage because it is already small. Once this tends to increase, the real part of the currents remain close to zero. However, the imaginary part of both the positive and negative sequence currents evolves towards an equilibrium, where $I^+_{im}\approx I^-_{im}$. This was also visible in Table \ref{tab:vv}.
+
 
 \section{Conclusions}
+The theoretical side of this work has shown that the optimization problem poses some challenges, mainly because of the maximum current limitation. A Lagrangian has been developed, although the equations involved remain to be solved in closed form. Computing the results in a brute force manner shows that the solutions is likely to be more well refined if it had been computed by other means, but nonetheless, some interesting observations can be made.
+
+One of them is that both positive and negative sequence currents are convenient when trying to maximize the difference between the positive and the negative sequence voltages. More concretely, the imaginary parts of these currents tend to be larger than its real part. Moreover, the signs of the currents make sense, meaning that the real part of the positive sequence current becomes positive, its imaginary part negative (although it has been defined initially as positive); on the other hand, the real part of the negative sequence current is usually close to zero but negative, while its imaginary part takes positive values. 
+
+Future work regarding computation of the solution with some optimization technique will probably be able to generate slightly more satisfactory results obtained much faster. The Lagrangian may be an appropriate pick. Also, a further step would consist of defining active and reactive powers as a function of voltages and currents. Once this is accomplished, I believe we could proceed towards a real case scenario.
+
+
+\newpage
+\appendix
+\section{Lagrangian}
+It is not straightforward to know beforehand which $abc$ current will be the maximum. Therefore, I see no other option than to develop the Lagrangian for all three cases, that is, assuming that either $I_a$ or $I_b$ or $I_c$ is the maximum.
+
+If $I_a$ is the maximum current:
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^+_{re}} &= \lambda_+R + \lambda_+\frac{1}{2}\left(V^{+2}_z - X^2I^{+2}_{re} - R^2I^{+2}_{im} + 2XRI^{+}_{re}I^{+}_{im} \right)^{1/2}\left(-2X^2I^{+}_{re} + 2XRI^{+}_{im}\right)\\
+    & + \lambda\left(-2 I^{+}_{re} -2I^{-}_{re} \right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^+_{im}} &= \lambda_+X + \lambda_+\frac{1}{2}\left(V^{+2}_z - X^2I^{+2}_{re} - R^2I^{+2}_{im} + 2XRI^{+}_{re}I^{+}_{im} \right)^{1/2}\left(-2R^2I^{+}_{im} + 2XRI^{+}_{re}\right)\\
+    & + \lambda\left(-2I^{+}_{im} + 2I^{-}_{im}\right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^-_{re}} &= -\lambda_-R - \lambda_-\frac{1}{2}\left(V^{-2}_z - R^2I^{-2}_{im} - X^2I^{-2}_{re} - 2RXI^-_{re}I^-_{im} \right)^{1/2}\left(-2X^2I^{-}_{re} - 2XRI^{-}_{im}\right)\\
+    & +\lambda\left(- 2I^{-}_{re} -2  I^{+}_{re} \right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^-_{im}} &= \lambda_-X - \lambda_-\frac{1}{2}\left(V^{-2}_z - R^2I^{-2}_{im} - X^2I^{-2}_{re} - 2RXI^-_{re}I^-_{im} \right)^{1/2}\left(-2R^2I^{-}_{im} - 2XRI^{-}_{re}\right)\\
+    & +\lambda\left(-2 I^{-}_{im} + 2 I^{+}_{im}\right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \frac{\partial \mathcal{L}}{\partial \lambda} = -(I^{2+}_{re} + I^{2-}_{re} + I^{2+}_{im} + I^{2-}_{im} + 2I^{+}_{re}I^{-}_{re} - 2I^{+}_{im}I^{-}_{im}) + I^2_{max}.
+\end{equation}
+
+If $I_b$ is the maximum current:
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^+_{re}} &= \lambda_+R + \lambda_+\frac{1}{2}\left(V^{+2}_z - X^2I^{+2}_{re} - R^2I^{+2}_{im} + 2XRI^{+}_{re}I^{+}_{im} \right)^{1/2}\left(-2X^2I^{+}_{re} + 2XRI^{+}_{im}\right)\\
+      &+ \lambda\left(-2 I^{+}_{re} + I^{-}_{re} -\sqrt{3}  I^{-}_{im}\right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^+_{im}} &= \lambda_+X + \lambda_+\frac{1}{2}\left(V^{+2}_z - X^2I^{+2}_{re} - R^2I^{+2}_{im} + 2XRI^{+}_{re}I^{+}_{im} \right)^{1/2}\left(-2R^2I^{+}_{im} + 2XRI^{+}_{re}\right)\\
+    &+\lambda\left(-2 I^{+}_{im} - \sqrt{3} I^{-}_{re} - I^{-}_{im} \right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^-_{re}} &= -\lambda_-R - \lambda_-\frac{1}{2}\left(V^{-2}_z - R^2I^{-2}_{im} - X^2I^{-2}_{re} - 2RXI^-_{re}I^-_{im} \right)^{1/2}\left(-2X^2I^{-}_{re} - 2XRI^{-}_{im}\right)\\
+    &+\lambda\left(-2 I^{-}_{re} + I^{+}_{re} - \sqrt{3} I^{+}_{im}\right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^-_{im}} &= \lambda_-X - \lambda_-\frac{1}{2}\left(V^{-2}_z - R^2I^{-2}_{im} - X^2I^{-2}_{re} - 2RXI^-_{re}I^-_{im} \right)^{1/2}\left(-2R^2I^{-}_{im} - 2XRI^{-}_{re}\right)\\
+    &+\lambda\left(-2 I^{-}_{im} - \sqrt{3}  I^{+}_{re} -  I^{+}_{im}\right)   ,
+    \end{split}
+\end{equation}
+\begin{equation}
+    \frac{\partial \mathcal{L}}{\partial \lambda} = -(I^{2+}_{re} + I^{2-}_{re} + I^{2+}_{im} + I^{2-}_{im} - I^{+}_{re}I^{-}_{re} + \sqrt{3}I^+_{re}I^-_{im} + \sqrt{3}I^-_{re}I^+_{im} + I^+_{im}I^-_{im}) + I^2_{max}.
+\end{equation}
+If $I_c$ is the maximum current:
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^+_{re}} &= \lambda_+R + \lambda_+\frac{1}{2}\left(V^{+2}_z - X^2I^{+2}_{re} - R^2I^{+2}_{im} + 2XRI^{+}_{re}I^{+}_{im} \right)^{1/2}\left(-2X^2I^{+}_{re} + 2XRI^{+}_{im}\right)\\
+      &+ \lambda\left(-2 I^{+}_{re} + I^{-}_{re} +\sqrt{3}  I^{-}_{im}\right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^+_{im}} &= \lambda_+X + \lambda_+\frac{1}{2}\left(V^{+2}_z - X^2I^{+2}_{re} - R^2I^{+2}_{im} + 2XRI^{+}_{re}I^{+}_{im} \right)^{1/2}\left(-2R^2I^{+}_{im} + 2XRI^{+}_{re}\right)\\
+    &+\lambda\left(-2 I^{+}_{im} + \sqrt{3} I^{-}_{re} - I^{-}_{im} \right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^-_{re}} &= -\lambda_-R - \lambda_-\frac{1}{2}\left(V^{-2}_z - R^2I^{-2}_{im} - X^2I^{-2}_{re} - 2RXI^-_{re}I^-_{im} \right)^{1/2}\left(-2X^2I^{-}_{re} - 2XRI^{-}_{im}\right)\\
+    &+\lambda\left(-2 I^{-}_{re} + I^{+}_{re} + \sqrt{3} I^{+}_{im}\right),
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+    \frac{\partial \mathcal{L}}{\partial I^-_{im}} &= \lambda_-X - \lambda_-\frac{1}{2}\left(V^{-2}_z - R^2I^{-2}_{im} - X^2I^{-2}_{re} - 2RXI^-_{re}I^-_{im} \right)^{1/2}\left(-2R^2I^{-}_{im} - 2XRI^{-}_{re}\right)\\
+    &+\lambda\left(-2 I^{-}_{im} + \sqrt{3}  I^{+}_{re} -  I^{+}_{im}\right)   ,
+    \end{split}
+\end{equation}
+\begin{equation}
+    \frac{\partial \mathcal{L}}{\partial \lambda} = -(I^{2+}_{re} + I^{2-}_{re} + I^{2+}_{im} + I^{2-}_{im} - I^{+}_{re}I^-_{re} - \sqrt{3}I^+_{re}I^-_{im} - \sqrt{3}I^-_{re}I^+_{im} + I^+_{im}I^-_{im}) + I^2_{max}.
+\end{equation}
+Setting all them to zero results in a system of five equations with five unknowns that has to be solved. As of now, I still have not find a way to solve it.
+
+
 
 
 \newpage

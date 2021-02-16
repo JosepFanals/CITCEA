@@ -115,87 +115,90 @@ def fVcn(Ipre, Ipim, Inre, Inim):
         return valor
 
 
-R = 0.1
-X = 0.1
-Imax = 1
+for kk in range(0,41):
+    # X = kk / 100
 
-Vgp = 0.8
-Vgn = 0.1
+    R = 0.01
+    X = 0.1
+    Imax = 1
 
-vec_Vcp = []
-vec_Vcn = []
-vec_VcpVcn = []
-vec_Imax = []
+    Vgp = 0.5
+    Vgn = kk / 300
 
-vec_Ipre = []
-vec_Ipim = []
-vec_Inre = []
-vec_Inim = []
+    vec_Vcp = []
+    vec_Vcn = []
+    vec_VcpVcn = []
+    vec_Imax = []
 
-n_iter = 20
-n_punts = n_iter ** 3
-n_compt = 0
+    vec_Ipre = []
+    vec_Ipim = []
+    vec_Inre = []
+    vec_Inim = []
 
-for aa in range(n_iter):
-    Ipre = -0.5 + aa / n_iter * 1
-    for bb in range(n_iter):
-        Ipim = 0.0 + bb / n_iter * 1
-        for cc in range(n_iter):
-            Inre = -0.5 + cc / n_iter * 1
-            for dd in range(n_iter):
-                Inim = 0.0 + dd / n_iter * 1
+    n_iter = 50
+    n_punts = n_iter ** 3
+    n_compt = 0
 
-                Iaf = fIa(Ipre, Ipim, Inre, Inim)
-                Ibf = fIb(Ipre, Ipim, Inre, Inim)
-                Icf = fIc(Ipre, Ipim, Inre, Inim)
-                Imaxx = max(Iaf, Ibf, Icf)
+    for aa in range(n_iter):
+        Ipre = -0.5 + aa / n_iter * 1
+        for bb in range(n_iter):
+            Ipim = 0.0 + bb / n_iter * 1
+            for cc in range(n_iter):
+                Inre = -0.5 + cc / n_iter * 1
+                for dd in range(n_iter):
+                    Inim = 0.0 + dd / n_iter * 1
 
-                if Imaxx < Imax:
-                    vec_Imax.append(Imaxx)
+                    Iaf = fIa(Ipre, Ipim, Inre, Inim)
+                    Ibf = fIb(Ipre, Ipim, Inre, Inim)
+                    Icf = fIc(Ipre, Ipim, Inre, Inim)
+                    Imaxx = max(Iaf, Ibf, Icf)
 
-                    Vcp = fVcp(Ipre, Ipim, Inre, Inim)
-                    Vcn = fVcn(Ipre, Ipim, Inre, Inim)
-                    vec_Vcp.append(Vcp)
-                    vec_Vcn.append(Vcn)
-                    vec_VcpVcn.append(abs(Vcp) - abs(Vcn))
+                    if Imaxx < Imax:
+                        vec_Imax.append(Imaxx)
 
-                    vec_Ipre.append(Ipre)
-                    vec_Ipim.append(Ipim)
-                    vec_Inre.append(Inre)
-                    vec_Inim.append(Inim)
-            n_compt += 1
-            print(n_compt * 100 / n_punts)
+                        Vcp = fVcp(Ipre, Ipim, Inre, Inim)
+                        Vcn = fVcn(Ipre, Ipim, Inre, Inim)
+                        vec_Vcp.append(Vcp)
+                        vec_Vcn.append(Vcn)
+                        vec_VcpVcn.append(abs(Vcp) - abs(Vcn))
 
-
-
-maxVcp = max(vec_Vcp)
-indVcp = vec_Vcp.index(maxVcp)
-print(indVcp)
-
-minVcn = min(vec_Vcn)
-indVcn = vec_Vcn.index(minVcn)
-print(indVcn)
-
-maxVcpVcn = max(vec_VcpVcn)
-indVcpVcn = vec_VcpVcn.index(maxVcpVcn)
-print(indVcpVcn)
-
-print('-------')
-
-print(vec_Ipre[indVcpVcn])
-print(vec_Ipim[indVcpVcn])
-print(vec_Inre[indVcpVcn])
-print(vec_Inim[indVcpVcn])
+                        vec_Ipre.append(Ipre)
+                        vec_Ipim.append(Ipim)
+                        vec_Inre.append(Inre)
+                        vec_Inim.append(Inim)
+                # n_compt += 1
+                # print(n_compt * 100 / n_punts)
 
 
-print('-------')
 
-print(vec_Imax[indVcpVcn])
+    # maxVcp = max(vec_Vcp)
+    # indVcp = vec_Vcp.index(maxVcp)
+    # print(indVcp)
 
-# Ipp = -0.5425 * 1j
-# Inn = 0.6115 * 1j
+    # minVcn = min(vec_Vcn)
+    # indVcn = vec_Vcn.index(minVcn)
+    # print(indVcn)
 
-Vcpp = vec_Vcp[indVcpVcn]
-Vcnn = vec_Vcn[indVcpVcn]
-print(Vcpp, Vcnn)
+    maxVcpVcn = max(vec_VcpVcn)
+    indVcpVcn = vec_VcpVcn.index(maxVcpVcn)
+    # print(indVcpVcn)
+
+    print('-------')
+
+    print(vec_Ipre[indVcpVcn])
+    print(vec_Ipim[indVcpVcn])
+    print(vec_Inre[indVcpVcn])
+    print(vec_Inim[indVcpVcn])
+
+
+    print('-------')
+
+    # print(vec_Imax[indVcpVcn])
+
+    # Ipp = -0.5425 * 1j
+    # Inn = 0.6115 * 1j
+
+    Vcpp = vec_Vcp[indVcpVcn]
+    Vcnn = vec_Vcn[indVcpVcn]
+    # print(Vcpp, Vcnn)
 
