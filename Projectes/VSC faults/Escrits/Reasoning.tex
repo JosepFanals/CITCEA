@@ -20,7 +20,7 @@
 
 \begin{center}
     \Large
-    \textbf{Positive and negative sequence currents to increase voltages during unbalanced faults}
+    \textbf{Positive and negative sequence currents to improve voltages during unbalanced faults}
          
     \vspace{0.4cm}
     \textbf{Josep Fanals}
@@ -31,14 +31,14 @@
 \end{center}
 
 \section{Introduction}
-Grid faults constitute a group of unfortunate events that cause severe perturbations in the grid. The voltages can take values below the established minimum, or on the contrary, exceed the maximum in non-faulted phases. The currents are also susceptible to vary considerably. Traditional power systems based on synchronous generators could experiment currents surpassing the nominal values, and therefore, the fault could be clearly detected. However, the increasing integration of renewables \cite{anees2012grid} supposes a change of paradigm, in which currents can be controlled but they are limited so as not to damage the Isolated-Gate Bipolar Transistors (IGBT) found in the Voltage Source Converter (VSC) \cite{abdou2013improving}. 
+Grid faults constitute a group of unfortunate events that cause severe perturbations in the grid. The voltages can take values below the established minimum, or on the contrary, exceed the maximum in non-faulted phases. The currents are also susceptible to vary considerably. Traditional power systems based on synchronous generators could encounter currents surpassing the nominal values, and therefore, the fault could be clearly detected. However, the increasing integration of renewables \cite{anees2012grid} supposes a change of paradigm, in which currents can be controlled but are limited so as not to damage the Isolated-Gate Bipolar Transistors (IGBT) found in the Voltage Source Converter (VSC) \cite{abdou2013improving}. 
 
 Transmission System Operators (TSO) are responsible for imposing requirements related to the operation under voltage sags to generators and converters \cite{tsili2009review, iov2007mapping}. Such requirements are gathered in the respective grid codes. There seems to be no clear consensus on how to restore the voltage. In this sense, even if for instance the Low Voltage Ride Through (LVRT) profiles present similarities \cite{conroy2007low}, analysis aimed at determining analytically the optimal injection of positive and negative sequence currents are not numerous. As far as the author is aware, only Camacho et al. offer an optimal solution regarding the injection of active and reactive powers \cite{camacho2017positive}. 
 
-Consequently, this work focuses on finding the most convenient positive and negative sequence currents (and not powers) to raise the voltage at the point of common coupling. First, a simple modelling is discussed, and then, the results are shown together with the corresponent discussion. The challenge to solve the optimization problem in a closed form is specially described.
+Consequently, this work focuses on finding the most convenient positive and negative sequence currents (and not powers) to raise the voltage at the point of common coupling. First, a simple model is discussed, and then, the results are shown together with the corresponding discussion. The challenge to solve the optimization problem in a closed-form is specially described.
 
-\section{Modelling}
-Given a simplistic three-wire system formed by two buses, it can be studied separately employing the concept of symmetrical components. Figure \ref{fig:sys_p} shows the positive and negative sequence equivalent circuits. Note that no homopolar component is considered here, since they are non-existent in a system without neutral \cite{rodriguez2006independent, camacho2012flexible}.
+\section{Model}
+Given a simplistic three-wire system formed by two buses, it can be studied separately employing the concept of symmetrical components. Figure \ref{fig:sys_p} shows the positive and negative sequence equivalent circuits. Note that no homopolar component is considered here since they are non-existent in a system without neutral \cite{rodriguez2006independent, camacho2012flexible}.
 
 \begin{figure}[!htb] \centering
 \begin{circuitikz}[european]
@@ -60,7 +60,7 @@ Given a simplistic three-wire system formed by two buses, it can be studied sepa
 \caption{Positive and negative sequence separated representations of the two-bus system}
 \label{fig:sys_p}
 \end{figure}
-The point of common coupling (PCC) is where the VSC together with its filter would be connected. There are two restrictions to take into account in a VSC, one related to the maximum current and another to the voltage. The current limitation is likely the most relevant when operating under faults. Since the current is limited and the filter used to connect the VSC to the PCC takes rather low values, we can expect the voltage drop to not be substantial. Because of that, and taking into consideration the voltage sag at the grid side, the voltage limit is hardly ever surpassed. Thus, in the analysis that follows, we only impose the current restriction. In a future work we could also add the voltage limitations as a constraint, although probably the conclusions will not vary from the ones extracted here.
+The point of common coupling (PCC) is where the VSC together with its filter would be connected. There are two restrictions to take into account in a VSC, one related to the maximum current and another to the voltage. The current limitation is likely the most relevant when operating under faults. Since the current is limited and the filter used to connect the VSC to the PCC takes rather low values, we can expect the voltage drop to not be substantial. Because of that, and taking into consideration the voltage sag at the grid side, the voltage limit is hardly ever surpassed. Thus, in the analysis that follows, we only impose the current restriction. As future work, we could also add the voltage limitations as a constraint, although probably the conclusions will not vary from the ones extracted here.
 
 Considering that voltages $\underline{V}^+_z$ and $\underline{V}^-_z$ are given in order to model the fault suffered at the grid, the first step is to express the voltages at the PCC ($\underline{V}^+_c$ and $\underline{V}^-_c$) as a function of the injected currents $\underline{I}^+$ and $\underline{I}^-$. These currents are provided by the VSC with the objective of raising the positive sequence voltage and reducing the negative sequence voltage. The strategy to use can take many forms. For instance, in \cite{camacho2017positive}, three strategies are detailed. One consists of increasing the positive sequence voltage as much as possible, another tried to reduce the negative sequence voltage, and a third one was concerned with obtaining the maximum difference between the positive and the negative sequence voltages. Even though this last one seems the most interesting one, we could improve its flexibility. We will soon see what this means in the Lagrangian formulation.
 
@@ -131,7 +131,7 @@ where $\lambda$ is the Langrange multiplier and has nothing to do with $\lambda_
     \nabla \mathcal{L}(I^+_{re}, I^+_{im}, I^-_{re}, I^-_{im}, \lambda) = \left(\frac{\partial \mathcal{L}}{\partial I^+_{re}}, \frac{\partial \mathcal{L}}{\partial I^+_{im}}, \frac{\partial \mathcal{L}}{\partial I^-_{re}}, \frac{\partial \mathcal{L}}{\partial I^-_{im}},  \frac{\partial \mathcal{L}}{\partial \lambda}, \right)^T = \mathbf{0}.
     \label{eq:lag}
 \end{equation}
-For now, I have not been able to solve in closed form the solutions to Equation \ref{eq:lag}. Even though they probably have a solution, first of all they are non-linear, and even if we linearize them and iterate, the matrix of the system becomes ill-conditioned. Due to this, the equations regarding the Lagrangian are expanded in the annex A but they will not be used to compute the results. As a future work, it would be interesting to check if the results match with either methodology.
+For now, I have not been able to solve in closed form the solutions to Equation \ref{eq:lag}. Even though they probably have a solution, first of all they are non-linear, and even if we linearize them and iterate, the matrix of the system becomes ill-conditioned. Due to this, the equations regarding the Lagrangian are expanded in the annex A but they will not be used to compute the results. Anyway, it would be interesting to check if the results match with either methodology.
 
 \section{Results and discussion}
 The following results are computed with brute force. The four unknown currents take multiple values and we have to evaluate the objective function for every combination. As discussed, this objective function can take many forms but for now it will be $V^{+}_c - V^{-}_c$. 
@@ -239,7 +239,7 @@ It is valuable to plot the evolution of currents against the $R/X$ ratio, or rat
 
 \begin{figure}[!htb] \centering
         \begin{tikzpicture}
-            \pgfplotsset{width=12cm, height=5.5cm}
+            \pgfplotsset{width=11cm, height=5.5cm}
             \begin{axis}[grid=major, xlabel={$X$ (pu)}, ylabel={Current (pu)}, /pgf/number format/.cd, xtick={0,0.05,...,0.4}, ytick={-1, -0.8,...,1.0}, xmin=0, xmax=0.4, /pgf/number format/.cd, legend style={at={(1.02,0.15)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}]
             \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=semicolon] {Data/Ipre.csv};
             \addplot[very thick, gray] table[x=x, y=y, col sep=semicolon] {Data/Ipim.csv};
@@ -260,7 +260,7 @@ The final study we carry has to do with varying the negative sequence voltage. W
 
 \begin{figure}[!htb] \centering
         \begin{tikzpicture}
-            \pgfplotsset{width=12cm, height=5.5cm}
+            \pgfplotsset{width=11cm, height=5.5cm}
             \begin{axis}[grid=major, xlabel={$V^-_z$ (pu)}, ylabel={Current (pu)}, /pgf/number format/.cd, xtick={0,0.01,...,0.07}, ytick={-1, -0.8,...,1.0}, xmin=0, xmax=0.07, /pgf/number format/.cd, legend style={at={(1.02,0.15)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}]
             \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=semicolon] {Data/Ipre2.csv};
             \addplot[very thick, gray] table[x=x, y=y, col sep=semicolon] {Data/Ipim2.csv};
@@ -277,7 +277,7 @@ When the negative sequence voltage is practically null, the most convenient stra
 
 
 \section{Conclusions}
-The theoretical side of this work has shown that the optimization problem poses some challenges, mainly because of the maximum current limitation. A Lagrangian has been developed, although the equations involved remain to be solved in closed form. Computing the results in a brute force manner shows that the solutions are likely to be more well refined if they had been computed by other means, but nonetheless, some interesting observations can be made.
+The theoretical side of this work has shown that the optimization problem poses some challenges, mainly because of the maximum current limitation. A Lagrangian has been developed, although the equations involved remain to be solved in closed form. Computing the results in a brute force manner shows that the solutions are likely to be more well refined if they had been computed by other means, but despite that, some interesting observations can be made.
 
 One of them is that both positive and negative sequence currents are convenient when trying to maximize the difference between positive and negative sequence voltages. More concretely, the imaginary parts of these currents tend to be larger than their real part. In addition to that, the signs of the currents make sense, meaning that the real part of the positive sequence current becomes positive, its imaginary part negative (although it has been defined initially as positive); on the other hand, the real part of the negative sequence current is usually close to zero but negative, while its imaginary part takes positive values. 
 
