@@ -40,8 +40,8 @@ def Vabc_to_012(Vabc):
     return V012
 
 
-Vz1 = 0.9
-Vz2 = 0.1 
+Vz1 = 0.9 * np.exp(1j * 0.1j)
+Vz2 = 0.1 * np.exp(1j * 0.2)
 Vz0 = 0.0
 Vz012 = np.array([Vz0, Vz1, Vz2])
 Vzabc = V012_to_abc(Vz012)
