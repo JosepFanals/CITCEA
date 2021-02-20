@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber Reasoning"] 1613566371 "Reasoning.bcf" "Reasoning.bbl" "Reasoning" 1613600667
-  "Reasoning.bcf" 1613572214 106525 0c3b7d6e8cae0d7b38847bb69bbc921b "pdflatex"
-  "bib.bib" 1613340196 2824 39a25db6b27dda0eab0b3b81d4990216 ""
+["biber Reasoning"] 1613750438 "Reasoning.bcf" "Reasoning.bbl" "Reasoning" 1613811155
+  "Reasoning.bcf" 1613811155 106639 193d2824ba3d5af5e65363b9c7ccce18 "pdflatex"
+  "bib.bib" 1613749516 3354 978409e1b36e6ddb28dcdc4ac75af017 ""
   (generated)
   "Reasoning.bbl"
   "Reasoning.blg"
-["pdflatex"] 1613572209 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.pdf" "Reasoning" 1613600667
+["pdflatex"] 1613811148 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.pdf" "Reasoning" 1613811155
   "C:/Users/Josep/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1609172257 9258828 5dd0ab4e26541be02491e4983b78ef70 ""
   "C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1613563589 118732 8aed45904751f26df4cc59b78fe498e0 ""
   "C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1233951848 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -223,17 +223,17 @@
   "C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/p2e-pdftex.def" 1601740910 1209 efb94e82cc1584d4f62679f3487b5339 ""
   "C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/pict2e.cfg" 1601740910 2000 2185073db458618f4a8a794158cf3681 ""
   "C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/pict2e.sty" 1601740910 31753 ccdcd551eb516817cc8f41862254e6e7 ""
-  "Reasoning.aux" 1613572214 3400 ef371972c07ebe60b8eaf338e6db4441 "pdflatex"
-  "Reasoning.bbl" 1613566373 9960 11d841a451610661f0b74441525f8bfa "biber Reasoning"
-  "Reasoning.run.xml" 1613572214 2371 013787737e7f4a868a7a6636d1f0403b "pdflatex"
-  "Reasoning.tex" 1613572208 14378 1af90f43d60cc2c136f2778e6390f662 ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.aux" 1613572214 3400 ef371972c07ebe60b8eaf338e6db4441 ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.tex" 1613572208 14378 1af90f43d60cc2c136f2778e6390f662 ""
+  "Reasoning.aux" 1613811155 4934 6f4661322db4e33e5fab6f9354373902 "pdflatex"
+  "Reasoning.bbl" 1613750440 12851 861e757be42a37cb3ec401c2c1c78e63 "biber Reasoning"
+  "Reasoning.run.xml" 1613811155 2371 013787737e7f4a868a7a6636d1f0403b "pdflatex"
+  "Reasoning.tex" 1613811147 25935 7a2288a0b4273cf7e4bc390676cf3a9a ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.aux" 1613811155 4934 6f4661322db4e33e5fab6f9354373902 ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.tex" 1613811147 25935 7a2288a0b4273cf7e4bc390676cf3a9a ""
   (generated)
-  "Reasoning.pdf"
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.log"
+  "Reasoning.bcf"
+  "Reasoning.run.xml"
   "Reasoning.log"
   "Reasoning.aux"
-  "Reasoning.bcf"
   "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.pdf"
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.log"
-  "Reasoning.run.xml"
+  "Reasoning.pdf"

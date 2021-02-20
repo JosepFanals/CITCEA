@@ -243,6 +243,75 @@
       \field{pages}{5362\bibrangedash 5373}
       \range{pages}{12}
     \endentry
+    \entry{taul2020modeling}{article}{}
+      \name{author}{5}{}{%
+        {{hash=9f436b0843c147cc992c4022d0c1af2e}{%
+           family={Taul},
+           familyi={T\bibinitperiod},
+           given={Mads\bibnamedelima Graungaard},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=d5a72803cc890d8c0c59ae8e5b64d459}{%
+           family={Golestan},
+           familyi={G\bibinitperiod},
+           given={Saeed},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6e6e65cdfafc1e8ae8d578e901be12e6}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiongfei},
+           giveni={X\bibinitperiod}}}%
+        {{hash=6dec50222b2c795d87dad26e65b26686}{%
+           family={Davari},
+           familyi={D\bibinitperiod},
+           given={Pooya},
+           giveni={P\bibinitperiod}}}%
+        {{hash=ef3a4a9ff466b76df8611ae446cf3ea3}{%
+           family={Blaabjerg},
+           familyi={B\bibinitperiod},
+           given={Frede},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{60ec9f9ad2776cabfd4919f0e1019c11}
+      \strng{fullhash}{f4b4aa28c5ec98d90cb603bfd07bbe0f}
+      \strng{bibnamehash}{60ec9f9ad2776cabfd4919f0e1019c11}
+      \strng{authorbibnamehash}{60ec9f9ad2776cabfd4919f0e1019c11}
+      \strng{authornamehash}{60ec9f9ad2776cabfd4919f0e1019c11}
+      \strng{authorfullhash}{f4b4aa28c5ec98d90cb603bfd07bbe0f}
+      \field{sortinit}{6}
+      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Journal of Emerging and Selected Topics in Power Electronics}
+      \field{title}{Modeling of Converter Synchronization Stability under Grid Faults: The General Case}
+      \field{year}{2020}
+    \endentry
+    \entry{tleis2007power}{book}{}
+      \name{author}{1}{}{%
+        {{hash=ee97648ecc0211768764a73caeea447d}{%
+           family={Tleis},
+           familyi={T\bibinitperiod},
+           given={Nasser},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{ee97648ecc0211768764a73caeea447d}
+      \strng{fullhash}{ee97648ecc0211768764a73caeea447d}
+      \strng{bibnamehash}{ee97648ecc0211768764a73caeea447d}
+      \strng{authorbibnamehash}{ee97648ecc0211768764a73caeea447d}
+      \strng{authornamehash}{ee97648ecc0211768764a73caeea447d}
+      \strng{authorfullhash}{ee97648ecc0211768764a73caeea447d}
+      \field{sortinit}{7}
+      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Power systems modelling and fault analysis: theory and practice}
+      \field{year}{2007}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

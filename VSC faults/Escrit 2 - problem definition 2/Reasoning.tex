@@ -68,12 +68,168 @@ The system we are considering is formed by an ideal grid (only positive sequence
 \end{figure}
 The point of common coupling (PCC) is where the VSC together with its filter are connected. There are two restrictions to take into account in a VSC, one related to the maximum current and another to the voltage. The current limitation is likely the most relevant when operating under faults. Since the current is limited and the filter used to connect the VSC to the PCC takes rather low values, we can expect the voltage drop to not be substantial. Because of that, and taking into consideration the voltage sag at the grid side, the voltage limit is hardly ever surpassed. Thus, in the analysis that follows, we only impose the current restriction. As future work, we could also add the voltage limitations as a constraint, although probably the conclusions will not vary from the ones extracted here.
 
-Note that Figure \ref{fig:sys_p} is general, in the sense that it does not specify the type of fault. Besides, there will be a fault impedance, denoted by $\underline{Z}_f$. We believe every unbalanced fault deserves to be studied separately. We are going to employ the symmetrical components, which are meant to simplify the analysis. In each fault, the voltage $\underline{V}_c$ will be decomposed in positive and negative sequence voltage and expressed as a function of the voltage at the grid together with the injected positive and negative sequence currents. It makes sense to model the VSC and its filter as a current source for this purpose. 
+Note that Figure \ref{fig:sys_p} is general, in the sense that it does not specify the type of fault. Besides, there will be a fault impedance, denoted by $\underline{Z}_f$. We believe every type of fault deserves to be studied separately. We are going to employ the symmetrical components, which are meant to simplify the analysis. In each fault, the voltage $\underline{V}_c$ will be decomposed in positive and negative sequence voltage and expressed as a function of the voltage at the grid together with the injected positive and negative sequence currents. It makes sense to model the VSC and its filter as a current source for this purpose. 
+
+
+\subsection{Balanced fault}
+In a three-phase representation, we model the system shown in Figure \ref{fig:sys_p} as in \cite{taul2020modeling}, where the VSC is modeled with controlled current sources. This approach, although not typical, makes physical sense. In the end we are controlling these currents. Figure \ref{fig:3_trif} displays the scheme for a balanced fault.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,0) to [short, *-] (4.0,-4);
+\draw (5.0,-2) to [short, *-] (5.0,-4);
+
+\draw (4.0,-4) to [R, l=$\underline{Z}_f$, -*] (4.0,-6);
+\draw (5.0,-4) to [R, l=$\underline{Z}_f$, -*] (5.0,-6);
+\draw (6.0,-4) to [R, l=$\underline{Z}_f$, *-*] (6.0,-6);
+\draw (4,-6) to [short] (6,-6);
+ 
+\end{circuitikz}
+\caption{Balanced fault schematic}
+\label{fig:3_trif}
+\end{figure}
+
+For this type of fault, the $abc$ voltages we are looking for are
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^a_{th}\underline{Z}_f + \underline{I}_a(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]\\
+        \underline{V}^b_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^b_{th}\underline{Z}_f + \underline{I}_b(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]\\
+        \underline{V}^c_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^c_{th}\underline{Z}_f + \underline{I}_c(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]
+    \end{cases}
+\end{equation}
+
+The balanced fault is the most severe one in terms of current, but fortunately, also the most unlikely to happen \cite{tleis2007power}. Its analysis becomes the most simplistic one as the equivalent circuits of all faults are disconnected one from the other. Figure \ref{fig:sys_3x} shows the full equivalent circuit.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,6) to [sV, v_=$\underline{V}_{th}^+$] (0,8);
+\draw (-3,8) to [R, l=$\underline{Z}_{th}$] (0,8);
+\draw (-6,6) to [short] (0.0,6);
+\draw (-6,8) to [R, l=$\underline{Z}_a$] (-3,8);
+\draw (-6,6.5) to [american controlled current source, l_=$I^+$] (-6,7.5);
+\draw (-6,6) to [short] (-6,6.5);
+\draw (-6,7.5) to [short] (-6,8);
+\draw (-6.3,8) to [open,v=$\underline{V}^+_c$] (-6.3,6);
+
+\draw (0,3) to [short] (0,3.5);
+\draw (0,3.5) to [short, *-*] (0,4.5);
+\draw (0,4.5) to [short] (0,5);
+\draw (-3,5) to [R, l=$\underline{Z}_{th}$] (0,5);
+\draw (-6,3) to [short] (0.0,3);
+\draw (-6,5) to [R, l=$\underline{Z}_a$] (-3,5);
+\draw (-6,3.5) to [american controlled current source, l_=$I^-$] (-6,4.5);
+\draw (-6,3) to [short] (-6,3.5);
+\draw (-6,4.5) to [short] (-6,5);
+\draw (-6.3,5) to [open,v=$\underline{V}^-_c$] (-6.3,3);
+
+\draw (0,0) to [short] (0,0.5);
+\draw (0,0.5) to [short, *-*] (0,1.5);
+\draw (0,1.5) to [short] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-6,0) to [short] (0.0,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw (-6,0) to [short, -*] (-6,0.5);
+\draw (-6,1.5) to [short, *-] (-6,2);
+\draw (-6.3,2) to [open,v=$\underline{V}^0_c$] (-6.3,0);
+
+\draw (-3,8) to [R, l=$\underline{Z}_{f}$] (-3,6);
+\draw (-3,5) to [R, l=$\underline{Z}_{f}$] (-3,3);
+\draw (-3,2) to [R, l=$\underline{Z}_{f}$] (-3,0);
+
+
+\end{circuitikz}
+\caption{Equivalent circuit for the balanced fault analysis}
+\label{fig:sys_3x}
+\end{figure}
+The equations that define the positive and negative sequence voltages at the PCC for the balanced fault are
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c= \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^+_{th}\underline{Z}_f + \underline{I}^+(\underline{Z}_a\underline{Z}_f + \underline{Z}_a\underline{Z}_{th} + \underline{Z}_f\underline{Z}_{th})] \vspace{0.4cm} \\ 
+ \underline{V}^-_c=\dfrac{1}{\underline{Z}_{f} + \underline{Z}_{th}}[\underline{I}^-(\underline{Z}_{th}\underline{Z}_f + \underline{Z}_a\underline{Z}_{th} + \underline{Z}_a\underline{Z}_f)]
+    \end{cases}
+\end{equation}
+
 
 \subsection{Line to ground fault}
+Just like for the balanced fault, we also show the schematic for the line to ground fault in this case, as depicted in Figure \ref{fig:3_lg}. 
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+
+\draw (5.0,-4) to [R, l=$\underline{Z}_f$, *-] (5.0,-5.5);
+\draw (5.0,-5.5) -- (5.0,-5.5) node[ground]{};
+ 
+\end{circuitikz}
+\caption{Line to ground fault schematic}
+\label{fig:3_lg}
+\end{figure}
+
 A line to ground (LG) fault involves the series connection of the equivalent circuit of the three symmetrical components. Transforming the circuit in Figure \ref{fig:sys_p} to an equivalent circuit in the positive, the negative and the homopolar component results in the representation shown in Figure \ref{fig:sys_LG}.
-
-
 
 \begin{figure}[!htb] \centering
 \begin{circuitikz}[european]
@@ -125,13 +281,58 @@ A line to ground (LG) fault involves the series connection of the equivalent cir
 The equations that define the positive and negative sequence voltages at the PCC for the line to ground fault are
 \begin{equation}
     \begin{cases}
-        \underline{V}^+_c=\dfrac{1}{3Z_f + 3Z_b}\left[\underline{V}^+_{th} (3\underline{Z}_f + 2\underline{Z}_b) + \underline{I}^+(3\underline{Z}_a\underline{Z}_f + 3\underline{Z}_a\underline{Z}_b + 3\underline{Z}_b\underline{Z}_f + 2\underline{Z}^2_b) + \underline{I}^-(-\underline{Z}^2_b)   \right] \vspace{0.4cm} \\ 
-        \underline{V}^-_c=\dfrac{1}{3Z_f + 3Z_b}\left[\underline{V}^+_{th} (-\underline{Z}_{th}) + \underline{I}^+(-\underline{Z}^2_b) + \underline{I}^-(3\underline{Z}_a\underline{Z}_f + 3\underline{Z_a}\underline{Z}_b + 3\underline{Z}_f\underline{Z}_b + 2\underline{Z}^2_b      )   \right]
+        \underline{V}^+_c=\dfrac{1}{3\underline{Z}_f + 3\underline{Z}_{th}} [\underline{V}^+_{th} (3\underline{Z}_f + 2\underline{Z}_{th}) + \underline{I}^+(3\underline{Z}_a\underline{Z}_f + 3\underline{Z}_a\underline{Z}_{th} + 3\underline{Z}_{th}\underline{Z}_f + 2\underline{Z}^2_{th}) + \underline{I}^-(-\underline{Z}^2_{th})  ] \vspace{0.4cm} \\ 
+ \underline{V}^-_c=\dfrac{1}{3Z_f + 3Z_{th}}[\underline{V}^+_{th} (-\underline{Z}_{th}) + \underline{I}^+(-\underline{Z}^2_{th}) + \underline{I}^-(3\underline{Z}_a\underline{Z}_f + 3\underline{Z_a}\underline{Z}_{th} + 3\underline{Z}_f\underline{Z}_{th} + 2\underline{Z}^2_{th} )  ]
     \end{cases}
 \end{equation}
 
 
 \subsection{Line to line fault}
+The line to line fault schematic is shown in Figure \ref{fig:3_ll}. Notice that the fault impedance is meant to be represented by a single impedance connected between the faulted phases.
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,-2) to [short, *-] (4.0, -5.0);
+\draw (6.0,-4) to [short, *-] (6.0, -5.0);
+\draw (4,-5.0) to [R, l=$\underline{Z}_f$] (6, -5.0);
+
+ 
+\end{circuitikz}
+\caption{Line to line fault schematic}
+\label{fig:3_ll}
+\end{figure}
+
 A line to line (LL) fault involves the parallel connection of the equivalent circuit of the positive and negative sequences. In this case, the homopolar sequence can be ignored, as no current flows through it. This time we are only going to work with the positive and the negative components. Figure \ref{fig:sys_LL} presents the equivalent circuit.
 
 
@@ -175,13 +376,65 @@ A line to line (LL) fault involves the parallel connection of the equivalent cir
 The equations that define the positive and negative sequence voltages at the PCC for the line to line fault are
 \begin{equation}
     \begin{cases}
-        \underline{V}^+_c=\dfrac{1}{3Z_f + 3Z_b}\left[\underline{V}^+_{th} (3\underline{Z}_f + 2\underline{Z}_b) + \underline{I}^+(3\underline{Z}_a\underline{Z}_f + 3\underline{Z}_a\underline{Z}_b + 3\underline{Z}_b\underline{Z}_f + 2\underline{Z}^2_b) + \underline{I}^-(-\underline{Z}^2_b)   \right] \vspace{0.4cm} \\ 
-        \underline{V}^-_c=\dfrac{1}{3Z_f + 3Z_b}\left[\underline{V}^+_{th} (-\underline{Z}_{th}) + \underline{I}^+(-\underline{Z}^2_b) + \underline{I}^-(3\underline{Z}_a\underline{Z}_f + 3\underline{Z_a}\underline{Z}_b + 3\underline{Z}_f\underline{Z}_b + 2\underline{Z}^2_b      )   \right]
+        \begin{split}
+        \underline{V}^+_c&=\dfrac{1}{\underline{Z}_f^2 + 3\underline{Z}_{th}\underline{Z}_f+2\underline{Z}^2_{th}} [\underline{V}_{th}(\underline{Z}^2_f + \underline{Z}^2_{th} + 2\underline{Z}_{th}\underline{Z}_f) + \underline{I}^+(2\underline{Z}_a\underline{Z}^2_{th} + 3\underline{Z}_a\underline{Z}_{th}\underline{Z}_f + 2\underline{Z}^2_{th}\underline{Z}_f\\ &+ 2\underline{Z}_a\underline{Z}^2_{th} + \underline{Z}^3_{th}) + \underline{I}^-(\underline{Z}^2_{th}\underline{Z}_f + \underline{Z}^3_{th}) ] \vspace{0.4cm} \\ 
+\underline{V}^-_c&=\dfrac{1}{\underline{Z}_f+2\underline{Z}_{th}\underline{Z}_f } [\underline{V}^+_{th}\underline{Z}_{th}\underline{Z}_f + \underline{I}^+(\underline{Z}^2_{th}\underline{Z}_f) + \underline{I}^-(\underline{Z}_a\underline{Z}^2_f + \underline{Z}_{th}\underline{Z}^2_f + 2\underline{Z}_a\underline{Z}_{th}\underline{Z}_f + \underline{Z}^2_{th}\underline{Z}_f)  ]
+        \end{split}
     \end{cases}
-\end{equation}
+\end{equation} 
 
 
 \subsection{Double line to ground fault}
+The double line to ground fault schematic appears in Figure \ref{fig:3_llg}. This time, the fault impedance is connected between the faulted phases and ground.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,-2) to [short, *-] (4.0, -5.0);
+\draw (6.0,-4) to [short, *-] (6.0, -5.0);
+\draw (4,-5.0) to [short, -*] (5, -5.0);
+\draw (5,-5.0) to [short, ] (6, -5.0);
+\draw (5,-5) to [R, l=$\underline{Z}_f$] (5,-6.5);
+\draw (5,-6.5) -- (5,-6.5) node[ground]{};
+
+ 
+\end{circuitikz}
+\caption{Double line to ground fault schematic}
+\label{fig:3_llg}
+\end{figure}
+
+
 A double line to ground (LLG) fault involves the parallel connection of the equivalent circuit of the three sequences. This time, in contrast to the line to line fault, the homopolar sequence can not be ignored. Furthermore, the fault impedance connects it to the negative sequence circuit. Figure \ref{fig:sys_LLG} presents the complete equivalent circuit. Again, an homopolar voltage will be present, but we have no way to control it since the converter is incapable of injecting homopolar currents in a three-wire system like this one.
 
 
@@ -252,8 +505,8 @@ A double line to ground (LLG) fault involves the parallel connection of the equi
 The equations that define the positive and negative sequence voltages at the PCC for the double line to ground fault are
 \begin{equation}
     \begin{cases}
-        \underline{V}^+_c=\dfrac{1}{3Z_f + 3Z_b}\left[\underline{V}^+_{th} (3\underline{Z}_f + 2\underline{Z}_b) + \underline{I}^+(3\underline{Z}_a\underline{Z}_f + 3\underline{Z}_a\underline{Z}_b + 3\underline{Z}_b\underline{Z}_f + 2\underline{Z}^2_b) + \underline{I}^-(-\underline{Z}^2_b)   \right] \vspace{0.2cm} \\ 
-        \underline{V}^-_c=\dfrac{1}{3Z_f + 3Z_b}\left[\underline{V}^+_{th} (-\underline{Z}_{th}) + \underline{I}^+(-\underline{Z}^2_b) + \underline{I}^-(3\underline{Z}_a\underline{Z}_f + 3\underline{Z_a}\underline{Z}_b + 3\underline{Z}_f\underline{Z}_b + 2\underline{Z}^2_b      )   \right]
+        \underline{V}^+_c=\dfrac{1}{3\underline{Z}_{th} + 6\underline{Z}_f}\left[\underline{V}^+_{th} (\underline{Z}_{th} + 3\underline{Z}_{f}) + \underline{I}^+(3\underline{Z}_{th}\underline{Z}_a + 6\underline{Z}_f\underline{Z}_a + \underline{Z}^2_b + 3\underline{Z}_f\underline{Z}_{th}) + \underline{I}^-(\underline{Z}^2_{th} + 3\underline{Z}_{th}\underline{Z}_f)   \right] \vspace{0.4cm} \\ 
+        \underline{V}^-_c=\dfrac{1}{3\underline{Z}_{th} + 6\underline{Z}_f}\left[\underline{V}^+_{th} (\underline{Z}_{th} + 3\underline{Z}_f) + \underline{I}^+(\underline{Z}^2_{th} + 3\underline{Z}_{th}\underline{Z}_f) + \underline{I}^-(\underline{Z}^2_{th}+3\underline{Z}_{th}\underline{Z}_f + 3\underline{Z}_a\underline{Z}_{th} + 6\underline{Z}_f\underline{Z}_a)   \right]
     \end{cases}
 \end{equation}
 
