@@ -1,0 +1,544 @@
+\documentclass[10pt]{article}
+
+\usepackage[left=30mm, right=30mm]{geometry}
+%\usepackage[scale=4]{draftwatermark}
+
+\usepackage[backend=biber, sorting=none]{biblatex} % per la bibliografia
+\setlength\bibitemsep{\baselineskip} % per tenir més espai entre bibliografia
+\addbibresource{bib.bib} % carregar el fitxer de bibliografia
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[activate={true, noncompatibility}]{microtype}
+\usepackage{tikz}
+\usepackage{circuitikz}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+\usepackage{amssymb}
+\usepackage{diagbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+
+\begin{document}
+
+\begin{center}
+    \Large
+    \textbf{Positive and negative sequence currents to improve voltages during unbalanced faults}
+         
+    \vspace{0.4cm}
+    \textbf{Josep Fanals}
+       
+       
+    \vspace{0.4cm}
+    \textbf{02/2021}
+\end{center}
+
+\section{Introduction}
+Grid faults constitute a group of unfortunate events that cause severe perturbations in the grid. The voltages can take values below the established minimum, or on the contrary, exceed the maximum in non-faulted phases. The currents are also susceptible to vary considerably. Traditional power systems based on synchronous generators could encounter currents surpassing the nominal values, and therefore, the fault could be clearly detected. However, the increasing integration of renewables \cite{anees2012grid} supposes a change of paradigm, in which currents can be controlled but are limited so as not to damage the Isolated-Gate Bipolar Transistors (IGBT) found in the Voltage Source Converter (VSC) \cite{abdou2013improving}. 
+
+Transmission System Operators (TSO) are responsible for imposing requirements related to the operation under voltage sags to generators and converters \cite{tsili2009review, iov2007mapping}. Such requirements are gathered in the respective grid codes. There seems to be no clear consensus on how to restore the voltage. In this sense, even if for instance the Low Voltage Ride Through (LVRT) profiles present similarities \cite{conroy2007low}, analysis aimed at determining analytically the optimal injection of positive and negative sequence currents are not numerous. As far as the author is aware, only Camacho et al. offer an optimal solution regarding the injection of active and reactive powers \cite{camacho2017positive}. 
+
+Consequently, this work focuses on finding the most convenient positive and negative sequence currents (and not powers) to raise the voltage at the point of common coupling. First, a simple model is discussed, and then, the results are shown together with the corresponding discussion. The challenge to solve the optimization problem in a closed-form is specially described.
+
+\section{Defintion of the system}
+The system we are considering is formed by an ideal grid (only positive sequence voltage is present) coupled to a VSC. The model is depicted in Figure \ref{fig:sys_p}. The VSC will be controlled in a way that leads to an improvement in the voltage at the PCC.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [sV, v_=$\underline{V}_{th}$] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-0.25,0) to [short] (0.25,0);
+\node at (-6,1.3) {PCC};
+\node at (-6,2.7) {$\underline{V}_c$};
+\draw (-3,2) to [short] (-3.2,1);
+\draw (-3.2,1) to [short] (-2.8,1);
+\draw[-{Latex[length=3mm]}] (-2.8,1) to [short] (-3,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
+\draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+\draw (-9,2) to [R, l=$\underline{Z}_c$] (-6,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+
+\end{circuitikz}
+\caption{Single-phase representation of the simple system under a fault}
+\label{fig:sys_p}
+\end{figure}
+
+% The point of common coupling (PCC) is where the VSC together with its filter are connected. There are two restrictions to take into account in a VSC, one related to the maximum current and another to the voltage. The current limitation is likely the most relevant when operating under faults. Since the current is limited and the filter used to connect the VSC to the PCC takes rather low values, we can expect the voltage drop to not be substantial. Because of that, and taking into consideration the voltage sag at the grid side, the voltage limit is hardly ever surpassed. Thus, in the analysis that follows, we only impose the current restriction. As future work, we could also add the voltage limitations as a constraint, although probably the conclusions will not vary from the ones extracted here.
+
+% Note that Figure \ref{fig:sys_p} is general, in the sense that it does not specify the type of fault. Besides, there will be a fault impedance, denoted by $\underline{Z}_f$. We believe every type of fault deserves to be studied separately. We are going to employ the symmetrical components, which are meant to simplify the analysis. In each fault, the voltage $\underline{V}_c$ will be decomposed in positive and negative sequence voltage and expressed as a function of the voltage at the grid together with the injected positive and negative sequence currents. It makes sense to model the VSC and its filter as a current source for this purpose. 
+
+\subsection{$abc$ circuits}
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,0) to [short, *-] (4.0,-4);
+\draw (5.0,-2) to [short, *-] (5.0,-4);
+
+\draw (4.0,-4) to [R, l=$\underline{Z}_f$, -*] (4.0,-6);
+\draw (5.0,-4) to [R, l=$\underline{Z}_f$, -*] (5.0,-6);
+\draw (6.0,-4) to [R, l=$\underline{Z}_f$, *-*] (6.0,-6);
+\draw (4,-6) to [short] (6,-6);
+ 
+\end{circuitikz}
+\caption{Balanced fault schematic}
+\label{fig:3_trif}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (5.0, 0) to [short, *-] (5.0, -4);
+\draw (5.0,-4) to [R, l=$\underline{Z}_f$] (5.0,-5.5);
+\draw (5.0,-5.5) -- (5.0,-5.5) node[ground]{};
+ 
+\end{circuitikz}
+\caption{Line to ground fault schematic}
+\label{fig:3_lg}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,-2) to [short, *-] (4.0, -5.0);
+\draw (6.0,-4) to [short, *-] (6.0, -5.0);
+\draw (4,-5.0) to [R, l=$\underline{Z}_f$] (6, -5.0);
+
+ 
+\end{circuitikz}
+\caption{Line to line fault schematic}
+\label{fig:3_ll}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,-2) to [short, *-] (4.0, -5.0);
+\draw (6.0,-4) to [short, *-] (6.0, -5.0);
+\draw (4,-5.0) to [short, -*] (5, -5.0);
+\draw (5,-5.0) to [short, ] (6, -5.0);
+\draw (5,-5) to [R, l=$\underline{Z}_f$] (5,-6.5);
+\draw (5,-6.5) -- (5,-6.5) node[ground]{};
+
+ 
+\end{circuitikz}
+\caption{Double line to ground fault schematic}
+\label{fig:3_llg}
+\end{figure}
+
+\clearpage
+\newpage
+\subsection{$+-0$ schemes}
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,6) to [sV, v_=$\underline{V}_{th}^+$] (0,8);
+\draw (-3,8) to [R, l=$\underline{Z}_{th}$] (0,8);
+\draw (-6,6) to [short] (0.0,6);
+\draw (-6,8) to [R, l=$\underline{Z}_a$] (-3,8);
+\draw (-6,6.5) to [american controlled current source, l_=$I^+$] (-6,7.5);
+\draw (-6,6) to [short] (-6,6.5);
+\draw (-6,7.5) to [short] (-6,8);
+\draw (-6.3,8) to [open,v=$\underline{V}^+_c$] (-6.3,6);
+
+\draw (0,3) to [short] (0,3.5);
+\draw (0,3.5) to [short, *-*] (0,4.5);
+\draw (0,4.5) to [short] (0,5);
+\draw (-3,5) to [R, l=$\underline{Z}_{th}$] (0,5);
+\draw (-6,3) to [short] (0.0,3);
+\draw (-6,5) to [R, l=$\underline{Z}_a$] (-3,5);
+\draw (-6,3.5) to [american controlled current source, l_=$I^-$] (-6,4.5);
+\draw (-6,3) to [short] (-6,3.5);
+\draw (-6,4.5) to [short] (-6,5);
+\draw (-6.3,5) to [open,v=$\underline{V}^-_c$] (-6.3,3);
+
+\draw (0,0) to [short] (0,0.5);
+\draw (0,0.5) to [short, *-*] (0,1.5);
+\draw (0,1.5) to [short] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-6,0) to [short] (0.0,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw (-6,0) to [short, -*] (-6,0.5);
+\draw (-6,1.5) to [short, *-] (-6,2);
+\draw (-6.3,2) to [open,v=$\underline{V}^0_c$] (-6.3,0);
+
+\draw (-3,8) to [R, l=$\underline{Z}_{f}$] (-3,6);
+\draw (-3,5) to [R, l=$\underline{Z}_{f}$] (-3,3);
+\draw (-3,2) to [R, l=$\underline{Z}_{f}$] (-3,0);
+
+
+\end{circuitikz}
+\caption{Equivalent circuit for the balanced fault analysis}
+\label{fig:sys_3x}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,6) to [sV, v_=$\underline{V}_{th}^+$] (0,8);
+\draw (-3,8) to [R, l=$\underline{Z}_{th}$] (0,8);
+\draw (-6,6) to [short] (0.0,6);
+\draw (-6,8) to [R, l=$\underline{Z}_a$] (-3,8);
+\draw (-6,6.5) to [american controlled current source, l_=$I^+$] (-6,7.5);
+\draw (-6,6) to [short] (-6,6.5);
+\draw (-6,7.5) to [short] (-6,8);
+\draw (-6.3,8) to [open,v=$\underline{V}^+_c$] (-6.3,6);
+
+\draw (0,3) to [short] (0,3.5);
+\draw (0,3.5) to [short, *-*] (0,4.5);
+\draw (0,4.5) to [short] (0,5);
+\draw (-3,5) to [R, l=$\underline{Z}_{th}$] (0,5);
+\draw (-6,3) to [short] (0.0,3);
+\draw (-6,5) to [R, l=$\underline{Z}_a$] (-3,5);
+\draw (-6,3.5) to [american controlled current source, l_=$I^-$] (-6,4.5);
+\draw (-6,3) to [short] (-6,3.5);
+\draw (-6,4.5) to [short] (-6,5);
+\draw (-6.3,5) to [open,v=$\underline{V}^-_c$] (-6.3,3);
+
+\draw (0,0) to [short] (0,0.5);
+\draw (0,0.5) to [short, *-*] (0,1.5);
+\draw (0,1.5) to [short] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-6,0) to [short] (0.0,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw (-6,0) to [short, -*] (-6,0.5);
+\draw (-6,1.5) to [short, *-] (-6,2);
+\draw (-6.3,2) to [open,v=$\underline{V}^0_c$] (-6.3,0);
+
+\draw (-3,2) to [short, *-*] (-3,3);
+\draw (-3,5) to [short, *-*] (-3,6);
+\draw (-3,8) to [short, *-] (-3, 9);
+\draw (-3,0) to [short, *-] (-3, -0.5);
+
+\draw (-3,9) to [short] (2,9);
+\draw (-3,-0.5) to [short] (2,-0.5);
+\draw (2,9) to [R, l=$3\underline{Z}_f$] (2, -0.5);
+
+\end{circuitikz}
+\caption{Equivalent circuit for the line to ground fault analysis}
+\label{fig:sys_LG}
+\end{figure}
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,6) to [sV, v_=$\underline{V}_{th}^+$] (0,8);
+\draw (-2.5,8) to [R, l=$\underline{Z}_{th}$] (0,8);
+\draw (-5,6) to [short] (0.0,6);
+\draw (-5,8) to [R, l=$\underline{Z}_a$] (-2.5,8);
+\draw (-5,6.5) to [american controlled current source, l_=$I^+$] (-5,7.5);
+\draw (-5,6) to [short] (-5,6.5);
+\draw (-5,7.5) to [short] (-5,8);
+\draw (-5.3,8) to [open,v=$\underline{V}^+_c$] (-5.3,6);
+
+\draw (8,6) to [short] (8,6.5);
+\draw (8,6.5) to [short, *-*] (8,7.5);
+\draw (8,7.5) to [short] (8,8);
+\draw (5.5,8) to [R, l=$\underline{Z}_{th}$] (8,8);
+\draw (3,6) to [short] (8.0,6);
+\draw (3,8) to [R, l=$\underline{Z}_a$] (5.5,8);
+\draw (3,6.5) to [american controlled current source, l_=$I^-$] (3,7.5);
+\draw (3,6) to [short] (3,6.5);
+\draw (3,7.5) to [short] (3,8);
+\draw (2.7,8) to [open,v=$\underline{V}^-_c$] (2.7,6);
+
+\draw (-2.5, 8) to [short, *-] (-2.5, 9);
+\draw (-2.5, 9) to [R, l=$\underline{Z}_{f}$] (5.5,9);
+\draw (5.5,9) to [short, -*] (5.5, 8);
+
+\draw (-2.5, 6) to [short, *-] (-2.5, 5.5);
+\draw (-2.5, 5.5) to [short] (5.5, 5.5);
+\draw (5.5, 5.5) to [short, -*] (5.5, 6);
+
+\end{circuitikz}
+\caption{Equivalent circuit for the line to line fault analysis}
+\label{fig:sys_LL}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,8) to [sV, v_=$\underline{V}_{th}^+$] (0,10);
+\draw (-3,10) to [R, l=$\underline{Z}_{th}$] (0,10);
+\draw (-6,8) to [short] (0.0,8);
+\draw (-6,10) to [R, l=$\underline{Z}_a$] (-3,10);
+\draw (-6,8.5) to [american controlled current source, l_=$I^+$] (-6,9.5);
+\draw (-6,8) to [short] (-6,8.5);
+\draw (-6,9.5) to [short] (-6,10);
+\draw (-6.3,10) to [open,v=$\underline{V}^+_c$] (-6.3,8);
+
+\draw (0,4) to [short] (0,4.5);
+\draw (0,4.5) to [short, *-*] (0,5.5);
+\draw (0,5.5) to [short] (0,6);
+\draw (-3,6) to [R, l=$\underline{Z}_{th}$] (0,6);
+\draw (-6,4) to [short] (0.0,4);
+\draw (-6,6) to [R, l=$\underline{Z}_a$] (-3,6);
+\draw (-6,4.5) to [american controlled current source, l_=$I^-$] (-6,5.5);
+\draw (-6,4) to [short] (-6,4.5);
+\draw (-6,5.5) to [short] (-6,6);
+\draw (-6.3,6) to [open,v=$\underline{V}^-_c$] (-6.3,4);
+
+\draw (0,0) to [short] (0,0.5);
+\draw (0,0.5) to [short, *-*] (0,1.5);
+\draw (0,1.5) to [short] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-6,0) to [short] (0.0,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw (-6,0) to [short, -*] (-6,0.5);
+\draw (-6,1.5) to [short, *-] (-6,2);
+\draw (-6.3,2) to [open,v=$\underline{V}^0_c$] (-6.3,0);
+
+\draw (-3,0) to [short, *-] (-3,-0.5);
+\draw (-3,4) to [short, *-] (-3,3.5);
+\draw (-3,8) to [short, *-] (-3,7.5);
+
+\draw (-3,2) to [short, *-] (-3,3);
+\draw (-3,6) to [short, *-] (-3,7);
+\draw (-3,10) to [short, *-] (-3,11);
+
+\draw (-3,3) to [short] (2,3);
+\draw (-3,7) to [short] (2,7);
+\draw (-3,11) to [short] (2,11);
+
+\draw (-3,-0.5) to [short] (-8,-0.5);
+\draw (-3,3.5) to [short] (-8,3.5);
+\draw (-3,7.5) to [short] (-8,7.5);
+
+\draw (-8,-0.5) to [short, -*] (-8, 3.5);
+\draw (-8, 3.5) to [short] (-8, 7.5);
+
+\draw (2,3) to [R, l_=$3\underline{Z}_f$, -*] (2,7);
+\draw (2,11) to [short] (2,7);
+
+
+\end{circuitikz}
+\caption{Equivalent circuit for the double line to ground fault analysis}
+\label{fig:sys_LLG}
+\end{figure}
+
+
+
+\clearpage
+\newpage
+\section{Expressions}
+
+\subsection{Balanced fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^a_{th}\underline{Z}_f + \underline{I}_a(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]\\
+        \underline{V}^b_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^b_{th}\underline{Z}_f + \underline{I}_b(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]\\
+        \underline{V}^c_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^c_{th}\underline{Z}_f + \underline{I}_c(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]
+    \end{cases}
+\end{equation}
+
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c= \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^+_{th}\underline{Z}_f + \underline{I}^+(\underline{Z}_a\underline{Z}_f + \underline{Z}_a\underline{Z}_{th} + \underline{Z}_f\underline{Z}_{th})] \\ 
+ \underline{V}^-_c=\dfrac{1}{\underline{Z}_{f} + \underline{Z}_{th}}[\underline{I}^-(\underline{Z}_{th}\underline{Z}_f + \underline{Z}_a\underline{Z}_{th} + \underline{Z}_a\underline{Z}_f)] \\
+ \underline{V}^0_c=0
+    \end{cases}
+\end{equation}
+
+
+\subsection{Line to ground fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \dfrac{1}{\underline{Z}_{th} + \underline{Z}_f}[\underline{I}_a(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_a\underline{Z}_f + \underline{Z}_{th}\underline{Z}_f) + \underline{V}^a_{th}\underline{Z}_f] \\
+        \underline{V}^b_c = \underline{V}^b_{th} + \underline{I}_b(\underline{Z}_a + \underline{Z}_{th}) \\
+        \underline{V}^c_c =  \underline{V}^c_{th} + \underline{I}_c(\underline{Z}_a + \underline{Z}_{th})
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c=\underline{I}^+(\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^+_{th} - \dfrac{\underline{Z}_{th}}{3\underline{Z}_f + 3\underline{Z}_{th}}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]\\ 
+        \underline{V}^-_c=\underline{I}^-(\underline{Z}_a + \underline{Z}_{th}) - \dfrac{\underline{Z}_{th}}{3\underline{Z}_f + 3\underline{Z}_{th}}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]\\
+        \underline{V}^0_c=-\dfrac{\underline{Z}_{th}}{3\underline{Z}_f + 3\underline{Z}_{th}}[\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th}]
+   \end{cases}
+\end{equation}
+
+
+\subsection{Line to line fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \underline{I}_a (\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^a_{th}  \\
+        \underline{V}^b_c = \underline{I}_b\underline{Z}_a + \dfrac{1}{(\underline{Z}_{f} + \underline{Z}_{th}) (\underline{Z}_f + 2\underline{Z}_{th})}[\underline{I}_b (\underline{Z}_{th}\underline{Z}_f\underline{Z}_f + 2\underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{f} + \underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{th}) \\+ \underline{I}_c(\underline{Z}_{th}\underline{Z}_{th}\underline{Z}_f + \underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{th}) + \underline{V}^b_{th} (\underline{Z}_f\underline{Z}_f + 2 \underline{Z}_f\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_{th}) + \underline{V}^c_{th}(\underline{Z}_{th}\underline{Z}_f + \underline{Z}_{th} \underline{Z}_{th})  ] \\
+        \underline{V}^c_c = \underline{I}_c\underline{Z}_a + \dfrac{1}{\underline{Z}_f + 2\underline{Z}_{th}}[\underline{I}_c(\underline{Z}_{th}(\underline{Z}_f + \underline{Z}_{th})) + \underline{V}^c_{th} (\underline{Z}_f + \underline{Z}_{th}) + \underline{I}_b\underline{Z}_{th}\underline{Z}_{th} + \underline{V}^b_{th}\underline{Z}_{th}]
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c= \underline{V}^+_{th} + \underline{I}^+(\underline{Z}_{a} + \underline{Z}_{th}) - \dfrac{\underline{Z}_{th}}{2\underline{Z}_{th}+\underline{Z}_f}[\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th}-\underline{I}^-\underline{Z}_{th}]  \\ 
+        \underline{V}^-_c= \underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th}+ \underline{I}^-\underline{Z}_a -\dfrac{\underline{Z}_{th}+\underline{Z}_f}{2\underline{Z}_{th}+\underline{Z}_f}[\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th} - \underline{I}^-\underline{Z}_{th}] \\
+        \underline{V}^0_c=0
+    \end{cases}
+\end{equation} 
+
+
+\subsection{Double line to ground fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \underline{I}_a (\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^a_{th}  \\
+        \underline{V}^b_c = \underline{I}_b\underline{Z}_a + \dfrac{\underline{Z}_{th}\underline{Z}_f (\underline{I}_b+\underline{I}_c) + \underline{Z}_f(\underline{V}^b_{th} + \underline{V}^c_{th})}{2\underline{Z}_f + \underline{Z}_{th}} \\
+        \underline{V}^c_c = \underline{I}_c\underline{Z}_a + \dfrac{\underline{Z}_{th}\underline{Z}_f (\underline{I}_b+\underline{I}_c) + \underline{Z}_f(\underline{V}^b_{th} + \underline{V}^c_{th})}{2\underline{Z}_f + \underline{Z}_{th}} 
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c=\underline{I}^+\underline{Z}_a + \dfrac{\underline{Z}_{th} + 3\underline{Z}_f}{3\underline{Z}_{th} + 6\underline{Z}_f}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]    \\ 
+        \underline{V}^-_c= \underline{I}^-\underline{Z}_a + \dfrac{\underline{Z}_{th} + 3\underline{Z}_f}{3\underline{Z}_{th} + 6\underline{Z}_f}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}] \\
+        \underline{V}^0_c=\dfrac{\underline{Z}_{th}}{3\underline{Z}_{th} + 6\underline{Z}_f}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]
+    \end{cases}
+\end{equation}
+
+
+
+
+
+
+\newpage
+\printbibliography
+
+
+\end{document}
