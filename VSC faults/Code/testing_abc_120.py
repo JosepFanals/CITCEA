@@ -51,7 +51,9 @@ Ia = 1
 Ib = -0.5
 Ic = -0.5
 
+
 # THREE PHASE FAULT
+
 Va = 1 / (Zf + Z2) * (Ia * (Z1 * Z2 + Z2 * Zf + Zf * Z1) + Vga * Zf)
 Vb = 1 / (Zf + Z2) * (Ib * (Z1 * Z2 + Z2 * Zf + Zf * Z1) + Vgb * Zf)
 Vc = 1 / (Zf + Z2) * (Ic * (Z1 * Z1 + Z2 * Zf + Zf * Z1) + Vgc * Zf)
@@ -74,7 +76,21 @@ print(Vcabc)
 print('=========')
 
 # LG FAULT
-Va = Vga + Ia * (Z1 + Z2)
+
+Va = 1 / (Z2 + Zf) * (Ia * (Z1 * Z2 + Z1 * Zf + Z2 * Zf) + Vga * Zf)
 Vb = Vgb + Ib * (Z1 + Z2)
-Vc = 1 / (1/Z2 + 1/Zf) * (Ic + Vgc / Z2)
+Vc = Vgc + Ic * (Z1 + Z2)
 print(Va, Vb, Vc)
+Vlg_abc = np.array([Va, Vb, Vc])
+Vlg_120 = Vabc_to_012(Vlg_abc)
+print(Vlg_120)
+
+# Vc1 = 1 / (3 * Zf + 3 * Z2) * (1 * (3 * Zf + 2 * Z2) + I1 * (3 * Z1 * Zf + 3 * Z1 * Z2 + 3 * Z2 * Zf + 2 * Z2 ** 2) + I2 * (-Z2 ** 2))
+# Vc1 = 1 / (3 * Zf + 3 * Z2) * (1 * (3 * Zf + 2 * Z2) + I1 * (3 * Z2 * Z1 + 3 * Zf * Z1 + 3 * Zf * Z2 + 2 * Z2 * Z2) + I2 * (-5 * Z2 * Z2 - 6 * Zf * Z2))
+Vc1 = I1 * (Z1 + Z2) + 1 - Z2 / (3 * Zf + 3 * Z2) * (I2 * Z2 + I1 * Z2 + 1)
+Vc2 = I2 * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * (I2 * Z2 + I1 * Z2 + 1)
+Vc0 = - Z2 / (3 * Zf + 3 * Z2) * (1 + I1 * Z2 + I2 * Z2)
+print(Vc0, Vc1, Vc2)
+Vcc012 = np.array([Vc0, Vc1, Vc2])
+Vccabc = V012_to_abc(Vcc012)
+print(Vccabc)

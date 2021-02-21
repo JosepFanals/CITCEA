@@ -1,15 +1,5 @@
 [0] Config.pm:312> INFO - This is Biber 2.15 (beta)
 [0] Config.pm:315> INFO - Logfile is 'Reasoning.blg'
-[85] biber-MSWIN64:330> INFO - === 
-[102] Biber.pm:415> INFO - Reading 'Reasoning.bcf'
-[195] Biber.pm:952> INFO - Found 8 citekeys in bib section 0
-[211] Biber.pm:4334> INFO - Processing section 0
-[224] Biber.pm:4523> INFO - Looking for bibtex format file 'bib.bib' for section 0
-[230] bibtex.pm:1682> INFO - LaTeX decoding ...
-[244] bibtex.pm:1494> INFO - Found BibTeX data source 'bib.bib'
-[309] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[310] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[310] Biber.pm:4162> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[310] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
-[315] bbl.pm:651> INFO - Writing 'Reasoning.bbl' with encoding 'UTF-8'
-[320] bbl.pm:754> INFO - Output to Reasoning.bbl
+[86] biber-MSWIN64:330> INFO - === 
+[411] Utils.pm:411> ERROR - Cannot find control file 'Reasoning.bcf'! - Did latex run successfully on your .tex file before you ran biber?
+[411] Biber.pm:132> INFO - ERRORS: 1
