@@ -343,6 +343,14 @@ The line to line fault schematic is shown in Figure \ref{fig:3_ll}. Notice that 
 \label{fig:3_ll}
 \end{figure}
 
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \underline{I}_a (\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^a_{th}  \\
+        \underline{V}^b_c = \underline{I}_b\underline{Z}_a + \dfrac{1}{(\underline{Z}_{f} + \underline{Z}_{th}) (\underline{Z}_f + 2\underline{Z}_{th})}(\underline{I}_b (\underline{Z}_{th}\underline{Z}_f\underline{Z}_f + 2\underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{f} + \underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{th}) \\+ \underline{I}_c(\underline{Z}_{th}\underline{Z}_{th}\underline{Z}_f + \underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{th}) + \underline{V}^b_{th} (\underline{Z}_f\underline{Z}_f + 2 \underline{Z}_f\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_{th}) + \underline{V}^c_{th}(\underline{Z}_{th}\underline{Z}_f + \underline{Z}_{th} \underline{Z}_{th})  ) \\
+        \underline{V}^c_c = \underline{I}_c\underline{Z}_a + \dfrac{1}{\underline{Z}_f + 2\underline{Z}_{th}}(\underline{I}_c(\underline{Z}_{th}(\underline{Z}_f + \underline{Z}_{th})) + \underline{V}^c_{th} (\underline{Z}_f + \underline{Z}_{th}) + \underline{I}_b\underline{Z}_{th}\underline{Z}_{th} + \underline{V}^b_{th}\underline{Z}_{th})
+    \end{cases}
+\end{equation}
+
 A line to line (LL) fault involves the parallel connection of the equivalent circuit of the positive and negative sequences. In this case, the homopolar sequence can be ignored, as no current flows through it. This time we are only going to work with the positive and the negative components. Figure \ref{fig:sys_LL} presents the equivalent circuit.
 
 
@@ -384,11 +392,21 @@ A line to line (LL) fault involves the parallel connection of the equivalent cir
 \label{fig:sys_LL}
 \end{figure}
 The equations that define the positive and negative sequence voltages at the PCC for the line to line fault are
+%\begin{equation}
+    %\begin{cases}
+        %\begin{split}
+        %\underline{V}^+_c&=\dfrac{1}{\underline{Z}_f^2 + 3\underline{Z}_{th}\underline{Z}_f+2\underline{Z}^2_{th}} [\underline{V}_{th}(\underline{Z}^2_f + \underline{Z}^2_{th} + 2\underline{Z}_{th}\underline{Z}_f) + \underline{I}^+(2\underline{Z}_a\underline{Z}^2_{th} + 3\underline{Z}_a\underline{Z}_{th}\underline{Z}_f + 2\underline{Z}^2_{th}\underline{Z}_f\\ &+ 2\underline{Z}_a\underline{Z}^2_{th} + \underline{Z}^3_{th}) + \underline{I}^-(\underline{Z}^2_{th}\underline{Z}_f + \underline{Z}^3_{th}) ] \vspace{0.4cm} \\ 
+%\underline{V}^-_c&=\dfrac{1}{\underline{Z}_f+2\underline{Z}_{th}\underline{Z}_f } [\underline{V}^+_{th}\underline{Z}_{th}\underline{Z}_f + \underline{I}^+(\underline{Z}^2_{th}\underline{Z}_f) + \underline{I}^-(\underline{Z}_a\underline{Z}^2_f + \underline{Z}_{th}\underline{Z}^2_f + 2\underline{Z}_a\underline{Z}_{th}\underline{Z}_f + \underline{Z}^2_{th}\underline{Z}_f)  ]
+        %\end{split}
+    %\end{cases}
+%\end{equation} 
+
 \begin{equation}
     \begin{cases}
         \begin{split}
-        \underline{V}^+_c&=\dfrac{1}{\underline{Z}_f^2 + 3\underline{Z}_{th}\underline{Z}_f+2\underline{Z}^2_{th}} [\underline{V}_{th}(\underline{Z}^2_f + \underline{Z}^2_{th} + 2\underline{Z}_{th}\underline{Z}_f) + \underline{I}^+(2\underline{Z}_a\underline{Z}^2_{th} + 3\underline{Z}_a\underline{Z}_{th}\underline{Z}_f + 2\underline{Z}^2_{th}\underline{Z}_f\\ &+ 2\underline{Z}_a\underline{Z}^2_{th} + \underline{Z}^3_{th}) + \underline{I}^-(\underline{Z}^2_{th}\underline{Z}_f + \underline{Z}^3_{th}) ] \vspace{0.4cm} \\ 
-\underline{V}^-_c&=\dfrac{1}{\underline{Z}_f+2\underline{Z}_{th}\underline{Z}_f } [\underline{V}^+_{th}\underline{Z}_{th}\underline{Z}_f + \underline{I}^+(\underline{Z}^2_{th}\underline{Z}_f) + \underline{I}^-(\underline{Z}_a\underline{Z}^2_f + \underline{Z}_{th}\underline{Z}^2_f + 2\underline{Z}_a\underline{Z}_{th}\underline{Z}_f + \underline{Z}^2_{th}\underline{Z}_f)  ]
+        \underline{V}^+_c&= \underline{V}^+_{th} + \underline{I}^+(\underline{Z}_{a} + \underline{Z}_{th}) - \dfrac{\underline{Z}_{th}}{2\underline{Z}_{th}+\underline{Z}_f}(\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th}-\underline{I}^-\underline{Z}_{th})  \\ 
+        \underline{V}^-_c&= \underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th}+ \underline{I}^-\underline{Z}_a -\dfrac{\underline{Z}_{th}+\underline{Z}_f}{2\underline{Z}_{th}+\underline{Z}_f}(\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th} - \underline{I}^-\underline{Z}_{th}) \\
+        \underline{V}^0_c&=0
         \end{split}
     \end{cases}
 \end{equation} 
