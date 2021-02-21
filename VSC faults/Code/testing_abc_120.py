@@ -98,7 +98,7 @@ print(Vccabc)
 
 print('=========')
 
-# LLG FAULT
+# LL FAULT
 
 Va = Ia * (Z1 + Z2) + Vga
 # Vb = Ib * Z1 + 1 / (3 * Z2 + Zf) * (Ic * (Z2 * Z2) + Ib * (Z2 * Zf + Z2 * Z2) + Vgc * Z2 + Vgb * (Z2 + Zf))
@@ -140,5 +140,20 @@ Vccc012 = np.array([Vc0, Vc1, Vc2])
 Vcccabc = V012_to_abc(Vccc012)
 print(Vcccabc)
 
+
+print('----------')
+
+# LLG FAULT
+Vc1 = I1 * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * (I1 * Z2 + I2 * Z2 + 1)
+Vc2 = I2 * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * (I1 * Z2 + I2 * Z2 + 1)
+Vc0 = Z2 / (3 * Z2 + 6 * Zf) * (I1 * Z2 + I2 * Z2 + 1)
+Vc012 = np.array([Vc0, Vc1, Vc2])
+Vcabc = V012_to_abc(Vc012)
+print(Vcabc)
+
+Vca = Ia * (Z1 + Z2) + Vga
+Vcb = Z1 * Ib + (Z2 * Zf * (Ib + Ic) + Zf * (Vgb + Vgc)) / (2 * Zf + Z2)
+Vcc = Z1 * Ic + (Z2 * Zf * (Ib + Ic) + Zf * (Vgb + Vgc)) / (2 * Zf + Z2)
+print(Vca, Vcb, Vcc)
 
 

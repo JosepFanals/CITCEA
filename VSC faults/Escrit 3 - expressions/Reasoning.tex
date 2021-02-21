@@ -462,6 +462,14 @@ The double line to ground fault schematic appears in Figure \ref{fig:3_llg}. Thi
 \label{fig:3_llg}
 \end{figure}
 
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \underline{I}_a (\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^a_{th}  \\
+        \underline{V}^b_c = \underline{I}_b\underline{Z}_a + \dfrac{\underline{Z}_{th}\underline{Z}_f (\underline{I}_b\underline{I}_c) + \underline{Z}_f(\underline{V}^b_{th} + \underline{V}^c_{th})}{2\underline{Z}_f + \underline{Z}_{th}} \\
+        \underline{V}^c_c = \underline{I}_c\underline{Z}_a + \dfrac{\underline{Z}_{th}\underline{Z}_f (\underline{I}_b\underline{I}_c) + \underline{Z}_f(\underline{V}^b_{th} + \underline{V}^c_{th})}{2\underline{Z}_f + \underline{Z}_{th}} 
+    \end{cases}
+\end{equation}
+
 
 A double line to ground (LLG) fault involves the parallel connection of the equivalent circuit of the three sequences. This time, in contrast to the line to line fault, the homopolar sequence can not be ignored. Furthermore, the fault impedance connects it to the negative sequence circuit. Figure \ref{fig:sys_LLG} presents the complete equivalent circuit. Again, an homopolar voltage will be present, but we have no way to control it since the converter is incapable of injecting homopolar currents in a three-wire system like this one.
 
@@ -524,8 +532,6 @@ A double line to ground (LLG) fault involves the parallel connection of the equi
 \draw (2,11) to [short] (2,7);
 
 
-
-
 \end{circuitikz}
 \caption{Equivalent circuit for the LLG fault analysis}
 \label{fig:sys_LLG}
@@ -533,8 +539,9 @@ A double line to ground (LLG) fault involves the parallel connection of the equi
 The equations that define the positive and negative sequence voltages at the PCC for the double line to ground fault are
 \begin{equation}
     \begin{cases}
-        \underline{V}^+_c=\dfrac{1}{3\underline{Z}_{th} + 6\underline{Z}_f}\left[\underline{V}^+_{th} (\underline{Z}_{th} + 3\underline{Z}_{f}) + \underline{I}^+(3\underline{Z}_{th}\underline{Z}_a + 6\underline{Z}_f\underline{Z}_a + \underline{Z}^2_b + 3\underline{Z}_f\underline{Z}_{th}) + \underline{I}^-(\underline{Z}^2_{th} + 3\underline{Z}_{th}\underline{Z}_f)   \right] \vspace{0.4cm} \\ 
-        \underline{V}^-_c=\dfrac{1}{3\underline{Z}_{th} + 6\underline{Z}_f}\left[\underline{V}^+_{th} (\underline{Z}_{th} + 3\underline{Z}_f) + \underline{I}^+(\underline{Z}^2_{th} + 3\underline{Z}_{th}\underline{Z}_f) + \underline{I}^-(\underline{Z}^2_{th}+3\underline{Z}_{th}\underline{Z}_f + 3\underline{Z}_a\underline{Z}_{th} + 6\underline{Z}_f\underline{Z}_a)   \right]
+        \underline{V}^+_c=\underline{I}^+\underline{Z}_a + \dfrac{\underline{Z}_{th} + 3\underline{Z}_f}{3\underline{Z}_{th} + 6\underline{Z}_f}(\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th})    \\ 
+        \underline{V}^-_c= \underline{I}^-\underline{Z}_a + \dfrac{\underline{Z}_{th} + 3\underline{Z}_f}{3\underline{Z}_{th} + 6\underline{Z}_f}(\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}) \\
+        \underline{V}^0_c=\dfrac{\underline{Z}_{th}}{3\underline{Z}_{th} + 6\underline{Z}_f}(\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th})
     \end{cases}
 \end{equation}
 
@@ -543,12 +550,12 @@ The equations that define the positive and negative sequence voltages at the PCC
 
 
 
-\section{Results and discussion}
-Some text
+%\section{Results and discussion}
+%Some text
 
 
-\section{Conclusions}
-Some text
+%\section{Conclusions}
+%Some text
 
 
 

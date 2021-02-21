@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  21 FEB 2021 20:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  21 FEB 2021 20:58
 entering extended mode
-**"c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.tex"
-("c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 2 - problem definition 2/Reasoning.tex"
+**"c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 3 - expressions/Reasoning.tex"
+("c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 3 - expressions/Reasoning.tex"
 LaTeX2e <2020-10-01> patch level 2
 L3 programming layer <2020-12-07> xparse <2020-03-03> (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
@@ -739,7 +739,7 @@ File: pgflibraryplotmarks.code.tex 2020/12/01 v3.1.7a (3.1.7a)
 )))
 \@quotelevel=\count430
 \@quotereset=\count431
- ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 2 - problem definition 2\Reasoning.aux")
+ ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 3 - expressions\Reasoning.aux")
 \openout1 = `Reasoning.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -803,7 +803,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Reasoning.bbl' found.
- ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 2 - problem definition 2\Reasoning.bbl")
+ ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 3 - expressions\Reasoning.bbl")
 Package biblatex Info: Reference section=0 on input line 22.
 Package biblatex Info: Reference segment=0 on input line 22.
 LaTeX Info: Redefining \microtypecontext on input line 22.
@@ -838,24 +838,6 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 )
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
 
-
-LaTeX Warning: Citation 'anees2012grid' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Citation 'abdou2013improving' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Citation 'tsili2009review' on page 1 undefined on input line 39.
-
-
-LaTeX Warning: Citation 'iov2007mapping' on page 1 undefined on input line 39.
-
-
-LaTeX Warning: Citation 'conroy2007low' on page 1 undefined on input line 39.
-
-
-LaTeX Warning: Citation 'camacho2017positive' on page 1 undefined on input line 39.
-
 LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
 (C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -870,23 +852,17 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 {C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-
-LaTeX Warning: Citation 'taul2020modeling' on page 2 undefined on input line 75.
-
 \absvshift=\dimen322
 \absvshift=\dimen323
 \absvshift=\dimen324
-[2]
-
-LaTeX Warning: Citation 'tleis2007power' on page 3 undefined on input line 133.
-
+ [2]
 \absvshift=\dimen325
 \absvshift=\dimen326
 \absvshift=\dimen327
 \absvshift=\dimen328
 \absvshift=\dimen329
 \absvshift=\dimen330
-[3]
+ [3]
 \absvshift=\dimen331
 \absvshift=\dimen332
 \absvshift=\dimen333
@@ -908,43 +884,27 @@ Package amsmath Warning: Cannot use `split' here;
 \absvshift=\dimen339
 \absvshift=\dimen340
 \absvshift=\dimen341
+[6]
 \absvshift=\dimen342
 \absvshift=\dimen343
 \absvshift=\dimen344
-
-Overfull \hbox (11.76526pt too wide) detected at line 539
-[]
- []
-
-[6] [7]
-
-LaTeX Warning: Empty bibliography on input line 559.
-
-[8] ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 2 - problem definition 2\Reasoning.aux")
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                Reasoning
-(biblatex)                and rerun LaTeX afterwards.
-
+ [7] [8] [9] ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 3 - expressions\Reasoning.aux")
 Package logreq Info: Writing requests to 'Reasoning.run.xml'.
 \openout1 = `Reasoning.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 51807 strings out of 479696
- 1372836 string characters out of 19617135
- 22136715 words of memory out of 40000000
- 68266 multiletter control sequences out of 15000+200000
- 411373 words of font info for 91 fonts, out of 20000000 for 9000
+ 51753 strings out of 479696
+ 1371009 string characters out of 19617135
+ 22136905 words of memory out of 40000000
+ 68207 multiletter control sequences out of 15000+200000
+ 411992 words of font info for 94 fonts, out of 20000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,15n,111p,896b,1168s stack positions out of 5000i,500n,10000p,20000000b,50000s
-<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 2 - problem definition 2\Reasoning.pdf" (8 pages, 150298 bytes).
+ 108i,15n,111p,887b,1189s stack positions out of 5000i,500n,10000p,20000000b,50000s
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Escrit 3 - expressions\Reasoning.pdf" (9 pages, 154741 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
+ 71 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 20493 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 22541 words of extra memory for PDF output out of 24883 (max. 10000000)
 
