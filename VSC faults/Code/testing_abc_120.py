@@ -154,6 +154,7 @@ print(Vcabc)
 Vca = Ia * (Z1 + Z2) + Vga
 Vcb = Z1 * Ib + (Z2 * Zf * (Ib + Ic) + Zf * (Vgb + Vgc)) / (2 * Zf + Z2)
 Vcc = Z1 * Ic + (Z2 * Zf * (Ib + Ic) + Zf * (Vgb + Vgc)) / (2 * Zf + Z2)
+
 print(Vca, Vcb, Vcc)
 
 
