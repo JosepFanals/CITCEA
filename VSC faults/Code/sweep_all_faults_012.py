@@ -93,8 +93,8 @@ def fV012_LLG(I012):
 
 # initialization
 Zf = 0.1 * 1j
-Z2 = 0.01 + 0.05 * 1j
-Z1 = 0.02 + 0.1 * 1j
+Z2 = 0.00 + 0.05 * 1j
+Z1 = 0.00 + 0.1 * 1j
 Imax = 1
 
 Vga = 1
@@ -110,7 +110,7 @@ I1_im = 0
 I2_re = 0
 I2_im = 0
 
-n_iter = 50
+n_iter = 40
 compt = 0
 
 Ia_re_vec = []
@@ -171,7 +171,7 @@ for kk in range(n_iter):
                 Ic = Iabc[2]
                 if not abs(Ia) > Imax and not abs(Ib) > Imax and not abs(Ic) > Imax:   
                     
-                    V012 = fV012_LL(I012)
+                    V012 = fV012_balanced(I012)
                     Vabc = V012_to_abc(V012)
 
                     V0_re_vec.append(np.real(V012[0]))
@@ -235,7 +235,7 @@ for kk in range(compt):
         ind_max = kk
 
     # objective: get |V+| close to 1 and |V-| close to 0. Called objective min
-    V_object = abs(V1_abs_vec[kk] - 1) + abs(V2_abs_vec[kk] - 0)
+    V_object = 0 * abs(V2_abs_vec[kk] - 1) + abs(V2_abs_vec[kk] - 0)
     V_obj_vec.append(V_object)
     V_obj_min = min(V_object, V_obj_min)
     if V_obj_min == V_object:
@@ -271,6 +271,23 @@ print('abc currents: ', Ia_ff, Ib_ff, Ic_ff)
 print('012 currents: ', I0_ff, I1_ff, I2_ff)
 print('abc voltages: ', Va_ff, Vb_ff, Vc_ff)
 print('012 voltages: ', V0_abs_vec[ind_min], V1_abs_vec[ind_min], V2_abs_vec[ind_min])
+
+print(V0_im_vec[ind_min])
+print(V1_im_vec[ind_min])
+print(V2_im_vec[ind_min])
+
+print(V0_re_vec[ind_min])
+print(V1_re_vec[ind_min])
+print(V2_re_vec[ind_min])
+
+
+print(V0_im_vec[ind_max])
+print(V1_im_vec[ind_max])
+print(V2_im_vec[ind_max])
+
+print(V0_re_vec[ind_max])
+print(V1_re_vec[ind_max])
+print(V2_re_vec[ind_max])
 
 plt.scatter(V1_abs_vec, V2_abs_vec, s=1)
 plt.xlabel('|V+|')
