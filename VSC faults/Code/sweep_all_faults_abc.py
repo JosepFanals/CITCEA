@@ -96,7 +96,7 @@ def fVabc_LLG(Iabc):
 # initialization
 Zf = 0.1 * 1j
 Z2 = 0.01 + 0.05 * 1j
-Z1 = 0.02 + 0.1 * 1j
+Z1 = 0.01 + 0.1 * 1j
 Imax = 1
 
 Vga = 1
@@ -113,29 +113,21 @@ Ic_im = 0
 n_iter = 40
 compt = 0
 
-Ia_re_vec = []
-Ib_re_vec = []
-Ic_re_vec = []
+Ia_vec = []
+Ib_vec = []
+Ic_vec = []
 
-Ia_im_vec = []
-Ib_im_vec = []
-Ic_im_vec = []
+I0_vec = []
+I1_vec = []
+I2_vec = []
 
-Va_re_vec = []
-Vb_re_vec = []
-Vc_re_vec = []
+Va_vec = []
+Vb_vec = []
+Vc_vec = []
 
-Va_im_vec = []
-Vb_im_vec = []
-Vc_im_vec = []
-
-V0_re_vec = []
-V1_re_vec = []
-V2_re_vec = []
-
-V0_im_vec = []
-V1_im_vec = []
-V2_im_vec = []
+V0_vec = []
+V1_vec = []
+V2_vec = []
 
 percent = 0
 n_points = n_iter ** 1  # only 1st loop
@@ -143,6 +135,7 @@ n_compt = 0
 
 for kk in range(n_iter):
     Ia_re = -Imax + 2 * Imax * kk / n_iter
+
     for ll in range(n_iter):
         Ia_im = -Imax + 2 * Imax * ll / n_iter
         if Ia_im ** 2 + Ia_re ** 2 > Imax ** 2:
@@ -150,6 +143,7 @@ for kk in range(n_iter):
 
         for mm in range(n_iter):
             Ib_re = -Imax + 2 * Imax * mm / n_iter
+
             for nn in range(n_iter):
                 Ib_im = -Imax + 2 * Imax * nn / n_iter
                 if Ib_im ** 2 + Ib_re ** 2 > Imax ** 2:
@@ -161,33 +155,26 @@ for kk in range(n_iter):
                     Ib = Ib_re + 1j * Ib_im
                     Ic = Ic_re + 1j * Ic_im
                     Iabc = np.array([Ia, Ib, Ic])
-
                     Vabc = fVabc_LG(Iabc)
+                    ang_shift = np.angle(Vabc[0])
+
+                    Ia_vec.append(Iabc[0] * np.exp(- 1j * ang_shift))
+                    Ib_vec.append(Iabc[1] * np.exp(- 1j * ang_shift))
+                    Ic_vec.append(Iabc[2] * np.exp(- 1j * ang_shift))
+                    Iabc = np.array([Ia_vec[-1], Ib_vec[-1], Ic_vec[-1]])
+                    I012 = Vabc_to_012(Iabc)
+                    I0_vec.append(I012[0])
+                    I1_vec.append(I012[1])
+                    I2_vec.append(I012[2])
+
+                    Va_vec.append(Vabc[0] * np.exp(- 1j * ang_shift))
+                    Vb_vec.append(Vabc[1] * np.exp(- 1j * ang_shift))
+                    Vc_vec.append(Vabc[2] * np.exp(- 1j * ang_shift))
+                    Vabc = np.array([Va_vec[-1], Vb_vec[-1], Vc_vec[-1]])
                     V012 = Vabc_to_012(Vabc)
-
-                    V0_re_vec.append(np.real(V012[0]))
-                    V1_re_vec.append(np.real(V012[1]))
-                    V2_re_vec.append(np.real(V012[2]))
-
-                    V0_im_vec.append(np.imag(V012[0]))
-                    V1_im_vec.append(np.imag(V012[1]))
-                    V2_im_vec.append(np.imag(V012[2]))
-
-                    Va_re_vec.append(np.real(Vabc[0]))
-                    Vb_re_vec.append(np.real(Vabc[1]))
-                    Vc_re_vec.append(np.real(Vabc[2]))
-
-                    Va_im_vec.append(np.imag(Vabc[0]))
-                    Vb_im_vec.append(np.imag(Vabc[1]))
-                    Vc_im_vec.append(np.imag(Vabc[2]))
-
-                    Ia_re_vec.append(np.real(Iabc[0]))
-                    Ib_re_vec.append(np.real(Iabc[1]))
-                    Ic_re_vec.append(np.real(Iabc[2]))
-
-                    Ia_im_vec.append(np.imag(Iabc[0]))
-                    Ib_im_vec.append(np.imag(Iabc[1]))
-                    Ic_im_vec.append(np.imag(Iabc[2]))
+                    V0_vec.append(V012[0])
+                    V1_vec.append(V012[1])
+                    V2_vec.append(V012[2])
 
                     compt += 1
 
@@ -206,46 +193,27 @@ ind_max = 0
 ind_min = 0
 
 for kk in range(compt):
-    V0_abs_vec.append(np.sqrt(V0_re_vec[kk] ** 2 + V0_im_vec[kk] ** 2))
-    V1_abs_vec.append(np.sqrt(V1_re_vec[kk] ** 2 + V1_im_vec[kk] ** 2))
-    V2_abs_vec.append(np.sqrt(V2_re_vec[kk] ** 2 + V2_im_vec[kk] ** 2))
-    V12_diff = V1_abs_vec[kk] - V2_abs_vec[kk]
-    V12_abs_vec.append(V12_diff)
-    V12_max = max(V12_diff, V12_max)
-    if V12_max == V12_diff:
-        ind_max = kk
-    V_object = abs(V1_abs_vec[kk] - 1) + abs(V2_abs_vec[kk] - 0)
+    V0_abs_vec.append(np.abs(V0_vec[kk]))
+    V1_abs_vec.append(np.abs(V1_vec[kk]))
+    V2_abs_vec.append(np.abs(V2_vec[kk]))
+
+    # objective function:
+    V_object = 1 * abs(V1_abs_vec[kk] - 1) + 1 * abs(V2_abs_vec[kk] - 0)
     V_obj_vec.append(V_object)
     V_obj_min = min(V_object, V_obj_min)
     if V_obj_min == V_object:
         ind_min = kk
 
 
-print('Objective max function: ', V12_max)
-Ia_ff = Ia_re_vec[ind_max] + 1j * Ia_im_vec[ind_max]
-Ib_ff = Ib_re_vec[ind_max] + 1j * Ib_im_vec[ind_max]
-Ic_ff = Ic_re_vec[ind_max] + 1j * Ic_im_vec[ind_max]
-Va_ff = Va_re_vec[ind_max] + 1j * Va_im_vec[ind_max]
-Vb_ff = Vb_re_vec[ind_max] + 1j * Vb_im_vec[ind_max]
-Vc_ff = Vc_re_vec[ind_max] + 1j * Vc_im_vec[ind_max]
-print('abc currents: ', Ia_ff, Ib_ff, Ic_ff)
-print('abc voltages: ', Va_ff, Vb_ff, Vc_ff)
-print('012 voltages: ', V0_abs_vec[ind_max], V1_abs_vec[ind_max], V2_abs_vec[ind_max])
+print('Objective function: ', V_obj_min)
+print('abc currents: ', Ia_vec[ind_min], Ib_vec[ind_min], Ic_vec[ind_min])
+print('012 currents: ', I0_vec[ind_min], I1_vec[ind_min], I2_vec[ind_min])
+print('abc voltages: ', Va_vec[ind_min], Vb_vec[ind_min], Vc_vec[ind_min])
+print('|012 voltages|: ', V0_abs_vec[ind_min], V1_abs_vec[ind_min], V2_abs_vec[ind_min])
 
-print('Objective min function: ', V_obj_min)
-Ia_ff = Ia_re_vec[ind_min] + 1j * Ia_im_vec[ind_min]
-Ib_ff = Ib_re_vec[ind_min] + 1j * Ib_im_vec[ind_min]
-Ic_ff = Ic_re_vec[ind_min] + 1j * Ic_im_vec[ind_min]
-Va_ff = Va_re_vec[ind_min] + 1j * Va_im_vec[ind_min]
-Vb_ff = Vb_re_vec[ind_min] + 1j * Vb_im_vec[ind_min]
-Vc_ff = Vc_re_vec[ind_min] + 1j * Vc_im_vec[ind_min]
-print('abc currents: ', Ia_ff, Ib_ff, Ic_ff)
-print('abc voltages: ', Va_ff, Vb_ff, Vc_ff)
-print('012 voltages: ', V0_abs_vec[ind_min], V1_abs_vec[ind_min], V2_abs_vec[ind_min])
-
-plt.scatter(V1_abs_vec, V2_abs_vec, s=1)
+plt.scatter(V1_abs_vec, V2_abs_vec, s=0.5)
 plt.xlabel('|V+|')
 plt.ylabel('|V-|')
 plt.show()
 
-
+# references shift
