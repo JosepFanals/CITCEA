@@ -1,11 +1,10 @@
-# the optimization seemed to work fine, now try to not have to split functions
 import numpy as np
 from scipy.optimize import minimize
 
 
-Zf = 0.01 + 0.1 * 1j
-Z1 = 0.02 + 0.04 * 1j
-Z2 = 0.01 + 0.06 * 1j 
+Zf = 0.00 + 0.10 * 1j  # fault impedance
+Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
+Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
 Imax = 1
 a = np.exp(1j * 120 * np.pi / 180)
 b = a ** 2
@@ -62,24 +61,27 @@ def Vabc_to_012(Vabc):
     return V012
 
 def Va(x):
-    Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))
-    # Va = ... # LG, complete
-    # Va = ... # LL, complete
-    # Va = ... # LLG, complete
+    Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
+    # Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # LG
+    # Va = Vth_a + (x[0] + 1j * x[1]) * (Z1 + Z2)  # LL
+    # Va = Vth_a + (x[0] + 1j * x[1]) * (Z1 + Z2)  # LLG
+
     return Va
 
 def Vb(x):
-    Vb = 1 / (Zf + Z2) * (Vth_b * Zf + (x[2] + 1j * x[3]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))
-    # Vb = ... # LG, complete
-    # Vb = ... # LL, complete
-    # Vb = ... # LLG, complete
+    Vb = 1 / (Zf + Z2) * (Vth_b * Zf + (x[2] + 1j * x[3]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
+    # Vb = Vth_b + (x[2] + 1j * x[3]) * (Z1 + Z2)  # LG
+    # Vb = (x[2] + 1j * x[3]) * Z1 + 1 / ((Zf + Z2) * (Zf + 2 * Z2)) * ((x[2] + 1j * x[3]) * (Z2 * Zf * Zf + 2 * Z2 * Z2 * Zf + Z2 * Z2 * Z2) + (x[4] + 1j * x[5]) * (Z2 * Z2 * Zf + Z2 * Z2 * Z2) + Vth_b * (Zf * Zf + 2 * Zf * Z2 + Z2 * Z2) + Vth_c * (Z2 * Zf + Z2 * Z2))  # LL
+    # Vb = (x[2] + 1j * x[3]) * Z1 + (Z2 * Zf * (x[2] + 1j * x[3] + x[4] + 1j * x[5]) + Zf * (Vth_b + Vth_c)) / (2 * Zf + Z2)  # LLG
+
     return Vb
 
 def Vc(x):
-    Vc = 1 / (Zf + Z2) * (Vth_c * Zf + (x[4] + 1j * x[5]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))
-    # Vc = ... # LG, complete
-    # Vc = ... # LL, complete
-    # Vc = ... # LLG, complete
+    Vc = 1 / (Zf + Z2) * (Vth_c * Zf + (x[4] + 1j * x[5]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
+    # Vc = Vth_c + (x[4] + 1j * x[5]) * (Z1 + Z2)  # LG
+    # Vc = (x[4] + 1j * x[5]) * Z1 + 1 / (Zf + 2 * Z2) * ((x[4] + 1j * x[5]) * (Z2 * (Zf + Z2)) + Vth_c * (Zf + Z2) + (x[2] + 1j * x[3]) * Z2 * Z2 + Vth_b * Z2)  # LL
+    # Vc = (x[4] + 1j * x[5]) * Z1 + (Z2 * Zf * (x[2] + 1j * x[3] + x[4] + 1j * x[5]) + Zf * (Vth_b + Vth_c)) / (2 * Zf + Z2)  # LLG
+
     return Vc
 
 def V0(x):
@@ -108,7 +110,10 @@ def g3(x):
     return Imax - np.sqrt(x[4] ** 2 + x[5] ** 2)
 
 def g4(x):
-    return sum(x)
+    return x[0] + x[2] + x[4]
+
+def g5(x):
+    return x[1] + x[3] + x[5]
 
 
 x0 = [Ia_re0, Ia_im0, Ib_re0, Ib_im0, Ic_re0, Ic_im0]
@@ -118,7 +123,8 @@ con1 = {'type': 'ineq', 'fun': g1}
 con2 = {'type': 'ineq', 'fun': g2}
 con3 = {'type': 'ineq', 'fun': g3}
 con4 = {'type': 'eq', 'fun': g4}
-cons = [con1, con2, con3, con4]
+con5 = {'type': 'eq', 'fun': g5}
+cons = [con1, con2, con3, con4, con5]
 
 sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons)
 Iopt = sol.x
@@ -136,6 +142,7 @@ Vbf = Vb(Iopt)
 Vcf = Vc(Iopt)
 Vabcf = np.array([Vaf, Vbf, Vcf])
 print('--------')
+print('|Vabc| voltages: ', abs(Vabcf))
 print('|V012| voltages: ', abs(V012f))
 
 ang_shift = np.angle(Vaf)
@@ -144,6 +151,7 @@ Ibf = Ibf * np.exp(- 1j * ang_shift)
 Icf = Icf * np.exp(- 1j * ang_shift)
 Iabc = np.array([Iaf, Ibf, Icf])
 I012 = Vabc_to_012(Iabc)
+print('Iabc currents: ', Iabc)
 print('I012 currents: ', I012)
 
 
