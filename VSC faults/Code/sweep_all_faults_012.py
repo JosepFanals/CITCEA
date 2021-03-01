@@ -155,7 +155,7 @@ for kk in range(n_iter):
                 Ic = Iabc[2]
                 if not abs(Ia) > Imax and not abs(Ib) > Imax and not abs(Ic) > Imax:   
                     
-                    V012 = fV012_LG(I012)
+                    V012 = fV012_LL(I012)
                     Vabc = V012_to_abc(V012)
                     ang_shift = np.angle(Vabc[0])
                     Va_vec.append(Vabc[0] * np.exp(- 1j * ang_shift))
