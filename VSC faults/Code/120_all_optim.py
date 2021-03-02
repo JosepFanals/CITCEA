@@ -130,7 +130,7 @@ con4 = {'type': 'eq', 'fun': g4}
 con5 = {'type': 'eq', 'fun': g5}
 cons = [con1, con2, con3]
 
-sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons, options={'ftol':1e-15})
+sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons, options={'ftol':1e-10})
 Iopt = sol.x
 I0f = 0
 I1f = Iopt[0] + 1j * Iopt[1]

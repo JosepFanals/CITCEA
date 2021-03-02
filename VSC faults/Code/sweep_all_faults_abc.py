@@ -1,6 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+from math import *
 
+
+def progress_bar(i, n, size):
+    percent = float(i) / float(n)
+    sys.stdout.write("\r" + str(int(i)).rjust(3,'0') + "/" + str(int(n)).rjust(3, '0') + ' [' + '='*ceil(percent*size) + ' '*floor((1-percent)*size) + ']')
+   
 
 def Vabc_to_012(Vabc):
     T = np.zeros((3,3), dtype=complex)
@@ -155,7 +162,7 @@ for kk in range(n_iter):
                     Ib = Ib_re + 1j * Ib_im
                     Ic = Ic_re + 1j * Ic_im
                     Iabc = np.array([Ia, Ib, Ic])
-                    Vabc = fVabc_balanced(Iabc)  # change the function accordingly
+                    Vabc = fVabc_LL(Iabc)  # change the function accordingly
                     ang_shift = np.angle(Vabc[0])
 
                     Ia_vec.append(Iabc[0] * np.exp(- 1j * ang_shift))
@@ -178,9 +185,7 @@ for kk in range(n_iter):
 
                     compt += 1
 
-    n_compt += 1
-    percent = n_compt / n_points * 100
-    print(str(round(percent, 2)))
+    progress_bar(kk, n_iter, 50)
 
 V0_abs_vec = []
 V1_abs_vec = []
@@ -208,12 +213,39 @@ for kk in range(compt):
 print('Objective function: ', V_obj_min)
 print('abc currents: ', Ia_vec[ind_min], Ib_vec[ind_min], Ic_vec[ind_min])
 print('012 currents: ', I0_vec[ind_min], I1_vec[ind_min], I2_vec[ind_min])
-print('abc voltages: ', Va_vec[ind_min], Vb_vec[ind_min], Vc_vec[ind_min])
+print('|abc voltages|: ', abs(Va_vec[ind_min]), abs(Vb_vec[ind_min]), abs(Vc_vec[ind_min]))
 print('|012 voltages|: ', V0_abs_vec[ind_min], V1_abs_vec[ind_min], V2_abs_vec[ind_min])
 
-plt.scatter(V1_abs_vec, V2_abs_vec, s=0.5)
-plt.xlabel('|V+|')
-plt.ylabel('|V-|')
-plt.show()
+# plt.scatter(V1_abs_vec, V2_abs_vec, s=0.5)
+# plt.xlabel('|V+|')
+# plt.ylabel('|V-|')
+# plt.show()
 
-# references shift
+
+fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3, 2)
+
+ax1.plot(np.real(Ia_vec), V_obj_vec, '.', markersize = 1)
+ax1.set_xlabel('Ia_re')
+ax1.set_ylabel('f')
+
+ax2.plot(np.imag(Ia_vec), V_obj_vec, '.', markersize = 1)
+ax2.set_xlabel('Ia_im')
+ax2.set_ylabel('f')
+
+ax3.plot(np.real(Ib_vec), V_obj_vec, '.', markersize = 1)
+ax3.set_xlabel('Ib_re')
+ax3.set_ylabel('f')
+
+ax4.plot(np.imag(Ib_vec), V_obj_vec, '.', markersize = 1)
+ax4.set_xlabel('Ib_im')
+ax4.set_ylabel('f')
+
+ax5.plot(np.real(Ic_vec), V_obj_vec, '.', markersize = 1)
+ax5.set_xlabel('Ic_re')
+ax5.set_ylabel('f')
+
+ax6.plot(np.imag(Ic_vec), V_obj_vec, '.', markersize = 1)
+ax6.set_xlabel('Ic_im')
+ax6.set_ylabel('f')
+
+plt.show()

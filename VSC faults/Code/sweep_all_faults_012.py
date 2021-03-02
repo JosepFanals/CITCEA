@@ -1,6 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+from math import *
 
+
+def progress_bar(i, n, size):
+    percent = float(i) / float(n)
+    sys.stdout.write("\r" + str(int(i)).rjust(3,'0') + "/" + str(int(n)).rjust(3, '0') + ' [' + '='*ceil(percent*size) + ' '*floor((1-percent)*size) + ']')
+    
 
 def Vabc_to_012(Vabc):
     T = np.zeros((3,3), dtype=complex)
@@ -178,9 +185,7 @@ for kk in range(n_iter):
 
                     compt += 1
 
-    n_compt += 1
-    percent = n_compt / n_points * 100
-    print(str(round(percent, 2)))
+    progress_bar(kk, n_iter, 50)
 
 V0_abs_vec = []
 V1_abs_vec = []
@@ -204,17 +209,36 @@ for kk in range(compt):
     if V_obj_min == V_object:
         ind_min = kk
 
-
+print('\n')
 print('Objective function: ', V_obj_min)
 print('abc currents: ', Ia_vec[ind_min], Ib_vec[ind_min], Ic_vec[ind_min])
 print('012 currents: ', I0_vec[ind_min], I1_vec[ind_min], I2_vec[ind_min])
-print('abc voltages: ', Va_vec[ind_min], Vb_vec[ind_min], Vc_vec[ind_min])
+print('|abc voltages|: ', abs(Va_vec[ind_min]), abs(Vb_vec[ind_min]), abs(Vc_vec[ind_min]))
 print('|012 voltages|: ', V0_abs_vec[ind_min], V1_abs_vec[ind_min], V2_abs_vec[ind_min])
 
 
-plt.scatter(V1_abs_vec, V2_abs_vec, s=1)
-plt.xlabel('|V+|')
-plt.ylabel('|V-|')
+# plt.scatter(V_obj_vec, V2_abs_vec, s=1)
+# plt.xlabel('|V+|')
+# plt.ylabel('|V-|')
+# plt.show()
+
+
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)
+
+ax1.plot(np.real(I1_vec), V_obj_vec, '.', markersize = 1)
+ax1.set_xlabel('I1_re')
+ax1.set_ylabel('f')
+
+ax2.plot(np.imag(I1_vec), V_obj_vec, '.', markersize = 1)
+ax2.set_xlabel('I1_im')
+ax2.set_ylabel('f')
+
+ax3.plot(np.real(I2_vec), V_obj_vec, '.', markersize = 1)
+ax3.set_xlabel('I2_re')
+ax3.set_ylabel('f')
+
+ax4.plot(np.imag(I2_vec), V_obj_vec, '.', markersize = 1)
+ax4.set_xlabel('I2_im')
+ax4.set_ylabel('f')
+
 plt.show()
-
-
