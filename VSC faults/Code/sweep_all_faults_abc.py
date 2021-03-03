@@ -162,7 +162,7 @@ for kk in range(n_iter):
                     Ib = Ib_re + 1j * Ib_im
                     Ic = Ic_re + 1j * Ic_im
                     Iabc = np.array([Ia, Ib, Ic])
-                    Vabc = fVabc_LL(Iabc)  # change the function accordingly
+                    Vabc = fVabc_balanced(Iabc)  # change the function accordingly
                     ang_shift = np.angle(Vabc[0])
 
                     Ia_vec.append(Iabc[0] * np.exp(- 1j * ang_shift))
