@@ -33,7 +33,7 @@ K_im = np.imag(K)
 T_re = np.real(T)
 T_im = np.imag(T)
 
-lam_1 = 1  # weight to positive sequence
+lam_1 = 10  # weight to positive sequence
 lam_2 = 1  # weight to negative sequence
 
 Ia_re0 = 0.1
@@ -61,24 +61,24 @@ def Vabc_to_012(Vabc):
     return V012
 
 def Va(x):
-    Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
-    # Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # LG
+    # Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
+    Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # LG
     # Va = Vth_a + (x[0] + 1j * x[1]) * (Z1 + Z2)  # LL
     # Va = Vth_a + (x[0] + 1j * x[1]) * (Z1 + Z2)  # LLG
 
     return Va
 
 def Vb(x):
-    Vb = 1 / (Zf + Z2) * (Vth_b * Zf + (x[2] + 1j * x[3]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
-    # Vb = Vth_b + (x[2] + 1j * x[3]) * (Z1 + Z2)  # LG
+    # Vb = 1 / (Zf + Z2) * (Vth_b * Zf + (x[2] + 1j * x[3]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
+    Vb = Vth_b + (x[2] + 1j * x[3]) * (Z1 + Z2)  # LG
     # Vb = (x[2] + 1j * x[3]) * Z1 + 1 / ((Zf + Z2) * (Zf + 2 * Z2)) * ((x[2] + 1j * x[3]) * (Z2 * Zf * Zf + 2 * Z2 * Z2 * Zf + Z2 * Z2 * Z2) + (x[4] + 1j * x[5]) * (Z2 * Z2 * Zf + Z2 * Z2 * Z2) + Vth_b * (Zf * Zf + 2 * Zf * Z2 + Z2 * Z2) + Vth_c * (Z2 * Zf + Z2 * Z2))  # LL
     # Vb = (x[2] + 1j * x[3]) * Z1 + (Z2 * Zf * (x[2] + 1j * x[3] + x[4] + 1j * x[5]) + Zf * (Vth_b + Vth_c)) / (2 * Zf + Z2)  # LLG
 
     return Vb
 
 def Vc(x):
-    Vc = 1 / (Zf + Z2) * (Vth_c * Zf + (x[4] + 1j * x[5]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
-    # Vc = Vth_c + (x[4] + 1j * x[5]) * (Z1 + Z2)  # LG
+    # Vc = 1 / (Zf + Z2) * (Vth_c * Zf + (x[4] + 1j * x[5]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
+    Vc = Vth_c + (x[4] + 1j * x[5]) * (Z1 + Z2)  # LG
     # Vc = (x[4] + 1j * x[5]) * Z1 + 1 / (Zf + 2 * Z2) * ((x[4] + 1j * x[5]) * (Z2 * (Zf + Z2)) + Vth_c * (Zf + Z2) + (x[2] + 1j * x[3]) * Z2 * Z2 + Vth_b * Z2)  # LL
     # Vc = (x[4] + 1j * x[5]) * Z1 + (Z2 * Zf * (x[2] + 1j * x[3] + x[4] + 1j * x[5]) + Zf * (Vth_b + Vth_c)) / (2 * Zf + Z2)  # LLG
 

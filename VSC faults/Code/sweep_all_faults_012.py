@@ -162,7 +162,7 @@ for kk in range(n_iter):
                 Ic = Iabc[2]
                 if not abs(Ia) > Imax and not abs(Ib) > Imax and not abs(Ic) > Imax:   
                     
-                    V012 = fV012_balanced(I012)  # change the function accordingly
+                    V012 = fV012_LG(I012)  # change the function accordingly
                     Vabc = V012_to_abc(V012)
                     ang_shift = np.angle(Vabc[0])
                     Va_vec.append(Vabc[0] * np.exp(- 1j * ang_shift))
@@ -223,11 +223,13 @@ print('|012 voltages|: ', V0_abs_vec[ind_min], V1_abs_vec[ind_min], V2_abs_vec[i
 # plt.show()
 
 
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)
+fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6)) = plt.subplots(3, 2)
 
 ax1.plot(np.real(I1_vec), V_obj_vec, '.', markersize = 1)
 ax1.set_xlabel('I1_re')
 ax1.set_ylabel('f')
+
+ax5.plot(np.real(I1_vec[ind_min]), V_obj_vec[ind_min])
 
 ax2.plot(np.imag(I1_vec), V_obj_vec, '.', markersize = 1)
 ax2.set_xlabel('I1_im')
