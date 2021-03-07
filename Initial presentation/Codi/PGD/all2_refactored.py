@@ -191,12 +191,12 @@ def init_apparent_powers_decomposition(n_buses, n_scale, P_pq, Q_pq, Qmin, Qmax)
     # ----------
     # SKk1 = np.zeros(n_buses, dtype=complex)
     # SKk1[0] = Qmax * 1j
-    SKk1 = 1 * np.random.rand(n_buses)  # generator of random active power
+    SKk1 = 0.1 * np.random.rand(n_buses)  # generator of random active power
     SPp1 = np.zeros(n_buses)
 
     # for ii in range(2, n_buses):
     for ii in range(n_buses):  # only a few buses
-        SPp1[ii] = ii / n_buses  # for instance
+        SPp1[ii] = ii / n_buses * 0.1  # for instance
     SQq1 = np.arange(Qmin, Qmax, Qmax / n_scale)
 
     SSk[1, :] = np.conj(SKk1)
@@ -431,3 +431,6 @@ if __name__ == '__main__':
 
     v_map_, s_map_, i_map_ = pgd('data_10PQ.xlsx', n_gg=5, n_mm=8, n_kk=10, n_scale=100)
     # v_map_, s_map_, i_map_ = pgd('data_10PQ.xlsx', n_gg=20, n_mm=20, n_kk=20, n_scale=1001)
+
+df_V = pd.DataFrame(v_map_)
+print(df_V)

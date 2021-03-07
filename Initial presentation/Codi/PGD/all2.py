@@ -133,7 +133,7 @@ SSk = []
 SSp = []
 SSq = []
 n_buses = np.shape(Y)[0]  # number of buses
-n_scale = 1001  # number of discretized points, arbitrary
+n_scale = 101  # number of discretized points, arbitrary
 Qmax = 1.00  # maximum reactive power of the capacitor
 Qmin = 0  # minimum reactive power of the capacitor
 
@@ -145,7 +145,7 @@ SSk.append(np.conj(SKk0))
 SSp.append(np.conj(SPp0))
 SSq.append(np.conj(SQq0))
 
-print(SSk)
+# print(SSk)
 
 # go over all positions where we could have a capacitor (from bus 2 to 102)
 """
@@ -174,7 +174,7 @@ SSk.append(np.conj(SKk1))
 SSp.append(np.conj(SPp1))
 SSq.append(np.conj(SQq1))
 
-print(SSk)
+# print(SSk)
 # ----------
 
 
@@ -299,11 +299,16 @@ for gg in range(n_gg):  # outer loop
 
             IIq1 = RHSq / LHSq
 
-            if gg == 0 and mm == 0 and kk >= 0:
-                print(IIk1[:10])
+            # if gg == 0 and mm == 0 and kk >= 0:
+            #     print('i')
+            #     print(IIk1[0])
                 # print(IIp1[:10])
                 # print(IIq1[:10])
 
+
+        # if gg == 0:
+        #     print('m')
+        #     print(IIk1[0])
 
         IIk.append(IIk1)
         IIp.append(IIp1)
@@ -363,5 +368,5 @@ for i in range(n_buses):
     S_map_df.to_excel(writer, sheet_name=str(i))
 writer.save()
 
-print(np.shape(SSk))
-print(n_buses)
+# print(np.shape(SSk))
+# print(n_buses)
