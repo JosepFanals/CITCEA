@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 from math import *
+import pandas as pd
 
 
 def progress_bar(i, n, size):
@@ -117,7 +118,7 @@ I1_im = 0
 I2_re = 0
 I2_im = 0
 
-n_iter = 40
+n_iter = 20
 compt = 0
 
 Ia_vec = []
@@ -162,7 +163,7 @@ for kk in range(n_iter):
                 Ic = Iabc[2]
                 if not abs(Ia) > Imax and not abs(Ib) > Imax and not abs(Ic) > Imax:   
                     
-                    V012 = fV012_LG(I012)  # change the function accordingly
+                    V012 = fV012_LLG(I012)  # change the function accordingly
                     Vabc = V012_to_abc(V012)
                     ang_shift = np.angle(Vabc[0])
                     Va_vec.append(Vabc[0] * np.exp(- 1j * ang_shift))
@@ -244,3 +245,22 @@ ax4.set_xlabel('I2_im')
 ax4.set_ylabel('f')
 
 plt.show()
+
+def make_csv(x_vec, y_vec, a_vec, file_name):
+    df = pd.DataFrame(data=[x_vec, y_vec, a_vec]).T
+    df.columns = ['x', 'y', 'label']
+    df.to_csv(file_name, index=False)
+
+a_vec = np.full(len(V_obj_vec), 'a')
+b_vec = 'b'
+
+make_csv(np.real(I1_vec), V_obj_vec, a_vec, 'Data/I1_re_LLG.csv')
+make_csv(np.imag(I1_vec), V_obj_vec, a_vec, 'Data/I1_im_LLG.csv')
+make_csv(np.real(I2_vec), V_obj_vec, a_vec, 'Data/I2_re_LLG.csv')
+make_csv(np.imag(I2_vec), V_obj_vec, a_vec, 'Data/I2_im_LLG.csv')
+
+# make_csv(np.real(I1_vec[ind_min]), V_obj_vec[ind_min], b_vec, 'Data/I1_re_3x_2.csv')
+# make_csv(np.imag(I1_vec[ind_min]), V_obj_vec[ind_min], b_vec, 'Data/I1_im_3x_2.csv')
+# make_csv(np.real(I2_vec[ind_min]), V_obj_vec[ind_min], b_vec, 'Data/I2_re_3x_2.csv')
+# make_csv(np.imag(I2_vec[ind_min]), V_obj_vec[ind_min], b_vec, 'Data/I2_im_3x_2.csv')
+

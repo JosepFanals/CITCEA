@@ -33,7 +33,7 @@ K_im = np.imag(K)
 T_re = np.real(T)
 T_im = np.imag(T)
 
-lam_1 = 10  # weight to positive sequence
+lam_1 = 1  # weight to positive sequence
 lam_2 = 1  # weight to negative sequence
 
 Ia_re0 = 0.1
