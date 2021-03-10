@@ -1,0 +1,289 @@
+\section{Variable resistance/inductance ratio}
+In this section we try to answer to the question of what happens when the $R/X$ ratio varies. This way we experiment with cases where the resistive part is considerably larger than in the aforementioned anlysis. The fault impedance $\underline{Z}_f$ has been set at $0.1$, which is probably more realistic than $0.0 + 0.1j$. 
+
+\subsection{Balanced fault}
+Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0,0.1,...,0.4}, axis line style = very thick]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_3x.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_3x.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_3x.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_3x.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_3x.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_3x.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = very thick]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_3x.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_3x.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=5.5cm}
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ymin = -0.0, ymax=0.25, ytick={0,0.05,...,0.25}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_3x.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_3x.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault and a changing $R/X$ ratio. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:3x1_c}
+  \end{figure}
+
+\subsection{Line to ground fault}
+Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground fault.
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.9cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick, ytick={-0.1,-0.05,...,0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LG.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.9cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LG.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.9cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.1, ymax=0.8, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LG.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.9cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.6, ymax=0.1, axis line style = very thick]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LG.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LG.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=5.9cm}
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0,0.025,...,0.15}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LG.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LG.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to ground fault and a changing $R/X$ ratio. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LGx1_c}
+  \end{figure}
+
+\subsection{Line to line fault}
+Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.0cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick, ytick={0,0.05,...,0.3}, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LL.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LL.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LL.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LL.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LL.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LL.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=6.0cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0.1,0.2,...,0.6}, axis line style = very thick]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LL.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LL.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=6cm}
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.8)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.38,0.39,...,0.45}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LL.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LL.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to line fault and a changing $R/X$ ratio. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LLx1_c}
+  \end{figure}
+
+\subsection{Double line to ground fault}
+Figure \ref{fig:LLGx1_c} depicts the optimal currents for the balanced fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.0cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0,0.01,...,0.05}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, scaled y ticks=false]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LLG.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LLG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-0.5775,-0.5770,...,-0.5750}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LLG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LLG.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-0.05,-0.04,...,0}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, scaled y ticks=false]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LLG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LLG.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=6.0cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0.5750,0.5755,...,0.5780}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LLG.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LLG.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=6cm}
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, ytick={0.8840,0.8841,...,0.8844}, axis line style = very thick]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LLG.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LLG.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the double line to ground fault and a changing $R/X$ ratio. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LLGx1_c}
+  \end{figure}

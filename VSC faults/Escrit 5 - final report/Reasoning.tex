@@ -6,6 +6,7 @@
 
 % \usepackage[backend=bibtex, sorting=none]{biblatex} % per la bibliografia
 \usepackage[style=numeric]{biblatex}
+\bibliographystyle{ieeetr}
 % \setlength\bibitemsep{\baselineskip} % per tenir més espai entre bibliografia
 \addbibresource{bib.bib} % carregar el fitxer de bibliografia
 \usepackage{bm}
@@ -43,7 +44,7 @@ Grid faults constitute a group of unfortunate events that cause severe perturbat
 
 Transmission System Operators (TSO) are responsible for imposing requirements related to the operation under voltage sags to generators and converters \cite{tsili2009review, iov2007mapping}. Such requirements are gathered in the respective grid codes. There seems to be no clear consensus on how to restore the voltage. In this sense, even if for instance the Low Voltage Ride Through (LVRT) profiles present similarities \cite{conroy2007low}, analysis aimed at determining analytically the optimal injection of positive and negative sequence currents are not numerous. As far as we are aware, only Camacho et al. offer an optimal solution regarding the injection of active and reactive powers \cite{camacho2017positive}. 
 
-Consequently, this work focuses on finding the most convenient positive and negative sequence currents (and not powers) to raise the voltage at the point of common coupling. First, a simple model is discussed, and then, the results are shown together with the corresponding discussion. Despite the elegancy found in closed-form expressions, we obtain the optimal operating point by either computational brute force or an iterative process with the help of the SciPy library. The expressions regarding the several types of fault studied as well as its corresponent diagrams are shown in the appendix. 
+Consequently, this work focuses on finding the most convenient positive and negative sequence currents (and not powers) to improve the voltage at the point of common coupling. First, a simple model is presented, and then, the results are shown together with the corresponding discussion. Despite the elegancy found in closed-form expressions, we obtain the optimal operating point by either computational brute force or an iterative process with the help of the SciPy library. The expressions regarding the several types of fault studied as well as its corresponding diagrams are shown in the appendix.
 
 \section{Definition of the system}
 The system we are considering is formed by an ideal grid (only positive sequence voltage is present) coupled to a VSC. The model is depicted in Figure \ref{fig:sys_p}. The VSC will be controlled in a way that leads to an improvement in the voltage at the PCC.
@@ -371,6 +372,8 @@ However, this time it has been checked that there is only one point that minimiz
 \subsection{Double line to ground fault}
 The double line to ground fault is likely to be the most severe in terms of voltage. It was found to be present the more distant voltages from the references, as shown in \cite{taul2020modeling}. By nature, this fault is defined by a solid line to line connection and also a link between the two faulted phases with an impedance. Figure \ref{fig:LLGx1} reveals that minimum of $f$ falls considerably far from the ideal zero. 
 
+The double line to ground fault has many similarities with the line to line fault. First of all, the distribution of dots for the brute force computations is similar. Secondly, the optimal currents do not differ much from the ones obtained in Figure \ref{fig:LLx1}. All this could be deduced from its sequence representation. The same logic applies: the negative sequence current mirrors the positive sequence.
+
 \begin{figure}[!htb]\centering \footnotesize
   \begin{subfigure}[!htb]{.4\textwidth}
     \centering
@@ -424,8 +427,6 @@ The double line to ground fault is likely to be the most severe in terms of volt
   \caption{Influence of the currents on the objective function for the double line to ground fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
   \label{fig:LLGx1}
 \end{figure}
-The double line to ground fault has many similarities with the line to line fault. First of all, the distribution of dots for the brute force computations is similar. Secondly, the optimal currents do not differ much from the ones obtained in Figure \ref{fig:LLx1}. All this could be deduced from its sequence representation. The same logic applies: the negative sequence current mirrors the positive sequence.
-
 Again, only injecting reactive currents (ROPF case) has been experimentally proved to become a suboptimal yet highly convenient choice. The objective functions present tiny variations in this case. Even though the real currents in both sequence differ a bit, for the imaginary ones the OPT and the ROPT computations generate almost the same value. Therefore, the injection of real currents becomes secondary for highly inductive impedances. Table \ref{tab:results} gathers the numerical results for all the studied faults.
 
 \begin{table}[!htb] \centering
@@ -444,11 +445,10 @@ Again, only injecting reactive currents (ROPF case) has been experimentally prov
 \end{table}
 
 
-
 \section{Conclusion}
 This study has covered the analysis of a simple system to determine the optimal currents that ought to be injected to raise the positive sequence voltage and decrease the negative sequence voltage in case of a fault. Four types of faults have been considered. Despite the particularities, since the system is mainly inductive, the optimal active currents tend to be close to zero, while the optimal reactive currents become substantial. As a direct consequence, we conclude by saying that injecting only reactive powers, as imposed by the grid codes, is likely to be a near-optimal strategy for systems where lines are highly inductive. 
 
-In addition to that, this work proposes two methodologies to arrive to the optimal solution. One consists of computing combinations where currents can take a wide range of values. When the intervals are small enough, such computationally intensive approach matches with the solution coming from solving directly the optimization problem. The results indicate that the double line to ground fault is the hardest in terms of minimizing the objective function. Besides, we have shown the presence of multiple optimal points for the line to ground fault. 
+In addition to that, this work proposes two methodologies to arrive to the optimal solution. One consists of computing combinations where currents can take a wide range of values. When the intervals are small enough, such computationally intensive approach matches with the solution coming from solving directly the optimization problem. The results indicate that the double line to ground fault is the hardest in terms of minimizing the objective function. Besides, we have discussed the presence of multiple optimal points for the line to ground fault. 
 
 \newpage
 \printbibliography

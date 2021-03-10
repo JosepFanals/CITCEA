@@ -163,7 +163,7 @@ for kk in range(n_iter):
                 Ic = Iabc[2]
                 if not abs(Ia) > Imax and not abs(Ib) > Imax and not abs(Ic) > Imax:   
                     
-                    V012 = fV012_LLG(I012)  # change the function accordingly
+                    V012 = fV012_balanced(I012)  # change the function accordingly
                     Vabc = V012_to_abc(V012)
                     ang_shift = np.angle(Vabc[0])
                     Va_vec.append(Vabc[0] * np.exp(- 1j * ang_shift))
@@ -254,10 +254,10 @@ def make_csv(x_vec, y_vec, a_vec, file_name):
 a_vec = np.full(len(V_obj_vec), 'a')
 b_vec = 'b'
 
-make_csv(np.real(I1_vec), V_obj_vec, a_vec, 'Data/I1_re_LLG.csv')
-make_csv(np.imag(I1_vec), V_obj_vec, a_vec, 'Data/I1_im_LLG.csv')
-make_csv(np.real(I2_vec), V_obj_vec, a_vec, 'Data/I2_re_LLG.csv')
-make_csv(np.imag(I2_vec), V_obj_vec, a_vec, 'Data/I2_im_LLG.csv')
+make_csv(np.real(I1_vec), V_obj_vec, a_vec, 'Data/2I1_re_3x.csv')
+make_csv(np.imag(I1_vec), V_obj_vec, a_vec, 'Data/2I1_im_3x.csv')
+make_csv(np.real(I2_vec), V_obj_vec, a_vec, 'Data/2I2_re_3x.csv')
+make_csv(np.imag(I2_vec), V_obj_vec, a_vec, 'Data/2I2_im_3x.csv')
 
 # make_csv(np.real(I1_vec[ind_min]), V_obj_vec[ind_min], b_vec, 'Data/I1_re_3x_2.csv')
 # make_csv(np.imag(I1_vec[ind_min]), V_obj_vec[ind_min], b_vec, 'Data/I1_im_3x_2.csv')

@@ -1,0 +1,289 @@
+\section{Submarine cable}
+We now deal with a submarine cable, which is modelled with a $\pi$ equivalent, where the series impedance is still $\underline{Z}_a$ while the parallel impedance is $\underline{Z}_c=-jX_c$. As follows, we sweep across $X_c$.
+
+\subsection{Balanced fault}
+Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.05,...,0.25}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_re_3x.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_re_3x.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.995,...,-0.975}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_im_3x.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_im_3x.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymin = -0.2, ymax=0.2, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_re_3x.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_re_3x.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymin = -0.2, ymax=0.2, axis line style = very thick]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_im_3x.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_im_3x.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=5.5cm}
+                    \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/ff_3x.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/Rff_3x.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:3x1_s}
+  \end{figure}
+
+\subsection{Line to ground fault}
+Figure \ref{fig:LGx1_s} depicts the optimal currents for the line to ground fault.
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.9cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0,0.02,...,0.1}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_re_LG.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_re_LG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.9cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-0.8,-0.7,...,-0.3}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_im_LG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_im_LG.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.9cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = very thick, scaled y ticks=false, yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_re_LG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_re_LG.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.9cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-0.7,-0.6,...,-0.2}, axis line style = very thick]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_im_LG.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_im_LG.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=5.9cm}
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, ytick={0.13,0.14,...,0.17}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/ff_LG.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/Rff_LG.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to ground fault and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LGx1_s}
+  \end{figure}
+
+\subsection{Line to line fault}
+Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.0cm}
+              \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymax = 0.2, ymin=-0.2, axis line style = very thick, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_re_LL.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_re_LL.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_im_LL.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_im_LL.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_re_LL.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_re_LL.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=6.0cm}
+                  \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_im_LL.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_im_LL.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=6cm}
+                    \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/ff_LL.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/Rff_LL.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to line fault and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LLx1_s}
+  \end{figure}
+
+\subsection{Double line to ground fault}
+Figure \ref{fig:LLGx1_s} depicts the optimal currents for the balanced fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.0cm}
+              \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  xtick={0,20,...,100}, ytick={-0.01,-0.0075,...,0}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks=false]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_re_LLG.csv};
+              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_re_LLG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = very thick]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_im_LLG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_im_LLG.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, scaled y ticks=false]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_re_LLG.csv};
+                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_re_LLG.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=6.0cm}
+                  \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.01,0.04,...,0.16}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled y ticks=false]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_im_LLG.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_im_LLG.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=6cm}
+                    \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, ytick={0.2,0.21,...,0.24}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = very thick]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/ff_LLG.csv};
+                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/Rff_LLG.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the double line to ground fault and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LLGx1_s}
+  \end{figure}

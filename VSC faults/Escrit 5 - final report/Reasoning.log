@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  8 MAR 2021 23:36
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  9 MAR 2021 08:52
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 5 - final report/Reasoning"
@@ -407,7 +407,21 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/biblatex.cfg
 File: biblatex.cfg 
-)) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/bm.sty
+))
+
+c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 5 - final report/Reasoning.tex:
+9: Package biblatex Error: '\bibliographystyle' invalid.
+
+See the biblatex package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 \bibliographystyle{ieeetr}
+                            
+Use the package option 'style' instead.
+I'm ignoring this command.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/bm.sty
 Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup4
 \symboldletters=\mathgroup5
@@ -1160,31 +1174,30 @@ Package caption Info: Standard document class detected.
 \@quotelevel=\count430
 \@quotereset=\count431
 
-(./Reasoning.aux)
+No file Reasoning.aux.
+
 \openout1 = Reasoning.aux
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 27
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 28
 .
-
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -1234,12 +1247,12 @@ Package biblatex Info: Automatic encoding selection.
 
 \openout3 = Reasoning.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'Reasoning.bbl' found.
- (./Reasoning.bbl)
-Package biblatex Info: Reference section=0 on input line 27.
-Package biblatex Info: Reference segment=0 on input line 27.
-LaTeX Info: Redefining \microtypecontext on input line 27.
+Package biblatex Info: ... file 'Reasoning.bbl' not found.
 
+No file Reasoning.bbl.
+Package biblatex Info: Reference section=0 on input line 28.
+Package biblatex Info: Reference segment=0 on input line 28.
+LaTeX Info: Redefining \microtypecontext on input line 28.
 
 Package microtype Warning: `draft' option active.
 (microtype)                Disabling all micro-typographic extensions.
@@ -1272,287 +1285,279 @@ Package pgfplots notification 'compat/show suggested version=true': document has
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
+
+LaTeX Warning: Citation 'anees2012grid' on page 1 undefined on input line 43.
+
+
+LaTeX Warning: Citation 'abdou2013improving' on page 1 undefined on input line 4
+3.
+
+
+LaTeX Warning: Citation 'tsili2009review' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Citation 'iov2007mapping' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Citation 'conroy2007low' on page 1 undefined on input line 45.
+
+
+LaTeX Warning: Citation 'camacho2017positive' on page 1 undefined on input line 
+45.
+
+
+LaTeX Warning: Reference `fig:sys_p' on page 1 undefined on input line 50.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
 
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+
+LaTeX Warning: Reference `fig:sys_p' on page 1 undefined on input line 75.
+
 [1
 
-{C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
-Package pgfplots info on input line 154: Using 'lua backend=false' for plot 0 (t
+{C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+
+LaTeX Warning: Citation 'camacho2017positive' on page 2 undefined on input line 
+77.
+
+
+LaTeX Warning: Citation 'fortescue1918method' on page 2 undefined on input line 
+100.
+
+
+LaTeX Warning: Citation 'tsili2009review' on page 2 undefined on input line 102.
+
+
+
+LaTeX Warning: Citation 'altin2010overview' on page 2 undefined on input line 10
+2.
+
+
+LaTeX Warning: Citation 'serban2016voltage' on page 2 undefined on input line 10
+2.
+
+
+LaTeX Warning: Citation 'camacho2012flexible' on page 2 undefined on input line 
+104.
+
+
+LaTeX Warning: Citation 'camacho2017positive' on page 2 undefined on input line 
+104.
+
+
+LaTeX Warning: Reference `eq:optProb' on page 2 undefined on input line 104.
+
+
+LaTeX Warning: Reference `eq:constraint1' on page 2 undefined on input line 104.
+
+
+[2]
+
+LaTeX Warning: Reference `tab:val' on page 3 undefined on input line 115.
+
+
+LaTeX Warning: Reference `tab:val' on page 3 undefined on input line 135.
+
+
+LaTeX Warning: Citation 'kothari2003modern' on page 3 undefined on input line 13
+9.
+
+
+LaTeX Warning: Reference `fig:3x1' on page 3 undefined on input line 141.
+
+[3]
+Package pgfplots info on input line 155: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 154: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 155: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/I1_re_3x.csv}
-Package pgfplots info on input line 155: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 156: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I1_re_3x_2.csv}
-Package pgfplots info on input line 156: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 157: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I1_re_3x_3.csv}
-Package pgfplots info on input line 167: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 168: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 167: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 168: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/I1_im_3x.csv}
-Package pgfplots info on input line 168: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 169: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I1_im_3x_2.csv}
-Package pgfplots info on input line 169: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 170: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I1_im_3x_3.csv}
-Package pgfplots info on input line 180: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 181: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 180: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 181: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/I2_re_3x.csv}
-Package pgfplots info on input line 181: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 182: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I2_re_3x_3.csv}
-Package pgfplots info on input line 182: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 183: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I2_re_3x_2.csv}
-Package pgfplots info on input line 192: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 193: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 192: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 193: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/I2_im_3x.csv}
-Package pgfplots info on input line 193: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 194: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I2_im_3x_3.csv}
-Package pgfplots info on input line 194: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 195: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I2_im_3x_2.csv}
- [3]
 
-LaTeX Warning: Reference `fig::LGx1' on page 4 undefined on input line 255.
 
-Package pgfplots info on input line 263: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 263: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_re_LG.csv}
-Package pgfplots info on input line 264: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LG_2.csv}
-Package pgfplots info on input line 265: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LG_3.csv}
-Package pgfplots info on input line 276: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 276: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_im_LG.csv}
-Package pgfplots info on input line 277: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LG_2.csv}
-Package pgfplots info on input line 278: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LG_3.csv}
-Package pgfplots info on input line 289: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 289: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_re_LG.csv}
-Package pgfplots info on input line 290: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LG_3.csv}
-Package pgfplots info on input line 291: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LG_2.csv}
-Package pgfplots info on input line 301: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 301: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_im_LG.csv}
-Package pgfplots info on input line 302: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LG_3.csv}
-Package pgfplots info on input line 303: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LG_2.csv}
+LaTeX Warning: Reference `fig::LGx1' on page 4 undefined on input line 256.
+
+
+LaTeX Warning: Reference `fig:sys_LG' on page 4 undefined on input line 256.
+
 [4
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Package pgfplots info on input line 321: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 264: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 321: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 264: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_re_LL.csv}
-Package pgfplots info on input line 322: Using 'lua backend=false' for plot 1 (t
+PGFPlots: reading {Data/I1_re_LG.csv}
+Package pgfplots info on input line 265: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LL_2.csv}
-Package pgfplots info on input line 323: Using 'lua backend=false' for plot 2 (t
+PGFPlots: reading {Data/I1_re_LG_2.csv}
+Package pgfplots info on input line 266: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LL_3.csv}
-Package pgfplots info on input line 334: Using 'lua backend=false' for plot 0 (t
+PGFPlots: reading {Data/I1_re_LG_3.csv}
+Package pgfplots info on input line 277: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 334: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 277: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_im_LL.csv}
-Package pgfplots info on input line 335: Using 'lua backend=false' for plot 1 (t
+PGFPlots: reading {Data/I1_im_LG.csv}
+Package pgfplots info on input line 278: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LL_2.csv}
-Package pgfplots info on input line 336: Using 'lua backend=false' for plot 2 (t
+PGFPlots: reading {Data/I1_im_LG_2.csv}
+Package pgfplots info on input line 279: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LL_3.csv}
-Package pgfplots info on input line 347: Using 'lua backend=false' for plot 0 (t
+PGFPlots: reading {Data/I1_im_LG_3.csv}
+Package pgfplots info on input line 290: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 347: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 290: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_re_LL.csv}
-Package pgfplots info on input line 348: Using 'lua backend=false' for plot 1 (t
+PGFPlots: reading {Data/I2_re_LG.csv}
+Package pgfplots info on input line 291: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LL_3.csv}
-Package pgfplots info on input line 349: Using 'lua backend=false' for plot 2 (t
+PGFPlots: reading {Data/I2_re_LG_3.csv}
+Package pgfplots info on input line 292: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LL_2.csv}
-Package pgfplots info on input line 359: Using 'lua backend=false' for plot 0 (t
+PGFPlots: reading {Data/I2_re_LG_2.csv}
+Package pgfplots info on input line 302: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 359: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 302: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_im_LL.csv}
-Package pgfplots info on input line 360: Using 'lua backend=false' for plot 1 (t
+PGFPlots: reading {Data/I2_im_LG.csv}
+Package pgfplots info on input line 303: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LL_3.csv}
-Package pgfplots info on input line 361: Using 'lua backend=false' for plot 2 (t
+PGFPlots: reading {Data/I2_im_LG_3.csv}
+Package pgfplots info on input line 304: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LL_2.csv}
- [5
+PGFPlots: reading {Data/I2_im_LG_2.csv}
+
+
+LaTeX Warning: Reference `fig:3_lg' on page 5 undefined on input line 314.
+
+
+LaTeX Warning: Reference `fig:3_ll' on page 5 undefined on input line 314.
+
+
+LaTeX Warning: Reference `fig:LLx1' on page 5 undefined on input line 314.
+
+[5
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
-Package pgfplots info on input line 380: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 322: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 380: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 322: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_re_LL.csv}
+Package pgfplots info on input line 323: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LL_2.csv}
+Package pgfplots info on input line 324: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LL_3.csv}
+Package pgfplots info on input line 335: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 335: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_im_LL.csv}
+Package pgfplots info on input line 336: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LL_2.csv}
+Package pgfplots info on input line 337: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LL_3.csv}
+Package pgfplots info on input line 348: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 348: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_re_LL.csv}
+Package pgfplots info on input line 349: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LL_3.csv}
+Package pgfplots info on input line 350: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LL_2.csv}
+Package pgfplots info on input line 360: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 360: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_im_LL.csv}
+Package pgfplots info on input line 361: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LL_3.csv}
+Package pgfplots info on input line 362: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LL_2.csv}
+
+
+LaTeX Warning: Reference `fig:sys_LL' on page 6 undefined on input line 369.
+
+
+LaTeX Warning: Citation 'taul2020modeling' on page 6 undefined on input line 373
+.
+
+
+LaTeX Warning: Reference `fig:LLGx1' on page 6 undefined on input line 373.
+
+[6
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:LLx1' on page 7 undefined on input line 375.
+
+Package pgfplots info on input line 383: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 383: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/I1_re_LLG.csv}
-Package pgfplots info on input line 381: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 384: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I1_re_LLG_2.csv}
-Package pgfplots info on input line 382: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 385: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/I1_re_LLG_3.csv}
-Package pgfplots info on input line 393: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 396: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 393: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 396: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_im_LLG.csv}
-Package pgfplots info on input line 394: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LLG_2.csv}
-Package pgfplots info on input line 395: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LLG_3.csv}
-Package pgfplots info on input line 406: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 406: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_re_LLG.csv}
-Package pgfplots info on input line 407: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LLG_3.csv}
-Package pgfplots info on input line 408: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LLG_2.csv}
-Package pgfplots info on input line 418: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 418: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_im_LLG.csv}
-Package pgfplots info on input line 419: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LLG_3.csv}
-Package pgfplots info on input line 420: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LLG_2.csv}
- [6
-Missing character: There is no ; (U+003B) in font nullfont!
-] [7
-Missing character: There is no ; (U+003B) in font nullfont!
-] [8] [9]
-\absvshift=\dimen329
-\absvshift=\dimen330
-\absvshift=\dimen331
-\absvshift=\dimen332
-\absvshift=\dimen333
-\absvshift=\dimen334
-\absvshift=\dimen335
-\absvshift=\dimen336
-\absvshift=\dimen337
-\absvshift=\dimen338
-\absvshift=\dimen339
-\absvshift=\dimen340
- [10] [11]
-\absvshift=\dimen341
-\absvshift=\dimen342
-\absvshift=\dimen343
-\absvshift=\dimen344
-\absvshift=\dimen345
-\absvshift=\dimen346
-\absvshift=\dimen347
-\absvshift=\dimen348
-\absvshift=\dimen349
-\absvshift=\dimen350
-\absvshift=\dimen351
- [12
-
-] [13] [14
-
-] [15] (./Reasoning.aux)
-
-LaTeX Warning: There were undefined references.
-
-Package logreq Info: Writing requests to 'Reasoning.run.xml'.
-
-\openout1 = Reasoning.run.xml
-)
-
-Here is how much of LuaTeX's memory you used:
- 54795 strings out of 478902
- 21177413,52659768 words of node,token memory allocated
- 668 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 29 attribute, 68 glue_spec
-, 29 attribute_list, 2 write nodes
-   avail lists: 1:14,2:3747598,3:2574001,4:116,5:722,6:40,7:243251,8:62,9:4272,1
-0:14,11:685
- 72884 multiletter control sequences out of 65536+200000
- 87 fonts using 7310711 bytes
- 108i,21n,105p,1055b,2568s stack positions out of 5000i,500n,10000p,200000b,50000s
-<//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
-an10-italic.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/pub
-lic/lm/lmmono10-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/
-opentype/public/lm/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiK
-TeX/fonts/opentype/public/lm/lmroman8-regular.otf><C:/Users/Josep/AppData/Local/
-Programs/MiKTeX/fonts/opentype/public/lm/lmroman10-regular.otf><//?/c:/users/jos
-ep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-bold.otf><C:
-/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10
-.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmmi12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Josep/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Jo
-sep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Us
-ers/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmsy5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Reasoning.pdf (15 pages, 24583372 bytes).
-
-PDF statistics: 167 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 131072)
- 16 words of extra memory for PDF output out of 10000 (max. 100000000)
-
+PGFPlots: read

@@ -1,0 +1,922 @@
+%!TEX program = lualatex
+\documentclass[10pt, draft]{article}
+
+\usepackage[left=30mm, right=30mm, top=30mm, bottom=30mm]{geometry}
+%\usepackage[scale=4]{draftwatermark}
+
+% \usepackage[backend=bibtex, sorting=none]{biblatex} % per la bibliografia
+\usepackage[backend=biber, sorting=none]{biblatex}
+% \bibliographystyle{ieeetr}
+% \setlength\bibitemsep{\baselineskip} % per tenir més espai entre bibliografia
+\addbibresource{bib.bib} % carregar el fitxer de bibliografia
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[activate={true, noncompatibility}]{microtype}
+\usepackage{tikz}
+\usepackage{circuitikz}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+\usepackage{amssymb}
+\usepackage{diagbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+\usepackage{amssymb}  % per simbolitzar reals
+%\usepackage{subfigure} 
+\usepackage{subcaption}
+
+\begin{document}
+
+\begin{center}
+    \Large
+    \textbf{Positive and negative sequence currents to improve voltages during unbalanced faults}
+         
+    \vspace{0.4cm}
+    \textbf{Josep Fanals}
+       
+       
+    \vspace{0.4cm}
+    \textbf{03/2021}
+\end{center}
+
+\section{Introduction}
+Grid faults constitute a group of unfortunate events that cause severe perturbations in the grid. The voltages can take values below the established minimum, or on the contrary, exceed the maximum in non-faulted phases. The currents are also susceptible to vary considerably. Traditional power systems based on synchronous generators could encounter currents surpassing the nominal values, and therefore, the fault could be clearly detected. However, the increasing integration of renewables \cite{anees2012grid} supposes a change of paradigm, in which currents can be controlled but are limited so as not to damage the Isolated-Gate Bipolar Transistors (IGBT) found in the Voltage Source Converter (VSC) \cite{abdou2013improving}. 
+
+Transmission System Operators (TSO) are responsible for imposing requirements related to the operation under voltage sags to generators and converters \cite{tsili2009review, iov2007mapping}. Such requirements are gathered in the respective grid codes. There seems to be no clear consensus on how to restore the voltage. In this sense, even if for instance the Low Voltage Ride Through (LVRT) profiles present similarities \cite{conroy2007low}, analysis aimed at determining analytically the optimal injection of positive and negative sequence currents are not numerous. As far as we are aware, only Camacho et al. offer an optimal solution regarding the injection of active and reactive powers \cite{camacho2017positive}. 
+
+Consequently, this work focuses on finding the most convenient positive and negative sequence currents (and not powers) to improve the voltage at the point of common coupling. First, a simple model is presented, and then, the results are shown together with the corresponding discussion. Despite the elegancy found in closed-form expressions, we obtain the optimal operating point by either computational brute force or an iterative process with the help of the SciPy library. The expressions regarding the several types of fault studied as well as its corresponding diagrams are shown in the appendix.
+
+\section{Definition of the system}
+The system we are considering is formed by an ideal grid (only positive sequence voltage is present) coupled to a VSC. The model is depicted in Figure \ref{fig:sys_p}. The VSC will be controlled in a way that leads to an improvement in the voltage at the PCC.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [sV, v_=$\underline{V}_{th}$] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-0.25,0) to [short] (0.25,0);
+\node at (-6,1.3) {PCC};
+\node at (-6,2.7) {$\underline{V}_c$};
+\draw (-3,2) to [short] (-3.2,1);
+\draw (-3.2,1) to [short] (-2.8,1);
+\draw[-{Latex[length=3mm]}] (-2.8,1) to [short] (-3,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
+\draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+\draw (-9,2) to [R, l=$\underline{Z}_c$, i=$\underline{I}$] (-6,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+
+\end{circuitikz}
+\caption{Single-phase representation of the simple system under a fault}
+\label{fig:sys_p}
+\end{figure}
+This study considers the balanced fault type but also the unbalanced ones, which include the line to ground, the double line to ground and the line to line fault. The model in Figure \ref{fig:sys_p} attempts to describe simple yet sufficient system to test the influence of the injected currents by the VSC on the voltage at the PCC. The system could be complicated by adding parallel capacitances on both sides of $\underline{Z}_a$ to model a hypothetical submarine cable. However, we prioritize keeping the system simple. 
+
+We are concerned with improving the voltage $\underline{V}_c$ as a function of the current $\underline{I}$ injected by the converter. Formally speaking there is no clear definition on what improving the voltage means as it depends on rather pre-stablished preferences. For instance, one could try to maximize the positive sequence voltage, minimize the negative sequence voltage or even maximize the difference between both. These three strategies have been covered in \cite{camacho2017positive}. A more flexible approach is based on defining the objective function as
+\begin{equation}
+    f(\underline{I}^+, \underline{I}^-) = \lambda^+|(|\underline{V}^+_c(\underline{I}^+, \underline{I}^-)| - 1)| + \lambda^-|(|\underline{V}^-_c(\underline{I}^+, \underline{I}^-)| - 0)|,
+    \label{eq:1}
+\end{equation}
+where the weighting factors $\lambda^+$, $\lambda^- \in \mathbb{R}$. By adjusting these factors one can follow the three aforementioned strategies. Note that the goal is to obtain a positive sequence voltage as close as possible to one (in per unit) while simultaneously approaching zero in the negative sequence voltage. Even though the problem is described as a function of the positive and negative sequence currents, it could also be stated as a function of the original $abc$ currents without loss of generality. The associated expressions are gathered in the appendix as well.
+
+Minimizing $f$ does not come with complete freedom. That is, the currents are constrained so as not to exceed the IGBT limits. It becomes more convenient to express the constraints in the $abc$ frame:
+\begin{equation}
+    g(\underline{I}_a, \underline{I}_b, \underline{I}_c) = \begin{cases}
+        |\underline{I}_a|\leq I_{max},\\
+        |\underline{I}_b|\leq I_{max},\\
+        |\underline{I}_c|\leq I_{max}.\\
+    \end{cases}
+\label{eq:2}
+\end{equation}
+For now we are not concerned with the voltages imposed to the semiconductors due to the fact that the filter $\underline{Z}_c$ is most likely to take small values. In practical situations current limitations are the most serious constraint. Therefore, we define the optimization problem as follows:
+\begin{subequations}
+\begin{alignat}{2}
+&\!\min_{\underline{I}^+,\underline{I}^-}        &\qquad& f(\underline{I}^+,\underline{I}^-)\label{eq:optProb}\\
+&\text{subject to} &      & g(\underline{I}_a, \underline{I}_b, \underline{I}_c) ,\label{eq:constraint1}
+\end{alignat}
+\end{subequations}
+where the currents in the $abc$ frame can be related to the currents expressed in the symmetrical components form by means of Fortescue's transformation, and vice versa \cite{fortescue1918method}. As a direct consequence of that, the analysis can be performed in the $abc$ frame while expressing the voltages as a function of the positive, negative and homopolar components. Another valid procedure is to work with the symmetrical components and relate the currents to the $abc$ ones. Both ways to confront the problem are equally valid. The results obtained in this study have been generated and validated with both paths.
+
+Current grid codes define the low voltage ride through (LVRT) limit curve which indicates the relation between the duration of a fault and the voltage frontier at which for instance a wind turbine ought to disconnect. Such LVRT curves present slight variations from country to country \cite{tsili2009review} but they all share the same pattern: in case of a severe fault, the disconnection should not take place if it has a low duration; on the contrary, less noticeable faults imply a larger disconnection time. Grid codes usually impose a curtailment of active power and enforce the generation of reactive power in order to collaborate on raising the voltage \cite{altin2010overview,serban2016voltage}.  % review grid codes and explain their priorization
+
+Nevertheless, studies dealing with determining the optimal currents to inject are not precisely numerous. At most, some authors express the voltages in terms of active and reactive power but do not consider constraints \cite{camacho2012flexible}. Others formulate the optimization problem and arrive to a closed-form expression, even though it becomes iterative \cite{camacho2017positive}. The analysis is performed contemplating powers rather than currents. Because of that, this work focuses on computing the optimal currents to increase the positive sequence voltage as close to one as possible and achieving a negative sequence voltage that approaches zero. In essence, the results that follow come from solving Equations \ref{eq:optProb} and \ref{eq:constraint1}.
+
+% The point of common coupling (PCC) is where the VSC together with its filter are connected. There are two restrictions to take into account in a VSC, one related to the maximum current and another to the voltage. The current limitation is likely the most relevant when operating under faults. Since the current is limited and the filter used to connect the VSC to the PCC takes rather low values, we can expect the voltage drop to not be substantial. Because of that, and taking into consideration the voltage sag at the grid side, the voltage limit is hardly ever surpassed. Thus, in the analysis that follows, we only impose the current restriction. As future work, we could also add the voltage limitations as a constraint, although probably the conclusions will not vary from the ones extracted here.
+
+% Note that Figure \ref{fig:sys_p} is general, in the sense that it does not specify the type of fault. Besides, there will be a fault impedance, denoted by $\underline{Z}_f$. We believe every type of fault deserves to be studied separately. We are going to employ the symmetrical components, which are meant to simplify the analysis. In each fault, the voltage $\underline{V}_c$ will be decomposed in positive and negative sequence voltage and expressed as a function of the voltage at the grid together with the injected positive and negative sequence currents. It makes sense to model the VSC and its filter as a current source for this purpose. 
+
+\section{Analysis}
+Four types of faults are considered in this study. One is the balanced fault, which yields a simple yet valuable system to analyze the distribution of optimal currents. The remaining faults are unbalanced: the line to ground, the line to line and the double line to ground cases. 
+
+In all situations, we show plots representing the objective function depending on the real and imaginary parts of the positive and negative sequence currents. They are obtained in a brute force manner, that is, we generate multiple combinations of currents and store those points if they do not respect the constraints. The solution obtained by solving the optimization problem as such with the SciPy library is also displayed, together with optimal point supposing no active currents can be injected. The latter tries to emulate the outcome of following the grid codes to improve voltages. Note that grid codes also consider the injection of active power, but this serves the purpose of maintaining a stable system in terms of frequency, something not contemplated in this analysis. 
+
+For this and all the upcoming faults we have set the values shown in Table \ref{tab:val}. 
+
+\begin{table}[!htb] \centering
+    \begin{tabular}{cc}
+       \hline
+       Magnitude & Value (pu) \\
+       \hline
+       $\underline{Z}_f$ & $0.00 + 0.10j$ \\ 
+       $\underline{Z}_a$ & $0.01 + 0.10j$ \\
+       $\underline{Z}_{th}$ & $0.01 + 0.05j$ \\
+       $I_{max}$ & $1.00$ \\
+       $\lambda^+$ & $1.00$ \\
+       $\lambda^-$ & $1.00$ \\
+       $|\underline{V}^+_{th}|$ & $1.00$ \\
+       $|\underline{V}^-_{th}|$ & $0.00$ \\
+       \hline
+    \end{tabular}
+    \caption{Values for the system under study}
+    \label{tab:val}
+\end{table}
+We have considered the impedances to be mainly inductive. However, adding a resistive part not only makes them more realistic, but it also may shed some light on if the truly optimal decision is to inject only reactive currents. One could anticipate that the larger the resistive part becomes, the greater the active current should be to cause a considerable voltage drop (positive or negative) so that the voltage is improved. Thus, for the given impedances in Table \ref{tab:val}, we foresee the fact that reactive currents will turn out to be substantially larger than active currents. Besides, the same weighting is arbitrarily attributed to the positive sequence minimization subfunction as well as to the negative sequence one. 
+% here display the plots for lambda1 and lambda2 = 1, but in the annex we can show the graphs for lambda1 = 0 and lambda2 = 1; and lambda1 = 1 and lambda2 = 0.
+
+\subsection{Balanced fault}
+Balanced faults are commonly referred to as the most severe type of fault, as currents take the largest values \cite{kothari2003modern}. Its representation in symmetrical components indicates a decoupling between sequences. As a result of that, a considerable positive sequence current should be injected to increase the positive sequence voltage. It should be mostly inductive. On the other hand, no negative sequence current has to be injected to keep a null negative sequence voltage (assuming that the grid presents no negative sequence voltage, as it is the case here). There are no homopolar currents in this and all the subsequent faults. 
+
+Figure \ref{fig:3x1} shows on the one hand the results with the brute force methodology. We have employed over $20^4$ combinations to construct the plots. A more regular shape would be obtained in case we worked with smaller intervals. However, some points are suppressed because they exceed the current limitations. It is clear that the minimum is achieved when the negative sequence currents, both real and imaginary, tend to zero. The imaginary positive sequence current takes extreme negative values - close to $I_{max}$ - while the real part remains small.
+
+% On the other hand, the point corresponding to the solution of the optimization problem illustrates what was already deduced from the brute force computations. Injecting a negative imaginary positive sequence current causes a positive voltage drop so that the voltage we wish to improve can be far apart from the faulted one. Taking into account that in this case $X>>R$, the real positive sequence current becomes considerably smaller than the imaginary part. 
+
+% graph of brute force for the 4 currents: I1re, I1im, I2re, I2im. At the same plot show the point obtained with the optimization and the one we would get with the grid codes (only reactive current, but positive or negative??) Indicate that the objective function is a bit better with my optimization than following the grid code. 
+% prepare plots template first
+% plot the point where only reactive current and 0 active current. Set the constraint in the code. 
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_3x_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_3x_3.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_3x_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_3x_3.csv};
+            \legend{BF, OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_3x_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_3x_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_3x_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_3x_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the balanced fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+  \label{fig:3x1}
+\end{figure}
+On the other hand, the point corresponding to the solution of the optimization problem illustrates what was already more or less deduced from the brute force computations. Nonetheless, solving the optimization problem yields a more favorable result. The objective function is slightly smaller and the optimal point can be located in a zone where not many points coming from the brute force are present. Such irregular distribution of points is due to the fact that around the optimal points many combinations of currents do not meet the constraints. In any case, injecting a negative imaginary positive sequence current causes a positive voltage drop so that the voltage we wish to improve can be far apart from the faulted one. Taking into account that in this case $X>>R$, the real positive sequence current becomes considerably smaller than the imaginary part. 
+
+
+% \begin{figure}\centering
+%   \begin{subfigure}[!htb]{.4\textwidth}
+%     \centering
+%         \begin{tikzpicture}[trim axis right,trim axis left]
+%             \pgfplotsset{width=7cm, height=6cm}
+%             \begin{axis}[grid=major, xlabel={$\underline{I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
+%             \addplot[very thick, draw opacity = 0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I1_re_3x.csv};
+%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}] table[x=x, y=y, col sep=comma] {Data/I1_re_3x_2.csv};
+%             \end{axis}
+%         \end{tikzpicture}
+%   \end{subfigure}
+%   \hspace{1cm}
+% \begin{subfigure}[!htb]{.4\textwidth}
+%     \centering
+%         \begin{tikzpicture}[trim axis right,trim axis left]
+%             \pgfplotsset{width=7cm, height=6cm}
+%             \begin{axis}[grid=major, xlabel={$\underline{I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
+%             \addplot[very thick, draw opacity=0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I1_im_3x.csv};
+%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}] table[x=x, y=y, col sep=comma] {Data/I1_im_3x_2.csv};
+%             \end{axis}
+%         \end{tikzpicture}
+%   \end{subfigure}
+
+%   \vspace{0.5cm}
+
+% \begin{subfigure}[!htb]{.4\textwidth}
+%     \centering
+%         \begin{tikzpicture}[trim axis right,trim axis left]
+%             \pgfplotsset{width=7cm, height=6cm}
+%             \begin{axis}[grid=major, xlabel={$\underline{I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
+%             \addplot[very thick, draw opacity=0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I2_re_3x.csv};
+%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}] table[x=x, y=y, col sep=comma] {Data/I2_re_3x_2.csv};
+%             \end{axis}
+%         \end{tikzpicture}
+%   \end{subfigure}
+%   \hspace{1cm}
+% \begin{subfigure}[!htb]{.4\textwidth}
+%     \centering
+%         \begin{tikzpicture}[trim axis right,trim axis left]
+%             \pgfplotsset{width=7cm, height=6cm}
+%             \begin{axis}[grid=major, xlabel={$\underline{I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
+%             \addplot[very thick, draw opacity=0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I2_im_3x.csv};
+%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}, red] table[x=x, y=y, col sep=comma] {Data/I2_im_3x_2.csv};
+%             \end{axis}
+%         \end{tikzpicture}
+%   \end{subfigure}
+%   \caption{Objective function depending on injected currents for the balanced case}
+%   \label{fig:3x1}
+% \end{figure}
+
+\subsection{Line to ground fault}
+The line to ground fault has the particularity of presenting a distribution of dots similar for both real and imaginary currents for both sequences. As shown in Figure \ref{fig:LGx1}, the minimum in the real currents plot takes place around the zero. Despite that, in reality, the real positive sequence current becomes slightly larger than zero, whilst for the negative sequence it takes a small but not negligible negative value. Observing Figure \ref{fig:sys_LG} it becomes clear that the real part of the positive sequence currents ought to be greater than zero whereas the negative sequence current should take negative values; these combinations cause the maximization of the positive sequence voltage and the minimization of the negative sequence voltage. 
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LG_3.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LG_3.csv};
+            \legend{BF, OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LG_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LG_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to ground fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+  \label{fig:LGx1}
+\end{figure}
+The imaginary part of the currents presents a similar distribution in both cases. Notice that contrarily to the balanced fault, where one vertex of the distribution coincided with the point at which $f$ was at its minimum, there is a full edge in which the function becomes minimum. This phenomena suggests that maybe there is more than one minimum. For instance, carrying the analysis in the $abc$ frame caused the optimal currents $[\underline{I}^+, \underline{I}^-]$ to become $[0.1715-j0.4955, -0.0804-j0.5003]$. Leaving aside the differences in current, the objective function became the same up to a precision of $10^{-10}$. We have tested that this is indeed not an abnormality. Initializing differently the currents passed to the SciPy \texttt{minimize()} function results in variations in the imaginary currents across the zone where $f$ becomes minimum. Besides, the variations between the OPT and the ROPT cases are almost imperceptible. 
+
+\subsection{Line to line fault}
+The line to line fault can be considered to be a more severe fault compared to the line to ground case, since the function to minimize presents larger values. This can be understood when looking at the representations in Figures \ref{fig:3_lg} and \ref{fig:3_ll}, where the fault impedance is between two phases and not phase and ground. Therefore, the voltage drop becomes larger. Figure \ref{fig:LLx1} shows that even if the real part of the currents remains near the zero, visually speaking the imaginary parts take symmetrical values. The distribution of dots for the imaginary part of the negative sequence current is the main difference with respect to the line to ground fault. 
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LL_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LL_3.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LL_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LL_3.csv};
+            \legend{BF, OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LL_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LL_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LL_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LL_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to line fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+  \label{fig:LLx1}
+\end{figure}
+However, this time it has been checked that there is only one point that minimizes the function, independently of the initialization vector. Not less surprising, the imaginary positive and negative sequence currents are practically the same with a change of sign. We can intuitively make sense of it as the positive sequence voltage at the PCC tends to one while the negative one approaches zero. Thus, the current flowing towards the $\underline{Z}_f$ impedance is quite large and a big part of it is due to the injected positive sequence current. To achieve a small negative sequence voltage, as can be understood from Figure \ref{fig:sys_LL}, the negative sequence current has to counteract the positive sequence current. Because of that, the optimal positive and negative sequence currents share almost the same magnitude and opposite signs.
+
+
+\subsection{Double line to ground fault}
+The double line to ground fault is likely to be the most severe in terms of voltage. It turns out to have the more distant voltages from the references, as shown in \cite{taul2020modeling}. By nature, this fault is defined by a solid line to line connection and also a link between the two faulted phases and ground through an impedance. Figure \ref{fig:LLGx1} reveals that minimum of $f$ falls considerably far from the ideal zero. 
+
+The double line to ground fault has many similarities with the line to line fault. First of all, the distribution of dots for the brute force computations is similar. Secondly, the optimal currents do not differ much from the ones obtained in Figure \ref{fig:LLx1}. All this could be deduced from its sequence representation. The same logic applies: the negative sequence current mirrors the positive sequence.
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LLG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LLG_3.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LLG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LLG_3.csv};
+            \legend{BF, OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LLG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LLG_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LLG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LLG_2.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the double line to ground fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+  \label{fig:LLGx1}
+\end{figure}
+Again, only injecting reactive currents (ROPF case) has been experimentally proved to become a suboptimal yet highly convenient choice. The objective functions present tiny variations in this case. Even though the real currents in both sequence differ a bit, for the imaginary ones the OPT and the ROPT computations generate almost the same value. Therefore, the injection of real currents becomes secondary for highly inductive impedances. Table \ref{tab:results} gathers the numerical results for all the studied faults.
+
+\begin{table}[!htb] \centering
+    \begin{tabular}{lccccccc}
+       \hline
+       Fault & $f$ & $|V^+|$ & $|V^-|$ & ${I}^+_{re}$ & ${I}^+_{im}$ & ${I}^-_{re}$ & ${I}^-_{im}$\\
+       \hline
+       Balanced & 0.200 & 0.800 & 0.000 & 0.107 & -0.994 & 0.000 & 0.000\\
+       Line to ground & 0.084 & 0.966 & 0.049 & 0.176 & -0.535 & -0.085 & -0.461\\
+       Line to line & 0.361 & 0.820 & 0.180 & 0.030 & -0.571 & -0.030 & 0.582\\
+       Double line to ground & 0.884 & 0.525 & 0.408 & 0.064 & -0.574 & -0.064 & 0.574\\
+       \hline
+    \end{tabular}
+    \caption{Main results for the balanced and the unbalanced faults}
+    \label{tab:results}
+\end{table}
+
+
+\section{Conclusion}
+This study has covered the analysis of a simple system to determine the optimal currents that ought to be injected to raise the positive sequence voltage and decrease the negative sequence voltage in case of a fault. Four types of faults have been considered. Despite the particularities, since the system is mainly inductive, the optimal active currents tend to be close to zero, while the optimal reactive currents become substantial. As a direct consequence, we conclude by saying that injecting only reactive powers, as imposed by the grid codes, is likely to be a convenient strategy for systems where lines are highly inductive. However, it is mandatory to determine the type of fault in order to properly deduce the values of the injected currents.
+
+In addition to that, this work proposes two methodologies to arrive to the optimal solution. One consists of computing combinations where currents can take a wide range of values. When the intervals are small enough, such computationally intensive approach matches with the solution coming from solving directly the optimization problem. The results indicate that the double line to ground fault is the hardest in terms of minimizing the objective function. Besides, we have discussed the presence of multiple optimal points for the line to ground fault. 
+
+\newpage
+\printbibliography
+
+
+\newpage
+\appendix
+\section{$abc$ circuits}
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,0) to [short, *-] (4.0,-4);
+\draw (5.0,-2) to [short, *-] (5.0,-4);
+
+\draw (4.0,-4) to [R, l=$\underline{Z}_f$, -*] (4.0,-6);
+\draw (5.0,-4) to [R, l=$\underline{Z}_f$, -*] (5.0,-6);
+\draw (6.0,-4) to [R, l=$\underline{Z}_f$, *-*] (6.0,-6);
+\draw (4,-6) to [short] (6,-6);
+ 
+\end{circuitikz}
+\caption{Balanced fault schematic}
+\label{fig:3_trif}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (5.0, 0) to [short, *-] (5.0, -4);
+\draw (5.0,-4) to [R, l=$\underline{Z}_f$] (5.0,-5.5);
+\draw (5.0,-5.5) -- (5.0,-5.5) node[ground]{};
+ 
+\end{circuitikz}
+\caption{Line to ground fault schematic}
+\label{fig:3_lg}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,-2) to [short, *-] (4.0, -5.0);
+\draw (6.0,-4) to [short, *-] (6.0, -5.0);
+\draw (4,-5.0) to [R, l=$\underline{Z}_f$] (6, -5.0);
+
+ 
+\end{circuitikz}
+\caption{Line to line fault schematic}
+\label{fig:3_ll}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [american controlled current source,  *-] (2,0);
+\draw (0,-2) to [american controlled current source, *-] (2,-2);
+\draw (0,-4) to [american controlled current source, *-] (2,-4);
+\draw (2,0) to [R, l=$\underline{Z}_a$, -] (4,0);
+\draw (2,-2) to [R, l=$\underline{Z}_a$, -] (4,-2);
+\draw (2,-4) to [R, l=$\underline{Z}_a$, -] (4,-4);
+\draw (4,0) to [short] (6,0);
+\draw (4,-2) to [short] (6,-2);
+\draw (4,-4) to [short] (6,-4);
+\draw (0,0) to [short] (0,-4);
+
+\draw (6,0) to [R, l=$\underline{Z}_{th}$, -] (8,0);
+\draw (6,-2) to [R, l=$\underline{Z}_{th}$, -] (8,-2);
+\draw (6,-4) to [R, l=$\underline{Z}_{th}$, -] (8,-4);
+\draw (10,0) to [sV, v_=$\underline{V}^{a}_{th}$, *-] (8,0);
+\draw (10,-2) to [sV, v_=$\underline{V}^{b}_{th}$, *-] (8,-2);
+\draw (10,-4) to [sV, v_=$\underline{V}^{c}_{th}$, *-] (8,-4);
+\draw (10, 0) to [short] (10, -4);
+\draw (10,-2) to [short] (11.5,-2);
+\draw (11.5,-2) to [short] (11.5, -4.5);
+\draw (11.5,-4.5) -- (11.5,-5.00) node[ground]{};
+
+
+\draw (1.5,-0.4) node[]{$\underline{I}^a$};
+\draw (2,0.3) to [open,v=$\underline{V}^a_c$] (0,0.3);
+\draw (1.5,-2.4) node[]{$\underline{I}^b$};
+\draw (2,-1.7) to [open,v=$\underline{V}^b_c$] (0,-1.7);
+\draw (1.5,-4.4) node[]{$\underline{I}^c$};
+\draw (2,-3.7) to [open,v=$\underline{V}^c_c$] (0,-3.7);
+
+\draw (4.0,-2) to [short, *-] (4.0, -5.0);
+\draw (6.0,-4) to [short, *-] (6.0, -5.0);
+\draw (4,-5.0) to [short, -*] (5, -5.0);
+\draw (5,-5.0) to [short, ] (6, -5.0);
+\draw (5,-5) to [R, l=$\underline{Z}_f$] (5,-6.5);
+\draw (5,-6.5) -- (5,-6.5) node[ground]{};
+
+ 
+\end{circuitikz}
+\caption{Double line to ground fault schematic}
+\label{fig:3_llg}
+\end{figure}
+
+\clearpage
+\newpage
+\section{$+-0$ schemes}
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,6) to [sV, v_=$\underline{V}_{th}^+$] (0,8);
+\draw (-3,8) to [R, l=$\underline{Z}_{th}$] (0,8);
+\draw (-6,6) to [short] (0.0,6);
+\draw (-6,8) to [R, l=$\underline{Z}_a$] (-3,8);
+\draw (-6,6.5) to [american controlled current source, l_=$I^+$] (-6,7.5);
+\draw (-6,6) to [short] (-6,6.5);
+\draw (-6,7.5) to [short] (-6,8);
+\draw (-6.3,8) to [open,v=$\underline{V}^+_c$] (-6.3,6);
+
+\draw (0,3) to [short] (0,3.5);
+\draw (0,3.5) to [short, *-*] (0,4.5);
+\draw (0,4.5) to [short] (0,5);
+\draw (-3,5) to [R, l=$\underline{Z}_{th}$] (0,5);
+\draw (-6,3) to [short] (0.0,3);
+\draw (-6,5) to [R, l=$\underline{Z}_a$] (-3,5);
+\draw (-6,3.5) to [american controlled current source, l_=$I^-$] (-6,4.5);
+\draw (-6,3) to [short] (-6,3.5);
+\draw (-6,4.5) to [short] (-6,5);
+\draw (-6.3,5) to [open,v=$\underline{V}^-_c$] (-6.3,3);
+
+\draw (0,0) to [short] (0,0.5);
+\draw (0,0.5) to [short, *-*] (0,1.5);
+\draw (0,1.5) to [short] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-6,0) to [short] (0.0,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw (-6,0) to [short, -*] (-6,0.5);
+\draw (-6,1.5) to [short, *-] (-6,2);
+\draw (-6.3,2) to [open,v=$\underline{V}^0_c$] (-6.3,0);
+
+\draw (-3,8) to [R, l=$\underline{Z}_{f}$] (-3,6);
+\draw (-3,5) to [R, l=$\underline{Z}_{f}$] (-3,3);
+\draw (-3,2) to [R, l=$\underline{Z}_{f}$] (-3,0);
+
+
+\end{circuitikz}
+\caption{Equivalent circuit for the balanced fault analysis}
+\label{fig:sys_3x}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,6) to [sV, v_=$\underline{V}_{th}^+$] (0,8);
+\draw (-3,8) to [R, l=$\underline{Z}_{th}$] (0,8);
+\draw (-6,6) to [short] (0.0,6);
+\draw (-6,8) to [R, l=$\underline{Z}_a$] (-3,8);
+\draw (-6,6.5) to [american controlled current source, l_=$I^+$] (-6,7.5);
+\draw (-6,6) to [short] (-6,6.5);
+\draw (-6,7.5) to [short] (-6,8);
+\draw (-6.3,8) to [open,v=$\underline{V}^+_c$] (-6.3,6);
+
+\draw (0,3) to [short] (0,3.5);
+\draw (0,3.5) to [short, *-*] (0,4.5);
+\draw (0,4.5) to [short] (0,5);
+\draw (-3,5) to [R, l=$\underline{Z}_{th}$] (0,5);
+\draw (-6,3) to [short] (0.0,3);
+\draw (-6,5) to [R, l=$\underline{Z}_a$] (-3,5);
+\draw (-6,3.5) to [american controlled current source, l_=$I^-$] (-6,4.5);
+\draw (-6,3) to [short] (-6,3.5);
+\draw (-6,4.5) to [short] (-6,5);
+\draw (-6.3,5) to [open,v=$\underline{V}^-_c$] (-6.3,3);
+
+\draw (0,0) to [short] (0,0.5);
+\draw (0,0.5) to [short, *-*] (0,1.5);
+\draw (0,1.5) to [short] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-6,0) to [short] (0.0,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw (-6,0) to [short, -*] (-6,0.5);
+\draw (-6,1.5) to [short, *-] (-6,2);
+\draw (-6.3,2) to [open,v=$\underline{V}^0_c$] (-6.3,0);
+
+\draw (-3,2) to [short, *-*] (-3,3);
+\draw (-3,5) to [short, *-*] (-3,6);
+\draw (-3,8) to [short, *-] (-3, 9);
+\draw (-3,0) to [short, *-] (-3, -0.5);
+
+\draw (-3,9) to [short] (2,9);
+\draw (-3,-0.5) to [short] (2,-0.5);
+\draw (2,9) to [R, l=$3\underline{Z}_f$] (2, -0.5);
+
+\end{circuitikz}
+\caption{Equivalent circuit for the line to ground fault analysis}
+\label{fig:sys_LG}
+\end{figure}
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,6) to [sV, v_=$\underline{V}_{th}^+$] (0,8);
+\draw (-2.5,8) to [R, l=$\underline{Z}_{th}$] (0,8);
+\draw (-5,6) to [short] (0.0,6);
+\draw (-5,8) to [R, l=$\underline{Z}_a$] (-2.5,8);
+\draw (-5,6.5) to [american controlled current source, l_=$I^+$] (-5,7.5);
+\draw (-5,6) to [short] (-5,6.5);
+\draw (-5,7.5) to [short] (-5,8);
+\draw (-5.3,8) to [open,v=$\underline{V}^+_c$] (-5.3,6);
+
+\draw (8,6) to [short] (8,6.5);
+\draw (8,6.5) to [short, *-*] (8,7.5);
+\draw (8,7.5) to [short] (8,8);
+\draw (5.5,8) to [R, l=$\underline{Z}_{th}$] (8,8);
+\draw (3,6) to [short] (8.0,6);
+\draw (3,8) to [R, l=$\underline{Z}_a$] (5.5,8);
+\draw (3,6.5) to [american controlled current source, l_=$I^-$] (3,7.5);
+\draw (3,6) to [short] (3,6.5);
+\draw (3,7.5) to [short] (3,8);
+\draw (2.7,8) to [open,v=$\underline{V}^-_c$] (2.7,6);
+
+\draw (-2.5, 8) to [short, *-] (-2.5, 9);
+\draw (-2.5, 9) to [R, l=$\underline{Z}_{f}$] (5.5,9);
+\draw (5.5,9) to [short, -*] (5.5, 8);
+
+\draw (-2.5, 6) to [short, *-] (-2.5, 5.5);
+\draw (-2.5, 5.5) to [short] (5.5, 5.5);
+\draw (5.5, 5.5) to [short, -*] (5.5, 6);
+
+\end{circuitikz}
+\caption{Equivalent circuit for the line to line fault analysis}
+\label{fig:sys_LL}
+\end{figure}
+
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,8) to [sV, v_=$\underline{V}_{th}^+$] (0,10);
+\draw (-3,10) to [R, l=$\underline{Z}_{th}$] (0,10);
+\draw (-6,8) to [short] (0.0,8);
+\draw (-6,10) to [R, l=$\underline{Z}_a$] (-3,10);
+\draw (-6,8.5) to [american controlled current source, l_=$I^+$] (-6,9.5);
+\draw (-6,8) to [short] (-6,8.5);
+\draw (-6,9.5) to [short] (-6,10);
+\draw (-6.3,10) to [open,v=$\underline{V}^+_c$] (-6.3,8);
+
+\draw (0,4) to [short] (0,4.5);
+\draw (0,4.5) to [short, *-*] (0,5.5);
+\draw (0,5.5) to [short] (0,6);
+\draw (-3,6) to [R, l=$\underline{Z}_{th}$] (0,6);
+\draw (-6,4) to [short] (0.0,4);
+\draw (-6,6) to [R, l=$\underline{Z}_a$] (-3,6);
+\draw (-6,4.5) to [american controlled current source, l_=$I^-$] (-6,5.5);
+\draw (-6,4) to [short] (-6,4.5);
+\draw (-6,5.5) to [short] (-6,6);
+\draw (-6.3,6) to [open,v=$\underline{V}^-_c$] (-6.3,4);
+
+\draw (0,0) to [short] (0,0.5);
+\draw (0,0.5) to [short, *-*] (0,1.5);
+\draw (0,1.5) to [short] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-6,0) to [short] (0.0,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw (-6,0) to [short, -*] (-6,0.5);
+\draw (-6,1.5) to [short, *-] (-6,2);
+\draw (-6.3,2) to [open,v=$\underline{V}^0_c$] (-6.3,0);
+
+\draw (-3,0) to [short, *-] (-3,-0.5);
+\draw (-3,4) to [short, *-] (-3,3.5);
+\draw (-3,8) to [short, *-] (-3,7.5);
+
+\draw (-3,2) to [short, *-] (-3,3);
+\draw (-3,6) to [short, *-] (-3,7);
+\draw (-3,10) to [short, *-] (-3,11);
+
+\draw (-3,3) to [short] (2,3);
+\draw (-3,7) to [short] (2,7);
+\draw (-3,11) to [short] (2,11);
+
+\draw (-3,-0.5) to [short] (-8,-0.5);
+\draw (-3,3.5) to [short] (-8,3.5);
+\draw (-3,7.5) to [short] (-8,7.5);
+
+\draw (-8,-0.5) to [short, -*] (-8, 3.5);
+\draw (-8, 3.5) to [short] (-8, 7.5);
+
+\draw (2,3) to [R, l_=$3\underline{Z}_f$, -*] (2,7);
+\draw (2,11) to [short] (2,7);
+
+
+\end{circuitikz}
+\caption{Equivalent circuit for the double line to ground fault analysis}
+\label{fig:sys_LLG}
+\end{figure}
+
+
+
+\clearpage
+\newpage
+\section{Expressions}
+
+\subsection{Balanced fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^a_{th}\underline{Z}_f + \underline{I}_a(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]\\
+        \underline{V}^b_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^b_{th}\underline{Z}_f + \underline{I}_b(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]\\
+        \underline{V}^c_c = \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^c_{th}\underline{Z}_f + \underline{I}_c(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_f + \underline{Z}_f\underline{Z}_a)]
+    \end{cases}
+\end{equation}
+
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c= \dfrac{1}{\underline{Z}_f + \underline{Z}_{th}}[\underline{V}^+_{th}\underline{Z}_f + \underline{I}^+(\underline{Z}_a\underline{Z}_f + \underline{Z}_a\underline{Z}_{th} + \underline{Z}_f\underline{Z}_{th})] \\ 
+ \underline{V}^-_c=\dfrac{1}{\underline{Z}_{f} + \underline{Z}_{th}}[\underline{I}^-(\underline{Z}_{th}\underline{Z}_f + \underline{Z}_a\underline{Z}_{th} + \underline{Z}_a\underline{Z}_f)] \\
+ \underline{V}^0_c=0
+    \end{cases}
+\end{equation}
+
+
+\subsection{Line to ground fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \dfrac{1}{\underline{Z}_{th} + \underline{Z}_f}[\underline{I}_a(\underline{Z}_a\underline{Z}_{th} + \underline{Z}_a\underline{Z}_f + \underline{Z}_{th}\underline{Z}_f) + \underline{V}^a_{th}\underline{Z}_f] \\
+        \underline{V}^b_c = \underline{V}^b_{th} + \underline{I}_b(\underline{Z}_a + \underline{Z}_{th}) \\
+        \underline{V}^c_c =  \underline{V}^c_{th} + \underline{I}_c(\underline{Z}_a + \underline{Z}_{th})
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c=\underline{I}^+(\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^+_{th} - \dfrac{\underline{Z}_{th}}{3\underline{Z}_f + 3\underline{Z}_{th}}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]\\ 
+        \underline{V}^-_c=\underline{I}^-(\underline{Z}_a + \underline{Z}_{th}) - \dfrac{\underline{Z}_{th}}{3\underline{Z}_f + 3\underline{Z}_{th}}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]\\
+        \underline{V}^0_c=-\dfrac{\underline{Z}_{th}}{3\underline{Z}_f + 3\underline{Z}_{th}}[\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th}]
+   \end{cases}
+\end{equation}
+
+
+\subsection{Line to line fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \underline{I}_a (\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^a_{th}  \\
+        \underline{V}^b_c = \underline{I}_b\underline{Z}_a + \dfrac{1}{(\underline{Z}_{f} + \underline{Z}_{th}) (\underline{Z}_f + 2\underline{Z}_{th})}[\underline{I}_b (\underline{Z}_{th}\underline{Z}_f\underline{Z}_f + 2\underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{f} + \underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{th}) \\+ \underline{I}_c(\underline{Z}_{th}\underline{Z}_{th}\underline{Z}_f + \underline{Z}_{th}\underline{Z}_{th}\underline{Z}_{th}) + \underline{V}^b_{th} (\underline{Z}_f\underline{Z}_f + 2 \underline{Z}_f\underline{Z}_{th} + \underline{Z}_{th}\underline{Z}_{th}) + \underline{V}^c_{th}(\underline{Z}_{th}\underline{Z}_f + \underline{Z}_{th} \underline{Z}_{th})  ] \\
+        \underline{V}^c_c = \underline{I}_c\underline{Z}_a + \dfrac{1}{\underline{Z}_f + 2\underline{Z}_{th}}[\underline{I}_c(\underline{Z}_{th}(\underline{Z}_f + \underline{Z}_{th})) + \underline{V}^c_{th} (\underline{Z}_f + \underline{Z}_{th}) + \underline{I}_b\underline{Z}_{th}\underline{Z}_{th} + \underline{V}^b_{th}\underline{Z}_{th}]
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c= \underline{V}^+_{th} + \underline{I}^+(\underline{Z}_{a} + \underline{Z}_{th}) - \dfrac{\underline{Z}_{th}}{2\underline{Z}_{th}+\underline{Z}_f}[\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th}-\underline{I}^-\underline{Z}_{th}]  \\ 
+        \underline{V}^-_c= \underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th}+ \underline{I}^-\underline{Z}_a -\dfrac{\underline{Z}_{th}+\underline{Z}_f}{2\underline{Z}_{th}+\underline{Z}_f}[\underline{V}^+_{th} + \underline{I}^+\underline{Z}_{th} - \underline{I}^-\underline{Z}_{th}] \\
+        \underline{V}^0_c=0
+    \end{cases}
+\end{equation} 
+
+
+\subsection{Double line to ground fault}
+\begin{equation}
+    \begin{cases}
+        \underline{V}^a_c = \underline{I}_a (\underline{Z}_a + \underline{Z}_{th}) + \underline{V}^a_{th}  \\
+        \underline{V}^b_c = \underline{I}_b\underline{Z}_a + \dfrac{\underline{Z}_{th}\underline{Z}_f (\underline{I}_b+\underline{I}_c) + \underline{Z}_f(\underline{V}^b_{th} + \underline{V}^c_{th})}{2\underline{Z}_f + \underline{Z}_{th}} \\
+        \underline{V}^c_c = \underline{I}_c\underline{Z}_a + \dfrac{\underline{Z}_{th}\underline{Z}_f (\underline{I}_b+\underline{I}_c) + \underline{Z}_f(\underline{V}^b_{th} + \underline{V}^c_{th})}{2\underline{Z}_f + \underline{Z}_{th}} 
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    \begin{cases}
+        \underline{V}^+_c=\underline{I}^+\underline{Z}_a + \dfrac{\underline{Z}_{th} + 3\underline{Z}_f}{3\underline{Z}_{th} + 6\underline{Z}_f}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]    \\ 
+        \underline{V}^-_c= \underline{I}^-\underline{Z}_a + \dfrac{\underline{Z}_{th} + 3\underline{Z}_f}{3\underline{Z}_{th} + 6\underline{Z}_f}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}] \\
+        \underline{V}^0_c=\dfrac{\underline{Z}_{th}}{3\underline{Z}_{th} + 6\underline{Z}_f}[\underline{I}^+\underline{Z}_{th} + \underline{I}^-\underline{Z}_{th} + \underline{V}^+_{th}]
+    \end{cases}
+\end{equation}
+
+
+
+\end{document}

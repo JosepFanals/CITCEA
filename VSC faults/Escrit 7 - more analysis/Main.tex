@@ -1,0 +1,53 @@
+%!TEX program = lualatex
+\documentclass[10pt, draft]{article}
+
+\usepackage[left=30mm, right=30mm, top=30mm, bottom=30mm]{geometry}
+%\usepackage[scale=4]{draftwatermark}
+
+% \usepackage[backend=bibtex, sorting=none]{biblatex} % per la bibliografia
+\usepackage[backend=biber, sorting=none]{biblatex}
+% \bibliographystyle{ieeetr}
+% \setlength\bibitemsep{\baselineskip} % per tenir més espai entre bibliografia
+\addbibresource{bib.bib} % carregar el fitxer de bibliografia
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[activate={true, noncompatibility}]{microtype}
+\usepackage{tikz}
+\usepackage{circuitikz}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+\usepackage{amssymb}
+\usepackage{diagbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+\usepackage{amssymb}  % per simbolitzar reals
+%\usepackage{subfigure} 
+\usepackage{subcaption}
+
+\begin{document}
+
+\begin{center}
+    \Large
+    \textbf{Positive and negative sequence currents to improve voltages during unbalanced faults}
+         
+    \vspace{0.4cm}
+    \textbf{Josep Fanals}
+       
+    \vspace{0.4cm}
+    \textbf{03/2021}
+\end{center}
+
+% \input{Chapters/Introduction.tex}
+
+
+% \input{Chapters/Constant.tex}
+\newpage
+\input{Chapters/RX.tex}
+\newpage
+\input{Chapters/Submarine.tex}
+
+% \input{Chapters/Conclusion.tex}
+% \input{Chapters/Appendix.tex}
+
+\end{document}
