@@ -44,12 +44,12 @@ for kk in range(n_punts):
     lam_1 = 1  # weight to positive sequence
     lam_2 = 1  # weight to negative sequence
 
-    Ia_re0 = 0.1
-    Ia_im0 = 0.1
+    Ia_re0 = 0.5
+    Ia_im0 = 0.5
     Ib_re0 = 0.05
-    Ib_im0 = 0.05
+    Ib_im0 = 0.3
     Ic_re0 = 0.05
-    Ic_im0 = 0.05
+    Ic_im0 = 0.3
 
     def Vabc_to_012(Vabc):
         T = np.zeros((3,3), dtype=complex)
@@ -72,13 +72,13 @@ for kk in range(n_punts):
         # Va = 1 / (1 / Zc + 1 / Zf + 1 / Z2 + 1 / Z1 - Zc / (Z1 * (Zc + Z1))) * (Vth_a / Z2 + Zc / (Zc + Z1) * (x[0] + 1j * x[1]))
         # Va = 1 / (1 / Zc + 1 / Zf + 1 / Z2 + 1 / Z1 - Zc / (Z1 * (Zc + Z1))) * (Vth_a / Z2 + Zc / (Zc + Z1) * (x[0] + 1j * x[1]))
         # Va = emplenar!!
-        # Va = (x[0] + 1j * x[1] + Vth_a * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2))  # LLG
+        Va = (x[0] + 1j * x[1] + Vth_a * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2))  # LLG
 
 
         # Va = 1 / (1 / Zc + (Zc + Z1) / Zc * (1 / Zc + 1 / Zf + 1 / Z2)) * (x[0] + 1j * x[1] + (Zc + Z1) / (Zc + Z2) * Vth_a)  # balanced
         # Va = 1 / (1 / Zc + (Zc + Z1) / Zc * (1 / Zc + 1 / Zf + 1 / Z2)) * (x[0] + 1j * x[1] + (Zc + Z1) / (Zc + Z2) * Vth_a)  # LG
         # Va = (x[0] + 1j * x[1] + Vth_a * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2))  # LL
-        Va = (x[0] + 1j * x[1] + Vth_a * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2))  # LLG
+        # Va = (x[0] + 1j * x[1] + Vth_a * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2))  # LLG
 
 
         # Va = 1 / (Zf + Z2) * (Vth_a * Zf + (x[0] + 1j * x[1]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
@@ -92,13 +92,13 @@ for kk in range(n_punts):
         # Vb = 1 / (1 / Zc + 1 / Zf + 1 / Z2 + 1 / Z1 - Zc / (Z1 * (Zc + Z1))) * (Vth_b / Z2 + Zc / (Zc + Z1) * (x[2] + 1j * x[3]))
         # Vb = (x[2] + 1j * x[3] + Vth_b * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2)) 
         # Vb = emplenar!!
-        # Vb = 1 / (1 / Zf + 2 / Z2 + 2 / Zc + 2 / Z1 - 2 * Zc / (Z1 * (Zc + Z1))) * (Vth_b / Z2 + Vth_c / Z2 + Zc / (Zc + Z1) * (x[2] + 1j * x[3]) + Zc / (Zc + Z1) * (x[4] + 1j * x[5]))
+        Vb = 1 / (1 / Zf + 2 / Z2 + 2 / Zc + 2 / Z1 - 2 * Zc / (Z1 * (Zc + Z1))) * (Vth_b / Z2 + Vth_c / Z2 + Zc / (Zc + Z1) * (x[2] + 1j * x[3]) + Zc / (Zc + Z1) * (x[4] + 1j * x[5]))
 
 
         # Vb = 1 / (1 / Zc + (Zc + Z1) / Zc * (1 / Zc + 1 / Zf + 1 / Z2)) * (x[2] + 1j * x[3] + (Zc + Z1) / (Zc + Z2) * Vth_b)  # balanced
         # Vb = (x[2] + 1j * x[3] + Vth_b * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2))  # LG
         # Vb = 1 / (1 / Zf - (1 / Z2 + 1 / Zf + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (Zf / Z2 + Zf / Zf + Zf / Zc + Zf / Z1 - Zc * Zf / (Z1 * (Z1 + Zc)))) * (- Vth_c / Z2 - Zc / (Z1 + Zc) * (x[4] + 1j * x[5]) + (1 / Z2 + 1 / Zf + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (- Zf / Z2 * Vth_b - Zf * Zc / (Z1 + Zc) * (x[2] + 1j * x[3])))  # LL
-        Vb = 1 / (1 / Zf + 1 / Z2 + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (Vth_b / Z2 + Zc / (Z1 + Zc) * (x[2] + 1j * x[3]))  # LLG
+        # Vb = 1 / (1 / Zf + 1 / Z2 + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (Vth_b / Z2 + Zc / (Z1 + Zc) * (x[2] + 1j * x[3]))  # LLG
 
 
         # Vb = 1 / (Zf + Z2) * (Vth_b * Zf + (x[2] + 1j * x[3]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
@@ -112,12 +112,12 @@ for kk in range(n_punts):
         # Vc = 1 / (1 / Zc + 1 / Zf + 1 / Z2 + 1 / Z1 - Zc / (Z1 * (Zc + Z1))) * (Vth_c / Z2 + Zc / (Zc + Z1) * (x[4] + 1j * x[5]))
         # Vc = (x[4] + 1j * x[5] + Vth_c * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2)) 
         # Vc = emplenar!!
-        # Vc = 1 / (1 / Zf + 2 / Z2 + 2 / Zc + 2 / Z1 - 2 * Zc / (Z1 * (Zc + Z1))) * (Vth_b / Z2 + Vth_c / Z2 + Zc / (Zc + Z1) * (x[2] + 1j * x[3]) + Zc / (Zc + Z1) * (x[4] + 1j * x[5]))
+        Vc = 1 / (1 / Zf + 2 / Z2 + 2 / Zc + 2 / Z1 - 2 * Zc / (Z1 * (Zc + Z1))) * (Vth_b / Z2 + Vth_c / Z2 + Zc / (Zc + Z1) * (x[2] + 1j * x[3]) + Zc / (Zc + Z1) * (x[4] + 1j * x[5]))
 
         # Vc = 1 / (1 / Zc + (Zc + Z1) / Zc * (1 / Zc + 1 / Zf + 1 / Z2)) * (x[4] + 1j * x[5] + (Zc + Z1) / (Zc + Z2) * Vth_c)  # balanced
         # Vc = (x[4] + 1j * x[5] + Vth_c * (1 / Z2 + Z1 / (Zc * Z2))) / (2 / Zc + 1 / Z2 + Z1 / (Zc * Zc) + Z1 / (Zc * Z2))  # LG
         # Vc = 1 / (1 / Zf - (1 / Z2 + 1 / Zf + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (Zf / Z2 + Zf / Zf + Zf / Zc + Zf / Z1 - Zc * Zf / (Z1 * (Z1 + Zc)))) * (- Vth_b / Z2 - Zc / (Z1 + Zc) * (x[2] + 1j * x[3]) + (1 / Z2 + 1 / Zf + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (- Zf / Z2 * Vth_c - Zf * Zc / (Z1 + Zc) * (x[4] + 1j * x[5])))  # LL
-        Vc = 1 / (1 / Zf + 1 / Z2 + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (Vth_c / Z2 + Zc / (Z1 + Zc) * (x[4] + 1j * x[5]))  # LLG
+        # Vc = 1 / (1 / Zf + 1 / Z2 + 1 / Zc + 1 / Z1 - Zc / (Z1 * (Z1 + Zc))) * (Vth_c / Z2 + Zc / (Z1 + Zc) * (x[4] + 1j * x[5]))  # LLG
 
         # Vc = 1 / (Zf + Z2) * (Vth_c * Zf + (x[4] + 1j * x[5]) * (Z1 * Z2 + Z2 * Zf + Zf * Z1))  # balanced
         # Vc = Vth_c + (x[4] + 1j * x[5]) * (Z1 + Z2)  # LG
