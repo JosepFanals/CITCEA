@@ -15,6 +15,13 @@ n_punts = 100
 increment = difff / n_punts
 Zthmod = np.sqrt(0.01 ** 2 + 0.05 ** 2)
 
+# initialize values
+I1_re = 0.0
+I1_im = 0.0
+I2_re = 0.0
+I2_im = 0.0
+x0 = [I1_re, I1_im, I2_re, I2_im]
+
 for kk in range(n_punts):
 
     RX = lim2_RX + increment * kk
@@ -24,7 +31,13 @@ for kk in range(n_punts):
     Z2 = Rin + Xin * 1j
     RX_vec.append(RX)
 
-    Zf = 0.10 + 0.00 * 1j  # fault impedance
+    print('.......')
+    #print(Rin)
+    #print(Xin)
+    #print(RX)
+
+    # Zf = 0.10 + 0.00 * 1j  # fault impedance
+    Zf = 0.1
     Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
     # Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
     Imax = 1
@@ -39,10 +52,6 @@ for kk in range(n_punts):
     # I2_re = - 0.2
     # I2_im = 0.0
 
-    I1_re = 0.0
-    I1_im = 0.5
-    I2_re = 0.2
-    I2_im = 0.1
 
     def Vabc_to_012(Vabc):
         T = np.zeros((3,3), dtype=complex)
@@ -80,25 +89,25 @@ for kk in range(n_punts):
 
     def V0(x):
         # V0 = 0  # balanced
-        # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
+        V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
         # V0 = 0  # LL
-        V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V0
 
     def V1(x):
         # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
-        # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+        V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V1
 
     def V2(x):
         # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
-        # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+        V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
+        # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
         return V2
 
@@ -146,7 +155,7 @@ for kk in range(n_punts):
         return Ia_im(x) + Ib_im(x) + Ic_im(x)
 
 
-    x0 = [I1_re, I1_im, I2_re, I2_im]
+    # x0 = [I1_re, I1_im, I2_re, I2_im]
     bound = (-Imax, Imax)
     bnds = (bound, bound, bound, bound)
     con1 = {'type': 'ineq', 'fun': g1}
@@ -156,8 +165,9 @@ for kk in range(n_punts):
     con5 = {'type': 'eq', 'fun': g5}
     cons = [con1, con2, con3]
 
-    sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons, options={'ftol':1e-8})
+    sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons, options={'ftol':1e-9})
     Iopt = sol.x
+    # x0 = [Iopt[0], Iopt[1], Iopt[2], Iopt[3]]
     I0f = 0
     I1f = Iopt[0] + 1j * Iopt[1]
     I2f = Iopt[2] + 1j * Iopt[3]
@@ -170,21 +180,23 @@ for kk in range(n_punts):
     V012f = np.array([V0f, V1f, V2f])
     Vabcf = V012_to_abc(V012f)
 
-    print('--------')
-    print('|Vabc| voltages: ', abs(Vabcf))
-    print('|V012| voltages: ', abs(V012f))
+    #print('--------')
+    #print('|Vabc| voltages: ', abs(Vabcf))
+    #print('|V012| voltages: ', abs(V012f))
 
     ang_shift = np.angle(Vabcf[0])
+    print(Iabcf)
     Iabcf = Iabcf * np.exp(- 1j * ang_shift)
+    print(Iabcf)
     I012 = Vabc_to_012(Iabcf)
 
     I1_vec.append(I012[1])
     I2_vec.append(I012[2])
     ff_vec.append(sol.fun)
 
-    print('Iabc currents: ', Iabcf)
-    print('I012 currents: ', I012)
-    print('--------')
+    #print('Iabc currents: ', Iabcf)
+    #print('I012 currents: ', I012)
+    #print('--------')
 
     # print(sol)
 
@@ -201,8 +213,37 @@ def make_csv(x_vec, y_vec, a_vec, file_name):
 a_vec = np.full(len(RX_vec), 'a')
 b_vec = 'b'
 
-make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/I1_re_LLG.csv')
-make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/I1_im_LLG.csv')
-make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/I2_re_LLG.csv')
-make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/I2_im_LLG.csv')
-make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/ff_LLG.csv')
+make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/I1_re_LG.csv')
+make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/I1_im_LG.csv')
+make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/I2_re_LG.csv')
+make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/I2_im_LG.csv')
+make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/ff_LG.csv')
+
+
+fig, axs = plt.subplots(3,2)
+fig.suptitle('Vertically and horizontally stacked subplots')
+axs[0,0].plot(RX_vec, np.real(I1_vec))
+axs[0,1].plot(RX_vec, np.imag(I1_vec))
+axs[1,0].plot(RX_vec, np.real(I2_vec))
+axs[1,1].plot(RX_vec, np.imag(I2_vec))
+axs[2,0].plot(RX_vec, ff_vec)
+
+plt.ylim(-1, 1)
+plt.xlim(lim2_RX, lim1_RX)
+
+axs[0,0].set_xlim([lim2_RX, lim1_RX])
+axs[0,0].set_ylim([-1, 1])
+
+axs[0,1].set_xlim([lim2_RX, lim1_RX])
+axs[0,1].set_ylim([-1, 1])
+
+axs[1,0].set_xlim([lim2_RX, lim1_RX])
+axs[1,0].set_ylim([-1, 1])
+
+axs[1,1].set_xlim([lim2_RX, lim1_RX])
+axs[1,1].set_ylim([-1, 1])
+
+axs[2,0].set_xlim([lim2_RX, lim1_RX])
+axs[2,0].set_ylim([0, 1])
+
+plt.show()

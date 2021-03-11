@@ -15,6 +15,13 @@ n_punts = 100
 increment = difff / n_punts
 Zthmod = np.sqrt(0.01 ** 2 + 0.05 ** 2)
 
+# initialize values
+I1_re = 0.0
+I1_im = 0.0
+I2_re = 0.0
+I2_im = 0.0
+x0 = [I1_re, I1_im, I2_re, I2_im]
+
 for kk in range(n_punts):
 
     RX = lim2_RX + increment * kk
@@ -24,7 +31,8 @@ for kk in range(n_punts):
     Z2 = Rin + Xin * 1j
     RX_vec.append(RX)
 
-    Zf = 0.10 + 0.00 * 1j  # fault impedance
+    #Zf = 0.10 + 0.00 * 1j  # fault impedance
+    Zf = 0.1
     Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
     # Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
     Imax = 1
@@ -75,25 +83,25 @@ for kk in range(n_punts):
 
     def V0(x):
         # V0 = 0  # balanced
-        # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
+        V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
         # V0 = 0  # LL
-        V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V0
 
     def V1(x):
         # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
-        # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+        V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V1
 
     def V2(x):
         # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
-        # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+        V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
+        # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
         return V2
 
@@ -150,7 +158,7 @@ for kk in range(n_punts):
         return np.angle(V012_to_abc(np.array([V0(x), V1(x), V2(x)]))[0])
 
 
-    x0 = [I1_re, I1_im, I2_re, I2_im]
+    # x0 = [I1_re, I1_im, I2_re, I2_im]
     bound = (-Imax, Imax)
     bnds = (bound, bound, bound, bound)
     con1 = {'type': 'ineq', 'fun': g1}
@@ -205,8 +213,36 @@ def make_csv(x_vec, y_vec, a_vec, file_name):
 a_vec = np.full(len(RX_vec), 'a')
 b_vec = 'b'
 
-make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/RI1_re_LLG.csv')
-make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/RI1_im_LLG.csv')
-make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/RI2_re_LLG.csv')
-make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/RI2_im_LLG.csv')
-make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/Rff_LLG.csv')
+make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/RI1_re_LG.csv')
+make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/RI1_im_LG.csv')
+make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/RI2_re_LG.csv')
+make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/RI2_im_LG.csv')
+make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/Rff_LG.csv')
+
+fig, axs = plt.subplots(3,2)
+fig.suptitle('Vertically and horizontally stacked subplots')
+axs[0,0].plot(RX_vec, np.real(I1_vec))
+axs[0,1].plot(RX_vec, np.imag(I1_vec))
+axs[1,0].plot(RX_vec, np.real(I2_vec))
+axs[1,1].plot(RX_vec, np.imag(I2_vec))
+axs[2,0].plot(RX_vec, ff_vec)
+
+plt.ylim(-1, 1)
+plt.xlim(lim2_RX, lim1_RX)
+
+axs[0,0].set_xlim([lim2_RX, lim1_RX])
+axs[0,0].set_ylim([-1, 1])
+
+axs[0,1].set_xlim([lim2_RX, lim1_RX])
+axs[0,1].set_ylim([-1, 1])
+
+axs[1,0].set_xlim([lim2_RX, lim1_RX])
+axs[1,0].set_ylim([-1, 1])
+
+axs[1,1].set_xlim([lim2_RX, lim1_RX])
+axs[1,1].set_ylim([-1, 1])
+
+axs[2,0].set_xlim([lim2_RX, lim1_RX])
+axs[2,0].set_ylim([0, 1])
+
+plt.show()

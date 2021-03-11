@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  10 MAR 2021 09:44
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  11 MAR 2021 10:01
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 7 - more analysis/Main"
@@ -1282,195 +1282,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-(./Chapters/Constant.tex [2] [3]
-Package pgfplots info on input line 106: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 106: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_re_3x.csv}
-Package pgfplots info on input line 107: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_3x_2.csv}
-Package pgfplots info on input line 108: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_3x_3.csv}
-Package pgfplots info on input line 119: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 119: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_im_3x.csv}
-Package pgfplots info on input line 120: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_3x_2.csv}
-Package pgfplots info on input line 121: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_3x_3.csv}
-Package pgfplots info on input line 132: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 132: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_re_3x.csv}
-Package pgfplots info on input line 133: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_3x_3.csv}
-Package pgfplots info on input line 134: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_3x_2.csv}
-Package pgfplots info on input line 144: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 144: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_im_3x.csv}
-Package pgfplots info on input line 145: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_3x_3.csv}
-Package pgfplots info on input line 146: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_3x_2.csv}
- [4
-Missing character: There is no ; (U+003B) in font nullfont!
-]
-Package pgfplots info on input line 215: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 215: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_re_LG.csv}
-Package pgfplots info on input line 216: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LG_2.csv}
-Package pgfplots info on input line 217: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LG_3.csv}
-Package pgfplots info on input line 228: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 228: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_im_LG.csv}
-Package pgfplots info on input line 229: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LG_2.csv}
-Package pgfplots info on input line 230: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LG_3.csv}
-Package pgfplots info on input line 241: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 241: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_re_LG.csv}
-Package pgfplots info on input line 242: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LG_3.csv}
-Package pgfplots info on input line 243: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LG_2.csv}
-Package pgfplots info on input line 253: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 253: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_im_LG.csv}
-Package pgfplots info on input line 254: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LG_3.csv}
-Package pgfplots info on input line 255: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LG_2.csv}
- [5
-Missing character: There is no ; (U+003B) in font nullfont!
-]
-Package pgfplots info on input line 273: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 273: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_re_LL.csv}
-Package pgfplots info on input line 274: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LL_2.csv}
-Package pgfplots info on input line 275: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LL_3.csv}
-Package pgfplots info on input line 286: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 286: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_im_LL.csv}
-Package pgfplots info on input line 287: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LL_2.csv}
-Package pgfplots info on input line 288: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LL_3.csv}
-Package pgfplots info on input line 299: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 299: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_re_LL.csv}
-Package pgfplots info on input line 300: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LL_3.csv}
-Package pgfplots info on input line 301: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LL_2.csv}
-Package pgfplots info on input line 311: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 311: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_im_LL.csv}
-Package pgfplots info on input line 312: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LL_3.csv}
-Package pgfplots info on input line 313: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LL_2.csv}
- [6
-Missing character: There is no ; (U+003B) in font nullfont!
-]
-Package pgfplots info on input line 334: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 334: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_re_LLG.csv}
-Package pgfplots info on input line 335: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LLG_2.csv}
-Package pgfplots info on input line 336: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_re_LLG_3.csv}
-Package pgfplots info on input line 347: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 347: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I1_im_LLG.csv}
-Package pgfplots info on input line 348: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LLG_2.csv}
-Package pgfplots info on input line 349: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I1_im_LLG_3.csv}
-Package pgfplots info on input line 360: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 360: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_re_LLG.csv}
-Package pgfplots info on input line 361: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LLG_3.csv}
-Package pgfplots info on input line 362: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_re_LLG_2.csv}
-Package pgfplots info on input line 372: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 372: Using 'lua backend=false' for plot 0 (t
-ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
-PGFPlots: reading {Data/I2_im_LLG.csv}
-Package pgfplots info on input line 373: Using 'lua backend=false' for plot 1 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LLG_3.csv}
-Package pgfplots info on input line 374: Using 'lua backend=false' for plot 2 (t
-ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-PGFPlots: reading {Data/I2_im_LLG_2.csv}
- [7
-Missing character: There is no ; (U+003B) in font nullfont!
-]) [8] (./Chapters/RX.tex
+(./Chapters/RX.tex
 PGFPlots: reading {Data/RX/I1_re_3x.csv}
 PGFPlots: reading {Data/RX/RI1_re_3x.csv}
 PGFPlots: reading {Data/RX/I1_im_3x.csv}
@@ -1481,8 +1293,7 @@ PGFPlots: reading {Data/RX/I2_im_3x.csv}
 PGFPlots: reading {Data/RX/RI2_im_3x.csv}
 PGFPlots: reading {Data/RX/ff_3x.csv}
 PGFPlots: reading {Data/RX/Rff_3x.csv}
-
-[9
+ [2
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 PGFPlots: reading {Data/RX/I1_re_LG.csv}
@@ -1505,7 +1316,7 @@ PGFPlots: reading {Data/RX/I2_im_LL.csv}
 PGFPlots: reading {Data/RX/RI2_im_LL.csv}
 PGFPlots: reading {Data/RX/ff_LL.csv}
 PGFPlots: reading {Data/RX/Rff_LL.csv}
- [10
+ [3
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 PGFPlots: reading {Data/RX/I1_re_LLG.csv}
@@ -1518,11 +1329,11 @@ PGFPlots: reading {Data/RX/I2_im_LLG.csv}
 PGFPlots: reading {Data/RX/RI2_im_LLG.csv}
 PGFPlots: reading {Data/RX/ff_LLG.csv}
 PGFPlots: reading {Data/RX/Rff_LLG.csv}
- [11
+ [4
 Missing character: There is no ; (U+003B) in font nullfont!
-] [12
+] [5
 Missing character: There is no ; (U+003B) in font nullfont!
-]) [13] (./Chapters/Submarine.tex
+]) [6] (./Chapters/Submarine.tex
 PGFPlots: reading {Data/submarine/I1_re_3x.csv}
 PGFPlots: reading {Data/submarine/RI1_re_3x.csv}
 PGFPlots: reading {Data/submarine/I1_im_3x.csv}
@@ -1543,7 +1354,7 @@ PGFPlots: reading {Data/submarine/I2_im_LG.csv}
 PGFPlots: reading {Data/submarine/RI2_im_LG.csv}
 PGFPlots: reading {Data/submarine/ff_LG.csv}
 PGFPlots: reading {Data/submarine/Rff_LG.csv}
- [14
+ [7
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 PGFPlots: reading {Data/submarine/I1_re_LL.csv}
@@ -1556,7 +1367,7 @@ PGFPlots: reading {Data/submarine/I2_im_LL.csv}
 PGFPlots: reading {Data/submarine/RI2_im_LL.csv}
 PGFPlots: reading {Data/submarine/ff_LL.csv}
 PGFPlots: reading {Data/submarine/Rff_LL.csv}
- [15
+ [8
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 PGFPlots: reading {Data/submarine/I1_re_LLG.csv}
@@ -1569,12 +1380,12 @@ PGFPlots: reading {Data/submarine/I2_im_LLG.csv}
 PGFPlots: reading {Data/submarine/RI2_im_LLG.csv}
 PGFPlots: reading {Data/submarine/ff_LLG.csv}
 PGFPlots: reading {Data/submarine/Rff_LLG.csv}
- [16
+
+[9
 Missing character: There is no ; (U+003B) in font nullfont!
-] [17
+] [10
 Missing character: There is no ; (U+003B) in font nullfont!
-])
-[18] (./Chapters/Conclusion.tex [19]) [20] (./Chapters/Appendix.tex
+]) [11] (./Chapters/Conclusion.tex [12]) [13] (./Chapters/Appendix.tex
 \absvshift=\dimen329
 \absvshift=\dimen330
 \absvshift=\dimen331
@@ -1587,8 +1398,8 @@ Missing character: There is no ; (U+003B) in font nullfont!
 \absvshift=\dimen338
 \absvshift=\dimen339
 \absvshift=\dimen340
- [21]
-[22]
+
+[14] [15]
 \absvshift=\dimen341
 \absvshift=\dimen342
 \absvshift=\dimen343
@@ -1600,56 +1411,60 @@ Missing character: There is no ; (U+003B) in font nullfont!
 \absvshift=\dimen349
 \absvshift=\dimen350
 \absvshift=\dimen351
- [23
+ [16
 
-] [24] [25
+] [17] [18
 
-]) [26] (./Main.aux)
+]) [19] (./Main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'Main.run.xml'.
 
 \openout1 = Main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 55638 strings out of 478902
- 10842823,30474404 words of node,token memory allocated
- 668 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 29 attribute, 68 glue_spec
-, 29 attribute_list, 2 write nodes
-   avail lists: 1:18,2:1874042,3:1716135,4:218,5:722,6:46,7:163227,8:62,9:4272,1
-0:14,11:692
- 73195 multiletter control sequences out of 65536+200000
- 86 fonts using 7178959 bytes
- 108i,22n,105p,1081b,2568s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54925 strings out of 478902
+ 305218,2373549 words of node,token memory allocated
+ 639 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 24 attribute, 68 glue_spec
+, 24 attribute_list, 2 write nodes
+   avail lists: 1:7,2:27822,3:9937,4:219,5:722,6:46,7:16825,8:62,9:4272,10:10,11
+:400
+ 72779 multiletter control sequences out of 65536+200000
+ 83 fonts using 6789495 bytes
+ 108i,22n,105p,1028b,2529s stack positions out of 5000i,500n,10000p,200000b,50000s
 <//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
 an10-italic.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/pub
-lic/lm/lmmono10-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/
-opentype/public/lm/lmroman8-regular.otf><C:/Users/Josep/AppData/Local/Programs/M
-iKTeX/fonts/opentype/public/lm/lmroman10-regular.otf><//?/c:/users/josep/appdata
-/local/programs/miktex/fonts/opentype/public/lm/lmroman12-bold.otf><C:/Users/Jos
-ep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/U
-sers/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Josep/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/
-Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
-:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5
-.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Main.pdf (26 pages, 24686417 bytes).
+lic/lm/lmroman8-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/
+opentype/public/lm/lmroman10-regular.otf><//?/c:/users/josep/appdata/local/progr
+ams/miktex/fonts/opentype/public/lm/lmroman12-bold.otf><C:/Users/Josep/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users
+/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
+6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Jos
+ep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Us
+ers/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+>
+Output written on Main.pdf (19 pages, 295424 bytes).
 
-PDF statistics: 194 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 153 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
