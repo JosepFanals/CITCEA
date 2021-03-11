@@ -206,9 +206,9 @@ def fun_C(SSk, SSp, SSq, VVk, VVp, VVq, IIk, IIp, IIq):
 
 
 # DEFINITION OF NUMBER OF ITERATIONS, CAN CHANGE ARBITRARILY
-n_gg = 20  # outer
-n_mm = 20  # intermediate
-n_kk = 20  # inner
+n_gg = 30  # outer
+n_mm = 10  # intermediate
+n_kk = 10  # inner
 
 
 for gg in range(n_gg):  # outer loop
@@ -228,6 +228,7 @@ for gg in range(n_gg):  # outer loop
 
         # initialize the residues we have to find
         IIk1 = (np.random.rand(n_buses) - np.random.rand(n_buses)) * 1  # could also try to set IIk1 = VVk1
+        # IIk1 = VVk[0]
         # if gg == 0 and mm == 0:
         # if mm == 0:
             # IIk1 = np.ones(n_buses, dtype=complex)
@@ -320,7 +321,7 @@ for gg in range(n_gg):  # outer loop
     VVq.append(QQ1)
 
 
-# CHART OF VOLTAGES 
+# CHART OF VOLTAGES, but conjugated or not!?
 # full_map = np.multiply.outer(VVk[0], np.multiply.outer(VVp[0], VVq[0]))  # initial tridimensional representation
 V_map = np.multiply.outer(np.multiply.outer(VVp[0], VVk[0]), VVq[0])  # the tridimensional representation I am looking for
 for i in range(1, len(VVk)):
@@ -341,7 +342,6 @@ for i in range(n_buses):
     I_map_df.to_excel(writer, sheet_name=str(i))
 writer.save()
 
-
 # CHART OF POWERS
 S_map = np.multiply.outer(np.multiply.outer(SSp[0], SSk[0]), SSq[0])
 for i in range(1, len(SSk)):
@@ -352,9 +352,40 @@ for i in range(n_buses):
     S_map_df.to_excel(writer, sheet_name=str(i))
 writer.save()
 
+
+# CHECKING
 # find current mismatches to check if the power flow solution is correct
-for i in range(n_buses):
-    for k in range(n_scale):
-        for m in range(n_buses):
-            print(S_map[i][m][k])  # sheet, fila, columna
-        
+sheet = 0
+columna = 2
+# for i in range(n_buses):
+#     for k in range(n_scale):
+#         for m in range(n_buses):
+#             print(S_map[i][m][k])  # sheet, fila, columna
+print('S')
+for m in range(n_buses):
+    print(S_map[sheet][m][columna])
+
+print('V')
+v_vec = []
+for m in range(n_buses):
+    print(np.conj(V_map[sheet][m][columna]))
+    v_vec.append(np.conj(V_map[sheet][m][columna]))
+
+print('V')
+# check voltages:
+Ic0 = 0
+v2_vec = []
+v2_vec.append(v_vec[n_buses - 1])
+for m in range(n_buses):
+    Ic = Ic0 + 0.1 / np.conj(v_vec[n_buses - m - 1])
+    Vvv = Ic * (0.01 + 1j * 0.01) + v_vec[n_buses - m - 1]
+    v2_vec.append(Vvv)
+    Ic0 = Ic
+
+for m in range(0, n_buses):
+    print('.............')
+    print(v2_vec[m])
+    print(v_vec[n_buses - m - 1])
+    print(abs(v2_vec[m] - v_vec[n_buses - m - 1]))
+
+print('sfdsfd')
