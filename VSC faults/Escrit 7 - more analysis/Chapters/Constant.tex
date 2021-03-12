@@ -168,40 +168,48 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 \begin{axis}[%
     colormap name=whitered,
     width=12cm,
-    height=9cm,
+    height=8.5cm,
     view={45}{30},
     enlargelimits=false,
     grid=major,
     domain=-1:4,
     y domain=-1:4,
     samples=26,
-    ztick={0.2,0.3,...,1},
-    zmax=0.8,
+    ztick={0.0,0.15,...,1},
+    zmin=-0.05,
+    zmax=0.9,
     xlabel=$\lambda^+ \equiv \lambda$,
     ylabel=$\lambda^- \equiv 1 -\lambda$,
     zlabel={$|V_c|$},
     axis line style = thick,
     x dir=reverse,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
     colorbar,
     colorbar style={
-        at={(1.06,0.3)},
+        at={(1.06,0.03)},
         anchor=south west,
-        height=0.35*\pgfkeysvalueof{/pgfplots/parent axis height},
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
         title={$f$}
     }
 ]
-% \addplot3 [surf] {bivar(mu1,sigma1,mu2,sigma2)};
 
-\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv};
-\addplot3 [name path=B, gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma] {Data/constant/terra.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_3x.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_3x.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_3x.csv};
+\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_3x.csv};
 
-\node at (axis cs:0.4,0.3,0.56) [pin=130:$|V^-_c|$] {};
-\node at (axis cs:0.1,0.8,0.75) [pin=-90:$|V^+_c|$] {};
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
 \end{axis}
 \end{tikzpicture}
-\caption{Positive and negative sequence voltages together with the objective function for the balanced fault}
+\caption{Sequence voltages together with the objective function for the balanced fault}
 \label{fig:full_3x}
 \end{figure}
 
@@ -263,6 +271,58 @@ The line to ground fault has the particularity of presenting a distribution of d
 \end{figure}
 The imaginary part of the currents presents a similar distribution in both cases. Notice that contrarily to the balanced fault, where one vertex of the distribution coincided with the point at which $f$ was at its minimum, there is a full edge in which the function becomes minimum. This phenomena suggests that maybe there is more than one minimum. For instance, carrying the analysis in the $abc$ frame caused the optimal currents $[\underline{I}^+, \underline{I}^-]$ to become $[0.1715-j0.4955, -0.0804-j0.5003]$. Leaving aside the differences in current, the objective function became the same up to a precision of $10^{-10}$. We have tested that this is indeed not an abnormality. Initializing differently the currents passed to the SciPy \texttt{minimize()} function results in variations in the imaginary currents across the zone where $f$ becomes minimum. Besides, the variations between the OPT and the ROPT cases are almost imperceptible. 
 
+Figure \ref{fig:full_LG} shows the distribution of voltages and the objective function across multiple values of $\lambda$.
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=8.5cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=0.00,
+    zmax=1.0,
+    xlabel=$\lambda^+ \equiv \lambda$,
+    ylabel=$\lambda^- \equiv 1 -\lambda$,
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    x dir=reverse,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_LG.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_LG.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_LG.csv};
+\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_LG.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the line to ground fault}
+\label{fig:full_LG}
+\end{figure}
+
 \subsection{Line to line fault}
 The line to line fault can be considered to be a more severe fault compared to the line to ground case, since the function to minimize presents larger values. This can be understood when looking at the representations in Figures \ref{fig:3_lg} and \ref{fig:3_ll}, where the fault impedance is between two phases and not phase and ground. Therefore, the voltage drop becomes larger. Figure \ref{fig:LLx1} shows that even if the real part of the currents remains near the zero, visually speaking the imaginary parts take symmetrical values. The distribution of dots for the imaginary part of the negative sequence current is the main difference with respect to the line to ground fault. 
 
@@ -321,6 +381,57 @@ The line to line fault can be considered to be a more severe fault compared to t
 \end{figure}
 However, this time it has been checked that there is only one point that minimizes the function, independently of the initialization vector. Not less surprising, the imaginary positive and negative sequence currents are practically the same with a change of sign. We can intuitively make sense of it as the positive sequence voltage at the PCC tends to one while the negative one approaches zero. Thus, the current flowing towards the $\underline{Z}_f$ impedance is quite large and a big part of it is due to the injected positive sequence current. To achieve a small negative sequence voltage, as can be understood from Figure \ref{fig:sys_LL}, the negative sequence current has to counteract the positive sequence current. Because of that, the optimal positive and negative sequence currents share almost the same magnitude and opposite signs.
 
+Figure \ref{fig:full_LL} depicts the plot where the positive and negative sequence voltages as well as the objective function are plotted.
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=8.5cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=0.00,
+    zmax=1.0,
+    xlabel=$\lambda^+ \equiv \lambda$,
+    ylabel=$\lambda^- \equiv 1 -\lambda$,
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    x dir=reverse,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_LL.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_LL.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_LL.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_LL.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_LL.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_LL.csv};
+\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_LL.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the line to line fault}
+\label{fig:full_LL}
+\end{figure}
 
 \subsection{Double line to ground fault}
 The double line to ground fault is likely to be the most severe in terms of voltage. It turns out to have the more distant voltages from the references, as shown in \cite{taul2020modeling}. By nature, this fault is defined by a solid line to line connection and also a link between the two faulted phases and ground through an impedance. Figure \ref{fig:LLGx1} reveals that minimum of $f$ falls considerably far from the ideal zero. 
@@ -380,8 +491,61 @@ The double line to ground fault has many similarities with the line to line faul
   \caption{Influence of the currents on the objective function for the double line to ground fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
   \label{fig:LLGx1}
 \end{figure}
-Again, only injecting reactive currents (ROPF case) has been experimentally proved to become a suboptimal yet highly convenient choice. The objective functions present tiny variations in this case. Even though the real currents in both sequence differ a bit, for the imaginary ones the OPT and the ROPT computations generate almost the same value. Therefore, the injection of real currents becomes secondary for highly inductive impedances. Table \ref{tab:results} gathers the numerical results for all the studied faults.
+Again, only injecting reactive currents (ROPF case) has been experimentally proved to become a suboptimal yet highly convenient choice. The objective functions present tiny variations in this case. Even though the real currents in both sequence differ a bit, for the imaginary ones the OPT and the ROPT computations generate almost the same value. Therefore, the injection of real currents becomes secondary for highly inductive impedances. 
 
+Finally, figure \ref{fig:full_LLG} displays what the distribution of voltages and the subsequent objective function look like for variations in the $\lambda$ parameter.
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=8.5cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=0.00,
+    zmax=1.0,
+    xlabel=$\lambda^+ \equiv \lambda$,
+    ylabel=$\lambda^- \equiv 1 -\lambda$,
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    x dir=reverse,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_LLG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_LLG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_LLG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_LLG.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_LLG.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_LLG.csv};
+\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_LLG.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the double line to ground fault}
+\label{fig:full_LLG}
+\end{figure}
+
+Table \ref{tab:results} gathers the numerical results for all the studied faults.
 \begin{table}[!htb] \centering
     \begin{tabular}{lccccccc}
        \hline
