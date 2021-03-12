@@ -103,7 +103,7 @@ Figure \ref{fig:3x1} shows on the one hand the results with the brute force meth
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_3x.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_3x.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_3x_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_3x_3.csv};
             % \legend{BF, OPT};
@@ -116,7 +116,7 @@ Figure \ref{fig:3x1} shows on the one hand the results with the brute force meth
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_3x.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_3x.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_3x_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_3x_3.csv};
             \legend{BF, OPT, ROPT};
@@ -129,7 +129,7 @@ Figure \ref{fig:3x1} shows on the one hand the results with the brute force meth
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_3x.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_3x.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_3x_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_3x_2.csv};
             \end{axis}
@@ -141,67 +141,97 @@ Figure \ref{fig:3x1} shows on the one hand the results with the brute force meth
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_3x.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_3x.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_3x_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_3x_2.csv};
             \end{axis}
         \end{tikzpicture}
   \end{subfigure}
-  \caption{Influence of the currents on the objective function for the balanced fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+  \caption{Influence of the currents on the objective function for the balanced fault when $\lambda^+=1$ and $\lambda^-=1$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
   \label{fig:3x1}
 \end{figure}
 On the other hand, the point corresponding to the solution of the optimization problem illustrates what was already more or less deduced from the brute force computations. Nonetheless, solving the optimization problem yields a more favorable result. The objective function is slightly smaller and the optimal point can be located in a zone where not many points coming from the brute force are present. Such irregular distribution of points is due to the fact that around the optimal points many combinations of currents do not meet the constraints. In any case, injecting a negative imaginary positive sequence current causes a positive voltage drop so that the voltage we wish to improve can be far apart from the faulted one. Taking into account that in this case $X>>R$, the real positive sequence current becomes considerably smaller than the imaginary part. 
 
+The brute force calculation in Figure \ref{fig:3x1} was computed considering that $\lambda^+=1$ and $\lambda^-=1$ as well. However, the optimality can also be studied for various $\lambda$ values. This generic parameter would fit in the objective function as
+\begin{equation}
+    f(\underline{I}^+, \underline{I}^-) = \lambda|(|\underline{V}^+_c(\underline{I}^+, \underline{I}^-)| - 1)| + (1-\lambda)|(|\underline{V}^-_c(\underline{I}^+, \underline{I}^-)| - 0)|,
+    \label{eq:1}
+\end{equation}
+where $\lambda=[0,1]$. Therefore, bigger values of $\lambda$ would imply that we prioritize the positive sequence voltage while small values will tend to give more importance to the negative sequence voltage. Figure XX shows the voltage profiles for a sweep of $\lambda$ values. 
 
-% \begin{figure}\centering
-%   \begin{subfigure}[!htb]{.4\textwidth}
-%     \centering
-%         \begin{tikzpicture}[trim axis right,trim axis left]
-%             \pgfplotsset{width=7cm, height=6cm}
-%             \begin{axis}[grid=major, xlabel={$\underline{I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
-%             \addplot[very thick, draw opacity = 0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I1_re_3x.csv};
-%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}] table[x=x, y=y, col sep=comma] {Data/I1_re_3x_2.csv};
-%             \end{axis}
-%         \end{tikzpicture}
-%   \end{subfigure}
-%   \hspace{1cm}
-% \begin{subfigure}[!htb]{.4\textwidth}
-%     \centering
-%         \begin{tikzpicture}[trim axis right,trim axis left]
-%             \pgfplotsset{width=7cm, height=6cm}
-%             \begin{axis}[grid=major, xlabel={$\underline{I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
-%             \addplot[very thick, draw opacity=0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I1_im_3x.csv};
-%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}] table[x=x, y=y, col sep=comma] {Data/I1_im_3x_2.csv};
-%             \end{axis}
-%         \end{tikzpicture}
-%   \end{subfigure}
+\begin{tikzpicture}
+\begin{axis}[%
+width=8cm, height=8cm, grid=major, xlabel={$|V^+_c|$}, ylabel={$|V^-_c|$}, zlabel={$\lambda$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0.6,0.63,...,1}, ytick={0.1,0.14,...,1}, ztick={0,0.2,...,1}, axis line style = very thick]
+\addplot3[colormap/jet, surf, very thick] table[x=x, y=y, z=z, col sep=comma] {Data/constant/pareto_3x.csv};
+% \addlegendentry{Pareto Front};
 
-%   \vspace{0.5cm}
+\end{axis}
+\end{tikzpicture}
 
-% \begin{subfigure}[!htb]{.4\textwidth}
-%     \centering
-%         \begin{tikzpicture}[trim axis right,trim axis left]
-%             \pgfplotsset{width=7cm, height=6cm}
-%             \begin{axis}[grid=major, xlabel={$\underline{I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
-%             \addplot[very thick, draw opacity=0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I2_re_3x.csv};
-%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}] table[x=x, y=y, col sep=comma] {Data/I2_re_3x_2.csv};
-%             \end{axis}
-%         \end{tikzpicture}
-%   \end{subfigure}
-%   \hspace{1cm}
-% \begin{subfigure}[!htb]{.4\textwidth}
-%     \centering
-%         \begin{tikzpicture}[trim axis right,trim axis left]
-%             \pgfplotsset{width=7cm, height=6cm}
-%             \begin{axis}[grid=major, xlabel={$\underline{I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}]
-%             \addplot[very thick, draw opacity=0, each nth point=1, scatter, only marks] table[x=x, y=y, col sep=comma] {Data/I2_im_3x.csv};
-%             \addplot[very thick, each nth point=1, scatter, only marks, mark=x,mark options={fill=red,scale=4}, red] table[x=x, y=y, col sep=comma] {Data/I2_im_3x_2.csv};
-%             \end{axis}
-%         \end{tikzpicture}
-%   \end{subfigure}
-%   \caption{Objective function depending on injected currents for the balanced case}
-%   \label{fig:3x1}
-% \end{figure}
+
+
+\pgfplotsset{
+colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
+}
+
+\begin{tikzpicture}
+    \pgfdeclareverticalshading{stefan}{100bp}{
+color(0bp)=(blue!50!black);
+color(25bp)=(blue!50!black);
+color(50bp)=(blue);
+color(55bp)=(green);
+color(60bp)=(yellow);
+color(65bp)=(orange);
+color(70bp)=(red);
+color(75bp)=(red!50!black);
+color(100bp)=(red!50!black)
+}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=9cm,
+    view={30}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.2,0.3,...,1},
+    zmax=0.8,
+    xlabel=$\lambda^+ \equiv \lambda$,
+    ylabel=$\lambda^- \equiv 1 -\lambda$,
+    zlabel={$|V_c|$},
+    x dir=reverse,
+    colorbar,
+    colorbar style={
+        at={(1.1,0.3)},
+        anchor=south west,
+        height=0.35*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+% \addplot3 [surf] {bivar(mu1,sigma1,mu2,sigma2)};
+% \addplot3 [domain=-1:4,samples=31, samples y=0, thick, smooth] (x,4,{normal(mu1,sigma1)});
+% \addplot3 [domain=-1:4,samples=31, samples y=0, thick, smooth] (-1,x,{normal(mu2,sigma2)});
+
+% \addplot3 [surf, name path=A] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv};
+\addplot3 [shading=stefan] [name path=A, line width=1pt, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv} \closedcycle;
+
+% \path [name path=B] (1,0,0) -- (0,1,0);
+% \addplot3 [name path=B, gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma] {Data/constant/terra.csv};
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_3x.csv};
+
+% \addplot3 [color=brown!50] fill between[of = A and B];
+
+% \draw [black!50] (axis cs:-1,0,0) -- (axis cs:4,0,0);
+% \draw [black!50] (axis cs:0,-1,0) -- (axis cs:0,4,0);
+
+% \node at (axis cs:-1,1,0.18) [pin=165:$|V^+_c|$] {};
+% \node at (axis cs:1.5,4,0.32) [pin=-15:$|V^-_c|$] {};
+\end{axis}
+\end{tikzpicture}
 
 \subsection{Line to ground fault}
 The line to ground fault has the particularity of presenting a distribution of dots similar for both real and imaginary currents for both sequences. As shown in Figure \ref{fig:LGx1}, the minimum in the real currents plot takes place around the zero. Despite that, in reality, the real positive sequence current becomes slightly larger than zero, whilst for the negative sequence it takes a small but not negligible negative value. Observing Figure \ref{fig:sys_LG} it becomes clear that the real part of the positive sequence currents ought to be greater than zero whereas the negative sequence current should take negative values; these combinations cause the maximization of the positive sequence voltage and the minimization of the negative sequence voltage. 
@@ -212,7 +242,7 @@ The line to ground fault has the particularity of presenting a distribution of d
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LG_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LG_3.csv};
             % \legend{BF, OPT};
@@ -225,7 +255,7 @@ The line to ground fault has the particularity of presenting a distribution of d
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LG_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LG_3.csv};
             \legend{BF, OPT, ROPT};
@@ -238,7 +268,7 @@ The line to ground fault has the particularity of presenting a distribution of d
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LG_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LG_2.csv};
             \end{axis}
@@ -250,7 +280,7 @@ The line to ground fault has the particularity of presenting a distribution of d
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LG_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LG_2.csv};
             \end{axis}
@@ -270,7 +300,7 @@ The line to line fault can be considered to be a more severe fault compared to t
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LL.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LL.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LL_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LL_3.csv};
             % \legend{BF, OPT};
@@ -283,7 +313,7 @@ The line to line fault can be considered to be a more severe fault compared to t
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LL.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LL.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LL_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LL_3.csv};
             \legend{BF, OPT, ROPT};
@@ -296,7 +326,7 @@ The line to line fault can be considered to be a more severe fault compared to t
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LL.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LL.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LL_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LL_2.csv};
             \end{axis}
@@ -308,7 +338,7 @@ The line to line fault can be considered to be a more severe fault compared to t
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LL.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LL.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LL_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LL_2.csv};
             \end{axis}
@@ -331,7 +361,7 @@ The double line to ground fault has many similarities with the line to line faul
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LLG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LLG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LLG_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_re_LLG_3.csv};
             % \legend{BF, OPT};
@@ -344,7 +374,7 @@ The double line to ground fault has many similarities with the line to line faul
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LLG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LLG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LLG_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I1_im_LLG_3.csv};
             \legend{BF, OPT, ROPT};
@@ -357,7 +387,7 @@ The double line to ground fault has many similarities with the line to line faul
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LLG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LLG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LLG_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_re_LLG_2.csv};
             \end{axis}
@@ -369,7 +399,7 @@ The double line to ground fault has many similarities with the line to line faul
         \begin{tikzpicture}[trim axis right,trim axis left]
             \pgfplotsset{width=7cm, height=6cm}
             \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
-            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LLG.csv};
+            \addplot[thick, scatter, only marks, each nth point = 100] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LLG.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LLG_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/I2_im_LLG_2.csv};
             \end{axis}
