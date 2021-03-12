@@ -24,7 +24,7 @@ I2_re = 0.0
 I2_im = 0.0
 x0 = [I1_re, I1_im, I2_re, I2_im]
 
-for kk in range(n_punts):
+for kk in range(n_punts + 1):
 
     lamm = lim2_lam + kk * increment
     lam_vec.append(lamm)

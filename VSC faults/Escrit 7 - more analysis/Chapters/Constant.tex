@@ -157,40 +157,19 @@ The brute force calculation in Figure \ref{fig:3x1} was computed considering tha
     f(\underline{I}^+, \underline{I}^-) = \lambda|(|\underline{V}^+_c(\underline{I}^+, \underline{I}^-)| - 1)| + (1-\lambda)|(|\underline{V}^-_c(\underline{I}^+, \underline{I}^-)| - 0)|,
     \label{eq:1}
 \end{equation}
-where $\lambda=[0,1]$. Therefore, bigger values of $\lambda$ would imply that we prioritize the positive sequence voltage while small values will tend to give more importance to the negative sequence voltage. Figure XX shows the voltage profiles for a sweep of $\lambda$ values. 
-
-\begin{tikzpicture}
-\begin{axis}[%
-width=8cm, height=8cm, grid=major, xlabel={$|V^+_c|$}, ylabel={$|V^-_c|$}, zlabel={$\lambda$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0.6,0.63,...,1}, ytick={0.1,0.14,...,1}, ztick={0,0.2,...,1}, axis line style = very thick]
-\addplot3[colormap/jet, surf, very thick] table[x=x, y=y, z=z, col sep=comma] {Data/constant/pareto_3x.csv};
-% \addlegendentry{Pareto Front};
-
-\end{axis}
-\end{tikzpicture}
-
-
+where $\lambda=[0,1]$. Therefore, bigger values of $\lambda$ would imply that we prioritize the positive sequence voltage while small values will tend to give more importance to the negative sequence voltage. Figure \ref{fig:full_3x} shows the voltage profiles for a sweep of $\lambda$ values. 
 
 \pgfplotsset{
 colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 }
 
+\begin{figure}[!htb]\centering \footnotesize
 \begin{tikzpicture}
-    \pgfdeclareverticalshading{stefan}{100bp}{
-color(0bp)=(blue!50!black);
-color(25bp)=(blue!50!black);
-color(50bp)=(blue);
-color(55bp)=(green);
-color(60bp)=(yellow);
-color(65bp)=(orange);
-color(70bp)=(red);
-color(75bp)=(red!50!black);
-color(100bp)=(red!50!black)
-}
 \begin{axis}[%
     colormap name=whitered,
     width=12cm,
     height=9cm,
-    view={30}{30},
+    view={45}{30},
     enlargelimits=false,
     grid=major,
     domain=-1:4,
@@ -201,38 +180,30 @@ color(100bp)=(red!50!black)
     xlabel=$\lambda^+ \equiv \lambda$,
     ylabel=$\lambda^- \equiv 1 -\lambda$,
     zlabel={$|V_c|$},
+    axis line style = thick,
     x dir=reverse,
     colorbar,
     colorbar style={
-        at={(1.1,0.3)},
+        at={(1.06,0.3)},
         anchor=south west,
         height=0.35*\pgfkeysvalueof{/pgfplots/parent axis height},
         title={$f$}
     }
 ]
 % \addplot3 [surf] {bivar(mu1,sigma1,mu2,sigma2)};
-% \addplot3 [domain=-1:4,samples=31, samples y=0, thick, smooth] (x,4,{normal(mu1,sigma1)});
-% \addplot3 [domain=-1:4,samples=31, samples y=0, thick, smooth] (-1,x,{normal(mu2,sigma2)});
 
-% \addplot3 [surf, name path=A] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv};
-% \addplot3 [shading=stefan] [name path=A, line width=1pt, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv} \closedcycle;
-\addplot3 [scatter, only marks] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv};
+\addplot3 [name path=B, gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma] {Data/constant/terra.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_3x.csv};
 
-% \path [name path=B] (1,0,0) -- (0,1,0);
-% \addplot3 [name path=B, gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma] {Data/constant/terra.csv};
-
-\addplot3 [domain=-0:1,samples=31, samples y=0, thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, thick, smooth]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_3x.csv};
-
-% \addplot3 [color=brown!50] fill between[of = A and B];
-
-% \draw [black!50] (axis cs:-1,0,0) -- (axis cs:4,0,0);
-% \draw [black!50] (axis cs:0,-1,0) -- (axis cs:0,4,0);
-
-% \node at (axis cs:-1,1,0.18) [pin=165:$|V^+_c|$] {};
-% \node at (axis cs:1.5,4,0.32) [pin=-15:$|V^-_c|$] {};
+\node at (axis cs:0.4,0.3,0.56) [pin=130:$|V^-_c|$] {};
+\node at (axis cs:0.1,0.8,0.75) [pin=-90:$|V^+_c|$] {};
 \end{axis}
 \end{tikzpicture}
+\caption{Positive and negative sequence voltages together with the objective function for the balanced fault}
+\label{fig:full_3x}
+\end{figure}
 
 \subsection{Line to ground fault}
 The line to ground fault has the particularity of presenting a distribution of dots similar for both real and imaginary currents for both sequences. As shown in Figure \ref{fig:LGx1}, the minimum in the real currents plot takes place around the zero. Despite that, in reality, the real positive sequence current becomes slightly larger than zero, whilst for the negative sequence it takes a small but not negligible negative value. Observing Figure \ref{fig:sys_LG} it becomes clear that the real part of the positive sequence currents ought to be greater than zero whereas the negative sequence current should take negative values; these combinations cause the maximization of the positive sequence voltage and the minimization of the negative sequence voltage. 
