@@ -215,7 +215,8 @@ color(100bp)=(red!50!black)
 % \addplot3 [domain=-1:4,samples=31, samples y=0, thick, smooth] (-1,x,{normal(mu2,sigma2)});
 
 % \addplot3 [surf, name path=A] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv};
-\addplot3 [shading=stefan] [name path=A, line width=1pt, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv} \closedcycle;
+% \addplot3 [shading=stefan] [name path=A, line width=1pt, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv} \closedcycle;
+\addplot3 [scatter, only marks] table[x=x, y=y, z=z, col sep=comma] {Data/constant/ff_3x.csv};
 
 % \path [name path=B] (1,0,0) -- (0,1,0);
 % \addplot3 [name path=B, gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma] {Data/constant/terra.csv};
