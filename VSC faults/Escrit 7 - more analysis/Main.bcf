@@ -2350,15 +2350,7 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bib.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="2">fortescue1918method</bcf:citekey>
-    <bcf:citekey order="3">tsili2009review</bcf:citekey>
-    <bcf:citekey order="4">altin2010overview</bcf:citekey>
-    <bcf:citekey order="4">serban2016voltage</bcf:citekey>
-    <bcf:citekey order="5">camacho2012flexible</bcf:citekey>
-    <bcf:citekey order="6">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="7">kothari2003modern</bcf:citekey>
-    <bcf:citekey order="8">taul2020modeling</bcf:citekey>
+    <bcf:citekey order="1">cheah2017offshore</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

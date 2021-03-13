@@ -1,5 +1,91 @@
 \section{Submarine cable}
-We now deal with a submarine cable, which is modelled with a $\pi$ equivalent, where the series impedance is still $\underline{Z}_a$ while the parallel impedance is $\underline{Z}_c=-jX_c$. As follows, we sweep across $X_c$.
+Having seen the influence of varying the ratio between the resistive and inductive part of the Thevenin impedance, we can now go a step further by including a hypothetical submarine cable between the grid and the point where the fault occurs. The systems takes the form shown in Figure \ref{fig:sys_pc}.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (3,0) to [sV, v_=$\underline{V}_{th}$] (3,2);
+\draw (-0,2) to [R, l=$\underline{Z}_{th}$] (3,2);
+\draw (0,2) to [R, l_=$\underline{Z}_s$] (-2,2);
+\draw (0.25,2) to [R, l_=$\underline{Z}_p$] (0.25,0);
+\draw (-2.25,2) to [R, l=$\underline{Z}_p$] (-2.25,0);
+\draw (-2,2) to [short] (-3,2);
+
+\draw (3.25,0) to [short] (2.75,0);
+\draw (0,0) to [short] (0.5,0);
+\draw (-2.5,0) to [short] (-2.0,0);
+
+\draw (-3.25,0) to [short] (-2.75,0);
+\node at (-6,1.3) {PCC};
+\node at (-6,2.7) {$\underline{V}_c$};
+\draw (-3,2) to [short] (-3.2,1);
+\draw (-3.2,1) to [short] (-2.8,1);
+\draw[-{Latex[length=3mm]}] (-2.8,1) to [short] (-3,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
+\draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+\draw (-9,2) to [R, l=$\underline{Z}_c$, i=$\underline{I}$] (-6,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+
+\end{circuitikz}
+\caption{Single-phase representation of the simple system under a fault with a submarine cable}
+\label{fig:sys_pc}
+\end{figure}
+This system can be studied without added complexity once a Thevenin equivalent is formed on the right hand side of the fault. Opting for this will imply that we will be able to recycle the expressions developed before. The new Thevenin voltage and impedance, denoted by $\underline{V}'_{th}$ and $\underline{Z}'_{th}$, are given by:
+\begin{equation}
+    \begin{cases}
+        \underline{V}'_{th} = \dfrac{\underline{Z}_p\underline{Z_p}}{2\underline{Z}_{th}\underline{Z}_p + \underline{Z}_p\underline{Z}_s + \underline{Z}_p\underline{Z}_p + \underline{Z}_{th}\underline{Z}_s}\underline{V}_{th},\\[18pt]
+        \underline{Z}'_{th} = \dfrac{\underline{Z}_p\underline{Z}_p\underline{Z}_{th} + \underline{Z}_s\underline{Z}_p\underline{Z}_p + \underline{Z}_{th}\underline{Z}_{p} + \underline{Z}_{th}\underline{Z}_s\underline{Z}_p}{2\underline{Z}_{th}\underline{Z}_p + \underline{Z}_p\underline{Z}_s + \underline{Z}_p\underline{Z}_p + \underline{Z}_{th}\underline{Z}_s}.
+    \end{cases}
+\end{equation}
+The distance of the cable is going to take multiple values in order to weight its influence. Realistic data for the $\underline{Z}_s$ and $\underline{Z}_p$ impedances are taken from \cite{cheah2017offshore} and adapted to per unit values. They are shown in Table \ref{tab:imp_cable}.
+\begin{table}[!htb]\centering
+    \begin{tabular}{ccc}
+        \hline
+        Magnitude & Value & Units\\
+        \hline
+        $\underline{Z}_s$ & $6.674\cdot 10^{-5} + j2.597\cdot 10^{-4}$ & pu/km\\
+        $\underline{Z}_p$ & $-j77.372$ & pu$\cdot$km\\
+        \hline
+    \end{tabular}
+    \caption{Impedances values to be used in the submarine cable analysis}
+    \label{tab:imp_cable}
+\end{table}
+
+Figure \ref{fig:dist_th} displays the resulting Thevenin voltage and impedance for a varying cable distance.
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.0cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Voltage (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.2,...,1.2}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
+              \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Vth_re.csv};
+              \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Vth_im.csv};
+               \legend{$\Re (\underline{V}'_{th})$, $\Im (\underline{V}'_{th})$};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Impedance (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks = false, ytick={0, 0.02,..., 0.1}, xmin=0, xmax=100]
+                \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Zth_re.csv};
+                \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Zth_im.csv};
+                \legend{$\Re (\underline{Z}'_{th})$, $\Im (\underline{Z}'_{th})$};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Influence of the cable distance on the Thevenin voltage and impedance}
+    \label{fig:dist_th}
+  \end{figure}
+  
+The real part of the voltage remains dominant across all distances, although it tends to increase with larger distances. The contrary pattern is experienced by the imaginary part. About the impedances, as one could expect, both of them grow with longer distances. The reactive part is considerably bigger than the real one for all distances. 
+
+% We now deal with a submarine cable, which is modelled with a $\pi$ equivalent, where the series impedance is still $\underline{Z}_a$ while the parallel impedance is $\underline{Z}_c=-jX_c$. As follows, we sweep across $X_c$.
 
 \subsection{Balanced fault}
 Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
