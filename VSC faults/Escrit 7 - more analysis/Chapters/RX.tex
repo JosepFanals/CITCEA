@@ -115,9 +115,9 @@ colormap={whitered}{color(0cm)=(white!95!orange); color(1cm)=(orange!75!red)}
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_3x.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_3x.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_3x.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_3x.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_3x.csv};
-\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_3x.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_3x.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
 
 % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
 % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
@@ -244,9 +244,9 @@ Even though we can expect that the positive sequence voltage is far from the uni
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_LG.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_LG.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_LG.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LG.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LG.csv};
-\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LG.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LG.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
 
 % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
 % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
@@ -352,7 +352,7 @@ Figure \ref{fig:full_RX_LL} displays the absolute value of the positive and nega
     y domain=-1:4,
     samples=26,
     ztick={0.0,0.15,...,1},
-    zmin=-0.05,
+    zmin=-0.00,
     zmax=1.0,
     xlabel=$R/X$,
     ylabel=$R/X$,
@@ -372,9 +372,9 @@ Figure \ref{fig:full_RX_LL} displays the absolute value of the positive and nega
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_LL.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_LL.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_LL.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LL.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LL.csv};
-\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LL.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LL.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
 
 % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
 % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
@@ -481,7 +481,7 @@ Figure \ref{fig:full_RX_LLG} shows the distribution of voltages for the multiple
     y domain=-1:4,
     samples=26,
     ztick={0.0,0.15,...,1},
-    zmin=-0.05,
+    zmin=0.00,
     zmax=1.0,
     xlabel=$R/X$,
     ylabel=$R/X$,
@@ -501,9 +501,9 @@ Figure \ref{fig:full_RX_LLG} shows the distribution of voltages for the multiple
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_LLG.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_LLG.csv};
 \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_LLG.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LLG.csv};
-\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LLG.csv};
-\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LLG.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LLG.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
 
 % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
 % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
@@ -517,8 +517,6 @@ Figure \ref{fig:full_RX_LLG} shows the distribution of voltages for the multiple
 \label{fig:full_RX_LLG}
 \end{figure}
 When $R/X$ is approximately null, the positive and negative sequence voltages match for the OPT and the ROPT cases. However, once the resistive part increases in comparison to the reactive part of the impedance, the impossibility of injecting active current causes a variation in voltages. For the positive sequence voltages, the OPT one is placed above the ROPT voltage; and the contrary happens to the negative sequence voltages.
-
-
 
 % About the discussion of the plots, for the balanced fault it becomes clear that injecting a large imaginary positive sequence current (in absolute value) is the preferred option to minimize the objective function. In the OPT case some of this current is traded for some real positive sequence current that allows the objective function to become slightly lower when compared to the ROPT case. Since the negative sequence equivalent circuit is decoupled from the positive sequence one, the negative sequence currents are null in all cases. Besides, the larger $R$ becomes with respect to $X$, the larger the real positive current has to be as well. This phenomena makes complete sense when considering that we want to amplify the voltage drop in the positive sequence. However, even when $R$ is about five times larger than $X$, the imaginary positive sequence current is dominant.
 

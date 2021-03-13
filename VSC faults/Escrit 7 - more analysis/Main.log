@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  14 MAR 2021 00:08
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  14 MAR 2021 00:28
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/JOSEP/Desktop/CITCEA/VSC faults/Escrit 7 - more analysis/Main"
@@ -1260,17 +1260,7 @@ PGFPlots: reading {Data/RX/V2_3x.csv}
 PGFPlots: reading {Data/RX/RV1_3x.csv}
 PGFPlots: reading {Data/RX/RV2_3x.csv}
 Package pgfplots info on input line 118: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 118: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_3x.csv}
 
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.26720040390886124) h
@@ -1384,17 +1374,7 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.4261589027636819) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
 Package pgfplots info on input line 119: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 119: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_3x.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.2752108175623099) ha
 s been dropped because of a coordinate filter. (see also unbounded coords=jump).
@@ -1530,17 +1510,7 @@ PGFPlots: reading {Data/RX/V2_LG.csv}
 PGFPlots: reading {Data/RX/RV1_LG.csv}
 PGFPlots: reading {Data/RX/RV2_LG.csv}
 Package pgfplots info on input line 247: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 247: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_LG.csv}
 
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.5961500126660693) ha
@@ -1647,17 +1617,7 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.585445628205143) has been dropped because of a c
 oordinate filter. (see also unbounded coords=jump). 
 Package pgfplots info on input line 248: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 248: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_LG.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.6641332847440802) ha
 s been dropped because of a coordinate filter. (see also unbounded coords=jump).
@@ -1785,17 +1745,7 @@ PGFPlots: reading {Data/RX/V2_LL.csv}
 PGFPlots: reading {Data/RX/RV1_LL.csv}
 PGFPlots: reading {Data/RX/RV2_LL.csv}
 Package pgfplots info on input line 375: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 375: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_LL.csv}
 
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.8257292791726902) ha
@@ -1902,17 +1852,7 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.7026190139403683) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
 Package pgfplots info on input line 376: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 376: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_LL.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.8322186525447313) ha
 s been dropped because of a coordinate filter. (see also unbounded coords=jump).
@@ -2040,17 +1980,7 @@ PGFPlots: reading {Data/RX/V2_LLG.csv}
 PGFPlots: reading {Data/RX/RV1_LLG.csv}
 PGFPlots: reading {Data/RX/RV2_LLG.csv}
 Package pgfplots info on input line 504: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 504: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_LLG.csv}
 
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.941121594231916) has
@@ -2157,17 +2087,7 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.9411215942396727) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
 Package pgfplots info on input line 505: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): plot handler does not support LUA.
-Package pgfplots info on input line 505: Using 'lua backend=false' for plot 4 (t
-ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
-f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
-lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
-lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
-streamstart ]'): LUA does not support x filter (yet).
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_LLG.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.9411295125074295) ha
 s been dropped because of a coordinate filter. (see also unbounded coords=jump).
@@ -2284,14 +2204,14 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 52127 strings out of 479005
- 195329,2373549 words of node,token memory allocated
+ 52130 strings out of 479005
+ 156255,2373549 words of node,token memory allocated
  560 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 65 glue_spec,
  8 attribute_list, 2 write nodes
-   avail lists: 1:4,2:16582,3:8321,4:234,5:421,6:29,7:10996,8:9,9:1458,10:16,11:
+   avail lists: 1:4,2:16142,3:7909,4:226,5:421,6:29,7:10972,8:8,9:1458,10:16,11:
 436
- 69926 multiletter control sequences out of 65536+200000
+ 69929 multiletter control sequences out of 65536+200000
  75 fonts using 6709971 bytes
  108i,21n,127p,1012b,2624s stack positions out of 5000i,500n,10000p,200000b,50000s
 <//?/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman8-regular.otf><
@@ -2307,7 +2227,7 @@ nts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Main.pdf (9 pages, 269580 bytes).
+Output written on Main.pdf (9 pages, 266265 bytes).
 
 PDF statistics: 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
