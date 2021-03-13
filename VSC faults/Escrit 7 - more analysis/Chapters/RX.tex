@@ -1,5 +1,5 @@
 \section{Variable resistance/inductance ratio}
-In this section we try to answer to the question of what happens when the $R/X$ ratio varies. This way we experiment with cases where the resistive part is considerably larger than in the aforementioned anlysis. The fault impedance $\underline{Z}_f$ has been set at $0.1$, which is probably more realistic than $0.0 + 0.1j$. 
+In this section we try to answer to the question of what happens when the $R/X$ ratio varies. This way we experiment with cases where the resistive part is considerably larger than in the aforementioned analysis. The fault impedance $\underline{Z}_f$ has been set at $0.1$, which is probably more realistic than $0.0 + 0.1j$. 
 
 \subsection{Balanced fault}
 Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
@@ -9,7 +9,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=7cm, height=5.5cm}
-              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0,0.1,...,0.4}, axis line style = very thick]
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick={0.0, 0.2,...,1.0}, xmin=0, xmax=5]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_3x.csv};
               \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_3x.csv};
               % \legend{BF, OPT};
@@ -21,7 +21,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=5.5cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick]
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick,  xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_3x.csv};
                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_3x.csv};
                 % \legend{OPT};
@@ -35,7 +35,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=5.5cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = very thick]
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = thick,  xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_3x.csv};
                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_3x.csv};
                 % \legend{BF, OPT};
@@ -47,7 +47,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=7cm, height=5.5cm}
-                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = very thick]
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = thick,  xmin=0, xmax=5]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_3x.csv};
                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_3x.csv};
                   % \legend{BF, OPT};
@@ -61,7 +61,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
                     \pgfplotsset{width=12.5cm, height=5.5cm}
-                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ymin = -0.0, ymax=0.25, ytick={0,0.05,...,0.25}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ymin = 0.2, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, ytick={0.0,0.1,...,0.5},  xmin=0, xmax=5]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_3x.csv};
                    \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_3x.csv};
                     \legend{OPT, ROPT};
@@ -69,18 +69,80 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
                 \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the balanced fault and a changing $R/X$ ratio. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \caption{Influence of the currents on the objective function for the balanced fault with $\underline{Z}_f=0.05$ and a changing $R/X$ ratio. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
     \label{fig:3x1_c}
   \end{figure}
+It becomes clear that the optimal current is highly dependent on the $R/X$ ratio. That is, when $X>R$, the imaginary positive sequence is dominant, and vice versa for $R>X$. This phenomena makes complete sense when considering that we want to amplify the voltage drop in the positive sequence. However, even when there are serious differences between $R$ and $X$ in magnitude, neither the real nor the imaginary part go to zero. Thus, the objective function for the OPT case becomes slightly lower when compared to the ROPT case. Besides, since the negative sequence equivalent circuit is decoupled from the positive sequence one, the negative sequence currents are null in all cases.  
+
+The fault impedance has a noticeable effect on the results. When it is extremely small, the objective function almost does not vary. Opting for a too large fault impedance may cause the presence of multiple solutions. Hence, the real and imaginary currents may take unexpected values so it is hard to build intuition around the problem. We have checked that $\underline{Z}_f=0.05$ for the balanced fault was a convenient value. 
+
+In addition, Figure \ref{fig:full_RX_3x} shows the absolute value of the voltages depending on the $R/X$ ratio and together with the objective function.
+
+\pgfplotsset{
+colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
+}
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=10cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=-0.05,
+    zmax=1.0,
+    xlabel=$R/X$,
+    ylabel=$R/X$,
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/V1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_3x.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_3x.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_3x.csv};
+\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the balanced fault with $\underline{Z}_f=0.05$ and a varying $R/X$ ratio}
+\label{fig:full_RX_3x}
+\end{figure}
+As already noted in Figure \ref{fig:3x1_c}, the objective function for the OPT case is inferior than the one for the ROPT case, and hence, closer to the ideal situation. Nevertheless, independently on having constraints on the active current, the negative sequence voltages remain at exactly zero for all the $R/X$ range. They end up being superposed. The positive sequence voltages, instead, experience some variations depending on the $R/X$ value. In some sense the positive sequence voltage trend is the contrary of the objective function pattern.
+
+The best possible situation is having the reactive part larger than the real part of the impedance. This is when the positive sequence voltage tends to 0.75. Since the resistive characteristics of the impedance are so minimized, the ROPT case yields the same results as the OPT. When the resistance increases, the differences are exaggerated due to the fact that no active current can be injected in the ROPT situation.
 
 \subsection{Line to ground fault}
 Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground fault.
+
 \begin{figure}[!htb]\centering \footnotesize
     \begin{subfigure}[!htb]{.4\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
-              \pgfplotsset{width=7cm, height=5.9cm}
-              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick, ytick={-0.1,-0.05,...,0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \pgfplotsset{width=7cm, height=6.0cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick={-0.0,0.1,...,0.5}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LG.csv};
               \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LG.csv};
               % \legend{BF, OPT};
@@ -91,8 +153,8 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
     \begin{subfigure}[!htb]{.4\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=7cm, height=5.9cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, ytick={-0.6,-0.5,...,0}, xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LG.csv};
                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LG.csv};
                 % \legend{OPT};
@@ -105,8 +167,8 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
       \begin{subfigure}[!htb]{.4\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=7cm, height=5.9cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.1, ymax=0.8, axis line style = very thick]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0,0.1,...,0.5}, axis line style = thick, xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LG.csv};
                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LG.csv};
                 % \legend{BF, OPT};
@@ -117,8 +179,8 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
       \begin{subfigure}[!htb]{.4\textwidth}
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
-                  \pgfplotsset{width=7cm, height=5.9cm}
-                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.6, ymax=0.1, axis line style = very thick]
+                  \pgfplotsset{width=7cm, height=6.0cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-0.4,-0.2,...,0.4}, axis line style =  thick, xmin=0, xmax=5]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LG.csv};
                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LG.csv};
                   % \legend{BF, OPT};
@@ -131,8 +193,8 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
     \begin{center}
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
-                    \pgfplotsset{width=12.5cm, height=5.9cm}
-                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0,0.025,...,0.15}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                    \pgfplotsset{width=12.5cm, height=6.0cm}
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.4)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.56,0.58,...,0.68}, ymin = 0.55, ymax=0.68, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=5]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LG.csv};
                    \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LG.csv};
                     \legend{OPT, ROPT};
@@ -140,9 +202,65 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
                 \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the line to ground fault and a changing $R/X$ ratio. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \caption{Influence of the currents on the objective function for the line to ground fault and a changing $R/X$ ratio and $\underline{Z}_f=0.001$. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
     \label{fig:LGx1_c}
   \end{figure}
+The line to ground fault has been analyzed for a fault impedance of 0.001 because otherwise the fault may not be severe enough. This is deduced from the presence of multiple optimal points for a same $R/X$ ratio while the objective function improves substantially due to the injection of currents. Instead, in this case the objective function does not vary much for all the $R/X$ range. Notice also that it is not far apart from the objective function in the balanced fault case. Consequently, we are able to conclude that the severity of the fault is similar thanks to the convenient adjustment of the fault impedance.
+
+On the other hand, the differences between the OPT and the ROPT are relevant. Despite that, there is not much room for improvement in the sense that real currents, for both the positive and negative sequences, take ideally values close to 0.5 for big enough $R/X$ ratios. Imposing the constraint of not injecting any real current causes that all influence on the voltages is achieved by means of the imaginary currents, which are not enough to improve the voltages. For instance, for $R/X\approx 5$, the maximum absolute value of the $abc$ currents is one order of magnitude lower than the maximum allowed current $I_{max}$. Therefore, this suggests that no combination of currents is able to reduce more the objective function.
+
+Even though we can expect that the positive sequence voltage is far from the unit value and the negative sequence is also distant from zero, the evaluation of voltages becomes worth of a particular study. Figure \ref{fig:full_RX_LG} shows the objective function along with the positive and negative sequence for the OPT and the ROPT cases.
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=10cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=-0.05,
+    zmax=1.0,
+    xlabel=$R/X$,
+    ylabel=$R/X$,
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/V1_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_LG.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LG.csv};
+\addplot3 [scatter, only marks, ycomb, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LG.csv};
+\addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the line to ground fault with $\underline{Z}_f=0.001$ and a varying $R/X$ ratio}
+\label{fig:full_RX_LG}
+\end{figure}
+When looking at the bigger picture the objective function remains almost always the same, yet there exists a permanent difference between the OPT and the ROPT cases. The positive sequence voltages in the OPT situation are always above the ROPT ones for about 0.04 pu. For the negative sequence voltage the pattern is reversed. It is relevant to take into account that even if the voltages turn out to be practically constant, the currents experience large variations, as shown in Figure \ref{fig:LGx1_c}. Extracting conclusions regarding the fault by only observing the voltages may be misleading, as they can be maintained at the expense of injecting the specific optimal currents. Besides, just like it happened with the balanced fault, the shape of the objective function ressembles the shape of the voltages. This is logical when considering the proportionality between the objective function and the voltages.
+
 
 \subsection{Line to line fault}
 Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
@@ -152,7 +270,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=7cm, height=6.0cm}
-              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = very thick, ytick={0,0.05,...,0.3}, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick={0,0.05,...,0.3}, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LL.csv};
               \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LL.csv};
               % \legend{BF, OPT};
@@ -164,7 +282,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.0cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-1,-0.75,...,0}, axis line style = thick]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LL.csv};
                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LL.csv};
                 % \legend{OPT};
@@ -178,7 +296,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.0cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-1,-0.75,...,0}, axis line style = thick]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LL.csv};
                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LL.csv};
                 % \legend{BF, OPT};
@@ -190,7 +308,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=7cm, height=6.0cm}
-                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0.1,0.2,...,0.6}, axis line style = very thick]
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0.1,0.2,...,0.6}, axis line style = thick]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LL.csv};
                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LL.csv};
                   % \legend{BF, OPT};
@@ -204,7 +322,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
                     \pgfplotsset{width=12.5cm, height=6cm}
-                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.8)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.38,0.39,...,0.45}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.8)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.38,0.39,...,0.45}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LL.csv};
                    \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LL.csv};
                     \legend{OPT, ROPT};

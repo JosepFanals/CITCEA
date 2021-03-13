@@ -7,6 +7,8 @@ I1_vec = []
 I2_vec = []
 ff_vec = []
 RX_vec = []
+V1_vec = []
+V2_vec = []
 
 lim1_RX = 5
 lim2_RX = 0.1
@@ -31,14 +33,17 @@ for kk in range(n_punts):
     Z2 = Rin + Xin * 1j
     RX_vec.append(RX)
 
+    print(Z2)
+
     #print('.......')
     #print(Rin)
     #print(Xin)
     #print(RX)
 
     # Zf = 0.10 + 0.00 * 1j  # fault impedance
-    Zf = 0.03
-    Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
+    Zf = 0.01
+    # Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
+    Z1 = Z2
     # Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
     Imax = 1
     Vth_1 = 1  # positive sequence Thévenin voltage
@@ -88,25 +93,25 @@ for kk in range(n_punts):
         return Vabc
 
     def V0(x):
-        V0 = 0  # balanced
+        # V0 = 0  # balanced
         # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
-        # V0 = 0  # LL
+        V0 = 0  # LL
         # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V0
 
     def V1(x):
-        V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
+        # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
         # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-        # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+        V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
         # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V1
 
     def V2(x):
-        V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
+        # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
         # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-        # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+        V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
         # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
         return V2
@@ -178,6 +183,8 @@ for kk in range(n_punts):
     V1f = V1(Iopt)
     V2f = V2(Iopt)
     V012f = np.array([V0f, V1f, V2f])
+    V1_vec.append(V012f[1])
+    V2_vec.append(V012f[2])
     Vabcf = V012_to_abc(V012f)
 
     #print('--------')
@@ -210,14 +217,26 @@ def make_csv(x_vec, y_vec, a_vec, file_name):
     df.columns = ['x', 'y', 'label']
     df.to_csv(file_name, index=False)
 
+def make3_csv(x_vec, y_vec, z_vec, file_name):
+    df = pd.DataFrame(data=[x_vec, y_vec, z_vec]).T
+    df.columns = ['x', 'y', 'z']
+    df.to_csv(file_name, index=False)
+
+
+zero_vec = np.full(len(RX_vec), 0)
+one_vec = np.full(len(RX_vec), 5)
 a_vec = np.full(len(RX_vec), 'a')
 b_vec = 'b'
 
-make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/I1_re_LG.csv')
-make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/I1_im_LG.csv')
-make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/I2_re_LG.csv')
-make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/I2_im_LG.csv')
-make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/ff_LG.csv')
+make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/I1_re_LL.csv')
+make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/I1_im_LL.csv')
+make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/I2_re_LL.csv')
+make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/I2_im_LL.csv')
+make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/ff_LL.csv')
+
+make3_csv(RX_vec, one_vec, np.abs(V1_vec), 'Data/RX/V1_LL.csv')
+make3_csv(zero_vec, RX_vec, np.abs(V2_vec), 'Data/RX/V2_LL.csv')
+make3_csv(RX_vec, RX_vec, ff_vec, 'Data/RX/ffG_LL.csv')
 
 
 fig, axs = plt.subplots(3,2)
