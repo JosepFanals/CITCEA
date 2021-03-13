@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  13 MAR 2021 22:28
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  14 MAR 2021 00:08
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/JOSEP/Desktop/CITCEA/VSC faults/Escrit 7 - more analysis/Main"
@@ -1777,7 +1777,249 @@ PGFPlots: reading {Data/RX/ff_LL.csv}
 PGFPlots: reading {Data/RX/Rff_LL.csv}
 [5
 Missing character: There is no ; (U+003B) in font nullfont!
+] [6
+Missing character: There is no ; (U+003B) in font nullfont!
 ]
+PGFPlots: reading {Data/RX/V1_LL.csv}
+PGFPlots: reading {Data/RX/V2_LL.csv}
+PGFPlots: reading {Data/RX/RV1_LL.csv}
+PGFPlots: reading {Data/RX/RV2_LL.csv}
+Package pgfplots info on input line 375: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 375: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/RX/ffG_LL.csv}
+
+NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.8257292791726902) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.24700000000000003,0.24700000000000003,0.8081696598473607) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.345,0.345,0.7928608971609243) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.44300000000000006,0.44300000000000006,0.7797111001036323) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.541,0.541,0.7685372070073644) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.639,0.639,0.7591089514885334) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.737,0.737,0.7511838605566727) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.835,0.835,0.7445301931357876) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.933,0.933,0.7389393074080304) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.0310000000000001,1.0310000000000001,0.7342304789377294) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.1290000000000002,1.1290000000000002,0.7302510752548219) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.227,1.227,0.7268742758209661) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.3250000000000002,1.3250000000000002,0.7239957639529927) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.423,1.423,0.7215302188800858) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.5210000000000001,1.5210000000000001,0.7194080329088581) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.6190000000000002,1.6190000000000002,0.7175724339815508) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.717,1.717,0.7159770583589538) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.8150000000000002,1.8150000000000002,0.7145839504996) has bee
+n dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.9130000000000003,1.9130000000000003,0.713361938633154) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.011,2.011,0.7122853268204103) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.109,2.109,0.7113328470149973) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.2070000000000003,2.2070000000000003,0.710486820785889) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.305,2.305,0.7097324893774567) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.403,2.403,0.7090574773300611) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.5010000000000003,2.5010000000000003,0.708451362301046) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.599,2.599,0.70790532888947) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.697,2.697,0.7074118895810382) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.7950000000000004,2.7950000000000004,0.7069646584515141) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.8930000000000002,2.8930000000000002,0.7065581673959483) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.991,2.991,0.7061877160996972) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.0890000000000004,3.0890000000000004,0.70584924912872) has be
+en dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.1870000000000003,3.1870000000000003,0.7055392548325096) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.285,3.285,0.705254681856007) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.383,3.383,0.7049928699269494) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.4810000000000003,3.4810000000000003,0.7047514922243512) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.579,3.579,0.7045285073882706) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.677,3.677,0.7043221189743257) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.7750000000000004,3.7750000000000004,0.7041307416462776) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.873,3.873,0.7039529724801272) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.971,3.971,0.7037875666581774) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.069,4.069,0.7036334168404601) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.167,4.167,0.7034895355442659) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.265,4.265,0.7033550400856583) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.3629999999999995,4.3629999999999995,0.703229139654235) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.460999999999999,4.460999999999999,0.7031111241877666) has be
+en dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.559,4.559,0.7030003547718583) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.657,4.657,0.7028962553380151) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.755,4.755,0.7027983054517128) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.853,4.853,0.7027060340429837) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.951,4.951,0.7026190139403683) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 376: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 376: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/RX/RffG_LL.csv}
+NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.8322186525447313) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.24700000000000003,0.24700000000000003,0.8156619949106365) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.345,0.345,0.8017749608713802) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.44300000000000006,0.44300000000000006,0.7904114193106402) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.541,0.541,0.781309425534495) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.639,0.639,0.7741501418210506) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.737,0.737,0.7686058607094225) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.835,0.835,0.7643714307314073) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.933,0.933,0.7611803178121352) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.0310000000000001,1.0310000000000001,0.7588095494441023) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.1290000000000002,1.1290000000000002,0.7570780012735738) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.227,1.227,0.7558414413572723) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.3250000000000002,1.3250000000000002,0.7549865206944706) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.423,1.423,0.7544249067685322) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.5210000000000001,1.5210000000000001,0.7540881072995049) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.6190000000000002,1.6190000000000002,0.7539231542844308) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.717,1.717,0.7538891268632346) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.8150000000000002,1.8150000000000002,0.7539544094041348) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.9130000000000003,1.9130000000000003,0.7540945582777756) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.011,2.011,0.7542906552498482) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.109,2.109,0.7545280425695267) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.2070000000000003,2.2070000000000003,0.7547953527224811) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.305,2.305,0.7550837646057849) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.403,2.403,0.7553864326081029) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.5010000000000003,2.5010000000000003,0.7556980475878411) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.599,2.599,0.7560144984483135) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.697,2.697,0.756332610521817) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.7950000000000004,2.7950000000000004,0.7566499427137336) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.8930000000000002,2.8930000000000002,0.7569646297152205) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.991,2.991,0.7572752588797195) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.0890000000000004,3.0890000000000004,0.7575807738858698) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.1870000000000003,3.1870000000000003,0.7578803990161878) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.285,3.285,0.7581735796671338) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.383,3.383,0.7584599352960031) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.4810000000000003,3.4810000000000003,0.7587392222247105) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.579,3.579,0.7590113041331781) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.677,3.677,0.7592761286343831) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.7750000000000004,3.7750000000000004,0.7595337085890475) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.873,3.873,0.759784107275214) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.971,3.971,0.7600274265209934) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.069,4.069,0.7602637972537374) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.167,4.167,0.7604933719589382) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.265,4.265,0.7607163186690887) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.3629999999999995,4.3629999999999995,0.760932816178593) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.460999999999999,4.460999999999999,0.7611430502467701) has be
+en dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.559,4.559,0.7613472105633954) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.657,4.657,0.7615454884322845) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.755,4.755,0.7617380748380883) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.853,4.853,0.7619251590486458) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.951,4.951,0.7621069274808387) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/RX/terra_RX.csv}
+Package pgfplots info on input line 385: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
 PGFPlots: reading {Data/RX/I1_re_LLG.csv}
 PGFPlots: reading {Data/RX/RI1_re_LLG.csv}
 PGFPlots: reading {Data/RX/I1_im_LLG.csv}
@@ -1788,25 +2030,268 @@ PGFPlots: reading {Data/RX/I2_im_LLG.csv}
 PGFPlots: reading {Data/RX/RI2_im_LLG.csv}
 PGFPlots: reading {Data/RX/ff_LLG.csv}
 PGFPlots: reading {Data/RX/Rff_LLG.csv}
- [6
+[7
 Missing character: There is no ; (U+003B) in font nullfont!
-] [7
+] [8
 Missing character: There is no ; (U+003B) in font nullfont!
-]) [8] (./Main.aux)
+]
+PGFPlots: reading {Data/RX/V1_LLG.csv}
+PGFPlots: reading {Data/RX/V2_LLG.csv}
+PGFPlots: reading {Data/RX/RV1_LLG.csv}
+PGFPlots: reading {Data/RX/RV2_LLG.csv}
+Package pgfplots info on input line 504: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 504: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/RX/ffG_LLG.csv}
+
+NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.941121594231916) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (0.24700000000000003,0.24700000000000003,0.9411215942909739) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.345,0.345,0.9411215942037706) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.44300000000000006,0.44300000000000006,0.9411215942244815) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.541,0.541,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.639,0.639,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.737,0.737,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.835,0.835,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.933,0.933,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.0310000000000001,1.0310000000000001,0.941121594224481) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.1290000000000002,1.1290000000000002,0.9411215942244813) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.227,1.227,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.3250000000000002,1.3250000000000002,0.9411215942244813) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.423,1.423,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.5210000000000001,1.5210000000000001,0.9411215942244814) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.6190000000000002,1.6190000000000002,0.9411215942244809) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.717,1.717,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.8150000000000002,1.8150000000000002,0.941121594224481) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.9130000000000003,1.9130000000000003,0.941121594224481) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.011,2.011,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.109,2.109,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.2070000000000003,2.2070000000000003,0.941121594224481) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.305,2.305,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.403,2.403,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.5010000000000003,2.5010000000000003,0.941121594224481) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.599,2.599,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.697,2.697,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.7950000000000004,2.7950000000000004,0.9411215942244812) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.8930000000000002,2.8930000000000002,0.9411215942244812) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.991,2.991,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.0890000000000004,3.0890000000000004,0.9411215942244812) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.1870000000000003,3.1870000000000003,0.9411215942244813) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.285,3.285,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.383,3.383,0.9411215942244809) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.4810000000000003,3.4810000000000003,0.941121594224481) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.579,3.579,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.677,3.677,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.7750000000000004,3.7750000000000004,0.9411215942244812) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.873,3.873,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.971,3.971,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.069,4.069,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.167,4.167,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.265,4.265,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.3629999999999995,4.3629999999999995,0.9411215942244816) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.460999999999999,4.460999999999999,0.9411215942244806) has be
+en dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.559,4.559,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.657,4.657,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.755,4.755,0.9411215942244814) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.853,4.853,0.9411215943126455) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.951,4.951,0.9411215942396727) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 505: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 505: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/RX/RffG_LLG.csv}
+NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.9411295125074295) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.24700000000000003,0.24700000000000003,0.941373219158258) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (0.345,0.345,0.9422456861171127) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.44300000000000006,0.44300000000000006,0.9436189156990757) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.541,0.541,0.9453575428674004) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.639,0.639,0.9473358012291831) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.737,0.737,0.9494472705853512) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.835,0.835,0.9516084588527016) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.933,0.933,0.9537579471962048) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.0310000000000001,1.0310000000000001,0.955853245598688) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.1290000000000002,1.1290000000000002,0.9578669386614452) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.227,1.227,0.9597829367638849) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.3250000000000002,1.3250000000000002,0.9615932902721749) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.423,1.423,0.9632956713227995) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.5210000000000001,1.5210000000000001,0.9648914803167805) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.6190000000000002,1.6190000000000002,0.9663844730788607) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.717,1.717,0.96777979384016) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.8150000000000002,1.8150000000000002,0.9690833111980834) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (1.9130000000000003,1.9130000000000003,0.9703011735535245) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.011,2.011,0.9714395200373854) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.109,2.109,0.9725042996148467) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.2070000000000003,2.2070000000000003,0.9735011642359335) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.305,2.305,0.9744354118604804) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.403,2.403,0.9753119624199116) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.5010000000000003,2.5010000000000003,0.9761353551492705) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.599,2.599,0.9769097590128397) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.697,2.697,0.9776389911546557) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.7950000000000004,2.7950000000000004,0.9783265395199212) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.8930000000000002,2.8930000000000002,0.978975587322082) has b
+een dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (2.991,2.991,0.9795890379114109) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.0890000000000004,3.0890000000000004,0.9801695388678013) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.1870000000000003,3.1870000000000003,0.9807195050533153) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.285,3.285,0.9812411400436425) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.383,3.383,0.9817364559508805) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.4810000000000003,3.4810000000000003,0.9822072915065638) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.579,3.579,0.9826553288382252) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.677,3.677,0.9830821080434318) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.7750000000000004,3.7750000000000004,0.9834890409411874) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.873,3.873,0.9838774231744603) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.971,3.971,0.9842484452048783) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.069,4.069,0.9846032021033689) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.167,4.167,0.9849427024833703) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.265,4.265,0.9852678762812419) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.3629999999999995,4.3629999999999995,0.9855795823010955) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.460999999999999,4.460999999999999,0.9858786141621863) has be
+en dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.559,4.559,0.9861657063761684) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.657,4.657,0.9864415394895227) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.755,4.755,0.9867067448023208) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.853,4.853,0.9869619085007665) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (4.951,4.951,0.9872075755836436) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/RX/terra_RX.csv}
+Package pgfplots info on input line 514: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+) [9
+Missing character: There is no ; (U+003B) in font nullfont!
+] (./Main.aux)
 Package logreq Info: Writing requests to 'Main.run.xml'.
 
 \openout1 = Main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 52003 strings out of 479005
- 195327,2373549 words of node,token memory allocated
+ 52127 strings out of 479005
+ 195329,2373549 words of node,token memory allocated
  560 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 65 glue_spec,
  8 attribute_list, 2 write nodes
-   avail lists: 1:4,2:16376,3:8245,4:235,5:420,6:36,7:10880,8:8,9:2033,10:10,11:
-435
- 69886 multiletter control sequences out of 65536+200000
+   avail lists: 1:4,2:16582,3:8321,4:234,5:421,6:29,7:10996,8:9,9:1458,10:16,11:
+436
+ 69926 multiletter control sequences out of 65536+200000
  75 fonts using 6709971 bytes
  108i,21n,127p,1012b,2624s stack positions out of 5000i,500n,10000p,200000b,50000s
 <//?/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman8-regular.otf><
@@ -1817,13 +2302,14 @@ iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Main.pdf (8 pages, 210550 bytes).
+nts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Main.pdf (9 pages, 269580 bytes).
 
-PDF statistics: 95 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
- 36 words of extra memory for PDF output out of 10000 (max. 100000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 100000000)
 

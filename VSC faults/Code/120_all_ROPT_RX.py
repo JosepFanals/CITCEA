@@ -34,7 +34,7 @@ for kk in range(n_punts):
     RX_vec.append(RX)
 
     #Zf = 0.10 + 0.00 * 1j  # fault impedance
-    Zf = 0.01
+    Zf = 0.03
     Z1 = Z2
     # Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
     # Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
@@ -87,24 +87,24 @@ for kk in range(n_punts):
     def V0(x):
         # V0 = 0  # balanced
         # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
-        V0 = 0  # LL
-        # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V0 = 0  # LL
+        V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V0
 
     def V1(x):
         # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
         # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-        V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+        V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V1
 
     def V2(x):
         # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
         # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-        V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
+        # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+        V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
         return V2
 
@@ -226,15 +226,15 @@ one_vec = np.full(len(RX_vec), 5)
 a_vec = np.full(len(RX_vec), 'a')
 b_vec = 'b'
 
-make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/RI1_re_LL.csv')
-make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/RI1_im_LL.csv')
-make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/RI2_re_LL.csv')
-make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/RI2_im_LL.csv')
-make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/Rff_LL.csv')
+make_csv(RX_vec, np.real(I1_vec), a_vec, 'Data/RX/RI1_re_LLG.csv')
+make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Data/RX/RI1_im_LLG.csv')
+make_csv(RX_vec, np.real(I2_vec), a_vec, 'Data/RX/RI2_re_LLG.csv')
+make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Data/RX/RI2_im_LLG.csv')
+make_csv(RX_vec, ff_vec, a_vec, 'Data/RX/Rff_LLG.csv')
 
-make3_csv(RX_vec, one_vec, np.abs(V1_vec), 'Data/RX/RV1_LL.csv')
-make3_csv(zero_vec, RX_vec, np.abs(V2_vec), 'Data/RX/RV2_LL.csv')
-make3_csv(RX_vec, RX_vec, ff_vec, 'Data/RX/RffG_LL.csv')
+make3_csv(RX_vec, one_vec, np.abs(V1_vec), 'Data/RX/RV1_LLG.csv')
+make3_csv(zero_vec, RX_vec, np.abs(V2_vec), 'Data/RX/RV2_LLG.csv')
+make3_csv(RX_vec, RX_vec, ff_vec, 'Data/RX/RffG_LLG.csv')
 
 
 
