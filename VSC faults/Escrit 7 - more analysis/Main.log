@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  14 MAR 2021 13:55
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  14 MAR 2021 15:47
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/JOSEP/Desktop/CITCEA/VSC faults/Escrit 7 - more analysis/Main"
@@ -2913,13 +2913,19 @@ PGFPlots: reading {Data/dist/I2_im_LLG.csv}
 PGFPlots: reading {Data/dist/RI2_im_LLG.csv}
 PGFPlots: reading {Data/dist/ff_LLG.csv}
 PGFPlots: reading {Data/dist/Rff_LLG.csv}
+[16
+Missing character: There is no ; (U+003B) in font nullfont!
+] [17
+Missing character: There is no ; (U+003B) in font nullfont!
+]
 PGFPlots: reading {Data/dist/V1_LLG.csv}
 PGFPlots: reading {Data/dist/V2_LLG.csv}
 PGFPlots: reading {Data/dist/RV1_LLG.csv}
 PGFPlots: reading {Data/dist/RV2_LLG.csv}
-Package pgfplots info on input line 589: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 593: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/dist/ffG_LLG.csv}
+
 NOTE: coordinate (1.99,1.99,0.941121594388671) has been dropped because of a coo
 rdinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.9411215944967664) has 
@@ -3020,7 +3026,7 @@ NOTE: coordinate (97.03,97.03,0.9411215942244814) has been dropped because of a
 coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (99.01,99.01,0.9411215942244815) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
-Package pgfplots info on input line 590: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 594: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/dist/RffG_LLG.csv}
 NOTE: coordinate (1.99,1.99,0.9420848583555883) has been dropped because of a co
@@ -3124,13 +3130,9 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (99.01,99.01,0.9419674012107323) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {Data/dist/terra_dist.csv}
-Package pgfplots info on input line 599: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 603: Using 'lua backend=false' for plot 0 (t
 ype 'graphics'): plot handler does not support LUA.
-) [16
-Missing character: There is no ; (U+003B) in font nullfont!
-] [17
-Missing character: There is no ; (U+003B) in font nullfont!
-] [18
+) [18
 Missing character: There is no ; (U+003B) in font nullfont!
 ] (./Main.aux)
 
@@ -3148,12 +3150,12 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 
 Here is how much of LuaTeX's memory you used:
  53796 strings out of 479005
- 195327,2848258 words of node,token memory allocated
+ 195327,2373549 words of node,token memory allocated
  568 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 10 attribute, 65 glue_spec
 , 10 attribute_list, 2 write nodes
-   avail lists: 1:4,2:23396,3:10400,4:300,5:422,6:33,7:11853,8:46,9:1893,10:16,1
-1:436
+   avail lists: 1:4,2:16138,3:7909,4:226,5:422,6:33,7:10972,8:46,9:1893,10:16,11
+:444
  71154 multiletter control sequences out of 65536+200000
  76 fonts using 6841659 bytes
  108i,22n,127p,1012b,2625s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3173,7 +3175,7 @@ MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmsy8.pfb>
-Output written on Main.pdf (18 pages, 454937 bytes).
+Output written on Main.pdf (18 pages, 457070 bytes).
 
 PDF statistics: 158 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)

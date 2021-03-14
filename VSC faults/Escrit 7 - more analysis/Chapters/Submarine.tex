@@ -475,7 +475,7 @@ Figure \ref{fig:full_dist_LL} displays the positive and negative sequence voltag
 \caption{Sequence voltages together with the objective function for the line to line fault with $\underline{Z}_f=0.03$ and a varying distance cable}
 \label{fig:full_dist_LL}
 \end{figure}
-Surprisingly, the positive sequence voltage is larger for the ROPT case than in the OPT situation. This could already be anticipated by looking at Figure \ref{fig:LLx1_s}, where the positive sequence OPT currents are inferior when compared to the imaginary positive sequence ROPT current. Therefore, the ROPT case makes a bigger effort to maximize the positive sequence voltage at the expense of causing an also larger negative sequence voltage. If we balance both, we get to the conclusion that the objective function is slightly better off in the OPT case, just like we could anticipate. All the absolute values of the voltages tend to increase for longer distances. 
+Surprisingly, the positive sequence voltage is larger for the ROPT case than in the OPT situation. This could already be anticipated by looking at Figure \ref{fig:LLx1_s}, where the positive sequence OPT currents are inferior when compared to the imaginary positive sequence ROPT current. Therefore, the ROPT case makes a bigger effort to maximize the positive sequence voltage at the expense of causing an also larger negative sequence voltage. If we balance both, we get to the conclusion that the objective function is slightly better off in the OPT case, just like we could anticipate. All the absolute values of the voltages tend to increase for longer distances. Compared to the variation in the $R/X$ ratio, the objective function now remains almost always the same. However, the fault is more severe and the differences between the OPT and the OPT scenarios have diminished.
 
 
 \subsection{Double line to ground fault}
@@ -549,7 +549,11 @@ Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to gro
     \caption{Influence of the currents on the objective function for the double line to ground fault with $\underline{Z}_f=0.5$ and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
     \label{fig:LLGx1_s}
   \end{figure}
+Due to the way it has been defined, the double line to ground is the most severe fault since there is solid connection between the two faulted phases. This means that the fault impedance, which represents the link to ground, becomes mostly irrelevant. The objective functions are close to one and practically constant across all lengths. The fault so severe that the influence of the cable is minimal.
 
+The imaginary currents take values close to an order of magnitude higher than the real parts. From the analysis of all faults, it seems that the imaginary current is strongly linked to the severity of the fault. Consequently, when the fault happens to be a strong one, injecting or not active currents has a minor influence. As follows, the OPT and the ROPT cases yield very similar operation conditions. Varying the $R/X$ ratio had a greater impact on the results than increasing the length of the cable, but generally speaking, the objective functions where higher than 0.9 as well.
+
+Figure \ref{fig:full_RX_LLG} displays the objective function values together with the positive and negative sequence voltages. 
 
 
 \begin{figure}[!htb]\centering \footnotesize
@@ -601,7 +605,7 @@ Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to gro
 \caption{Sequence voltages together with the objective function for the double line to ground fault with $\underline{Z}_f=0.5$ and a varying distance cable}
 \label{fig:full_dist_LLG}
 \end{figure}
-
+Again, differences are hardly noticeable between both cases. The lines are overlapped for all the range of distances. In spite of that, the voltages tend to increase. Increasing the positive sequence voltage means that we are improving the objective function, but in the meantime, the negative sequence voltage also grow. Balancing both contributions results in obtaining a constant objective function for all distances.
 
 
 
