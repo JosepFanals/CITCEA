@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  14 MAR 2021 00:28
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.11) (format=lualatex 2020.11.27)  14 MAR 2021 13:55
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/JOSEP/Desktop/CITCEA/VSC faults/Escrit 7 - more analysis/Main"
@@ -2197,39 +2197,985 @@ Package pgfplots info on input line 514: Using 'lua backend=false' for plot 0 (t
 ype 'graphics'): plot handler does not support LUA.
 ) [9
 Missing character: There is no ; (U+003B) in font nullfont!
+] (./Chapters/Submarine.tex
+\realshift=\dimen329
+\realshift=\dimen330
+\realshift=\dimen331
+\realshift=\dimen332
+\realshift=\dimen333
+\realshift=\dimen334
+
+
+LaTeX Warning: Citation 'cheah2017offshore' on page 10 undefined on input line 4
+3.
+
+PGFPlots: reading {Data/cable/Vth_re.csv}
+PGFPlots: reading {Data/cable/Vth_im.csv}
+PGFPlots: reading {Data/cable/Zth_re.csv}
+PGFPlots: reading {Data/cable/Zth_im.csv}
+[10
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/dist/I1_re_3x.csv}
+PGFPlots: reading {Data/dist/RI1_re_3x.csv}
+PGFPlots: reading {Data/dist/I1_im_3x.csv}
+PGFPlots: reading {Data/dist/RI1_im_3x.csv}
+PGFPlots: reading {Data/dist/I2_re_3x.csv}
+PGFPlots: reading {Data/dist/RI2_re_3x.csv}
+PGFPlots: reading {Data/dist/I2_im_3x.csv}
+PGFPlots: reading {Data/dist/RI2_im_3x.csv}
+PGFPlots: reading {Data/dist/ff_3x.csv}
+PGFPlots: reading {Data/dist/Rff_3x.csv}
+ [11
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/dist/V1_3x.csv}
+PGFPlots: reading {Data/dist/V2_3x.csv}
+PGFPlots: reading {Data/dist/RV1_3x.csv}
+PGFPlots: reading {Data/dist/RV2_3x.csv}
+Package pgfplots info on input line 204: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/ffG_3x.csv}
+
+NOTE: coordinate (1.99,1.99,0.4662510909560978) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.46946310515484035) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (5.95,5.95,0.47262904712417714) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.47574977017032893) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.47882611092610894) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.4818588895390245) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.4848489098723834) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.4877969597184314) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.4907038110215799) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.49357022010995116) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.4963969279344083) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.49918466031325226) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.5019341281816401) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.5046460278449905) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.5073210412349841) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.5099598361678245) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.5125630666033641) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.5151313729051212) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.5176653821000052) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.5201657081377539) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.5226329521489361) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.5250677027016973) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.5274705360565826) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.5298420164190487) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.5321826961894148) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.534493116210337) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.5367738060107498) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.5390252840470741) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.5412480579407899) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.5434426247125134) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.5456094710124526) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.5477490733471087) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.549861898302137) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.5519484027612827) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.554009034121383) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.5560442305034428) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.5580544209595771) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.5600400256760607) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.5620014561722123) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.5639391154954225) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.5658533984119481) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.5677446915940831) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.5696133738029611) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.5714598160677771) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.5732843818608008) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.5750874272690213) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.5768693011614069) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.5786303453529377) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.5803708947647372) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.5820912775803846) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 205: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/RffG_3x.csv}
+NOTE: coordinate (1.99,1.99,0.4749016423351363) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.4781941444913589) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (5.95,5.95,0.4814398050876522) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.4846394869093052) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.48779403128971227) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.49090427027965655) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.49397101484756756) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.4969950612461575) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.4999771883734951) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.5029181666223761) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.5058187358897115) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.5086796410902212) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.5115015907010824) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.5142852959543152) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.5170314474356049) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.5197407170639253) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.5224137709646403) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.5250512586729955) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.5276538125522069) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.5302220524275125) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.5327565887686542) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.5352580210064699) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.5377269311111196) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.5401638891583294) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.542569458573322) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.5449441860751287) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.5472886085687536) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.5496032502672855) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.5518886295931135) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.554145249405677) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.5563735997614503) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.5585741682879646) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.5607474264585678) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.5628938393482471) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.5650138600483936) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.5671079351438031) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.5691765019691452) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.5712199713956245) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.5732387808727806) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.5752333832312866) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.5772040399330883) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.5791512599508021) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.5810754038189391) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.5829768489577876) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.5848559615729263) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.5867131005996682) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.5885486225279168) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.5903628755901357) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.5921561968067316) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.593928926265292) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/dist/terra_dist.csv}
+Package pgfplots info on input line 214: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+PGFPlots: reading {Data/dist/I1_re_LG.csv}
+PGFPlots: reading {Data/dist/RI1_re_LG.csv}
+PGFPlots: reading {Data/dist/I1_im_LG.csv}
+PGFPlots: reading {Data/dist/RI1_im_LG.csv}
+PGFPlots: reading {Data/dist/I2_re_LG.csv}
+PGFPlots: reading {Data/dist/RI2_re_LG.csv}
+PGFPlots: reading {Data/dist/I2_im_LG.csv}
+PGFPlots: reading {Data/dist/RI2_im_LG.csv}
+PGFPlots: reading {Data/dist/ff_LG.csv}
+PGFPlots: reading {Data/dist/Rff_LG.csv}
+[12
+Missing character: There is no ; (U+003B) in font nullfont!
+] [13
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/dist/V1_LG.csv}
+PGFPlots: reading {Data/dist/V2_LG.csv}
+PGFPlots: reading {Data/dist/RV1_LG.csv}
+PGFPlots: reading {Data/dist/RV2_LG.csv}
+Package pgfplots info on input line 332: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/ffG_LG.csv}
+
+NOTE: coordinate (1.99,1.99,0.5944337362349497) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.5933622987991776) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (5.95,5.95,0.5922758106144316) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.5911741237165618) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.5900570861235944) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.5889245417883299) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.58777633054768) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.5866122880690919) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.5854322457934418) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.5842360308750196) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.5830234661182521) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.5817943699104802) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.5805485561528663) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.5792858341866813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.5780060087167649) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.5767088797316556) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.5753942424202099) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.5740618870845366) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.5727115990498173) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.5713431585699544) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.5699563407301429) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.568550915345038) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.5671266468538944) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.5656832942108883) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.5642206107722053) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.5627383441786582) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.5612362362341676) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.559714022780059) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.558171433564787) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.5566081921093315) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.5550240155677945) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.5534186145833513) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.5517916931392173) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.5501429484046272) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.5484720705755819) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.5467787427103418) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.5450626405593482) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.5433234323893632) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.5415607788020629) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.5397743325463393) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.537963738324426) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.5361286325917676) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.5342686433500252) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.5323833899333819) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.5304724827877522) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.5285355232426857) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.526572103275659) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.5245818052686549) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.5225642017565482) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.5205188551672271) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 333: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/RffG_LG.csv}
+NOTE: coordinate (1.99,1.99,0.662705682313572) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.6618565686179753) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (5.95,5.95,0.6609935428784635) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.6601164821030164) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.6592252595924613) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.6583197449056808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.6573998038175336) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.656465298277002) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.6555160863602854) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.6545520222221657) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.6535729554445892) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.6525787339754165) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.6515691980824361) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.650544186279507) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.6495035322683798) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.6484470654695388) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.6473746109516063) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.6462859893570351) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.6451810168251394) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.6440595049108118) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.6429212605013576) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.641766085728149) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.6405937778765702) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.6394041292907533) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.6381969272760093) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.636971953996682) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.6357289863705963) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.6344677959596283) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.6331881488340116) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.6318898055451359) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.6305725208624414) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.6292360437508095) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.6278801172035618) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.6265044781189494) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.6251088571487087) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.6236929785862945) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.6222565601274848) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.620799312840645) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.6193209400718829) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.6178211415657624) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.6162996041140569) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.6147560131467988) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.6131900418659907) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.6116013582298226) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.6099896216981335) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.6083544826975369) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.6066955861412842) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.6050125659502954) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.6033050465080627) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.6015726451785168) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/dist/terra_dist.csv}
+Package pgfplots info on input line 342: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+PGFPlots: reading {Data/dist/I1_re_LL.csv}
+PGFPlots: reading {Data/dist/RI1_re_LL.csv}
+PGFPlots: reading {Data/dist/I1_im_LL.csv}
+PGFPlots: reading {Data/dist/RI1_im_LL.csv}
+PGFPlots: reading {Data/dist/I2_re_LL.csv}
+PGFPlots: reading {Data/dist/RI2_re_LL.csv}
+PGFPlots: reading {Data/dist/I2_im_LL.csv}
+PGFPlots: reading {Data/dist/RI2_im_LL.csv}
+PGFPlots: reading {Data/dist/ff_LL.csv}
+PGFPlots: reading {Data/dist/Rff_LL.csv}
+[14
+Missing character: There is no ; (U+003B) in font nullfont!
+] [15
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/dist/V1_LL.csv}
+PGFPlots: reading {Data/dist/V2_LL.csv}
+PGFPlots: reading {Data/dist/RV1_LL.csv}
+PGFPlots: reading {Data/dist/RV2_LL.csv}
+Package pgfplots info on input line 463: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/ffG_LL.csv}
+
+NOTE: coordinate (1.99,1.99,0.8178012986955882) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.8192487243701018) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (5.95,5.95,0.820660296925287) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.8220371502618774) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.8233803714729164) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.824691003105652) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.8259700452982303) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.8272184577949654) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.8284371618562644) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.8296270420542717) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.830788947980047) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.8319236958529697) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.8330320700431679) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.8341148245168979) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.835172684201342) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.8362063462780477) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.8372164814097713) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.8382037349044813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.8391687278158053) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.8401120579885304) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.8410343010531478) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.841936011365475) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.8428177229023908) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.8436799501122407) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.8445231887193837) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.845347916493258) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.8461545939786848) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.8469436651877316) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.8477155582590319) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.8484706860880418) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.8492094469215966) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.8499322249294622) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.8506393907447237) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.8513313019762103) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.8520083037070352) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.8526707289569134) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.8533188991287528) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.8539531244381662) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.8545737043129913) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.8551809277837131) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.8557750738508465) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.8563564118377952) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.8569252017224036) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.8574816944614472) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.8580261322928118) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.8585587490260675) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.8590797703234501) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.8595894139606577) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.8600878900826924) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.8605754014438297) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 464: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/RffG_LL.csv}
+NOTE: coordinate (1.99,1.99,0.8247459291226378) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.8261811963230137) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (5.95,5.95,0.8275807877697781) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.8289458282513071) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.8302773961727538) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.8315765257839971) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.832844209296691) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.8340813988707021) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.8352890085123403) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.8364679158403245) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.8376189637860969) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.838742962172464) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.8398406892360601) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.8409128930467475) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.8419602928624672) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.8429835804123456) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.8439834211080667) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.8449604552004044) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.8459152988635461) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.8468485452398439) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.8477607654152264) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.8486525093579744) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.8495243068031951) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.8503766680958922) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.851210084984049) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.852025031394543) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.8528219641383579) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.8536013236087245) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.8543635344343851) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.8551090060991506) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.8558381335351335) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.856551297685235) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.8572488660460588) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.8579311931696832) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.8585986211620079) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.8592514801353957) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.8598900886598073) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.8605147541803155) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.8611257734216171) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.8617234327694769) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.8623080086346111) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.8628797678050829) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.8634389677767647) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.863985857071495) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.8645206755372843) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.8650436546392022) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.8655550177351404) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.8660549803379602) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.8665437503627558) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.8670215283715443) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/dist/terra_dist.csv}
+Package pgfplots info on input line 473: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+PGFPlots: reading {Data/dist/I1_re_LLG.csv}
+PGFPlots: reading {Data/dist/RI1_re_LLG.csv}
+PGFPlots: reading {Data/dist/I1_im_LLG.csv}
+PGFPlots: reading {Data/dist/RI1_im_LLG.csv}
+PGFPlots: reading {Data/dist/I2_re_LLG.csv}
+PGFPlots: reading {Data/dist/RI2_re_LLG.csv}
+PGFPlots: reading {Data/dist/I2_im_LLG.csv}
+PGFPlots: reading {Data/dist/RI2_im_LLG.csv}
+PGFPlots: reading {Data/dist/ff_LLG.csv}
+PGFPlots: reading {Data/dist/Rff_LLG.csv}
+PGFPlots: reading {Data/dist/V1_LLG.csv}
+PGFPlots: reading {Data/dist/V2_LLG.csv}
+PGFPlots: reading {Data/dist/RV1_LLG.csv}
+PGFPlots: reading {Data/dist/RV2_LLG.csv}
+Package pgfplots info on input line 589: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/ffG_LLG.csv}
+NOTE: coordinate (1.99,1.99,0.941121594388671) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.9411215944967664) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (5.95,5.95,0.941121594224481) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.941121594196173) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.9411215942244813) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.9411215942244814) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.9411215943614579) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.9411215941996878) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.9411215942244815) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.9411215942244815) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.9411215943346878) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.941121594311787) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.9411215942682197) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.941121594368171) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.9411215942434601) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.9411215943073115) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.9411215942664736) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.9411215943056089) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.9411215942244809) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.9411215942244817) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.941121594224481) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.941121594314779) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.9411215942244814) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.9411215942244813) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.9411215942397383) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.9411215943005196) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.9411215942448542) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.9411215942426675) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.941121594212369) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.9411215941991953) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.9411215942244812) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.9411215942244809) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.9411215942244808) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.9411215943348873) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.9411215942244814) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.9411215942244815) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 590: Using 'lua backend=false' for plot 4 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/dist/RffG_LLG.csv}
+NOTE: coordinate (1.99,1.99,0.9420848583555883) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (3.9699999999999998,3.9699999999999998,0.9420826750971162) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (5.95,5.95,0.9420804852782079) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (7.93,7.93,0.9420782887567682) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (9.91,9.91,0.9420760853863155) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (11.89,11.89,0.9420738750212634) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (13.87,13.87,0.9420716575164849) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (15.85,15.85,0.9420694327256142) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (17.83,17.83,0.942067200500373) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (19.81,19.81,0.942064960695006) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (21.79,21.79,0.9420627131587938) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (23.77,23.77,0.9420604577486594) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (25.75,25.75,0.9420581943113546) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (27.73,27.73,0.9420559226980607) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (29.71,29.71,0.9420536427609986) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (31.69,31.69,0.9420513543491061) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (33.67,33.67,0.9420490573102529) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (35.65,35.65,0.9420467514944875) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (37.63,37.63,0.9420444367488585) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (39.61,39.61,0.9420421129213479) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (41.589999999999996,41.589999999999996,0.9420397798584162) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (43.57,43.57,0.942037437408067) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (45.55,45.55,0.9420350854148151) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (47.53,47.53,0.9420327237250377) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (49.51,49.51,0.9420303521839293) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (51.49,51.49,0.9420279706350405) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (53.47,53.47,0.9420255789238244) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (55.45,55.45,0.9420231768933492) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (57.43,57.43,0.9420207643880881) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (59.41,59.41,0.9420183412501667) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (61.39,61.39,0.9420159073177856) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (63.37,63.37,0.9420134624398374) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (65.35,65.35,0.9420110064555031) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (67.33,67.33,0.9420085392054683) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (69.31,69.31,0.9420060605325965) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (71.29,71.29,0.9420035702754453) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (73.27,73.27,0.9420010682779234) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (75.25,75.25,0.9419985543766958) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (77.23,77.23,0.9419960284143223) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (79.21,79.21,0.9419934902331241) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (81.19,81.19,0.9419909396698469) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (83.17,83.17,0.9419883765667806) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (85.15,85.15,0.9419858007652979) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (87.13,87.13,0.9419832121035528) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (89.11,89.11,0.9419806104240792) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (91.09,91.09,0.9419779955685638) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (93.07,93.07,0.9419753673776037) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (95.05,95.05,0.9419727256908442) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (97.03,97.03,0.9419700703567602) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (99.01,99.01,0.9419674012107323) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/dist/terra_dist.csv}
+Package pgfplots info on input line 599: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+) [16
+Missing character: There is no ; (U+003B) in font nullfont!
+] [17
+Missing character: There is no ; (U+003B) in font nullfont!
+] [18
+Missing character: There is no ; (U+003B) in font nullfont!
 ] (./Main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'Main.run.xml'.
 
 \openout1 = Main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 52130 strings out of 479005
- 156255,2373549 words of node,token memory allocated
- 560 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 65 glue_spec,
- 8 attribute_list, 2 write nodes
-   avail lists: 1:4,2:16142,3:7909,4:226,5:421,6:29,7:10972,8:8,9:1458,10:16,11:
-436
- 69929 multiletter control sequences out of 65536+200000
- 75 fonts using 6709971 bytes
- 108i,21n,127p,1012b,2624s stack positions out of 5000i,500n,10000p,200000b,50000s
-<//?/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman8-regular.otf><
-//?/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman10-regular.otf><
-//?/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman12-bold.otf><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Main.pdf (9 pages, 266265 bytes).
+ 53796 strings out of 479005
+ 195327,2848258 words of node,token memory allocated
+ 568 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 10 attribute, 65 glue_spec
+, 10 attribute_list, 2 write nodes
+   avail lists: 1:4,2:23396,3:10400,4:300,5:422,6:33,7:11853,8:46,9:1893,10:16,1
+1:436
+ 71154 multiletter control sequences out of 65536+200000
+ 76 fonts using 6841659 bytes
+ 108i,22n,127p,1012b,2625s stack positions out of 5000i,500n,10000p,200000b,50000s
+<//?/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman10-bold.otf><//
+?/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman8-regular.otf><//?
+/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman10-regular.otf><//?
+/c:/program files/miktex 2.9/fonts/opentype/public/lm/lmroman12-bold.otf><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb>
+Output written on Main.pdf (18 pages, 454937 bytes).
 
-PDF statistics: 106 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 158 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
- 56 words of extra memory for PDF output out of 10000 (max. 100000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 100000000)
 
