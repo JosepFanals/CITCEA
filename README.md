@@ -1,6 +1,9 @@
 # CITCEA
 
-This repository is meant to include various works related to power systems developed during my internship in CITCEA. Right now it mainly includes the computation of VSC under unbalanced faults.
+This repository is meant to include various works related to power systems developed during my internship in CITCEA. Right now it includes:
+
+- The computation of VSC operating points under unbalanced faults, looking for the optimal ones. This is the main work under development.
+- A program related to the Proper Generalised Decomposition to solve faster the power flow problem. It now works relatively fine for PQ buses,
 
 -----------------
 ### Installation
