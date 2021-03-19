@@ -3,7 +3,7 @@ from scipy.optimize import minimize
 import matplotlib.pyplot as plt
 
 
-Zf = 0.00 + 0.10 * 1j  # fault impedance
+Zf = 0.10 + 0.00 * 1j  # fault impedance
 Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
 Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
 Imax = 1
@@ -55,24 +55,24 @@ def V012_to_abc(V012):
 def V0(x):
     # V0 = 0  # balanced
     # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
-    # V0 = 0  # LL
-    V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+    V0 = 0  # LL
+    # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
     
     return V0
 
 def V1(x):
     # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
     # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-    # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-    V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+    V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+    # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
     
     return V1
 
 def V2(x):
     # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
     # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-    # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-    V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
+    V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+    # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
     return V2
 
@@ -119,11 +119,32 @@ def g4(x):
 def g5(x):
     return Ia_im(x) + Ib_im(x) + Ic_im(x)
 
+# def gR1(x):
+#     return x[0]
+
+# def gR2(x):
+#     return x[2]
+
 def gR1(x):
-    return x[0]
+    I012_2 = np.array([0, x[0] + 1j * x[1], x[2] + 1j * x[3]])
+    Iabc_2 = V012_to_abc(I012_2)
+    Iabc_2 * np.exp(- 1j * angVa(x))
+    I012_3 = Vabc_to_012(Iabc_2)
+    return np.real(I012_3[1])
+    # return x[0] * np.cos(angVa(x)) + x[1] * np.sin(angVa(x))
 
 def gR2(x):
-    return x[2]
+    I012_2 = np.array([0, x[0] + 1j * x[1], x[2] + 1j * x[3]])
+    Iabc_2 = V012_to_abc(I012_2)
+    Iabc_2 * np.exp(- 1j * angVa(x))
+    I012_3 = Vabc_to_012(Iabc_2)
+    return np.real(I012_3[2])
+    # return x[2] * np.cos(angVa(x)) + x[3] * np.sin(angVa(x))
+
+def angVa(x):
+    return np.angle(V012_to_abc(np.array([V0(x), V1(x), V2(x)]))[0])
+
+
 
 
 x0 = [I1_re, I1_im, I2_re, I2_im]
@@ -165,3 +186,6 @@ print('--------')
 
 print(sol)
 
+
+
+print(1 - abs(V1f) + abs(V2f))

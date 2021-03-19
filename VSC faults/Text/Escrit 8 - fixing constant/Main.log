@@ -1,0 +1,2537 @@
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  15 MAR 2021 22:56
+ restricted system commands enabled.
+ file:line:error style messages enabled.
+**"c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 8 - fixing constant/Main"
+("c:/Users/Josep/Desktop/CITCEA/VSC faults/Escrit 8 - fixing constant/Main.tex"
+LaTeX2e <2020-10-01> patch level 2
+Lua module: luaotfload-main 2020-09-02 3.15 luaotfload entry point
+Lua module: luaotfload-init 2020-09-02 3.15 luaotfload submodule / initializatio
+n
+Lua module: lualibs 2020-08-31 2.72 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2020-08-31 2.72 ConTeXt Lua libraries -- extended c
+ollection.
+Lua module: luaotfload-log 2020-09-02 3.15 luaotfload submodule / logging
+Lua module: luaotfload-parsers 2020-09-02 3.15 luaotfload submodule / parsers
+Lua module: luaotfload-configuration 2020-09-02 3.15 luaotfload submodule / conf
+ig file reader
+luaotfload | conf : Root cache directory is "C:/Users/Josep/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2020-08-31.lua" from kpse-res
+olved path "C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/f
+ontloader-2020-08-31.lua".
+Lua-only attribute luaotfload@noligature = 1
+Lua-only attribute luaotfload@syllabe = 2
+luaotfload | init : Context OpenType loader version 0x1.8e353f7ced917p+1
+Lua module: luaotfload-fallback 2020-09-02 3.15 luaotfload submodule / fallback
+Lua module: luaotfload-multiscript 2020-09-02 3.15 luaotfload submodule / multis
+cript
+Lua module: luaotfload-script 2020-09-02 3.15 luaotfload submodule / Script help
+ers
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
+Lua module: luaotfload-loaders 2020-09-02 3.15 luaotfload submodule / callback h
+andling
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua module: luaotfload-database 2020-09-02 3.15 luaotfload submodule / database
+Lua module: luaotfload-unicode 2020-09-02 3.15 luaotfload submodule / Unicode he
+lpers
+Lua module: luaotfload-colors 2020-09-02 3.15 luaotfload submodule / color
+Lua-only attribute luaotfload_color_attribute = 3
+Lua module: luaotfload-resolvers 2020-09-02 3.15 luaotfload submodule / resolver
+s
+luaotfload | conf : Root cache directory is "C:/Users/Josep/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
+Lua module: luaotfload-features 2020-09-02 3.15 luaotfload submodule / features
+Lua module: luaotfload-harf-define 2020-09-02 3.15 luaotfload submodule / HarfBu
+zz font loading
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
+Lua module: luaotfload-harf-plug 2020-09-02 3.15 luaotfload submodule / HarfBuzz
+ shaping
+Inserting `Harf pre_output_filter callback' at position 1 in `pre_output_filter'
+.
+Inserting `Harf wrapup_run callback' at position 1 in `wrapup_run'.
+Inserting `Harf finish_pdffile callback' at position 1 in `finish_pdffile'.
+Inserting `Harf glyph_info callback' at position 1 in `glyph_info'.
+Lua module: luaotfload-letterspace 2020-09-02 3.15 luaotfload submodule / letter
+spacing
+Lua module: luaotfload-embolden 2020-09-02 3.15 luaotfload submodule / embolden
+Lua module: luaotfload-notdef 2020-09-02 3.15 luaotfload submodule / notdef
+Lua module: luaotfload-suppress 2020-09-02 3.15 luaotfload submodule / suppress
+Lua module: luaotfload-szss 2020-09-02 3.15 luaotfload submodule / Special featu
+re handling
+Lua module: luaotfload-auxiliary 2020-09-02 3.15 luaotfload submodule / auxiliar
+y functions
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_fon
+t'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 3 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
+Lua module: luaotfload-tounicode 2020-09-02 3.15 luaotfload submodule / tounicod
+e
+Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
+. L3 programming layer <2020-12-07> xparse <2020-03-03>
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from C:/Users/Josep/AppData/Local/M
+iKTeX/luatex-cache/generic/names/luaotfload-names.luc)
+\c@part=\count173
+\c@section=\count174
+\c@subsection=\count175
+\c@subsubsection=\count176
+\c@paragraph=\count177
+\c@subparagraph=\count178
+\c@figure=\count179
+\c@table=\count180
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count181
+\Gm@cntv=\count182
+\c@Gm@tempcnt=\count183
+\Gm@bindingoffset=\dimen139
+\Gm@wd@mp=\dimen140
+\Gm@odd@mp=\dimen141
+\Gm@even@mp=\dimen142
+\Gm@layoutwidth=\dimen143
+\Gm@layoutheight=\dimen144
+\Gm@layouthoffset=\dimen145
+\Gm@layoutvoffset=\dimen146
+\Gm@dimlist=\toks16
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/geometry/geometry.cfg))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2020/08/23 v3.15a programmable bibliographies (PK/MW)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+
+ (C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks17
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count184
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count185
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count186
+\c@listtotal=\count187
+\c@listcount=\count188
+\c@liststart=\count189
+\c@liststop=\count190
+\c@citecount=\count191
+\c@citetotal=\count192
+\c@multicitecount=\count193
+\c@multicitetotal=\count194
+\c@instcount=\count195
+\c@maxnames=\count196
+\c@minnames=\count197
+\c@maxitems=\count198
+\c@minitems=\count199
+\c@citecounter=\count266
+\c@maxcitecounter=\count267
+\c@savedcitecounter=\count268
+\c@uniquelist=\count269
+\c@uniquename=\count270
+\c@refsection=\count271
+\c@refsegment=\count272
+\c@maxextratitle=\count273
+\c@maxextratitleyear=\count274
+\c@maxextraname=\count275
+\c@maxextradate=\count276
+\c@maxextraalpha=\count277
+\c@abbrvpenalty=\count278
+\c@highnamepenalty=\count279
+\c@lownamepenalty=\count280
+\c@maxparens=\count281
+\c@parenlevel=\count282
+\blx@tempcnta=\count283
+\blx@tempcntb=\count284
+\blx@tempcntc=\count285
+\blx@maxsection=\count286
+\blx@maxsegment@0=\count287
+\blx@notetype=\count288
+\blx@parenlevel@text=\count289
+\blx@parenlevel@foot=\count290
+\blx@sectionciteorder@0=\count291
+\blx@entrysetcounter=\count292
+\blx@biblioinstance=\count293
+\labelnumberwidth=\skip49
+\labelalphawidth=\skip50
+\biblabelsep=\skip51
+\bibitemsep=\skip52
+\bibnamesep=\skip53
+\bibinitsep=\skip54
+\bibparsep=\skip55
+\bibhang=\skip56
+\blx@bcfin=\read2
+\blx@bcfout=\write3
+\blx@langwohyphens=\language2
+\c@mincomprange=\count294
+\c@maxcomprange=\count295
+\c@mincompwidth=\count296
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count297
+\c@savedafterword=\count298
+\c@annotator=\count299
+\c@savedannotator=\count300
+\c@author=\count301
+\c@savedauthor=\count302
+\c@bookauthor=\count303
+\c@savedbookauthor=\count304
+\c@commentator=\count305
+\c@savedcommentator=\count306
+\c@editor=\count307
+\c@savededitor=\count308
+\c@editora=\count309
+\c@savededitora=\count310
+\c@editorb=\count311
+\c@savededitorb=\count312
+\c@editorc=\count313
+\c@savededitorc=\count314
+\c@foreword=\count315
+\c@savedforeword=\count316
+\c@holder=\count317
+\c@savedholder=\count318
+\c@introduction=\count319
+\c@savedintroduction=\count320
+\c@namea=\count321
+\c@savednamea=\count322
+\c@nameb=\count323
+\c@savednameb=\count324
+\c@namec=\count325
+\c@savednamec=\count326
+\c@translator=\count327
+\c@savedtranslator=\count328
+\c@shortauthor=\count329
+\c@savedshortauthor=\count330
+\c@shorteditor=\count331
+\c@savedshorteditor=\count332
+\c@labelname=\count333
+\c@savedlabelname=\count334
+\c@institution=\count335
+\c@savedinstitution=\count336
+\c@lista=\count337
+\c@savedlista=\count338
+\c@listb=\count339
+\c@savedlistb=\count340
+\c@listc=\count341
+\c@savedlistc=\count342
+\c@listd=\count343
+\c@savedlistd=\count344
+\c@liste=\count345
+\c@savedliste=\count346
+\c@listf=\count347
+\c@savedlistf=\count348
+\c@location=\count349
+\c@savedlocation=\count350
+\c@organization=\count351
+\c@savedorganization=\count352
+\c@origlocation=\count353
+\c@savedoriglocation=\count354
+\c@origpublisher=\count355
+\c@savedorigpublisher=\count356
+\c@publisher=\count357
+\c@savedpublisher=\count358
+\c@language=\count359
+\c@savedlanguage=\count360
+\c@origlanguage=\count361
+\c@savedoriglanguage=\count362
+\c@pageref=\count363
+\c@savedpageref=\count364
+\shorthandwidth=\skip57
+\shortjournalwidth=\skip58
+\shortserieswidth=\skip59
+\shorttitlewidth=\skip60
+\shortauthorwidth=\skip61
+\shorteditorwidth=\skip62
+\locallabelnumberwidth=\skip63
+\locallabelalphawidth=\skip64
+\localshorthandwidth=\skip65
+\localshortjournalwidth=\skip66
+\localshortserieswidth=\skip67
+\localshorttitlewidth=\skip68
+\localshortauthorwidth=\skip69
+\localshorteditorwidth=\skip70
+Package biblatex Info: Trying to load enhanced support for Unicode engines...
+Package biblatex Info: ... file 'blx-unicode.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-unicode.de
+f)
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-12-07 L3 programming layer (loader) 
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def
+File: l3backend-luatex.def 2020-09-24 L3 backend support: PDF output (LuaTeX)
+\l__kernel_color_stack_int=\count365
+\l__pdf_internal_box=\box47
+))
+Package biblatex Info: expl3
+(biblatex)             2020-12-07 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+Package biblatex Info: Trying to load expl3 case changing code...
+Package biblatex Info: ... file 'blx-case-expl3.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-case-expl3
+.def
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+Package: xparse 2020-10-27 L3 Experimental document command parser
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e-generic.tex))
+File: blx-case-expl3 2020/08/23 v3.15a expl3 case changing code for biblatex
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+\c@textcitecount=\count366
+\c@textcitetotal=\count367
+\c@textcitemaxnames=\count368
+\c@biburlbigbreakpenalty=\count369
+\c@biburlbreakpenalty=\count370
+\c@biburlnumpenalty=\count371
+\c@biburlucpenalty=\count372
+\c@biburllcpenalty=\count373
+\biburlbigskip=\muskip17
+\biburlnumskip=\muskip18
+\biburlucskip=\muskip19
+\biburllcskip=\muskip20
+\c@smartand=\count374
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/bbx/numeric.bb
+x
+File: numeric.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/bbx/standard.b
+bx
+File: standard.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count375
+\c@bbx:relatedtotal=\count376
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/cbx/numeric.cb
+x
+File: numeric.cbx 2020/08/23 v3.15a biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+)) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/bm.sty
+Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup4
+\symboldletters=\mathgroup5
+\symboldsymbols=\mathgroup6
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 209.
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip71
+
+For additional information on amsmath, use the `?' option.
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen147
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+LaTeX Info: Redefining \boldsymbol on input line 28.
+\pmbraise@=\dimen148
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count377
+LaTeX Info: Redefining \frac on input line 236.
+\uproot@=\count378
+\leftroot@=\count379
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count380
+\DOTSCASE@=\count381
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box48
+\strutbox@=\box49
+\big@size=\dimen149
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count382
+\c@MaxMatrixCols=\count383
+\dotsspace@=\muskip21
+\c@parentequation=\count384
+\dspbrk@lvl=\count385
+\tag@help=\toks19
+\row@=\count386
+\column@=\count387
+\maxfields@=\count388
+\andhelp@=\toks20
+\eqnshift@=\dimen150
+\alignsep@=\dimen151
+\tagshift@=\dimen152
+\tagwidth@=\dimen153
+\totwidth@=\dimen154
+\lineht@=\dimen155
+\@envbody=\toks21
+\multlinegap=\skip72
+\multlinetaggap=\skip73
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/microtype.sty
+Package: microtype 2020/12/07 v2.8 Micro-typographical refinements (RS)
+\MT@toks=\toks23
+\MT@count=\count389
+LaTeX Info: Redefining \textls on input line 788.
+\MT@outer@kern=\dimen156
+LaTeX Info: Redefining \textmicrotypecontext on input line 1358.
+\MT@listname@count=\count390
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/microtype-luatex.def
+File: microtype-luatex.def 2020/12/07 v2.8 Definitions specific to luatex (RS)
+Module microtype Info: overwriting function `keepligature' on input line 59
+LaTeX Info: Redefining \lsstyle on input line 706.
+LaTeX Info: Redefining \lslig on input line 706.
+\MT@outer@space=\skip74
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2020/12/07 v2.8 microtype main configuration file (RS)
+)
+
+Package microtype Warning: The protrusion set `noncompatibility' is undeclared.
+(microtype)                Using set `alltext' instead.
+
+
+Package microtype Warning: The expansion set `noncompatibility' is undeclared.
+(microtype)                Using set `alltext-nott' instead.
+
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex
+\pgfutil@everybye=\toks24
+\pgfutil@tempdima=\dimen157
+\pgfutil@tempdimb=\dimen158
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common-lists.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def
+\pgfutil@abb=\box50
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2020/12/01 v3.1.7a (3.1.7a)
+))
+Package: pgf 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 105.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+File: luatex.def 2020/10/05 v1.2a Graphics/color driver for luatex
+))
+\Gin@req@height=\dimen159
+\Gin@req@width=\dimen160
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
+Package: pgfsys 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
+\pgfkeys@pathtoks=\toks25
+\pgfkeys@temptoks=\toks26
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+filtered.code.tex
+\pgfkeys@tmptoks=\toks27
+))
+\pgf@x=\dimen161
+\pgf@y=\dimen162
+\pgf@xa=\dimen163
+\pgf@ya=\dimen164
+\pgf@xb=\dimen165
+\pgf@yb=\dimen166
+\pgf@xc=\dimen167
+\pgf@yc=\dimen168
+\pgf@xd=\dimen169
+\pgf@yd=\dimen170
+\w@pgf@writea=\write4
+\r@pgf@reada=\read3
+\c@pgf@counta=\count391
+\c@pgf@countb=\count392
+\c@pgf@countc=\count393
+\c@pgf@countd=\count394
+\t@pgf@toka=\toks28
+\t@pgf@tokb=\toks29
+\t@pgf@tokc=\toks30
+\pgf@sys@id@count=\count395
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg
+File: pgf.cfg 2020/12/01 v3.1.7a (3.1.7a)
+)
+Driver file for pgf: pgfsys-luatex.def
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
+File: pgfsys-luatex.def 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def
+File: pgfsys-common-pdf.def 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfsyssoftpath@smallbuffer@items=\count396
+\pgfsyssoftpath@bigbuffer@items=\count397
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex
+File: pgfsysprotocol.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
+Package: pgfcore 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex
+\pgfmath@dimen=\dimen171
+\pgfmath@count=\count398
+\pgfmath@box=\box51
+\pgfmath@toks=\toks31
+\pgfmath@stack@operand=\toks32
+\pgfmath@stack@operation=\toks33
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex
+\c@pgfmathroundto@lastzeros=\count399
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex
+File: pgfcorepoints.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@picminx=\dimen172
+\pgf@picmaxx=\dimen173
+\pgf@picminy=\dimen174
+\pgf@picmaxy=\dimen175
+\pgf@pathminx=\dimen176
+\pgf@pathmaxx=\dimen177
+\pgf@pathminy=\dimen178
+\pgf@pathmaxy=\dimen179
+\pgf@xx=\dimen180
+\pgf@xy=\dimen181
+\pgf@yx=\dimen182
+\pgf@yy=\dimen183
+\pgf@zx=\dimen184
+\pgf@zy=\dimen185
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@path@lastx=\dimen186
+\pgf@path@lasty=\dimen187
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex
+File: pgfcorepathusage.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@shorten@end@additional=\dimen188
+\pgf@shorten@start@additional=\dimen189
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex
+File: pgfcorescopes.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfpic=\box52
+\pgf@hbox=\box53
+\pgf@layerbox@main=\box54
+\pgf@picture@serial@count=\count400
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgflinewidth=\dimen190
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex
+File: pgfcoretransformations.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@pt@x=\dimen191
+\pgf@pt@y=\dimen192
+\pgf@pt@temp=\dimen193
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex
+File: pgfcorequick.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex
+File: pgfcoreobjects.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex
+File: pgfcorearrows.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfarrowsep=\dimen194
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex
+File: pgfcoreshade.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@max=\dimen195
+\pgf@sys@shading@range@num=\count401
+\pgf@shadingcount=\count402
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex
+File: pgfcoreimage.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex
+File: pgfcoreexternal.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfexternal@startupbox=\box55
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex
+File: pgfcorelayers.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex
+File: pgfcoretransparency.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex
+File: pgfcorepatterns.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex
+File: pgfcorerdf.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex
+File: pgfmoduleshapes.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfnodeparttextbox=\box56
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex
+File: pgfmoduleplot.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty
+Package: pgfcomp-version-0-65 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@nodesepstart=\dimen196
+\pgf@nodesepend=\dimen197
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty
+Package: pgfcomp-version-1-18 2020/12/01 v3.1.7a (3.1.7a)
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex
+Package: pgffor 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex)
+\pgffor@iter=\dimen198
+\pgffor@skip=\dimen199
+\pgffor@stack=\toks34
+\pgffor@toks=\toks35
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
+Package: tikz 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@plot@mark@count=\count403
+\pgfplotmarksize=\dimen256
+)
+\tikz@lastx=\dimen257
+\tikz@lasty=\dimen258
+\tikz@lastxsaved=\dimen259
+\tikz@lastysaved=\dimen260
+\tikz@lastmovetox=\dimen261
+\tikz@lastmovetoy=\dimen262
+\tikzleveldistance=\dimen263
+\tikzsiblingdistance=\dimen264
+\tikz@figbox=\box57
+\tikz@figbox@bg=\box58
+\tikz@tempbox=\box59
+\tikz@tempbox@bg=\box60
+\tikztreelevel=\count404
+\tikznumberofchildren=\count405
+\tikznumberofcurrentchild=\count406
+\tikz@fig@count=\count407
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex
+File: pgfmodulematrix.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfmatrixcurrentrow=\count408
+\pgfmatrixcurrentcolumn=\count409
+\pgf@matrix@numberofcolumns=\count410
+)
+\tikz@expandcount=\count411
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/circuitikz/circuitikz.sty
+Package: circuitikz 2020/12/16{} The CircuiTikz circuit drawing package version 
+1.2.6
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfarrowinset=\dimen265
+\pgfarrowlength=\dimen266
+\pgfarrowwidth=\dimen267
+\pgfarrowlinewidth=\dimen268
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarybending.code.tex
+File: tikzlibrarybending.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+bending.code.tex
+File: pgfmodulebending.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+nonlineartransformations.code.tex
+File: pgfmodulenonlineartransformations.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgftransformnonlinearflatness=\dimen269
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+arycurvilinear.code.tex
+File: pgflibrarycurvilinear.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@curvilinear@time@a=\dimen270
+\pgf@curvilinear@length@a=\dimen271
+\pgf@curvilinear@length@b=\dimen272
+\pgf@curvilinear@length@c=\dimen273
+\pgf@curvilinear@length@d=\dimen274
+)
+\pgf@arrows@the@rigidity=\dimen275
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryfpu.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryfpu.code.tex))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirc.defines.t
+ex
+\pgf@circ@count@a=\count412
+\pgf@circ@count@b=\count413
+\pgf@circ@count@c=\count414
+\pgf@circ@res@up=\dimen276
+\pgf@circ@res@down=\dimen277
+\pgf@circ@res@zero=\dimen278
+\pgf@circ@res@left=\dimen279
+\pgf@circ@res@right=\dimen280
+\pgf@circ@res@other=\dimen281
+\pgf@circ@res@step=\dimen282
+\pgf@circ@res@temp=\dimen283
+\pgf@circ@Rlen=\dimen284
+\pgf@circ@scaled@Rlen=\dimen285
+\pgfstartlinewidth=\dimen286
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircutils.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircshapes.tex
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircmonopoles.
+tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircbipoles.te
+x)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirctripoles.t
+ex
+\pgf@circ@res@count=\count415
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircquadpoles.
+tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircmultipoles
+.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirclabel.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircvoltage.te
+x
+\pgfcirc@labelshift=\dimen287
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirccurrent.te
+x)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircflow.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircpath.tex)
+
+Package circuitikz Warning: You did not specify one of the voltage directions:
+(circuitikz)                  oldvoltagedirection, nooldvoltagedirection, 
+(circuitikz)                  RPvoltages or EFvoltages 
+(circuitikz)                Default directions may have changed, 
+(circuitikz)                please check the manual.
+
+) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup7
+\symAMSb=\mathgroup8
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/diagbox/diagbox.sty
+Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: luatex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-luatex.def on input line 114.
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/p2e-luatex.def
+File: p2e-luatex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks36
+\@arclen=\dimen288
+\@arcrad=\dimen289
+\pIIe@tempdima=\dimen290
+\pIIe@tempdimb=\dimen291
+\pIIe@tempdimc=\dimen292
+\pIIe@tempdimd=\dimen293
+\pIIe@tempdime=\dimen294
+\pIIe@tempdimf=\dimen295
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count416
+\calc@Bcount=\count417
+\calc@Adimen=\dimen296
+\calc@Bdimen=\dimen297
+\calc@Askip=\skip75
+\calc@Bskip=\skip76
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count418
+\calc@Cskip=\skip77
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen298
+\ar@mcellbox=\box61
+\extrarowheight=\dimen299
+\NC@list=\toks37
+\extratabsurround=\skip78
+\backup@length=\skip79
+\ar@cellbox=\box62
+)
+\diagbox@boxa=\box63
+\diagbox@boxb=\box64
+\diagbox@boxm=\box65
+\diagbox@wd=\dimen300
+\diagbox@ht=\dimen301
+\diagbox@insepl=\dimen302
+\diagbox@insepr=\dimen303
+\diagbox@outsepl=\dimen304
+\diagbox@outsepr=\dimen305
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgfplots/pgfplots.sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.rev
+ision.tex)
+Package: pgfplots 2020/02/29 v1.17 Data Visualization (1.17)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.cod
+e.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotscore
+.code.tex
+Package pgfplots info on input line 124: Initializing with LUA version Lua 5.3
+\pgfplots@luabackend@table=\catcodetable12
+\t@pgfplots@toka=\toks38
+\t@pgfplots@tokb=\toks39
+\t@pgfplots@tokc=\toks40
+\pgfplots@tmpa=\dimen306
+\c@pgfplots@coordindex=\count419
+\c@pgfplots@scanlineindex=\count420
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/sys/pgfplots
+sysgeneric.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/pgfplot
+slibrary.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/oldpgfcompat
+ib/pgfplotsoldpgfsupp_loader.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/luamath
+/pgflibraryluamath.code.tex)
+Package pgfplots info on input line 290: luamath library shipped with pgf 3.1.7a
+ is up-to-date
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sutil.code.tex
+Package pgfplots info on input line 82: Found new luatex: initializing lua comma
+nds instead of write18 (shell-escape)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsliststructure.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsliststructureext.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count421
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsmatrix.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/numtable/pgf
+plotstableshared.code.tex
+\c@pgfplotstable@counta=\count422
+\t@pgfplotstable@a=\toks41
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsdeque.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sbinary.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sbinary.data.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sutil.verb.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/pgflibr
+arypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count423
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/sys/pgflibra
+rypgfplots.surfshading.pgfsys-luatex.def)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+scolormap.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+scolor.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsstac
+kedplots.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsplot
+handlers.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsmesh
+plothandler.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsmesh
+plotimage.code.tex)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.sca
+ling.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotscoor
+dprocessing.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.err
+orbars.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.mar
+kers.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotstick
+s.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.pat
+hs.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarydecorations.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+decorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen307
+\pgfdecoratedremainingdistance=\dimen308
+\pgfdecoratedinputsegmentcompleteddistance=\dimen309
+\pgfdecoratedinputsegmentremainingdistance=\dimen310
+\pgf@decorate@distancetomove=\dimen311
+\pgf@decorate@repeatstate=\count424
+\pgfdecorationsegmentamplitude=\dimen312
+\pgfdecorationsegmentlength=\dimen313
+)
+\tikz@lib@dec@box=\box66
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarydecorations.pathmorphing.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/decorat
+ions/pgflibrarydecorations.pathmorphing.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarydecorations.pathreplacing.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/decorat
+ions/pgflibrarydecorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count425
+\pgfplots@xmin@reg=\dimen314
+\pgfplots@xmax@reg=\dimen315
+\pgfplots@ymin@reg=\dimen316
+\pgfplots@ymax@reg=\dimen317
+\pgfplots@zmin@reg=\dimen318
+\pgfplots@zmax@reg=\dimen319
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/caption/subcaption.sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen320
+\captionmargin@=\dimen321
+\captionwidth=\dimen322
+\caption@tempdima=\dimen323
+\caption@indent=\dimen324
+\caption@parindent=\dimen325
+\caption@hangindent=\dimen326
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count426
+\c@continuedfloat=\count427
+)
+\c@subfigure=\count428
+\c@subtable=\count429
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.patchplots.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.colormaps.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryintersections.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryintersections.code.tex
+\pgf@intersect@solutions=\count430
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.fillbetween.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfcontrib/t
+ikzlibraryfillbetween.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfcontrib/t
+ikzlibrarydecorations.softclip.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfcontrib/p
+gflibraryfillbetween.code.tex)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.decorations.softclip.code.tex))
+\@quotelevel=\count431
+\@quotereset=\count432
+ (./Main.aux
+
+LaTeX Warning: Label `eq:1' multiply defined.
+
+)
+\openout1 = Main.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 31
+.
+ (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+*geometry* verbose mode - [ preamble ] result:
+* driver: luatex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 443.57848pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 624.25346pt, 85.35826pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=443.57848pt
+* \textheight=624.25346pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/lbx/english.lb
+x
+File: english.lbx 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: LuaTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+
+\openout3 = Main.bcf
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'Main.bbl' found.
+ (./Main.bbl)
+Package biblatex Info: Reference section=0 on input line 31.
+Package biblatex Info: Reference segment=0 on input line 31.
+LaTeX Info: Redefining \microtypecontext on input line 31.
+
+
+Package microtype Warning: `draft' option active.
+(microtype)                Disabling all micro-typographic extensions.
+(microtype)                This might lead to different line and page breaks.
+
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count433
+\scratchdimen=\dimen327
+\scratchbox=\box67
+\nofMPsegments=\count434
+\nofMParguments=\count435
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count436
+\MPscratchDim=\dimen328
+\MPnumerator=\count437
+\makeMPintoPDFobject=\count438
+\everyMPtoPDFconversion=\toks43
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
+5.
+)
+Package pgfplots notification 'compat/show suggested version=true': document has
+ been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+(./Chapters/Introduction.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
+[1
+
+{C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+(./Chapters/Constant.tex [2] [3]
+Package pgfplots info on input line 106: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 106: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_re_3x.csv}
+Package pgfplots info on input line 107: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_3x_2.csv}
+Package pgfplots info on input line 108: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_3x_3.csv}
+Package pgfplots info on input line 119: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 119: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_im_3x.csv}
+Package pgfplots info on input line 120: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_3x_2.csv}
+Package pgfplots info on input line 121: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_3x_3.csv}
+Package pgfplots info on input line 132: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 132: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_re_3x.csv}
+Package pgfplots info on input line 133: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_3x_3.csv}
+Package pgfplots info on input line 134: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_3x_2.csv}
+Package pgfplots info on input line 144: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 144: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_im_3x.csv}
+Package pgfplots info on input line 145: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_3x_3.csv}
+Package pgfplots info on input line 146: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_3x_2.csv}
+ [4
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/constant/V1_3x.csv}
+PGFPlots: reading {Data/constant/V2_3x.csv}
+PGFPlots: reading {Data/constant/RV1_3x.csv}
+PGFPlots: reading {Data/constant/RV2_3x.csv}
+Package pgfplots info on input line 200: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 200: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/ff_3x.csv}
+
+NOTE: coordinate (0.01,0.99,0.0003374625893648276) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.0010123854467283537) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.0016873026952978559) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.0023622241661342322) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.003037144240284816) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.003712064434441828) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.004386986933899641) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.005061908180096298) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.005736827218358139) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.0064117476214575475) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.0070866712618406725) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.007761590226622559) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.008436511343427976) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.009111434801406387) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.009786351947338845) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.010461285004391994) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.011136193237327724) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.011811115911187208) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.37,0.63,0.012486036084373528) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.013160955643711409) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.013835876445921077) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.014510797248155153) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.015185888726408116) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.015860638866413406) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.016535559654891875) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.017210480471362453) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.01788540125933105) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.01856032269281273) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.019235243261509737) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.59,0.41000000000000003,0.019910163830394338) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.0205850845127599) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.021260005395268775) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.021934926295069282) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.02260984690738455) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.023284768316454763) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.71,0.29000000000000004,0.02395968878598312) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.02463460926888859) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.02530953005973141) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.025984450886220478) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.02665937168845915) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.02733429249024039) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.028009213292938383) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.85,0.15000000000000002,0.028684134095173727) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.029359054897158433) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.030033975699710336) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.030708896502718904) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.0313838173055615) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.03205873810700534) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.97,0.030000000000000027,0.032733658908669395) has been dropp
+ed because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.03340857970810384) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 201: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 201: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/Rff_3x.csv}
+NOTE: coordinate (0.01,0.99,0.0020209999259136785) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.006062999657669421) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.01010501665689647) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.014146998073274446) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.018188996112463295) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.02223099547580765) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.026272994183211267) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.03031499328840407) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.034356992393363185) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.0383989914984666) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.04244100988724633) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.04648298970866774) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.05052501694374459) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.054567017471248536) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.05860898702397332) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.06265099960512908) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.06669298523433909) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.07073498433927791) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.37,0.63,0.074776983444379) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.07881902663052776) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.08286098165474123) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.08690298075643475) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.09094497986478527) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.09498697896988807) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.09902897807498785) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.10307097718008994) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.10711297628538187) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.11115497539173964) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.11519697449539405) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.59,0.41000000000000003,0.11923897360049601) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.12328097270565648) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.12732297181065672) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.13136497091592408) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.1354069700220999) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.13944896914154345) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.71,0.29000000000000004,0.14349096823110485) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.14753296734545088) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.15157496644130788) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.15561696554640989) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.15965896465493037) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.16370096375661247) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.16774296286363177) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.85,0.15000000000000002,0.17178496196681553) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.17582696107191714) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.17986896017701923) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.18391095928207143) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.18795295838722223) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.19199495749231638) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.97,0.030000000000000027,0.1960369565974397) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.20007895570252718) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/constant/terra_3x.csv}
+Package pgfplots info on input line 210: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+Package pgfplots info on input line 225: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 225: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_re_LG.csv}
+Package pgfplots info on input line 226: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LG_2.csv}
+Package pgfplots info on input line 227: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LG_3.csv}
+Package pgfplots info on input line 238: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 238: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_im_LG.csv}
+Package pgfplots info on input line 239: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LG_2.csv}
+Package pgfplots info on input line 240: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LG_3.csv}
+Package pgfplots info on input line 251: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 251: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_re_LG.csv}
+Package pgfplots info on input line 252: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LG_3.csv}
+Package pgfplots info on input line 253: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LG_2.csv}
+Package pgfplots info on input line 263: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 263: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_im_LG.csv}
+Package pgfplots info on input line 264: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LG_3.csv}
+Package pgfplots info on input line 265: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LG_2.csv}
+PGFPlots: reading {Data/constant/V1_LG.csv}
+PGFPlots: reading {Data/constant/V2_LG.csv}
+PGFPlots: reading {Data/constant/RV1_LG.csv}
+PGFPlots: reading {Data/constant/RV2_LG.csv}
+Package pgfplots info on input line 310: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 310: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/ff_LG.csv}
+NOTE: coordinate (0.01,0.99,0.0006152306697484035) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.0018456901663908222) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.003076149362461804) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.0043066087210786395) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.005537066982859268) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.006767525527118725) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.007997986245096669) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.009228444882943563) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.010458904235852561) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.011689362006326583) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.012919820712993324) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.014150280604287956) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.015380739377397033) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.016611198802336222) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.0178416591591628) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.019072117973077056) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.02030257613587408) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.02153303546556717) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.37,0.63,0.022767402888239023) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.023946820964120853) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.024834366400946804) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.02536905552606207) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.025528154749967252) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.025292145529865036) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.02464583994284876) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.023697357967393484) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.02272921678801127) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.02175943531009646) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.02079249738094737) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.59,0.41000000000000003,0.0198253939935832) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.018860965512698374) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.017891086631001148) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.01692446693949159) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.015956973228063057) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.014991272498592311) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.71,0.29000000000000004,0.014022744753832656) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.013055774877180426) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.012088572209691393) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.011121486798369202) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.010154400664582201) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.009187314927140238) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.008220229987305688) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.85,0.15000000000000002,0.007253143916458476) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.0062860582433325995) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.005318972148576504) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.004351887323315647) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.0033848019770510787) has been dropp
+ed because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.0024177669267012813) 
+has been dropped because of a coordinate filter. (see also unbounded coords=jump
+). 
+NOTE: coordinate (0.97,0.030000000000000027,0.0014506304210552261) has been drop
+ped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.0004835516983189656) has been drop
+ped because of a coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 311: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 311: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/Rff_LG.csv}
+NOTE: coordinate (0.01,0.99,0.0017602484967001097) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.0034443799634511557) has been dropped because of a
+ coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.005128116632735179) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.006811432179223103) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.008494296948612735) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.010176677146091922) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.011858535533936067) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.013539829144463084) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.015220509020483152) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.016900518722631708) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.018579792450485674) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.02025825332680855) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.02193580941794276) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.023612350953954527) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.025287743441734477) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.026961820050522833) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.02863436911623194) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.030305115736310725) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.37,0.63,0.03197369103820496) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.033639580685650095) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.035302026817463535) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.03695983373739162) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.038610893270328885) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.0402507533248051) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.04186550824795256) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.0421323742659488) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.040412685122444746) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.03869299512264362) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.036973307070042566) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.59,0.41000000000000003,0.035253618193273335) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.033533929391932345) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.031814241115652224) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.030094551912209676) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.02837486308072375) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.02665517467081463) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.71,0.29000000000000004,0.02493548658004559) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.023215797079480332) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.021496108999332374) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.019776419624207203) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.018056731345687044) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.016337042643488023) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.014617353805217195) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.85,0.15000000000000002,0.01289766510636403) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.011177976351861737) has been dropped because of a 
+coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.009458288282752487) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.007738599310234227) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.006018910647661593) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.004299222249308703) h
+as been dropped because of a coordinate filter. (see also unbounded coords=jump)
+. 
+NOTE: coordinate (0.97,0.030000000000000027,0.002579533011211058) has been dropp
+ed because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.000859844565040722) has been dropp
+ed because of a coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/constant/terra_LG.csv}
+Package pgfplots info on input line 320: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+[5
+Missing character: There is no ; (U+003B) in font nullfont!
+] [6
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:3_lg' on page 7 undefined on input line 327.
+
+
+LaTeX Warning: Reference `fig:3_ll' on page 7 undefined on input line 327.
+
+Package pgfplots info on input line 335: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 335: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_re_LL.csv}
+Package pgfplots info on input line 336: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LL_2.csv}
+Package pgfplots info on input line 337: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LL_3.csv}
+Package pgfplots info on input line 348: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 348: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_im_LL.csv}
+Package pgfplots info on input line 349: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LL_2.csv}
+Package pgfplots info on input line 350: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LL_3.csv}
+Package pgfplots info on input line 361: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 361: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_re_LL.csv}
+Package pgfplots info on input line 362: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LL_3.csv}
+Package pgfplots info on input line 363: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LL_2.csv}
+Package pgfplots info on input line 373: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 373: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_im_LL.csv}
+Package pgfplots info on input line 374: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LL_3.csv}
+Package pgfplots info on input line 375: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LL_2.csv}
+PGFPlots: reading {Data/constant/V1_LL.csv}
+PGFPlots: reading {Data/constant/V2_LL.csv}
+PGFPlots: reading {Data/constant/RV1_LL.csv}
+PGFPlots: reading {Data/constant/RV2_LL.csv}
+Package pgfplots info on input line 420: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 420: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/ff_LL.csv}
+NOTE: coordinate (0.01,0.99,0.1887460275798794) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.1894839671516109) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.1902214025146757) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.19095830133339473) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.19169462844557034) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.19243034554660873) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.19316541083030966) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.19389977857922427) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.1946333986960721) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.19536621616603023) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.19609817043797345) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.19682919470968166) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.1975592150996209) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.19828814968206523) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.19901590736224187) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.19974238655584764) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.20046747363158784) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.20119104107194263) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.37,0.63,0.20191294528221448) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.20263302397284377) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.20335109301193577) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.20406694261999941) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.20478033273877255) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.20549098736093777) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.2061985875315646) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.20690276264549906) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.20750002836235548) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.20272465115930546) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.19765381289148953) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.59,0.41000000000000003,0.19257477258659653) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.18749535411188217) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.1824156015481952) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.17733555239682272) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.17225523873050358) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.1671746881750671) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (0.71,0.29000000000000004,0.16209392462316546) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.1570129689104776) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.1519318391655994) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.14685055138055803) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.14176911960473257) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.13668755628246043) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.13160587245553296) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.85,0.15000000000000002,0.1265240779688109) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.12144218164028636) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.11636019135469305) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.11127811420951707) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.10619595660629308) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.10111372433326407) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.97,0.030000000000000027,0.09603142263590518) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.09094905627974181) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 421: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 421: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/Rff_LL.csv}
+NOTE: coordinate (0.01,0.99,0.11665714464620937) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.11963981426902592) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.1226224838918428) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.12560515351465967) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.12858782313693098) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.13157049276029342) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.1345531623791834) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.1375358320059265) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.1405185016284031) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.14350117125155978) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.14648384087323227) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.14946651049719528) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.1524491801200116) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.15543184974282842) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.15841451936392337) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.16139718898846228) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.16437985861128013) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.16736252823409514) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.37,0.63,0.17033050335865524) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.17304191269831284) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.17538383997711754) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.17732104333432575) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.17882079334790874) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.17985513225345778) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.18040315047649003) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.18045290107164494) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.1800025709844018) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.17906065324088571) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.1776450839405077) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (0.59,0.41000000000000003,0.1757815407714246) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.1735012561937607) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.17083873268159536) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.16786025482174527) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.16482885501440803) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.16179745520706862) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.71,0.29000000000000004,0.15876605539175165) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.15573465559238892) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.15270325578505065) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.14967185597771074) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.14664045616727683) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.14360905636300628) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.14057765655569276) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.85,0.15000000000000002,0.1375462567483436) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.1345148569410132) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.1314834571336733) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.12845205732633416) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.12542065751720266) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.12238925771165539) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.97,0.030000000000000027,0.11935785790431569) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.11632645809697618) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/constant/terra_LL.csv}
+Package pgfplots info on input line 430: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+[7
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+Package pgfplots info on input line 447: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 447: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_re_LLG.csv}
+Package pgfplots info on input line 448: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LLG_2.csv}
+Package pgfplots info on input line 449: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_re_LLG_3.csv}
+Package pgfplots info on input line 460: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 460: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I1_im_LLG.csv}
+Package pgfplots info on input line 461: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LLG_2.csv}
+Package pgfplots info on input line 462: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I1_im_LLG_3.csv}
+Package pgfplots info on input line 473: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 473: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_re_LLG.csv}
+Package pgfplots info on input line 474: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LLG_3.csv}
+Package pgfplots info on input line 475: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_re_LLG_2.csv}
+Package pgfplots info on input line 485: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+Package pgfplots info on input line 485: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/I2_im_LLG.csv}
+Package pgfplots info on input line 486: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LLG_3.csv}
+Package pgfplots info on input line 487: Using 'lua backend=false' for plot 2 (t
+ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
+PGFPlots: reading {Data/I2_im_LLG_2.csv}
+PGFPlots: reading {Data/constant/V1_LLG.csv}
+PGFPlots: reading {Data/constant/V2_LLG.csv}
+PGFPlots: reading {Data/constant/RV1_LLG.csv}
+PGFPlots: reading {Data/constant/RV2_LLG.csv}
+Package pgfplots info on input line 532: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 532: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/ff_LLG.csv}
+
+NOTE: coordinate (0.01,0.99,0.36173480915136924) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.36532817489539277) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.368921506843834) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.37251480245327184) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.37610805891852706) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.3797012731380792) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.38329444167389826) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.3868875607045265) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.39048062597010075) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.39407363270763224) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.3976665755744745) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.40125944855738516) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.40485224486391586) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.4084449567919788) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.41203757557232923) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.4156300911771065) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.41922249208573414) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.42281476499630477) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.37,0.63,0.4264068944676733) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.42999656558127763) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.43333336597064487) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.43621021158565654) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.4385750766740881) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.44038230126949346) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.4415976873887125) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.4422029431167839) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.44219823955595305) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.44160210990464355) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.44044876097458957) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.59,0.41000000000000003,0.43878366152125003) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.43665857655336804) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.4342797532319275) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.4318982841942942) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.42951658507575186) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.42713468347422223) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.71,0.29000000000000004,0.4247526027454105) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.42237036278744966) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.4199879810161101) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.4176054710617005) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.4152228467455561) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.4128401188110189) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.41045729697259314) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.85,0.15000000000000002,0.4080743897675493) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.40569140472896126) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.40330834852910474) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.40092522709895384) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.3985420457283468) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.3961588091503126) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (0.97,0.030000000000000027,0.39377552161244417) has been droppe
+d because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.3913921869375609) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+Package pgfplots info on input line 533: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): plot handler does not support LUA.
+Package pgfplots info on input line 533: Using 'lua backend=false' for plot 4 (t
+ype '[tikz@plot@handler: macro:->\global \pgf@plot@startedfalse \global \let \pg
+f@plotstreamend \pgf@plotstreamend@init \global \let \pgf@plotstreampoint \pgf@p
+lotstreampoint@init \global \let \pgf@plotstreamjump \pgf@plotstreamjump@init \g
+lobal \let \pgf@plotstreamspecial \pgf@plotstreamspecial@init \pgfplotyzerolevel
+streamstart ]'): LUA does not support x filter (yet).
+PGFPlots: reading {Data/constant/Rff_LLG.csv}
+NOTE: coordinate (0.01,0.99,0.3457755026388937) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.03,0.97,0.35003894536389935) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.05,0.95,0.35430238808890463) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.07,0.9299999999999999,0.3585658308139102) has been dropped b
+ecause of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.09,0.91,0.3628292735389161) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.11,0.89,0.3670927162639213) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.13,0.87,0.37135615898892677) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.15,0.85,0.3756196017139324) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.17,0.83,0.37988304443893794) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.19,0.81,0.38414648716394345) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.21,0.79,0.3884099298889374) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.23,0.77,0.3926733726139492) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.25,0.75,0.39693681533729397) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.27,0.73,0.40120025806396575) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.29,0.71,0.405463700788971) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.31,0.69,0.40972714350989314) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.33,0.6699999999999999,0.4139905862389822) has been dropped b
+ecause of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.35000000000000003,0.6499999999999999,0.41825402896398756) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.37,0.63,0.42251747168899095) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.39,0.61,0.42676813470953434) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.41000000000000003,0.59,0.4307241417141717) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.43,0.5700000000000001,0.4342317578431353) has been dropped b
+ecause of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.45,0.55,0.43724205038149894) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.47000000000000003,0.53,0.43971230759258184) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.49,0.51,0.44161067415211874) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.51,0.49,0.44292020509209545) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.53,0.47,0.44364125288219175) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.55,0.44999999999999996,0.44379145064207925) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.5700000000000001,0.42999999999999994,0.443403282353412) has 
+been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.59,0.41000000000000003,0.44251997165291995) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.61,0.39,0.441190792178502) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.63,0.37,0.4396007261319111) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.65,0.35,0.4380061423230991) has been dropped because of a co
+ordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.67,0.32999999999999996,0.43641155851428526) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.6900000000000001,0.30999999999999994,0.43481697470253045) ha
+s been dropped because of a coordinate filter. (see also unbounded coords=jump).
+ 
+NOTE: coordinate (0.71,0.29000000000000004,0.43322239089665737) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.73,0.27,0.431627807087844) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.75,0.25,0.43003322327756444) has been dropped because of a c
+oordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.77,0.22999999999999998,0.42843863947021116) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.79,0.20999999999999996,0.4268440556613917) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.81,0.18999999999999995,0.4252494718525879) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.8300000000000001,0.16999999999999993,0.4236548880437737) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (0.85,0.15000000000000002,0.4220603042313206) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.87,0.13,0.420465720426223) has been dropped because of a coo
+rdinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.89,0.10999999999999999,0.41887113661733216) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.91,0.08999999999999997,0.41727655280851783) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.93,0.06999999999999995,0.4156819689997039) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.9500000000000001,0.04999999999999993,0.4140873851908899) has
+ been dropped because of a coordinate filter. (see also unbounded coords=jump). 
+
+NOTE: coordinate (0.97,0.030000000000000027,0.412492801382076) has been dropped 
+because of a coordinate filter. (see also unbounded coords=jump). 
+NOTE: coordinate (0.99,0.010000000000000009,0.4108982175732621) has been dropped
+ because of a coordinate filter. (see also unbounded coords=jump). 
+PGFPlots: reading {Data/constant/terra_LLG.csv}
+Package pgfplots info on input line 542: Using 'lua backend=false' for plot 0 (t
+ype 'graphics'): plot handler does not support LUA.
+) [8
+Missing character: There is no ; (U+003B) in font nullfont!
+] [9
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] (./Main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Main
+(biblatex)                and rerun LaTeX afterwards.
+
+Package logreq Info: Writing requests to 'Main.run.xml'.
+
+\openout1 = Main.run.xml
+)
+
+Here is how much of LuaTeX's memory you used:
+ 50450 strings out of 478902
+ 10842975,30474404 words of node,token memory allocated
+ 614 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 16 attribute, 67 glue_spec
+, 16 attribute_list, 3 write nodes
+   avail lists: 1:15,2:1890586,3:1721799,4:250,5:491,6:34,7:164375,8:44,9:1658,1
+0:14,11:680
+ 68290 multiletter control sequences out of 65536+200000
+ 77 fonts using 6620407 bytes
+ 108i,21n,105p,970b,2619s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman10
+-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm
+/lmmono10-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/openty
+pe/public/lm/lmroman8-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/
+fonts/opentype/public/lm/lmroman10-regular.otf><//?/c:/users/josep/appdata/local
+/programs/miktex/fonts/opentype/public/lm/lmroman12-bold.otf><C:/Users/Josep/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/J
+osep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
+/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.
+pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Josep/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users
+/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C
+:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/s
+ymbols/msbm10.pfb>
+Output written on Main.pdf (9 pages, 24690760 bytes).
+
+PDF statistics: 140 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 56 words of extra memory for PDF output out of 10000 (max. 100000000)
+

@@ -101,12 +101,13 @@ def fV012_LLG(I012):
 
 # initialization
 Zf = 0.1
-Zmod = np.sqrt(0.01 ** 2 + 0.05 ** 2)
+# Zmod = np.sqrt(0.01 ** 2 + 0.05 ** 2)
 # Z2 = 0.0005074 + 0.05074 * 1j
-ff = 5  # RX factor
-X2 = Zmod * np.sqrt(1 / (1 + ff ** 2))
-R2 = ff * X2
-Z2 = R2 + 1j * X2
+# ff = 5  # RX factor
+# X2 = Zmod * np.sqrt(1 / (1 + ff ** 2))
+# R2 = ff * X2
+# Z2 = R2 + 1j * X2
+Z2 = 0.01 + 0.05 * 1j
 Z1 = 0.01 + 0.10 * 1j
 Imax = 1
 
@@ -123,7 +124,7 @@ I1_im = 0
 I2_re = 0
 I2_im = 0
 
-n_iter = 40
+n_iter = 20
 compt = 0
 
 Ia_vec = []
@@ -168,7 +169,7 @@ for kk in range(n_iter):
                 Ic = Iabc[2]
                 if not abs(Ia) > Imax and not abs(Ib) > Imax and not abs(Ic) > Imax:   
                     
-                    V012 = fV012_LG(I012)  # change the function accordingly
+                    V012 = fV012_LL(I012)  # change the function accordingly
                     Vabc = V012_to_abc(V012)
                     ang_shift = np.angle(Vabc[0])
                     Va_vec.append(Vabc[0] * np.exp(- 1j * ang_shift))
@@ -259,9 +260,9 @@ def make_csv(x_vec, y_vec, a_vec, file_name):
 a_vec = np.full(len(V_obj_vec), 'a')
 b_vec = 'b'
 
-#make_csv(np.real(I1_vec), V_obj_vec, a_vec, 'Data/2I1_re_3x.csv')
-#make_csv(np.imag(I1_vec), V_obj_vec, a_vec, 'Data/2I1_im_3x.csv')
-#make_csv(np.real(I2_vec), V_obj_vec, a_vec, 'Data/2I2_re_3x.csv')
-#make_csv(np.imag(I2_vec), V_obj_vec, a_vec, 'Data/2I2_im_3x.csv')
+make_csv(np.real(I1_vec), V_obj_vec, a_vec, 'Data/I1_re_LL.csv')
+make_csv(np.imag(I1_vec), V_obj_vec, a_vec, 'Data/I1_im_LL.csv')
+make_csv(np.real(I2_vec), V_obj_vec, a_vec, 'Data/I2_re_LL.csv')
+make_csv(np.imag(I2_vec), V_obj_vec, a_vec, 'Data/I2_im_LL.csv')
 
 
