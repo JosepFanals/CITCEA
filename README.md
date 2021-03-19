@@ -19,6 +19,7 @@ There are a couple of ways to use the software found in this repository:
         - Click the green **Clone or download** button, then **Open in Desktop**.
 
    2. Download the repository as a .zip file from the GitHub page.
+   
     - Go to the [CITCEA GitHub repository page][1].
    
     - Click the green **Clone or download** button, then **Download ZIP**.
