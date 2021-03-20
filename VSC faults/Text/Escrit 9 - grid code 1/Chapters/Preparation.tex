@@ -1,0 +1,51 @@
+\section{Definition}
+We start by defining the grid code requirements as shown in Figure \ref{fig:req}. The positive sequence plot corresponds to the Danish grid code as explained in \cite{mohseni2012review}, and matches with the one described by National Grid in \cite{nationalgrid}. The positive sequence current to inject can be regarded as a function of the positive sequence voltage, and the same applies to the negative sequence current with respect to the negative sequence voltage. Note that the voltages are in reality the pre-correction ones, that is, we suppose they are not yet influenced by the injection of current coming from the VSC.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=6cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$I^+$}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.2,...,1}, axis line style = thick, ytick={0.0, 0.2,...,1.0}, xmin=-0.1, xmax=1.1]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/req_1.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=6cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$I^-$}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.2,...,1}, ytick={0.0,0.2,...,1.0}, axis line style = thick,  xmin=-0.1, xmax=1.1]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/req_2.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Grid code requirements for the positive and the negative sequence in case of voltage drops}
+    \label{fig:req}
+\end{figure}
+This same profile is expressable in the form of a piecewise function for the positive sequence:
+\begin{equation}
+\begin{cases} 
+      I^+ = 0 & V^+\geq 0.9 \\
+      I^+ = k_p(0.9 - V^+) & 0.5 \leq V^+ < 0.9 \\
+      I^+ = 1 & V^+<0.5 \\
+   \end{cases}
+\end{equation}
+where the $k_p$ parameter is responsible for characterizing the slope of drop, and as can be deduced from Figure \ref{fig:req}, it takes the value of 2.5. We have assumed the maximum current supported by the VSC to be 1.
+
+Similarly, for the negative sequence:
+\begin{equation}
+\begin{cases} 
+      I^- = 0 & V^-\leq 0.1 \\
+      I^- = k_n(V^- - 0.1) & 0.1 \leq V^+ < 0.5 \\
+      I^- = 1 & V->0.5 \\
+   \end{cases}
+\end{equation}
+where $k_n=2.5$ as well. 
+
+To keep the expressions simple enough, we have not made any distinction between a positive or a negative voltage, nor a positive or negative current. As far as I understand it, we are concerned with improving the absolute value of the voltages, and hence, its angle is not specially relevant. However, it has to be considered to determine the direction of the current phasors. One approach would be to inject only reactive currents, as it is a commonality in grid codes \cite{ mohseni2012review, haddadi2020negative}. This is precisely the perspective taken in this study. Thus, the positive sequence current has to take a negative value to cause a positive voltage drop while the reactive negative sequence current has to become negative. 
+
+Besides, there is a potential incompatibility in the plots shown in Figure \ref{fig:req}. For instance, the fault may turn out to be extremely severe and have both the positive and the negative sequence voltages approaching 0.5. In this case, the positive and the negative sequence current as well will tend to 1. Most likely some of the $abc$ currents will surpass the limit. Therefore, some law is necessary to break from this conflicting situation and look for a trade-off.
