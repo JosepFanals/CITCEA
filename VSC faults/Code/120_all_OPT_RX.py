@@ -95,24 +95,24 @@ for kk in range(n_punts):
     def V0(x):
         # V0 = 0  # balanced
         # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
-        # V0 = 0  # LL
-        V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        V0 = 0  # LL
+        # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V0
 
     def V1(x):
         # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
         # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-        # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+        # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V1
 
     def V2(x):
         # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
         # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-        # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
+        V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+        # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
         return V2
 
@@ -159,6 +159,21 @@ for kk in range(n_punts):
     def g5(x):
         return Ia_im(x) + Ib_im(x) + Ic_im(x)
 
+    def ang_Vabc(x):
+        V012_ang = np.array([V0(x), V1(x), V2(x)])
+        Vabc_ang = V012_to_abc(V012_ang)
+        ang_Va = np.angle(Vabc_ang[0])
+        ang_Vb = np.angle(Vabc_ang[1])
+        ang_Vc = np.angle(Vabc_ang[2])
+        return [ang_Va, ang_Vb, ang_Vc]
+
+    def g9(x):
+        V012_r = [V0(x), V1(x), V2(x)]
+        Vabc_r = V012_to_abc(V012_r)
+        I012_r = [0, x[0] + 1j * x[1], x[2] + 1j * x[3]]
+        Iabc_r = V012_to_abc(I012_r)
+        return np.real(Vabc_r[0] * np.conj(Iabc_r[0]) + Vabc_r[1] * np.conj(Iabc_r[1]) + Vabc_r[2] * np.conj(Iabc_r[2]))
+        
 
     # x0 = [I1_re, I1_im, I2_re, I2_im]
     bound = (-Imax, Imax)
@@ -168,11 +183,11 @@ for kk in range(n_punts):
     con3 = {'type': 'ineq', 'fun': g3}
     con4 = {'type': 'eq', 'fun': g4}
     con5 = {'type': 'eq', 'fun': g5}
-    cons = [con1, con2, con3]
+    con9 = {'type': 'eq', 'fun': g9}
+    cons = [con1, con2, con3, con9]
 
     sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons, options={'ftol':1e-9})
     Iopt = sol.x
-    # x0 = [Iopt[0], Iopt[1], Iopt[2], Iopt[3]]
     I0f = 0
     I1f = Iopt[0] + 1j * Iopt[1]
     I2f = Iopt[2] + 1j * Iopt[3]
@@ -191,14 +206,16 @@ for kk in range(n_punts):
     #print('|Vabc| voltages: ', abs(Vabcf))
     #print('|V012| voltages: ', abs(V012f))
 
-    ang_shift = np.angle(Vabcf[0])
+    # ang_shift = np.angle(Vabcf[0])
     # print(Iabcf)
-    Iabcf = Iabcf * np.exp(- 1j * ang_shift)
+    # Iabcf = Iabcf * np.exp(+ 1j * ang_shift)
+    # Vabcf = Vabcf * np.exp(+ 1j * ang_shift)
     # print(Iabcf)
-    I012 = Vabc_to_012(Iabcf)
+    # I012 = Vabc_to_012(Iabcf)
+    # V012 = Vabc_to_012(Vabcf)
 
-    I1_vec.append(I012[1])
-    I2_vec.append(I012[2])
+    I1_vec.append(I012f[1])
+    I2_vec.append(I012f[2])
     ff_vec.append(sol.fun)
 
     #print('Iabc currents: ', Iabcf)
@@ -206,8 +223,15 @@ for kk in range(n_punts):
     #print('--------')
 
     # print(sol)
-
     # print(sol.fun)
+    print('Voltages V012: ', V012f)
+    print('Voltages Vabc: ', Vabcf)
+    print('Currents I012: ', I012f)
+    print('Currents Iabc: ', Iabcf)
+    S_tot = Vabcf[0] * np.conj(Iabcf[0]) + Vabcf[1] * np.conj(Iabcf[1]) + Vabcf[2] * np.conj(Iabcf[2])
+    print(sol.success)
+    print(S_tot)
+    print('----------')
 
 
 # ///////////// plots //////////////
