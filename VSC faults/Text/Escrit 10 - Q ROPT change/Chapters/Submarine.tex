@@ -97,7 +97,7 @@ Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
               \pgfplotsset{width=7cm, height=5.6cm}
               \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.1,...,0.5}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_3x.csv};
-              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_3x.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_3x.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -109,7 +109,7 @@ Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
                 \pgfplotsset{width=7cm, height=5.6cm}
                 \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.97,...,-0.85}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_3x.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_3x.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_3x.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -123,7 +123,7 @@ Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
                 \pgfplotsset{width=7cm, height=5.6cm}
                 \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymin = -0.2, ymax=0.2, axis line style = thick, xmin=0, xmax=100]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_3x.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_3x.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_3x.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -135,7 +135,7 @@ Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
                   \pgfplotsset{width=7cm, height=5.6cm}
                   \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymin = -0.2, ymax=0.2, axis line style = thick, xmin=0, xmax=100]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_3x.csv};
-                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_3x.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_3x.csv};
                   % \legend{BF, OPT};
                   \end{axis}
               \end{tikzpicture}
@@ -149,7 +149,7 @@ Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
                     \pgfplotsset{width=12.5cm, height=5.6cm}
                     \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.45, 0.475,...,0.6}]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_3x.csv};
-                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_3x.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_3x.csv};
                     \legend{OPT, ROPT};
                     \end{axis}
                 \end{tikzpicture}
@@ -229,7 +229,7 @@ Figure \ref{fig:LG1_s} depicts the optimal currents for the line to ground fault
               \pgfplotsset{width=7cm, height=6.2cm}
               \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.03,...,0.15}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_LG.csv};
-              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LG.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LG.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -239,9 +239,9 @@ Figure \ref{fig:LG1_s} depicts the optimal currents for the line to ground fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.2cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-0.6,-0.5,...,-0.1}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-0.7,-0.65,...,-0.45}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_LG.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LG.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -253,9 +253,9 @@ Figure \ref{fig:LG1_s} depicts the optimal currents for the line to ground fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.2cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={0, 0.1,...,0.4}]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100,]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_LG.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LG.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -265,9 +265,9 @@ Figure \ref{fig:LG1_s} depicts the optimal currents for the line to ground fault
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=7cm, height=6.2cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={0.3,0.35,...,0.6}]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_LG.csv};
-                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LG.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LG.csv};
                   % \legend{BF, OPT};
                   \end{axis}
               \end{tikzpicture}
@@ -279,15 +279,15 @@ Figure \ref{fig:LG1_s} depicts the optimal currents for the line to ground fault
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
                     \pgfplotsset{width=12.5cm, height=6.2cm}
-                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.3)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.5, 0.53,...,0.68}]
+                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.385,0.39,...,0.41}]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_LG.csv};
-                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LG.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LG.csv};
                     \legend{OPT, ROPT};
                     \end{axis}
                 \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the line to ground fault with $\underline{Z}_f=0.001$ and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \caption{Influence of the currents on the objective function for the line to ground fault with $\underline{Z}_f=0.03$ and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
     \label{fig:LG1_s}
   \end{figure}
 The most noticeable aspect in this situation is that the longer the cable is, the more optimal the objective function becomes. There is about a 10\% improvement if we compare the objective functions for an almost null distance with a distance close to 100 km. Again, there is a practically constant difference regarding the objective function between the OPT and the ROPT cases.
@@ -341,7 +341,7 @@ Figure \ref{fig:full_dist_LG} presents the absolute value of the positive and ne
 
 \end{axis}
 \end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the line to ground fault with $\underline{Z}_f=0.001$ and a varying distance cable}
+\caption{Sequence voltages together with the objective function for the line to ground fault with $\underline{Z}_f=0.03$ and a varying distance cable}
 \label{fig:full_dist_LG}
 \end{figure}
 When looking at the bigger picture, it is clear that the objective function remains quite constant for all distances. However, there is a noticeable difference between the OPT and the ROPT situations, as expressed before. Larger distances imply that the positive voltage sequence can be improved, yet the negative sequence voltage also increases. Fortunately, the increase in the first is superior to the increase in the latter. 
@@ -358,9 +358,9 @@ Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=7cm, height=6.2cm}
-              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.04,...,0.20}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100, ytick={0.2,0.21,...,0.24}]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_LL.csv};
-              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LL.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LL.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -370,9 +370,9 @@ Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.2cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={-0.8, -0.7,...,-0.2}]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={-0.3, -0.275,...,-0.175}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_LL.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LL.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LL.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -384,9 +384,9 @@ Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.2cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={-0.5,-0.4,...,0}]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={-0.315,-0.31,...,-0.29}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_LL.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LL.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LL.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -396,9 +396,9 @@ Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=7cm, height=6.2cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={0.35,0.4,...,0.65}]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100,]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_LL.csv};
-                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LL.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LL.csv};
                   % \legend{BF, OPT};
                   \end{axis}
               \end{tikzpicture}
@@ -412,7 +412,7 @@ Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
                     \pgfplotsset{width=12.5cm, height=6.2cm}
                     \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.81,0.82,...,0.87}]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_LL.csv};
-                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LL.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LL.csv};
                     \legend{OPT, ROPT};
                     \end{axis}
                 \end{tikzpicture}
@@ -486,9 +486,9 @@ Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to gro
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=7cm, height=6.1cm}
-              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.02,...,0.12}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.109,0.11,...,0.114}]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_LLG.csv};
-              \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LLG.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LLG.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -498,9 +498,9 @@ Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to gro
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.1cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, xmin=0, xmax=100, ytick={-0.58,-0.5775,...,-0.565}]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, xmin=0, xmax=100, ytick={-0.57,-0.56,...,-0.53}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_LLG.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LLG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LLG.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -512,9 +512,9 @@ Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to gro
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.1cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ytick={-0.1,-0.08,...,0}]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, ytick={-0.1225,-0.12,...,-0.1125}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_LLG.csv};
-                \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LLG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LLG.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -524,9 +524,9 @@ Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to gro
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=7cm, height=6.1cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={0.5675, 0.57,..., 0.59}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={0.565, 0.57,..., 0.60}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_LLG.csv};
-                  \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LLG.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LLG.csv};
                   % \legend{BF, OPT};
                   \end{axis}
               \end{tikzpicture}
@@ -538,9 +538,9 @@ Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to gro
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
                     \pgfplotsset{width=12.5cm, height=6.1cm}
-                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, xmin=0, xmax=100, ytick={0.9410, 0.9412,...,0.9425}]
+                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, xmin=0, xmax=100,]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_LLG.csv};
-                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LLG.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LLG.csv};
                     \legend{OPT, ROPT};
                     \end{axis}
                 \end{tikzpicture}
