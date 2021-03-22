@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-Zf = 0.03
+Zf = 0.03 + 0.00 * 1j  # fault impedance
 Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
 Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
 Imax = 1
@@ -13,11 +13,6 @@ Vth_1 = 1  # positive sequence Thévenin voltage
 a = np.exp(1j * 120 * np.pi / 180)
 lam_1 = 1  # weight to positive sequence
 lam_2 = 1  # weight to negative sequence
-
-I1_re = 0.0
-I1_im = 0.5
-I2_re = 0.2
-I2_im = 0.1
 
 def Vabc_to_012(Vabc):
     T = np.zeros((3,3), dtype=complex)
@@ -77,27 +72,107 @@ def V2(x):
 
     return V2
 
-x = [0, -0.5, 0, 0]
+x = [0, 0, 0, 0]
 V012f = np.array([V0(x), V1(x), V2(x)])
 I012f = np.array([0, x[0] + 1j * x[1], x[2] + 1j * x[3]])
 Iabcf = V012_to_abc(I012f)
 Vabcf = V012_to_abc(V012f)
 
-print(Iabcf)
-print(Vabcf)
-
-print(V012f)
-print(I012f)
-
 ang_va = np.angle(Vabcf[0])
-print(ang_va)
 Vabcf = Vabcf * np.exp(- 1j * ang_va)
 Iabcf = Iabcf * np.exp(- 1j * ang_va)
-print(Vabcf)
-print(Iabcf)
 
 V012f = Vabc_to_012(Vabcf)
 I012f = Vabc_to_012(Iabcf)
 
-print(V012f)
-print(I012f)
+print(abs(V012f))
+
+# GRID CODE CURRENT COMPUTATION
+
+ksp = 5
+limits = False
+
+def I1_grid_code(V012, limits, fac):
+    V1 = np.abs(V012[1])
+    v1_ang = np.angle(V012[1])
+    if limits == False:
+        if V1 >= 0.9:
+            I1 = 0
+        elif V1 >= 0.5:
+            I1 = ksp * (0.9 - V1)
+        else:
+            I1 = 1
+    else:
+        if V1 >= 0.9:
+            I1 = 0
+        elif V1 >= 0.5:
+            I1 = fac * ksp * (0.9 - V1)
+        else:
+            I1 = fac * 1
+   
+    return I1 * -1j * np.exp(1j * v1_ang)
+
+
+def I2_grid_code(V012, limits, fac):
+    V2 = np.abs(V012[2])
+    v2_ang = np.angle(V012[2])
+    if limits == False:
+        if V2 <= 0.1:
+            I2 = 0
+        elif V2 < 0.5:
+            I2 = ksp * (V2 - 0.1)
+        else:
+            I2 = 1
+    else:
+        if V2 <= 0.1:
+            I2 = 0
+        elif V2 < 0.5:
+            I2 = fac * ksp * (V2 - 0.1)
+        else:
+            I2 = fac * 1
+    
+    return I2 * 1j * np.exp(1j * v2_ang)
+
+I1_gc = I1_grid_code(V012f, limits, 0)
+I2_gc = I2_grid_code(V012f, limits, 0)
+
+I012_gc = np.array([0, I1_gc, I2_gc])
+Iabc_gc = V012_to_abc(I012_gc)
+
+Iabc_max = max(abs(Iabc_gc))
+print(Iabc_max)
+x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
+V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+
+if Iabc_max > Imax:
+    limits = True
+    fac = 1
+    while Iabc_max > Imax or Iabc_max < 0.99 * Imax:
+        if Iabc_max < Imax:
+            fac += 0.001 
+        else:
+            fac -= 0.001 
+
+        I1_gc = I1_grid_code(V012f, limits, fac)
+        I2_gc = I2_grid_code(V012f, limits, fac)
+
+        I012_gc = np.array([0, I1_gc, I2_gc])
+        Iabc_gc = V012_to_abc(I012_gc)
+
+        Iabc_max = max(abs(Iabc_gc))
+        x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
+        V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+
+        print(fac)
+
+
+I012_gc = np.array([0, I1_gc, I2_gc])
+Iabc_gc = V012_to_abc(I012_gc)
+
+Iabc_max = max(abs(Iabc_gc))
+x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
+V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+
+print(abs(V012_gc))
+print(I012_gc)
+print(Iabc_max)
