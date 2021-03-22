@@ -43,7 +43,7 @@ for kk in range(n_punts):
     #print(RX)
 
     # Zf = 0.10 + 0.00 * 1j  # fault impedance
-    Zf = 0.05
+    Zf = 0.005
     # Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
     Z1 = Z2
     # Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
@@ -96,25 +96,25 @@ for kk in range(n_punts):
 
     def V0(x):
         # V0 = 0  # balanced
-        # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
+        V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
         # V0 = 0  # LL
-        V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V0
 
     def V1(x):
         # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
-        # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+        V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V1
 
     def V2(x):
         # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
-        # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+        V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
+        # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
         return V2
 
@@ -169,13 +169,22 @@ for kk in range(n_punts):
         ang_Vc = np.angle(Vabc_ang[2])
         return [ang_Va, ang_Vb, ang_Vc]
 
-    def g9(x):
+    def g9(x):  # restricting reactive power globally
         V012_r = [V0(x), V1(x), V2(x)]
         Vabc_r = V012_to_abc(V012_r)
         I012_r = [0, x[0] + 1j * x[1], x[2] + 1j * x[3]]
         Iabc_r = V012_to_abc(I012_r)
         return np.real(Vabc_r[0] * np.conj(Iabc_r[0]) + Vabc_r[1] * np.conj(Iabc_r[1]) + Vabc_r[2] * np.conj(Iabc_r[2]))
-        
+    
+    def g10(x):  # restricting reactive power positive seq.
+        V012_r = [V0(x), V1(x), V2(x)]
+        I012_r = [0, x[0] + 1j * x[1], x[2] + 1j * x[3]]
+        return np.real(V012_r[1] * np.conj(I012_r[1]))
+     
+    def g11(x):  # restricting reactive power negative seq.
+        V012_r = [V0(x), V1(x), V2(x)]
+        I012_r = [0, x[0] + 1j * x[1], x[2] + 1j * x[3]]
+        return np.real(V012_r[2] * np.conj(I012_r[2]))   
 
     # x0 = [I1_re, I1_im, I2_re, I2_im]
     bound = (-Imax, Imax)
@@ -186,7 +195,10 @@ for kk in range(n_punts):
     con4 = {'type': 'eq', 'fun': g4}
     con5 = {'type': 'eq', 'fun': g5}
     con9 = {'type': 'eq', 'fun': g9}
+    con10 = {'type': 'eq', 'fun': g10}
+    con11 = {'type': 'eq', 'fun': g11}
     cons = [con1, con2, con3, con9]
+    # cons = [con1, con2, con3, con10, con11]
 
     sol = minimize(objective, x0, method='SLSQP', bounds=bnds, constraints=cons, options={'ftol':1e-9})
     Iopt = sol.x
@@ -265,15 +277,15 @@ one_vec = np.full(len(RX_vec), 5)
 a_vec = np.full(len(RX_vec), 'a')
 b_vec = 'b'
 
-make_csv(RX_vec, np.real(I1_vec), a_vec, 'Optimal/Data/RX/RI1_re_3x.csv')
-make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Optimal/Data/RX/RI1_im_3x.csv')
-make_csv(RX_vec, np.real(I2_vec), a_vec, 'Optimal/Data/RX/RI2_re_3x.csv')
-make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Optimal/Data/RX/RI2_im_3x.csv')
-make_csv(RX_vec, ff_vec, a_vec, 'Optimal/Data/RX/Rff_3x.csv')
+make_csv(RX_vec, np.real(I1_vec), a_vec, 'Optimal/Data/RX/RI1_re_LG.csv')
+make_csv(RX_vec, np.imag(I1_vec), a_vec, 'Optimal/Data/RX/RI1_im_LG.csv')
+make_csv(RX_vec, np.real(I2_vec), a_vec, 'Optimal/Data/RX/RI2_re_LG.csv')
+make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Optimal/Data/RX/RI2_im_LG.csv')
+make_csv(RX_vec, ff_vec, a_vec, 'Optimal/Data/RX/Rff_LG.csv')
 
-make3_csv(RX_vec, one_vec, np.abs(V1_vec), 'Optimal/Data/RX/RV1_3x.csv')
-make3_csv(zero_vec, RX_vec, np.abs(V2_vec), 'Optimal/Data/RX/RV2_3x.csv')
-make3_csv(RX_vec, RX_vec, ff_vec, 'Optimal/Data/RX/RffG_3x.csv')
+make3_csv(RX_vec, one_vec, np.abs(V1_vec), 'Optimal/Data/RX/RV1_LG.csv')
+make3_csv(zero_vec, RX_vec, np.abs(V2_vec), 'Optimal/Data/RX/RV2_LG.csv')
+make3_csv(RX_vec, RX_vec, ff_vec, 'Optimal/Data/RX/RffG_LG.csv')
 
 
 fig, axs = plt.subplots(3,2)

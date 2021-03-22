@@ -2356,16 +2356,7 @@
     <bcf:citekey order="3">iov2007mapping</bcf:citekey>
     <bcf:citekey order="4">conroy2007low</bcf:citekey>
     <bcf:citekey order="5">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="6">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="7">fortescue1918method</bcf:citekey>
-    <bcf:citekey order="8">tsili2009review</bcf:citekey>
-    <bcf:citekey order="9">altin2010overview</bcf:citekey>
-    <bcf:citekey order="9">serban2016voltage</bcf:citekey>
-    <bcf:citekey order="10">camacho2012flexible</bcf:citekey>
-    <bcf:citekey order="11">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="12">kothari2003modern</bcf:citekey>
-    <bcf:citekey order="13">taul2020modeling</bcf:citekey>
-    <bcf:citekey order="14">cheah2017offshore</bcf:citekey>
+    <bcf:citekey order="6">cheah2017offshore</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

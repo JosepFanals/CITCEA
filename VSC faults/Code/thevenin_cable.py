@@ -17,7 +17,7 @@ Vth_vec = []
 Z2_vec = []
 dist_vec = []
 
-for dist in range(1, 100):
+for dist in range(1, 1000):
     Zp = Zp_i / dist 
     Zs = Zs_i * dist
 
@@ -28,7 +28,7 @@ for dist in range(1, 100):
     Z2_vec.append(Z2)
     dist_vec.append(dist)
 
-plt.plot(dist_vec, np.abs(Z2_vec))
+plt.plot(dist_vec, np.abs(Vth_vec))
 plt.show()
 
 def make_csv(x_vec, y_vec, file_name):
@@ -37,13 +37,13 @@ def make_csv(x_vec, y_vec, file_name):
     df.to_csv(file_name, index=False)
 
 
-make_csv(dist_vec, np.real(Vth_vec), 'Data/cable/Vth_re.csv')
-make_csv(dist_vec, np.imag(Vth_vec), 'Data/cable/Vth_im.csv')
-make_csv(dist_vec, np.abs(Vth_vec), 'Data/cable/Vth_abs.csv')
+make_csv(dist_vec, np.real(Vth_vec), 'Optimal/Data/cable/Vth_re.csv')
+make_csv(dist_vec, np.imag(Vth_vec), 'Optimal/Data/cable/Vth_im.csv')
+make_csv(dist_vec, np.abs(Vth_vec), 'Optimal/Data/cable/Vth_abs.csv')
 
-make_csv(dist_vec, np.real(Z2_vec), 'Data/cable/Zth_re.csv')
-make_csv(dist_vec, np.imag(Z2_vec), 'Data/cable/Zth_im.csv')
-make_csv(dist_vec, np.abs(Z2_vec), 'Data/cable/Zth_abs.csv')
+make_csv(dist_vec, np.real(Z2_vec), 'Optimal/Data/cable/Zth_re.csv')
+make_csv(dist_vec, np.imag(Z2_vec), 'Optimal/Data/cable/Zth_im.csv')
+make_csv(dist_vec, np.abs(Z2_vec), 'Optimal/Data/cable/Zth_abs.csv')
 
 
 
