@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-Zf = 0.03 + 0.00 * 1j  # fault impedance
+Zf = 0.08 + 0.00 * 1j  # fault impedance
 Z1 = 0.01 + 0.10 * 1j  # Za in the drawings
 Z2 = 0.01 + 0.05 * 1j  # Zth in the drawings
 Imax = 1
@@ -50,47 +50,27 @@ def V012_to_abc(V012):
 
 def V0(x):
     # V0 = 0  # balanced
-    V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
-    # V0 = 0  # LL
+    # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
+    V0 = 0  # LL
     # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
     
     return V0
 
 def V1(x):
     # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
-    V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-    # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+    # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+    V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
     # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
     
     return V1
 
 def V2(x):
     # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
-    V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
-    # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
+    # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
+    V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
     # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
     return V2
-
-x = [0, 0, 0, 0]
-V012f = np.array([V0(x), V1(x), V2(x)])
-I012f = np.array([0, x[0] + 1j * x[1], x[2] + 1j * x[3]])
-Iabcf = V012_to_abc(I012f)
-Vabcf = V012_to_abc(V012f)
-
-ang_va = np.angle(Vabcf[0])
-Vabcf = Vabcf * np.exp(- 1j * ang_va)
-Iabcf = Iabcf * np.exp(- 1j * ang_va)
-
-V012f = Vabc_to_012(Vabcf)
-I012f = Vabc_to_012(Iabcf)
-
-print(abs(V012f))
-
-# GRID CODE CURRENT COMPUTATION
-
-ksp = 5
-limits = False
 
 def I1_grid_code(V012, limits, fac):
     V1 = np.abs(V012[1])
@@ -112,7 +92,6 @@ def I1_grid_code(V012, limits, fac):
    
     return I1 * -1j * np.exp(1j * v1_ang)
 
-
 def I2_grid_code(V012, limits, fac):
     V2 = np.abs(V012[2])
     v2_ang = np.angle(V012[2])
@@ -133,46 +112,82 @@ def I2_grid_code(V012, limits, fac):
     
     return I2 * 1j * np.exp(1j * v2_ang)
 
-I1_gc = I1_grid_code(V012f, limits, 0)
-I2_gc = I2_grid_code(V012f, limits, 0)
+x = [0, 0, 0, 0]
+V012f = np.array([V0(x), V1(x), V2(x)])
+I012f = np.array([0, x[0] + 1j * x[1], x[2] + 1j * x[3]])
+Iabcf = V012_to_abc(I012f)
+Vabcf = V012_to_abc(V012f)
+print(abs(V012f))
 
-I012_gc = np.array([0, I1_gc, I2_gc])
-Iabc_gc = V012_to_abc(I012_gc)
-
-Iabc_max = max(abs(Iabc_gc))
-print(Iabc_max)
-x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
-V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
-
-if Iabc_max > Imax:
-    limits = True
-    fac = 1
-    while Iabc_max > Imax or Iabc_max < 0.99 * Imax:
-        if Iabc_max < Imax:
-            fac += 0.001 
-        else:
-            fac -= 0.001 
-
-        I1_gc = I1_grid_code(V012f, limits, fac)
-        I2_gc = I2_grid_code(V012f, limits, fac)
-
-        I012_gc = np.array([0, I1_gc, I2_gc])
-        Iabc_gc = V012_to_abc(I012_gc)
-
-        Iabc_max = max(abs(Iabc_gc))
-        x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
-        V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
-
-        print(fac)
+# ang_va = np.angle(Vabcf[0])
+# Vabcf = Vabcf * np.exp(- 1j * ang_va)
+# Iabcf = Iabcf * np.exp(- 1j * ang_va)
+# V012f = Vabc_to_012(Vabcf)
+# I012f = Vabc_to_012(Iabcf)
 
 
-I012_gc = np.array([0, I1_gc, I2_gc])
-Iabc_gc = V012_to_abc(I012_gc)
 
-Iabc_max = max(abs(Iabc_gc))
-x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
-V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+# GRID CODE CURRENT COMPUTATION
 
-print(abs(V012_gc))
-print(I012_gc)
-print(Iabc_max)
+ksp = 2.5
+V1_new = V012f[1]
+V1_old = 0
+V2_new = V012f[2]
+V2_old = 0
+tol = 1e-5
+compt = 0
+compt_lim = 100
+
+while (abs(V1_new - V1_old) > tol or abs(V2_new - V2_old) > tol) and compt < compt_lim:
+
+    V1_old = V1_new
+    V2_old = V2_new
+
+    limits = False
+
+    I1_gc = I1_grid_code(V012f, limits, 0)
+    I2_gc = I2_grid_code(V012f, limits, 0)
+    I012_gc = np.array([0, I1_gc, I2_gc])
+    Iabc_gc = V012_to_abc(I012_gc)
+
+    Iabc_max = max(abs(Iabc_gc))
+    x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
+    V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+
+    if Iabc_max > Imax:
+        limits = True
+        fac = 1
+        while Iabc_max > Imax or Iabc_max < 0.99 * Imax:
+            if Iabc_max < Imax:
+                fac += 0.0001 
+            else:
+                fac -= 0.0001 
+
+            I1_gc = I1_grid_code(V012f, limits, fac)
+            I2_gc = I2_grid_code(V012f, limits, fac)
+
+            I012_gc = np.array([0, I1_gc, I2_gc])
+            Iabc_gc = V012_to_abc(I012_gc)
+
+            Iabc_max = max(abs(Iabc_gc))
+            x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
+            V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+            print(fac)
+
+
+    I012_gc = np.array([0, I1_gc, I2_gc])
+    Iabc_gc = V012_to_abc(I012_gc)
+    Iabc_max = max(abs(Iabc_gc))
+    x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
+    V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+
+    V012f = V012_gc
+    print(abs(V012_gc))
+    # print(Iabc_max)
+
+    V1_new = abs(V012_gc[1])
+    V2_new = abs(V012_gc[2])
+
+    print(compt)
+    compt += 1
+
