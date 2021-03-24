@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  23 MAR 2021 10:51
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  24 MAR 2021 11:17
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 10 - Q ROPT change/Main
@@ -1378,14 +1378,19 @@ PGFPlots: reading {Data/algo_gc/V2.csv}
 ) [3]
 (./Chapters/RX.tex
 PGFPlots: reading {Data/RX/I1_re_3x.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_3x.csv}
 PGFPlots: reading {Data/RX/RI1_re_3x.csv}
 PGFPlots: reading {Data/RX/I1_im_3x.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_3x.csv}
 PGFPlots: reading {Data/RX/RI1_im_3x.csv}
 PGFPlots: reading {Data/RX/I2_re_3x.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_3x.csv}
 PGFPlots: reading {Data/RX/RI2_re_3x.csv}
 PGFPlots: reading {Data/RX/I2_im_3x.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_3x.csv}
 PGFPlots: reading {Data/RX/RI2_im_3x.csv}
 PGFPlots: reading {Data/RX/ff_3x.csv}
+PGFPlots: reading {Data/grid_code/Gff_3x.csv}
 PGFPlots: reading {Data/RX/Rff_3x.csv}
  [4
 
@@ -1395,7 +1400,7 @@ PGFPlots: reading {Data/RX/V1_3x.csv}
 PGFPlots: reading {Data/RX/V2_3x.csv}
 PGFPlots: reading {Data/RX/RV1_3x.csv}
 PGFPlots: reading {Data/RX/RV2_3x.csv}
-Package pgfplots info on input line 118: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 123: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_3x.csv}
 
@@ -1509,7 +1514,7 @@ NOTE: coordinate (4.853,4.853,0.4260589405521683) has been dropped because of a
 coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (4.951,4.951,0.4261589027636819) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
-Package pgfplots info on input line 119: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 124: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_3x.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.2752108175642997) ha
@@ -1623,17 +1628,22 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.49555983434276807) has been dropped because of a
  coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {Data/RX/terra_RX.csv}
-Package pgfplots info on input line 128: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 133: Using 'lua backend=false' for plot 0 (t
 ype 'graphics'): plot handler does not support LUA.
 PGFPlots: reading {Data/RX/I1_re_LG.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_LG.csv}
 PGFPlots: reading {Data/RX/RI1_re_LG.csv}
 PGFPlots: reading {Data/RX/I1_im_LG.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_LG.csv}
 PGFPlots: reading {Data/RX/RI1_im_LG.csv}
 PGFPlots: reading {Data/RX/I2_re_LG.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_LG.csv}
 PGFPlots: reading {Data/RX/RI2_re_LG.csv}
 PGFPlots: reading {Data/RX/I2_im_LG.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_LG.csv}
 PGFPlots: reading {Data/RX/RI2_im_LG.csv}
 PGFPlots: reading {Data/RX/ff_LG.csv}
+PGFPlots: reading {Data/grid_code/Gff_LG.csv}
 PGFPlots: reading {Data/RX/Rff_LG.csv}
 [5
 Missing character: There is no ; (U+003B) in font nullfont!
@@ -1644,7 +1654,7 @@ PGFPlots: reading {Data/RX/V1_LG.csv}
 PGFPlots: reading {Data/RX/V2_LG.csv}
 PGFPlots: reading {Data/RX/RV1_LG.csv}
 PGFPlots: reading {Data/RX/RV2_LG.csv}
-Package pgfplots info on input line 247: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 257: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_LG.csv}
 
@@ -1751,7 +1761,7 @@ NOTE: coordinate (4.853,4.853,0.5369202441809223) has been dropped because of a
 coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (4.951,4.951,0.5368892888772698) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
-Package pgfplots info on input line 248: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 258: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_LG.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.581492143519009) has
@@ -1858,17 +1868,22 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.5368892888769808) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {Data/RX/terra_RX.csv}
-Package pgfplots info on input line 257: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 267: Using 'lua backend=false' for plot 0 (t
 ype 'graphics'): plot handler does not support LUA.
 PGFPlots: reading {Data/RX/I1_re_LL.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_LL.csv}
 PGFPlots: reading {Data/RX/RI1_re_LL.csv}
 PGFPlots: reading {Data/RX/I1_im_LL.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_LL.csv}
 PGFPlots: reading {Data/RX/RI1_im_LL.csv}
 PGFPlots: reading {Data/RX/I2_re_LL.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_LL.csv}
 PGFPlots: reading {Data/RX/RI2_re_LL.csv}
 PGFPlots: reading {Data/RX/I2_im_LL.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_LL.csv}
 PGFPlots: reading {Data/RX/RI2_im_LL.csv}
 PGFPlots: reading {Data/RX/ff_LL.csv}
+PGFPlots: reading {Data/grid_code/Gff_LL.csv}
 PGFPlots: reading {Data/RX/Rff_LL.csv}
 [7
 Missing character: There is no ; (U+003B) in font nullfont!
@@ -1879,7 +1894,7 @@ PGFPlots: reading {Data/RX/V1_LL.csv}
 PGFPlots: reading {Data/RX/V2_LL.csv}
 PGFPlots: reading {Data/RX/RV1_LL.csv}
 PGFPlots: reading {Data/RX/RV2_LL.csv}
-Package pgfplots info on input line 375: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 390: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_LL.csv}
 
@@ -1986,7 +2001,7 @@ NOTE: coordinate (4.853,4.853,0.7027060340429837) has been dropped because of a
 coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (4.951,4.951,0.7026190139403683) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
-Package pgfplots info on input line 376: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 391: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_LL.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.8257523551209176) ha
@@ -2093,17 +2108,22 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.7037120966472569) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {Data/RX/terra_RX.csv}
-Package pgfplots info on input line 385: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 400: Using 'lua backend=false' for plot 0 (t
 ype 'graphics'): plot handler does not support LUA.
 PGFPlots: reading {Data/RX/I1_re_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_LLG.csv}
 PGFPlots: reading {Data/RX/RI1_re_LLG.csv}
 PGFPlots: reading {Data/RX/I1_im_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_LLG.csv}
 PGFPlots: reading {Data/RX/RI1_im_LLG.csv}
 PGFPlots: reading {Data/RX/I2_re_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_LLG.csv}
 PGFPlots: reading {Data/RX/RI2_re_LLG.csv}
 PGFPlots: reading {Data/RX/I2_im_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_LLG.csv}
 PGFPlots: reading {Data/RX/RI2_im_LLG.csv}
 PGFPlots: reading {Data/RX/ff_LLG.csv}
+PGFPlots: reading {Data/grid_code/Gff_LLG.csv}
 PGFPlots: reading {Data/RX/Rff_LLG.csv}
 [9
 Missing character: There is no ; (U+003B) in font nullfont!
@@ -2114,7 +2134,7 @@ PGFPlots: reading {Data/RX/V1_LLG.csv}
 PGFPlots: reading {Data/RX/V2_LLG.csv}
 PGFPlots: reading {Data/RX/RV1_LLG.csv}
 PGFPlots: reading {Data/RX/RV2_LLG.csv}
-Package pgfplots info on input line 504: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 524: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/ffG_LLG.csv}
 
@@ -2221,7 +2241,7 @@ NOTE: coordinate (4.853,4.853,0.9411215943126455) has been dropped because of a
 coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (4.951,4.951,0.9411215942396727) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
-Package pgfplots info on input line 505: Using 'lua backend=false' for plot 4 (t
+Package pgfplots info on input line 525: Using 'lua backend=false' for plot 4 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/RX/RffG_LLG.csv}
 NOTE: coordinate (0.14900000000000002,0.14900000000000002,0.9411646587448912) ha
@@ -2328,7 +2348,7 @@ coordinate filter. (see also unbounded coords=jump).
 NOTE: coordinate (4.951,4.951,0.9411697181747989) has been dropped because of a 
 coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {Data/RX/terra_RX.csv}
-Package pgfplots info on input line 514: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 534: Using 'lua backend=false' for plot 0 (t
 ype 'graphics'): plot handler does not support LUA.
 ) [11
 Missing character: There is no ; (U+003B) in font nullfont!
@@ -3314,14 +3334,14 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 58089 strings out of 478902
- 305243,2848258 words of node,token memory allocated
+ 58221 strings out of 478902
+ 305204,2848258 words of node,token memory allocated
  754 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 34 attribute, 83 glue_spec
 , 34 attribute_list, 2 write nodes
-   avail lists: 1:3,2:27822,3:11069,4:226,5:722,6:66,7:16825,8:62,9:4272,10:16,1
+   avail lists: 1:5,2:27822,3:11069,4:238,5:722,6:68,7:16825,8:62,9:4272,10:16,1
 1:513
- 75463 multiletter control sequences out of 65536+200000
+ 75475 multiletter control sequences out of 65536+200000
  86 fonts using 7184559 bytes
  108i,21n,105p,1109b,2619s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman8-
@@ -3347,7 +3367,7 @@ Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:
 /Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.
 pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb>
-Output written on Main.pdf (27 pages, 557498 bytes).
+Output written on Main.pdf (27 pages, 568577 bytes).
 
 PDF statistics: 201 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)

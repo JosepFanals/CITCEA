@@ -11,6 +11,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
               \pgfplotsset{width=7cm, height=5.5cm}
               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick={0.0, 0.2,...,1.0}, xmin=0, xmax=5]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_3x.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_re_3x.csv};
               \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_3x.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -23,6 +24,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
                 \pgfplotsset{width=7cm, height=5.5cm}
                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick,  xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_3x.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_im_3x.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_3x.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -37,6 +39,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
                 \pgfplotsset{width=7cm, height=5.5cm}
                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = thick,  xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_3x.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_re_3x.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_3x.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -49,6 +52,7 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
                   \pgfplotsset{width=7cm, height=5.5cm}
                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ymin = -0.5, ymax=0.5, axis line style = thick,  xmin=0, xmax=5]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_3x.csv};
+                  \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_im_3x.csv};
                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_3x.csv};
                   % \legend{BF, OPT};
                   \end{axis}
@@ -63,8 +67,9 @@ Figure \ref{fig:3x1_c} depicts the optimal currents for the balanced fault.
                     \pgfplotsset{width=12.5cm, height=5.5cm}
                     \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ymin = 0.2, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, ytick={0.0,0.1,...,0.5},  xmin=0, xmax=5]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_3x.csv};
+                   \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/Gff_3x.csv};
                    \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_3x.csv};
-                    \legend{OPT, ROPT};
+                    \legend{OPT, Grid Code, ROPT};
                     \end{axis}
                 \end{tikzpicture}
         \end{subfigure}
@@ -144,6 +149,7 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
               \pgfplotsset{width=7cm, height=6.0cm}
               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick={-0.2,-0.0,...,0.6}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LG.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_re_LG.csv};
               \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LG.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -156,6 +162,7 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
                 \pgfplotsset{width=7cm, height=6.0cm}
                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, ytick={-1,-0.8,...,0}, xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LG.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_im_LG.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LG.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -168,8 +175,9 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.0cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick={-0.8,-0.7,...,-0.2}]
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick={-0.8,-0.6,...,-0.0}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LG.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_re_LG.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LG.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -182,6 +190,7 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
                   \pgfplotsset{width=7cm, height=6.0cm}
                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-0.1,-0.0,...,0.5}, axis line style =  thick, xmin=0, xmax=5]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LG.csv};
+                  \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_im_LG.csv};
                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LG.csv};
                   % \legend{BF, OPT};
                   \end{axis}
@@ -194,10 +203,11 @@ Figure \ref{fig:LGx1_c} depicts the optimal currents for the line to ground faul
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
                     \pgfplotsset{width=12.5cm, height=6.0cm}
-                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.4)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.53,0.54,...,0.59}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=5, ymax=0.59, ymin=0.53]
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.3)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.5,0.525,...,0.7}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=5]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LG.csv};
+                   \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/Gff_LG.csv};
                    \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LG.csv};
-                    \legend{OPT, ROPT};
+                    \legend{OPT, Grid Code, ROPT};
                     \end{axis}
                 \end{tikzpicture}
         \end{subfigure}
@@ -272,6 +282,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
               \pgfplotsset{width=7cm, height=6.0cm}
               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick={0,0.1,...,0.6}, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LL.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_re_LL.csv};
               \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LL.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -282,8 +293,9 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=7cm, height=6.0cm}
-                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-0.3,-0.25,...,0}, axis line style = thick, xmin=0, xmax=5, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-0.6,-0.5,...,0}, axis line style = thick, xmin=0, xmax=5, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LL.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_im_LL.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LL.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -298,6 +310,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
                 \pgfplotsset{width=7cm, height=6.0cm}
                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={-0.8,-0.7,...,0}, axis line style = thick, xmin=0, xmax=5]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LL.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_re_LL.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LL.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -310,6 +323,7 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
                   \pgfplotsset{width=7cm, height=6.0cm}
                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, ytick={0.0,0.2,...,0.8}, axis line style = thick, xmin=0, xmax=5]
                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LL.csv};
+                  \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_im_LL.csv};
                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LL.csv};
                   % \legend{BF, OPT};
                   \end{axis}
@@ -322,10 +336,11 @@ Figure \ref{fig:LLx1_c} depicts the optimal currents for the line to line fault.
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
                     \pgfplotsset{width=12.5cm, height=6cm}
-                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.8)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.7, 0.72,...,0.84}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, ytick={0.4, 0.5,...,0.9}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5, ytick={0.7,0.74,...,0.82}]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LL.csv};
+                   \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/Gff_LL.csv};
                    \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LL.csv};
-                    \legend{OPT, ROPT};
+                    \legend{OPT, Grid Code, ROPT};
                     \end{axis}
                 \end{tikzpicture}
         \end{subfigure}
@@ -401,6 +416,7 @@ Figure \ref{fig:LLGx1_c} depicts the optimal currents for the balanced fault.
               \pgfplotsset{width=7cm, height=6.0cm}
               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, scaled y ticks=false, xmin=0, xmax=5, ytick={0.0,0.1,...,0.6}]
               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_re_LLG.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_re_LLG.csv};
               \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_re_LLG.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -413,6 +429,7 @@ Figure \ref{fig:LLGx1_c} depicts the optimal currents for the balanced fault.
                 \pgfplotsset{width=7cm, height=6.0cm}
                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = thick, xmin=0, xmax=5, ytick={-0.7,-0.6,...,-0.1}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I1_im_LLG.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI1_im_LLG.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI1_im_LLG.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -427,6 +444,7 @@ Figure \ref{fig:LLGx1_c} depicts the optimal currents for the balanced fault.
                 \pgfplotsset{width=7cm, height=6.0cm}
                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, scaled y ticks=false, xmin=0, xmax=5, ytick={-0.6,-0.5,...,0}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_re_LLG.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_re_LLG.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_re_LLG.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -439,6 +457,7 @@ Figure \ref{fig:LLGx1_c} depicts the optimal currents for the balanced fault.
                 \pgfplotsset{width=7cm, height=6.0cm}
                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, scaled y ticks=false, xmin=0, xmax=5, ytick={0, 0.1,...,0.6}]
                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/I2_im_LLG.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GI2_im_LLG.csv};
                 \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RI2_im_LLG.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -451,10 +470,11 @@ Figure \ref{fig:LLGx1_c} depicts the optimal currents for the balanced fault.
         \begin{subfigure}[!htb]{0.7\textwidth}
                 \begin{tikzpicture}[trim axis right,trim axis left]
                     \pgfplotsset{width=12.5cm, height=6cm}
-                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = thick, xmin=0, xmax=5]
+                    \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.5,...,5}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = thick, xmin=0, xmax=5, ytick={0.94,0.95,...,0.99}]
                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/ff_LLG.csv};
-                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LLG.csv};
-                    \legend{OPT, ROPT};
+                   \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/Gff_LLG.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/Rff_LLG.csv};
+                    \legend{OPT, Grid Code, ROPT};
                     \end{axis}
                 \end{tikzpicture}
         \end{subfigure}
