@@ -117,7 +117,8 @@ V012f = np.array([V0(x), V1(x), V2(x)])
 I012f = np.array([0, x[0] + 1j * x[1], x[2] + 1j * x[3]])
 Iabcf = V012_to_abc(I012f)
 Vabcf = V012_to_abc(V012f)
-print(abs(V012f))
+# print(abs(V012f))
+# print(V012f)
 
 # ang_va = np.angle(Vabcf[0])
 # Vabcf = Vabcf * np.exp(- 1j * ang_va)
@@ -142,7 +143,6 @@ while (abs(V1_new - V1_old) > tol or abs(V2_new - V2_old) > tol) and compt < com
 
     V1_old = V1_new
     V2_old = V2_new
-
     limits = False
 
     I1_gc = I1_grid_code(V012f, limits, 0)
@@ -172,7 +172,6 @@ while (abs(V1_new - V1_old) > tol or abs(V2_new - V2_old) > tol) and compt < com
             Iabc_max = max(abs(Iabc_gc))
             x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
             V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
-            # print(fac)
 
 
     I012_gc = np.array([0, I1_gc, I2_gc])
@@ -182,12 +181,10 @@ while (abs(V1_new - V1_old) > tol or abs(V2_new - V2_old) > tol) and compt < com
     V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
 
     V012f = V012_gc
-    # print(abs(V012_gc))
-    print(Iabc_max)
-
     V1_new = abs(V012_gc[1])
     V2_new = abs(V012_gc[2])
 
-    # print(compt)
     compt += 1
 
+print('V012gc: ', V012_gc)
+print('xgc: ', x_gc)
