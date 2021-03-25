@@ -30,7 +30,7 @@ for kk in range(n_punts):
     dist = lim2_km + increment * kk
     dist_vec.append(dist)
 
-    Zf = 0.5
+    Zf = 0.03
     Z1 = 0.01 + 0.05 * 1j  # Za in the drawings
     Zth = 0.01 + 0.05 * 1j  # Zth in the drawings
     Imax = 1
@@ -84,26 +84,26 @@ for kk in range(n_punts):
         return Vabc
 
     def V0(x):
-        # V0 = 0  # balanced
+        V0 = 0  # balanced
         # V0 = - Z2 / (3 * Zf + 3 * Z2) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2)  # LG
         # V0 = 0  # LL
-        V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V0 = Z2 / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V0
 
     def V1(x):
-        # V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
+        V1 = 1 / (Zf + Z2) * (Vth_1 * Zf + (x[0] + 1j * x[1]) * (Z1 * Zf + Z1 * Z2 + Zf * Z2))  # balanced
         # V1 = (x[0] + 1j * x[1]) * (Z1 + Z2) + Vth_1 - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V1 = Vth_1 + (x[0] + 1j * x[1]) * Z1 + (x[0] + 1j * x[1]) * Z2 - Z2 / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
+        # V1 = (x[0] + 1j * x[1]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)  # LLG
         
         return V1
 
     def V2(x):
-        # V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
+        V2 = 1 / (Zf + Z2) * ((x[2] + 1j * x[3]) * (Z2 * Zf + Z1 * Z2 + Z1 * Zf))  # balanced
         # V2 = (x[2] + 1j * x[3]) * (Z1 + Z2) - Z2 / (3 * Zf + 3 * Z2) * ((x[2] + 1j * x[3]) * Z2 + (x[0] + 1j * x[1]) * Z2 + Vth_1)  # LG
         # V2 = Vth_1 + (x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z1 - (Z2 + Zf) / (2 * Z2 + Zf) * (Vth_1 + (x[0] + 1j * x[1]) * Z2 - (x[2] + 1j * x[3]) * Z2)  # LL
-        V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
+        # V2 = (x[2] + 1j * x[3]) * Z1 + (Z2 + 3 * Zf) / (3 * Z2 + 6 * Zf) * ((x[0] + 1j * x[1]) * Z2 + (x[2] + 1j * x[3]) * Z2 + Vth_1)
 
         return V2
 
@@ -189,21 +189,19 @@ for kk in range(n_punts):
     V1f = V1(Iopt)
     V2f = V2(Iopt)
     V012f = np.array([V0f, V1f, V2f])
-    V1_vec.append(V012f[1])
-    V2_vec.append(V012f[2])
     Vabcf = V012_to_abc(V012f)
 
     #print('--------')
     #print('|Vabc| voltages: ', abs(Vabcf))
     #print('|V012| voltages: ', abs(V012f))
 
-    ang_shift = np.angle(Vabcf[0])
-    # print(Iabcf)
-    Iabcf = Iabcf * np.exp(+ 1j * ang_shift)
-    Vabcf = Vabcf * np.exp(+ 1j * ang_shift)
-    # print(Iabcf)
-    I012f = Vabc_to_012(Iabcf)
-    V012f = Vabc_to_012(Vabcf)
+    # ang_shift = np.angle(Vabcf[0])
+    # # print(Iabcf)
+    # Iabcf = Iabcf * np.exp(+ 1j * ang_shift)
+    # Vabcf = Vabcf * np.exp(+ 1j * ang_shift)
+    # # print(Iabcf)
+    # I012f = Vabc_to_012(Iabcf)
+    # V012f = Vabc_to_012(Vabcf)
 
     I012f[1] = I012f[1] * np.exp(- 1j * np.angle(V012f[1]))  # added
     I012f[2] = I012f[2] * np.exp(- 1j * np.angle(V012f[2]))
@@ -212,6 +210,8 @@ for kk in range(n_punts):
 
     I1_vec.append(I012f[1])
     I2_vec.append(I012f[2])
+    V1_vec.append(V012f[1])
+    V2_vec.append(V012f[2])
     ff_vec.append(sol.fun)
 
     #print('Iabc currents: ', Iabcf)
@@ -254,15 +254,15 @@ one_vec = np.full(len(dist_vec), 100)
 a_vec = np.full(len(dist_vec), 'a')
 b_vec = 'b'
 
-make_csv(dist_vec, np.real(I1_vec), a_vec, 'Optimal/Data/dist/I1_re_LLG.csv')
-make_csv(dist_vec, np.imag(I1_vec), a_vec, 'Optimal/Data/dist/I1_im_LLG.csv')
-make_csv(dist_vec, np.real(I2_vec), a_vec, 'Optimal/Data/dist/I2_re_LLG.csv')
-make_csv(dist_vec, np.imag(I2_vec), a_vec, 'Optimal/Data/dist/I2_im_LLG.csv')
-make_csv(dist_vec, ff_vec, a_vec, 'Optimal/Data/dist/ff_LLG.csv')
+make_csv(dist_vec, np.real(I1_vec), a_vec, 'Optimal/Data/dist/I1_re_3x.csv')
+make_csv(dist_vec, np.imag(I1_vec), a_vec, 'Optimal/Data/dist/I1_im_3x.csv')
+make_csv(dist_vec, np.real(I2_vec), a_vec, 'Optimal/Data/dist/I2_re_3x.csv')
+make_csv(dist_vec, np.imag(I2_vec), a_vec, 'Optimal/Data/dist/I2_im_3x.csv')
+make_csv(dist_vec, ff_vec, a_vec, 'Optimal/Data/dist/ff_3x.csv')
 
-make3_csv(dist_vec, one_vec, np.abs(V1_vec), 'Optimal/Data/dist/V1_LLG.csv')
-make3_csv(zero_vec, dist_vec, np.abs(V2_vec), 'Optimal/Data/dist/V2_LLG.csv')
-make3_csv(dist_vec, dist_vec, ff_vec, 'Optimal/Data/dist/ffG_LLG.csv')
+make_csv(dist_vec, np.abs(V1_vec), a_vec, 'Optimal/Data/dist/V1_3x.csv')
+make_csv(dist_vec, np.abs(V2_vec), a_vec, 'Optimal/Data/dist/V2_3x.csv')
+make_csv(dist_vec, ff_vec, a_vec, 'Optimal/Data/dist/ffG_3x.csv')
 
 
 fig, axs = plt.subplots(3,2)
