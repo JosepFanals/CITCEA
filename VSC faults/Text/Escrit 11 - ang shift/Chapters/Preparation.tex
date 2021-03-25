@@ -1,0 +1,151 @@
+\section{Definition}
+We start by defining the grid code requirements as shown in Figure \ref{fig:req}. The positive sequence plot corresponds to the Danish grid code as explained in \cite{mohseni2012review}, and matches with the one described by National Grid in \cite{nationalgrid}. The positive sequence current to inject can be regarded as a function of the positive sequence voltage, and the same applies to the negative sequence current with respect to the negative sequence voltage. Note that the voltages are in reality the pre-correction ones, that is, we suppose they are not yet influenced by the injection of current coming from the VSC.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=6cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$I^+$}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.2,...,1}, axis line style = thick, ytick={0.0, 0.2,...,1.0}, xmin=-0.1, xmax=1.1]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/req_1.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=6cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$I^-$}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,0.2,...,1}, ytick={0.0,0.2,...,1.0}, axis line style = thick,  xmin=-0.1, xmax=1.1]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/req_2.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Grid code requirements for the positive and the negative sequence in case of voltage drops}
+    \label{fig:req}
+\end{figure}
+This same profile is expressable in the form of a piecewise function for the positive sequence:
+\begin{equation}
+\begin{cases} 
+      I^+ = 0 & V^+\geq 0.9 \\
+      I^+ = k_p(0.9 - V^+) & 0.5 \leq V^+ < 0.9 \\
+      I^+ = 1 & V^+<0.5 \\
+   \end{cases}
+   \label{eq:1f}
+\end{equation}
+where the $k_p$ parameter is responsible for characterizing the slope of drop, and as can be deduced from Figure \ref{fig:req}, it takes the value of 2.5. We have assumed the maximum current supported by the VSC to be 1.
+
+Similarly, for the negative sequence:
+\begin{equation}
+\begin{cases} 
+      I^- = 0 & V^-\leq 0.1 \\
+      I^- = k_n(V^- - 0.1) & 0.1 \leq V^- < 0.5 \\
+      I^- = 1 & V->0.5 \\
+   \end{cases}
+   \label{eq:2f}
+\end{equation}
+where $k_n=2.5$ as well. 
+
+To keep the expressions simple enough, we have not made any distinction between a positive or a negative voltage, nor a positive or negative current. As far as I understand it, we are concerned with improving the absolute value of the voltages, and hence, its angle is not specially relevant. However, it has to be considered to determine the direction of the current phasors. One approach would be to inject only reactive currents, as it is a commonality in grid codes \cite{ mohseni2012review, haddadi2020negative}. This is precisely the perspective taken in this study. Thus, the positive sequence current has to take a negative value to cause a positive voltage drop while the reactive negative sequence current has to become negative. 
+
+Besides, there is a potential incompatibility in the plots shown in Figure \ref{fig:req}. For instance, the fault may turn out to be extremely severe and have both the positive and the negative sequence voltages approaching 0.5. In this case, the positive and the negative sequence current as well will tend to 1. Most likely some of the $abc$ currents will surpass the limit. Therefore, some law is necessary to break from this conflicting situation and look for a trade-off.
+
+In theory, the voltages $V^+$ and $V^-$ are continously measured. The injected current depends on it, but it certainly has an effect on that as well. Thus, we expect to not follow a one-step procedure, but to update iteratively the injected current until we reach a converging state. If we denote the measurements as $V^+_m$, $V^-_m$ and $V^+$, $V^-$ the updated voltages due to the injection of current from the VSC, we ought to follow Algorithm \ref{alg:1}. 
+
+\begin{figure}[ht]
+  \centering
+  \begin{minipage}{.95\linewidth}
+    \begin{algorithm}[H]
+      \SetAlgoLined
+      \KwData{Measured voltages $V^+_m$ and $V^-_m$, $\text{max}(\underline{I}_{abc})$ and tolerance $tol$ (e.g. $tol = 1\cdot 10^{-6}$)}
+      \KwResult{Injected currents $I^+$ and $I^-$ in a converged situation}
+      \While{abs(abs($V^+_m$) - abs($V^+$)) > $tol$ or abs(abs($V^-_m$) - abs($V^-$)) > $tol$}{
+        Compute $I^+(V^+_m$) with Equation \ref{eq:1f}\;
+        Compute $I^-(V^-_m$) with Equation \ref{eq:2f}\;
+        Calculate $\underline{I}_{abc}$ from $I^+$ and $I^-$\;
+        \eIf{max($\underline{I}_{abc}$)>$I_{max}$}{
+          Reduce injected currents\;
+        }{
+          Calculate $V^+$ and $V^-$\;
+        }
+          Calculate $V^+$ and $V^-$\;
+      }
+      \caption{Algorithm to determine the currents in steady-state}
+      \label{alg:1}
+    \end{algorithm}
+  \end{minipage}
+\end{figure}
+The critical step in Algorithm \ref{alg:1} has to do with the reduction of currents in case they surpass the maximum allowed by the VSC. Some laws have to be defined in order to minimize the exceeding current up to the point that it respects the limitations but also making sure it is a near-optimal solution. One approach would be to introduce a sort of relaxation factor $f$:
+
+\begin{equation}
+\begin{cases} 
+      I^+ = 0 & V^+\geq 0.9 \\
+      I^+ = f \cdot k_p(0.9 - V^+) & 0.5 \leq V^+ < 0.9 \\
+      I^+ = f & V^+<0.5 \\
+   \end{cases}
+   \label{eq:3f}
+\end{equation}
+and the same applies to the negative sequence:
+
+\begin{equation}
+\begin{cases} 
+      I^- = 0 & V^-\leq 0.1 \\
+      I^- = f \cdot k_n(V^- - 0.1) & 0.1 \leq V^- < 0.5 \\
+      I^- = f & V->0.5 \\
+   \end{cases}
+   \label{eq:4f}
+\end{equation}
+This factor $f$ has to be computed continously up to the point in which we do not exceed the current limits. For instance, it could follow the procedure described in Algorithm \ref{alg:2}. 
+
+\begin{figure}[ht]
+  \centering
+  \begin{minipage}{.7\linewidth}
+    \begin{algorithm}[H]
+      \SetAlgoLined
+      \KwData{Current max($\underline{I}_{abc}$), voltages $V^+_m$, $V^-_m$ and tolerance $tol_2$}
+      \KwResult{Injected currents $I^+$ and $I^-$ that satisfy the limits}\
+      $f=1$\;
+      \While{max($\underline{I}_{abc}$) > $I_{max}$ or $\underline{I}_{abc}$ < ($1-tol_2$) $I_{max}$}{
+        Calculate $\underline{I}_{abc}$ from $I^+$ and $I^-$\;
+        \eIf{max($\underline{I}_{abc}$)>$I_{max}$}{
+           $f = f - tol_2$\;
+        }{
+           $f = f + tol_2$\;
+        }
+        Compute $I^+(V^+_m$) with Equation \ref{eq:3f}\;
+        Compute $I^-(V^-_m$) with Equation \ref{eq:4f}\;
+      }
+      \caption{Algorithm to find the relaxation factor $f$}
+      \label{alg:2}
+    \end{algorithm}
+  \end{minipage}
+\end{figure}
+The $tol_2$ parameter will take an arbitrary value, such as $1\cdot 10^{-4}$, for example. It is used to ensure that we operate close to the maximum current while not exceeding it. Figure \ref{fig:LG_m} shows the evoluton of the positive and the negative sequence with the subsequent measurements of voltages and updates of currents. No dynamics have been considered, of course. The stabilization of both voltages is relatively straightforward. We have employed a fault impedance of 0.03, $\underline{Z}_a=0.01 + 0.10j$ and $\underline{Z}_{th}=0.01+0.05j$ for a line to ground fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=6cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={Number of measurements}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={1,2,...,9}, axis line style = thick, ytick={0.8,0.805,...,0.82}, xmin=1, xmax=9, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+              \addplot[very thick, black] table[x=x, y=y,  col sep=semicolon] {Data/algo_gc/V1.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=6cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={Number of measurements}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={1,2,...,9}, ytick={0.21,0.215,...,0.24}, axis line style = thick,  xmin=1, xmax=9, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \addplot[very thick, black] table[x=x, y=y, col sep=semicolon] {Data/algo_gc/V2.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Positive and negative sequence evolution following the grid code approach}
+    \label{fig:LG_m}
+\end{figure}

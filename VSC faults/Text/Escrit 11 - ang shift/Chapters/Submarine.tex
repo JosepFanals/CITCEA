@@ -1,0 +1,838 @@
+\section{Submarine cable}
+Having seen the influence of varying the ratio between the resistive and inductive part of the Thevenin impedance, we can now go a step further by including a hypothetical submarine cable between the grid and the point where the fault occurs. The systems takes the form shown in Figure \ref{fig:sys_pc}.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (3,0) to [sV, v_=$\underline{V}_{th}$] (3,2);
+\draw (-0,2) to [R, l=$\underline{Z}_{th}$] (3,2);
+\draw (0,2) to [R, l_=$\underline{Z}_s$] (-2,2);
+\draw (0.25,2) to [R, l_=$\underline{Z}_p$] (0.25,0);
+\draw (-2.25,2) to [R, l=$\underline{Z}_p$] (-2.25,0);
+\draw (-2,2) to [short] (-3,2);
+
+\draw (3.25,0) to [short] (2.75,0);
+\draw (0,0) to [short] (0.5,0);
+\draw (-2.5,0) to [short] (-2.0,0);
+
+\draw (-3.25,0) to [short] (-2.75,0);
+\node at (-6,1.3) {PCC};
+\node at (-6,2.7) {$\underline{V}_c$};
+\draw (-3,2) to [short] (-3.2,1);
+\draw (-3.2,1) to [short] (-2.8,1);
+\draw[-{Latex[length=3mm]}] (-2.8,1) to [short] (-3,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
+\draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+\draw (-9,2) to [R, l=$\underline{Z}_c$, i=$\underline{I}$] (-6,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+
+\end{circuitikz}
+\caption{Single-phase representation of the simple system under a fault with a submarine cable}
+\label{fig:sys_pc}
+\end{figure}
+This system can be studied without added complexity once a Thevenin equivalent is formed on the right hand side of the fault. Opting for this will imply that we will be able to recycle the expressions developed before. The new Thevenin voltage and impedance, denoted by $\underline{V}'_{th}$ and $\underline{Z}'_{th}$, are given by:
+\begin{equation}
+    \begin{cases}
+        \underline{V}'_{th} = \dfrac{\underline{Z}_p\underline{Z_p}}{2\underline{Z}_{th}\underline{Z}_p + \underline{Z}_p\underline{Z}_s + \underline{Z}_p\underline{Z}_p + \underline{Z}_{th}\underline{Z}_s}\underline{V}_{th},\\[18pt]
+        \underline{Z}'_{th} = \dfrac{\underline{Z}_p\underline{Z}_p\underline{Z}_{th} + \underline{Z}_s\underline{Z}_p\underline{Z}_p + \underline{Z}_{th}\underline{Z}_s\underline{Z}_p}{2\underline{Z}_{th}\underline{Z}_p + \underline{Z}_p\underline{Z}_s + \underline{Z}_p\underline{Z}_p + \underline{Z}_{th}\underline{Z}_s}.
+    \end{cases}
+\end{equation}
+The distance of the cable is going to take multiple values in order to weight its influence. Realistic data for the $\underline{Z}_s$ and $\underline{Z}_p$ impedances are taken from \cite{cheah2017offshore} and adapted. They appear in Table \ref{tab:imp_cable}.
+\begin{table}[!htb]\centering
+    \begin{tabular}{ccc}
+        \hline
+        Magnitude & Value & Units\\
+        \hline
+        $\underline{Z}_s$ & $6.674\cdot 10^{-5} + j2.597\cdot 10^{-4}$ & pu/km\\
+        $\underline{Z}_p$ & $-j77.372$ & pu$\cdot$km\\
+        \hline
+    \end{tabular}
+    \caption{Impedances values to be used in the submarine cable analysis}
+    \label{tab:imp_cable}
+\end{table}
+
+Figure \ref{fig:dist_th} displays the resulting Thevenin voltage and impedance for a varying cable distance.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.0cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Voltage (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,200,...,1000}, ytick={-5, -4,...,5}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=1000, /pgf/number format/1000 sep={}]
+              \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Vth_re.csv};
+              \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Vth_im.csv};
+               \legend{$\Re (\underline{V}'_{th})$, $\Im (\underline{V}'_{th})$};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.0cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Impedance (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.55)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,200,...,1000}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks = false, xmin=0, xmax=1000, ytick={-0.5,-0.25,...,0.75}, /pgf/number format/1000 sep={}]
+                \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Zth_re.csv};
+                \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Zth_im.csv};
+                \legend{$\Re (\underline{Z}'_{th})$, $\Im (\underline{Z}'_{th})$};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Influence of the cable distance on the Thevenin voltage and impedance}
+    \label{fig:dist_th}
+  \end{figure}
+The real part of the impedance always remains above zero. However, the imaginary part starts being inductive and then becomes capacitive for large cable distances. The voltages can present extremely high values, but they coincide with a situation where the impedance is also high. Notice how abrupt changes take place around 400 km in both plots.
+
+% We now deal with a submarine cable, which is modelled with a $\pi$ equivalent, where the series impedance is still $\underline{Z}_a$ while the parallel impedance is $\underline{Z}_c=-jX_c$. As follows, we sweep across $X_c$.
+
+\subsection{Balanced fault}
+Figure \ref{fig:3x1_s} depicts the optimal currents for the balanced fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.6cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.1,...,0.5}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_3x.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_3x.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.6cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.97,...,-0.85}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_3x.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_3x.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.6cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymin = -0.2, ymax=0.2, axis line style = thick, xmin=0, xmax=100]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_3x.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_3x.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.6cm}
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymin = -0.2, ymax=0.2, axis line style = thick, xmin=0, xmax=100]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_3x.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_3x.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=5.6cm}
+                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.45, 0.475,...,0.6}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_3x.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_3x.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault with $\underline{Z}_f=0.03$ and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:3x1_s}
+  \end{figure}
+As it can be deduced, the imaginary part of the positive sequence current is the one to be prioritized, specially for short distances. Notice that when the distance increases, as shown in Figure \ref{fig:dist_th}, both the real and imaginary part of the Thevenin impedances increase. However, in proportion, the real part becomes a bit more relevant. Therefore, in the OPT case some of the imaginary positive sequence current is traded for a bit more real current. The negative sequence currents are null for all range of distances because of the nature of the balanced fault. As it has been explained before, it makes no sense to inject negative sequence current for a balanced fault due to having initially an already null negative sequence voltage. 
+
+The ROPT turns out to be a more unfavorable case. This is fruit of not being able to inject any real current. Thus, the positive sequence current becomes totally reactive as it remains constant at -1, which corresponds to the maximum allowed current. Increasing the cable distance suggests that the longer the cable, the more severe the fault is. Nevertheless, the variations are relatively small. We can conclude that for this fault, injecting or not active current does not have a huge influence on the final results.
+
+Figure \ref{fig:full_RX_3x} shows the voltages profile. The positive sequence absolute value of the voltage more or less mimics the reverse trend of objective function. It experiencex relatively small variations as well.
+
+\pgfplotsset{
+colormap={whitered}{color(0cm)=(white!95!orange); color(1cm)=(orange!75!red)}
+}
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=10cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=-0.05,
+    zmax=1.0,
+    xlabel=Distance (km),
+    ylabel=Distance (km),
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_3x.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_3x.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_3x.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_3x.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the balanced fault with $\underline{Z}_f=0.03$ and a varying distance cable}
+\label{fig:full_dist_3x}
+\end{figure}
+The negative sequence voltage is of course at 0 for the ROPT and the OPT cases as mentioned. The positive sequence voltages tend to decrease with longer distances, which makes sense because the impedance of the cable increases. For all distances there exists a rather constant difference between the voltages. This difference is the same as in the objective function. We have found out that the fault impedance is by far the most influential impedance in the system. If we had opted for higher values, the objective functions would have been reduced and the objective voltages would have improved. Sometimes, when $\underline{Z}_f$ is big enough, the objective function can become zero.
+
+
+\subsection{Line to ground fault}
+Figure \ref{fig:LG1_s} depicts the optimal currents for the line to ground fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.2cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.03,...,0.15}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_LG.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.2cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-0.7,-0.65,...,-0.45}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_LG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LG.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.2cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100,]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_LG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LG.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=6.2cm}
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={0.3,0.35,...,0.6}]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_LG.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LG.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=6.2cm}
+                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.385,0.39,...,0.41}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_LG.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LG.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to ground fault with $\underline{Z}_f=0.03$ and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LG1_s}
+  \end{figure}
+The most noticeable aspect in this situation is that the longer the cable is, the more optimal the objective function becomes. There is about a 10\% improvement if we compare the objective functions for an almost null distance with a distance close to 100 km. Again, there is a practically constant difference regarding the objective function between the OPT and the ROPT cases.
+
+The currents vary slightly. For instance, the real positive sequence current grows a bit but is kept at around 0.1. The imaginary positive sequence currents follow a similar evolution. The currents for the OPT situation are usually further from the zero. The optimization suggests that the current limitations are not met in the ROPT case. This same phenomena happened for the line to ground fault when the $R/X$ was a varying one. One hypothesis to explain that could be related to the presence of multiple optimal points. The imaginary part of the currents does not surpass the 0.3 mark in absolute value under any condition. About the negative sequence currents, the real one takes substantial values, which decrease with distance. In general one can spot that the trends of the positive and the negative sequence currents seem mirrored. 
+
+Figure \ref{fig:full_dist_LG} presents the absolute value of the positive and negative sequence voltages and the objective function for all considered distances.
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=10cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=-0.05,
+    zmax=1.0,
+    xlabel=Distance (km),
+    ylabel=Distance (km),
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_LG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_LG.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_LG.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_LG.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the line to ground fault with $\underline{Z}_f=0.03$ and a varying distance cable}
+\label{fig:full_dist_LG}
+\end{figure}
+When looking at the bigger picture, it is clear that the objective function remains quite constant for all distances. However, there is a noticeable difference between the OPT and the ROPT situations, as expressed before. Larger distances imply that the positive voltage sequence can be improved, yet the negative sequence voltage also increases. Fortunately, the increase in the first is superior to the increase in the latter. 
+
+This time injecting active currents turns out to be more beneficial than in the balanced fault, where differences were hard to notice. Besides, even though the fault impedances is an order of magnitude smaller in this line to ground fault, the objective functions fall into a similar range of values. As it can be concluded, the distance of the cable has a relatively weak influence on the final results.
+
+
+
+\subsection{Line to line fault}
+Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.2cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100, ytick={0.2,0.21,...,0.24}]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_LL.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LL.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.2cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={-0.3, -0.275,...,-0.175}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_LL.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LL.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.2cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={-0.315,-0.31,...,-0.29}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_LL.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LL.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=6.2cm}
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100,]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_LL.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LL.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=6.2cm}
+                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.81,0.82,...,0.87}]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_LL.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LL.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to line fault with $\underline{Z}_f=0.03$ and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LLx1_s}
+  \end{figure}
+The line to line fault has been found to become the one where the current values are more intuitive. That is, in the OPT situation, the real positive sequence current becomes positive while the imaginary positive sequence one is negative to provoke a positive voltage drop as well to maximize the positive sequence voltage at the PCC. The inverse reasoning applies to the negative sequence currents. When we limit the reactive current to zero, as in the ROPT case, not only the differences between the two active currents is acute, but they also are for the imaginary currents. The negative sequence real current is specially considerable, but despite that, the objective function is not largely affected if we constrain it. 
+
+The currents do not experience huge variations across all distances. However, the trend is to increase slightly the real currents in the OPT case. This allows to have always a more optimal objective function. Just like it happened for the balanced fault, shorter distances are better in order to keep the objective function to a value closer to zero. But in any case, generally speaking the differences in the objective function are small, around 1\%.
+
+Figure \ref{fig:full_dist_LL} displays the positive and negative sequence voltages for the considered range of distances. The objective functions are also depicted, although they are hardly differentiable.
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=10cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=-0.05,
+    zmax=1.0,
+    xlabel=Distance (km),
+    ylabel=Distance (km),
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_LL.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_LL.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_LL.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_LL.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_LL.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_LL.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the line to line fault with $\underline{Z}_f=0.03$ and a varying distance cable}
+\label{fig:full_dist_LL}
+\end{figure}
+Surprisingly, the positive sequence voltage is larger for the ROPT case than in the OPT situation. This could already be anticipated by looking at Figure \ref{fig:LLx1_s}, where the positive sequence OPT currents are inferior when compared to the imaginary positive sequence ROPT current. Therefore, the ROPT case makes a bigger effort to maximize the positive sequence voltage at the expense of causing an also larger negative sequence voltage. If we balance both, we get to the conclusion that the objective function is slightly better off in the OPT case, just like we could anticipate. All the absolute values of the voltages tend to increase for longer distances. Compared to the variation in the $R/X$ ratio, the objective function now remains almost always the same. However, the fault is more severe and the differences between the OPT and the OPT scenarios have diminished.
+
+
+\subsection{Double line to ground fault}
+Figure \ref{fig:LLGx1_s} depicts the optimal currents for the double line to ground.
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=6.1cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=100, ytick={0.109,0.11,...,0.114}]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_re_LLG.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_re_LLG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.1cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, xmin=0, xmax=100, ytick={-0.57,-0.56,...,-0.53}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I1_im_LLG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI1_im_LLG.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.5cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=6.1cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, ytick={-0.1225,-0.12,...,-0.1125}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_re_LLG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_re_LLG.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=6.1cm}
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, xmin=0, xmax=100, ytick={0.565, 0.57,..., 0.60}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/I2_im_LLG.csv};
+                  \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/RI2_im_LLG.csv};
+                  % \legend{BF, OPT};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+    \begin{center}
+        \begin{subfigure}[!htb]{0.7\textwidth}
+                \begin{tikzpicture}[trim axis right,trim axis left]
+                    \pgfplotsset{width=12.5cm, height=6.1cm}
+                    \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, xmin=0, xmax=100,]
+                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/ff_LLG.csv};
+                   \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/dist/Rff_LLG.csv};
+                    \legend{OPT, ROPT};
+                    \end{axis}
+                \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the double line to ground fault with $\underline{Z}_f=0.5$ and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LLGx1_s}
+  \end{figure}
+Due to the way it has been defined, the double line to ground is the most severe fault since there is solid connection between the two faulted phases. This means that the fault impedance, which represents the link to ground, becomes mostly irrelevant. The objective functions are close to one and practically constant across all lengths. The fault so severe that the influence of the cable is minimal.
+
+The imaginary currents take values close to an order of magnitude higher than the real parts. From the analysis of all faults, it seems that the imaginary current is strongly linked to the severity of the fault. Consequently, when the fault happens to be a strong one, injecting or not active currents has a minor influence. As follows, the OPT and the ROPT cases yield very similar operation conditions. Varying the $R/X$ ratio had a greater impact on the results than increasing the length of the cable, but generally speaking, the objective functions where higher than 0.9 as well.
+
+Figure \ref{fig:full_RX_LLG} displays the objective function values together with the positive and negative sequence voltages. 
+
+
+\begin{figure}[!htb]\centering \footnotesize
+\begin{tikzpicture}
+\begin{axis}[%
+    colormap name=whitered,
+    width=12cm,
+    height=10cm,
+    view={45}{30},
+    enlargelimits=false,
+    grid=major,
+    domain=-1:4,
+    y domain=-1:4,
+    samples=26,
+    ztick={0.0,0.15,...,1},
+    zmin=-0.05,
+    zmax=1.0,
+    xlabel=Distance (km),
+    ylabel=Distance (km),
+    zlabel={$|V_c|$},
+    axis line style = thick,
+    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+    colorbar,
+    colorbar style={
+        at={(1.06,0.03)},
+        anchor=south west,
+        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+        title={$f$}, 
+        yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}
+    }
+]
+
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_LLG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_LLG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_LLG.csv};
+\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_LLG.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_LLG.csv};
+\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_LLG.csv};
+\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
+
+% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+\end{axis}
+\end{tikzpicture}
+\caption{Sequence voltages together with the objective function for the double line to ground fault with $\underline{Z}_f=0.5$ and a varying distance cable}
+\label{fig:full_dist_LLG}
+\end{figure}
+Again, differences are hardly noticeable between both cases. The lines are overlapped for all the range of distances. In spite of that, the voltages tend to increase. Increasing the positive sequence voltage means that we are improving the objective function, but in the meantime, the negative sequence voltage also grow. Balancing both contributions results in obtaining a constant objective function for all distances.
+
+
+
+%%%%%%%%%%%%---------------------//////////////////$$$$$$$$$$$$$$$$$$$$
+
+
+
+% \subsection{Line to ground fault}
+% Figure \ref{fig:LGx1_s} depicts the optimal currents for the line to ground fault.
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=5.9cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0,0.02,...,0.1}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_re_LG.csv};
+%               \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_re_LG.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=5.9cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-0.8,-0.7,...,-0.3}, axis line style = very thick]
+%                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_im_LG.csv};
+%                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_im_LG.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+%       \vspace{0.5cm}
+
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=5.9cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = very thick, scaled y ticks=false, yticklabel style={/pgf/number format/fixed,/pgf/number format/precision=2}]
+%                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_re_LG.csv};
+%                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_re_LG.csv};
+%                 % \legend{BF, OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%       \hspace{1.5cm}
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%           \centering
+%               \begin{tikzpicture}[trim axis right,trim axis left]
+%                   \pgfplotsset{width=7cm, height=5.9cm}
+%                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-0.7,-0.6,...,-0.2}, axis line style = very thick]
+%                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_im_LG.csv};
+%                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_im_LG.csv};
+%                   % \legend{BF, OPT};
+%                   \end{axis}
+%               \end{tikzpicture}
+%         \end{subfigure}
+
+%         \vspace{0.2cm}
+
+%     \begin{center}
+%         \begin{subfigure}[!htb]{0.7\textwidth}
+%                 \begin{tikzpicture}[trim axis right,trim axis left]
+%                     \pgfplotsset{width=12.5cm, height=5.9cm}
+%                     \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, ytick={0.13,0.14,...,0.17}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+%                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/ff_LG.csv};
+%                    \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/Rff_LG.csv};
+%                     \legend{OPT, ROPT};
+%                     \end{axis}
+%                 \end{tikzpicture}
+%         \end{subfigure}
+%     \end{center}
+%     \caption{Influence of the currents on the objective function for the line to ground fault and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+%     \label{fig:LGx1_s}
+%   \end{figure}
+
+% \subsection{Line to line fault}
+% Figure \ref{fig:LLx1_s} depicts the optimal currents for the line to line fault.
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=6.0cm}
+%               \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ymax = 0.2, ymin=-0.2, axis line style = very thick, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_re_LL.csv};
+%               \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_re_LL.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+%                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_im_LL.csv};
+%                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_im_LL.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+%       \vspace{0.5cm}
+
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, axis line style = very thick]
+%                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_re_LL.csv};
+%                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_re_LL.csv};
+%                 % \legend{BF, OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%       \hspace{1.5cm}
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%           \centering
+%               \begin{tikzpicture}[trim axis right,trim axis left]
+%                   \pgfplotsset{width=7cm, height=6.0cm}
+%                   \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_im_LL.csv};
+%                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_im_LL.csv};
+%                   % \legend{BF, OPT};
+%                   \end{axis}
+%               \end{tikzpicture}
+%         \end{subfigure}
+
+%         \vspace{0.2cm}
+
+%     \begin{center}
+%         \begin{subfigure}[!htb]{0.7\textwidth}
+%                 \begin{tikzpicture}[trim axis right,trim axis left]
+%                     \pgfplotsset{width=12.5cm, height=6cm}
+%                     \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/ff_LL.csv};
+%                    \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/Rff_LL.csv};
+%                     \legend{OPT, ROPT};
+%                     \end{axis}
+%                 \end{tikzpicture}
+%         \end{subfigure}
+%     \end{center}
+%     \caption{Influence of the currents on the objective function for the line to line fault and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+%     \label{fig:LLx1_s}
+%   \end{figure}
+
+% \subsection{Double line to ground fault}
+% Figure \ref{fig:LLGx1_s} depicts the optimal currents for the balanced fault.
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=6.0cm}
+%               \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  xtick={0,20,...,100}, ytick={-0.01,-0.0075,...,0}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks=false]
+%               \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_re_LLG.csv};
+%               \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_re_LLG.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = very thick]
+%                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I1_im_LLG.csv};
+%                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI1_im_LLG.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+%       \vspace{0.5cm}
+
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={-1,-0.75,...,0}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, scaled y ticks=false]
+%                 \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_re_LLG.csv};
+%                 \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_re_LLG.csv};
+%                 % \legend{BF, OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%       \hspace{1.5cm}
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%           \centering
+%               \begin{tikzpicture}[trim axis right,trim axis left]
+%                   \pgfplotsset{width=7cm, height=6.0cm}
+%                   \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.01,0.04,...,0.16}, axis line style = very thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled y ticks=false]
+%                   \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/I2_im_LLG.csv};
+%                   \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/RI2_im_LLG.csv};
+%                   % \legend{BF, OPT};
+%                   \end{axis}
+%               \end{tikzpicture}
+%         \end{subfigure}
+
+%         \vspace{0.2cm}
+
+%     \begin{center}
+%         \begin{subfigure}[!htb]{0.7\textwidth}
+%                 \begin{tikzpicture}[trim axis right,trim axis left]
+%                     \pgfplotsset{width=12.5cm, height=6cm}
+%                     \begin{axis}[grid=major, xlabel={$X_c$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,10,...,100}, ytick={0.2,0.21,...,0.24}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, axis line style = very thick]
+%                    \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/ff_LLG.csv};
+%                    \addplot[very thick, gray] table[x=x, y=y, meta=label, col sep=comma] {Data/submarine/Rff_LLG.csv};
+%                     \legend{OPT, ROPT};
+%                     \end{axis}
+%                 \end{tikzpicture}
+%         \end{subfigure}
+%     \end{center}
+%     \caption{Influence of the currents on the objective function for the double line to ground fault and a submarine cable. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+%     \label{fig:LLGx1_s}
+%   \end{figure}
+% The plots for the submarine cable indicate that while the distribution of currents changes substantially when considering the restriction in the active current, the objective functions tend to take similar values. 
+
+% For instance, in the balanced fault, the best strategy in the ROPT case is to inject a maximum imaginary positive sequence current. On the contrary, the imaginary positive sequence current does not reach the limits of one. Instead, some part of the current is dedicated to the real part. As in the $R/X$ case of study, the negative sequence currents remain null for the full sweep. One can check that the objective function for a small $R/X$ ratio seems to coincide with the function when $X_c$ takes a large value. Again, the OPT scenario is slightly better than the ROPT one. 
+
+% In the line to ground fault the objective functions is not far apart from the results from Figure \ref{fig:LGx1_c}. However, this time we have not obtained a discontinuous profile in the evolution of the currents. This shows that maybe in this case there is only a single minimum, or also, that the optimal values follow the same trajectory due to the initialization. Oddly enough, in the OPT situation the imaginary positive sequence current takes rather small values. The real negative sequence current becomes predominant. It is shocking that despite the enormous differences in the distribution of currents, the objective functions are not far apart one from the other. 
+
+% The results for the line to line fault together with the ones from the double line to ground fault seem to be the most dubious. First, in the line to line fault the objective functions are somewhat larger than what it could be expected from Figure \ref{fig:LLx1_c}. In any case, while the real positive sequence and the imaginary negative sequence currents take extremely similar values, the differences are acute for the remaining two currents. The OPT case prioritizes the real negative sequence current whereas the ROPT opts for the imaginary positive sequence current. 
+
+% No more intuitively sound seem to be the double line to ground fault values. The objective function becomes considerably smaller than in the case of the $R/X$ analysis, and again, the distribution of currents reminds of the one for the line to line fault. This could be expected. However, the extreme differences are hardly justifiable. 

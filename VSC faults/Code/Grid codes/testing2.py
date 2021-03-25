@@ -175,9 +175,13 @@ for kk in range(n_punts):
         x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
         V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
 
+        Vabc_gc = V012_to_abc(V012_gc)
+        S_gc = Vabc_gc[0] * np.conj(Iabc_gc[0]) + Vabc_gc[1] * np.conj(Iabc_gc[1]) + Vabc_gc[2] * np.conj(Iabc_gc[2])
+
         if Iabc_max > Imax:
             limits = True
             fac = 1
+            fac = 1 / (abs(I1_gc) ** 2 + abs(I2_gc) ** 2)
             while Iabc_max > Imax or Iabc_max < 0.99 * Imax:
                 if Iabc_max < Imax:
                     fac += 0.0001 
@@ -204,14 +208,19 @@ for kk in range(n_punts):
         V012f = V012_gc
         V1_new = abs(V012_gc[1])
         V2_new = abs(V012_gc[2])
+        Vabc_gc = V012_to_abc(V012_gc)
+        S_gc = Vabc_gc[0] * np.conj(Iabc_gc[0]) + Vabc_gc[1] * np.conj(Iabc_gc[1]) + Vabc_gc[2] * np.conj(Iabc_gc[2])
+        # print(S_gc)
 
         compt += 1
         print(compt)
 
+    print(S_gc)
+
     I1_vec.append((x_gc[0] + 1j * x_gc[1]) * np.exp(- 1j * np.angle(V012_gc[1])))
     I2_vec.append((x_gc[2] + 1j * x_gc[3]) * np.exp(- 1j * np.angle(V012_gc[2])))
-    V1_vec.append(V012_gc[1])
-    V2_vec.append(V012_gc[2])
+    V1_vec.append(V012_gc[1] * np.exp(- 1j * np.angle(V012_gc[1])))
+    V2_vec.append(V012_gc[2] * np.exp(- 1j * np.angle(V012_gc[2])))
     ff_vec.append(abs(1 - abs(V012_gc[1]) + abs(0 - abs(V012_gc[2]))))
     # I1_vec.append((x_gc[0] + 1j * x_gc[1]) * np.exp(1j * np.angle(V1_vec)))
     # I2_vec.append((x_gc[2] + 1j * x_gc[3]) * np.exp(1j * np.angle(V2_vec)))
