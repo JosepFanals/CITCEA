@@ -271,9 +271,9 @@ make_csv(RX_vec, np.real(I2_vec), a_vec, 'Optimal/Data/RX/RI2_re_LLG.csv')
 make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Optimal/Data/RX/RI2_im_LLG.csv')
 make_csv(RX_vec, ff_vec, a_vec, 'Optimal/Data/RX/Rff_LLG.csv')
 
-make3_csv(RX_vec, one_vec, np.abs(V1_vec), 'Optimal/Data/RX/RV1_LLG.csv')
-make3_csv(zero_vec, RX_vec, np.abs(V2_vec), 'Optimal/Data/RX/RV2_LLG.csv')
-make3_csv(RX_vec, RX_vec, ff_vec, 'Optimal/Data/RX/RffG_LLG.csv')
+make_csv(RX_vec, np.abs(V1_vec), a_vec, 'Optimal/Data/RX/RV1_LLG.csv')
+make_csv(RX_vec, np.abs(V2_vec), a_vec, 'Optimal/Data/RX/RV2_LLG.csv')
+make_csv(RX_vec, ff_vec, a_vec, 'Optimal/Data/RX/RffG_LLG.csv')
 
 
 fig, axs = plt.subplots(3,2)

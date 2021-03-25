@@ -250,9 +250,9 @@ make_csv(RX_vec, np.real(I2_vec), a_vec, 'Optimal/Data/gridcode/GI2_re_LLG.csv')
 make_csv(RX_vec, np.imag(I2_vec), a_vec, 'Optimal/Data/gridcode/GI2_im_LLG.csv')
 make_csv(RX_vec, ff_vec, a_vec, 'Optimal/Data/gridcode/Gff_LLG.csv')
 
-make3_csv(RX_vec, one_vec, np.abs(V1_vec), 'Optimal/Data/gridcode/GV1_LLG.csv')
-make3_csv(zero_vec, RX_vec, np.abs(V2_vec), 'Optimal/Data/gridcode/GV2_LLG.csv')
-make3_csv(RX_vec, RX_vec, ff_vec, 'Optimal/Data/gridcode/GffG_LLG.csv')
+make_csv(RX_vec, np.abs(V1_vec), a_vec, 'Optimal/Data/gridcode/GV1_LLG.csv')
+make_csv(RX_vec, np.abs(V2_vec), a_vec, 'Optimal/Data/gridcode/GV2_LLG.csv')
+make_csv(RX_vec, ff_vec, a_vec, 'Optimal/Data/gridcode/GffG_LLG.csv')
 
 
 fig, axs = plt.subplots(3,2)

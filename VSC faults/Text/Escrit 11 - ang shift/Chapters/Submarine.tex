@@ -164,58 +164,9 @@ The ROPT turns out to be a more unfavorable case. This is fruit of not being abl
 
 Figure \ref{fig:full_RX_3x} shows the voltages profile. The positive sequence absolute value of the voltage more or less mimics the reverse trend of objective function. It experiencex relatively small variations as well.
 
-\pgfplotsset{
-colormap={whitered}{color(0cm)=(white!95!orange); color(1cm)=(orange!75!red)}
-}
 
-\begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=-0.05,
-    zmax=1.0,
-    xlabel=Distance (km),
-    ylabel=Distance (km),
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}
-    }
-]
 
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_3x.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_3x.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_3x.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
 
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the balanced fault with $\underline{Z}_f=0.03$ and a varying distance cable}
-\label{fig:full_dist_3x}
-\end{figure}
 The negative sequence voltage is of course at 0 for the ROPT and the OPT cases as mentioned. The positive sequence voltages tend to decrease with longer distances, which makes sense because the impedance of the cable increases. For all distances there exists a rather constant difference between the voltages. This difference is the same as in the objective function. We have found out that the fault impedance is by far the most influential impedance in the system. If we had opted for higher values, the objective functions would have been reduced and the objective voltages would have improved. Sometimes, when $\underline{Z}_f$ is big enough, the objective function can become zero.
 
 
@@ -296,54 +247,8 @@ The currents vary slightly. For instance, the real positive sequence current gro
 
 Figure \ref{fig:full_dist_LG} presents the absolute value of the positive and negative sequence voltages and the objective function for all considered distances.
 
-\begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=-0.05,
-    zmax=1.0,
-    xlabel=Distance (km),
-    ylabel=Distance (km),
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}
-    }
-]
 
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_LG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_LG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_LG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_LG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_LG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_LG.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
 
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the line to ground fault with $\underline{Z}_f=0.03$ and a varying distance cable}
-\label{fig:full_dist_LG}
-\end{figure}
 When looking at the bigger picture, it is clear that the objective function remains quite constant for all distances. However, there is a noticeable difference between the OPT and the ROPT situations, as expressed before. Larger distances imply that the positive voltage sequence can be improved, yet the negative sequence voltage also increases. Fortunately, the increase in the first is superior to the increase in the latter. 
 
 This time injecting active currents turns out to be more beneficial than in the balanced fault, where differences were hard to notice. Besides, even though the fault impedances is an order of magnitude smaller in this line to ground fault, the objective functions fall into a similar range of values. As it can be concluded, the distance of the cable has a relatively weak influence on the final results.
@@ -427,54 +332,8 @@ The currents do not experience huge variations across all distances. However, th
 
 Figure \ref{fig:full_dist_LL} displays the positive and negative sequence voltages for the considered range of distances. The objective functions are also depicted, although they are hardly differentiable.
 
-\begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=-0.05,
-    zmax=1.0,
-    xlabel=Distance (km),
-    ylabel=Distance (km),
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}
-    }
-]
 
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_LL.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_LL.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_LL.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_LL.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_LL.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_LL.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
 
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the line to line fault with $\underline{Z}_f=0.03$ and a varying distance cable}
-\label{fig:full_dist_LL}
-\end{figure}
 Surprisingly, the positive sequence voltage is larger for the ROPT case than in the OPT situation. This could already be anticipated by looking at Figure \ref{fig:LLx1_s}, where the positive sequence OPT currents are inferior when compared to the imaginary positive sequence ROPT current. Therefore, the ROPT case makes a bigger effort to maximize the positive sequence voltage at the expense of causing an also larger negative sequence voltage. If we balance both, we get to the conclusion that the objective function is slightly better off in the OPT case, just like we could anticipate. All the absolute values of the voltages tend to increase for longer distances. Compared to the variation in the $R/X$ ratio, the objective function now remains almost always the same. However, the fault is more severe and the differences between the OPT and the OPT scenarios have diminished.
 
 
@@ -556,55 +415,7 @@ The imaginary currents take values close to an order of magnitude higher than th
 Figure \ref{fig:full_RX_LLG} displays the objective function values together with the positive and negative sequence voltages. 
 
 
-\begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=-0.05,
-    zmax=1.0,
-    xlabel=Distance (km),
-    ylabel=Distance (km),
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}, 
-        yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}
-    }
-]
 
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/V1_LLG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/dist/V2_LLG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV1_LLG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/dist/RV2_LLG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/ffG_LLG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/RffG_LLG.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/dist/terra_dist.csv};
-
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the double line to ground fault with $\underline{Z}_f=0.5$ and a varying distance cable}
-\label{fig:full_dist_LLG}
-\end{figure}
 Again, differences are hardly noticeable between both cases. The lines are overlapped for all the range of distances. In spite of that, the voltages tend to increase. Increasing the positive sequence voltage means that we are improving the objective function, but in the meantime, the negative sequence voltage also grow. Balancing both contributions results in obtaining a constant objective function for all distances.
 
 

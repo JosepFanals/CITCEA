@@ -81,60 +81,38 @@ It becomes clear that the optimal current is highly dependent on the $R/X$ ratio
 
 The fault impedance has a noticeable effect on the results. When it is extremely small, the objective function almost does not vary. Opting for a too large fault impedance may cause the presence of multiple solutions. Hence, the real and imaginary currents may take unexpected values so it is hard to build intuition around the problem. We have checked that $\underline{Z}_f=0.05$ for the balanced fault was a convenient value. 
 
-In addition, Figure \ref{fig:full_RX_3x} shows the absolute value of the voltages depending on the $R/X$ ratio and together with the objective function.
-
-\pgfplotsset{
-colormap={whitered}{color(0cm)=(white!95!orange); color(1cm)=(orange!75!red)}
-}
+In addition, Figure \ref{fig:full_RX_3x} shows the absolute value of the voltages depending on the $R/X$ ratio.
 
 \begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=-0.05,
-    zmax=1.0,
-    xlabel=$R/X$,
-    ylabel=$R/X$,
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}
-    }
-]
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=7.0cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V1_3x.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV1_3x.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV1_3x.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=7.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.05}, ymin = -0.1, ymax = 0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V2_3x.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV2_3x.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV2_3x.csv};
+                \legend{OPT, GridCode, ROPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Influence of the $R/X$ ratio on the voltages for the balanced fault with $\underline{Z}_f=0.05$. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:full_RX_3x}
+  \end{figure}
 
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/V1_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_3x.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_3x.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_3x.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_3x.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
-
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the balanced fault with $\underline{Z}_f=0.05$ and a varying $R/X$ ratio}
-\label{fig:full_RX_3x}
-\end{figure}
 As already noted in Figure \ref{fig:3x1_c}, the objective function for the OPT case is inferior than the one for the ROPT case, and hence, closer to the ideal situation. Nevertheless, independently on having constraints on the active current, the negative sequence voltages remain at exactly zero for all the $R/X$ range. They end up being superposed. The positive sequence voltages, instead, experience some variations depending on the $R/X$ value. In some sense the positive sequence voltage trend is the contrary of the objective function pattern.
 
 The best possible situation is having the reactive part larger than the real part of the impedance. This is when the positive sequence voltage tends to 0.75. Since the resistive characteristics of the impedance are so minimized, the ROPT case yields the same results as the OPT. When the resistance increases, the differences are exaggerated due to the fact that no active current can be injected in the ROPT situation.
@@ -222,53 +200,35 @@ On the other hand, the differences between the OPT and the ROPT are relevant. De
 Even though we can expect that the positive sequence voltage is far from the unit value and the negative sequence is also distant from zero, the evaluation of voltages becomes worth of a particular study. Figure \ref{fig:full_RX_LG} shows the objective function along with the positive and negative sequence for the OPT and the ROPT cases.
 
 \begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=-0.05,
-    zmax=1.0,
-    xlabel=$R/X$,
-    ylabel=$R/X$,
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}
-    }
-]
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=7.0cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V1_LG.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV1_LG.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV1_LG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=7.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.02}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V2_LG.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV2_LG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV2_LG.csv};
+                \legend{OPT, GridCode, ROPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Influence of the $R/X$ ratio on the voltages for the line to ground fault with $\underline{Z}_f=0.03$. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LGx1_c}
+  \end{figure}
 
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/V1_LG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_LG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_LG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_LG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LG.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
-
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the line to ground fault with $\underline{Z}_f=0.03$ and a varying $R/X$ ratio}
-\label{fig:full_RX_LG}
-\end{figure}
 When looking at the bigger picture the objective function remains almost always the same, yet there exists a permanent difference between the OPT and the ROPT cases. The positive sequence voltages in the OPT situation are always above the ROPT ones for about 0.04 pu. For the negative sequence voltage the pattern is reversed. It is relevant to take into account that even if the voltages turn out to be practically constant, the currents experience large variations, as shown in Figure \ref{fig:LGx1_c}. Extracting conclusions regarding the fault by only observing the voltages may be misleading, as they can be maintained at the expense of injecting the specific optimal currents. Besides, just like it happened with the balanced fault, the shape of the objective function ressembles the shape of the voltages. This is logical when considering the proportionality between the objective function and the voltages.
 
 
@@ -355,53 +315,35 @@ The real part of the sequence currents become substantial, even if the $R/X$ tak
 Figure \ref{fig:full_RX_LL} displays the absolute value of the positive and negative sequence voltages, which change slightly for various $R/X$ values. Consequently, the objective function does also vary as shown in Figure \ref{fig:LLx1_c}.
 
 \begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=-0.00,
-    zmax=1.0,
-    xlabel=$R/X$,
-    ylabel=$R/X$,
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}
-    }
-]
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=7.0cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V1_LL.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV1_LL.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV1_LL.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=7.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.02}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V2_LL.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV2_LL.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV2_LL.csv};
+                \legend{OPT, GridCode, ROPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Influence of the $R/X$ ratio on the voltages for the line to line fault with $\underline{Z}_f=0.03$. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:LLx1_c}
+  \end{figure}
 
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/V1_LL.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_LL.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_LL.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_LL.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LL.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LL.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
-
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the line to line fault with $\underline{Z}_f=0.03$ and a varying $R/X$ ratio}
-\label{fig:full_RX_LL}
-\end{figure}
 Surprisingly, the positive sequence voltage for the OPT situation is not always higher than in the ROPT case. Thus, for small $R/X$ ratios, which happen to be the most unfavorable, the large injection of positive sequence imaginary current yields higher positive sequence voltages. However, when considering the full objective function, the OPT is always better off than the ROPT. This can be explained with the negative sequence voltages. They are always smaller in the OPT situation compared to the ROPT case. 
 
 Also important, in this type of fault the result of the optimization has resulted in obtaining a positive sequence voltage that is approximately equally distant from the unit voltage than the zero voltage is from the negative sequence voltage. Although we were not looking for this balance, the optimization naturally produced it.
@@ -486,54 +428,35 @@ The double line to ground fault is expected to become a more severe fault than a
 
 The real positive and negative sequence currents take similar values (absolutely speaking) when compared to the imaginary parts. In some sense this ressembles the line to line fault findings. Since no real current can be injected in the ROPT situation, the optimal option consists of keeping the imaginary currents relatively constant across all $R/X$ values.
 
-Figure \ref{fig:full_RX_LLG} shows the distribution of voltages for the multiple $R/X$ ratios and the objective function as well. Similar conclusions as before can be extracted.
+Figure \ref{fig:full_RX_LLG} shows the distribution of voltages for the multiple $R/X$ ratios. Similar conclusions as before can be extracted.
 
 \begin{figure}[!htb]\centering \footnotesize
-\begin{tikzpicture}
-\begin{axis}[%
-    colormap name=whitered,
-    width=12cm,
-    height=10cm,
-    view={45}{30},
-    enlargelimits=false,
-    grid=major,
-    domain=-1:4,
-    y domain=-1:4,
-    samples=26,
-    ztick={0.0,0.15,...,1},
-    zmin=0.00,
-    zmax=1.0,
-    xlabel=$R/X$,
-    ylabel=$R/X$,
-    zlabel={$|V_c|$},
-    axis line style = thick,
-    legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
-    colorbar,
-    colorbar style={
-        at={(1.06,0.03)},
-        anchor=south west,
-        height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
-        title={$f$}
-    }
-]
-
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/V1_LLG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/RX/V2_LLG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV1_LLG.csv};
-\addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/RX/RV2_LLG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/ffG_LLG.csv};
-\addplot3 [scatter, only marks, each nth point = 2, gray!60] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/RffG_LLG.csv};
-\addplot3 [orange!80!white, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/RX/terra_RX.csv};
-
-% \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
-% \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
-% \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
-
-\legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
-
-\end{axis}
-\end{tikzpicture}
-\caption{Sequence voltages together with the objective function for the double line to ground fault with $\underline{Z}_f=0.5$ and a varying $R/X$ ratio}
-\label{fig:full_RX_LLG}
-\end{figure}
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=7.0cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
+              \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V1_LLG.csv};
+              \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV1_LLG.csv};
+              \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV1_LLG.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=7.0cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.53)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.005}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \addplot[very thick, black] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/V2_LLG.csv};
+                \addplot[very thick, red] table[x=x, y=y, meta=label, col sep=comma] {Data/grid_code/GV2_LLG.csv};
+                \addplot[very thick, gray, dashed] table[x=x, y=y, meta=label, col sep=comma] {Data/RX/RV2_LLG.csv};
+                \legend{OPT, GridCode, ROPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \caption{Influence of the $R/X$ ratio on the voltages for the double line to ground fault with $\underline{Z}_f=0.5$. OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+    \label{fig:full_RX_LLG}
+  \end{figure}
 When $R/X$ is approximately null, the positive and negative sequence voltages match for the OPT and the ROPT cases. However, once the resistive part increases in comparison to the reactive part of the impedance, the impossibility of injecting active current causes a variation in voltages. For the positive sequence voltages, the OPT one is placed above the ROPT voltage; and the contrary happens to the negative sequence voltages.
