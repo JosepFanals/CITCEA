@@ -156,7 +156,7 @@ for kk in range(n_punts):
     V1_old = 0
     V2_new = V012f[2]
     V2_old = 0
-    tol = 1e-5
+    tol = 1e-3
     compt = 0
     compt_lim = 100
 
@@ -197,6 +197,9 @@ for kk in range(n_punts):
                 Iabc_max = max(abs(Iabc_gc))
                 x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
                 V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
+
+
+                print('\n', fac)
 
 
         I012_gc = np.array([0, I1_gc, I2_gc])

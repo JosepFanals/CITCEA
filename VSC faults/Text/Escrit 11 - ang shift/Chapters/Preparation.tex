@@ -104,9 +104,9 @@ This factor $f$ has to be computed continously up to the point in which we do no
   \begin{minipage}{.7\linewidth}
     \begin{algorithm}[H]
       \SetAlgoLined
-      \KwData{Current max($\underline{I}_{abc}$), voltages $V^+_m$, $V^-_m$ and tolerance $tol_2$}
+      \KwData{Current max($\underline{I}_{abc}$), voltages $V^+_m$, $V^-_m$, currents $I^+$ and $I^-$, tolerance $tol_2$}
       \KwResult{Injected currents $I^+$ and $I^-$ that satisfy the limits}\
-      $f=1$\;
+      $f=1/(\sqrt{|I^{+}|^2 + |I^{-}|^2})$ \tcp*{to iterate less} \;
       \While{max($\underline{I}_{abc}$) > $I_{max}$ or $\underline{I}_{abc}$ < ($1-tol_2$) $I_{max}$}{
         Calculate $\underline{I}_{abc}$ from $I^+$ and $I^-$\;
         \eIf{max($\underline{I}_{abc}$)>$I_{max}$}{
@@ -129,7 +129,7 @@ The $tol_2$ parameter will take an arbitrary value, such as $1\cdot 10^{-4}$, fo
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=6cm, height=5.5cm}
-              \begin{axis}[grid=major, xlabel={Number of measurements}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={1,2,...,9}, axis line style = thick, ytick={0.8,0.805,...,0.82}, xmin=1, xmax=9, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+              \begin{axis}[grid=major, xlabel={Number of measurements}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={1,2,...,9}, axis line style = thick, ytick={0.8,0.8025,...,0.82}, xmin=1, xmax=9, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4},]
               \addplot[very thick, black] table[x=x, y=y,  col sep=semicolon] {Data/algo_gc/V1.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -140,7 +140,7 @@ The $tol_2$ parameter will take an arbitrary value, such as $1\cdot 10^{-4}$, fo
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=6cm, height=5.5cm}
-                \begin{axis}[grid=major, xlabel={Number of measurements}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={1,2,...,9}, ytick={0.21,0.215,...,0.24}, axis line style = thick,  xmin=1, xmax=9, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \begin{axis}[grid=major, xlabel={Number of measurements}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={1,2,...,9}, ytick={0.21,0.2125,...,0.24}, axis line style = thick,  xmin=1, xmax=9, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4},]
                 \addplot[very thick, black] table[x=x, y=y, col sep=semicolon] {Data/algo_gc/V2.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -149,3 +149,4 @@ The $tol_2$ parameter will take an arbitrary value, such as $1\cdot 10^{-4}$, fo
     \caption{Positive and negative sequence evolution following the grid code approach}
     \label{fig:LG_m}
 \end{figure}
+Notice how the profile of the $V^{+}$ voltage seems to mirror the $V^{-}$ voltage. Besides, the $f$ factor has been initialized at $\frac{1}{\sqrt{|I^{+}|^2 + |I^{-}|^2}}$ in order to be able to escape the loop faster. The algorithm is still required because if we desire to meet the condition $\underline{I}_{abc} >  (1-tol_{2})I_{max}$. Otherwise the current would still have margin to grow. 

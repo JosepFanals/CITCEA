@@ -156,7 +156,7 @@ for kk in range(n_punts):
     V1_old = 0
     V2_new = V012f[2]
     V2_old = 0
-    tol = 1e-5
+    tol = 1e-3
     compt = 0
     compt_lim = 100
 
@@ -184,9 +184,9 @@ for kk in range(n_punts):
             fac = 1 / (abs(I1_gc) ** 2 + abs(I2_gc) ** 2)
             while Iabc_max > Imax or Iabc_max < 0.99 * Imax:
                 if Iabc_max < Imax:
-                    fac += 0.0001 
+                    fac += 0.001 
                 else:
-                    fac -= 0.0001 
+                    fac -= 0.001 
 
                 I1_gc = I1_grid_code(V012f, limits, fac)
                 I2_gc = I2_grid_code(V012f, limits, fac)
@@ -198,6 +198,10 @@ for kk in range(n_punts):
                 x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
                 V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
 
+                print(fac)
+                print('-------------')
+
+        print('+++++++++++++++')
 
         I012_gc = np.array([0, I1_gc, I2_gc])
         Iabc_gc = V012_to_abc(I012_gc)
@@ -213,9 +217,9 @@ for kk in range(n_punts):
         # print(S_gc)
 
         compt += 1
-        print(compt)
+        # print(compt)
 
-    print(S_gc)
+    # print(S_gc)
 
     I1_vec.append((x_gc[0] + 1j * x_gc[1]) * np.exp(- 1j * np.angle(V012_gc[1])))
     I2_vec.append((x_gc[2] + 1j * x_gc[3]) * np.exp(- 1j * np.angle(V012_gc[2])))
