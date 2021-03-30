@@ -52,7 +52,7 @@ To keep the expressions simple enough, we have not made any distinction between 
 
 Besides, there is a potential incompatibility in the plots shown in Figure \ref{fig:req}. For instance, the fault may turn out to be extremely severe and have both the positive and the negative sequence voltages approaching 0.5. In this case, the positive and the negative sequence current as well will tend to 1. Most likely some of the $abc$ currents will surpass the limit. Therefore, some law is necessary to break from this conflicting situation and look for a trade-off.
 
-In theory, the voltages $V^+$ and $V^-$ are continously measured. The injected current depends on it, but it certainly has an effect on that as well. Thus, we expect to not follow a one-step procedure, but to update iteratively the injected current until we reach a converging state. If we denote the measurements as $V^+_m$, $V^-_m$ and $V^+$, $V^-$ the updated voltages due to the injection of current from the VSC, we ought to follow Algorithm \ref{alg:1}. 
+In theory, the voltages $V^+$ and $V^-$ are continuously measured. The injected current depends on it, but it certainly has an effect on that as well. Thus, we expect to not follow a one-step procedure, but to update iteratively the injected current until we reach a converging state. If we denote the measurements as $V^+_m$, $V^-_m$ and $V^+$, $V^-$ the updated voltages due to the injection of current from the VSC, we ought to follow Algorithm \ref{alg:1}. 
 
 \begin{figure}[ht]
   \centering

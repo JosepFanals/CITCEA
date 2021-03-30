@@ -24,12 +24,12 @@ The system we are considering is formed by an ideal grid (only positive sequence
 \caption{Single-phase representation of the simple system under a fault}
 \label{fig:sys_p}
 \end{figure}
-This study considers the balanced fault type but also the unbalanced ones, which include the line to ground, the double line to ground and the line to line fault. The model in Figure \ref{fig:sys_p} attempts to describe simple yet sufficient system to test the influence of the injected currents by the VSC on the voltage at the PCC. The system could be complicated by adding parallel capacitances on the right hand side of the Thevenin impedance, for instance, to model a hypothetical submarine cable. However, for now we prioritize keeping the system simple. 
+This study considers the balanced fault type but also the unbalanced ones, which include the line to ground, the double line to ground, and the line to line fault. The model in Figure \ref{fig:sys_p} attempts to describe a simple yet sufficient system to test the influence of the injected currents by the VSC on the voltage at the PCC. The system could be complicated by adding parallel capacitances on the right-hand side of the Thevenin impedance, for instance, to model a hypothetical submarine cable. However, for now, we prioritize keeping the system simple. 
 
-We are concerned with improving the voltage $\underline{V}_c$ as a function of the current $\underline{I}$ injected by the converter. Formally speaking there is no clear definition on what improving the voltage means as it depends on rather pre-stablished preferences. For instance, one could try to maximize the positive sequence voltage, minimize the negative sequence voltage or even maximize the difference between both. These three strategies have been covered in \cite{camacho2017positive}. A more flexible approach is based on defining the objective function as
+We are concerned with improving the voltage $\underline{V}_c$ as a function of the current $\underline{I}$ injected by the converter. Formally speaking there is no clear definition of what improving the voltage means as it depends on rather pre-established preferences. For instance, one could try to maximize the positive sequence voltage, minimize the negative sequence voltage or even maximize the difference between both. These three strategies have been covered in \cite{camacho2017positive}. A more flexible approach is based on defining the objective function as
 \begin{equation}
     f(\underline{I}^+, \underline{I}^-) = \lambda^+|(|\underline{V}^+_c(\underline{I}^+, \underline{I}^-)| - 1)| + \lambda^-|(|\underline{V}^-_c(\underline{I}^+, \underline{I}^-)| - 0)|,
-    \label{eq:1}
+    \label{eq:f1}
 \end{equation}
 where the weighting factors $\lambda^+$, $\lambda^- \in \mathbb{R}$. By adjusting these factors one can follow the three aforementioned strategies. Note that the goal is to obtain a positive sequence voltage as close as possible to one (in per unit) while simultaneously approaching zero in the negative sequence voltage. Even though the problem is described as a function of the positive and negative sequence currents, it could also be stated as a function of the original $abc$ currents without loss of generality. The associated expressions are gathered in the appendix as well.
 
@@ -42,24 +42,24 @@ Minimizing $f$ does not come with complete freedom. That is, the currents are co
     \end{cases}
 \label{eq:2}
 \end{equation}
-For now we are not concerned with the voltages imposed to the semiconductors due to the fact that the filter $\underline{Z}_c$ is most likely to take small values. In practical situations current limitations are the most serious constraint. Therefore, we define the optimization problem as follows:
+For now, we are not concerned with the voltages imposed on the semiconductors due to the fact that the filter $\underline{Z}_c$ is most likely to take small values. In practical situations, current limitations are the most serious constraint. Therefore, we define the optimization problem as follows:
 \begin{subequations}
 \begin{alignat}{2}
 &\!\min_{\underline{I}^+,\underline{I}^-}        &\qquad& f(\underline{I}^+,\underline{I}^-)\label{eq:optProb}\\
 &\text{subject to} &      & g(\underline{I}_a, \underline{I}_b, \underline{I}_c) ,\label{eq:constraint1}
 \end{alignat}
 \end{subequations}
-where the currents in the $abc$ frame can be related to the currents expressed in the symmetrical components form by means of Fortescue's transformation, and vice versa \cite{fortescue1918method}. As a direct consequence of that, the analysis can be performed in the $abc$ frame while expressing the voltages as a function of the positive, negative and homopolar components. Another valid procedure is to work with the symmetrical components and relate the currents to the $abc$ ones. Both ways to confront the problem are equally valid. The results obtained in this study have been generated and validated with both paths.
+where the currents in the $abc$ frame can be related to the currents expressed in the symmetrical components form by means of Fortescue's transformation, and vice versa \cite{fortescue1918method}. As a direct consequence of that, the analysis can be performed in the $abc$ frame while expressing the voltages as a function of the positive, negative and homopolar components. Another valid procedure is to work with the symmetrical components and relate the currents to the $abc$ ones. Both ways to confront the problem are equally valid. The results obtained in this chapter have been generated and validated with both paths.
 
 Current grid codes define the low voltage ride through (LVRT) limit curve which indicates the relation between the duration of a fault and the voltage frontier at which for instance a wind turbine ought to disconnect. Such LVRT curves present slight variations from country to country \cite{tsili2009review} but they all share the same pattern: in case of a severe fault, the disconnection should not take place if it has a low duration; on the contrary, less noticeable faults imply a larger disconnection time. Grid codes usually impose a curtailment of active power and enforce the generation of reactive power in order to collaborate on raising the voltage \cite{altin2010overview,serban2016voltage}.  % review grid codes and explain their priorization
 
-Nevertheless, studies dealing with determining the optimal currents to inject are not precisely numerous. At most, some authors express the voltages in terms of active and reactive power but do not consider constraints \cite{camacho2012flexible}. Others formulate the optimization problem and arrive to a closed-form expression, even though it becomes iterative \cite{camacho2017positive}. The analysis is performed contemplating powers rather than currents. Because of that, this work focuses on computing the optimal currents to increase the positive sequence voltage as close to one as possible and achieving a negative sequence voltage that approaches zero. In essence, the results that follow come from solving Equations \ref{eq:optProb} and \ref{eq:constraint1}.
+Nevertheless, studies dealing with determining the optimal currents to inject are not precisely numerous. At most, some authors express the voltages in terms of active and reactive power but do not consider constraints \cite{camacho2012flexible}. Others formulate the optimization problem and arrive at a closed-form expression, even though it becomes iterative \cite{camacho2017positive}. The analysis is performed contemplating powers rather than currents. Because of that, this work focuses on computing the optimal currents to increase the positive sequence voltage as close to one as possible and achieving a negative sequence voltage that approaches zero. In essence, the results that follow come from solving Equations \ref{eq:optProb} and \ref{eq:constraint1}.
 
-Four types of faults are considered in this study. One is the balanced fault, which yields a simple yet valuable system to analyze the distribution of optimal currents. The remaining faults are unbalanced: the line to ground, the line to line and the double line to ground cases. 
+Four types of faults are considered in this study. One is the balanced fault, which yields a simple yet valuable system to analyze the distribution of optimal currents. The remaining faults are unbalanced: the line to ground, the line to line, and the double line to ground cases. 
 
-In all situations, we show plots representing the objective function depending on the real and imaginary parts of the positive and negative sequence currents. They are obtained in a brute force manner, that is, we generate multiple combinations of currents and store those points if they do not respect the constraints. The solution obtained by solving the optimization problem as such with the SciPy library is also displayed, together with optimal point supposing no active currents can be injected. The latter tries to emulate the outcome of following the grid codes to improve voltages. Note that grid codes also consider the injection of active power, but this serves the purpose of maintaining a stable system in terms of frequency, something not contemplated in this analysis. 
+In all situations, we show plots representing the objective function depending on the real and imaginary parts of the positive and negative sequence currents. They are obtained in a brute force manner, that is, we generate multiple combinations of currents and store those points if they do not respect the constraints. The solution obtained by solving the optimization problem as such with the SciPy library is also displayed, together with the optimal point supposing no active currents can be injected (ROPT) or following a hypothetical grid code (GC) which will be detailed later. Note that grid codes also consider the injection of active power, but this serves the purpose of maintaining a stable system in terms of frequency, something not contemplated in this analysis. 
 
-For this and all the upcoming faults we have set the values shown in Table \ref{tab:val}. 
+For this and all the upcoming faults, we have set the values shown in Table \ref{tab:val}. 
 
 \begin{table}[!htb] \centering
     \begin{tabular}{cc}
@@ -79,10 +79,10 @@ For this and all the upcoming faults we have set the values shown in Table \ref{
     \caption{Values for the system under study}
     \label{tab:val}
 \end{table}
-We have considered the impedances to be mainly inductive. However, adding a resistive part not only makes them more realistic, but it also may shed some light on if the truly optimal decision is to inject only reactive currents. One could anticipate that the larger the resistive part becomes, the greater the active current should be to cause a considerable voltage drop (positive or negative) so that the voltage is improved. Thus, for the given impedances in Table \ref{tab:val}, we foresee the fact that reactive currents will turn out to be substantially larger than active currents. Besides, the same weighting is arbitrarily attributed to the positive as well as to the negative sequence one. 
+We have considered the impedances to be mainly inductive, except for the fault impedance. However, adding a resistive part not only makes them more realistic, but also may shed some light on if the truly optimal decision is to inject only reactive currents. One could anticipate that the larger the resistive part becomes, the greater the active current should be to cause a considerable voltage drop (positive or negative) so that the voltage is improved. Thus, for the given impedances in Table \ref{tab:val}, we foresee the fact that reactive currents will turn out to be substantially larger than active currents. Besides, in the beginning, the same weighting is arbitrarily attributed to the positive as well as to the negative sequence one. 
 
 \subsection{Balanced fault}
-Balanced faults are commonly referred to as the most severe type of fault, as currents take the largest values \cite{kothari2003modern}. Its representation in symmetrical components indicates a decoupling between sequences. As a result of that, a considerable positive sequence current should be injected to increase the positive sequence voltage. It should be mostly inductive. On the other hand, no negative sequence current has to be injected to keep a null negative sequence voltage (assuming that the grid presents no negative sequence voltage, as it is the case here). There are no homopolar currents in this and all the subsequent faults. 
+Balanced faults are commonly referred to as the most severe type of fault, as currents take the largest values \cite{kothari2003modern}. Its representation in symmetrical components indicates a decoupling between sequences. As a result of that, a considerable positive sequence current should be injected to increase the positive sequence voltage. It should be mostly inductive. On the other hand, no negative sequence current has to be injected to keep a null negative sequence voltage (assuming that the grid presents no negative sequence voltage, as is the case here). There are no homopolar currents in this and all the subsequent faults. 
 
 Figure \ref{fig:3x1} shows on the one hand the results with the brute force methodology. We have employed over $20^4$ combinations to construct the plots. A more regular shape would be obtained in case we worked with smaller intervals. However, some points are suppressed because they exceed the current limitations. It is clear that the minimum is achieved when the negative sequence currents, both real and imaginary, tend to zero. The imaginary positive sequence current takes extreme negative values - close to $I_{max}$ - while the real part remains small.
 
@@ -150,7 +150,37 @@ The brute force calculation in Figure \ref{fig:3x1} was computed considering tha
     f(\underline{I}^+, \underline{I}^-) = \lambda|(|\underline{V}^+_c(\underline{I}^+, \underline{I}^-)| - 1)| + (1-\lambda)|(|\underline{V}^-_c(\underline{I}^+, \underline{I}^-)| - 0)|,
     \label{eq:1}
 \end{equation}
-where $\lambda=[0,1]$. Therefore, bigger values of $\lambda$ would imply that we prioritize the positive sequence voltage while small values will tend to give more importance to the negative sequence voltage. Figure \ref{fig:full_3x} shows the voltage profiles for a sweep of $\lambda$ values. 
+where $\lambda=[0,1]$. Therefore, bigger values of $\lambda$ would imply that we prioritize the positive sequence voltage while small values will tend to give more importance to the negative sequence voltage. Figure \ref{fig:full_3x} shows the voltage profiles for a sweep of $\lambda$ values. The main difference is found in the positive sequence voltage, where the OPT is more favorable. 
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/3x/V1_3x.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/3x/RV1_3x.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.1)},anchor=south east}, ymin = -0.01, ymax = 0.01, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/3x/V2_3x.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/3x/RV2_3x.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the balanced fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_3x}
+\end{figure}
+
+
 
 \pgfplotsset{
 colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
@@ -208,16 +238,8 @@ colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
 
 
 
-
-
-
-
-
-
-
-
 \subsection{Line to ground fault}
-The line to ground fault has the particularity of presenting a distribution of dots similar for both real and imaginary currents for both sequences. As shown in Figure \ref{fig:LGx1}, the minimum in the real currents plot takes place around the zero. Despite that, in reality, the real positive sequence current becomes slightly larger than zero, whilst for the negative sequence it takes a small but not negligible negative value. Observing Figure \ref{fig:sys_LG} it becomes clear that the real part of the positive sequence currents ought to be greater than zero whereas the negative sequence current should take negative values; these combinations cause the maximization of the positive sequence voltage and the minimization of the negative sequence voltage. 
+The line to ground fault has the particularity of presenting a distribution of dots similar for real currents in the positive and the negative sequence. As shown in Figure \ref{fig:LGx1}, the minimum in the real currents plot takes place around zero. Despite that, in reality, the real positive sequence current becomes slightly larger than zero, whilst for the negative sequence, it takes a small but not negligible negative value. Observing Figure \ref{fig:sys_LG} it becomes clear that the real part of the positive sequence currents ought to be greater than zero whereas the negative sequence current should take negative values; these combinations cause the maximization of the positive sequence voltage and the minimization of the negative sequence voltage. 
 
 \begin{figure}[!htb]\centering \footnotesize
   \begin{subfigure}[!htb]{.4\textwidth}
@@ -276,7 +298,40 @@ The line to ground fault has the particularity of presenting a distribution of d
   \caption{Influence of the currents on the objective function for the line to ground fault. BF: brute force, OPT: optimization problem, ROPT: optimization problem restricted to injecting reactive power.}
   \label{fig:LGx1}
 \end{figure}
-The imaginary part of the currents presents a similar distribution in both cases. Notice that contrarily to the balanced fault, where one vertex of the distribution coincided with the point at which $f$ was at its minimum, there is a full edge in which the function becomes minimum. This phenomena suggests that maybe there is more than one minimum. 
+The imaginary part of the currents presents a similar distribution in both cases. Notice that contrarily to the balanced fault, where one vertex of the distribution coincided with the point at which $f$ was at its minimum, there is a full edge in which the function is at almost its minimum. This phenomena suggests that maybe we could encounter more than one minimum. 
+
+Similar to what happened for the balanced fault, the grid code objective function is substantially worse than the OPT and the ROPT cases. Of course, one reason that justifies that has to do with the amount of current that is injected by the converter. Both the imaginary positive and negative sequence currents are near zero. Therefore, the current capabilities of the VSC are not exploited to their maximum. 
+
+Figure \ref{fig:full_LG} shows the distribution of voltages for varying $\lambda$. There is not a big difference between the OPT and the ROPT case.
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LG/V1_LG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/LG/RV1_LG.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.23)},anchor=south east}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LG/V2_LG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/LG/RV2_LG.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to ground fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_LG}
+\end{figure}
+
 
 % The differences are due to initializing differently the currents passed to the SciPy \texttt{minimize()} function. Besides, Figure \ref{fig:full_LG} shows the distribution of voltages and $f$ across multiple values of $\lambda$.
 
@@ -331,7 +386,7 @@ The imaginary part of the currents presents a similar distribution in both cases
 % \end{figure}
 
 \subsection{Line to line fault}
-The line to line fault can be considered to be a more severe fault compared to the line to ground case, since the function to minimize presents larger values. This can be understood when looking at the representations in Figures \ref{fig:3_lg} and \ref{fig:3_ll}, where the fault impedance is between two phases and not phase and ground. Therefore, the voltage drop becomes larger. Figure \ref{fig:LLx1} shows that even if the real part of the currents remains near the zero, visually speaking the imaginary parts take symmetrical values. The distribution of dots for the imaginary part of the negative sequence current is the main difference with respect to the line to ground fault. 
+The line to line fault can be considered to be a more severe fault compared to the line to ground case, since the function to minimize presents larger values. This can be understood when looking at the representations in Figures \ref{fig:3_lg} and \ref{fig:3_ll}, where the fault impedance is between two phases and not phase and ground. Therefore, the voltage drop becomes larger. Figure \ref{fig:LLx1} shows that even if the real part of the currents remains near zero, visually speaking the imaginary parts take symmetrical values. The distribution of dots is almost the same as we had in the line to ground fault. 
 
 \begin{figure}[!htb]\centering \footnotesize
   \begin{subfigure}[!htb]{.4\textwidth}
@@ -392,6 +447,38 @@ The line to line fault can be considered to be a more severe fault compared to t
 \end{figure}
 However, this time it has been checked that there is only one point that minimizes the function, independently of the initialization vector. Not less surprising, the imaginary positive and negative sequence currents are practically the same with a change of sign. We can intuitively make sense of it as the positive sequence voltage at the PCC tends to one while the negative one approaches zero. Thus, the current flowing towards the $\underline{Z}_f$ impedance is quite large and a big part of it is due to the injected positive sequence current. To achieve a small negative sequence voltage, as can be understood from Figure \ref{fig:sys_LL}, the negative sequence current has to counteract the positive sequence current. Because of that, the optimal positive and negative sequence currents share almost the same magnitude and opposite signs.
 
+In addition to that, Figure \ref{fig:full_LL} displays the voltages, whose shape is almost the same that took place for the line to ground fault. Since the OPT and the ROPT cases are so similar, the objective function presents almost no difference.
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin = 0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LL/V1_LL.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/LL/RV1_LL.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.23)},anchor=south east}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LL/V2_LL.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/LL/RV2_LL.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to line fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_LL}
+\end{figure}
+
+
+
 % Figure \ref{fig:full_LL} depicts the plot where the positive and negative sequence voltages as well as the objective function are plotted.
 
 % \begin{figure}[!htb]\centering \footnotesize
@@ -445,9 +532,9 @@ However, this time it has been checked that there is only one point that minimiz
 % \end{figure}
 
 \subsection{Double line to ground fault}
-The double line to ground fault is likely to be the most severe in terms of voltage. It turns out to have the more distant voltages from the references, as shown in \cite{taul2020modeling}. By nature, this fault is defined by a solid line to line connection and also a link between the two faulted phases and ground through an impedance. Figure \ref{fig:LLGx1} reveals that minimum of $f$ falls considerably far from the ideal zero. 
+The double line to ground fault is likely to be the most severe in terms of voltage. It turns out to have the more distant voltages from the references, as shown in \cite{taul2020modeling}. By nature, this fault is defined by a solid line to line connection and also a link between the two faulted phases and ground through an impedance. Figure \ref{fig:LLGx1} reveals that the minimum of $f$ falls considerably far from the ideal zero. 
 
-The double line to ground fault has many similarities with the line to line fault. First of all, the distribution of dots for the brute force computations is similar. Secondly, the optimal currents do not differ much from the ones obtained in Figure \ref{fig:LLx1}. All this could be deduced from its sequence representation. The same logic applies: the negative sequence current mirrors the positive sequence.
+The double line to ground fault has many similarities with the line to line fault. First of all, the distribution of dots for the brute force computations is similar (and it also resembles the plot we obtained in the line to ground fault). Secondly, the optimal currents do not differ much from the ones obtained in Figure \ref{fig:LLx1}. All this could be deduced from its sequence representation. The same logic applies: the negative sequence current mirrors the positive sequence.
 
 \begin{figure}[!htb]\centering \footnotesize
   \begin{subfigure}[!htb]{.4\textwidth}
@@ -473,7 +560,7 @@ The double line to ground fault has many similarities with the line to line faul
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_im_LLG_2.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_im_LLG_3.csv};
             \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_im_LLG_4.csv};
-            \legend{BF, OPT, ROPT};
+            \legend{BF, OPT, ROPT, GC};
             \end{axis}
         \end{tikzpicture}
   \end{subfigure}
@@ -506,7 +593,38 @@ The double line to ground fault has many similarities with the line to line faul
   \caption{Influence of the currents on the objective function for the double line to ground fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
   \label{fig:LLGx1}
 \end{figure}
-Again, only injecting reactive currents (ROPF case) has been experimentally proved to become a suboptimal yet highly convenient choice. The objective functions present tiny variations in this case. Even though the real currents in both sequence differ a bit, for the imaginary ones the OPT and the ROPT computations generate almost the same value. Therefore, the injection of real currents becomes secondary for highly inductive impedances. 
+Again, only injecting reactive currents (ROPF case) has been experimentally proved to become a suboptimal yet highly convenient choice, and the same applies to the grid code. It seems that the more extreme the fault is, the more optimal the grid code becomes. The objective functions present tiny variations in this case. Even though the real currents in both sequence differ a bit, for the imaginary ones the OPT, the ROPT and the grid code computations generate almost the same value. Therefore, the injection of real currents becomes secondary for highly inductive impedances. 
+
+Figure \ref{fig:full_LLG} shows the voltages across $\lambda$. Their evolutions is more similar to the one for the line to ground fault than for the line to line fault. 
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin= 0, xmax = 1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LLG/V1_LLG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/LLG/RV1_LLG.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.23)},anchor=south east}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LLG/V2_LLG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/LLG/RV2_LLG.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the double line to ground fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_LLG}
+\end{figure}
+
+
 
 % Finally, figure \ref{fig:full_LLG} displays what the distribution of voltages and the subsequent objective function look like for variations in the $\lambda$ parameter.
 

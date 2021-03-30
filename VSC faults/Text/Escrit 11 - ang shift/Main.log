@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  30 MAR 2021 16:20
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  30 MAR 2021 18:06
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 11 - ang shift/Main"
@@ -1227,11 +1227,7 @@ Package: relsize 2013/03/29 ver 4.1
 \@quotelevel=\count436
 \@quotereset=\count437
 
-(./Main.aux
-
-LaTeX Warning: Label `eq:1' multiply defined.
-
-)
+(./Main.aux)
 \openout1 = Main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -1245,7 +1241,8 @@ LaTeX Font Info:    ... okay on input line 32.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 32
 .
- (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 32.
@@ -1375,42 +1372,96 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-(./Chapters/Constant.tex
+(./Chapters/Preparation.tex
 
-LaTeX Warning: Citation 'camacho2017positive' on page 2 undefined on input line 
+LaTeX Warning: Reference `fig:req' on page 2 undefined on input line 2.
+
+
+LaTeX Warning: Citation 'mohseni2012review' on page 2 undefined on input line 2.
+
+
+
+LaTeX Warning: Citation 'nationalgrid' on page 2 undefined on input line 2.
+
+PGFPlots: reading {Data/grid_code/req_1.csv}
+PGFPlots: reading {Data/grid_code/req_2.csv}
+
+LaTeX Warning: Reference `fig:req' on page 2 undefined on input line 38.
+
+
+LaTeX Warning: Citation 'mohseni2012review' on page 2 undefined on input line 51
+.
+
+
+LaTeX Warning: Citation 'haddadi2020negative' on page 2 undefined on input line 
+51.
+
+
+LaTeX Warning: Reference `fig:req' on page 2 undefined on input line 53.
+
+
+LaTeX Warning: Reference `alg:1' on page 2 undefined on input line 55.
+
+[2]
+
+LaTeX Warning: Reference `eq:1f' on page 3 undefined on input line 75.
+
+
+LaTeX Warning: Reference `eq:2f' on page 3 undefined on input line 75.
+
+
+LaTeX Warning: Reference `alg:1' on page 3 undefined on input line 80.
+
+
+LaTeX Warning: Reference `alg:2' on page 3 undefined on input line 100.
+
+
+LaTeX Warning: Reference `eq:3f' on page 3 undefined on input line 120.
+
+
+LaTeX Warning: Reference `eq:4f' on page 3 undefined on input line 120.
+
+
+LaTeX Warning: Reference `fig:LG_m' on page 3 undefined on input line 125.
+
+PGFPlots: reading {Data/algo_gc/V1.csv}
+PGFPlots: reading {Data/algo_gc/V2.csv}
+) [3] [4] (./Chapters/Constant.tex
+
+LaTeX Warning: Citation 'camacho2017positive' on page 5 undefined on input line 
 29.
 
 
-LaTeX Warning: Citation 'fortescue1918method' on page 2 undefined on input line 
+LaTeX Warning: Citation 'fortescue1918method' on page 5 undefined on input line 
 52.
 
-[2
+[5
 
 ]
 
-LaTeX Warning: Citation 'tsili2009review' on page 3 undefined on input line 54.
+LaTeX Warning: Citation 'tsili2009review' on page 6 undefined on input line 54.
 
 
-LaTeX Warning: Citation 'altin2010overview' on page 3 undefined on input line 54
+LaTeX Warning: Citation 'altin2010overview' on page 6 undefined on input line 54
 .
 
 
-LaTeX Warning: Citation 'serban2016voltage' on page 3 undefined on input line 54
+LaTeX Warning: Citation 'serban2016voltage' on page 6 undefined on input line 54
 .
 
 
-LaTeX Warning: Citation 'camacho2012flexible' on page 3 undefined on input line 
+LaTeX Warning: Citation 'camacho2012flexible' on page 6 undefined on input line 
 56.
 
 
-LaTeX Warning: Citation 'camacho2017positive' on page 3 undefined on input line 
+LaTeX Warning: Citation 'camacho2017positive' on page 6 undefined on input line 
 56.
 
+[6]
 
-LaTeX Warning: Citation 'kothari2003modern' on page 3 undefined on input line 85
+LaTeX Warning: Citation 'kothari2003modern' on page 7 undefined on input line 85
 .
 
-[3]
 Package pgfplots info on input line 95: Using 'lua backend=false' for plot 0 (ty
 pe 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 Package pgfplots info on input line 95: Using 'lua backend=false' for plot 0 (ty
@@ -1467,212 +1518,604 @@ PGFPlots: reading {Data/3x/I2_im_3x_3.csv}
 Package pgfplots info on input line 139: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/3x/I2_im_3x_4.csv}
- [4
+[7
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
+Package pgfplots info on input line 161: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/3x/V1_3x.csv}
+Package pgfplots info on input line 162: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/3x/RV1_3x.csv}
+Package pgfplots info on input line 173: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/3x/V2_3x.csv}
+Package pgfplots info on input line 174: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/3x/RV2_3x.csv}
 
-LaTeX Warning: Reference `fig:full_3x' on page 5 undefined on input line 153.
 
+LaTeX Warning: Reference `fig:sys_LG' on page 8 undefined on input line 242.
 
-LaTeX Warning: Reference `fig:sys_LG' on page 5 undefined on input line 220.
-
-Package pgfplots info on input line 228: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 250: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 228: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 250: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LG/I1_re_LG.csv}
-Package pgfplots info on input line 229: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 251: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I1_re_LG_2.csv}
-Package pgfplots info on input line 230: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 252: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I1_re_LG_3.csv}
-Package pgfplots info on input line 231: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 253: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I1_re_LG_4.csv}
-Package pgfplots info on input line 242: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 264: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 242: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 264: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LG/I1_im_LG.csv}
-Package pgfplots info on input line 243: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 265: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I1_im_LG_2.csv}
-Package pgfplots info on input line 244: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 266: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I1_im_LG_3.csv}
-Package pgfplots info on input line 245: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 267: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I1_im_LG_4.csv}
-Package pgfplots info on input line 256: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 278: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 256: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 278: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LG/I2_re_LG.csv}
-Package pgfplots info on input line 257: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 279: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I2_re_LG_2.csv}
-Package pgfplots info on input line 258: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 280: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I2_re_LG_3.csv}
-Package pgfplots info on input line 259: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 281: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I2_re_LG_4.csv}
-Package pgfplots info on input line 269: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 291: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 269: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 291: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LG/I2_im_LG.csv}
-Package pgfplots info on input line 270: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 292: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I2_im_LG_2.csv}
-Package pgfplots info on input line 271: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 293: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I2_im_LG_3.csv}
-Package pgfplots info on input line 272: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 294: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LG/I2_im_LG_4.csv}
+[8
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+Package pgfplots info on input line 313: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LG/V1_LG.csv}
+Package pgfplots info on input line 314: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LG/RV1_LG.csv}
+Package pgfplots info on input line 325: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LG/V2_LG.csv}
+Package pgfplots info on input line 326: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LG/RV2_LG.csv}
 
-LaTeX Warning: Reference `fig:3_lg' on page 5 undefined on input line 334.
+
+LaTeX Warning: Reference `fig:3_lg' on page 9 undefined on input line 389.
 
 
-LaTeX Warning: Reference `fig:3_ll' on page 5 undefined on input line 334.
+LaTeX Warning: Reference `fig:3_ll' on page 9 undefined on input line 389.
 
-Package pgfplots info on input line 342: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 397: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 342: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 397: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LL/I1_re_LL.csv}
-Package pgfplots info on input line 343: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 398: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I1_re_LL_2.csv}
-Package pgfplots info on input line 344: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 399: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I1_re_LL_3.csv}
-Package pgfplots info on input line 345: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 400: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I1_re_LL_4.csv}
-Package pgfplots info on input line 356: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 411: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 356: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 411: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LL/I1_im_LL.csv}
-Package pgfplots info on input line 357: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 412: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I1_im_LL_2.csv}
-Package pgfplots info on input line 358: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 413: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I1_im_LL_3.csv}
-Package pgfplots info on input line 359: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 414: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I1_im_LL_4.csv}
-Package pgfplots info on input line 370: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 425: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 370: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 425: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LL/I2_re_LL.csv}
-Package pgfplots info on input line 371: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 426: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I2_re_LL_2.csv}
-Package pgfplots info on input line 372: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 427: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I2_re_LL_3.csv}
-Package pgfplots info on input line 373: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 428: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I2_re_LL_4.csv}
-Package pgfplots info on input line 383: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 438: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 383: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 438: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LL/I2_im_LL.csv}
-Package pgfplots info on input line 384: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 439: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I2_im_LL_2.csv}
-Package pgfplots info on input line 385: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 440: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I2_im_LL_3.csv}
-Package pgfplots info on input line 386: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 441: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LL/I2_im_LL_4.csv}
 
-LaTeX Warning: Reference `fig:sys_LL' on page 5 undefined on input line 393.
+LaTeX Warning: Reference `fig:sys_LL' on page 9 undefined on input line 448.
 
-
-LaTeX Warning: Citation 'taul2020modeling' on page 5 undefined on input line 448
-.
-
-
-LaTeX Warning: Reference `fig:LLGx1' on page 5 undefined on input line 448.
-
-[5]
+[9
+Missing character: There is no ; (U+003B) in font nullfont!
+] [10
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+]
 Package pgfplots info on input line 458: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LL/V1_LL.csv}
+Package pgfplots info on input line 459: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LL/RV1_LL.csv}
+Package pgfplots info on input line 470: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LL/V2_LL.csv}
+Package pgfplots info on input line 471: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LL/RV2_LL.csv}
+
+
+LaTeX Warning: Citation 'taul2020modeling' on page 11 undefined on input line 53
+5.
+
+Package pgfplots info on input line 545: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 458: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 545: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LLG/I1_re_LLG.csv}
-Package pgfplots info on input line 459: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 546: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I1_re_LLG_2.csv}
-Package pgfplots info on input line 460: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 547: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I1_re_LLG_3.csv}
-Package pgfplots info on input line 461: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 548: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I1_re_LLG_4.csv}
-Package pgfplots info on input line 472: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 559: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 472: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 559: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LLG/I1_im_LLG.csv}
-Package pgfplots info on input line 473: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 560: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I1_im_LLG_2.csv}
-Package pgfplots info on input line 474: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 561: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I1_im_LLG_3.csv}
-Package pgfplots info on input line 475: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 562: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I1_im_LLG_4.csv}
-Package pgfplots info on input line 486: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 573: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 486: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 573: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LLG/I2_re_LLG.csv}
-Package pgfplots info on input line 487: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 574: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I2_re_LLG_2.csv}
-Package pgfplots info on input line 488: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 575: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I2_re_LLG_3.csv}
-Package pgfplots info on input line 489: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 576: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I2_re_LLG_4.csv}
-Package pgfplots info on input line 499: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 586: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
-Package pgfplots info on input line 499: Using 'lua backend=false' for plot 0 (t
+Package pgfplots info on input line 586: Using 'lua backend=false' for plot 0 (t
 ype 'pgfplothandlerdiscard'): LUA does not support x filter (yet).
 PGFPlots: reading {Data/LLG/I2_im_LLG.csv}
-Package pgfplots info on input line 500: Using 'lua backend=false' for plot 1 (t
+Package pgfplots info on input line 587: Using 'lua backend=false' for plot 1 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I2_im_LLG_2.csv}
-Package pgfplots info on input line 501: Using 'lua backend=false' for plot 2 (t
+Package pgfplots info on input line 588: Using 'lua backend=false' for plot 2 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I2_im_LLG_3.csv}
-Package pgfplots info on input line 502: Using 'lua backend=false' for plot 3 (t
+Package pgfplots info on input line 589: Using 'lua backend=false' for plot 3 (t
 ype 'pgfplothandlerdiscard'): point meta choice does not support LUA.
 PGFPlots: reading {Data/LLG/I2_im_LLG_4.csv}
-) [6
+Package pgfplots info on input line 605: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LLG/V1_LLG.csv}
+Package pgfplots info on input line 606: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LLG/RV1_LLG.csv}
+Package pgfplots info on input line 617: Using 'lua backend=false' for plot 0 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LLG/V2_LLG.csv}
+Package pgfplots info on input line 618: Using 'lua backend=false' for plot 1 (t
+ype 'pgfplothandlerlineto'): point meta choice does not support LUA.
+PGFPlots: reading {Data/LLG/RV2_LLG.csv}
+) [11
 Missing character: There is no ; (U+003B) in font nullfont!
-] [7
+] [12
 Missing character: There is no ; (U+003B) in font nullfont!
-] [8
 Missing character: There is no ; (U+003B) in font nullfont!
-] (./Main.aux)
+] (./Chapters/RX.tex
+
+LaTeX Warning: Reference `fig:3x1_c' on page 13 undefined on input line 5.
+
+PGFPlots: reading {Data/RX/I1_re_3x.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_3x.csv}
+PGFPlots: reading {Data/RX/RI1_re_3x.csv}
+PGFPlots: reading {Data/RX/I1_im_3x.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_3x.csv}
+PGFPlots: reading {Data/RX/RI1_im_3x.csv}
+PGFPlots: reading {Data/RX/I2_re_3x.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_3x.csv}
+PGFPlots: reading {Data/RX/RI2_re_3x.csv}
+PGFPlots: reading {Data/RX/I2_im_3x.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_3x.csv}
+PGFPlots: reading {Data/RX/RI2_im_3x.csv}
+PGFPlots: reading {Data/RX/ff_3x.csv}
+PGFPlots: reading {Data/grid_code/Gff_3x.csv}
+PGFPlots: reading {Data/RX/Rff_3x.csv}
+[13
+
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_RX_3x' on page 14 undefined on input line 86.
+
+
+PGFPlots: reading {Data/RX/V1_3x.csv}
+PGFPlots: reading {Data/grid_code/GV1_3x.csv}
+PGFPlots: reading {Data/RX/RV1_3x.csv}
+PGFPlots: reading {Data/RX/V2_3x.csv}
+PGFPlots: reading {Data/grid_code/GV2_3x.csv}
+PGFPlots: reading {Data/RX/RV2_3x.csv}
+
+LaTeX Warning: Reference `fig:3x1_c' on page 14 undefined on input line 118.
+
+
+LaTeX Warning: Reference `fig:LGx1_c' on page 14 undefined on input line 123.
+
+PGFPlots: reading {Data/RX/I1_re_LG.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_LG.csv}
+PGFPlots: reading {Data/RX/RI1_re_LG.csv}
+PGFPlots: reading {Data/RX/I1_im_LG.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_LG.csv}
+PGFPlots: reading {Data/RX/RI1_im_LG.csv}
+PGFPlots: reading {Data/RX/I2_re_LG.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_LG.csv}
+PGFPlots: reading {Data/RX/RI2_re_LG.csv}
+PGFPlots: reading {Data/RX/I2_im_LG.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_LG.csv}
+PGFPlots: reading {Data/RX/RI2_im_LG.csv}
+PGFPlots: reading {Data/RX/ff_LG.csv}
+PGFPlots: reading {Data/grid_code/Gff_LG.csv}
+PGFPlots: reading {Data/RX/Rff_LG.csv}
+[14
+Missing character: There is no ; (U+003B) in font nullfont!
+] [15
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_RX_LG' on page 16 undefined on input line 202
+.
+
+PGFPlots: reading {Data/RX/V1_LG.csv}
+PGFPlots: reading {Data/grid_code/GV1_LG.csv}
+PGFPlots: reading {Data/RX/RV1_LG.csv}
+PGFPlots: reading {Data/RX/V2_LG.csv}
+PGFPlots: reading {Data/grid_code/GV2_LG.csv}
+PGFPlots: reading {Data/RX/RV2_LG.csv}
+
+LaTeX Warning: Reference `fig:LGx1_c' on page 16 undefined on input line 233.
+
+
+LaTeX Warning: Reference `fig:LLx1_c' on page 16 undefined on input line 237.
+
+PGFPlots: reading {Data/RX/I1_re_LL.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_LL.csv}
+PGFPlots: reading {Data/RX/RI1_re_LL.csv}
+PGFPlots: reading {Data/RX/I1_im_LL.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_LL.csv}
+PGFPlots: reading {Data/RX/RI1_im_LL.csv}
+PGFPlots: reading {Data/RX/I2_re_LL.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_LL.csv}
+PGFPlots: reading {Data/RX/RI2_re_LL.csv}
+PGFPlots: reading {Data/RX/I2_im_LL.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_LL.csv}
+PGFPlots: reading {Data/RX/RI2_im_LL.csv}
+PGFPlots: reading {Data/RX/ff_LL.csv}
+PGFPlots: reading {Data/grid_code/Gff_LL.csv}
+PGFPlots: reading {Data/RX/Rff_LL.csv}
+[16
+Missing character: There is no ; (U+003B) in font nullfont!
+] [17
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_RX_LL' on page 18 undefined on input line 318
+.
+
+PGFPlots: reading {Data/RX/V1_LL.csv}
+PGFPlots: reading {Data/grid_code/GV1_LL.csv}
+PGFPlots: reading {Data/RX/RV1_LL.csv}
+PGFPlots: reading {Data/RX/V2_LL.csv}
+PGFPlots: reading {Data/grid_code/GV2_LL.csv}
+PGFPlots: reading {Data/RX/RV2_LL.csv}
+
+LaTeX Warning: Reference `fig:LLGx1_c' on page 18 undefined on input line 355.
+
+PGFPlots: reading {Data/RX/I1_re_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI1_re_LLG.csv}
+PGFPlots: reading {Data/RX/RI1_re_LLG.csv}
+PGFPlots: reading {Data/RX/I1_im_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI1_im_LLG.csv}
+PGFPlots: reading {Data/RX/RI1_im_LLG.csv}
+PGFPlots: reading {Data/RX/I2_re_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI2_re_LLG.csv}
+PGFPlots: reading {Data/RX/RI2_re_LLG.csv}
+PGFPlots: reading {Data/RX/I2_im_LLG.csv}
+PGFPlots: reading {Data/grid_code/GI2_im_LLG.csv}
+PGFPlots: reading {Data/RX/RI2_im_LLG.csv}
+PGFPlots: reading {Data/RX/ff_LLG.csv}
+PGFPlots: reading {Data/grid_code/Gff_LLG.csv}
+PGFPlots: reading {Data/RX/Rff_LLG.csv}
+[18
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:LLGx1_c' on page 19 undefined on input line 430.
+
+[19
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_RX_LLG' on page 20 undefined on input line 43
+4.
+
+PGFPlots: reading {Data/RX/V1_LLG.csv}
+PGFPlots: reading {Data/grid_code/GV1_LLG.csv}
+PGFPlots: reading {Data/RX/RV1_LLG.csv}
+PGFPlots: reading {Data/RX/V2_LLG.csv}
+PGFPlots: reading {Data/grid_code/GV2_LLG.csv}
+PGFPlots: reading {Data/RX/RV2_LLG.csv}
+) [20
+Missing character: There is no ; (U+003B) in font nullfont!
+] (./Chapters/Submarine.tex
+
+LaTeX Warning: Reference `fig:sys_pc' on page 21 undefined on input line 2.
+
+
+LaTeX Warning: Citation 'cheah2017offshore' on page 21 undefined on input line 4
+3.
+
+
+LaTeX Warning: Reference `tab:imp_cable' on page 21 undefined on input line 43.
+
+
+LaTeX Warning: Reference `fig:dist_th' on page 21 undefined on input line 57.
+
+PGFPlots: reading {Data/cable/Vth_re.csv}
+PGFPlots: reading {Data/cable/Vth_im.csv}
+PGFPlots: reading {Data/cable/Zth_re.csv}
+PGFPlots: reading {Data/cable/Zth_im.csv}
+[21
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:3x1_s' on page 22 undefined on input line 91.
+
+PGFPlots: reading {Data/dist/I1_re_3x.csv}
+PGFPlots: reading {Data/dist/GI1_re_3x.csv}
+PGFPlots: reading {Data/dist/RI1_re_3x.csv}
+PGFPlots: reading {Data/dist/I1_im_3x.csv}
+PGFPlots: reading {Data/dist/GI1_im_3x.csv}
+PGFPlots: reading {Data/dist/RI1_im_3x.csv}
+PGFPlots: reading {Data/dist/I2_re_3x.csv}
+PGFPlots: reading {Data/dist/GI2_re_3x.csv}
+PGFPlots: reading {Data/dist/RI2_re_3x.csv}
+PGFPlots: reading {Data/dist/I2_im_3x.csv}
+PGFPlots: reading {Data/dist/GI2_im_3x.csv}
+PGFPlots: reading {Data/dist/RI2_im_3x.csv}
+PGFPlots: reading {Data/dist/ff_3x.csv}
+PGFPlots: reading {Data/dist/Gff_3x.csv}
+PGFPlots: reading {Data/dist/Rff_3x.csv}
+
+LaTeX Warning: Reference `fig:dist_th' on page 22 undefined on input line 166.
+
+[22
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_dist_3x' on page 23 undefined on input line 1
+72.
+
+PGFPlots: reading {Data/dist/V1_3x.csv}
+PGFPlots: reading {Data/dist/GV1_3x.csv}
+PGFPlots: reading {Data/dist/RV1_3x.csv}
+PGFPlots: reading {Data/dist/V2_3x.csv}
+PGFPlots: reading {Data/dist/GV2_3x.csv}
+PGFPlots: reading {Data/dist/RV2_3x.csv}
+
+LaTeX Warning: Reference `fig:LG1_s' on page 23 undefined on input line 210.
+
+PGFPlots: reading {Data/dist/I1_re_LG.csv}
+PGFPlots: reading {Data/dist/GI1_re_LG.csv}
+PGFPlots: reading {Data/dist/RI1_re_LG.csv}
+PGFPlots: reading {Data/dist/I1_im_LG.csv}
+PGFPlots: reading {Data/dist/GI1_im_LG.csv}
+PGFPlots: reading {Data/dist/RI1_im_LG.csv}
+PGFPlots: reading {Data/dist/I2_re_LG.csv}
+PGFPlots: reading {Data/dist/GI2_re_LG.csv}
+PGFPlots: reading {Data/dist/RI2_re_LG.csv}
+PGFPlots: reading {Data/dist/I2_im_LG.csv}
+PGFPlots: reading {Data/dist/GI2_im_LG.csv}
+PGFPlots: reading {Data/dist/RI2_im_LG.csv}
+PGFPlots: reading {Data/dist/ff_LG.csv}
+PGFPlots: reading {Data/dist/Gff_LG.csv}
+PGFPlots: reading {Data/dist/Rff_LG.csv}
+[23
+Missing character: There is no ; (U+003B) in font nullfont!
+] [24
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_dist_LG' on page 25 undefined on input line 2
+89.
+
+PGFPlots: reading {Data/dist/V1_LG.csv}
+PGFPlots: reading {Data/dist/GV1_LG.csv}
+PGFPlots: reading {Data/dist/RV1_LG.csv}
+PGFPlots: reading {Data/dist/V2_LG.csv}
+PGFPlots: reading {Data/dist/GV2_LG.csv}
+PGFPlots: reading {Data/dist/RV2_LG.csv}
+
+LaTeX Warning: Reference `fig:dist_th' on page 25 undefined on input line 323.
+
+
+LaTeX Warning: Reference `fig:LLx1_s' on page 25 undefined on input line 328.
+
+PGFPlots: reading {Data/dist/I1_re_LL.csv}
+PGFPlots: reading {Data/dist/GI1_re_LL.csv}
+PGFPlots: reading {Data/dist/RI1_re_LL.csv}
+PGFPlots: reading {Data/dist/I1_im_LL.csv}
+PGFPlots: reading {Data/dist/GI1_im_LL.csv}
+PGFPlots: reading {Data/dist/RI1_im_LL.csv}
+PGFPlots: reading {Data/dist/I2_re_LL.csv}
+PGFPlots: reading {Data/dist/GI2_re_LL.csv}
+PGFPlots: reading {Data/dist/RI2_re_LL.csv}
+PGFPlots: reading {Data/dist/I2_im_LL.csv}
+PGFPlots: reading {Data/dist/GI2_im_LL.csv}
+PGFPlots: reading {Data/dist/RI2_im_LL.csv}
+PGFPlots: reading {Data/dist/ff_LL.csv}
+PGFPlots: reading {Data/dist/Gff_LL.csv}
+PGFPlots: reading {Data/dist/Rff_LL.csv}
+[25
+Missing character: There is no ; (U+003B) in font nullfont!
+] [26
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_dist_LL' on page 27 undefined on input line 4
+07.
+
+PGFPlots: reading {Data/dist/V1_LL.csv}
+PGFPlots: reading {Data/dist/GV1_LL.csv}
+PGFPlots: reading {Data/dist/RV1_LL.csv}
+PGFPlots: reading {Data/dist/V2_LL.csv}
+PGFPlots: reading {Data/dist/GV2_LL.csv}
+PGFPlots: reading {Data/dist/RV2_LL.csv}
+
+LaTeX Warning: Reference `fig:LLx1_s' on page 27 undefined on input line 440.
+
+
+LaTeX Warning: Reference `fig:LLGx1_s' on page 27 undefined on input line 446.
+
+PGFPlots: reading {Data/dist/I1_re_LLG.csv}
+PGFPlots: reading {Data/dist/GI1_re_LLG.csv}
+PGFPlots: reading {Data/dist/RI1_re_LLG.csv}
+PGFPlots: reading {Data/dist/I1_im_LLG.csv}
+PGFPlots: reading {Data/dist/GI1_im_LLG.csv}
+PGFPlots: reading {Data/dist/RI1_im_LLG.csv}
+PGFPlots: reading {Data/dist/I2_re_LLG.csv}
+PGFPlots: reading {Data/dist/GI2_re_LLG.csv}
+PGFPlots: reading {Data/dist/RI2_re_LLG.csv}
+PGFPlots: reading {Data/dist/I2_im_LLG.csv}
+PGFPlots: reading {Data/dist/GI2_im_LLG.csv}
+PGFPlots: reading {Data/dist/RI2_im_LLG.csv}
+PGFPlots: reading {Data/dist/ff_LLG.csv}
+PGFPlots: reading {Data/dist/Gff_LLG.csv}
+PGFPlots: reading {Data/dist/Rff_LLG.csv}
+[27
+Missing character: There is no ; (U+003B) in font nullfont!
+] [28
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Reference `fig:full_dist_LLG' on page 29 undefined on input line 
+525.
+
+PGFPlots: reading {Data/dist/V1_LLG.csv}
+PGFPlots: reading {Data/dist/GV1_LLG.csv}
+PGFPlots: reading {Data/dist/RV1_LLG.csv}
+PGFPlots: reading {Data/dist/V2_LLG.csv}
+PGFPlots: reading {Data/dist/GV2_LLG.csv}
+PGFPlots: reading {Data/dist/RV2_LLG.csv}
+) [29
+Missing character: There is no ; (U+003B) in font nullfont!
+] (./Chapters/Conclusion.tex [30])
+
+LaTeX Warning: Empty bibliography on input line 9.
+
+(./Chapters/Appendix.tex
+\absvshift=\dimen335
+\absvshift=\dimen336
+\absvshift=\dimen337
+\absvshift=\dimen338
+\absvshift=\dimen339
+\absvshift=\dimen340
+\absvshift=\dimen341
+\absvshift=\dimen342
+\absvshift=\dimen343
+\absvshift=\dimen344
+\absvshift=\dimen345
+\absvshift=\dimen346
+ [31] [32]
+\absvshift=\dimen347
+\absvshift=\dimen348
+\absvshift=\dimen349
+\absvshift=\dimen350
+\absvshift=\dimen351
+\absvshift=\dimen352
+\absvshift=\dimen353
+\absvshift=\dimen354
+\absvshift=\dimen355
+\absvshift=\dimen356
+\absvshift=\dimen357
+ [33
+
+] [34] [35
+
+]) [36] (./Main.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -1685,42 +2128,47 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 51179 strings out of 478902
- 26471595,75830065 words of node,token memory allocated
- 694 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 16 attribute, 83 glue_spec
-, 16 attribute_list, 3 write nodes
-   avail lists: 1:15,2:5622017,3:3432266,4:152,5:507,6:36,7:320659,8:44,9:1914,1
-0:15,11:711
- 69060 multiletter control sequences out of 65536+200000
- 76 fonts using 6494319 bytes
- 108i,21n,105p,982b,2592s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 59235 strings out of 478902
+ 21177370,52659768 words of node,token memory allocated
+ 791 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 41 attribute, 83 glue_spec
+, 41 attribute_list, 2 write nodes
+   avail lists: 1:9,2:3750819,3:2575145,4:172,5:722,6:78,7:243419,8:62,9:4272,10
+:15,11:655
+ 75919 multiletter control sequences out of 65536+200000
+ 87 fonts using 7310711 bytes
+ 108i,22n,105p,1233b,2592s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman8-
 regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/
-lm/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/openty
-pe/public/lm/lmroman10-regular.otf><//?/c:/users/josep/appdata/local/programs/mi
-ktex/fonts/opentype/public/lm/lmroman12-bold.otf><C:/Users/Josep/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/User
-s/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
-C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
-8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Josep/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Jose
-p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Use
-rs/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
-0.pfb>
-Output written on Main.pdf (8 pages, 20514062 bytes).
+lm/lmmono10-regular.otf><//?/c:/users/josep/appdata/local/programs/miktex/fonts/
+opentype/public/lm/lmroman10-italic.otf><C:/Users/Josep/AppData/Local/Programs/M
+iKTeX/fonts/opentype/public/lm/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/
+Programs/MiKTeX/fonts/opentype/public/lm/lmroman10-regular.otf><//?/c:/users/jos
+ep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-bold.otf><C:
+/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10
+.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+mextra/cmex7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Jo
+sep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Us
+ers/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmsy5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Main.pdf (36 pages, 20873082 bytes).
 
-PDF statistics: 122 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 236 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

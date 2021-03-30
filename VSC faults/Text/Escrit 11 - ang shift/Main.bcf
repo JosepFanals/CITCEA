@@ -2356,15 +2356,20 @@
     <bcf:citekey order="3">iov2007mapping</bcf:citekey>
     <bcf:citekey order="4">conroy2007low</bcf:citekey>
     <bcf:citekey order="5">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="6">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="7">fortescue1918method</bcf:citekey>
-    <bcf:citekey order="8">tsili2009review</bcf:citekey>
-    <bcf:citekey order="9">altin2010overview</bcf:citekey>
-    <bcf:citekey order="9">serban2016voltage</bcf:citekey>
-    <bcf:citekey order="10">camacho2012flexible</bcf:citekey>
-    <bcf:citekey order="11">camacho2017positive</bcf:citekey>
-    <bcf:citekey order="12">kothari2003modern</bcf:citekey>
-    <bcf:citekey order="13">taul2020modeling</bcf:citekey>
+    <bcf:citekey order="6">mohseni2012review</bcf:citekey>
+    <bcf:citekey order="7">nationalgrid</bcf:citekey>
+    <bcf:citekey order="8">mohseni2012review</bcf:citekey>
+    <bcf:citekey order="8">haddadi2020negative</bcf:citekey>
+    <bcf:citekey order="9">camacho2017positive</bcf:citekey>
+    <bcf:citekey order="10">fortescue1918method</bcf:citekey>
+    <bcf:citekey order="11">tsili2009review</bcf:citekey>
+    <bcf:citekey order="12">altin2010overview</bcf:citekey>
+    <bcf:citekey order="12">serban2016voltage</bcf:citekey>
+    <bcf:citekey order="13">camacho2012flexible</bcf:citekey>
+    <bcf:citekey order="14">camacho2017positive</bcf:citekey>
+    <bcf:citekey order="15">kothari2003modern</bcf:citekey>
+    <bcf:citekey order="16">taul2020modeling</bcf:citekey>
+    <bcf:citekey order="17">cheah2017offshore</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
@@ -2373,4 +2378,13 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
 </bcf:controlfile>
