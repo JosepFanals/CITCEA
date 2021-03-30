@@ -198,10 +198,10 @@ for kk in range(n_punts):
                 x_gc = [np.real(I1_gc), np.imag(I1_gc), np.real(I2_gc), np.imag(I2_gc)]
                 V012_gc = np.array([V0(x_gc), V1(x_gc), V2(x_gc)])
 
-                print(fac)
-                print('-------------')
+                # print(fac)
+                # print('-------------')
 
-        print('+++++++++++++++')
+        # print('+++++++++++++++')
 
         I012_gc = np.array([0, I1_gc, I2_gc])
         Iabc_gc = V012_to_abc(I012_gc)
@@ -228,9 +228,9 @@ for kk in range(n_punts):
     ff_vec.append(abs(1 - abs(V012_gc[1]) + abs(0 - abs(V012_gc[2]))))
     # I1_vec.append((x_gc[0] + 1j * x_gc[1]) * np.exp(1j * np.angle(V1_vec)))
     # I2_vec.append((x_gc[2] + 1j * x_gc[3]) * np.exp(1j * np.angle(V2_vec)))
-    # print(np.angle(V1_vec[-1]) - np.angle(I1_vec[-1]))
-    # print(I1_vec[-1])
-    # print(V1_vec[-1])
+    print(np.angle(V1_vec[-1]) - np.angle(I1_vec[-1]))
+    print(I1_vec[-1])
+    print(V1_vec[-1])
 
 def make_csv(x_vec, y_vec, a_vec, file_name):
     df = pd.DataFrame(data=[x_vec, y_vec, a_vec]).T
