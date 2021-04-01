@@ -8,13 +8,13 @@ Yvb = 1 / Zvb
 Yvc = 1 / Zvc
 
 Yab = 0
-Ybc = 0
+Ybc = 1e10
 Yac = 0
 
-Zag = 0.1
-Yag = 1 / Zag
+Zcg = 0.2
+Yag = 0
 Ybg = 0
-Ycg = 0
+Ycg = 1 / Zcg
 
 Zta = 0.01 + 0.1 * 1j
 Ztb = 0.01 + 0.1 * 1j
