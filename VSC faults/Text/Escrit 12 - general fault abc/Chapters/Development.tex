@@ -1,3 +1,6 @@
+
+We present a fundamental scheme in Figure \ref{fig:trif}, from where we will extend the system. The goal here is to show an scalable procedure to solve the circuit for all possible faults. The analysis is performed in the $abc$ natural frame of reference, where the contraints are set. Then, voltages are expressed in symmetrical components and the optimization function is called. 
+
 \begin{figure}[!htb] \centering 
 \begin{circuitikz}[american, scale=1]
 \thicklines
@@ -89,6 +92,118 @@
 % \draw (5.2,-2.8) node[]{$\underline{U}_c$};
 
 \end{circuitikz}
-\caption{General scheme to analyze faults}
+\caption{General $abc$ scheme to analyze faults}
 \label{fig:trif}
 \end{figure}
+In matricial form, the equations that define the system depicted in \ref{fig:trif} become:
+\begin{equation}
+    \begin{split}
+    \begin{pmatrix}
+        \underline{I}_a \\
+        \underline{I}_b \\
+        \underline{I}_c \\
+        \hdashline
+        0 \\
+        0 \\
+        0
+    \end{pmatrix} = 
+\begin{pNiceArray}{ccc:ccc}
+\un{Y}_v & 0 & 0 & -\un{Y}_v & 0 & 0\\
+0 & \un{Y}_v & 0 & 0 & -\un{Y}_v & 0\\
+0 & 0 & \un{Y}_v & 0 & 0 & -\un{Y}_v\\
+\hdashline
+0 & 0 & 0 & \un{Y}_{f,11} & \un{Y}_{f,12} & \un{Y}_{f,13}\\
+0 & 0 & 0 & \un{Y}_{f,21} & \un{Y}_{f,22} & \un{Y}_{f,23}\\
+0 & 0 & 0 & \un{Y}_{f,31} & \un{Y}_{f,32} & \un{Y}_{f,33}\\
+\end{pNiceArray} & \begin{pmatrix}
+        \underline{V}_{pa} \\
+        \underline{V}_{pb} \\
+        \underline{V}_{pc} \\
+        \hdashline
+        \un{V}_{fa} \\
+        \un{V}_{fb} \\
+        \un{V}_{fc}
+    \end{pmatrix} \\
+ &+ \begin{pNiceArray}{ccc:ccc}
+0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0\\
+\hdashline
+0 & 0 & 0 & -\un{Y}_t & 0 & 0\\
+0 & 0 & 0 & 0 & -\un{Y}_t & 0\\
+0 & 0 & 0 & 0 & 0 & -\un{Y}_t\\
+\end{pNiceArray} \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        \hdashline
+        \un{V}_{ta} \\
+        \un{V}_{tb} \\
+        \un{V}_{tc}
+    \end{pmatrix},
+\end{split}
+\label{eq:1}
+\end{equation}
+where the admitances, denoted by $\un{Y}$, are the inverse of the corresponding impedances $\un{Z}$. The elements of the form $\un{Y}_{f,ij}$ form the matrix $\mathbf{Y_f}$, which turns out to be:
+\begin{equation}
+    \mathbf{Y_f} = 
+    \begin{pmatrix}
+\un{Y}_{ab} + \un{Y}_{ac} + \un{Y}_{ga} + \un{Y}_t + \un{Y}_v & -\un{Y}_{ab} & \un{Y}_{ac}\\
+\un{Y}_{ba} & \un{Y}_{ba} + \un{Y}_{bc} + \un{Y}_{gb} + \un{Y}_t + \un{Y}_v & -\un{Y}_{bc}\\
+ -\un{Y}_{ca} & -\un{Y}_{cb} & \un{Y}_{ca} + \un{Y}_{cb} + \un{Y}_{gc} + \un{Y}_t + \un{Y}_v
+    \end{pmatrix}.
+    \label{eq:2}
+\end{equation}
+With this approach, the solution to the system is rather straightforward. Solving for the vector formed by $\un{V}_p$ and $\un{V}_f$ involves moving to the left hand side of the equation the second summand found in Equation \ref{eq:1}, calculating the inverse of the admittances matrix that multiplies the unknowns and computing the final product. 
+
+The advantage of attacking the problem this way, and not in the previous manner where we developed the particular expressions for each fault is its flexibility. Each type of fault can be simulated, and even, simultaneous faults can be calculated. It also makes sense to develop the problem in this way due to the fact that including another converter does not add much complexity. We are now going to add another converter, which we will call  VSC2; VSC1 is supposed to be the already present converter shown in Figure \ref{fig:trif}. This new converter remains connected to the point where the fault takes place. Our goal is to obtain the necessary equations to compute the particular voltages at the PCC of each branch together with the voltage at the faulted point. Just for clarification purposes, Figure \ref{fig:sys_p} shows the single-phase representation of the system with the two converters added to the faulted grid.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [sV, v_=$\underline{V}_{t}$] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{t}$] (0,2);
+\draw (-0.25,0) to [short] (0.25,0);
+\node at (-6,1.3) {PCC1};
+\node at (-9.5,2.7) {VSC1};
+\node at (-6,2.7) {$\underline{V}_{p1}$};
+
+\draw (-3,2) to [short] (-2.8,1);
+\draw (-2.8,1) to [short] (-3.2,1);
+\draw[-{Latex[length=3mm]}] (-3.2,1) to [short] (-3,0);
+
+\draw (-6,2) to [R, l=$\underline{Z}_{v1}$] (-3,2);
+\draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
+\draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+\draw (-9,2) to [R, l=$\underline{Z}_{x1}$, i=$\underline{I}_1$] (-6,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+
+\draw (-10.0,-0) to [sdcac] (-9.0,-0);
+\draw (-9,-0) to [R, l=$\underline{Z}_{x2}$, i=$\underline{I}_2$] (-6,-0);
+\draw (-6,-0) to [R, l=$\underline{Z}_{v2}$] (-4,-0);
+\draw[line width=0.65mm] (-6,0.5) to [short] (-6,-0.5);
+\node at (-6,-0.7) {PCC2};
+\node at (-9.5,0.7) {VSC2};
+\draw (-4,-0) to [short] (-4,1.25);
+\node at (-6,0.7) {$\underline{V}_{p2}$};
+\draw (-4,1.25) to [short] (-3,1.75);
+
+\end{circuitikz}
+\caption{Single-phase representation of the simple system under a fault}
+\label{fig:sys_p}
+\end{figure}
+Similarly to the single converter scenario, the Kirchoff equations in compact form are:
+
+
+
+
+% \begin{equation}
+% \begin{pNiceArray}{c:c}
+% 1 & 2 \\
+% 3 & 4 \\
+% \hdashline
+% 5 & 6
+% \end{pNiceArray}
+% \end{equation}
