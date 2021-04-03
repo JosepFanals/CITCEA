@@ -144,9 +144,9 @@ In matricial form, the equations that define the system depicted in \ref{fig:tri
 \end{split}
 \label{eq:1}
 \end{equation}
-where the admitances, denoted by $\un{Y}$, are the inverse of the corresponding impedances $\un{Z}$. The elements of the form $\un{Y}_{f,ij}$ form the matrix $\mathbf{Y_f}$, which turns out to be:
+where the admitances, denoted by $\un{Y}$, are the inverse of the corresponding impedances $\un{Z}$. The elements of the form $\un{Y}_{f,ij}$ form the matrix $\mathbf{\un{Y}_f}$, which turns out to be:
 \begin{equation}
-    \mathbf{Y_f} = 
+    \mathbf{\un{Y}_f} = 
     \begin{pmatrix}
 \un{Y}_{ab} + \un{Y}_{ac} + \un{Y}_{ga} + \un{Y}_t + \un{Y}_v & -\un{Y}_{ab} & \un{Y}_{ac}\\
 \un{Y}_{ba} & \un{Y}_{ba} + \un{Y}_{bc} + \un{Y}_{gb} + \un{Y}_t + \un{Y}_v & -\un{Y}_{bc}\\
@@ -172,10 +172,12 @@ The advantage of attacking the problem this way, and not in the previous manner 
 \draw (-3,2) to [short] (-2.8,1);
 \draw (-2.8,1) to [short] (-3.2,1);
 \draw[-{Latex[length=3mm]}] (-3.2,1) to [short] (-3,0);
+\draw (-3.25,0) to [short] (-2.75,0);
 
 \draw (-6,2) to [R, l=$\underline{Z}_{v1}$] (-3,2);
 \draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
 \draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+\node at (-3,2.7) {$\underline{V}_{f}$};
 \draw (-9,2) to [R, l=$\underline{Z}_{x1}$, i=$\underline{I}_1$] (-6,2);
 \draw (-10.0,2) to [sdcac] (-9.0,2);
 
@@ -195,15 +197,135 @@ The advantage of attacking the problem this way, and not in the previous manner 
 \label{fig:sys_p}
 \end{figure}
 Similarly to the single converter scenario, the Kirchoff equations in compact form are:
+\begin{equation}
+    \begin{split}
+    \begin{pmatrix}
+        \mathbf{\underline{I}_1} \\
+        \mathbf{\underline{I}_2} \\
+        \mathbf{0}
+    \end{pmatrix} = 
+\begin{pmatrix}
+    \mathbf{\un{Y}_{v1}} & \mathbf{0} & -\mathbf{\un{Y}_{v1}}\\
+    \mathbf{0} & \mathbf{\un{Y}_{v2}} & -\mathbf{\un{Y}_{v2}}\\
+    -\mathbf{\un{Y}_{v1}} & -\mathbf{\un{Y}_{v2}} & \mathbf{\un{Y}_{f}}\\
+\end{pmatrix}
+\begin{pmatrix}
+    \mathbf{\un{V}_{p1}} \\
+    \mathbf{\un{V}_{p2}} \\
+    \mathbf{\un{V}_f}
+\end{pmatrix} + 
+\begin{pmatrix}
+    \mathbf{0} & \mathbf{0} & \mathbf{0} \\
+    \mathbf{0} & \mathbf{0} & \mathbf{0} \\
+    \mathbf{0} & \mathbf{0} & -\mathbf{\underline{Y}_t} 
+\end{pmatrix}
+\begin{pmatrix}
+    \mathbf{0} \\
+    \mathbf{0} \\
+    \mathbf{\un{V}_t}
+\end{pmatrix},
+\end{split}
+\label{eq:2conv}
+\end{equation}
+where the vectors $\mathbf{\un{I}_1}$ and $\mathbf{\un{I}_2}$ denote the $abc$ currens injected by the associated converter; $\mathbf{\un{Y}_{v1}}$ and $\mathbf{\un{Y}_{v2}}$ are matrices full of zeros expect for the elements $\un{Y}_{v1}$ and $\un{Y}_{v2}$ placed on the diagonal; $\mathbf{\un{Y}_f}$ is the matrix shown in Equation \ref{eq:2}, where $\un{Y}_v$ would be the sum of $\un{Y}_{v1}$ and $\un{Y}_{v2}$ in this case; $\mathbf{\un{V}_{p1}}$ and $\mathbf{\un{V}_{p2}}$ are the $abc$ voltages at the point of common coupling of each branch; $\mathbf{\un{Y}_t}$ is the diagonal matrix with $\un{Y}_t$ terms; and $\mathbf{\un{V}_t}$ is the voltage imposed by the grid, in the $abc$ frame. 
 
+Adding more converters to the grid would not suppose a challenge from the point of view of solving the system since the general structure of the equations would take the same form. A more general case could consist of adding a grid between the point where the converters are connected and the grid equivalent. The approach we suggest here would be the same as the one shown in Equation \ref{eq:2conv}, where the complete matrices are formed by concatenating 3$\times$3 block matrices. At this stage the block matrices are formed by inspection, but the positive aspect of employing admittance matrices is that its construction can be easily programmed. Thus, we believe that the procedure shown here is meant to be adaptable to an $n$ converter case with a full grid, as Figure \ref{fig:sys_n} tries to illustrate. For now we will suppose the grid to be fully passive, in the sense that there are no power loads or generator units connected to it. Consequently, it can be described by only an admittance matrix, which causes the development of the equations to be considerably simpler.
 
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
 
+\draw (2,0) to [sV, v_=$\underline{V}_{t}$] (2,2);
+\draw (-1,2) to [R, l=$\underline{Z}_{t}$] (2,2);
+\draw (1.75,0) to [short] (2.25,0);
 
-% \begin{equation}
-% \begin{pNiceArray}{c:c}
-% 1 & 2 \\
-% 3 & 4 \\
-% \hdashline
-% 5 & 6
-% \end{pNiceArray}
-% \end{equation}
+% \draw (-3,2) to [short] (-2.8,1);
+% \draw (-2.8,1) to [short] (-3.2,1);
+% \draw[-{Latex[length=3mm]}] (-3.2,1) to [short] (-3,0);
+% \draw (-3.25,0) to [short] (-2.75,0);
+
+\node at (-6,1.3) {PCC1};
+\node at (-9.5,2.7) {VSC1};
+\node at (-6,2.7) {$\underline{V}_{p1}$};
+\draw (-6,2) to [R, l=$\underline{Z}_{v1}$] (-3,2);
+\draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
+% \draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+% \node at (-3,2.7) {$\underline{V}_{f}$};
+\draw (-9,2) to [R, l=$\underline{Z}_{x1}$, i=$\underline{I}_1$] (-6,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+\draw (-10.0,-0) to [sdcac] (-9.0,-0);
+\draw (-9,-0) to [R, l=$\underline{Z}_{x2}$, i=$\underline{I}_2$] (-6,-0);
+\draw (-6,-0) to [R, l=$\underline{Z}_{v2}$] (-3,-0);
+\draw[line width=0.65mm] (-6,0.5) to [short] (-6,-0.5);
+\node at (-6,-0.7) {PCC2};
+\node at (-9.5,0.7) {VSC2};
+\node at (-6,0.7) {$\underline{V}_{p2}$};
+
+\draw (-10.0,-2) to [sdcac] (-9.0,-2);
+\draw (-9,-2) to [R, l=$\underline{Z}_{xn}$, i=$\underline{I}_n$] (-6,-2);
+\draw (-6,-2) to [R, l=$\underline{Z}_{vn}$] (-3,-2);
+\draw[line width=0.65mm] (-6,-1.5) to [short] (-6,-2.5);
+\node at (-6,-2.7) {PCCn};
+\node at (-9.5,-1.3) {VSCn};
+\node at (-6,-1.3) {$\underline{V}_{pn}$};
+
+\draw[line width=0.4mm] (-1,2.5) to [short] (-1,-2.5);
+\draw[line width=0.4mm] (-3,2.5) to [short] (-3,-2.5);
+\draw[line width=0.4mm] (-1,2.5) to [short] (-3,2.5);
+\draw[line width=0.4mm] (-3,-2.5) to [short] (-1,-2.5);
+\node at (-2,0.25) {Grid $\mathbf{\un{Y}_g}$};
+\node at (-2,-0.25) {with $n_g$ buses};
+
+\draw[line width=0.4mm, dotted] (-9.5,-0.6) to [short] (-9.5,-1.1);
+\draw[line width=0.4mm, dotted] (-7.5,-0.3) to [short] (-7.5,-1.4);
+\draw[line width=0.4mm, dotted] (-4.5,-0.3) to [short] (-4.5,-1.4);
+
+\end{circuitikz}
+\caption{Single-phase representation of a complete system}
+\label{fig:sys_n}
+\end{figure}
+As follows, the equations to solve the system in matricial form are presented below:
+\begin{equation}
+    \begin{split}
+    \begin{pmatrix}
+        \mathbf{\underline{I}_1} \\
+        \mathbf{\underline{I}_2} \\
+        \vdots\\
+        \mathbf{\underline{I}_n} \\
+        \mathbf{0}
+    \end{pmatrix} = 
+\begin{pmatrix}
+    \mathbf{\un{Y}_{v1}} & \mathbf{0} & \dots & \mathbf{0} & -\mathbf{\un{Y}_{v1}}\\
+    \mathbf{0} & \mathbf{\un{Y}_{v2}} & \dots & \mathbf{0} & -\mathbf{\un{Y}_{v2}}\\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{\un{Y}_{vn}} & -\mathbf{\un{Y}_{vn}}\\
+    -\mathbf{\un{Y}_{v1}} & -\mathbf{\un{Y}_{v2}} & \dots & -\mathbf{\un{Y}_{vn}} & \mathbf{\un{Y}_g}
+    % -\mathbf{\un{Y}_{v1}} & -\mathbf{\un{Y}_{v2}} & \mathbf{\un{Y}_{f}}\\
+\end{pmatrix}
+\begin{pmatrix}
+    \mathbf{\un{V}_{p1}} \\
+    \mathbf{\un{V}_{p2}} \\
+    \vdots \\
+    \mathbf{\un{V}_{pn}} \\
+    \mathbf{\un{V}_g}
+\end{pmatrix} + 
+\begin{pmatrix}
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{0} \\
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{0} \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{0} \\ 
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{\un{Y}_t} \\ 
+\end{pmatrix}
+\begin{pmatrix}
+    \mathbf{0} \\
+    \mathbf{0} \\
+    \vdots \\
+    \mathbf{0} \\
+    \mathbf{\un{V}_t}
+\end{pmatrix},
+\end{split}
+\label{eq:nconv}
+\end{equation}
+
+% the last row is problematic because Yv1 there is not the same as Yv1 above... maybe also expand it like 1, 2,..., ng. Then Vg1 will connect with Vp1 via Zv1 but ng != n... See how to explain it. Right now it is quite clear but be aware of the last row.
