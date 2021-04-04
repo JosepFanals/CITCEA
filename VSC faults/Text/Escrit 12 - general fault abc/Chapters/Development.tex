@@ -148,8 +148,8 @@ where the admitances, denoted by $\un{Y}$, are the inverse of the corresponding 
 \begin{equation}
     \mathbf{\un{Y}_f} = 
     \begin{pmatrix}
-\un{Y}_{ab} + \un{Y}_{ac} + \un{Y}_{ga} + \un{Y}_t + \un{Y}_v & -\un{Y}_{ab} & \un{Y}_{ac}\\
-\un{Y}_{ba} & \un{Y}_{ba} + \un{Y}_{bc} + \un{Y}_{gb} + \un{Y}_t + \un{Y}_v & -\un{Y}_{bc}\\
+\un{Y}_{ab} + \un{Y}_{ac} + \un{Y}_{ga} + \un{Y}_t + \un{Y}_v & -\un{Y}_{ab} & -\un{Y}_{ac}\\
+-\un{Y}_{ba} & \un{Y}_{ba} + \un{Y}_{bc} + \un{Y}_{gb} + \un{Y}_t + \un{Y}_v & -\un{Y}_{bc}\\
  -\un{Y}_{ca} & -\un{Y}_{cb} & \un{Y}_{ca} + \un{Y}_{cb} + \un{Y}_{gc} + \un{Y}_t + \un{Y}_v
     \end{pmatrix}.
     \label{eq:2}
@@ -296,11 +296,11 @@ As follows, the equations to solve the system in matricial form are presented be
         \mathbf{0}
     \end{pmatrix} = 
 \begin{pmatrix}
-    \mathbf{\un{Y}_{v1}} & \mathbf{0} & \dots & \mathbf{0} & -\mathbf{\un{Y}_{v1}}\\
-    \mathbf{0} & \mathbf{\un{Y}_{v2}} & \dots & \mathbf{0} & -\mathbf{\un{Y}_{v2}}\\
+    \mathbf{\un{Y}_{v1}} & \mathbf{0} & \dots & \mathbf{0} & -\mathbf{\un{Y'}_{v1}}\\
+    \mathbf{0} & \mathbf{\un{Y}_{v2}} & \dots & \mathbf{0} & -\mathbf{\un{Y'}_{v2}}\\
     \vdots & \vdots & \ddots & \vdots & \vdots \\
-    \mathbf{0} & \mathbf{0} & \dots & \mathbf{\un{Y}_{vn}} & -\mathbf{\un{Y}_{vn}}\\
-    -\mathbf{\un{Y}_{v1}} & -\mathbf{\un{Y}_{v2}} & \dots & -\mathbf{\un{Y}_{vn}} & \mathbf{\un{Y}_g}
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{\un{Y}_{vn}} & -\mathbf{\un{Y'}_{vn}}\\
+    -\mathbf{\un{Y'}_{v1}} & -\mathbf{\un{Y'}_{v2}} & \dots & -\mathbf{\un{Y'}_{vn}} & \mathbf{\un{Y}_g}
     % -\mathbf{\un{Y}_{v1}} & -\mathbf{\un{Y}_{v2}} & \mathbf{\un{Y}_{f}}\\
 \end{pmatrix}
 \begin{pmatrix}
@@ -315,7 +315,7 @@ As follows, the equations to solve the system in matricial form are presented be
     \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{0} \\
     \vdots & \vdots & \ddots & \vdots & \vdots \\
     \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{0} \\ 
-    \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{\un{Y}_t} \\ 
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{0} & \mathbf{\un{Y'}_t} \\ 
 \end{pmatrix}
 \begin{pmatrix}
     \mathbf{0} \\
@@ -327,5 +327,6 @@ As follows, the equations to solve the system in matricial form are presented be
 \end{split}
 \label{eq:nconv}
 \end{equation}
+where matrices of the form $\mathbf{\un{Y'}_x}$ differ from $\mathbf{\un{Y'}_x}$ in the sense that they are not $3\times3$ matrices but instead are constituted by null elements except for the ones that symbolize the connection between a bus $\un{V}_{px}$ and the grid. 
 
 % the last row is problematic because Yv1 there is not the same as Yv1 above... maybe also expand it like 1, 2,..., ng. Then Vg1 will connect with Vp1 via Zv1 but ng != n... See how to explain it. Right now it is quite clear but be aware of the last row.
