@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.optimize import minimize
 from Functions import xabc_to_012, x012_to_abc, build_static_objects 
+np.set_printoptions(precision=4)
 
 # Functions
 def volt_solution(x):
@@ -84,11 +85,8 @@ Ip1_2 = Ip1_012[2] * np.exp(-1j * np.angle(V_p1_012[2]))
 Ip2_1 = Ip2_012[1] * np.exp(-1j * np.angle(V_p2_012[1]))
 Ip2_2 = Ip2_012[2] * np.exp(-1j * np.angle(V_p2_012[2]))
 
-
 # Print results
 print('PCC1 +- absolute voltages: ', abs(V_p1_012[1]), abs(V_p1_012[2]))
 print('PCC2 +- absolute voltages: ', abs(V_p2_012[1]), abs(V_p2_012[2]))
-print(Ip1_1)
-print(Ip1_2)
-print(Ip2_1)
-print(Ip2_2)
+print('VSC1 +- injected currents: ', Ip1_1, Ip1_2)
+print('VSC2 +- injected currents: ', Ip2_1, Ip2_2)
