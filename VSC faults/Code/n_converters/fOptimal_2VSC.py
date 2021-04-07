@@ -3,7 +3,7 @@ from scipy.optimize import minimize
 from Functions import xabc_to_012, x012_to_abc, build_static_objects 
 np.set_printoptions(precision=4)
 
-def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec):
+def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, nnn):
 
     # Functions
     def volt_solution(x):
@@ -58,7 +58,7 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec):
     # Y_con = [0, 0, 0]  # Yab, Ybc, Yac
     # Y_gnd = [15, 0, 0]  # Yag, Ybg, Yc
     # lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
-    Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    Ii_t = [0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0]
 
     static_objects = build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd)
 
@@ -70,7 +70,7 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec):
     con5 = {'type': 'eq', 'fun': constraint_Iim2}
     cons = [con1, con2, con3, con4, con5]
 
-    sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, options={'ftol':1e-5})
+    sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, options={'ftol':1e-10})
     I_sol = sol.x
 
     # Manage results
@@ -85,6 +85,7 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec):
     Ip1_2 = Ip1_012[2] * np.exp(-1j * np.angle(V_p1_012[2]))
     Ip2_1 = Ip2_012[1] * np.exp(-1j * np.angle(V_p2_012[1]))
     Ip2_2 = Ip2_012[2] * np.exp(-1j * np.angle(V_p2_012[2]))
-    print(sol.success)
+    print(sol.fun)
+    # print(sol.success)
 
     return [Ip1_1, Ip1_2, Ip2_1, Ip2_2, abs(V_p1_012[1]), abs(V_p1_012[2]), abs(V_p2_012[1]), abs(V_p2_012[2]), sol.fun]
