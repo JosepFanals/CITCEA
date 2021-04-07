@@ -1,6 +1,7 @@
 import numpy as np
 from fOptimal_2VSC import fOptimal
 from Plots import fPlots
+from Functions import fZ_rx
 import pandas as pd
 np.set_printoptions(precision=4)
 
@@ -26,3 +27,10 @@ xx = [1, 2, 3]
 yy = [[2, 3, 87], [3, 99, 22]]
 
 fPlots(xx, yy, folder + type_f)
+
+
+lim1 = 5
+lim2 = 0.1
+n_p = 100
+Zthmod = 0.05
+[RX_vec, Zin_vec] = fZ_rx(lim1, lim2, n_p, Zthmod)

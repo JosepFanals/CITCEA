@@ -72,3 +72,14 @@ def build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd):
     return [m1_inv, Ig_v]
 
 
+def fZ_rx(lim1, lim2, n_p, Zthmod):
+    diff = lim1 - lim2
+    incr = diff / n_p
+    RX = np.arange(lim2, lim1, incr)
+
+    Xin = np.sqrt(Zthmod ** 2 / (1 + RX ** 2))
+    Rin = RX * Xin
+    Zin = Rin + Xin * 1j
+
+    return [RX, Zin]
+
