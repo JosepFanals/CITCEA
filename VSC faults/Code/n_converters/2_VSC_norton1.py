@@ -6,15 +6,14 @@ np.set_printoptions(precision=4)
 # Functions
 def volt_solution(x):
     m1_inv = static_objects[0]
-    m2 = static_objects[1]
-    Vg_v = static_objects[2] 
+    Ig_v = static_objects[1] 
 
     Ii_v = np.zeros((9,1), dtype=complex)
     Ii_v[0:3] = [[x[0] + 1j * x[1]], [x[2] + 1j * x[3]], [x[4] + 1j * x[5]]]
     Ii_v[3:6] = [[x[6] + 1j * x[7]], [x[8] + 1j * x[9]], [x[10] + 1j * x[11]]]
+    Ii_v[6:9] = [Ig_v[0], Ig_v[1], Ig_v[2]]
 
-    lhs = Ii_v - np.dot(m2, Vg_v)
-    Vv_v = np.dot(m1_inv, lhs)
+    Vv_v = np.dot(m1_inv, Ii_v)
     return Vv_v
 
 def constraint_Imax(x):
@@ -55,7 +54,7 @@ Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.03 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
 Y_con = [0, 0, 0]  # Yab, Ybc, Yac
-Y_gnd = [10, 0, 0]  # Yag, Ybg, Yc
+Y_gnd = [15, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -90,3 +89,5 @@ print('PCC1 +- absolute voltages: ', abs(V_p1_012[1]), abs(V_p1_012[2]))
 print('PCC2 +- absolute voltages: ', abs(V_p2_012[1]), abs(V_p2_012[2]))
 print('VSC1 +- injected currents: ', Ip1_1, Ip1_2)
 print('VSC2 +- injected currents: ', Ip2_1, Ip2_2)
+
+# Debug
