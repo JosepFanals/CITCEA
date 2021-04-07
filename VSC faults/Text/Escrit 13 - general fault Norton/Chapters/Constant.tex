@@ -1,0 +1,695 @@
+\section{Optimization overview and constant impedance analysis}
+The system we are considering is formed by an ideal grid (only positive sequence voltage is present) coupled to a VSC. The model is depicted in Figure \ref{fig:sys_p}. The VSC will be controlled in a way that leads to an improvement in the voltage at the PCC.
+
+\begin{figure}[!htb] \centering
+\begin{circuitikz}[european]
+\thicklines
+
+\draw (0,0) to [sV, v_=$\underline{V}_{th}$] (0,2);
+\draw (-3,2) to [R, l=$\underline{Z}_{th}$] (0,2);
+\draw (-0.25,0) to [short] (0.25,0);
+\node at (-6,1.3) {PCC};
+\node at (-6,2.7) {$\underline{V}_c$};
+\draw (-3,2) to [short] (-3.2,1);
+\draw (-3.2,1) to [short] (-2.8,1);
+\draw[-{Latex[length=3mm]}] (-2.8,1) to [short] (-3,0);
+\draw (-6,2) to [R, l=$\underline{Z}_a$] (-3,2);
+\draw[line width=0.65mm] (-6,2.5) to [short] (-6,1.5);
+\draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+\draw (-9,2) to [R, l=$\underline{Z}_c$, i=$\underline{I}$] (-6,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+
+\end{circuitikz}
+\caption{Single-phase representation of the simple system under a fault}
+\label{fig:sys_p}
+\end{figure}
+This study considers the balanced fault type but also the unbalanced ones, which include the line to ground, the double line to ground, and the line to line fault. The model in Figure \ref{fig:sys_p} attempts to describe a simple yet sufficient system to test the influence of the injected currents by the VSC on the voltage at the PCC. The system could be complicated by adding parallel capacitances on the right-hand side of the Thevenin impedance, for instance, to model a hypothetical submarine cable. However, for now, we prioritize keeping the system simple. 
+
+We are concerned with improving the voltage $\underline{V}_c$ as a function of the current $\underline{I}$ injected by the converter. Formally speaking there is no clear definition of what improving the voltage means as it depends on rather pre-established preferences. For instance, one could try to maximize the positive sequence voltage, minimize the negative sequence voltage or even maximize the difference between both. These three strategies have been covered in \cite{camacho2017positive}. A more flexible approach is based on defining the objective function as
+\begin{equation}
+    f(\underline{I}^+, \underline{I}^-) = \lambda^+|(|\underline{V}^+_c(\underline{I}^+, \underline{I}^-)| - 1)| + \lambda^-|(|\underline{V}^-_c(\underline{I}^+, \underline{I}^-)| - 0)|,
+    \label{eq:f1}
+\end{equation}
+where the weighting factors $\lambda^+$, $\lambda^- \in \mathbb{R}$. By adjusting these factors one can follow the three aforementioned strategies. Note that the goal is to obtain a positive sequence voltage as close as possible to one (in per unit) while simultaneously approaching zero in the negative sequence voltage. Even though the problem is described as a function of the positive and negative sequence currents, it could also be stated as a function of the original $abc$ currents without loss of generality. The associated expressions are gathered in the appendix as well.
+
+Minimizing $f$ does not come with complete freedom. That is, the currents are constrained so as not to exceed the IGBT limits. It becomes more convenient to express the constraints in the $abc$ frame:
+\begin{equation}
+    g(\underline{I}_a, \underline{I}_b, \underline{I}_c) = \begin{cases}
+        |\underline{I}_a|\leq I_{max},\\
+        |\underline{I}_b|\leq I_{max},\\
+        |\underline{I}_c|\leq I_{max}.\\
+    \end{cases}
+\label{eq:2}
+\end{equation}
+For now, we are not concerned with the voltages imposed on the semiconductors due to the fact that the filter $\underline{Z}_c$ is most likely to take small values. In practical situations, current limitations are the most serious constraint. Therefore, we define the optimization problem as follows:
+\begin{subequations}
+\begin{alignat}{2}
+&\!\min_{\underline{I}^+,\underline{I}^-}        &\qquad& f(\underline{I}^+,\underline{I}^-)\label{eq:optProb}\\
+&\text{subject to} &      & g(\underline{I}_a, \underline{I}_b, \underline{I}_c) ,\label{eq:constraint1}
+\end{alignat}
+\end{subequations}
+where the currents in the $abc$ frame can be related to the currents expressed in the symmetrical components form by means of Fortescue's transformation, and vice versa \cite{fortescue1918method}. As a direct consequence of that, the analysis can be performed in the $abc$ frame while expressing the voltages as a function of the positive, negative and homopolar components. Another valid procedure is to work with the symmetrical components and relate the currents to the $abc$ ones. Both ways to confront the problem are equally valid. The results obtained in this chapter have been generated and validated with both paths.
+
+Current grid codes define the low voltage ride through (LVRT) limit curve which indicates the relation between the duration of a fault and the voltage frontier at which for instance a wind turbine ought to disconnect. Such LVRT curves present slight variations from country to country \cite{tsili2009review} but they all share the same pattern: in case of a severe fault, the disconnection should not take place if it has a low duration; on the contrary, less noticeable faults imply a larger disconnection time. Grid codes usually impose a curtailment of active power and enforce the generation of reactive power in order to collaborate on raising the voltage \cite{altin2010overview,serban2016voltage}.  % review grid codes and explain their priorization
+
+Nevertheless, studies dealing with determining the optimal currents to inject are not precisely numerous. At most, some authors express the voltages in terms of active and reactive power but do not consider constraints \cite{camacho2012flexible}. Others formulate the optimization problem and arrive at a closed-form expression, even though it becomes iterative \cite{camacho2017positive}. The analysis is performed contemplating powers rather than currents. Because of that, this work focuses on computing the optimal currents to increase the positive sequence voltage as close to one as possible and achieving a negative sequence voltage that approaches zero. In essence, the results that follow come from solving Equations \ref{eq:optProb} and \ref{eq:constraint1}.
+
+Four types of faults are considered in this study. One is the balanced fault, which yields a simple yet valuable system to analyze the distribution of optimal currents. The remaining faults are unbalanced: the line to ground, the line to line, and the double line to ground cases. 
+
+In all situations, we show plots representing the objective function depending on the real and imaginary parts of the positive and negative sequence currents. They are obtained in a brute force manner, that is, we generate multiple combinations of currents and store those points if they do not respect the constraints. The solution obtained by solving the optimization problem as such with the SciPy library is also displayed, together with the optimal point supposing no active currents can be injected (ROPT) or following a hypothetical grid code (GC) which will be detailed later. Note that grid codes also consider the injection of active power, but this serves the purpose of maintaining a stable system in terms of frequency, something not contemplated in this analysis. 
+
+For this and all the upcoming faults, we have set the values shown in Table \ref{tab:val}. 
+
+\begin{table}[!htb] \centering
+    \begin{tabular}{cc}
+       \hline
+       Magnitude & Value (pu) \\
+       \hline
+       $\underline{Z}_f$ & $0.05 + 0.00j$ \\ 
+       $\underline{Z}_a$ & $0.01 + 0.10j$ \\
+       $\underline{Z}_{th}$ & $0.01 + 0.05j$ \\
+       $I_{max}$ & $1.00$ \\
+       $\lambda^+$ & $1.00$ \\
+       $\lambda^-$ & $1.00$ \\
+       $|\underline{V}^+_{th}|$ & $1.00$ \\
+       $|\underline{V}^-_{th}|$ & $0.00$ \\
+       \hline
+    \end{tabular}
+    \caption{Values for the system under study}
+    \label{tab:val}
+\end{table}
+We have considered the impedances to be mainly inductive, except for the fault impedance. However, adding a resistive part not only makes them more realistic, but also may shed some light on if the truly optimal decision is to inject only reactive currents. One could anticipate that the larger the resistive part becomes, the greater the active current should be to cause a considerable voltage drop (positive or negative) so that the voltage is improved. Thus, for the given impedances in Table \ref{tab:val}, we foresee the fact that reactive currents will turn out to be substantially larger than active currents. Besides, in the beginning, the same weighting is arbitrarily attributed to the positive as well as to the negative sequence one. 
+
+\subsection{Balanced fault}
+Balanced faults are commonly referred to as the most severe type of fault, as currents take the largest values \cite{kothari2003modern}. Its representation in symmetrical components indicates a decoupling between sequences. As a result of that, a considerable positive sequence current should be injected to increase the positive sequence voltage. It should be mostly inductive. On the other hand, no negative sequence current has to be injected to keep a null negative sequence voltage (assuming that the grid presents no negative sequence voltage, as is the case here). There are no homopolar currents in this and all the subsequent faults. 
+
+Figure \ref{fig:3x1} shows on the one hand the results with the brute force methodology. We have employed over $20^4$ combinations to construct the plots. A more regular shape would be obtained in case we worked with smaller intervals. However, some points are suppressed because they exceed the current limitations. It is clear that the minimum is achieved when the negative sequence currents, both real and imaginary, tend to zero. The imaginary positive sequence current takes extreme negative values - close to $I_{max}$ - while the real part remains small.
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_re_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_re_3x_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_re_3x_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_re_3x_4.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_im_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_im_3x_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_im_3x_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I1_im_3x_4.csv};
+            \legend{BF, OPT, ROPT, GC};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_re_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_re_3x_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_re_3x_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_re_3x_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_im_3x.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_im_3x_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_im_3x_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/3x/I2_im_3x_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the balanced fault when $\lambda^+=1$ and $\lambda^-=1$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power, GC: grid code}
+  \label{fig:3x1}
+\end{figure}
+On the other hand, the point corresponding to the solution of the optimization problem illustrates what was already more or less deduced from the brute force computations. Nonetheless, solving the optimization problem yields a more favorable result. The objective function is slightly smaller and the optimal point can be located in a zone where not many points coming from the brute force are present. Such irregular distribution of points is due to the fact that around the optimal points many combinations of currents do not meet the constraints. In any case, injecting a negative imaginary positive sequence current causes a positive voltage drop so that the voltage we wish to improve can be far apart from the faulted one. Taking into account that in this case $X>>R$, the real positive sequence current becomes considerably smaller than the imaginary part. 
+
+The brute force calculation in Figure \ref{fig:3x1} was computed considering that $\lambda^+=1$ and $\lambda^-=1$ as well. However, the optimality can also be studied for various $\lambda$ values. This generic parameter would fit in the objective function as
+\begin{equation}
+    f(\underline{I}^+, \underline{I}^-) = \lambda|(|\underline{V}^+_c(\underline{I}^+, \underline{I}^-)| - 1)| + (1-\lambda)|(|\underline{V}^-_c(\underline{I}^+, \underline{I}^-)| - 0)|,
+    \label{eq:1}
+\end{equation}
+where $\lambda=[0,1]$. Therefore, bigger values of $\lambda$ would imply that we prioritize the positive sequence voltage while small values will tend to give more importance to the negative sequence voltage. Figure \ref{fig:full_3x} shows the voltage profiles for a sweep of $\lambda$ values. The main difference is found in the positive sequence voltage, where the OPT is more favorable. 
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/3x/V1_3x.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/3x/RV1_3x.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.1)},anchor=south east}, ymin = -0.01, ymax = 0.01, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/3x/V2_3x.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/3x/RV2_3x.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the balanced fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_3x}
+\end{figure}
+
+
+
+\pgfplotsset{
+colormap={whitered}{color(0cm)=(white); color(1cm)=(orange!75!red)}
+}
+
+% \begin{figure}[!htb]\centering \footnotesize
+% \begin{tikzpicture}
+% \begin{axis}[%
+%     colormap name=whitered,
+%     width=12cm,
+%     height=8.5cm,
+%     view={45}{30},
+%     enlargelimits=false,
+%     grid=major,
+%     domain=-1:4,
+%     y domain=-1:4,
+%     samples=26,
+%     ztick={0.0,0.15,...,1},
+%     zmin=-0.05,
+%     zmax=0.9,
+%     xlabel=$\lambda^+ \equiv \lambda$,
+%     ylabel=$\lambda^- \equiv 1 -\lambda$,
+%     zlabel={$|V_c|$},
+%     axis line style = thick,
+%     x dir=reverse,
+%     legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+%     colorbar,
+%     colorbar style={
+%         at={(1.06,0.03)},
+%         anchor=south west,
+%         height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+%         title={$f$}
+%     }
+% ]
+
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_3x.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_3x.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_3x.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_3x.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_3x.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_3x.csv};
+% \addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_3x.csv};
+
+% % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% % \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+% \legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+% \end{axis}
+% \end{tikzpicture}
+% \caption{Sequence voltages together with the objective function for the balanced fault}
+% \label{fig:full_3x}
+% \end{figure}
+
+
+
+\subsection{Line to ground fault}
+The line to ground fault has the particularity of presenting a distribution of dots similar for real currents in the positive and the negative sequence. As shown in Figure \ref{fig:LGx1}, the minimum in the real currents plot takes place around zero. Despite that, in reality, the real positive sequence current becomes slightly larger than zero, whilst for the negative sequence, it takes a small but not negligible negative value. Observing Figure \ref{fig:sys_LG} it becomes clear that the real part of the positive sequence currents ought to be greater than zero whereas the negative sequence current should take negative values; these combinations cause the maximization of the positive sequence voltage and the minimization of the negative sequence voltage. 
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=5.9cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_re_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_re_LG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_re_LG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_re_LG_4.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=5.9cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_im_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_im_LG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_im_LG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I1_im_LG_4.csv};
+            \legend{BF, OPT, ROPT, GC};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=5.9cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_re_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_re_LG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_re_LG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_re_LG_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=5.9cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_im_LG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_im_LG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_im_LG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LG/I2_im_LG_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to ground fault. BF: brute force, OPT: optimization problem, ROPT: optimization problem restricted to injecting reactive power.}
+  \label{fig:LGx1}
+\end{figure}
+The imaginary part of the currents presents a similar distribution in both cases. Notice that contrarily to the balanced fault, where one vertex of the distribution coincided with the point at which $f$ was at its minimum, there is a full edge in which the function is at almost its minimum. This phenomena suggests that maybe we could encounter more than one minimum. 
+
+Similar to what happened for the balanced fault, the grid code objective function is substantially worse than the OPT and the ROPT cases. Of course, one reason that justifies that has to do with the amount of current that is injected by the converter. Both the imaginary positive and negative sequence currents are near zero. Therefore, the current capabilities of the VSC are not exploited to their maximum. 
+
+Figure \ref{fig:full_LG} shows the distribution of voltages for varying $\lambda$. There is not a big difference between the OPT and the ROPT case.
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LG/V1_LG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/LG/RV1_LG.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.23)},anchor=south east}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LG/V2_LG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/LG/RV2_LG.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to ground fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_LG}
+\end{figure}
+
+
+% The differences are due to initializing differently the currents passed to the SciPy \texttt{minimize()} function. Besides, Figure \ref{fig:full_LG} shows the distribution of voltages and $f$ across multiple values of $\lambda$.
+
+% \begin{figure}[!htb]\centering \footnotesize
+% \begin{tikzpicture}
+% \begin{axis}[%
+%     colormap name=whitered,
+%     width=12cm,
+%     height=8.0cm,
+%     view={45}{30},
+%     enlargelimits=false,
+%     grid=major,
+%     domain=-1:4,
+%     y domain=-1:4,
+%     samples=26,
+%     ztick={0.0,0.15,...,1},
+%     zmin=0.00,
+%     zmax=1.0,
+%     xlabel=$\lambda^+ \equiv \lambda$,
+%     ylabel=$\lambda^- \equiv 1 -\lambda$,
+%     zlabel={$|V_c|$},
+%     axis line style = thick,
+%     x dir=reverse,
+%     legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+%     colorbar,
+%     colorbar style={
+%         at={(1.06,0.03)},
+%         anchor=south west,
+%         height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+%         title={$f$}
+%     }
+% ]
+
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_LG.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_LG.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_LG.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_LG.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_LG.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_LG.csv};
+% \addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_LG.csv};
+
+% % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% % \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+% \legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+% \end{axis}
+% \end{tikzpicture}
+% \caption{Sequence voltages together with the objective function for the line to ground fault}
+% \label{fig:full_LG}
+% \end{figure}
+
+\subsection{Line to line fault}
+The line to line fault can be considered to be a more severe fault compared to the line to ground case, since the function to minimize presents larger values. This can be understood when looking at the representations in Figures \ref{fig:3_lg} and \ref{fig:3_ll}, where the fault impedance is between two phases and not phase and ground. Therefore, the voltage drop becomes larger. Figure \ref{fig:LLx1} shows that even if the real part of the currents remains near zero, visually speaking the imaginary parts take symmetrical values. The distribution of dots is almost the same as we had in the line to ground fault. 
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt},  d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_re_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_re_LL_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_re_LL_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_re_LL_4.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt},  d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_im_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_im_LL_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_im_LL_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I1_im_LL_4.csv};
+            \legend{BF, OPT, ROPT, GC};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt},  d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_re_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_re_LL_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_re_LL_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_re_LL_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.1,0.2,...,1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt},  d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_im_LL.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_im_LL_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_im_LL_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LL/I2_im_LL_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to line fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+  \label{fig:LLx1}
+\end{figure}
+However, this time it has been checked that there is only one point that minimizes the function, independently of the initialization vector. Not less surprising, the imaginary positive and negative sequence currents are practically the same with a change of sign. We can intuitively make sense of it as the positive sequence voltage at the PCC tends to one while the negative one approaches zero. Thus, the current flowing towards the $\underline{Z}_f$ impedance is quite large and a big part of it is due to the injected positive sequence current. To achieve a small negative sequence voltage, as can be understood from Figure \ref{fig:sys_LL}, the negative sequence current has to counteract the positive sequence current. Because of that, the optimal positive and negative sequence currents share almost the same magnitude and opposite signs.
+
+In addition to that, Figure \ref{fig:full_LL} displays the voltages, whose shape is almost the same that took place for the line to ground fault. Since the OPT and the ROPT cases are so similar, the objective function presents almost no difference.
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin = 0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LL/V1_LL.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/LL/RV1_LL.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.23)},anchor=south east}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LL/V2_LL.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/LL/RV2_LL.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the line to line fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_LL}
+\end{figure}
+
+
+
+% Figure \ref{fig:full_LL} depicts the plot where the positive and negative sequence voltages as well as the objective function are plotted.
+
+% \begin{figure}[!htb]\centering \footnotesize
+% \begin{tikzpicture}
+% \begin{axis}[%
+%     colormap name=whitered,
+%     width=12cm,
+%     height=8.5cm,
+%     view={45}{30},
+%     enlargelimits=false,
+%     grid=major,
+%     domain=-1:4,
+%     y domain=-1:4,
+%     samples=26,
+%     ztick={0.0,0.15,...,1},
+%     zmin=0.00,
+%     zmax=1.0,
+%     xlabel=$\lambda^+ \equiv \lambda$,
+%     ylabel=$\lambda^- \equiv 1 -\lambda$,
+%     zlabel={$|V_c|$},
+%     axis line style = thick,
+%     x dir=reverse,
+%     legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+%     colorbar,
+%     colorbar style={
+%         at={(1.06,0.03)},
+%         anchor=south west,
+%         height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+%         title={$f$}
+%     }
+% ]
+
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_LL.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_LL.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_LL.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_LL.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_LL.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_LL.csv};
+% \addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_LL.csv};
+
+% % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% % \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+% \legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+% \end{axis}
+% \end{tikzpicture}
+% \caption{Sequence voltages together with the objective function for the line to line fault}
+% \label{fig:full_LL}
+% \end{figure}
+
+\subsection{Double line to ground fault}
+The double line to ground fault is likely to be the most severe in terms of voltage. It turns out to have the more distant voltages from the references, as shown in \cite{taul2020modeling}. By nature, this fault is defined by a solid line to line connection and also a link between the two faulted phases and ground through an impedance. Figure \ref{fig:LLGx1} reveals that the minimum of $f$ falls considerably far from the ideal zero. 
+
+The double line to ground fault has many similarities with the line to line fault. First of all, the distribution of dots for the brute force computations is similar (and it also resembles the plot we obtained in the line to ground fault). Secondly, the optimal currents do not differ much from the ones obtained in Figure \ref{fig:LLx1}. All this could be deduced from its sequence representation. The same logic applies: the negative sequence current mirrors the positive sequence.
+
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_re_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_re_LLG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_re_LLG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_re_LLG_4.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^+_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.03)},anchor=south east}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_im_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_im_LLG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_im_LLG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I1_im_LLG_4.csv};
+            \legend{BF, OPT, ROPT, GC};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \vspace{0.5cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{re}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_re_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_re_LLG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_re_LLG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_re_LLG_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={${I}^-_{im}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-1,-0.5,...,1}, ytick={0.9,0.95,...,1.1}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}]
+            \addplot[thick, scatter, only marks, each nth point = 1] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_im_LLG.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_im_LLG_2.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_im_LLG_3.csv};
+            \addplot[thick, scatter, only marks] table[x=x, y=y, meta=label, col sep=comma] {Data/LLG/I2_im_LLG_4.csv};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the double line to ground fault. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power.}
+  \label{fig:LLGx1}
+\end{figure}
+Again, only injecting reactive currents (ROPF case) has been experimentally proved to become a suboptimal yet highly convenient choice, and the same applies to the grid code. It seems that the more extreme the fault is, the more optimal the grid code becomes. The objective functions present tiny variations in this case. Even though the real currents in both sequence differ a bit, for the imaginary ones the OPT, the ROPT and the grid code computations generate almost the same value. Therefore, the injection of real currents becomes secondary for highly inductive impedances. 
+
+Figure \ref{fig:full_LLG} shows the voltages across $\lambda$. Their evolutions is more similar to the one for the line to ground fault than for the line to line fault. 
+\begin{figure}[!htb]\centering \footnotesize
+  \begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},  scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(1.03,-0.03)},anchor=north west}, xmin= 0, xmax = 1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LLG/V1_LLG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y, col sep=comma] {Data/LLG/RV1_LLG.csv};
+            % \legend{BF, OPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \hspace{1cm}
+\begin{subfigure}[!htb]{.4\textwidth}
+    \centering
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \pgfplotsset{width=7cm, height=6cm}
+            \begin{axis}[grid=major, xlabel={$\lambda$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, scatter/classes={a={mark=o,draw=black, mark size=1pt}, b={mark=x,draw=red, mark size=2pt}, c={mark=square,draw=orange, mark size=1.5pt}, d={mark=triangle, draw=green, mark size=1.5pt}},  scatter src=explicit symbolic, axis line style = very thick, legend style={at={(0.97,0.23)},anchor=south east}, xmin=0, xmax=1]
+            \addplot[very thick, black] table[x=x, y=y,  col sep=comma] {Data/LLG/V2_LLG.csv};
+            \addplot[very thick, gray, dashed] table[x=x, y=y,  col sep=comma] {Data/LLG/RV2_LLG.csv};
+            \legend{OPT, ROPT};
+            \end{axis}
+        \end{tikzpicture}
+  \end{subfigure}
+  \caption{Influence of the currents on the objective function for the double line to ground fault with varying $\lambda$. BF: brute force, OPT: solution to the optimization problem, ROPT: solution to the optimization problem restricted to only injecting reactive power}
+  \label{fig:full_LLG}
+\end{figure}
+
+
+
+% Finally, figure \ref{fig:full_LLG} displays what the distribution of voltages and the subsequent objective function look like for variations in the $\lambda$ parameter.
+
+% \begin{figure}[!htb]\centering \footnotesize
+% \begin{tikzpicture}
+% \begin{axis}[%
+%     colormap name=whitered,
+%     width=12cm,
+%     height=8.5cm,
+%     view={45}{30},
+%     enlargelimits=false,
+%     grid=major,
+%     domain=-1:4,
+%     y domain=-1:4,
+%     samples=26,
+%     ztick={0.0,0.15,...,1},
+%     zmin=0.00,
+%     zmax=1.0,
+%     xlabel=$\lambda^+ \equiv \lambda$,
+%     ylabel=$\lambda^- \equiv 1 -\lambda$,
+%     zlabel={$|V_c|$},
+%     axis line style = thick,
+%     x dir=reverse,
+%     legend style={at={(1.06,0.5)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10},
+%     colorbar,
+%     colorbar style={
+%         at={(1.06,0.03)},
+%         anchor=south west,
+%         height=0.30*\pgfkeysvalueof{/pgfplots/parent axis height},
+%         title={$f$}
+%     }
+% ]
+
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, black]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/V1_LLG.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, black] table[x=x, y=y, z=z, col sep=comma] {Data/constant/V2_LLG.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dashed, gray]  table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV1_LLG.csv};
+% \addplot3 [domain=-0:1,samples=31, samples y=0, very thick, smooth, densely dotted, gray] table[x=x, y=y, z=z, col sep=comma] {Data/constant/RV2_LLG.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/ff_LLG.csv};
+% \addplot3 [scatter, only marks, ycomb, each nth point = 2] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/Rff_LLG.csv};
+% \addplot3 [gray, no markers, line width=1pt] table[x=x, y=y, z=z, col sep=comma, forget plot] {Data/constant/terra_LLG.csv};
+
+% % \node at (0.5,0.1,0.3) [pin=165:$P(x_1)$] {};
+% % \node at (0.5,0.1,0.2) [pin=85:$P(x_2)$] {};
+% % \node at (0.5,0.5,0.1) [pin=165:$P(x_3)$] {};
+
+% \legend{$V^+_c$ OPT, $V^-_c$ OPT, $V^+_c$ ROPT, $V^-_c$ ROPT};
+
+% \end{axis}
+% \end{tikzpicture}
+% \caption{Sequence voltages together with the objective function for the double line to ground fault}
+% \label{fig:full_LLG}
+% \end{figure}
+
+% Table \ref{tab:results} gathers the numerical results for all the studied faults.
+% \begin{table}[!htb] \centering
+%     \begin{tabular}{lccccccc}
+%        \hline
+%        Fault & $f$ & $|V^+|$ & $|V^-|$ & ${I}^+_{re}$ & ${I}^+_{im}$ & ${I}^-_{re}$ & ${I}^-_{im}$\\
+%        \hline
+%        Balanced & 0.200 & 0.800 & 0.000 & 0.107 & -0.994 & 0.000 & 0.000\\
+%        Line to ground & 0.084 & 0.966 & 0.049 & 0.176 & -0.535 & -0.085 & -0.461\\
+%        Line to line & 0.361 & 0.820 & 0.180 & 0.030 & -0.571 & -0.030 & 0.582\\
+%        Double line to ground & 0.884 & 0.525 & 0.408 & 0.064 & -0.574 & -0.064 & 0.574\\
+%        \hline
+%     \end{tabular}
+%     \caption{Main results for the balanced and the unbalanced faults}
+%     \label{tab:results}
+% \end{table}

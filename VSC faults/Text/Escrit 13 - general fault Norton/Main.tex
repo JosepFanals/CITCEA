@@ -1,0 +1,59 @@
+%!TEX program = lualatex
+\documentclass[10pt, draft]{article}
+
+\usepackage[left=30mm, right=30mm, top=30mm, bottom=30mm]{geometry}
+%\usepackage[scale=4]{draftwatermark}
+
+% \usepackage[backend=bibtex, sorting=none]{biblatex} % per la bibliografia
+\usepackage[backend=biber, sorting=none]{biblatex}
+% \bibliographystyle{ieeetr}
+% \setlength\bibitemsep{\baselineskip} % per tenir més espai entre bibliografia
+\addbibresource{bib.bib} % carregar el fitxer de bibliografia
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[activate={true, noncompatibility}]{microtype}
+\usepackage{tikz}
+\usepackage{circuitikz}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+\usepackage{amssymb}
+\usepackage{diagbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta}
+% \usepackage[american voltages, american currents,siunitx]{circuitikz}
+\usepackage{amssymb}  % per simbolitzar reals
+%\usepackage{subfigure} 
+\usepackage{subcaption}
+\usepgfplotslibrary{patchplots,colormaps}
+\usetikzlibrary{intersections}
+\usepgfplotslibrary{fillbetween}
+\usepackage[ruled, vlined]{algorithm2e}  % per escriure algoritmes
+\usepackage{subcaption} % per tenir múltiples figures
+\tikzset{font=\footnotesize} % per tenir figures amb lletra més petita
+\usepackage[font=footnotesize, labelfont = sc, labelsep=period]{caption} % captions més petites i separar amb punt
+\newcommand{\un}[1]{\underline{#1}} % per tenir underline
+\usepackage{arydshln} % per dashed a les matrius
+\usepackage{nicematrix} % per tenir pmatrix
+\NiceMatrixOptions{letter-for-dotted-lines=V} % per tenir dashed line
+
+\begin{document}
+
+\begin{center}
+    \Large
+    \textbf{VSC faults: generalization to multiple converters}
+         
+    \vspace{0.4cm}
+    \textbf{CITCEA}
+
+    \vspace{0.4cm}
+    \textbf{Josep Fanals}
+       
+    \vspace{0.4cm}
+    \textbf{04/2021}
+\end{center}
+
+
+\input{Chapters/Development.tex}
+
+
+\end{document}
