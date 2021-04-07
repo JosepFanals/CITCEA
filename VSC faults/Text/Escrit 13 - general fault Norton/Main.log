@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  7 APR 2021 13:03
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  7 APR 2021 15:57
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Nort
@@ -1457,7 +1457,71 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]) [3]
-(./Main.aux)
+(./Chapters/Two_vsc.tex
+PGFPlots: reading {Data/Data1/opt_3x_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In2im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vn2.csv}
+ [4
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data1/opt_LG_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In2im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vn2.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In2im.csv}
+ [5
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data1/opt_LL_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Vn2.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_In2im.csv}
+ [6
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data1/opt_LLG_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Vn2.csv}
+) [7
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] (./Main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1472,16 +1536,16 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54322 strings out of 478902
- 195338,2848258 words of node,token memory allocated
- 670 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 13 attribute, 83 glue_spec
-, 13 attribute_list, 2 write nodes
-   avail lists: 2:14235,3:6806,4:182,5:512,6:21,7:13711,8:22,9:4283,10:10,11:445
-
- 72569 multiletter control sequences out of 65536+200000
- 72 fonts using 5966447 bytes
- 108i,24n,105p,1212b,1079s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55199 strings out of 478902
+ 244175,2848258 words of node,token memory allocated
+ 679 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 14 attribute, 84 glue_spec
+, 14 attribute_list, 2 write nodes
+   avail lists: 1:2,2:16398,3:8493,4:240,5:524,6:37,7:13269,8:22,9:4122,10:20,11
+:425
+ 73149 multiletter control sequences out of 65536+200000
+ 74 fonts using 6229823 bytes
+ 108i,24n,105p,1212b,2486s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman8-
 regular.otf><//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/pub
 lic/lm/lmromancaps10-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/f
@@ -1500,12 +1564,15 @@ KTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Use
-rs/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users
+/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
+6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb>
+Output written on Main.pdf (7 pages, 254143 bytes).
 
-Output written on Main.pdf (3 pages, 165495 bytes).
-
-PDF statistics: 99 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 123 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

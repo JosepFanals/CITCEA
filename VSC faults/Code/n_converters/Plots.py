@@ -8,5 +8,4 @@ def fPlots(x, y, name):
         df.columns = ['x', 'y']
         df.to_csv(file_name, index=False)
 
-    for ii in range(len(y)):
-        make_csv(x, y[ii], name + str(ii) + '.csv')
+    make_csv(x, y, name + '.csv')
