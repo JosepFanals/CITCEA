@@ -44,7 +44,7 @@ f_vec = []
 # Optimize cases
 for iik in range(len(Yf_vec)):
     # Initialize data
-    Y_gnd = [Yf_vec[iik], 0, 0]
+    Y_con = [Yf_vec[iik], 0, 0]
     print(Yf_vec[iik])
 
     # Call optimization

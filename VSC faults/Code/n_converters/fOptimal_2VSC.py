@@ -1,6 +1,7 @@
 # from Main import Vp1_vec
 import numpy as np
 from scipy.optimize import minimize
+from scipy.optimize.optimize import _minimize_scalar_bounded
 from Functions import xabc_to_012, x012_to_abc, build_static_objects 
 np.set_printoptions(precision=4)
 
@@ -54,7 +55,8 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
         # suma = lam_vec[0] * abs(1 - abs(V_p1_012[1])) + lam_vec[1] * abs(1 - abs(V_p2_012[1])) + lam_vec[2] * abs(0 - abs(V_p1_012[2])) + lam_vec[3] * abs(0 - abs(V_p2_012[2]))
         # suma = lam_vec[0] * (1 - np.real(Vp1 * np.conj(Vp1))) + lam_vec[1] * (1 - np.real(Vp2 * np.conj(Vp2))) + lam_vec[2] * np.real(Vn1 * np.conj(Vn1)) + lam_vec[3] * np.real(Vn2 * np.conj(Vn2))
-        suma = (1 - Vp1 * np.conj(Vp1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 
+        # suma = (1 - Vp1 * np.conj(Vp1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 
+        suma = (1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2 
         return suma
 
 
@@ -84,8 +86,9 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':1000})
     # sol = minimize(objective_f, Ii_t, method='Nelder-Mead', constraints=cons, options={'fatol':0.0001})
     # sol = minimize(objective_f, Ii_t, method='Powell', bounds=bnds, options={'ftol':1e-12, 'maxiter':1000})
-    sol = minimize(objective_f, Ii_t, method='L-BFGS-B', bounds=bnds, options={'maxiter':1000})
-    # sol = minimize(objective_f, Ii_t, method='COBYLA', bounds=bnds, options={'maxiter':1000, 'tol':1e-10})
+    # sol = minimize(objective_f, Ii_t, method='TNC', bounds=bnds, options={'ftol':1e-12, 'maxiter':1000})
+    sol = minimize(objective_f, Ii_t, method='L-BFGS-B', bounds=bnds, options={'maxiter':1000, 'ftol':1e-6})  # the best I have tested
+    # sol = minimize(objective_f, Ii_t, method='trust-ncg', bounds=bnds, options={'maxiter':1000, 'tol':1e-10})
     # sol = minimize(objective_f, Ii_t, method='trust-constr', bounds=bnds, options={'maxiter':2000})
     I_sol = sol.x
     print(I_sol)
