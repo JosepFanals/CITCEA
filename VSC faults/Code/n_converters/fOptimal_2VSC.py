@@ -39,6 +39,16 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, nnn):
     def constraint_Iim2(x):
         return x[7] + x[9] + x[11] 
 
+    # def objective_f(x):
+    #     Vv_v = volt_solution(x)
+    #     V_p1_abc = Vv_v[0:3]
+    #     V_p2_abc = Vv_v[3:6]
+    #     V_p1_012 = xabc_to_012(V_p1_abc)
+    #     V_p2_012 = xabc_to_012(V_p2_abc)
+
+    #     suma = lam_vec[0] * abs(1 - abs(V_p1_012[1])) + lam_vec[1] * abs(1 - abs(V_p2_012[1])) + lam_vec[2] * abs(0 - abs(V_p1_012[2])) + lam_vec[3] * abs(0 - abs(V_p2_012[2]))
+    #     return suma
+
     def objective_f(x):
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]

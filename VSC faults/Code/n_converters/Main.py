@@ -13,15 +13,15 @@ Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
 Y_con = [0, 0, 0]  # Yab, Ybc, Yac
-Y_gnd = [0.2, 0, 0]  # Yag, Ybg, Yc
-lam_vec = [1, 0, 1, 0]  # V1p, V2p, V1n, V2n
+Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
+lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
 n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(5, 0.1, n_p, 0.05)
+Yf_vec = fY_fault(10, 1, n_p, 0.05)
 
 # Store data
 Vp1_vec = []
@@ -43,7 +43,8 @@ f_vec = []
 # Optimize cases
 for iik in range(n_p):
     # Initialize data
-    Y_gnd = [Yf_vec[iik], 0, 0]  # Yag, Ybg, Yc
+    Y_con = [Yf_vec[iik], 0, 0]  # Yab, Ybc, Yac
+    print(Yf_vec[iik])
 
     # Call optimization
     x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, iik)
@@ -80,6 +81,16 @@ fPlots(x_vec, In1_im_vec, folder + type_f + 'In1im')
 fPlots(x_vec, In2_re_vec, folder + type_f + 'In2re')
 fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
 
-print(In1_im_vec)
-plt.plot(x_vec, Ip1_re_vec)
+# Plots
+fig, axs = plt.subplots(2, 2)
+axs[0, 0].plot(x_vec, Ip1_re_vec)
+axs[0, 0].set_title('Axis [0, 0]')
+axs[0, 1].plot(x_vec, Ip1_im_vec, 'tab:orange')
+axs[0, 1].set_title('Axis [0, 1]')
+axs[1, 0].plot(x_vec, Ip2_re_vec, 'tab:green')
+axs[1, 0].set_title('Axis [1, 0]')
+axs[1, 1].plot(x_vec, Ip2_im_vec, 'tab:red')
+axs[1, 1].set_title('Axis [1, 1]')
+
+# plt.plot(x_vec, Ip1_re_vec)
 plt.show()
