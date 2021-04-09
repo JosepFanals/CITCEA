@@ -84,7 +84,7 @@ def fZ_rx(lim1, lim2, n_p, Zthmod):
     return [RX, Zin]
 
 
-def fY_fault(lim1, lim2, n_p, Zthmod):
+def fY_fault(lim1, lim2, n_p):
     diff = lim1 - lim2
     incr = diff / n_p
     Zff = np.arange(lim2, lim1, incr)

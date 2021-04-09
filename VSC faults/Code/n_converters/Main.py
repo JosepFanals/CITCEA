@@ -20,9 +20,9 @@ type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 100
+n_p = 1000
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(5, 1, n_p, 0.01)
+Yf_vec = fY_fault(20, 1, n_p)
 
 # Store data
 Vp1_vec = []
@@ -91,7 +91,7 @@ fPlots(x_vec, In2_re_vec, folder + type_f + 'In2re')
 fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
 
 # Plots
-fig, axs = plt.subplots(2, 2)
+fig, axs = plt.subplots(4, 2)
 axs[0, 0].plot(x_vec, Ip1_re_vec)
 axs[0, 0].set_title('Axis [0, 0]')
 axs[0, 1].plot(x_vec, Ip1_im_vec, 'tab:orange')
@@ -100,6 +100,14 @@ axs[1, 0].plot(x_vec, In1_re_vec, 'tab:green')
 axs[1, 0].set_title('Axis [1, 0]')
 axs[1, 1].plot(x_vec, In1_im_vec, 'tab:red')
 axs[1, 1].set_title('Axis [1, 1]')
+axs[2, 0].plot(x_vec, Ip2_re_vec)
+axs[2, 0].set_title('Axis [0, 0]')
+axs[2, 1].plot(x_vec, Ip2_im_vec, 'tab:orange')
+axs[2, 1].set_title('Axis [0, 1]')
+axs[3, 0].plot(x_vec, In2_re_vec, 'tab:green')
+axs[3, 0].set_title('Axis [1, 0]')
+axs[3, 1].plot(x_vec, In2_im_vec, 'tab:red')
+axs[3, 1].set_title('Axis [1, 1]')
 
 # plt.plot(x_vec, Ip1_re_vec)
 plt.show()
