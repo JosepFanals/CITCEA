@@ -86,6 +86,6 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, nnn):
     Ip2_1 = Ip2_012[1] * np.exp(-1j * np.angle(V_p2_012[1]))
     Ip2_2 = Ip2_012[2] * np.exp(-1j * np.angle(V_p2_012[2]))
     print(sol.fun)
-    # print(sol.success)
+    print(sol.success)
 
     return [Ip1_1, Ip1_2, Ip2_1, Ip2_2, abs(V_p1_012[1]), abs(V_p1_012[2]), abs(V_p2_012[1]), abs(V_p2_012[2]), sol.fun]
