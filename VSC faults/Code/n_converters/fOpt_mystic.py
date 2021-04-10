@@ -1,12 +1,15 @@
 # from Main import Vp1_vec
 import numpy as np
 from mystic.penalty import quadratic_inequality
+from mystic.solvers import diffev2
+from mystic.monitors import VerboseMonitor
+mon = VerboseMonitor(10)
 from scipy.optimize import minimize
 from scipy.optimize.optimize import _minimize_scalar_bounded
 from Functions import xabc_to_012, x012_to_abc, build_static_objects 
 np.set_printoptions(precision=4)
 
-def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
+def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     # Functions
     def volt_solution(x):
@@ -49,25 +52,6 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     def constraint_Iim2(x):
         return x[7] + x[9] + x[11] 
 
-    def objective_f(x):
-        Vv_v = volt_solution(x)
-        V_p1_abc = Vv_v[0:3]
-        V_p2_abc = Vv_v[3:6]
-        V_p1_012 = xabc_to_012(V_p1_abc)
-        V_p2_012 = xabc_to_012(V_p2_abc)
-
-        Vp1 = V_p1_012[1]
-        Vp2 = V_p2_012[1]
-        Vn1 = V_p1_012[2]
-        Vn2 = V_p2_012[2]
-
-        # suma = lam_vec[0] * abs(1 - abs(V_p1_012[1])) + lam_vec[1] * abs(1 - abs(V_p2_012[1])) + lam_vec[2] * abs(0 - abs(V_p1_012[2])) + lam_vec[3] * abs(0 - abs(V_p2_012[2]))
-        # suma = lam_vec[0] * (1 - np.real(Vp1 * np.conj(Vp1))) + lam_vec[1] * (1 - np.real(Vp2 * np.conj(Vp2))) + lam_vec[2] * np.real(Vn1 * np.conj(Vn1)) + lam_vec[3] * np.real(Vn2 * np.conj(Vn2))
-        # suma = (1 - Vp1 * np.conj(Vp1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 
-        # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
-        suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2)
-        return suma
-
 
 
     # Data
@@ -90,19 +74,35 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     con4 = {'type': 'eq', 'fun': constraint_Ire2}
     con5 = {'type': 'eq', 'fun': constraint_Iim2}
     cons = [con1, con2, con3, con4, con5]
-    # cons = [con2, con3, con4, con5]
-    # cons = [con1]
-    bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),]
 
-    sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
-    # sol = minimize(objective_f, Ii_t, method='Nelder-Mead', constraints=cons, options={'fatol':0.0001})
-    # sol = minimize(objective_f, Ii_t, method='Powell', bounds=bnds, options={'ftol':1e-12, 'maxiter':1000})
-    # sol = minimize(objective_f, Ii_t, method='TNC', bounds=bnds, options={'ftol':1e-12, 'maxiter':1000})
-    # sol = minimize(objective_f, Ii_t, method='L-BFGS-B', bounds=bnds, options={'maxiter':1000, 'ftol':1e-6})  # the best I have tested
-    # sol = minimize(objective_f, Ii_t, constraints=cons, method='L-BFGS-B', bounds=bnds, options={'maxiter':1000, 'ftol':1e-6})  # the best I have tested
-    # sol = minimize(objective_f, Ii_t, method='trust-ncg', bounds=bnds, options={'maxiter':1000, 'tol':1e-10})
-    # sol = minimize(objective_f, Ii_t, method='trust-constr', bounds=bnds, options={'maxiter':2000})
-    I_sol = sol.x
+    @quadratic_inequality(con1, k=1e4)
+    def objective_f(x):
+        Vv_v = volt_solution(x)
+        V_p1_abc = Vv_v[0:3]
+        V_p2_abc = Vv_v[3:6]
+        V_p1_012 = xabc_to_012(V_p1_abc)
+        V_p2_012 = xabc_to_012(V_p2_abc)
+
+        Vp1 = V_p1_012[1]
+        Vp2 = V_p2_012[1]
+        Vn1 = V_p1_012[2]
+        Vn2 = V_p2_012[2]
+
+        # suma = lam_vec[0] * abs(1 - abs(V_p1_012[1])) + lam_vec[1] * abs(1 - abs(V_p2_012[1])) + lam_vec[2] * abs(0 - abs(V_p1_012[2])) + lam_vec[3] * abs(0 - abs(V_p2_012[2]))
+        # suma = lam_vec[0] * (1 - np.real(Vp1 * np.conj(Vp1))) + lam_vec[1] * (1 - np.real(Vp2 * np.conj(Vp2))) + lam_vec[2] * np.real(Vn1 * np.conj(Vn1)) + lam_vec[3] * np.real(Vn2 * np.conj(Vn2))
+        # suma = (1 - Vp1 * np.conj(Vp1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 
+        # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
+        suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2)
+        return suma
+
+
+    bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),]
+    # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
+
+    result = diffev2(objective_f, x0=Ii_t, npop=10, gtol=200, disp=False, full_output=True, itermon=mon, maxiter=1000)
+
+    I_sol = result
+    # I_sol = sol.x
     print(I_sol)
 
     # Manage results
