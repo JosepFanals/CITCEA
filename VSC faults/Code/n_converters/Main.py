@@ -21,9 +21,9 @@ type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 10
-[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-# Yf_vec = fY_fault(20, 1, n_p)
+n_p = 50
+# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
+Yf_vec = fY_fault(20, 19, n_p)
 
 # Store data
 Vp1_vec = []
@@ -43,10 +43,10 @@ In2_im_vec = []
 f_vec = []
 
 # Optimize cases
-for iik in range(len(Zin_vec)):
+for iik in range(len(Yf_vec)):
     # Initialize data
-    # Y_con = [Yf_vec[iik], 0, 0]
-    Zv1 = Zin_vec[iik]
+    Y_con = [Yf_vec[iik], 0, 0]
+    # Zv1 = Zin_vec[iik]
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
@@ -76,7 +76,7 @@ for iik in range(len(Zin_vec)):
 
 
 # Save csv
-x_vec = Zin_vec
+x_vec = Yf_vec
 # fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
 # fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')
 # fPlots(x_vec, Vn1_vec, folder + type_f + 'Vn1')
