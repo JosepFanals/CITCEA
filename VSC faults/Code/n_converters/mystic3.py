@@ -9,7 +9,10 @@ x0 >= 0.4
 
 
 def obj_fun(x):
-    return x[0] ** 2 + x[1] - x[2] + 0.56
+    def volts(x):
+        vv = x[0] ** 2 + x[1] - x[2] + 0.59
+        return vv
+    return volts(x)
 
 bounds = [(-1,1),(-1,1),(-1,1)] #unnecessary
 xx0 = [0,0,0]
@@ -20,6 +23,6 @@ from mystic.solvers import diffev2, fmin_powell, fmin
 
 cf = generate_constraint(generate_solvers(simplify(equations_c)))
 
-result = fmin(obj_fun, x0=xx0, bounds=bounds, constraints=cf, npop=40, gtol=50, disp=False, full_output=True)
+result = fmin(obj_fun, x0=xx0, bounds=bounds, constraints=cf, npop=20, gtol=20, disp=False, full_output=True)
 
 print(result)

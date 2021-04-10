@@ -51,61 +51,61 @@ for iik in range(len(Zin_vec)):
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    Vp1_vec.append(x_opt[4][0])
-    Vp2_vec.append(x_opt[6][0])
-    Vn1_vec.append(x_opt[5][0])
-    Vn2_vec.append(x_opt[7][0])
+    # Vp1_vec.append(x_opt[4][0])
+    # Vp2_vec.append(x_opt[6][0])
+    # Vn1_vec.append(x_opt[5][0])
+    # Vn2_vec.append(x_opt[7][0])
 
-    Ip1_re_vec.append(np.real(x_opt[0][0]))
-    Ip1_im_vec.append(np.imag(x_opt[0][0]))
-    Ip2_re_vec.append(np.real(x_opt[2][0]))
-    Ip2_im_vec.append(np.imag(x_opt[2][0]))
+    # Ip1_re_vec.append(np.real(x_opt[0][0]))
+    # Ip1_im_vec.append(np.imag(x_opt[0][0]))
+    # Ip2_re_vec.append(np.real(x_opt[2][0]))
+    # Ip2_im_vec.append(np.imag(x_opt[2][0]))
     
-    In1_re_vec.append(np.real(x_opt[1][0]))
-    In1_im_vec.append(np.imag(x_opt[1][0]))
-    In2_re_vec.append(np.real(x_opt[3][0]))
-    In2_im_vec.append(np.imag(x_opt[3][0]))
-    # f_vec.append(np.abs(x_opt[8][0]))
+    # In1_re_vec.append(np.real(x_opt[1][0]))
+    # In1_im_vec.append(np.imag(x_opt[1][0]))
+    # In2_re_vec.append(np.real(x_opt[3][0]))
+    # In2_im_vec.append(np.imag(x_opt[3][0]))
+    # # f_vec.append(np.abs(x_opt[8][0]))
 
-    I_vsc1 = [0, x_opt[0][0], x_opt[1][0]]
-    I_vsc2 = [0, x_opt[2][0], x_opt[3][0]]
-    I_vsc1_abc = x012_to_abc(I_vsc1)
-    I_vsc2_abc = x012_to_abc(I_vsc2)
-    Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
-    # print(Ii_t)
+    # I_vsc1 = [0, x_opt[0][0], x_opt[1][0]]
+    # I_vsc2 = [0, x_opt[2][0], x_opt[3][0]]
+    # I_vsc1_abc = x012_to_abc(I_vsc1)
+    # I_vsc2_abc = x012_to_abc(I_vsc2)
+    # Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
+    # # print(Ii_t)
 
 
 # Save csv
 x_vec = Zin_vec
-fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
-fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')
-fPlots(x_vec, Vn1_vec, folder + type_f + 'Vn1')
-fPlots(x_vec, Vn2_vec, folder + type_f + 'Vn2')
+# fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
+# fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')
+# fPlots(x_vec, Vn1_vec, folder + type_f + 'Vn1')
+# fPlots(x_vec, Vn2_vec, folder + type_f + 'Vn2')
 
-fPlots(x_vec, Ip1_re_vec, folder + type_f + 'Ip1re')
-fPlots(x_vec, Ip1_im_vec, folder + type_f + 'Ip1im')
-fPlots(x_vec, Ip2_re_vec, folder + type_f + 'Ip2re')
-fPlots(x_vec, Ip2_im_vec, folder + type_f + 'Ip2im')
+# fPlots(x_vec, Ip1_re_vec, folder + type_f + 'Ip1re')
+# fPlots(x_vec, Ip1_im_vec, folder + type_f + 'Ip1im')
+# fPlots(x_vec, Ip2_re_vec, folder + type_f + 'Ip2re')
+# fPlots(x_vec, Ip2_im_vec, folder + type_f + 'Ip2im')
 
-fPlots(x_vec, In1_re_vec, folder + type_f + 'In1re')
-fPlots(x_vec, In1_im_vec, folder + type_f + 'In1im')
-fPlots(x_vec, In2_re_vec, folder + type_f + 'In2re')
-fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
+# fPlots(x_vec, In1_re_vec, folder + type_f + 'In1re')
+# fPlots(x_vec, In1_im_vec, folder + type_f + 'In1im')
+# fPlots(x_vec, In2_re_vec, folder + type_f + 'In2re')
+# fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
 
 # Plots
-fig, axs = plt.subplots(2, 2)
-axs[0, 0].plot(x_vec, Ip1_re_vec)
-axs[0, 0].plot(x_vec, Ip2_re_vec)
-axs[0, 0].set_title('Axis [0, 0]')
-axs[0, 1].plot(x_vec, Ip1_im_vec)
-axs[0, 1].plot(x_vec, Ip2_im_vec)
-axs[0, 1].set_title('Axis [0, 1]')
-axs[1, 0].plot(x_vec, In1_re_vec)
-axs[1, 0].plot(x_vec, In2_re_vec)
-axs[1, 0].set_title('Axis [1, 0]')
-axs[1, 1].plot(x_vec, In1_im_vec)
-axs[1, 1].plot(x_vec, In2_im_vec)
-axs[1, 1].set_title('Axis [1, 1]')
+# fig, axs = plt.subplots(2, 2)
+# axs[0, 0].plot(x_vec, Ip1_re_vec)
+# axs[0, 0].plot(x_vec, Ip2_re_vec)
+# axs[0, 0].set_title('Axis [0, 0]')
+# axs[0, 1].plot(x_vec, Ip1_im_vec)
+# axs[0, 1].plot(x_vec, Ip2_im_vec)
+# axs[0, 1].set_title('Axis [0, 1]')
+# axs[1, 0].plot(x_vec, In1_re_vec)
+# axs[1, 0].plot(x_vec, In2_re_vec)
+# axs[1, 0].set_title('Axis [1, 0]')
+# axs[1, 1].plot(x_vec, In1_im_vec)
+# axs[1, 1].plot(x_vec, In2_im_vec)
+# axs[1, 1].set_title('Axis [1, 1]')
 
 
 # plt.plot(x_vec, Ip1_re_vec)
