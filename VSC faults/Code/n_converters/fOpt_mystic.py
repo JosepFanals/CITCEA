@@ -3,7 +3,7 @@ import numpy as np
 
 from mystic.symbolic import generate_constraint, generate_solvers, simplify
 from mystic.symbolic import generate_penalty, generate_conditions
-from mystic.solvers import fmin
+from mystic.solvers import fmin, fmin_powell
 # from mystic.symbolic import absval
 
 from scipy.optimize import minimize
@@ -129,7 +129,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
 
 
-    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, full_output=True, ftol=1e-13)
+    # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, full_output=True, ftol=1e-13)
+    result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
 
     # result = diffev2(objective_f, x0=Ii_t, npop=10, gtol=200, disp=False, full_output=True, itermon=mon, maxiter=1000)
 

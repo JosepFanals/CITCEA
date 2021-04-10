@@ -21,9 +21,9 @@ type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 50
+n_p = 10
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(20, 19, n_p)
+Yf_vec = fY_fault(2, 1, n_p)
 
 # Store data
 Vp1_vec = []
