@@ -21,9 +21,9 @@ type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 50
+n_p = 200
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(20, 10, n_p)
+Yf_vec = fY_fault(2, 1, n_p)
 
 # Store data
 Vp1_vec = []
@@ -43,7 +43,7 @@ In2_im_vec = []
 f_vec = []
 
 # Optimize cases
-for iik in range(len(Yf_vec)):
+for iik in range(n_p):
     # Initialize data
     Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
@@ -84,6 +84,8 @@ for iik in range(len(Yf_vec)):
 
 # Save csv
 x_vec = Yf_vec
+pcnt = 0.8
+n_pp = int((1-pcnt) * n_p)
 # fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
 # fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')
 # fPlots(x_vec, Vn1_vec, folder + type_f + 'Vn1')
@@ -101,17 +103,17 @@ x_vec = Yf_vec
 
 # Plots
 fig, axs = plt.subplots(2, 2)
-axs[0, 0].plot(x_vec, Ip1_re_vec)
-axs[0, 0].plot(x_vec, Ip2_re_vec)
+axs[0, 0].plot(x_vec[n_pp:], Ip1_re_vec[n_pp:])
+axs[0, 0].plot(x_vec[n_pp:], Ip2_re_vec[n_pp:])
 axs[0, 0].set_title('Axis [0, 0]')
-axs[0, 1].plot(x_vec, Ip1_im_vec)
-axs[0, 1].plot(x_vec, Ip2_im_vec)
+axs[0, 1].plot(x_vec[n_pp:], Ip1_im_vec[n_pp:])
+axs[0, 1].plot(x_vec[n_pp:], Ip2_im_vec[n_pp:])
 axs[0, 1].set_title('Axis [0, 1]')
-axs[1, 0].plot(x_vec, In1_re_vec)
-axs[1, 0].plot(x_vec, In2_re_vec)
+axs[1, 0].plot(x_vec[n_pp:], In1_re_vec[n_pp:])
+axs[1, 0].plot(x_vec[n_pp:], In2_re_vec[n_pp:])
 axs[1, 0].set_title('Axis [1, 0]')
-axs[1, 1].plot(x_vec, In1_im_vec)
-axs[1, 1].plot(x_vec, In2_im_vec)
+axs[1, 1].plot(x_vec[n_pp:], In1_im_vec[n_pp:])
+axs[1, 1].plot(x_vec[n_pp:], In2_im_vec[n_pp:])
 axs[1, 1].set_title('Axis [1, 1]')
 
 

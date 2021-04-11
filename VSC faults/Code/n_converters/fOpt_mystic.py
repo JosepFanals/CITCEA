@@ -4,7 +4,7 @@ import numpy as np
 from mystic.symbolic import generate_constraint, generate_solvers, simplify
 from mystic.symbolic import generate_penalty, generate_conditions
 from mystic.solvers import fmin, fmin_powell
-from mystic.penalty import quadratic_equality
+from mystic.penalty import quadratic_equality, quadratic_inequality
 # from mystic.symbolic import absval
 
 from scipy.optimize import minimize
@@ -124,7 +124,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         a6 = x[10] ** 2 + x[11] ** 2
         return (max(a1, a2, a3, a4, a5, a6) - target)
 
-    @quadratic_equality(condition=penalty_mean, kwds={'target':1.0})
+    # @quadratic_equality(condition=penalty_mean, kwds={'target':1.0})
+    @quadratic_inequality(condition=penalty_mean, kwds={'target':1.0})
     def penalty(x):
         return 0.0
 
@@ -142,7 +143,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
 
 
-    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=1000, gtol=1000, disp=True, full_output=True, ftol=1e-8, maxiter=20000)
+    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=1000, gtol=1000, disp=True, full_output=True, ftol=1e-13, maxiter=10000, maxfun=10000)
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-5)
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
 
