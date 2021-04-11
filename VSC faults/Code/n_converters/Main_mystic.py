@@ -21,7 +21,7 @@ type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 20
+n_p = 50
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
 Yf_vec = fY_fault(20, 10, n_p)
 
@@ -45,12 +45,12 @@ f_vec = []
 # Optimize cases
 for iik in range(len(Yf_vec)):
     # Initialize data
-    Y_con = [Yf_vec[iik], 0, 0]
+    Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
 
     # Call optimization
-    x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[4][0])
     Vp2_vec.append(x_opt[6][0])
@@ -75,29 +75,10 @@ for iik in range(len(Yf_vec)):
 
     # ----------------------------
 
-    # Vp1_vec.append(x_opt[4])
-    # Vp2_vec.append(x_opt[6])
-    # Vn1_vec.append(x_opt[5])
-    # Vn2_vec.append(x_opt[7])
-
-    # Ip1_re_vec.append(np.real(x_opt[0]))
-    # Ip1_im_vec.append(np.imag(x_opt[0]))
-    # Ip2_re_vec.append(np.real(x_opt[2]))
-    # Ip2_im_vec.append(np.imag(x_opt[2]))
-    
-    # In1_re_vec.append(np.real(x_opt[1]))
-    # In1_im_vec.append(np.imag(x_opt[1]))
-    # In2_re_vec.append(np.real(x_opt[3]))
-    # In2_im_vec.append(np.imag(x_opt[3]))
-    # # f_vec.append(np.abs(x_opt[8][0]))
-
-    # I_vsc1 = np.array([0, x_opt[0], x_opt[1]])
-    # I_vsc2 = np.array([0, x_opt[2], x_opt[3]])
-    # I_vsc1_abc = x012_to_abc(I_vsc1)
-    # I_vsc2_abc = x012_to_abc(I_vsc2)
-
+    print(x_opt[-1][0])
 
     # Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
+    Ii_t = x_opt[-1][0]
     # # print(Ii_t)
 
 

@@ -22,12 +22,12 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         return Vv_v
 
     def constraint_Imax(x):
-        # I1a = abs(x[0] + 1j * x[1])
-        # I1b = abs(x[2] + 1j * x[3])
-        # I1c = abs(x[4] + 1j * x[5])
-        # I2a = abs(x[6] + 1j * x[7])
-        # I2b = abs(x[8] + 1j * x[9])
-        # I2c = abs(x[10] + 1j * x[11])
+        # I1a2 = abs(x[0] + 1j * x[1])
+        # I1b2 = abs(x[2] + 1j * x[3])
+        # I1c2 = abs(x[4] + 1j * x[5])
+        # I2a2 = abs(x[6] + 1j * x[7])
+        # I2b2 = abs(x[8] + 1j * x[9])
+        # I2c2 = abs(x[10] + 1j * x[11])
 
         I1a2 = x[0] ** 2 + x[1] ** 2
         I1b2 = x[2] ** 2 + x[3] ** 2
@@ -64,8 +64,8 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         # suma = lam_vec[0] * abs(1 - abs(V_p1_012[1])) + lam_vec[1] * abs(1 - abs(V_p2_012[1])) + lam_vec[2] * abs(0 - abs(V_p1_012[2])) + lam_vec[3] * abs(0 - abs(V_p2_012[2]))
         # suma = lam_vec[0] * (1 - np.real(Vp1 * np.conj(Vp1))) + lam_vec[1] * (1 - np.real(Vp2 * np.conj(Vp2))) + lam_vec[2] * np.real(Vn1 * np.conj(Vn1)) + lam_vec[3] * np.real(Vn2 * np.conj(Vn2))
         # suma = (1 - Vp1 * np.conj(Vp1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 
-        # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
-        suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2)
+        suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
+        # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2)
         return suma
 
 
@@ -94,7 +94,7 @@ def fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # cons = [con1]
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),]
 
-    sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
+    sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-15, 'maxiter':10000})
     # sol = minimize(objective_f, Ii_t, method='Nelder-Mead', constraints=cons, options={'fatol':0.0001})
     # sol = minimize(objective_f, Ii_t, method='Powell', bounds=bnds, options={'ftol':1e-12, 'maxiter':1000})
     # sol = minimize(objective_f, Ii_t, method='TNC', bounds=bnds, options={'ftol':1e-12, 'maxiter':1000})

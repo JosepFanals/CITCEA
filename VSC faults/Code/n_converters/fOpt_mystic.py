@@ -119,8 +119,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     x1 + x3 + x5 == 0
     x6 + x8 + x10 == 0
     x7 + x9 + x11 == 0
-    x0 * x0 + x1 * x1 <= 1
-    x2 * x2 + x3 * x3 <= 1
+    (x4 ** 2 + x5 ** 2) - 1 <= 0
     """
 
     cf = generate_constraint(generate_solvers(simplify(equations_c)))
@@ -129,17 +128,17 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
 
 
-    # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, full_output=True, ftol=1e-13)
-    result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
+    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-5)
+    # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
 
     # result = diffev2(objective_f, x0=Ii_t, npop=10, gtol=200, disp=False, full_output=True, itermon=mon, maxiter=1000)
 
     I_sol = result
     # I_sol = sol.x
-    print(I_sol)
+    # print(I_sol)
 
     # Manage results
-    print(I_sol[1])
+    # print(I_sol[1])
     # I1_abc = [I_sol[0] + 1j * I_sol[1], I_sol[2] + 1j * I_sol[3], I_sol[4] + 1j * I_sol[5]]
     # I2_abc = [I_sol[6] + 1j * I_sol[7], I_sol[8] + 1j * I_sol[9], I_sol[10] + 1j * I_sol[11]]
     # V_f = volt_solution(I_sol)
@@ -154,5 +153,23 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # print(sol.fun)
     # print(sol.success)
 
-    # return [Ip1_1, Ip1_2, Ip2_1, Ip2_2, abs(V_p1_012[1]), abs(V_p1_012[2]), abs(V_p2_012[1]), abs(V_p2_012[2]), sol.fun]
-    return I_sol
+    # print(I_sol[0])
+
+    I1_abc = [I_sol[0][0] + 1j * I_sol[0][1], I_sol[0][2] + 1j * I_sol[0][3], I_sol[0][4] + 1j * I_sol[0][5]]
+    I2_abc = [I_sol[0][6] + 1j * I_sol[0][7], I_sol[0][8] + 1j * I_sol[0][9], I_sol[0][10] + 1j * I_sol[0][11]]
+    V_f = volt_solution(I_sol[0])
+    V_p1_012 = xabc_to_012(V_f[0:3])
+    V_p2_012 = xabc_to_012(V_f[3:6])
+    Ip1_012 = xabc_to_012(I1_abc)
+    Ip2_012 = xabc_to_012(I2_abc)
+    Ip1_1 = Ip1_012[1] * np.exp(-1j * np.angle(V_p1_012[1]))
+    Ip1_2 = Ip1_012[2] * np.exp(-1j * np.angle(V_p1_012[2]))
+    Ip2_1 = Ip2_012[1] * np.exp(-1j * np.angle(V_p2_012[1]))
+    Ip2_2 = Ip2_012[2] * np.exp(-1j * np.angle(V_p2_012[2]))
+    # print(sol.fun)
+    # print(sol.success)
+
+    # print(I_sol)
+
+    return [Ip1_1, Ip1_2, Ip2_1, Ip2_2, abs(V_p1_012[1]), abs(V_p1_012[2]), abs(V_p2_012[1]), abs(V_p2_012[2]), I_sol]
+    # return I_sol
