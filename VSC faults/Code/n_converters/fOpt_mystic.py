@@ -4,6 +4,7 @@ import numpy as np
 from mystic.symbolic import generate_constraint, generate_solvers, simplify
 from mystic.symbolic import generate_penalty, generate_conditions
 from mystic.solvers import fmin, fmin_powell
+from mystic.penalty import quadratic_equality
 # from mystic.symbolic import absval
 
 from scipy.optimize import minimize
@@ -114,12 +115,25 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
         return suma
 
+    def penalty_mean(x, target):
+        a1 = x[0] ** 2 + x[1] ** 2
+        a2 = x[2] ** 2 + x[3] ** 2
+        a3 = x[4] ** 2 + x[5] ** 2
+        a4 = x[6] ** 2 + x[7] ** 2
+        a5 = x[8] ** 2 + x[9] ** 2
+        a6 = x[10] ** 2 + x[11] ** 2
+        return (max(a1, a2, a3, a4, a5, a6) - target)
+
+    @quadratic_equality(condition=penalty_mean, kwds={'target':1.0})
+    def penalty(x):
+        return 0.0
+
+
     equations_c = """
     x0 + x2 + x4 == 0
     x1 + x3 + x5 == 0
     x6 + x8 + x10 == 0
     x7 + x9 + x11 == 0
-    (x4 ** 2 + x5 ** 2) - 1 <= 0
     """
 
     cf = generate_constraint(generate_solvers(simplify(equations_c)))
@@ -128,7 +142,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
 
 
-    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-5)
+    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=1000, gtol=1000, disp=True, full_output=True, ftol=1e-8, maxiter=20000)
+    # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-5)
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
 
     # result = diffev2(objective_f, x0=Ii_t, npop=10, gtol=200, disp=False, full_output=True, itermon=mon, maxiter=1000)
