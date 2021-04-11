@@ -21,9 +21,9 @@ type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 200
+n_p = 1000
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(2, 1, n_p)
+Yf_vec = fY_fault(18, 5, n_p)
 
 # Store data
 Vp1_vec = []
@@ -45,7 +45,7 @@ f_vec = []
 # Optimize cases
 for iik in range(n_p):
     # Initialize data
-    Y_gnd = [Yf_vec[iik], 0, 0]
+    Y_con = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
 
     # Call optimization
@@ -115,6 +115,7 @@ axs[1, 0].set_title('Axis [1, 0]')
 axs[1, 1].plot(x_vec[n_pp:], In1_im_vec[n_pp:])
 axs[1, 1].plot(x_vec[n_pp:], In2_im_vec[n_pp:])
 axs[1, 1].set_title('Axis [1, 1]')
+
 
 
 # plt.plot(x_vec, Ip1_re_vec)
