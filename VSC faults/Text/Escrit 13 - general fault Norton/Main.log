@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  12 APR 2021 20:34
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  12 APR 2021 23:49
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Nort
@@ -1303,33 +1303,57 @@ Package: nicematrix 2021/03/23 v5.13 Enhanced arrays with the help of PGF/TikZ
 \l__nicematrix_extra_right_margin_dim=\dimen368
 \c__nicematrix_max_l_dim=\dimen369
 )
-\@quotelevel=\count462
-\@quotereset=\count463
- (./Main.aux)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.sty
+\lst@mode=\count462
+\lst@gtempboxa=\box76
+\lst@token=\toks43
+\lst@length=\count463
+\lst@currlwidth=\dimen370
+\lst@column=\count464
+\lst@pos=\count465
+\lst@lostspace=\dimen371
+\lst@width=\dimen372
+\lst@newlines=\count466
+\lst@lineno=\count467
+\lst@maxwidth=\dimen373
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count468
+\lst@skipnumbers=\count469
+\lst@framebox=\box77
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+\@quotelevel=\count470
+\@quotereset=\count471
+(./Main.aux)
 \openout1 = Main.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 39
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 71
 .
 
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -1382,29 +1406,39 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Main.bbl' not found.
 
 No file Main.bbl.
-Package biblatex Info: Reference section=0 on input line 39.
-Package biblatex Info: Reference segment=0 on input line 39.
-LaTeX Info: Redefining \microtypecontext on input line 39.
+Package biblatex Info: Reference section=0 on input line 71.
+Package biblatex Info: Reference segment=0 on input line 71.
+LaTeX Info: Redefining \microtypecontext on input line 71.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 71.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
 
-Package microtype Warning: `draft' option active.
-(microtype)                Disabling all micro-typographic extensions.
-(microtype)                This might lead to different line and page breaks.
-
-
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-LatinModernRoman.
+cfg
+File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mode
+rn Roman (RS)
+)
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count464
-\scratchdimen=\dimen370
-\scratchbox=\box76
-\nofMPsegments=\count465
-\nofMParguments=\count466
-\everyMPshowfont=\toks43
-\MPscratchCnt=\count467
-\MPscratchDim=\dimen371
-\MPnumerator=\count468
-\makeMPintoPDFobject=\count469
-\everyMPtoPDFconversion=\toks44
+\scratchcounter=\count472
+\scratchdimen=\dimen374
+\scratchbox=\box78
+\nofMPsegments=\count473
+\nofMParguments=\count474
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count475
+\MPscratchDim=\dimen375
+\MPnumerator=\count476
+\makeMPintoPDFobject=\count477
+\everyMPtoPDFconversion=\toks45
 )
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
@@ -1416,48 +1450,95 @@ Package pgfplots notification 'compat/show suggested version=true': document has
  been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count478
 (./Chapters/Development.tex
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+)
 LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
 
 (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-\g__nicematrix_max_cell_width_dim=\dimen372
-\l__nicematrix_cell_box=\box77
-\c@iRow=\count470
-\c@jCol=\count471
-\g__nicematrix_row_total_int=\count472
-\g__nicematrix_col_total_int=\count473
-\l__nicematrix_left_delim_dim=\dimen373
-\l__nicematrix_right_delim_dim=\dimen374
-\l__nicematrix_the_array_box=\box78
-\g__nicematrix_dp_row_zero_dim=\dimen375
-\g__nicematrix_ht_row_zero_dim=\dimen376
-\g__nicematrix_ht_row_one_dim=\dimen377
-\g__nicematrix_dp_ante_last_row_dim=\dimen378
-\g__nicematrix_ht_last_row_dim=\dimen379
-\g__nicematrix_dp_last_row_dim=\dimen380
-\g__nicematrix_ddots_int=\count474
-\g__nicematrix_iddots_int=\count475
-\g__nicematrix_delta_x_one_dim=\dimen381
-\g__nicematrix_delta_y_one_dim=\dimen382
-\g__nicematrix_delta_x_two_dim=\dimen383
-\g__nicematrix_delta_y_two_dim=\dimen384
-\l__nicematrix_initial_i_int=\count476
-\l__nicematrix_initial_j_int=\count477
-\l__nicematrix_final_i_int=\count478
-\l__nicematrix_final_j_int=\count479
-
-[1
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+\g__nicematrix_max_cell_width_dim=\dimen376
+\l__nicematrix_cell_box=\box79
+\c@iRow=\count479
+\c@jCol=\count480
+\g__nicematrix_row_total_int=\count481
+\g__nicematrix_col_total_int=\count482
+\l__nicematrix_left_delim_dim=\dimen377
+\l__nicematrix_right_delim_dim=\dimen378
+\l__nicematrix_the_array_box=\box80
+\g__nicematrix_dp_row_zero_dim=\dimen379
+\g__nicematrix_ht_row_zero_dim=\dimen380
+\g__nicematrix_ht_row_one_dim=\dimen381
+\g__nicematrix_dp_ante_last_row_dim=\dimen382
+\g__nicematrix_ht_last_row_dim=\dimen383
+\g__nicematrix_dp_last_row_dim=\dimen384
+\g__nicematrix_ddots_int=\count483
+\g__nicematrix_iddots_int=\count484
+\g__nicematrix_delta_x_one_dim=\dimen385
+\g__nicematrix_delta_y_one_dim=\dimen386
+\g__nicematrix_delta_x_two_dim=\dimen387
+\g__nicematrix_delta_y_two_dim=\dimen388
+\l__nicematrix_initial_i_int=\count485
+\l__nicematrix_initial_j_int=\count486
+\l__nicematrix_final_i_int=\count487
+\l__nicematrix_final_j_int=\count488
+ [1
 
 {C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]) [3]
-(./Chapters/Two_vsc.tex) [4] (./Main.aux)
+(./Chapters/Two_vsc.tex
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+
+LaTeX Warning: Citation '2020SciPy-NMeth' on page 4 undefined on input line 26.
+
+
+LaTeX Warning: Citation 'mckerns2012building' on page 4 undefined on input line 
+28.
+
+
+LaTeX Warning: Citation 'mckernsmystic' on page 4 undefined on input line 28.
+
+[4] [5] [6]
+PGFPlots: reading {Data/Data1/opt_3x_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_In2im.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_3x_Vn2.csv}
+PGFPlots: reading {Data/Data1/opt_3x_f_obj.csv}
+) [7
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+
+LaTeX Warning: Empty bibliography on input line 93.
+
+(./Main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1472,42 +1553,48 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54340 strings out of 478902
- 195338,2848258 words of node,token memory allocated
- 683 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 15 attribute, 84 glue_spec
-, 15 attribute_list, 2 write nodes
-   avail lists: 1:2,2:14233,3:6806,4:182,5:524,6:23,7:13269,8:60,9:4122,10:10,11
-:425
- 72578 multiletter control sequences out of 65536+200000
- 74 fonts using 6229823 bytes
- 108i,24n,105p,1212b,1077s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman7-
-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/
-lm/lmroman8-regular.otf><//?/c:/users/josep/appdata/local/programs/miktex/fonts/
-opentype/public/lm/lmromancaps10-regular.otf><C:/Users/Josep/AppData/Local/Progr
-ams/MiKTeX/fonts/opentype/public/lm/lmroman10-regular.otf><//?/c:/users/josep/ap
-pdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-bold.otf><C:/User
-s/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmb
-x6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmbx7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmbx8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users
-/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:
-/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.p
-fb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmsy7.pfb>
-Output written on Main.pdf (4 pages, 184223 bytes).
+ 56657 strings out of 478902
+ 745225,3417909 words of node,token memory allocated
+ 695 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 18 attribute, 84 glue_spec
+, 18 attribute_list, 2 write nodes
+   avail lists: 1:2,2:60516,3:56439,4:7270,5:7591,6:74,7:14440,8:61,9:18362,10:3
+6,11:1164
+ 74740 multiletter control sequences out of 65536+200000
+ 79 fonts using 6877063 bytes
+ 108i,24n,105p,1212b,2475s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmmono8-r
+egular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/l
+m/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentyp
+e/public/lm/lmmono10-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/f
+onts/opentype/public/lm/lmroman7-regular.otf><C:/Users/Josep/AppData/Local/Progr
+ams/MiKTeX/fonts/opentype/public/lm/lmroman8-regular.otf><//?/c:/users/josep/app
+data/local/programs/miktex/fonts/opentype/public/lm/lmromancaps10-regular.otf><C
+:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman10-r
+egular.otf><//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/publ
+ic/lm/lmroman12-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/Josep/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Josep/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Josep/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/
+Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:
+/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.
+pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Main.pdf (7 pages, 433012 bytes).
 
-PDF statistics: 113 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 155 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

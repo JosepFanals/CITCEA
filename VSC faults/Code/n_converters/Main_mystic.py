@@ -17,11 +17,11 @@ Y_con = [20, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LLG_'
+type_f = 'opt_3x_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 100
+n_p = 2000
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
 Yf_vec = fY_fault(15, 1, n_p)
 
@@ -45,7 +45,7 @@ f_vec = []
 # Optimize cases
 for iik in range(n_p):
     # Initialize data
-    Y_con = [Yf_vec[iik], 0, 0]
+    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Zv1 = Zin_vec[iik]
 
     # Call optimization
@@ -75,8 +75,8 @@ for iik in range(n_p):
 
     # ----------------------------
 
-    # ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
-    ff_obj = np.real(lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - abs(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + abs(Vn2_vec[-1])) ** 2)
+    ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
+    # ff_obj = np.real(lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - abs(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + abs(Vn2_vec[-1])) ** 2)
     f_vec.append(ff_obj)
     # print(ff_obj)
 
@@ -89,20 +89,22 @@ for iik in range(n_p):
 x_vec = Yf_vec
 pcnt = 0.8
 n_pp = int((1-pcnt) * n_p)
-# fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
-# fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')
-# fPlots(x_vec, Vn1_vec, folder + type_f + 'Vn1')
-# fPlots(x_vec, Vn2_vec, folder + type_f + 'Vn2')
+fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
+fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')
+fPlots(x_vec, Vn1_vec, folder + type_f + 'Vn1')
+fPlots(x_vec, Vn2_vec, folder + type_f + 'Vn2')
 
-# fPlots(x_vec, Ip1_re_vec, folder + type_f + 'Ip1re')
-# fPlots(x_vec, Ip1_im_vec, folder + type_f + 'Ip1im')
-# fPlots(x_vec, Ip2_re_vec, folder + type_f + 'Ip2re')
-# fPlots(x_vec, Ip2_im_vec, folder + type_f + 'Ip2im')
+fPlots(x_vec, Ip1_re_vec, folder + type_f + 'Ip1re')
+fPlots(x_vec, Ip1_im_vec, folder + type_f + 'Ip1im')
+fPlots(x_vec, Ip2_re_vec, folder + type_f + 'Ip2re')
+fPlots(x_vec, Ip2_im_vec, folder + type_f + 'Ip2im')
 
-# fPlots(x_vec, In1_re_vec, folder + type_f + 'In1re')
-# fPlots(x_vec, In1_im_vec, folder + type_f + 'In1im')
-# fPlots(x_vec, In2_re_vec, folder + type_f + 'In2re')
-# fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
+fPlots(x_vec, In1_re_vec, folder + type_f + 'In1re')
+fPlots(x_vec, In1_im_vec, folder + type_f + 'In1im')
+fPlots(x_vec, In2_re_vec, folder + type_f + 'In2re')
+fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
+
+fPlots(x_vec, f_vec, folder + type_f + 'f_obj')
 
 # Plots
 fig, axs = plt.subplots(3, 2)
