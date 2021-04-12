@@ -21,9 +21,9 @@ type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 2000
+n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(16, 14, n_p)
+Yf_vec = fY_fault(15, 1, n_p)
 
 # Store data
 Vp1_vec = []
@@ -75,10 +75,12 @@ for iik in range(n_p):
 
     # ----------------------------
 
-    print(x_opt[-1][0])
+    ff_obj = np.real((1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
+    f_vec.append(ff_obj)
+    print(ff_obj)
 
     # Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
-    Ii_t = x_opt[-1][0]
+    Ii_t = x_opt[8][0]
     # # print(Ii_t)
 
 
@@ -102,7 +104,7 @@ n_pp = int((1-pcnt) * n_p)
 # fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
 
 # Plots
-fig, axs = plt.subplots(2, 2)
+fig, axs = plt.subplots(3, 2)
 axs[0, 0].plot(x_vec[n_pp:], Ip1_re_vec[n_pp:])
 axs[0, 0].plot(x_vec[n_pp:], Ip2_re_vec[n_pp:])
 axs[0, 0].set_title('Axis [0, 0]')
@@ -115,6 +117,9 @@ axs[1, 0].set_title('Axis [1, 0]')
 axs[1, 1].plot(x_vec[n_pp:], In1_im_vec[n_pp:])
 axs[1, 1].plot(x_vec[n_pp:], In2_im_vec[n_pp:])
 axs[1, 1].set_title('Axis [1, 1]')
+axs[2, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
+axs[2, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
+axs[2, 0].set_title('f')
 
 
 

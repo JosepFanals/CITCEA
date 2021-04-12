@@ -150,6 +150,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = diffev2(objective_f, x0=Ii_t, npop=10, gtol=200, disp=False, full_output=True, itermon=mon, maxiter=1000)
 
     I_sol = result
+    # ff_obj = obj_fun(I_sol)
     # I_sol = sol.x
     # print(I_sol)
 
