@@ -75,9 +75,9 @@ for iik in range(n_p):
 
     # ----------------------------
 
-    ff_obj = np.real((1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
+    ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
     f_vec.append(ff_obj)
-    print(ff_obj)
+    # print(ff_obj)
 
     # Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
     Ii_t = x_opt[8][0]
