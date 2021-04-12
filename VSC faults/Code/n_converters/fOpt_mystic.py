@@ -113,7 +113,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
         # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2)
         # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
-        suma = np.real(lam_vec[0] * (1 - Vp1 * np.conj(Vp1)) ** 2 + lam_vec[1] * (0 + Vn1 * np.conj(Vn1)) ** 2 + lam_vec[2] * (1 - Vp2 * np.conj(Vp2)) ** 2 + lam_vec[3] * (0 + Vn2 * np.conj(Vn2)) ** 2)
+        # suma = np.real(lam_vec[0] * (1 - Vp1 * np.conj(Vp1)) ** 2 + lam_vec[1] * (0 + Vn1 * np.conj(Vn1)) ** 2 + lam_vec[2] * (1 - Vp2 * np.conj(Vp2)) ** 2 + lam_vec[3] * (0 + Vn2 * np.conj(Vn2)) ** 2)
+        suma = np.real(lam_vec[0] * (1 - abs(Vp1)) ** 2 + lam_vec[1] * (0 + abs(Vn1)) ** 2 + lam_vec[2] * (1 - abs(Vp2)) ** 2 + lam_vec[3] * (0 + abs(Vn2)) ** 2)
         return suma
 
     def penalty_mean(x, target):
