@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  13 APR 2021 22:56
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  14 APR 2021 00:03
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Nort
@@ -1403,9 +1403,8 @@ Package biblatex Info: Automatic encoding selection.
 
 \openout3 = Main.bcf
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'Main.bbl' not found.
-
-No file Main.bbl.
+Package biblatex Info: ... file 'Main.bbl' found.
+ (./Main.bbl)
 Package biblatex Info: Reference section=0 on input line 71.
 Package biblatex Info: Reference segment=0 on input line 71.
 LaTeX Info: Redefining \microtypecontext on input line 71.
@@ -1507,18 +1506,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-
-LaTeX Warning: Citation '2020SciPy-NMeth' on page 4 undefined on input line 26.
-
-
-LaTeX Warning: Citation 'mckerns2012building' on page 4 undefined on input line 
-28.
-
-
-LaTeX Warning: Citation 'mckernsmystic' on page 4 undefined on input line 28.
-
-[4] [5] [6]
+ [4] [5] [6]
 PGFPlots: reading {Data/Data1/opt_3x_Ip1re.csv}
 
 NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
@@ -1574,6 +1562,8 @@ PGFPlots: reading {Data/Data2/opt_3x_Vn2.csv}
 PGFPlots: reading {Data/Data2/opt_3x_f_obj.csv}
 [7
 Missing character: There is no ; (U+003B) in font nullfont!
+] [8
+Missing character: There is no ; (U+003B) in font nullfont!
 ]
 PGFPlots: reading {Data/Data1/opt_LG_Ip1re.csv}
 PGFPlots: reading {Data/Data1/opt_LG_Ip2re.csv}
@@ -1588,6 +1578,26 @@ PGFPlots: reading {Data/Data1/opt_LG_Vp2.csv}
 PGFPlots: reading {Data/Data1/opt_LG_Vn1.csv}
 PGFPlots: reading {Data/Data1/opt_LG_Vn2.csv}
 PGFPlots: reading {Data/Data1/opt_LG_f_obj.csv}
+ [9
+
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data2/opt_LG_Ip1re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Ip2re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Ip1im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Ip2im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In1re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In2re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In1im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In2im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vp1.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vp2.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vn1.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vn2.csv}
+PGFPlots: reading {Data/Data2/opt_LG_f_obj.csv}
+ [10
+Missing character: There is no ; (U+003B) in font nullfont!
+]
 PGFPlots: reading {Data/Data1/opt_LL_Ip1re.csv}
 PGFPlots: reading {Data/Data1/opt_LL_Ip2re.csv}
 PGFPlots: reading {Data/Data1/opt_LL_Ip1im.csv}
@@ -1601,6 +1611,26 @@ PGFPlots: reading {Data/Data1/opt_LL_Vp2.csv}
 PGFPlots: reading {Data/Data1/opt_LL_Vn1.csv}
 PGFPlots: reading {Data/Data1/opt_LL_Vn2.csv}
 PGFPlots: reading {Data/Data1/opt_LL_f_obj.csv}
+ [11
+
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data2/opt_LL_Ip1re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Ip2re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Ip1im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Ip2im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In1re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In2re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In1im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In2im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vp1.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vp2.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vn1.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vn2.csv}
+PGFPlots: reading {Data/Data2/opt_LL_f_obj.csv}
+ [12
+Missing character: There is no ; (U+003B) in font nullfont!
+]
 PGFPlots: reading {Data/Data1/opt_LLG_Ip1re.csv}
 
 NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
@@ -1631,26 +1661,34 @@ opped because of a coordinate filter.
 PGFPlots: reading {Data/Data1/opt_LLG_f_obj.csv}
 NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
 opped because of a coordinate filter.
-) [8]
+[13
 
-LaTeX Warning: Empty bibliography on input line 93.
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data2/opt_LLG_Ip1re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Ip2re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Ip1im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Ip2im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In1re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In2re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In1im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In2im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vp1.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vp2.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vn1.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vn2.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_f_obj.csv}
 
-[9
+
+LaTeX Warning: Float too large for page by 0.32634pt on input line 885.
+
+) [14
 Missing character: There is no ; (U+003B) in font nullfont!
-] [10
-Missing character: There is no ; (U+003B) in font nullfont!
-] [11
-Missing character: There is no ; (U+003B) in font nullfont!
-] [12
-Missing character: There is no ; (U+003B) in font nullfont!
+] [15
+
 ] (./Main.aux)
 
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                Main
-(biblatex)                and rerun LaTeX afterwards.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package logreq Info: Writing requests to 'Main.run.xml'.
 
@@ -1658,48 +1696,50 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 57200 strings out of 478902
- 745226,3417909 words of node,token memory allocated
- 695 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 18 attribute, 84 glue_spec
+ 57617 strings out of 478902
+ 745206,3417909 words of node,token memory allocated
+ 705 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 18 attribute, 86 glue_spec
 , 18 attribute_list, 2 write nodes
-   avail lists: 1:2,2:92086,3:60987,4:7270,5:7591,6:74,7:14440,8:61,9:18362,10:3
-6,11:1164
- 74971 multiletter control sequences out of 65536+200000
- 79 fonts using 6877063 bytes
- 108i,24n,105p,1212b,2490s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmmono8-r
-egular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/l
-m/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentyp
-e/public/lm/lmmono10-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/f
-onts/opentype/public/lm/lmroman7-regular.otf><C:/Users/Josep/AppData/Local/Progr
-ams/MiKTeX/fonts/opentype/public/lm/lmroman8-regular.otf><//?/c:/users/josep/app
-data/local/programs/miktex/fonts/opentype/public/lm/lmromancaps10-regular.otf><C
-:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman10-r
-egular.otf><//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/publ
-ic/lm/lmroman12-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/Josep/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Josep/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Josep/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/
-Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:
-/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.
-pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Main.pdf (12 pages, 679293 bytes).
+   avail lists: 1:3,2:73380,3:61083,4:7270,5:7589,6:76,7:14440,8:60,9:18362,10:3
+6,11:1154
+ 75149 multiletter control sequences out of 65536+200000
+ 80 fonts using 7008815 bytes
+ 108i,24n,105p,1212b,2502s stack positions out of 5000i,500n,10000p,200000b,50000s
+<//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
+an10-italic.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/pub
+lic/lm/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/op
+entype/public/lm/lmmono8-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKT
+eX/fonts/opentype/public/lm/lmmono10-regular.otf><C:/Users/Josep/AppData/Local/P
+rograms/MiKTeX/fonts/opentype/public/lm/lmroman7-regular.otf><C:/Users/Josep/App
+Data/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman8-regular.otf><//?/c:
+/users/josep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmromancaps1
+0-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/publi
+c/lm/lmroman10-regular.otf><//?/c:/users/josep/appdata/local/programs/miktex/fon
+ts/opentype/public/lm/lmroman12-bold.otf><C:/Users/Josep/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/Josep/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Josep/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/
+Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
+:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Jose
+p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Use
+rs/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
+y8.pfb>
+Output written on Main.pdf (15 pages, 739285 bytes).
 
-PDF statistics: 172 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 188 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
