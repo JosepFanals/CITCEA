@@ -13,17 +13,17 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [20, 0, 0]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LLG_'
+type_f = 'opt_LG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 1000
-# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(10, 1, n_p)
+n_p = 100
+[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
+# Yf_vec = fY_fault(50, 250, n_p)
 
 # Store data
 Vp1_vec = []
@@ -47,10 +47,10 @@ for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
-    # Y_con = [Yf_vec[iik], 0, 0]
-    Y_con = [1000, 0, 0]
     Y_gnd = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
+    # Y_con = [1000, 0, 0]
+    # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
 
     # Call optimization
@@ -128,6 +128,10 @@ axs[1, 1].set_title('Axis [1, 1]')
 axs[2, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
 axs[2, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
 axs[2, 0].set_title('f')
+axs[2, 1].plot(x_vec[n_pp:], Vn1_vec[n_pp:])
+axs[2, 1].plot(x_vec[n_pp:], Vn2_vec[n_pp:])
+axs[2, 0].set_title('f')
+
 
 
 
