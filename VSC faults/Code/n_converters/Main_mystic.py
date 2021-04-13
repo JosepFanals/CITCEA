@@ -17,13 +17,13 @@ Y_con = [20, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_3x_'
+type_f = 'opt_LLG_'
 folder = 'Data1/'
 
 # RX variation
-n_p = 2000
+n_p = 1000
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, 0.05)  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(15, 1, n_p)
+Yf_vec = fY_fault(10, 1, n_p)
 
 # Store data
 Vp1_vec = []
@@ -45,7 +45,12 @@ f_vec = []
 # Optimize cases
 for iik in range(n_p):
     # Initialize data
-    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_gnd = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
+    Y_con = [1000, 0, 0]
+    Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
 
     # Call optimization

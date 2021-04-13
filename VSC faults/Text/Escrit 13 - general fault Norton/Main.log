@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  12 APR 2021 23:49
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  13 APR 2021 18:10
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Nort
@@ -1532,7 +1532,65 @@ PGFPlots: reading {Data/Data1/opt_3x_Vp2.csv}
 PGFPlots: reading {Data/Data1/opt_3x_Vn1.csv}
 PGFPlots: reading {Data/Data1/opt_3x_Vn2.csv}
 PGFPlots: reading {Data/Data1/opt_3x_f_obj.csv}
-) [7
+PGFPlots: reading {Data/Data1/opt_LG_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In2im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vn2.csv}
+PGFPlots: reading {Data/Data1/opt_LG_f_obj.csv}
+ [7
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data1/opt_LL_Ip1re.csv}
+
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_Ip2re.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_Ip1im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_Ip2im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_In1re.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_In2re.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_In1im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_In2im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_Vp1.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_Vp2.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_Vn1.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_Vn2.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LL_f_obj.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+[8
+Missing character: There is no ; (U+003B) in font nullfont!
+]) [9
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 
@@ -1553,16 +1611,16 @@ Package logreq Info: Writing requests to 'Main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 56657 strings out of 478902
- 745225,3417909 words of node,token memory allocated
+ 56921 strings out of 478902
+ 931532,4101490 words of node,token memory allocated
  695 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 18 attribute, 84 glue_spec
 , 18 attribute_list, 2 write nodes
-   avail lists: 1:2,2:60516,3:56439,4:7270,5:7591,6:74,7:14440,8:61,9:18362,10:3
-6,11:1164
- 74740 multiletter control sequences out of 65536+200000
+   avail lists: 1:4,2:119880,3:84191,4:7270,5:7591,6:74,7:14440,8:61,9:18362,10:
+36,11:1164
+ 74848 multiletter control sequences out of 65536+200000
  79 fonts using 6877063 bytes
- 108i,24n,105p,1212b,2475s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 108i,24n,105p,1212b,2488s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmmono8-r
 egular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/public/l
 m/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentyp
@@ -1592,9 +1650,9 @@ X/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs
 Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData
 /Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Main.pdf (7 pages, 433012 bytes).
+Output written on Main.pdf (9 pages, 756029 bytes).
 
-PDF statistics: 155 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 161 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
