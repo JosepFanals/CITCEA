@@ -1,6 +1,6 @@
 import numpy as np
-from fOptimal_2VSC import fOptimal
-from fOpt_mystic import fOptimal_mystic
+# from fOptimal_2VSC import fOptimal
+from fOpt_2VSC import fOptimal_mystic
 from Plots import fPlots
 from Functions import fZ_rx, fY_fault, x012_to_abc
 import pandas as pd
@@ -21,7 +21,7 @@ type_f = 'opt_LLG_'
 folder = 'Data2/'
 
 # RX variation
-n_p = 200
+n_p = 20
 [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(50, 250, n_p)
 

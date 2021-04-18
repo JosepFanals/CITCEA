@@ -72,6 +72,37 @@ def build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd):
     return [m1_inv, Ig_v]
 
 
+def build_static_objects1(V_mod, Zv1, Zt, Y_con, Y_gnd):
+    # Admittances to build the matrices
+    Yv1 = 1 / Zv1
+    Yt = 1 / Zt
+
+    It_mod = V_mod * Yt
+
+    # Admittance matrices
+    m0 = np.zeros((3,3), dtype=complex)
+
+    Yv1_m = np.zeros((3,3), dtype=complex)
+    np.fill_diagonal(Yv1_m, Yv1)
+
+    Yt_m = np.zeros((3,3), dtype=complex)
+    np.fill_diagonal(Yt_m, Yt)
+
+    Yf_m = Yv1_m + Yt_m
+    Yf_m[0,:] += [Y_gnd[0] + Y_con[0] + Y_con[2], -Y_con[0], -Y_con[2]]
+    Yf_m[1,:] += [-Y_con[0], Y_gnd[1] + Y_con[0] + Y_con[1], -Y_con[1]]
+    Yf_m[2,:] += [-Y_con[2], -Y_con[1], Y_gnd[2] + Y_con[2] + Y_con[1]]
+
+    m1 = np.block([[Yv1_m, -Yv1_m], [-Yv1_m, Yf_m]])
+    m1_inv = np.linalg.inv(m1)
+
+    Ig_v = np.zeros((3,1), dtype=complex)
+    a = np.exp(120 * np.pi / 180 * 1j)
+    Ig_v[0:3] = [[It_mod], [It_mod * a ** 2], [It_mod * a]]
+
+    return [m1_inv, Ig_v]
+
+
 def fZ_rx(lim1, lim2, n_p, Zthmod):
     diff = lim1 - lim2
     incr = diff / n_p

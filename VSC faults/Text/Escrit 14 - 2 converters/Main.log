@@ -1,0 +1,1745 @@
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  14 APR 2021 00:03
+ restricted system commands enabled.
+ file:line:error style messages enabled.
+**"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Nort
+on/Main"
+
+("c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Norto
+n/Main.tex"
+LaTeX2e <2020-10-01> patch level 2
+Lua module: luaotfload-main 2020-09-02 3.15 luaotfload entry point
+Lua module: luaotfload-init 2020-09-02 3.15 luaotfload submodule / initializatio
+n
+Lua module: lualibs 2020-08-31 2.72 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2020-08-31 2.72 ConTeXt Lua libraries -- extended c
+ollection.
+Lua module: luaotfload-log 2020-09-02 3.15 luaotfload submodule / logging
+Lua module: luaotfload-parsers 2020-09-02 3.15 luaotfload submodule / parsers
+Lua module: luaotfload-configuration 2020-09-02 3.15 luaotfload submodule / conf
+ig file reader
+luaotfload | conf : Root cache directory is "C:/Users/Josep/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2020-08-31.lua" from kpse-res
+olved path "C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/f
+ontloader-2020-08-31.lua".
+Lua-only attribute luaotfload@noligature = 1
+Lua-only attribute luaotfload@syllabe = 2
+luaotfload | init : Context OpenType loader version 0x1.8e353f7ced917p+1
+Lua module: luaotfload-fallback 2020-09-02 3.15 luaotfload submodule / fallback
+Lua module: luaotfload-multiscript 2020-09-02 3.15 luaotfload submodule / multis
+cript
+Lua module: luaotfload-script 2020-09-02 3.15 luaotfload submodule / Script help
+ers
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
+Lua module: luaotfload-loaders 2020-09-02 3.15 luaotfload submodule / callback h
+andling
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua module: luaotfload-database 2020-09-02 3.15 luaotfload submodule / database
+Lua module: luaotfload-unicode 2020-09-02 3.15 luaotfload submodule / Unicode he
+lpers
+Lua module: luaotfload-colors 2020-09-02 3.15 luaotfload submodule / color
+Lua-only attribute luaotfload_color_attribute = 3
+Lua module: luaotfload-resolvers 2020-09-02 3.15 luaotfload submodule / resolver
+s
+luaotfload | conf : Root cache directory is "C:/Users/Josep/AppData/Local/MiKTeX
+/luatex-cache/generic/names".
+Lua module: luaotfload-features 2020-09-02 3.15 luaotfload submodule / features
+Lua module: luaotfload-harf-define 2020-09-02 3.15 luaotfload submodule / HarfBu
+zz font loading
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
+Lua module: luaotfload-harf-plug 2020-09-02 3.15 luaotfload submodule / HarfBuzz
+ shaping
+Inserting `Harf pre_output_filter callback' at position 1 in `pre_output_filter'
+.
+Inserting `Harf wrapup_run callback' at position 1 in `wrapup_run'.
+Inserting `Harf finish_pdffile callback' at position 1 in `finish_pdffile'.
+Inserting `Harf glyph_info callback' at position 1 in `glyph_info'.
+Lua module: luaotfload-letterspace 2020-09-02 3.15 luaotfload submodule / letter
+spacing
+Lua module: luaotfload-embolden 2020-09-02 3.15 luaotfload submodule / embolden
+Lua module: luaotfload-notdef 2020-09-02 3.15 luaotfload submodule / notdef
+Lua module: luaotfload-suppress 2020-09-02 3.15 luaotfload submodule / suppress
+Lua module: luaotfload-szss 2020-09-02 3.15 luaotfload submodule / Special featu
+re handling
+Lua module: luaotfload-auxiliary 2020-09-02 3.15 luaotfload submodule / auxiliar
+y functions
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_fon
+t'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 3 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
+Lua module: luaotfload-tounicode 2020-09-02 3.15 luaotfload submodule / tounicod
+e
+Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
+. L3 programming layer <2020-12-07> xparse <2020-03-03>
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from C:/Users/Josep/AppData/Local/M
+iKTeX/luatex-cache/generic/names/luaotfload-names.luc)
+\c@part=\count173
+\c@section=\count174
+\c@subsection=\count175
+\c@subsubsection=\count176
+\c@paragraph=\count177
+\c@subparagraph=\count178
+\c@figure=\count179
+\c@table=\count180
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count181
+\Gm@cntv=\count182
+\c@Gm@tempcnt=\count183
+\Gm@bindingoffset=\dimen139
+\Gm@wd@mp=\dimen140
+\Gm@odd@mp=\dimen141
+\Gm@even@mp=\dimen142
+\Gm@layoutwidth=\dimen143
+\Gm@layoutheight=\dimen144
+\Gm@layouthoffset=\dimen145
+\Gm@layoutvoffset=\dimen146
+\Gm@dimlist=\toks16
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/geometry/geometry.cfg))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2020/08/23 v3.15a programmable bibliographies (PK/MW)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+
+ (C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks17
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count184
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count185
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count186
+\c@listtotal=\count187
+\c@listcount=\count188
+\c@liststart=\count189
+\c@liststop=\count190
+\c@citecount=\count191
+\c@citetotal=\count192
+\c@multicitecount=\count193
+\c@multicitetotal=\count194
+\c@instcount=\count195
+\c@maxnames=\count196
+\c@minnames=\count197
+\c@maxitems=\count198
+\c@minitems=\count199
+\c@citecounter=\count266
+\c@maxcitecounter=\count267
+\c@savedcitecounter=\count268
+\c@uniquelist=\count269
+\c@uniquename=\count270
+\c@refsection=\count271
+\c@refsegment=\count272
+\c@maxextratitle=\count273
+\c@maxextratitleyear=\count274
+\c@maxextraname=\count275
+\c@maxextradate=\count276
+\c@maxextraalpha=\count277
+\c@abbrvpenalty=\count278
+\c@highnamepenalty=\count279
+\c@lownamepenalty=\count280
+\c@maxparens=\count281
+\c@parenlevel=\count282
+\blx@tempcnta=\count283
+\blx@tempcntb=\count284
+\blx@tempcntc=\count285
+\blx@maxsection=\count286
+\blx@maxsegment@0=\count287
+\blx@notetype=\count288
+\blx@parenlevel@text=\count289
+\blx@parenlevel@foot=\count290
+\blx@sectionciteorder@0=\count291
+\blx@entrysetcounter=\count292
+\blx@biblioinstance=\count293
+\labelnumberwidth=\skip49
+\labelalphawidth=\skip50
+\biblabelsep=\skip51
+\bibitemsep=\skip52
+\bibnamesep=\skip53
+\bibinitsep=\skip54
+\bibparsep=\skip55
+\bibhang=\skip56
+\blx@bcfin=\read2
+\blx@bcfout=\write3
+\blx@langwohyphens=\language2
+\c@mincomprange=\count294
+\c@maxcomprange=\count295
+\c@mincompwidth=\count296
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count297
+\c@savedafterword=\count298
+\c@annotator=\count299
+\c@savedannotator=\count300
+\c@author=\count301
+\c@savedauthor=\count302
+\c@bookauthor=\count303
+\c@savedbookauthor=\count304
+\c@commentator=\count305
+\c@savedcommentator=\count306
+\c@editor=\count307
+\c@savededitor=\count308
+\c@editora=\count309
+\c@savededitora=\count310
+\c@editorb=\count311
+\c@savededitorb=\count312
+\c@editorc=\count313
+\c@savededitorc=\count314
+\c@foreword=\count315
+\c@savedforeword=\count316
+\c@holder=\count317
+\c@savedholder=\count318
+\c@introduction=\count319
+\c@savedintroduction=\count320
+\c@namea=\count321
+\c@savednamea=\count322
+\c@nameb=\count323
+\c@savednameb=\count324
+\c@namec=\count325
+\c@savednamec=\count326
+\c@translator=\count327
+\c@savedtranslator=\count328
+\c@shortauthor=\count329
+\c@savedshortauthor=\count330
+\c@shorteditor=\count331
+\c@savedshorteditor=\count332
+\c@labelname=\count333
+\c@savedlabelname=\count334
+\c@institution=\count335
+\c@savedinstitution=\count336
+\c@lista=\count337
+\c@savedlista=\count338
+\c@listb=\count339
+\c@savedlistb=\count340
+\c@listc=\count341
+\c@savedlistc=\count342
+\c@listd=\count343
+\c@savedlistd=\count344
+\c@liste=\count345
+\c@savedliste=\count346
+\c@listf=\count347
+\c@savedlistf=\count348
+\c@location=\count349
+\c@savedlocation=\count350
+\c@organization=\count351
+\c@savedorganization=\count352
+\c@origlocation=\count353
+\c@savedoriglocation=\count354
+\c@origpublisher=\count355
+\c@savedorigpublisher=\count356
+\c@publisher=\count357
+\c@savedpublisher=\count358
+\c@language=\count359
+\c@savedlanguage=\count360
+\c@origlanguage=\count361
+\c@savedoriglanguage=\count362
+\c@pageref=\count363
+\c@savedpageref=\count364
+\shorthandwidth=\skip57
+\shortjournalwidth=\skip58
+\shortserieswidth=\skip59
+\shorttitlewidth=\skip60
+\shortauthorwidth=\skip61
+\shorteditorwidth=\skip62
+\locallabelnumberwidth=\skip63
+\locallabelalphawidth=\skip64
+\localshorthandwidth=\skip65
+\localshortjournalwidth=\skip66
+\localshortserieswidth=\skip67
+\localshorttitlewidth=\skip68
+\localshortauthorwidth=\skip69
+\localshorteditorwidth=\skip70
+Package biblatex Info: Trying to load enhanced support for Unicode engines...
+Package biblatex Info: ... file 'blx-unicode.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-unicode.de
+f)
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-12-07 L3 programming layer (loader) 
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
+tex.def
+File: l3backend-luatex.def 2020-09-24 L3 backend support: PDF output (LuaTeX)
+\l__kernel_color_stack_int=\count365
+\l__pdf_internal_box=\box47
+))
+Package biblatex Info: expl3
+(biblatex)             2020-12-07 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+Package biblatex Info: Trying to load expl3 case changing code...
+Package biblatex Info: ... file 'blx-case-expl3.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/blx-case-expl3
+.def
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e.sty
+Package: xparse 2020-10-27 L3 Experimental document command parser
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/xparse/xpars
+e-generic.tex))
+File: blx-case-expl3 2020/08/23 v3.15a expl3 case changing code for biblatex
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+\c@textcitecount=\count366
+\c@textcitetotal=\count367
+\c@textcitemaxnames=\count368
+\c@biburlbigbreakpenalty=\count369
+\c@biburlbreakpenalty=\count370
+\c@biburlnumpenalty=\count371
+\c@biburlucpenalty=\count372
+\c@biburllcpenalty=\count373
+\biburlbigskip=\muskip17
+\biburlnumskip=\muskip18
+\biburlucskip=\muskip19
+\biburllcskip=\muskip20
+\c@smartand=\count374
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/bbx/numeric.bb
+x
+File: numeric.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/bbx/standard.b
+bx
+File: standard.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count375
+\c@bbx:relatedtotal=\count376
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/cbx/numeric.cb
+x
+File: numeric.cbx 2020/08/23 v3.15a biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+)) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/bm.sty
+Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup4
+\symboldletters=\mathgroup5
+\symboldsymbols=\mathgroup6
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 209.
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip71
+
+For additional information on amsmath, use the `?' option.
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen147
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+LaTeX Info: Redefining \boldsymbol on input line 28.
+\pmbraise@=\dimen148
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count377
+LaTeX Info: Redefining \frac on input line 236.
+\uproot@=\count378
+\leftroot@=\count379
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count380
+\DOTSCASE@=\count381
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box48
+\strutbox@=\box49
+\big@size=\dimen149
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count382
+\c@MaxMatrixCols=\count383
+\dotsspace@=\muskip21
+\c@parentequation=\count384
+\dspbrk@lvl=\count385
+\tag@help=\toks19
+\row@=\count386
+\column@=\count387
+\maxfields@=\count388
+\andhelp@=\toks20
+\eqnshift@=\dimen150
+\alignsep@=\dimen151
+\tagshift@=\dimen152
+\tagwidth@=\dimen153
+\totwidth@=\dimen154
+\lineht@=\dimen155
+\@envbody=\toks21
+\multlinegap=\skip72
+\multlinetaggap=\skip73
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/microtype.sty
+Package: microtype 2020/12/07 v2.8 Micro-typographical refinements (RS)
+\MT@toks=\toks23
+\MT@count=\count389
+LaTeX Info: Redefining \textls on input line 788.
+\MT@outer@kern=\dimen156
+LaTeX Info: Redefining \textmicrotypecontext on input line 1358.
+\MT@listname@count=\count390
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/microtype-luatex.def
+File: microtype-luatex.def 2020/12/07 v2.8 Definitions specific to luatex (RS)
+Module microtype Info: overwriting function `keepligature' on input line 59
+LaTeX Info: Redefining \lsstyle on input line 706.
+LaTeX Info: Redefining \lslig on input line 706.
+\MT@outer@space=\skip74
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2020/12/07 v2.8 microtype main configuration file (RS)
+)
+
+Package microtype Warning: The protrusion set `noncompatibility' is undeclared.
+(microtype)                Using set `alltext' instead.
+
+
+Package microtype Warning: The expansion set `noncompatibility' is undeclared.
+(microtype)                Using set `alltext-nott' instead.
+
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/frontendlayer/tikz.
+sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfrcs.st
+y
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common.tex
+\pgfutil@everybye=\toks24
+\pgfutil@tempdima=\dimen157
+\pgfutil@tempdimb=\dimen158
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-common-lists.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
+-latex.def
+\pgfutil@abb=\box50
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfrcs.
+code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2020/12/01 v3.1.7a (3.1.7a)
+))
+Package: pgf 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/basiclayer/pgfcore.
+sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 105.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.def
+File: luatex.def 2020/10/05 v1.2a Graphics/color driver for luatex
+))
+\Gin@req@height=\dimen159
+\Gin@req@width=\dimen160
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/systemlayer/pgfsys.
+sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s.code.tex
+Package: pgfsys 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex
+\pgfkeys@pathtoks=\toks25
+\pgfkeys@temptoks=\toks26
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+filtered.code.tex
+\pgfkeys@tmptoks=\toks27
+))
+\pgf@x=\dimen161
+\pgf@y=\dimen162
+\pgf@xa=\dimen163
+\pgf@ya=\dimen164
+\pgf@xb=\dimen165
+\pgf@yb=\dimen166
+\pgf@xc=\dimen167
+\pgf@yc=\dimen168
+\pgf@xd=\dimen169
+\pgf@yd=\dimen170
+\w@pgf@writea=\write4
+\r@pgf@reada=\read3
+\c@pgf@counta=\count391
+\c@pgf@countb=\count392
+\c@pgf@countc=\count393
+\c@pgf@countd=\count394
+\t@pgf@toka=\toks28
+\t@pgf@tokb=\toks29
+\t@pgf@tokc=\toks30
+\pgf@sys@id@count=\count395
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
+fg
+File: pgf.cfg 2020/12/01 v3.1.7a (3.1.7a)
+)
+Driver file for pgf: pgfsys-luatex.def
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-luatex.def
+File: pgfsys-luatex.def 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+s-common-pdf.def
+File: pgfsys-common-pdf.def 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+ssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfsyssoftpath@smallbuffer@items=\count396
+\pgfsyssoftpath@bigbuffer@items=\count397
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgfsy
+sprotocol.code.tex
+File: pgfsysprotocol.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+e.code.tex
+Package: pgfcore 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathcalc.
+code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathutil.
+code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathparse
+r.code.tex
+\pgfmath@dimen=\dimen171
+\pgfmath@count=\count398
+\pgfmath@box=\box51
+\pgfmath@toks=\toks31
+\pgfmath@stack@operand=\toks32
+\pgfmath@stack@operation=\toks33
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.basic.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.trigonometric.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.random.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.comparison.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.base.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.round.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.misc.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
+ions.integerarithmetics.code.tex)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfloat
+.code.tex
+\c@pgfmathroundto@lastzeros=\count399
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfint.code.
+tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epoints.code.tex
+File: pgfcorepoints.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@picminx=\dimen172
+\pgf@picmaxx=\dimen173
+\pgf@picminy=\dimen174
+\pgf@picmaxy=\dimen175
+\pgf@pathminx=\dimen176
+\pgf@pathmaxx=\dimen177
+\pgf@pathminy=\dimen178
+\pgf@pathmaxy=\dimen179
+\pgf@xx=\dimen180
+\pgf@xy=\dimen181
+\pgf@yx=\dimen182
+\pgf@yy=\dimen183
+\pgf@zx=\dimen184
+\pgf@zy=\dimen185
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@path@lastx=\dimen186
+\pgf@path@lasty=\dimen187
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathusage.code.tex
+File: pgfcorepathusage.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@shorten@end@additional=\dimen188
+\pgf@shorten@start@additional=\dimen189
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+escopes.code.tex
+File: pgfcorescopes.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfpic=\box52
+\pgf@hbox=\box53
+\pgf@layerbox@main=\box54
+\pgf@picture@serial@count=\count400
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+egraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgflinewidth=\dimen190
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransformations.code.tex
+File: pgfcoretransformations.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@pt@x=\dimen191
+\pgf@pt@y=\dimen192
+\pgf@pt@temp=\dimen193
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+equick.code.tex
+File: pgfcorequick.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eobjects.code.tex
+File: pgfcoreobjects.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+earrows.code.tex
+File: pgfcorearrows.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfarrowsep=\dimen194
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eshade.code.tex
+File: pgfcoreshade.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@max=\dimen195
+\pgf@sys@shading@range@num=\count401
+\pgf@shadingcount=\count402
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eimage.code.tex
+File: pgfcoreimage.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+eexternal.code.tex
+File: pgfcoreexternal.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfexternal@startupbox=\box55
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+elayers.code.tex
+File: pgfcorelayers.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+etransparency.code.tex
+File: pgfcoretransparency.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+epatterns.code.tex
+File: pgfcorepatterns.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/basiclayer/pgfcor
+erdf.code.tex
+File: pgfcorerdf.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+shapes.code.tex
+File: pgfmoduleshapes.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfnodeparttextbox=\box56
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+plot.code.tex
+File: pgfmoduleplot.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-0-65.sty
+Package: pgfcomp-version-0-65 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@nodesepstart=\dimen196
+\pgf@nodesepend=\dimen197
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/compatibility/pgfco
+mp-version-1-18.sty
+Package: pgfcomp-version-1-18 2020/12/01 v3.1.7a (3.1.7a)
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgffor.st
+y
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/utilities/pgfkeys.s
+ty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
+.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgf/math/pgfmath.sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgffor.
+code.tex
+Package: pgffor 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmath.code
+.tex)
+\pgffor@iter=\dimen198
+\pgffor@skip=\dimen199
+\pgffor@stack=\toks34
+\pgffor@toks=\toks35
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/tikz.code.tex
+Package: tikz 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@plot@mark@count=\count403
+\pgfplotmarksize=\dimen256
+)
+\tikz@lastx=\dimen257
+\tikz@lasty=\dimen258
+\tikz@lastxsaved=\dimen259
+\tikz@lastysaved=\dimen260
+\tikz@lastmovetox=\dimen261
+\tikz@lastmovetoy=\dimen262
+\tikzleveldistance=\dimen263
+\tikzsiblingdistance=\dimen264
+\tikz@figbox=\box57
+\tikz@figbox@bg=\box58
+\tikz@tempbox=\box59
+\tikz@tempbox@bg=\box60
+\tikztreelevel=\count404
+\tikznumberofchildren=\count405
+\tikznumberofcurrentchild=\count406
+\tikz@fig@count=\count407
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+matrix.code.tex
+File: pgfmodulematrix.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfmatrixcurrentrow=\count408
+\pgfmatrixcurrentcolumn=\count409
+\pgf@matrix@numberofcolumns=\count410
+)
+\tikz@expandcount=\count411
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/circuitikz/circuitikz.sty
+Package: circuitikz 2020/12/16{} The CircuiTikz circuit drawing package version 
+1.2.6
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgfarrowinset=\dimen265
+\pgfarrowlength=\dimen266
+\pgfarrowwidth=\dimen267
+\pgfarrowlinewidth=\dimen268
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarybending.code.tex
+File: tikzlibrarybending.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+bending.code.tex
+File: pgfmodulebending.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+nonlineartransformations.code.tex
+File: pgfmodulenonlineartransformations.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgftransformnonlinearflatness=\dimen269
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+arycurvilinear.code.tex
+File: pgflibrarycurvilinear.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+\pgf@curvilinear@time@a=\dimen270
+\pgf@curvilinear@length@a=\dimen271
+\pgf@curvilinear@length@b=\dimen272
+\pgf@curvilinear@length@c=\dimen273
+\pgf@curvilinear@length@d=\dimen274
+)
+\pgf@arrows@the@rigidity=\dimen275
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryfpu.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryfpu.code.tex))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirc.defines.t
+ex
+\pgf@circ@count@a=\count412
+\pgf@circ@count@b=\count413
+\pgf@circ@count@c=\count414
+\pgf@circ@res@up=\dimen276
+\pgf@circ@res@down=\dimen277
+\pgf@circ@res@zero=\dimen278
+\pgf@circ@res@left=\dimen279
+\pgf@circ@res@right=\dimen280
+\pgf@circ@res@other=\dimen281
+\pgf@circ@res@step=\dimen282
+\pgf@circ@res@temp=\dimen283
+\pgf@circ@Rlen=\dimen284
+\pgf@circ@scaled@Rlen=\dimen285
+\pgfstartlinewidth=\dimen286
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircutils.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircshapes.tex
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircmonopoles.
+tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircbipoles.te
+x)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirctripoles.t
+ex
+\pgf@circ@res@count=\count415
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircquadpoles.
+tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircmultipoles
+.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirclabel.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircvoltage.te
+x
+\pgfcirc@labelshift=\dimen287
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcirccurrent.te
+x)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircflow.tex)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/generic/circuitikz/pgfcircpath.tex)
+
+Package circuitikz Warning: You did not specify one of the voltage directions:
+(circuitikz)                  oldvoltagedirection, nooldvoltagedirection, 
+(circuitikz)                  RPvoltages or EFvoltages 
+(circuitikz)                Default directions may have changed, 
+(circuitikz)                please check the manual.
+
+) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup7
+\symAMSb=\mathgroup8
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/diagbox/diagbox.sty
+Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: luatex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-luatex.def on input line 114.
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/pict2e/p2e-luatex.def
+File: p2e-luatex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks36
+\@arclen=\dimen288
+\@arcrad=\dimen289
+\pIIe@tempdima=\dimen290
+\pIIe@tempdimb=\dimen291
+\pIIe@tempdimc=\dimen292
+\pIIe@tempdimd=\dimen293
+\pIIe@tempdime=\dimen294
+\pIIe@tempdimf=\dimen295
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count416
+\calc@Bcount=\count417
+\calc@Adimen=\dimen296
+\calc@Bdimen=\dimen297
+\calc@Askip=\skip75
+\calc@Bskip=\skip76
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count418
+\calc@Cskip=\skip77
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen298
+\ar@mcellbox=\box61
+\extrarowheight=\dimen299
+\NC@list=\toks37
+\extratabsurround=\skip78
+\backup@length=\skip79
+\ar@cellbox=\box62
+)
+\diagbox@boxa=\box63
+\diagbox@boxb=\box64
+\diagbox@boxm=\box65
+\diagbox@wd=\dimen300
+\diagbox@ht=\dimen301
+\diagbox@insepl=\dimen302
+\diagbox@insepr=\dimen303
+\diagbox@outsepl=\dimen304
+\diagbox@outsepr=\dimen305
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/pgfplots/pgfplots.sty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.rev
+ision.tex)
+Package: pgfplots 2020/02/29 v1.17 Data Visualization (1.17)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.cod
+e.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotscore
+.code.tex
+Package pgfplots info on input line 124: Initializing with LUA version Lua 5.3
+\pgfplots@luabackend@table=\catcodetable12
+\t@pgfplots@toka=\toks38
+\t@pgfplots@tokb=\toks39
+\t@pgfplots@tokc=\toks40
+\pgfplots@tmpa=\dimen306
+\c@pgfplots@coordindex=\count419
+\c@pgfplots@scanlineindex=\count420
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/sys/pgfplots
+sysgeneric.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/pgfplot
+slibrary.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/oldpgfcompat
+ib/pgfplotsoldpgfsupp_loader.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/luamath
+/pgflibraryluamath.code.tex)
+Package pgfplots info on input line 290: luamath library shipped with pgf 3.1.7a
+ is up-to-date
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sutil.code.tex
+Package pgfplots info on input line 82: Found new luatex: initializing lua comma
+nds instead of write18 (shell-escape)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsliststructure.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsliststructureext.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count421
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsmatrix.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/numtable/pgf
+plotstableshared.code.tex
+\c@pgfplotstable@counta=\count422
+\t@pgfplotstable@a=\toks41
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/liststructur
+e/pgfplotsdeque.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sbinary.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sbinary.data.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+sutil.verb.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/pgflibr
+arypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count423
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/sys/pgflibra
+rypgfplots.surfshading.pgfsys-luatex.def)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+scolormap.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/util/pgfplot
+scolor.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsstac
+kedplots.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsplot
+handlers.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsmesh
+plothandler.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotsmesh
+plotimage.code.tex)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.sca
+ling.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotscoor
+dprocessing.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.err
+orbars.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.mar
+kers.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplotstick
+s.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfplots.pat
+hs.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarydecorations.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/modules/pgfmodule
+decorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen307
+\pgfdecoratedremainingdistance=\dimen308
+\pgfdecoratedinputsegmentcompleteddistance=\dimen309
+\pgfdecoratedinputsegmentremainingdistance=\dimen310
+\pgf@decorate@distancetomove=\dimen311
+\pgf@decorate@repeatstate=\count424
+\pgfdecorationsegmentamplitude=\dimen312
+\pgfdecorationsegmentlength=\dimen313
+)
+\tikz@lib@dec@box=\box66
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarydecorations.pathmorphing.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/decorat
+ions/pgflibrarydecorations.pathmorphing.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibrarydecorations.pathreplacing.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/decorat
+ions/pgflibrarydecorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count425
+\pgfplots@xmin@reg=\dimen314
+\pgfplots@xmax@reg=\dimen315
+\pgfplots@ymin@reg=\dimen316
+\pgfplots@ymax@reg=\dimen317
+\pgfplots@zmin@reg=\dimen318
+\pgfplots@zmax@reg=\dimen319
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2020/12/01 v3.1.7a (3.1.7a)
+)))
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/caption/subcaption.sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen320
+\captionmargin@=\dimen321
+\captionwidth=\dimen322
+\caption@tempdima=\dimen323
+\caption@indent=\dimen324
+\caption@parindent=\dimen325
+\caption@hangindent=\dimen326
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count426
+\c@continuedfloat=\count427
+)
+\c@subfigure=\count428
+\c@subtable=\count429
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.patchplots.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.colormaps.code.tex)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
+z/libraries/tikzlibraryintersections.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgf/libraries/pgflibr
+aryintersections.code.tex
+\pgf@intersect@solutions=\count430
+))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.fillbetween.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfcontrib/t
+ikzlibraryfillbetween.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfcontrib/t
+ikzlibrarydecorations.softclip.code.tex
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/pgfcontrib/p
+gflibraryfillbetween.code.tex)))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/generic/pgfplots/libs/tikzlib
+rarypgfplots.decorations.softclip.code.tex))
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/algorithm2e/algorithm2e
+.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count431
+\algocf@hangindent=\skip80
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count432
+) (C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip81
+\skiplinenumber=\skip82
+\skiprule=\skip83
+\skiphlne=\skip84
+\skiptext=\skip85
+\skiplength=\skip86
+\algomargin=\skip87
+\skipalgocfslide=\skip88
+\algowidth=\dimen327
+\inoutsize=\dimen328
+\inoutindent=\dimen329
+\interspacetitleruled=\dimen330
+\interspacealgoruled=\dimen331
+\interspacetitleboxruled=\dimen332
+\algocf@ruledwidth=\skip89
+\algocf@inoutbox=\box67
+\algocf@inputbox=\box68
+\AlCapSkip=\skip90
+\AlCapHSkip=\skip91
+\algoskipindent=\skip92
+\algocf@nlbox=\box69
+\algocf@hangingbox=\box70
+\algocf@untilbox=\box71
+\algocf@skipuntil=\skip93
+\algocf@capbox=\box72
+\algocf@lcaptionbox=\skip94
+\algoheightruledefault=\skip95
+\algoheightrule=\skip96
+\algotitleheightruledefault=\skip97
+\algotitleheightrule=\skip98
+\c@algocfline=\count433
+\c@algocfproc=\count434
+\c@algocf=\count435
+\algocf@algoframe=\box73
+\algocf@algobox=\box74
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/arydshln/arydshln.sty
+Package: arydshln 2019/02/21 v1.76 
+\dashlinedash=\dimen333
+\dashlinegap=\dimen334
+\adl@box=\box75
+\adl@height=\dimen335
+\adl@heightsave=\dimen336
+\adl@depth=\dimen337
+\adl@depthsave=\dimen338
+\adl@finaldepth=\dimen339
+\adl@columns=\count436
+\adl@ncol=\count437
+\adl@currentcolumn=\count438
+\adl@currentcolumnsave=\count439
+\adl@totalheight=\count440
+\adl@totalheightsave=\count441
+\adl@dash=\count442
+\adl@gap=\count443
+\adl@cla=\count444
+\adl@clb=\count445
+\adl@everyvbox=\toks42
+\adl@LTpagetotal=\dimen340
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/nicematrix/nicematrix.s
+ty
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/l3packages/l3keys2e/l3k
+eys2e.sty
+Package: l3keys2e 2020-10-27 LaTeX2e option processing using LaTeX3 keys
+)
+Package: nicematrix 2021/03/23 v5.13 Enhanced arrays with the help of PGF/TikZ
+\g__nicematrix_env_int=\count446
+\g__nicematrix_NiceMatrixBlock_int=\count447
+\l__nicematrix_columns_width_dim=\dimen341
+\g__nicematrix_blocks_wd_dim=\dimen342
+\g__nicematrix_blocks_ht_dim=\dimen343
+\g__nicematrix_blocks_dp_dim=\dimen344
+\l__nicematrix_tabular_width_dim=\dimen345
+\l__nicematrix_old_iRow_int=\count448
+\l__nicematrix_old_jCol_int=\count449
+\l__nicematrix_x_initial_dim=\dimen346
+\l__nicematrix_y_initial_dim=\dimen347
+\l__nicematrix_x_final_dim=\dimen348
+\l__nicematrix_y_final_dim=\dimen349
+\l_tmpc_dim=\dimen350
+\l_tmpd_dim=\dimen351
+\g__nicematrix_width_last_col_dim=\dimen352
+\g__nicematrix_width_first_col_dim=\dimen353
+\l__nicematrix_row_min_int=\count450
+\l__nicematrix_row_max_int=\count451
+\l__nicematrix_col_min_int=\count452
+\l__nicematrix_col_max_int=\count453
+\g__nicematrix_static_num_of_col_int=\count454
+\l__nicematrix_rounded_corners_dim=\dimen354
+\l__nicematrix_line_width_dim=\dimen355
+\g__nicematrix_block_box_int=\count455
+\l__nicematrix_submatrix_extra_height_dim=\dimen356
+\l__nicematrix_submatrix_left_xshift_dim=\dimen357
+\l__nicematrix_submatrix_right_xshift_dim=\dimen358
+\l__nicematrix_first_row_int=\count456
+\l__nicematrix_first_col_int=\count457
+\l__nicematrix_last_row_int=\count458
+\l__nicematrix_last_col_int=\count459
+\c@tabularnote=\count460
+\l__nicematrix_number_of_notes_int=\count461
+\l__nicematrix_cell_space_top_limit_dim=\dimen359
+\l__nicematrix_cell_space_bottom_limit_dim=\dimen360
+\l__nicematrix_inter_dots_dim=\dimen361
+\l__nicematrix_xdots_shorten_dim=\dimen362
+\l__nicematrix_radius_dim=\dimen363
+\l__nicematrix_notes_above_space_dim=\dimen364
+\l__nicematrix_left_margin_dim=\dimen365
+\l__nicematrix_right_margin_dim=\dimen366
+\l__nicematrix_extra_left_margin_dim=\dimen367
+\l__nicematrix_extra_right_margin_dim=\dimen368
+\c__nicematrix_max_l_dim=\dimen369
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.sty
+\lst@mode=\count462
+\lst@gtempboxa=\box76
+\lst@token=\toks43
+\lst@length=\count463
+\lst@currlwidth=\dimen370
+\lst@column=\count464
+\lst@pos=\count465
+\lst@lostspace=\dimen371
+\lst@width=\dimen372
+\lst@newlines=\count466
+\lst@lineno=\count467
+\lst@maxwidth=\dimen373
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count468
+\lst@skipnumbers=\count469
+\lst@framebox=\box77
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+\@quotelevel=\count470
+\@quotereset=\count471
+(./Main.aux)
+\openout1 = Main.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 71
+.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+*geometry* verbose mode - [ preamble ] result:
+* driver: luatex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 443.57848pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 624.25346pt, 85.35826pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=443.57848pt
+* \textheight=624.25346pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/biblatex/lbx/english.lb
+x
+File: english.lbx 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: LuaTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+
+\openout3 = Main.bcf
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'Main.bbl' found.
+ (./Main.bbl)
+Package biblatex Info: Reference section=0 on input line 71.
+Package biblatex Info: Reference segment=0 on input line 71.
+LaTeX Info: Redefining \microtypecontext on input line 71.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 71.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-LatinModernRoman.
+cfg
+File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mode
+rn Roman (RS)
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count472
+\scratchdimen=\dimen374
+\scratchbox=\box78
+\nofMPsegments=\count473
+\nofMParguments=\count474
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count475
+\MPscratchDim=\dimen375
+\MPnumerator=\count476
+\makeMPintoPDFobject=\count477
+\everyMPtoPDFconversion=\toks45
+)
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
+5.
+)
+Package pgfplots notification 'compat/show suggested version=true': document has
+ been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count478
+(./Chapters/Development.tex
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+
+(C:/Users/Josep/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(C:/Users/Josep/AppData/Roaming/MiKTeX/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+\g__nicematrix_max_cell_width_dim=\dimen376
+\l__nicematrix_cell_box=\box79
+\c@iRow=\count479
+\c@jCol=\count480
+\g__nicematrix_row_total_int=\count481
+\g__nicematrix_col_total_int=\count482
+\l__nicematrix_left_delim_dim=\dimen377
+\l__nicematrix_right_delim_dim=\dimen378
+\l__nicematrix_the_array_box=\box80
+\g__nicematrix_dp_row_zero_dim=\dimen379
+\g__nicematrix_ht_row_zero_dim=\dimen380
+\g__nicematrix_ht_row_one_dim=\dimen381
+\g__nicematrix_dp_ante_last_row_dim=\dimen382
+\g__nicematrix_ht_last_row_dim=\dimen383
+\g__nicematrix_dp_last_row_dim=\dimen384
+\g__nicematrix_ddots_int=\count483
+\g__nicematrix_iddots_int=\count484
+\g__nicematrix_delta_x_one_dim=\dimen385
+\g__nicematrix_delta_y_one_dim=\dimen386
+\g__nicematrix_delta_x_two_dim=\dimen387
+\g__nicematrix_delta_y_two_dim=\dimen388
+\l__nicematrix_initial_i_int=\count485
+\l__nicematrix_initial_j_int=\count486
+\l__nicematrix_final_i_int=\count487
+\l__nicematrix_final_j_int=\count488
+ [1
+
+{C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]) [3]
+(./Chapters/Two_vsc.tex
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [4] [5] [6]
+PGFPlots: reading {Data/Data1/opt_3x_Ip1re.csv}
+
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_Ip2re.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_Ip1im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_Ip2im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_In1re.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_In2re.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_In1im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_In2im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_Vp1.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_Vp2.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_Vn1.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_Vn2.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_3x_f_obj.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data2/opt_3x_Ip1re.csv}
+PGFPlots: reading {Data/Data2/opt_3x_Ip2re.csv}
+PGFPlots: reading {Data/Data2/opt_3x_Ip1im.csv}
+PGFPlots: reading {Data/Data2/opt_3x_Ip2im.csv}
+PGFPlots: reading {Data/Data2/opt_3x_In1re.csv}
+PGFPlots: reading {Data/Data2/opt_3x_In2re.csv}
+PGFPlots: reading {Data/Data2/opt_3x_In1im.csv}
+PGFPlots: reading {Data/Data2/opt_3x_In2im.csv}
+PGFPlots: reading {Data/Data2/opt_3x_Vp1.csv}
+PGFPlots: reading {Data/Data2/opt_3x_Vp2.csv}
+PGFPlots: reading {Data/Data2/opt_3x_Vn1.csv}
+PGFPlots: reading {Data/Data2/opt_3x_Vn2.csv}
+PGFPlots: reading {Data/Data2/opt_3x_f_obj.csv}
+[7
+Missing character: There is no ; (U+003B) in font nullfont!
+] [8
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data1/opt_LG_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_In2im.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_LG_Vn2.csv}
+PGFPlots: reading {Data/Data1/opt_LG_f_obj.csv}
+ [9
+
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data2/opt_LG_Ip1re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Ip2re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Ip1im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Ip2im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In1re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In2re.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In1im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_In2im.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vp1.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vp2.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vn1.csv}
+PGFPlots: reading {Data/Data2/opt_LG_Vn2.csv}
+PGFPlots: reading {Data/Data2/opt_LG_f_obj.csv}
+ [10
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data1/opt_LL_Ip1re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Ip2re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Ip2im.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_LL_In2im.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Vp1.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Vp2.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Vn1.csv}
+PGFPlots: reading {Data/Data1/opt_LL_Vn2.csv}
+PGFPlots: reading {Data/Data1/opt_LL_f_obj.csv}
+ [11
+
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data2/opt_LL_Ip1re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Ip2re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Ip1im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Ip2im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In1re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In2re.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In1im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_In2im.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vp1.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vp2.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vn1.csv}
+PGFPlots: reading {Data/Data2/opt_LL_Vn2.csv}
+PGFPlots: reading {Data/Data2/opt_LL_f_obj.csv}
+ [12
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data1/opt_LLG_Ip1re.csv}
+
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LLG_Ip2re.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LLG_Ip1im.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Ip2im.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LLG_In1re.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_In2re.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_In1im.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_In2im.csv}
+PGFPlots: reading {Data/Data1/opt_LLG_Vp1.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LLG_Vp2.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LLG_Vn1.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LLG_Vn2.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+PGFPlots: reading {Data/Data1/opt_LLG_f_obj.csv}
+NOTE: coordinate (--,--,--) [--](was (9.999999999999897,--,--) [--]) has been dr
+opped because of a coordinate filter.
+[13
+
+Missing character: There is no ; (U+003B) in font nullfont!
+]
+PGFPlots: reading {Data/Data2/opt_LLG_Ip1re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Ip2re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Ip1im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Ip2im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In1re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In2re.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In1im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_In2im.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vp1.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vp2.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vn1.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_Vn2.csv}
+PGFPlots: reading {Data/Data2/opt_LLG_f_obj.csv}
+
+
+LaTeX Warning: Float too large for page by 0.32634pt on input line 885.
+
+) [14
+Missing character: There is no ; (U+003B) in font nullfont!
+] [15
+
+] (./Main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package logreq Info: Writing requests to 'Main.run.xml'.
+
+\openout1 = Main.run.xml
+)
+
+Here is how much of LuaTeX's memory you used:
+ 57617 strings out of 478902
+ 745206,3417909 words of node,token memory allocated
+ 705 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 18 attribute, 86 glue_spec
+, 18 attribute_list, 2 write nodes
+   avail lists: 1:3,2:73380,3:61083,4:7270,5:7589,6:76,7:14440,8:60,9:18362,10:3
+6,11:1154
+ 75149 multiletter control sequences out of 65536+200000
+ 80 fonts using 7008815 bytes
+ 108i,24n,105p,1212b,2502s stack positions out of 5000i,500n,10000p,200000b,50000s
+<//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
+an10-italic.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/pub
+lic/lm/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/op
+entype/public/lm/lmmono8-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKT
+eX/fonts/opentype/public/lm/lmmono10-regular.otf><C:/Users/Josep/AppData/Local/P
+rograms/MiKTeX/fonts/opentype/public/lm/lmroman7-regular.otf><C:/Users/Josep/App
+Data/Local/Programs/MiKTeX/fonts/opentype/public/lm/lmroman8-regular.otf><//?/c:
+/users/josep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmromancaps1
+0-regular.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/publi
+c/lm/lmroman10-regular.otf><//?/c:/users/josep/appdata/local/programs/miktex/fon
+ts/opentype/public/lm/lmroman12-bold.otf><C:/Users/Josep/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Users/Josep/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Josep/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/
+Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
+:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Jose
+p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Use
+rs/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
+y8.pfb>
+Output written on Main.pdf (15 pages, 739285 bytes).
+
+PDF statistics: 188 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 16 words of extra memory for PDF output out of 10000 (max. 100000000)
+

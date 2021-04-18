@@ -1,0 +1,1237 @@
+\section{Two converter case study}
+Having presented the general formulation, we now describe the optimization problem exemplified for two converters. We focus on the expressions involved, but more than that, on the programming, as it has been tested to be the critical step. In fact, the tools that worked for a single converter scenario have not always been suitable for two converters.
+
+For a system following the notation depicted in Figure \ref{fig:sys_p}, the initial optimization problem would read as
+\begin{equation}
+\begin{aligned}
+\min_{\un{I}_1,\un{I}_2} \quad & \lambda^+_1(1 - |\un{V}^+_{p1}|)^2 + \lambda^-_1(0 - |\un{V}^-_{p1}|)^2 + \lambda^+_2(1 - |\un{V}^+_{p2}|)^2 + \lambda^-_2(0 - |\un{V}^-_{p2}|)^2 \ , \\
+\textrm{s.t.} \quad & \text{max}(\un{I}_{a1}, \un{I}_{b1}, \un{I}_{c1}, \un{I}_{a2}, \un{I}_{b2}, \un{I}_{c2}) \leq I_{\text{max}} \ ,\\
+  &\sum \un{I}_1 = 0 \ , \\
+  &\sum \un{I}_2 = 0 \ , \\
+\end{aligned}
+\label{eq:opt1}
+\end{equation}
+where to simplify the notation it has been obviated that the voltages are functions of the currents $\un{I}_1$ and $\un{I}_2$. The $\lambda$ factors serve the purpose to weight the various positive and negative voltage to establish the desired priority. In practice are expected to be set between 0 and 1. We also impose that none of the phase currents can surpass a given maximum current. Such value could be different for each converter. However, we will proceed assuming the two converters have identic current capabilities. In addition to all this, since the VSC can only inject positive and negative sequence, we have to enforce that the summation of currents for each converter becomes null. Otherwise the optimization solver may offer an unfeasible solution. 
+
+Notice that absolute values have been employed in Equation \ref{eq:opt1}. It may be preferable to avoid such operator because it is non-linear. Despite the inconvenience, as far as I can tell there exists no linear alternative. Squaring the voltages is not an option because they are complex magnitudes and hence some imaginary part would still be left. Furthermore, computing the absolute value with the complex conjugate would imply the replacement of a non-linear operator with another non-linear operator, so it does not seem to be advantageous. We have tested the response with both and came to the conclusion that opting for the complex conjugate results in slightly shorter computation times. As a result, the optimization problem is rewritten as:
+\begin{equation}
+\begin{aligned}
+\min_{\un{I}_1,\un{I}_2} \quad & \lambda^+_1(1 - \un{V}^+_{p1} \un{V}^{+*}_{p1})^2 + \lambda^-_1(0 - \un{V}^-_{p1} \un{V}^{-*}_{p1})^2 + \lambda^+_2(1 - \un{V}^+_{p2} \un{V}^{+*}_{p2})^2 + \lambda^-_2(0 - \un{V}^-_{p2} \un{V}^{-*}_{p2})^2 \ , \\
+\textrm{s.t.} \quad & \text{max}(\un{I}_{a1}, \un{I}_{b1}, \un{I}_{c1}, \un{I}_{a2}, \un{I}_{b2}, \un{I}_{c2}) \leq I_{\text{max}} \ ,\\
+  &\sum \un{I}_1 = 0 \ , \\
+  &\sum \un{I}_2 = 0 \ . \\
+\end{aligned}
+\label{eq:opt2}
+\end{equation}
+There are many possibilities to solve the optimization problem. In the beginning we opted for the \texttt{scipy.optimize} package, which contains the \texttt{minimize()} function. Initially we chose the SLSQP solver. This is aimed at minimizing a scalar function with one or more variables by means of the Sequential Least Squares Programming approach \cite{2020SciPy-NMeth}. Such method worked fine for one single converter but struggled to provide a successful optimization with two converters. It had a hard time converging towards the same trend, and thus, it kept jumping around different objective function values for tiny variations in the input parameters. Not only this, but also the theoretically optimal currents to be injected by the VSC presented heavy variations. They could be regarded as noise with the associated problem of leading to erroneous conclusions. 
+
+Consequently, we looked and eventually found an alternative based on Python as well: the \texttt{mystic} framework. According to the authors, \texttt{mystic} is a highly-constrained non-convex optimization and uncertainty quantification tool \cite{mckerns2012building, mckernsmystic}. Even though we are not interested in the uncertainty quantification by now, the fact that the package is able to solve hard optimization problems becomes the key point. We have reasons to believe that if the \texttt{scipy.optimize} package had trouble optimizing a case with two converters, it would most likely fail in solving a system with $n$ converters. The final aim of this work is precisely to solve a case with multiple converters, so relying on a robust optimization package becomes a necessity. 
+
+Nevertheless, the optimization formulation is less straightforward as before because in order to solve the problem in a reasonable time period, the constraints have been divided in two parts:
+\begin{itemize}
+    \item Hard constraints: they impose $\sum \un{I}_1 = 0$ and $\sum \un{I}_2 = 0$. It is mandatory to ensure no homopolar current is present because otherwise the model would not be a realistic representation of the actual VSC.
+    \item Soft constraints: they impose $\text{max}(\un{I}_{a1}, \un{I}_{b1}, \un{I}_{c1}, \un{I}_{a2}, \un{I}_{b2}, \un{I}_{c2}) \leq I_{\text{max}}$, but in contrast with the hard constraints, initially we allow them be violated.
+\end{itemize}
+Soft constraints are usually called penalty functions because violating them comes with a price. In this particular case, surpassing the $I_{\text{max}}$ current would mean that the objective function would be severely penalized. As a result, the solver would discard such solutions and look for another path. 
+
+We think that using a penalty function for restricting the currents makes complete sense. In reality, injecting a current of 1000.1 A instead of a hypothetical maximum of 1000.0 A would not cause devastating effects, as there is likely to be a safe margin of operation. Uncertainty in measurement equipment may provoke larger errors. Thus, it seems to us that real current limitations resemble soft constraints rather than hard constraints. In addition to that, we have made sure that the program respects the limitations once the optimization calculation is finished. When looked at it from this perspective, soft constraints are a convenient tool to facilitate the obtention of the optimal solution.
+
+With the goal of clarifying the modifications to the code, we show the most representatives added lines of code. First, the soft constraints:
+\begin{lstlisting}[caption={Penalty function definition to softly respect the current limitations}]
+def penalty_mean(x, target):
+        a1 = x[0] ** 2 + x[1] ** 2
+        a2 = x[2] ** 2 + x[3] ** 2
+        a3 = x[4] ** 2 + x[5] ** 2
+        a4 = x[6] ** 2 + x[7] ** 2
+        a5 = x[8] ** 2 + x[9] ** 2
+        a6 = x[10] ** 2 + x[11] ** 2
+        return (max(a1, a2, a3, a4, a5, a6) - target)
+
+    @quadratic_inequality(condition=penalty_mean, kwds={'target':1.0})
+    def penalty(x):
+        return 0.0
+\end{lstlisting}
+The variables from \texttt{a1} to \texttt{a6} represent the squared absolute values of the currents. The same could be expressed in a vectorized function, but for now we have preferred to ease the reading. In any case, the penalty function \texttt{penalty(x)} returns a value of zero since the constraint is implicitly programmed as \texttt{max(a1, a2, a3, a4, a5, a6) - target <= 0}. Hence, when the maximum phase current meets the target of 1 pu (this value is what corresponds to $I_{\text{max}}$), we return a null value. On top of the penalty function there is a decorator, which becomes essentially to extend the functionality of the penalty function so as to treat it as an inequality constraint. 
+
+On the other hand, the hard constraints are written in Python as:
+\begin{lstlisting}[caption={Hard constraints to impose a null homopolar current}]
+equations_c = """
+    x0 + x2 + x4 == 0
+    x1 + x3 + x5 == 0
+    x6 + x8 + x10 == 0
+    x7 + x9 + x11 == 0
+    """
+
+    cf = generate_constraint(generate_solvers(simplify(equations_c))
+\end{lstlisting}
+There are in fact four constraints because the null summation of currents has to be respected for both real and imaginary part in the two converters. 
+
+Finally, we call the optimization solver with:
+\begin{lstlisting}[caption={Line to call the optimization}]
+    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10000, gtol=10000, disp=True, full_output=True, ftol=1e-14, maxiter=15000, maxfun=15000)
+\end{lstlisting}
+The most relevant parameters required by the \texttt{fmin()} function are shortly described below:
+\begin{itemize}
+    \item \texttt{obj\_fun} is the objective function as shown in Equation \ref{eq:opt2}. 
+    \item \texttt{x0} stands for the initialization array. We have passed to it the previous optimal point. 
+    \item \texttt{bounds} represent the boundaries of the currents, that is, the limits that enclose the range of allowed values for the currents to optimize.
+    \item \texttt{penalty} and \texttt{constraints} take the penalty and the constraint functions defined before.
+    \item \texttt{npop} is the size of the test solution population while \texttt{gtol} defines the maximum number of iterations without improvement.
+    \item \texttt{ftol} becomes the maximum allowed relative error to ensure convergence.
+    \item \texttt{maxiter} and \texttt{maxfun} represent respectively the maximum number of iterations and evaluations of the objective function. 
+\end{itemize}
+With the main aspects relative to the programming covered, we proceed to show the results for several faults. In all of them we vary the fault impedance and display the currents, the voltages, and the objective function evolution. Unless noted otherwise, the initial parameters are tabulated in Table \ref{tab:1}.
+
+\begin{table}[!htb]\centering
+    \begin{tabular}{cc}
+        \hline
+        \textbf{Magnitude} & \textbf{Value} \\
+        \hline
+        $|\un{V}_t|$ & $1.00$\\
+        $I_{\text{max}}$ & $1.00$\\
+        $\un{Z}_{v1}$ & $0.01+j0.05$\\
+        $\un{Z}_{v2}$ & $0.02+j0.06$\\
+        $\un{Z}_{t}$ & $0.01+j0.10$\\
+        $[\lambda^+_1, \lambda^-_1, \lambda^+_2, \lambda^-_2]$ & [1.00, 1.00, 1.00, 1.00]\\
+        \hline
+    \end{tabular}
+    \caption{Initial parameters to study the faults, all in p.u.}
+    \label{tab:1}
+\end{table}
+
+\newpage
+\section{Plots}
+
+\subsection{Balanced fault}
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.0cm}
+              \begin{axis}[grid=major, xlabel={$\un{Y}_{xg}$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.1}, xmin=3, xmax=10, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{xg}$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=3, xmax=10, ytick distance = {0.1}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{xg}$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=3, xmax=10, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{xg}$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=3, xmax=10, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{xg}$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=3, xmax=10, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{xg}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=3, xmax=10, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax = 0.1, ymin=-0.1]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{xg}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=3, xmax=10, ytick distance = {0.2},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault with $\un{Y}_{xg}=[3,10]$}
+    \label{fig:3x_fault}
+  \end{figure}
+
+
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.05}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.005}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax = 0.1, ymin=-0.1]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.002},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_3x_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault with $R_1/X_1=[0.5,5]$ and $\un{Y}_{xg}=5$}
+    \label{fig:3x_fault2}
+  \end{figure}
+
+
+\clearpage
+\newpage
+
+
+\subsection{Line to ground fault}
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.0cm}
+              \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={50}, axis line style = thick, ytick distance={0.1}, xmin=60, xmax=240, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={50}, axis line style = thick, xmin=60, xmax=240, ytick distance = {0.02}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={50}, axis line style = thick, xmin=60, xmax=240, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={50}, axis line style = thick,  xmin=60, xmax=240, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={50}, axis line style = thick, xmin=60, xmax=240, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={50}, axis line style = thick,  xmin=60, xmax=240, ytick distance = {0.005},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.3cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={30}, axis line style = thick,  xmin=60, xmax=240, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to ground fault with $\un{Y}_{ag}=[60,240]$}
+    \label{fig:LG_fault}
+  \end{figure}
+
+  \newpage
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.01}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.0001},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=5}, ymax = 0.397, ymin=0.3965]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LG_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to ground with $R_1/X_1=[0.5,5]$ and $\un{Y}_{ag}=200$}
+    \label{fig:LG_fault2}
+  \end{figure}
+
+
+\clearpage
+\newpage
+
+
+\subsection{Line to line fault}
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.0cm}
+              \begin{axis}[grid=major, xlabel={$\un{Y}_{ab}$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.04}, xmin=10, xmax=15, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ab}$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=10, xmax=15, ytick distance = {0.02}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ab}$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=10, xmax=15, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ab}$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=10, xmax=15, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks=false]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ab}$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=10, xmax=15, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ab}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=10, xmax=15, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.3cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ab}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, axis line style = thick,  xmin=10, xmax=15, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to line fault with $\un{Y}_{ab}=[10,15]$}
+    \label{fig:LL_fault}
+  \end{figure}
+
+
+
+  \newpage
+
+
+
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.03}, xmin=1, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=1, xmax=5, ytick distance = {0.05}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=1, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=1, xmax=5, ytick distance = {0.03},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=1, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=1, xmax=5, ytick distance = {0.005},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, axis line style = thick,  xmin=1, xmax=5, ytick distance = {0.003},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LL_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to line fault with $R_1/X_1=[1,5]$ and $\un{Y}_{ab}=12$}
+    \label{fig:LL_fault2}
+  \end{figure}
+
+
+  \clearpage
+  \newpage
+
+
+
+\subsection{Double line to ground fault}
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.0cm}
+              \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=3, xmax=10, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=3, xmax=10, ytick distance = {0.01}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=3, xmax=10, ytick distance = {0.05}, ymin=-0.1, ymax=0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=3, xmax=10, ytick distance = {0.05}, ymin=-0.1, ymax=0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.0cm}
+                \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=3, xmax=10, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={2}, axis line style = thick,  xmin=3, xmax=10, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.0cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Y}_{ag}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=3, xmax=10, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the double line to ground fault with $\un{Y}_{ag}=[3,10]$}
+    \label{fig:LLG_fault}
+  \end{figure}
+
+
+\newpage
+
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.4\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=7cm, height=5.5cm}
+              \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.03}, xmin=1, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=1, xmax=5, ytick distance = {0.01}, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=1, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymin=-0.1, ymax=0.1]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=1, xmax=5, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymin=-0.1, ymax=0.1]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=1, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=1, xmax=5, ytick distance = {0.001},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymin=0.583, ymax=0.588]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, axis line style = thick,  xmin=1, xmax=5, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data2/opt_LLG_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the double line to ground fault with $R_1/X_1=[1,5]$ and $\un{Y}_{ag}=5$}
+    \label{fig:LLG_fault2}
+  \end{figure}
+
+
+
+
+
+
+
+
+
+% plots here below --------------------
+
+
+% \subsection{Balanced fault}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=6.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.05}, xmin=0, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip2re.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.1}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Ip2im.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+%       \vspace{0.5cm}
+
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In2re.csv};
+%                 % \legend{BF, OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%       \hspace{1.5cm}
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%           \centering
+%               \begin{tikzpicture}[trim axis right,trim axis left]
+%                   \pgfplotsset{width=7cm, height=6.0cm}
+%                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick,  xmin=0, xmax=5, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_In2im.csv};
+%                   \legend{VSC1, VSC2};
+%                   \end{axis}
+%               \end{tikzpicture}
+%         \end{subfigure}
+%     \caption{Influence of the currents on the objective function for the balanced fault with $\un{Y}_{xg}=15$}
+%     \label{fig:3x1_c}
+%   \end{figure}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=7.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.005}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=5]
+%               \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vp1.csv};
+%               \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vp2.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=7.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, ymax = 0.1, ymin = -0.1]
+%                 \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vn1.csv};
+%                 \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_3x_Vn2.csv};
+%                 \legend{VSC1, VSC2};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%     \caption{Influence of the $R/X$ ratio on the voltages for the balanced fault with $\un{Y}_{xg}=15$}
+%     \label{fig:full_RX_3x}
+%   \end{figure}
+
+
+
+
+% \subsection{Line to ground fault}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=6.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.05}, xmin=0, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip2re.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.05}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Ip2im.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+%       \vspace{0.5cm}
+
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.05}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In2re.csv};
+%                 % \legend{BF, OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%       \hspace{1.5cm}
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%           \centering
+%               \begin{tikzpicture}[trim axis right,trim axis left]
+%                   \pgfplotsset{width=7cm, height=6.0cm}
+%                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick,  xmin=0, xmax=5, ytick distance = {0.05}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_In2im.csv};
+%                   \legend{VSC1, VSC2};
+%                   \end{axis}
+%               \end{tikzpicture}
+%         \end{subfigure}
+%     \caption{Influence of the currents on the objective function for the line to ground fault with $\un{Y}_{ag}=15$}
+%     \label{fig:LG1_c}
+%   \end{figure}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=7.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=5]
+%               \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vp1.csv};
+%               \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vp2.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=7.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.7)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                 \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vn1.csv};
+%                 \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LG_Vn2.csv};
+%                 \legend{VSC1, VSC2};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%     \caption{Influence of the $R/X$ ratio on the voltages for the line to ground fault with $\un{Y}_{ag}=15$}
+%     \label{fig:full_RX_LG}
+%   \end{figure}
+
+% \subsection{Line to line fault}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=6.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.05}, xmin=0, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip2re.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.05}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Ip2im.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+%       \vspace{0.5cm}
+
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In2re.csv};
+%                 % \legend{BF, OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%       \hspace{1.5cm}
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%           \centering
+%               \begin{tikzpicture}[trim axis right,trim axis left]
+%                   \pgfplotsset{width=7cm, height=6.0cm}
+%                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick,  xmin=0, xmax=5, ytick distance = {0.2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_In2im.csv};
+%                   \legend{VSC1, VSC2};
+%                   \end{axis}
+%               \end{tikzpicture}
+%         \end{subfigure}
+%     \caption{Influence of the currents on the objective function for the line to line fault with $\un{Y}_{ab}=2$}
+%     \label{fig:LL1_c}
+%   \end{figure}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=7.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=5, ymin = 0.95]
+%               \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vp1.csv};
+%               \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vp2.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=7.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax = 0.05, ymin = -0.05, scaled y ticks = false]
+%                 \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vn1.csv};
+%                 \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LL_Vn2.csv};
+%                 \legend{VSC1, VSC2};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%     \caption{Influence of the $R/X$ ratio on the voltages for the line to line fault with $\un{Y}_{ab}=2$}
+%     \label{fig:full_RX_LL}
+%   \end{figure}
+
+
+% \subsection{Double line to ground fault}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=6.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.05}, xmin=0, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip2re.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.1}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Ip2im.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+%       \vspace{0.5cm}
+
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=6.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance = {0.2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In1re.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In2re.csv};
+%                 % \legend{BF, OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%       \hspace{1.5cm}
+%       \begin{subfigure}[!htb]{.4\textwidth}
+%           \centering
+%               \begin{tikzpicture}[trim axis right,trim axis left]
+%                   \pgfplotsset{width=7cm, height=6.0cm}
+%                   \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick,  xmin=0, xmax=5, ytick distance = {0.2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In1im.csv};
+%                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_In2im.csv};
+%                   \legend{VSC1, VSC2};
+%                   \end{axis}
+%               \end{tikzpicture}
+%         \end{subfigure}
+%     \caption{Influence of the currents on the objective function for the line to line fault with $\un{Y}_{ab}=100$ and $\un{Y}_{ag}=1$}
+%     \label{fig:LLG1_c}
+%   \end{figure}
+
+% \begin{figure}[!htb]\centering \footnotesize
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=7cm, height=7.0cm}
+%               \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,1,...,5}, axis line style = thick, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin=0, xmax=5,]
+%               \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vp1.csv};
+%               \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vp2.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{1.5cm}
+%     \begin{subfigure}[!htb]{.4\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=7cm, height=7.0cm}
+%                 \begin{axis}[grid=major, xlabel={$R/X$}, ylabel={$|{V}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.2)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={-0,1,...,5}, axis line style = thick, xmin=0, xmax=5, ytick distance={0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks = false]
+%                 \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vn1.csv};
+%                 \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Data1/opt_LLG_Vn2.csv};
+%                 \legend{VSC1, VSC2};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+%     \caption{Influence of the $R/X$ ratio on the voltages for the line to line fault with $\un{Y}_{ab}=100$ and $\un{Y}_{ag}=1$}
+%     \label{fig:full_RX_LLG}
+%   \end{figure}
+
