@@ -1,0 +1,6 @@
+1. Introduction: state of the art, challenge, outline of the publication.
+2. Problem formulation.
+3. 1 converter case study: vary R/X, cable distance, lambdas...
+4. 2 converter case study: vary R/X, fault impedance, lambdas...
+5. Conclusion.
+
