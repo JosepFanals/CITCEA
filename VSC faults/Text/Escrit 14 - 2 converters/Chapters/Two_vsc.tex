@@ -80,7 +80,7 @@ The most relevant parameters required by the \texttt{fmin()} function are shortl
     \item \texttt{ftol} becomes the maximum allowed relative error to ensure convergence.
     \item \texttt{maxiter} and \texttt{maxfun} represent respectively the maximum number of iterations and evaluations of the objective function. 
 \end{itemize}
-With the main aspects relative to the programming covered, we proceed to show the results for several faults. In all of them we vary the fault impedance and display the currents, the voltages, and the objective function evolution. Unless noted otherwise, the initial parameters are tabulated in Table \ref{tab:1}.
+With the main aspects relative to the programming covered, we proceed to show the results for several faults. In all of them we either vary the fault impedance, the $R/X$ ratio of the $\underline{Z}_{v1}$ impedance, or the priority attributed to the voltages. In this last case, the goal is to optimize only the voltage at the PCC1. We sweep for different values of $\lambda^+_1$, where $\lambda^-_1=1-\lambda^+_1$. In all situations the currents, the voltages, and the objective function are plotted. Unless noted otherwise, the initial parameters are tabulated in Table \ref{tab:1}.
 
 \begin{table}[!htb]\centering
     \begin{tabular}{cc}

@@ -1,11 +1,11 @@
-This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  14 APR 2021 00:03
+This is LuaHBTeX, Version 1.12.0 (MiKTeX 20.12) (format=lualatex 2021.1.2)  19 APR 2021 00:01
  restricted system commands enabled.
  file:line:error style messages enabled.
-**"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Nort
-on/Main"
+**"c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 14 - 2 converters/Main"
 
-("c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 13 - general fault Norto
-n/Main.tex"
+
+("c:/Users/Josep/Desktop/CITCEA/VSC faults/Text/Escrit 14 - 2 converters/Main.t
+ex"
 LaTeX2e <2020-10-01> patch level 2
 Lua module: luaotfload-main 2020-09-02 3.15 luaotfload entry point
 Lua module: luaotfload-init 2020-09-02 3.15 luaotfload submodule / initializatio
@@ -1687,9 +1687,6 @@ Missing character: There is no ; (U+003B) in font nullfont!
 ] [15
 
 ] (./Main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package logreq Info: Writing requests to 'Main.run.xml'.
 
 \openout1 = Main.run.xml
@@ -1705,7 +1702,7 @@ Here is how much of LuaTeX's memory you used:
 6,11:1154
  75149 multiletter control sequences out of 65536+200000
  80 fonts using 7008815 bytes
- 108i,24n,105p,1212b,2502s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 108i,24n,105p,1204b,2502s stack positions out of 5000i,500n,10000p,200000b,50000s
 <//?/c:/users/josep/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
 an10-italic.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/opentype/pub
 lic/lm/lmroman10-bold.otf><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/op
@@ -1737,7 +1734,7 @@ p/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Use
 rs/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
 <C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
 y8.pfb>
-Output written on Main.pdf (15 pages, 739285 bytes).
+Output written on Main.pdf (15 pages, 740606 bytes).
 
 PDF statistics: 188 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
