@@ -146,7 +146,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
 
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10000, gtol=10000, disp=True, full_output=True, ftol=1e-14, maxiter=15000, maxfun=15000)
-    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-14, maxiter=25000, maxfun=25000)
+    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-14, maxiter=35000, maxfun=35000)
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-5)
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
 

@@ -2,7 +2,7 @@ import numpy as np
 # from fOptimal_2VSC import fOptimal
 from fOpt_2VSC import fOptimal_mystic
 from Plots import fPlots
-from Functions import fZ_rx, fY_fault, x012_to_abc
+from Functions import fZ_rx, fY_fault, x012_to_abc, f_lam
 import pandas as pd
 np.set_printoptions(precision=4)
 import matplotlib.pyplot as plt
@@ -18,12 +18,13 @@ Y_gnd = [5, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 type_f = 'opt_LLG_'
-folder = 'Data2/'
+folder = 'Data3/'
 
 # RX variation
-n_p = 20
-[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+n_p = 1001
+# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(50, 250, n_p)
+lam1_vec = f_lam(1.0, 0.0, n_p)
 
 # Store data
 Vp1_vec = []
@@ -51,7 +52,8 @@ for iik in range(n_p):
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    Zv1 = Zin_vec[iik]
+    # Zv1 = Zin_vec[iik]
+    lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
@@ -92,8 +94,9 @@ for iik in range(n_p):
 
 # Save csv
 # x_vec = Yf_vec
-x_vec = RX_vec
-pcnt = 0.8
+# x_vec = RX_vec
+x_vec = lam1_vec
+pcnt = 0.95
 n_pp = int((1-pcnt) * n_p)
 fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
 fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')

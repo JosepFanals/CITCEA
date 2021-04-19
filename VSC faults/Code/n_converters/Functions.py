@@ -116,8 +116,16 @@ def fZ_rx(lim1, lim2, n_p, Zthmod):
 
 
 def fY_fault(lim1, lim2, n_p):
-    diff = lim1 - lim2
+    diff = lim1 - lim2m
     incr = diff / n_p
     Zff = np.arange(lim2, lim1, incr)
 
     return Zff
+
+
+def f_lam(lim1, lim2, n_p):
+    diff = lim1 - lim2
+    incr = diff / n_p
+    fLam = np.arange(lim2, lim1, incr)
+
+    return fLam
