@@ -17,14 +17,15 @@ Y_con = [10, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [5, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
+Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 type_f = 'opt_LL_'
-folder = 'Data3/'
+folder = 'Data4/'
 
 # RX variation
 n_p = 101
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-# Yf_vec = fY_fault(50, 250, n_p)
-lam1_vec = f_lam(1.0, 0.0, n_p)
+Yf_vec = fY_fault(1, 50, n_p)
+# lam1_vec = f_lam(1.0, 0.0, n_p)
 
 # Store data
 Vp1_vec = []
@@ -49,12 +50,14 @@ for iik in range(n_p):
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    # Y_con = [Yf_vec[iik], 0, 0]
+    Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
-    lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
-    Iit2 = Ii_t
+    # lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
+
+    if iik > 0:
+        Iit1 = Iit2
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
@@ -83,22 +86,28 @@ for iik in range(n_p):
 
     # ----------------------------
 
-    ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
-    # ff_obj = np.real(lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - abs(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + abs(Vn2_vec[-1])) ** 2)
+    # ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
+    ff_obj = np.real(lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - abs(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + abs(Vn2_vec[-1])) ** 2)
     f_vec.append(ff_obj)
     # print(ff_obj)
 
     # Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
-    Ii_t = x_opt[8][0]
+    # Ii_t = x_opt[8][0]
+    Iit2 = x_opt[8][0]
     print(Ii_t)
-    # Ii_t = predictive(Iit2, Ii_t)
+    print(Iit2)
+    if iik > 10:
+        # Ii_t = predictive(Iit2, Iit1, 0.01)
+        Ii_t = Iit2
+    else:
+        Ii_t = Iit2
 
 
 
 # Save csv
-# x_vec = Yf_vec
+x_vec = Yf_vec
 # x_vec = RX_vec
-x_vec = lam1_vec
+# x_vec = lam1_vec
 pcnt = 0.95
 n_pp = int((1-pcnt) * n_p)
 fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')

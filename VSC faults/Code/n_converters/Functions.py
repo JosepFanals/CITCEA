@@ -131,7 +131,14 @@ def f_lam(lim1, lim2, n_p):
     return fLam
 
 
-def predictive(Iit2, Iit1):
-    Iit3 = np.zeros(len(Iit2), dtype=complex)
-    Iit3[:] = Iit2[:] + (Iit2[:] - Iit1[:])
+def predictive(Iit2, Iit1, fac_r):
+    Iit3 = []
+    for ii in range(len(Iit2)):
+        Iit3.append(Iit2[ii] + (Iit2[ii] - Iit1[ii]) * fac_r)
+    if Iit3[-1] > 1:
+        Iit3[-1] = 0.9999999
+    elif Iit3[-1] < -1:
+        Iit3[-1] = -0.9999999
+
+    # Iit3 = Iit2 + ((Iit2 - Iit1)) * fac_r
     return Iit3
