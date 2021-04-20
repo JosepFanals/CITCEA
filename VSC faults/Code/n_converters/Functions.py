@@ -116,7 +116,7 @@ def fZ_rx(lim1, lim2, n_p, Zthmod):
 
 
 def fY_fault(lim1, lim2, n_p):
-    diff = lim1 - lim2m
+    diff = lim1 - lim2
     incr = diff / n_p
     Zff = np.arange(lim2, lim1, incr)
 
@@ -129,3 +129,9 @@ def f_lam(lim1, lim2, n_p):
     fLam = np.arange(lim2, lim1, incr)
 
     return fLam
+
+
+def predictive(Iit2, Iit1):
+    Iit3 = np.zeros(len(Iit2), dtype=complex)
+    Iit3[:] = Iit2[:] + (Iit2[:] - Iit1[:])
+    return Iit3
