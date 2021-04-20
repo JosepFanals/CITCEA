@@ -13,18 +13,18 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [10, 0, 0]  # Yab, Ybc, Yac
-Y_gnd = [5, 0, 0]  # Yag, Ybg, Yc
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
+Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LG_'
+type_f = 'opt_LL_'
 folder = 'Data4/'
 
 # RX variation
-n_p = 101
+n_p = 201
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(10, 20, n_p)
+Yf_vec = fY_fault(5, 6, n_p)
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 
 # Store data
@@ -49,8 +49,8 @@ for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    Y_gnd = [Yf_vec[iik], 0, 0]
-    # Y_con = [Yf_vec[iik], 0, 0]
+    # Y_gnd = [Yf_vec[iik], 0, 0]
+    Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
@@ -87,7 +87,8 @@ for iik in range(n_p):
     # ----------------------------
 
     # ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
-    ff_obj = np.real(lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - abs(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + abs(Vn2_vec[-1])) ** 2)
+    # ff_obj = np.real(lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - abs(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + abs(Vn2_vec[-1])) ** 2)
+    ff_obj = lam_vec[0] * (1 - abs(Vp1_vec[-1])) + lam_vec[1] * (0 + abs(Vn1_vec[-1])) + lam_vec[2] * (1 - abs(Vp2_vec[-1])) + lam_vec[3] * (0 + abs(Vn2_vec[-1]))
     # ff_obj = lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 
     f_vec.append(ff_obj)
     # print(ff_obj)
@@ -129,27 +130,28 @@ fPlots(x_vec, In2_im_vec, folder + type_f + 'In2im')
 fPlots(x_vec, f_vec, folder + type_f + 'f_obj')
 
 # Plots
-fig, axs = plt.subplots(3, 2)
+fig, axs = plt.subplots(4, 2)
 axs[0, 0].plot(x_vec[n_pp:], Ip1_re_vec[n_pp:])
 axs[0, 0].plot(x_vec[n_pp:], Ip2_re_vec[n_pp:])
-axs[0, 0].set_title('Axis [0, 0]')
+axs[0, 0].set_title('I+re')
 axs[0, 1].plot(x_vec[n_pp:], Ip1_im_vec[n_pp:])
 axs[0, 1].plot(x_vec[n_pp:], Ip2_im_vec[n_pp:])
-axs[0, 1].set_title('Axis [0, 1]')
+axs[0, 1].set_title('I+im')
 axs[1, 0].plot(x_vec[n_pp:], In1_re_vec[n_pp:])
 axs[1, 0].plot(x_vec[n_pp:], In2_re_vec[n_pp:])
-axs[1, 0].set_title('Axis [1, 0]')
+axs[1, 0].set_title('I-re')
 axs[1, 1].plot(x_vec[n_pp:], In1_im_vec[n_pp:])
 axs[1, 1].plot(x_vec[n_pp:], In2_im_vec[n_pp:])
-axs[1, 1].set_title('Axis [1, 1]')
-axs[2, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
-axs[2, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
-axs[2, 0].set_title('f')
+axs[1, 1].set_title('I-im')
+axs[2, 0].plot(x_vec[n_pp:], Vp1_vec[n_pp:])
+axs[2, 0].plot(x_vec[n_pp:], Vp2_vec[n_pp:])
+axs[2, 0].set_title('Vp')
 axs[2, 1].plot(x_vec[n_pp:], Vn1_vec[n_pp:])
 axs[2, 1].plot(x_vec[n_pp:], Vn2_vec[n_pp:])
-axs[2, 0].set_title('f')
-
-
+axs[2, 1].set_title('Vn')
+axs[3, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
+axs[3, 0].plot(x_vec[n_pp:], f_vec[n_pp:])
+axs[3, 0].set_title('f')
 
 
 # plt.plot(x_vec, Ip1_re_vec)

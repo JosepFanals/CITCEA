@@ -115,7 +115,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
         # suma = np.real(lam_vec[0] * (1 - Vp1 * np.conj(Vp1)) ** 2 + lam_vec[1] * (0 + Vn1 * np.conj(Vn1)) ** 2 + lam_vec[2] * (1 - Vp2 * np.conj(Vp2)) ** 2 + lam_vec[3] * (0 + Vn2 * np.conj(Vn2)) ** 2)
         # suma = lam_vec[0] * (1 - abs(Vp1)) ** 2 + lam_vec[1] * (0 + abs(Vn1)) ** 2 + lam_vec[2] * (1 - abs(Vp2)) ** 2 + lam_vec[3] * (0 + abs(Vn2)) ** 2
-        suma = lam_vec[0] * (1 - abs(Vp1)) ** 2 + lam_vec[1] * (0 + abs(Vn1)) ** 2 
+        suma = lam_vec[0] * (1 - abs(Vp1)) + lam_vec[1] * (0 + abs(Vn1)) + lam_vec[2] * (1 - abs(Vp2)) + lam_vec[3] * (0 + abs(Vn2))
+        # suma = lam_vec[0] * (1 - abs(Vp1)) ** 2 + lam_vec[1] * (0 + abs(Vn1)) ** 2 
         return suma
 
     def penalty_mean(x, target):
@@ -147,7 +148,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
 
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10000, gtol=10000, disp=True, full_output=True, ftol=1e-14, maxiter=15000, maxfun=15000)
-    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-14, maxiter=35000, maxfun=35000)
+    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-6, maxiter=35000, maxfun=35000)
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-5)
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
 
