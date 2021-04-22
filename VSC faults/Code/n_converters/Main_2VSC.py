@@ -18,13 +18,13 @@ Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LL_'
+type_f = 'opt_3x_'
 folder = 'Data4/'
 
 # RX variation
 n_p = 201
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(5, 6, n_p)
+Yf_vec = fY_fault(3, 10, n_p)
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 
 # Store data
@@ -48,9 +48,9 @@ f_vec = []
 for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    Y_con = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
