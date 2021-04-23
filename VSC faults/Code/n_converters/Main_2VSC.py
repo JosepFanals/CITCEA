@@ -24,7 +24,7 @@ folder = 'Data4/'
 # RX variation
 n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(3, 6, n_p)
+Yf_vec = fY_fault(35, 45, n_p)
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 
 # Store data
@@ -49,8 +49,8 @@ for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
-    Y_con = [Yf_vec[iik], 0, 0]
+    Y_gnd = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
