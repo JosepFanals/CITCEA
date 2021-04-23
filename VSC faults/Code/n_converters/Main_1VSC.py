@@ -23,7 +23,7 @@ folder = 'Data4/'
 # RX variation
 n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(5, 20, n_p)
+Yf_vec = fY_fault(5, 6, n_p)
 
 # Store data
 Vp1_vec = []
