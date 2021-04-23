@@ -3,7 +3,7 @@ import numpy as np
 
 from mystic.symbolic import generate_constraint, generate_solvers, simplify
 from mystic.symbolic import generate_penalty, generate_conditions
-from mystic.solvers import fmin, fmin_powell
+from mystic.solvers import fmin, fmin_powell, diffev, diffev2
 from mystic.penalty import quadratic_equality, quadratic_inequality
 # from mystic.symbolic import absval
 
@@ -99,10 +99,12 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     x0 + x2 + x4 == 0
     x1 + x3 + x5 == 0
     """
+    
 
     cf = generate_constraint(generate_solvers(simplify(equations_c)))
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
-    result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=100, gtol=100, disp=True, full_output=True, ftol=1e-15, maxiter=25000, maxfun=25000)
+    # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-10, maxiter=25000, maxfun=25000)
+    result = diffev(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-10, maxiter=25000, maxfun=25000)
 
     I_sol = result
     # ff_obj = obj_fun(I_sol)

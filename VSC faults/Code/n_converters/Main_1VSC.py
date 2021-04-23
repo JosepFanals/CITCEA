@@ -12,18 +12,18 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [1000000, 0, 0]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [2, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LLG_'
-folder = 'Data3/'
+type_f = 'opt_LG_'
+folder = 'Data4/'
 
 # RX variation
-n_p = 300
-[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-# Yf_vec = fY_fault(50, 250, n_p)
+n_p = 100
+# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+Yf_vec = fY_fault(5, 20, n_p)
 
 # Store data
 Vp1_vec = []
@@ -44,9 +44,9 @@ for iik in range(n_p):
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
-    Zv1 = Zin_vec[iik]
-    Zt = Zv1  # I try this
+    Y_gnd = [Yf_vec[iik], 0, 0]
+    # Zv1 = Zin_vec[iik]
+    # Zt = Zv1  # I try this
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
@@ -79,9 +79,9 @@ for iik in range(n_p):
 
 
 # Save csv
-# x_vec = Yf_vec
-x_vec = RX_vec
-pcnt = 0.95
+x_vec = Yf_vec
+# x_vec = RX_vec
+pcnt = 1
 n_pp = int((1-pcnt) * n_p)
 fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
 fPlots(x_vec, Vn1_vec, folder + type_f + 'Vn1')
