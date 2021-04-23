@@ -18,13 +18,13 @@ Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_3x_'
+type_f = 'opt_LG_'
 folder = 'Data4/'
 
 # RX variation
-n_p = 201
+n_p = 50
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(3, 10, n_p)
+Yf_vec = fY_fault(10, 20, n_p)
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 
 # Store data
@@ -48,8 +48,8 @@ f_vec = []
 for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
+    # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
@@ -96,8 +96,8 @@ for iik in range(n_p):
     # Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
     # Ii_t = x_opt[8][0]
     Iit2 = x_opt[8][0]
-    print(Ii_t)
-    print(Iit2)
+    # print(Ii_t)
+    # print(Iit2)
     if iik > 10:
         # Ii_t = predictive(Iit2, Iit1, 0.01)
         Ii_t = Iit2
@@ -110,7 +110,7 @@ for iik in range(n_p):
 x_vec = Yf_vec
 # x_vec = RX_vec
 # x_vec = lam1_vec
-pcnt = 0.95
+pcnt = 1
 n_pp = int((1-pcnt) * n_p)
 fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
 fPlots(x_vec, Vp2_vec, folder + type_f + 'Vp2')
