@@ -21,8 +21,49 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{thomson2013museum}
-G.~Thomson, \emph{The museum environment}.\hskip 1em plus 0.5em minus
-  0.4em\relax Elsevier, 2013.
+\bibitem{imhof2014power}
+M.~Imhof and G.~Andersson, ``Power system stability control using voltage
+  source converter based hvdc in power systems with a high penetration of
+  renewables,'' in \emph{2014 Power Systems Computation Conference}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 1--7.
+
+\bibitem{eren2011control}
+S.~Eren, A.~Bakhshai, and P.~Jain, ``Control of three-phase voltage source
+  inverter for renewable energy applications,'' in \emph{2011 IEEE 33rd
+  International Telecommunications Energy Conference (INTELEC)}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2011, pp. 1--4.
+
+\bibitem{blaabjerg2015power}
+F.~Blaabjerg, Y.~Yang, K.~Ma, and X.~Wang, ``Power electronics-the key
+  technology for renewable energy system integration,'' in \emph{2015
+  International Conference on Renewable Energy Research and Applications
+  (ICRERA)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2015, pp. 1618--1626.
+
+\bibitem{abdou2013improving}
+A.~Abdou, A.~Abu-Siada, and H.~Pota, ``Improving the low voltage ride through
+  of doubly fed induction generator during intermittent voltage source
+  converter faults,'' \emph{Journal of Renewable and Sustainable Energy},
+  vol.~5, no.~4, p. 043110, 2013.
+
+\bibitem{erlich2006advanced}
+I.~Erlich, W.~Winter, and A.~Dittrich, ``Advanced grid requirements for the
+  integration of wind turbines into the german transmission system,'' in
+  \emph{2006 IEEE Power Engineering Society General Meeting}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2006, pp. 7--pp.
+
+\bibitem{zhang2015coordinated}
+X.~Zhang, Z.~Wu, M.~Hu, X.~Li, and G.~Lv, ``Coordinated control strategies of
+  vsc-hvdc-based wind power systems for low voltage ride through,''
+  \emph{energies}, vol.~8, no.~7, pp. 7224--7242, 2015.
+
+\bibitem{tsili2009review}
+M.~Tsili and S.~Papathanassiou, ``A review of grid code technical requirements
+  for wind farms,'' \emph{IET Renewable power generation}, vol.~3, no.~3, pp.
+  308--332, 2009.
+
+\bibitem{conroy2007low}
+J.~Conroy and R.~Watson, ``Low-voltage ride-through of a full converter wind
+  turbine with permanent magnet generator,'' \emph{IET Renewable power
+  generation}, vol.~1, no.~3, pp. 182--189, 2007.
 
 \end{thebibliography}

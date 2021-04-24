@@ -376,7 +376,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Fill this}
+\title{Positive and negative sequence currents optimization to improve voltages during unbalanced faults}
 %
 %
 % author names and IEEE memberships
@@ -388,7 +388,8 @@
 % was not built to handle multiple paragraphs
 %
 
-\author{Fill this,~\IEEEmembership{Fill this,~IEEE,}
+% \author{Marc Cheah-Mañé~\IEEEmembership{Member,~IEEE}, Oriol Gomis-Bellmunt~\IEEEmembership{Fellow,~IEEE}, Eduardo Prieto-Araujo~\IEEEmembership{Member,~IEEE}, Jie Song~\IEEEmembership{Member,~IEEE}, Josep Fanals,~\IEEEmembership{Member,~IEEE,}
+\author{Fill this
 
 
 % \thanks{M. Shell was with the Department
@@ -444,12 +445,12 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-Fill this, a single paragraph.
+Grid faults constitute a series of unfortunate events that compromise power systems. With the increasing integration of renewables, the currents injected by power electronic converters are controllable, but at the same time, they have to be limited so as not to damage its semiconductors. This poses the challenge to determine the combination of currents which improves the most the voltages at the point of common coupling. In this paper, such issue is approached from an optimization perspective. Solving the optimization problem allows to compare its solutions with respect to the ones obtained by following the grid code control laws. Two fundamental scenarios are presented: one with a single converter, and another with two converters. Several parameters are varied for all kinds of faults to spot the changes on the currents, such as the severity of the fault, the distance of a hypothetical submarine cable, and the resistive/inductive ratio of the impedances. Overall the results indicate that injecting only reactive power is not always the preferable choice. While grid codes are not optimal, they can be regarded as near-optimal decision rules.
 \end{abstract}
 
-% Note that keywords are not normally used for peerreview papers.
+% Note that keywords are not normally used for peer review papers.
 \begin{IEEEkeywords}
-Fill this, separate by commas.
+Voltage imbalance, Unbalanced fault, Grid code, VSC current saturation, Positive sequence voltage maximization, Negative sequence voltage minimization
 \end{IEEEkeywords}
 
 
@@ -485,7 +486,14 @@ Fill this, separate by commas.
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{F}{ill} this, try the citation \cite{thomson2013museum} estimate...
+\IEEEPARstart{T}{he} rise in renewable energies has carried along with it the inclusion of Voltage Source Converters (VSC) as a means of coupling energetic resources to the grid while providing controllability \cite{imhof2014power, eren2011control, blaabjerg2015power}. Adopting such power electronics equipment has induced a progressive shrinkage on synchronous generators' influence in power systems. While synchronous generators suffer an increase in current during faults, which causes protective relays to trigger, the issue is much more prominent in power-electronics-based grids as spikes in current are likely to damage the Isolated-Gate Bipolar Transistors (IGBT) found in VSC \cite{abdou2013improving}. 
+
+Not only currents have to be constrained to not exceed the limitations, but they also have to collaborate on improving the voltages. This becomes specially visible when looking at the Low Voltage Ride Through (LVRT) requirements imposed by Transmission System Operators (TSO) \cite{erlich2006advanced, zhang2015coordinated}. For instance, when faults take place, wind turbines have to be kept connected to the grid and inject reactive power so as to ride through the fault with the final goal of rising the voltage \cite{tsili2009review, conroy2007low}.  
+
+Even though the aforementioned problematic is well-known (see for instance...), not many authors aimed at figuring out an appropriate solution. % talk about Camacho...
+
+This paper is structured as follows: % and write this paragraph
+
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 
