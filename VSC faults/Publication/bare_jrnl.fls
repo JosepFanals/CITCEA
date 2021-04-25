@@ -703,10 +703,6 @@ INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\lscape.sty
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmrc7t.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb7t.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb7t.tfm
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
 OUTPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
@@ -726,6 +722,10 @@ INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.v
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.vf
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.aux

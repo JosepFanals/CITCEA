@@ -89,4 +89,17 @@ A.~Camacho, M.~Castilla, J.~Miret, L.~G. de~Vicu{\~n}a, and R.~Guzman,
   support in resistive--inductive grids during grid faults,'' \emph{IEEE
   Transactions on Power Electronics}, vol.~33, no.~6, pp. 5362--5373, 2017.
 
+\bibitem{ree_gc}
+\BIBentryALTinterwordspacing
+R.~E. de~España. (2016) Información sobre implementación de códigos de red
+  de conexión. textos de los códigos de red de conexió europeos. reglamento
+  2016/631. [Online]. Available:
+  \url{https://www.esios.ree.es/es/pagina/codigos-red-conexion}
+\BIBentrySTDinterwordspacing
+
+\bibitem{paspatis2019voltage}
+A.~G. Paspatis and G.~C. Konstantopoulos, ``Voltage support under grid faults
+  with inherent current limitation for three-phase droop-controlled
+  inverters,'' \emph{Energies}, vol.~12, no.~6, p. 997, 2019.
+
 \end{thebibliography}
