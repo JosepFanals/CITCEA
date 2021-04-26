@@ -45,6 +45,10 @@ A.~Abdou, A.~Abu-Siada, and H.~Pota, ``Improving the low voltage ride through
   converter faults,'' \emph{Journal of Renewable and Sustainable Energy},
   vol.~5, no.~4, p. 043110, 2013.
 
+\bibitem{morren2006grid}
+J.~Morren, \emph{Grid support by power electronic converters of Distributed
+  Generation units}, 2006.
+
 \bibitem{erlich2006advanced}
 I.~Erlich, W.~Winter, and A.~Dittrich, ``Advanced grid requirements for the
   integration of wind turbines into the german transmission system,'' in
@@ -103,6 +107,12 @@ A.~Camacho, M.~Castilla, J.~Miret, J.~C. Vasquez, and E.~Alarcon-Gallo,
   inverters under grid fault,'' \emph{IEEE transactions on industrial
   electronics}, vol.~60, no.~4, pp. 1429--1441, 2012.
 
+\bibitem{guo2013asymmetrical}
+X.~Guo, X.~Zhang, B.~Wang, W.~Wu, and J.~M. Guerrero, ``Asymmetrical grid fault
+  ride-through strategy of three-phase grid-connected inverter considering
+  network impedance impact in low-voltage grid,'' \emph{IEEE Transactions on
+  Power Electronics}, vol.~29, no.~3, pp. 1064--1068, 2013.
+
 \bibitem{shabestary2016analytical}
 M.~M. Shabestary and Y.~A.-R.~I. Mohamed, ``An analytical method to obtain
   maximum allowable grid support by using grid-connected converters,''
@@ -114,5 +124,12 @@ Z.~Dai, H.~Lin, H.~Yin, and Y.~Qiu, ``A novel method for voltage support
   control under unbalanced grid faults and grid harmonic voltage
   disturbances,'' \emph{IET power Electronics}, vol.~8, no.~8, pp. 1377--1385,
   2015.
+
+\bibitem{shabestary2018overview}
+M.~M. Shabestary, S.~Mortazavian, and Y.~I. Mohamed, ``Overview of voltage
+  support strategies in grid-connected vscs under unbalanced grid faults
+  considering lvrt and hvrt requirements,'' in \emph{2018 IEEE International
+  Conference on Smart Energy Grid Engineering (SEGE)}.\hskip 1em plus 0.5em
+  minus 0.4em\relax IEEE, 2018, pp. 145--149.
 
 \end{thebibliography}
