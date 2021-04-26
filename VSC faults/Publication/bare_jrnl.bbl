@@ -97,4 +97,22 @@ A.~G. Paspatis and G.~C. Konstantopoulos, ``Voltage support under grid faults
   with inherent current limitation for three-phase droop-controlled
   inverters,'' \emph{Energies}, vol.~12, no.~6, p. 997, 2019.
 
+\bibitem{camacho2012flexible}
+A.~Camacho, M.~Castilla, J.~Miret, J.~C. Vasquez, and E.~Alarcon-Gallo,
+  ``Flexible voltage support control for three-phase distributed generation
+  inverters under grid fault,'' \emph{IEEE transactions on industrial
+  electronics}, vol.~60, no.~4, pp. 1429--1441, 2012.
+
+\bibitem{shabestary2016analytical}
+M.~M. Shabestary and Y.~A.-R.~I. Mohamed, ``An analytical method to obtain
+  maximum allowable grid support by using grid-connected converters,''
+  \emph{IEEE Transactions on Sustainable Energy}, vol.~7, no.~4, pp.
+  1558--1571, 2016.
+
+\bibitem{dai2015novel}
+Z.~Dai, H.~Lin, H.~Yin, and Y.~Qiu, ``A novel method for voltage support
+  control under unbalanced grid faults and grid harmonic voltage
+  disturbances,'' \emph{IET power Electronics}, vol.~8, no.~8, pp. 1377--1385,
+  2015.
+
 \end{thebibliography}
