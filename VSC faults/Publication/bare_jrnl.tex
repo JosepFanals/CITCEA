@@ -369,6 +369,13 @@
 
 \newcommand{\un}[1]{\underline{#1}} % per tenir underline
 
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{arrows.meta}
+\usepackage{tikz}
+\usepackage{circuitikz}
+
 \begin{document}
 %
 % paper title
@@ -610,19 +617,20 @@ The structure of the paper is as follows. Section \ref{problem_f} formulates the
 
 
 \section{Problem formulation} \label{problem_f}
-Given a basic system as the one depicted in Figure \ref{fig:sys_p}, the goal is to optimize the voltages at the point of common coupling. The fault is symbolized by a generic fault impedance, which in reality can represent either a balanced or unbalanced fault.
+Given a basic system as the one depicted in Figure \ref{fig:sys_p}, the goal is to optimize the voltages at the point of common coupling. The fault is symbolized by a fault impedance, which in reality can either represent a balanced or unbalanced fault.
 
 \begin{figure}[!htb]\scriptsize \centering
 \begin{circuitikz}[european]
 \thicklines
 
-\draw (-3,0) to [sV, v_=$\underline{V}_{th}$] (-3,2);
-\draw (-5,2) to [R, l=$\underline{Z}_{th}$] (-3,2);
+\draw (-3,0) to [sV, v_=$\underline{V}_{t}$] (-3,2);
+\draw (-5,2) to [R, l=$\underline{Z}_{t}$] (-3,2);
 \draw (-3.25,0) to [short] (-2.75,0);
 \draw (-5.25,0) to [short] (-4.75,0);
 \node at (-7,1.3) {PCC};
 \node at (-9.5,1.3) {VSC};
-\node at (-7,2.7) {$\underline{V}_c$};
+\node at (-7,2.7) {$\underline{V}_p$};
+\node at (-5,2.7) {$\underline{V}_f$};
 \draw (-5,2) to [short] (-5.2,1);
 \draw (-5.2,1) to [short] (-4.8,1);
 \draw[-{Latex[length=3mm]}] (-4.8,1) to [short] (-5,0);
@@ -637,18 +645,64 @@ Given a basic system as the one depicted in Figure \ref{fig:sys_p}, the goal is 
 \caption{Single-phase representation of the basic system under a fault}
 \label{fig:sys_p}
 \end{figure}
-The VSC is typically modeled as three-phase voltage sources in series with the filters impedance of the form $\underline{Z}_c$. Its control strategy directly adjusts the voltages to so that currents can indirectly meet the references \cite{andani2018controller}. However, the approach followed here consists of treating it as a current source that injects a current $\underline{I}$ into the system. This is precisely the variable to control in order to improve the voltage $\underline{V}_c$. Such current it constrained to not provide any zero sequence component and simultaneously respecting the limits. Therefore, the optimization problem reads as
+The VSC is typically modeled as three-phase voltage sources in series with the filters impedance of the form $\underline{Z}_z$. Its control strategy directly adjusts the voltages to so that currents can indirectly meet the references \cite{andani2018controller}. However, the approach followed here consists of treating it as a current source that injects a current $\underline{I}$ into the system. This is precisely the variable to control in order to improve the voltage $\underline{V}_p$. Such current it constrained to not provide any zero sequence component and simultaneously respecting the limits. Therefore, the optimization problem reads as
 \begin{equation}
 \begin{aligned}
-\min_{\un{I}_1,\un{I}_2} \quad & \lambda^+_1(1 - \un{V}^+_{p1} \un{V}^{+*}_{p1})^2 + \lambda^-_1(0 - \un{V}^-_{p1} \un{V}^{-*}_{p1})^2 + \lambda^+_2(1 - \un{V}^+_{p2} \un{V}^{+*}_{p2})^2 + \lambda^-_2(0 - \un{V}^-_{p2} \un{V}^{-*}_{p2})^2 \ , \\
-\textrm{s.t.} \quad & \text{max}(\un{I}_{a1}, \un{I}_{b1}, \un{I}_{c1}, \un{I}_{a2}, \un{I}_{b2}, \un{I}_{c2}) \leq I_{\text{max}} \ ,\\
-  &\sum \un{I}_1 = 0 \ , \\
-  &\sum \un{I}_2 = 0 \ . \\
+\min_{\un{I}} \quad & \lambda^+|(1 - |\un{V}^+_p(\un{I}) |)| + \lambda^-|(0 - |\un{V}^-_p(\un{I})|)| \ , \\
+\textrm{s.t.} \quad & \text{max}(\un{I}^{a}, \un{I}^{b}, \un{I}^{c}) \leq I_{\text{max}} \ ,\\
+  &\un{I}^a + \un{I}^b + \un{I}^{c} = 0 \ , \\
+\end{aligned}
+\label{eq:opt1}
+\end{equation}
+where the positive and negative sequence components of voltage $\un{V}_p$ are symbolically expressed as functions of the currents, and $I_{\text{max}}$ is the maximum allowed current by the converter. Considering that faults are strong enough so that the converter is incapable of raising the voltage $|\un{V}^{+}_p(\un{I})|$ to values higher than 1, the optimization problem can be rewritten:
+\begin{equation}
+\begin{aligned}
+\min_{\un{I}} \quad & \lambda^+(1 - |\un{V}^+_p(\un{I}) |) + \lambda^-(0 - |\un{V}^-_p(\un{I})|) \ , \\
+\textrm{s.t.} \quad & \text{max}(\un{I}^{a}, \un{I}^{b}, \un{I}^{c}) \leq I_{\text{max}} \ ,\\
+  &\un{I}^a + \un{I}^b + \un{I}^{c} = 0 \ . \\
 \end{aligned}
 \label{eq:opt2}
 \end{equation}
+Removing the outer absolute values has been proved to be beneficial in terms of computational time. The voltages are related to the currents by means of Kirchoff's laws. To compact the problem, the Thevenin grid equivalent has been transformed to a Norton equivalent with currents $\un{I}_{t}=\un{V}_{t}/\un{Z}_{t}$. Therefore:
+\begin{equation}
+  \begin{pmatrix}
+    \un{I}^{a}\\
+    \un{I}^{b}\\
+    \un{I}^{c}\\
+    \un{I}^{a}_t\\
+    \un{I}^{b}_t\\
+    \un{I}^{c}_t\\
+  \end{pmatrix} = \mathbf{Y} \begin{pmatrix}
+    \un{V}^{a}_p \\
+    \un{V}^{b}_p \\
+    \un{V}^{c}_p \\
+    \un{V}^{a}_f \\
+    \un{V}^{b}_f \\
+    \un{V}^{c}_f \\
+  \end{pmatrix} \ , 
+\end{equation}
+where for a system as the one depicted in Figure \ref{fig:sys_p} the admittance matrix $\mathbf{Y}$ is a $6\times 6$ matrix which can be flexibly constructed depending on the grid impedances $\un{Z}_{v}$, $\un{Z}_f$ and $\un{Z}_t$. Finally, the sequence components of the voltages are obtained by means of Fortescue's transformation \cite{fortescue1918method}:
+\begin{equation}
+  \begin{pmatrix}
+    \un{V}^{0}_{p} \\
+    \un{V}^{+}_{p} \\
+    \un{V}^{-}_{p} \\
+  \end{pmatrix} = \frac{1}{3} \begin{pmatrix}
+    1 & 1 & 1\\
+    1 & a & a^{2}\\
+    1 & a^{2} & a\\
+  \end{pmatrix} \begin{pmatrix}
+    \un{V}^{a}_{p} \\
+    \un{V}^{b}_{p} \\
+    \un{V}^{c}_{p} \\
+  \end{pmatrix} \ ,
+\end{equation}
+where $a=e^{j\frac{2\pi}{3}}$. 
 
-% posar eq
+
+
+Although the study can also be performed in the sequence components reference frame as in \cite{taul2020modeling}, each type of fault has to be studied individually. Consequently, even if both approaches have been proved to be generate the same results, this paper opts for analyzing the faults in the natural reference frame for greater simplicity. 
+
 
 
 % \subsection{Two-converter case}
@@ -660,6 +714,101 @@ The VSC is typically modeled as three-phase voltage sources in series with the f
 
 \section{Single converter case study} \label{1conv}
 Fill this
+
+% testing plots
+\begin{figure}[!htb]\centering \footnotesize
+    \begin{subfigure}[!htb]{.2\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=2cm, height=2.5cm}
+              \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, ytick distance={0.05}, xmin=0.0, xmax=0.95, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{1.5cm}
+    \begin{subfigure}[!htb]{.2\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=2cm, height=2.5cm}
+                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.05}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+      \vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=2cm, height=2.5cm}
+                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=2cm, height=2.5cm}
+                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+\vspace{0.2cm}
+
+      \begin{subfigure}[!htb]{.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7cm, height=5.5cm}
+                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.001}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{1.5cm}
+      \begin{subfigure}[!htb]{.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax = 0.1, ymin=-0.1]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+        \vspace{0.2cm}
+
+\begin{center}
+\begin{subfigure}[!htb]{.7\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=12cm, height=5.5cm}
+                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.1},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault with a changing $\lambda_1$ and $\un{Y}_{xg}=5$}
+    \label{fig:3x_fault3}
+  \end{figure}
+
 
 \section{Two converter case study} \label{2conv}
 Fill this
