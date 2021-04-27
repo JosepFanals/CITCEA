@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  27 APR 2021 12:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  27 APR 2021 12:39
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
 ("c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
@@ -696,7 +696,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Data3/opt_3x_In2re.csv}
 
-Overfull \hbox (21.1191pt too wide) in paragraph at lines 755--756
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 754--755
  [][] 
  []
 
@@ -713,7 +713,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Data3/opt_3x_In2im.csv}
 
-Overfull \hbox (21.1191pt too wide) in paragraph at lines 766--767
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 765--766
  [][] 
  []
 
@@ -730,7 +730,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Data3/opt_3x_Vp2.csv}
 
-Overfull \hbox (21.1191pt too wide) in paragraph at lines 780--781
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 778--779
  [][] 
  []
 
@@ -748,7 +748,7 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Data3/opt_3x_Vn2.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (21.1191pt too wide) in paragraph at lines 792--793
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 790--791
  [][] 
  []
 
@@ -759,23 +759,146 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Data3/opt_3x_f_obj.csv}
 
-Overfull \hbox (16.05501pt too wide) in paragraph at lines 805--806
+Overfull \hbox (16.05501pt too wide) in paragraph at lines 802--803
  [][] 
  []
 
-("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl" [2]) [3] ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.aux") ) 
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Ip1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Ip2re.csv}
+
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 819--820
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Ip1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Ip2im.csv}
+
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 831--832
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_In1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_In2re.csv}
+
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 844--845
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_In1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_In2im.csv}
+
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 855--856
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Vp1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Vp2.csv}
+
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 868--869
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Vn1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_Vn2.csv}
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (21.1191pt too wide) in paragraph at lines 880--881
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Data3/opt_3x_f_obj.csv}
+
+Overfull \hbox (16.05501pt too wide) in paragraph at lines 892--893
+ [][] 
+ []
+
+("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl" [2]
+
+LaTeX Warning: Text page 3 contains only floats.
+
+
+Overfull \vbox (4.74048pt too high) has occurred while \output is active []
+
+ [3]) [4
+
+] ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.aux") ) 
 Here is how much of TeX's memory you used:
- 40601 strings out of 479696
- 1093472 string characters out of 19617135
- 21680714 words of memory out of 40000000
- 57150 multiletter control sequences out of 15000+200000
+ 40650 strings out of 479696
+ 1094393 string characters out of 19617135
+ 21727634 words of memory out of 40000000
+ 57199 multiletter control sequences out of 15000+200000
  439724 words of font info for 91 fonts, out of 20000000 for 9000
  1144 hyphenation exceptions out of 8191
  94i,21n,98p,2541b,2394s stack positions out of 5000i,500n,10000p,20000000b,50000s
 {C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (3 pages, 190116 bytes).
+Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (4 pages, 201947 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
+ 79 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

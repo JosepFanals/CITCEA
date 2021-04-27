@@ -720,7 +720,7 @@ Fill this
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
-              \pgfplotsset{width=4.5cm, height=4.0cm}
+              \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, ytick distance={0.05}, xmin=0.0, xmax=0.95, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip2re.csv};
@@ -732,7 +732,7 @@ Fill this
     \begin{subfigure}[!htb]{0.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=4.0cm}
+                \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.05}]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip2im.csv};
@@ -741,12 +741,11 @@ Fill this
             \end{tikzpicture}
       \end{subfigure}
 
-      \vspace{0.2cm}
 
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=4.0cm}
+                \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In2re.csv};
@@ -758,7 +757,7 @@ Fill this
       \begin{subfigure}[!htb]{.12\textwidth}
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
-                  \pgfplotsset{width=4.5cm, height=4.0cm}
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In2im.csv};
@@ -766,13 +765,12 @@ Fill this
               \end{tikzpicture}
         \end{subfigure}
 
-\vspace{0.2cm}
 
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=4.0cm}
-                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.001}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.002}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vp1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vp2.csv};
                 % \legend{BF, OPT};
@@ -783,8 +781,8 @@ Fill this
       \begin{subfigure}[!htb]{.12\textwidth}
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
-                  \pgfplotsset{width=4.5cm, height=4.0cm}
-                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax = 0.1, ymin=-0.1]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.05)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax = 0.1, ymin=-0.1]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vn1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vn2.csv};
                   \legend{VSC1, VSC2};
@@ -792,13 +790,12 @@ Fill this
               \end{tikzpicture}
         \end{subfigure}
 
-        \vspace{0.2cm}
 
 \begin{center}
 \begin{subfigure}[!htb]{0.4\textwidth}
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
-                  \pgfplotsset{width=9.4cm, height=4.0cm}
+                  \pgfplotsset{width=9.4cm, height=3.51cm}
                   \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.1},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_f_obj.csv};
                   \end{axis}
@@ -808,6 +805,97 @@ Fill this
     \caption{Influence of the currents on the objective function for the balanced fault with a changing $\lambda_1$ and $\un{Y}_{xg}=5$}
     \label{fig:3x_fault3}
   \end{figure}
+
+\begin{figure}[!htb]\centering \tiny
+    \begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, ytick distance={0.05}, xmin=0.0, xmax=0.95, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.05}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, xmin=0.0, xmax=0.95, ytick distance = {0.002}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.05)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax = 0.1, ymin=-0.1]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+
+\begin{center}
+\begin{subfigure}[!htb]{0.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=9.4cm, height=3.51cm}
+                  \begin{axis}[grid=major, xlabel={$\lambda_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick,  xmin=0.0, xmax=0.95, ytick distance = {0.1},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Data3/opt_3x_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault with a changing $\lambda_1$ and $\un{Y}_{xg}=5$}
+    \label{fig:3x_fault4}
+  \end{figure}
+
 
 
 \section{Two converter case study} \label{2conv}
