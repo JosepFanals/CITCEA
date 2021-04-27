@@ -367,6 +367,7 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+\newcommand{\un}[1]{\underline{#1}} % per tenir underline
 
 \begin{document}
 %
@@ -609,11 +610,48 @@ The structure of the paper is as follows. Section \ref{problem_f} formulates the
 
 
 \section{Problem formulation} \label{problem_f}
-Given a basic system as the one depicted in Figure XX, the goal is to optimize the voltages at the point of common coupling. The fault is symbolized by a generic fault impedance, which in reality can represent either a balanced or unbalanced fault.
+Given a basic system as the one depicted in Figure \ref{fig:sys_p}, the goal is to optimize the voltages at the point of common coupling. The fault is symbolized by a generic fault impedance, which in reality can represent either a balanced or unbalanced fault.
 
-% place figure of the basic system
+\begin{figure}[!htb]\scriptsize \centering
+\begin{circuitikz}[european]
+\thicklines
 
-\subsection{Two-converter case}
+\draw (-3,0) to [sV, v_=$\underline{V}_{th}$] (-3,2);
+\draw (-5,2) to [R, l=$\underline{Z}_{th}$] (-3,2);
+\draw (-3.25,0) to [short] (-2.75,0);
+\draw (-5.25,0) to [short] (-4.75,0);
+\node at (-7,1.3) {PCC};
+\node at (-9.5,1.3) {VSC};
+\node at (-7,2.7) {$\underline{V}_c$};
+\draw (-5,2) to [short] (-5.2,1);
+\draw (-5.2,1) to [short] (-4.8,1);
+\draw[-{Latex[length=3mm]}] (-4.8,1) to [short] (-5,0);
+\draw (-7,2) to [R, l=$\underline{Z}_v$] (-5,2);
+\draw[line width=0.65mm] (-7,2.5) to [short] (-7,1.5);
+\draw[line width=0.65mm] (-5,2.5) to [short] (-5,1.5);
+\draw (-9,2) to [R, l=$\underline{Z}_z$, i=$\underline{I}$] (-7,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+
+\end{circuitikz}
+\caption{Single-phase representation of the basic system under a fault}
+\label{fig:sys_p}
+\end{figure}
+The VSC is typically modeled as three-phase voltage sources in series with the filters impedance of the form $\underline{Z}_c$. Its control strategy directly adjusts the voltages to so that currents can indirectly meet the references \cite{andani2018controller}. However, the approach followed here consists of treating it as a current source that injects a current $\underline{I}$ into the system. This is precisely the variable to control in order to improve the voltage $\underline{V}_c$. Such current it constrained to not provide any zero sequence component and simultaneously respecting the limits. Therefore, the optimization problem reads as
+\begin{equation}
+\begin{aligned}
+\min_{\un{I}_1,\un{I}_2} \quad & \lambda^+_1(1 - \un{V}^+_{p1} \un{V}^{+*}_{p1})^2 + \lambda^-_1(0 - \un{V}^-_{p1} \un{V}^{-*}_{p1})^2 + \lambda^+_2(1 - \un{V}^+_{p2} \un{V}^{+*}_{p2})^2 + \lambda^-_2(0 - \un{V}^-_{p2} \un{V}^{-*}_{p2})^2 \ , \\
+\textrm{s.t.} \quad & \text{max}(\un{I}_{a1}, \un{I}_{b1}, \un{I}_{c1}, \un{I}_{a2}, \un{I}_{b2}, \un{I}_{c2}) \leq I_{\text{max}} \ ,\\
+  &\sum \un{I}_1 = 0 \ , \\
+  &\sum \un{I}_2 = 0 \ . \\
+\end{aligned}
+\label{eq:opt2}
+\end{equation}
+
+% posar eq
+
+
+% \subsection{Two-converter case}
 
 % place figure of the two-converter case
 
