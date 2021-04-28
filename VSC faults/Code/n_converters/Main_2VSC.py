@@ -14,18 +14,18 @@ Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
 Y_con = [0, 0, 0]  # Yab, Ybc, Yac
-Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
+Y_gnd = [100, 100, 100]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LL_'
+type_f = 'opt_la_'
 folder = 'Data4/'
 
 # RX variation
 n_p = 200
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(3, 10, n_p)  # for values big enough to have a severe fault
-# lam1_vec = f_lam(1.0, 0.0, n_p)
+# Yf_vec = fY_fault(3, 10, n_p)  # for values big enough to have a severe fault
+lam1_vec = f_lam(1.0, 0.0, n_p)
 
 # Store data
 Vp1_vec = []
@@ -48,13 +48,13 @@ f_vec = []
 for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
-    # lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
+    lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
 
     if iik > 0:
         Iit1 = Iit2
@@ -107,9 +107,9 @@ for iik in range(n_p):
 
 
 # Save csv
-x_vec = Yf_vec
+# x_vec = Yf_vec
 # x_vec = RX_vec
-# x_vec = lam1_vec
+x_vec = lam1_vec
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
 fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
