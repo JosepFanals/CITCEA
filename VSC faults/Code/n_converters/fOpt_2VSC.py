@@ -79,7 +79,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     cons = [con1, con2, con3, con4, con5]
 
     # @quadratic_inequality(con1, k=1e4)
-    def objective_f(x):
+    def objective_f(x):  # this is not used!!
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]
         V_p2_abc = Vv_v[3:6]
@@ -91,11 +91,11 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         Vn1 = V_p1_012[2]
         Vn2 = V_p2_012[2]
 
-        # suma = lam_vec[0] * abs(1 - abs(V_p1_012[1])) + lam_vec[1] * abs(1 - abs(V_p2_012[1])) + lam_vec[2] * abs(0 - abs(V_p1_012[2])) + lam_vec[3] * abs(0 - abs(V_p2_012[2]))
+        suma = lam_vec[0] * abs(1 - abs(V_p1_012[1])) + lam_vec[1] * abs(1 - abs(V_p2_012[1])) + lam_vec[2] * abs(0 - abs(V_p1_012[2])) + lam_vec[3] * abs(0 - abs(V_p2_012[2]))
         # suma = lam_vec[0] * (1 - np.real(Vp1 * np.conj(Vp1))) + lam_vec[1] * (1 - np.real(Vp2 * np.conj(Vp2))) + lam_vec[2] * np.real(Vn1 * np.conj(Vn1)) + lam_vec[3] * np.real(Vn2 * np.conj(Vn2))
         # suma = (1 - Vp1 * np.conj(Vp1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 
         # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
-        suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2)
+        # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2)
         return suma
 
 
@@ -115,7 +115,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         # suma = np.real((1 - Vp1 * np.conj(Vp1)) ** 2 + (0 + Vn1 * np.conj(Vn1)) ** 2 + (1 - Vp2 * np.conj(Vp2)) ** 2 + (0 + Vn2 * np.conj(Vn2)) ** 2)
         # suma = np.real(lam_vec[0] * (1 - Vp1 * np.conj(Vp1)) ** 2 + lam_vec[1] * (0 + Vn1 * np.conj(Vn1)) ** 2 + lam_vec[2] * (1 - Vp2 * np.conj(Vp2)) ** 2 + lam_vec[3] * (0 + Vn2 * np.conj(Vn2)) ** 2)
         # suma = lam_vec[0] * (1 - abs(Vp1)) ** 2 + lam_vec[1] * (0 + abs(Vn1)) ** 2 + lam_vec[2] * (1 - abs(Vp2)) ** 2 + lam_vec[3] * (0 + abs(Vn2)) ** 2
-        suma = lam_vec[0] * (1 - abs(Vp1)) + lam_vec[1] * (0 + abs(Vn1)) + lam_vec[2] * (1 - abs(Vp2)) + lam_vec[3] * (0 + abs(Vn2))
+        suma = lam_vec[0] * abs(1 - abs(Vp1)) + lam_vec[1] * abs(0 - abs(Vn1)) + lam_vec[2] * abs(1 - abs(Vp2)) + lam_vec[3] * abs(0 - abs(Vn2))
         # suma = lam_vec[0] * (1 - abs(Vp1)) ** 2 + lam_vec[1] * (0 + abs(Vn1)) ** 2 
         return suma
 
@@ -152,7 +152,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-8)
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=100, gtol=100, disp=False, ftol=1e-13)
     # result = fmin_powell(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000, scale=0.5, cross=0.5)
-    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=100, gtol=50, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000, scale=0.5, cross=0.5)
+    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000, scale=0.5, cross=0.5)
 
     # result = diffev2(objective_f, x0=Ii_t, npop=10, gtol=200, disp=False, full_output=True, itermon=mon, maxiter=1000)
 
