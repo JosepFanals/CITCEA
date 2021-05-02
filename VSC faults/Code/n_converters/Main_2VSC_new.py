@@ -13,17 +13,17 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [0, 0, 0]  # Yab, Ybc, Yac
-Y_gnd = [50, 0, 0]  # Yag, Ybg, Yc
+Y_con = [10, 10, 10]  # Yab, Ybc, Yac
+Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
-Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
+Ii_t = [-0.5, -0.88, -0.53, 0.84, 1, 0.04, -0.60, 0.80, -0.39, 0.92, 0.99, -0.12]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t = [0.22, -0.97, 0.01, 1, -0.23, -0.03, 0.28, -0.96, -0.02, 1, -0.26, -0.04]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LG_'
+type_f = 'opt_3x_'
 folder = 'Results_2conv_RX_v1/'
 
 # RX variation
-n_p = 20
+n_p = 50
 [RX_vec, Zin_vec] = fZ_rx(5, 0.5, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(15, 200, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
