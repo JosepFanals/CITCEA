@@ -13,18 +13,18 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [10000, 0, 0]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [100, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
-Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-Ii_t = [0.95, -0.31, -0.91, 0.27, -0.04, 0.37, 0.86, -0.51, 0.01, 0.03, -0.87, 0.48]  # currents initialization: Ia1re, Ia1im, ...
+# Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
+Ii_t = [0.2, -0.98, 0.04, 0.96, -0.23, 0.02, 0.1, -0.99, -0.57, 0.69, 0.47, 0.30]  # currents initialization: Ia1re, Ia1im, ...
 Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LLG_'
+type_f = 'opt_test_'
 folder = 'Results_2conv_RX_v1/'
 
 # RX variation
-n_p = 20
-[RX_vec, Zin_vec] = fZ_rx(0.5, 1.5, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+n_p = 30
+[RX_vec, Zin_vec] = fZ_rx(0.05, 10, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(15, 200, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
