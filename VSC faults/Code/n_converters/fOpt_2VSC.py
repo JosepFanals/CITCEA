@@ -144,27 +144,55 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     """
 
     equations_tot = """
-    x0 ** 2 + x1 ** 2 - 1 < 0
-    x2 ** 2 + x3 ** 2 - 1 < 0
-    x4 ** 2 + x5 ** 2 - 1 < 0
-    x6 ** 2 + x7 ** 2 - 1 < 0
-    x8 ** 2 + x9 ** 2 - 1 < 0
-    x10 ** 2 + x11 ** 2 - 1 < 0
+    x0 ** 2 + x1 ** 2 - 1 <= 0
+    x2 ** 2 + x3 ** 2 - 1 <= 0
+    x4 ** 2 + x5 ** 2 - 1 <= 0
+    x6 ** 2 + x7 ** 2 - 1 <= 0
+    x8 ** 2 + x9 ** 2 - 1 <= 0
+    x10 ** 2 + x11 ** 2 - 1 <= 0
     x0 + x2 + x4 == 0
     x1 + x3 + x5 == 0
     x6 + x8 + x10 == 0
     x7 + x9 + x11 == 0
     """
 
-    eqn_tot = simplify(equations_tot, all=True)
-    print(eqn_tot)
+    def penalty1(x):
+        return x[0] * x[0] + x[1] * x[1] - 1
 
+    def penalty2(x):
+        return x[2] * x[2] + x[3] * x[3] - 1
+
+    def penalty3(x):
+        return x[4] * x[4] + x[5] * x[5] - 1
+
+    def penalty4(x):
+        return x[6] * x[6] + x[7] * x[7] - 1
+
+    def penalty5(x):
+        return x[8] * x[8] + x[9] * x[9] - 1
+
+    def penalty6(x):
+        return x[10] * x[10] + x[11] * x[11] - 1
+
+    import mystic as my
+
+    @my.penalty.linear_equality(penalty1)
+    @my.penalty.linear_equality(penalty2)
+    @my.penalty.linear_equality(penalty3)
+    @my.penalty.linear_equality(penalty4)
+    @my.penalty.linear_equality(penalty5)
+    @my.penalty.linear_equality(penalty6)
+    def penaltyx(x):
+        return 0.0
+
+    eqn_c = simplify(equations_c, all=True)
+    print(eqn_c)
     import mystic.constraints as mc
+    cf_tot2 = generate_constraint(generate_solvers(eqn_c), join=mc.and_)
 
-    cf = generate_constraint(generate_solvers(simplify(equations_c)))
-    cf_tot = generate_constraint(generate_solvers(simplify(equations_tot)))
-    cf_tot2 = generate_constraint(generate_solvers(equations_tot), join=mc.and_)
-    
+    # eqn_p = simplify(equations_p, all=True)
+    # print(eqn_p)
+    # cp_tot2 = generate_penalty(generate_solvers(eqn_p), join=mc.and_)
 
 
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),]
@@ -176,7 +204,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-8)
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=10, gtol=10, disp=False, ftol=1e-13)
     # result = fmin_powell(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000, scale=0.5, cross=0.5)
-    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf_tot, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+    # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf_tot, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=cf_tot2, penalty=penaltyx, npop=5, gtol=5, disp=True, full_output=True, ftol=1e-25, maxiter=1750000, maxfun=1750000)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds,  constraints=cf, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=5, gtol=5, disp=True, full_output=True, maxiter=1750000, maxfun=1750000)
 
