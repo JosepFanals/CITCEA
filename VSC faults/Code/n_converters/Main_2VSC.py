@@ -24,7 +24,7 @@ folder = 'Results_2conv_RX_v1/'
 
 # RX variation
 n_p = 50
-[RX_vec, Zin_vec] = fZ_rx(0.05, 3, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+[RX_vec, Zin_vec] = fZ_rx(0.05, 5, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(15, 200, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
@@ -98,6 +98,8 @@ for iik in range(n_p):
     # print(Ii_t)
     print(Iit2)
     Ii_t = Iit2
+
+    print(abs(Vp1_vec[-1]), abs(Vp2_vec[-1]), abs(Vn1_vec[-1]), abs(Vn2_vec[-1]))
 
 
 
