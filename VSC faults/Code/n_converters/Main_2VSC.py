@@ -17,14 +17,14 @@ Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [100, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-Ii_t = [0.2, -0.98, 0.04, 0.96, -0.23, 0.02, 0.1, -0.99, -0.57, 0.69, 0.47, 0.30]  # currents initialization: Ia1re, Ia1im, ...
+Ii_t = [0.25, -0.97, 0.06, 0.96, -0.3, -0.0, 0.12, -0.99, -0.46, 0.87, 0.34, 0.18]  # currents initialization: Ia1re, Ia1im, ...
 Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 type_f = 'opt_test_'
 folder = 'Results_2conv_RX_v1/'
 
 # RX variation
-n_p = 30
-[RX_vec, Zin_vec] = fZ_rx(0.05, 10, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+n_p = 200
+[RX_vec, Zin_vec] = fZ_rx(0.05, 3, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(15, 200, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
@@ -56,8 +56,6 @@ for iik in range(n_p):
     Zv1 = Zin_vec[iik]
     # lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
 
-    if iik > 0:
-        Iit1 = Iit2
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
@@ -99,11 +97,8 @@ for iik in range(n_p):
     Iit2 = x_opt[8][0]
     # print(Ii_t)
     print(Iit2)
-    if iik > 10:
-        # Ii_t = predictive(Iit2, Iit1, 0.01)
-        Ii_t = Iit2
-    else:
-        Ii_t = Iit2
+    Ii_t = Iit2
+
 
 
 
