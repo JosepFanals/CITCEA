@@ -216,8 +216,14 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     @my.penalty.lagrange_inequality(penalty4)
     @my.penalty.lagrange_inequality(penalty5)
     @my.penalty.lagrange_inequality(penalty6)
+    # @my.penalty.linear_equality(suma1)
+    # @my.penalty.linear_equality(suma2)
+    # @my.penalty.linear_equality(suma3)
+    # @my.penalty.linear_equality(suma4)
     def penaltyx(x):
         return 0.0
+
+
 
 
     eqn_c = simplify(equations_c, all=True)
@@ -226,6 +232,9 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     all_cons = ms.generate_constraint(ms.generate_solvers(ms.simplify(equations_c)))
     all_pens = ms.generate_penalty(ms.generate_conditions(ieqn))
+
+    cccf = ms.generate_constraint(ms.generate_solvers(ms.simplify(equations_tot)))
+    pppf = ms.generate_penalty(ms.generate_conditions(equations_tot))
 
 
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),]
@@ -248,6 +257,13 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penaltyx, npop=5, gtol=8, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraint=all_cons, penalty=penaltyx, npop=5, gtol=8, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
     result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=all_cons, penalty=penaltyx, npop=5, gtol=8, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+
+
+    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=all_cons, penalty=all_pens, npop=5, gtol=80, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+
+
+
+
     
 
     I_sol = result
