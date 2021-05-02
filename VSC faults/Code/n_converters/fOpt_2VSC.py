@@ -156,6 +156,16 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     x7 + x9 + x11 == 0
     """
 
+    ieqn = """
+    x0*x0 + x1*x1 <= 0
+    x2*x2 + x3*x3 <= 0
+    x4*x4 + x5*x5 <= 0
+    x6*x6 + x7*x7 <= 0
+    x8*x8 + x9*x9 <= 0
+    x10*x10 + x11*x11 <= 0
+    """
+   
+
     def penalty1(x):
         return x[0] * x[0] + x[1] * x[1] - 1
 
@@ -176,12 +186,12 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     import mystic as my
 
-    @my.penalty.linear_inequality(penalty1)
-    @my.penalty.linear_inequality(penalty2)
-    @my.penalty.linear_inequality(penalty3)
-    @my.penalty.linear_inequality(penalty4)
-    @my.penalty.linear_inequality(penalty5)
-    @my.penalty.linear_inequality(penalty6)
+    @my.penalty.quadratic_inequality(penalty1)
+    @my.penalty.quadratic_inequality(penalty2)
+    @my.penalty.quadratic_inequality(penalty3)
+    @my.penalty.quadratic_inequality(penalty4)
+    @my.penalty.quadratic_inequality(penalty5)
+    @my.penalty.quadratic_inequality(penalty6)
     def penaltyx(x):
         return 0.0
 
@@ -204,6 +214,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=10, gtol=10, disp=False, ftol=1e-13)
     # result = fmin_powell(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000, scale=0.5, cross=0.5)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf_tot, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+    # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=cf_tot2, penalty=penaltyx, npop=50, gtol=50, disp=True, full_output=True, ftol=1e-50, maxiter=1750000, maxfun=1750000)
     result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=cf_tot2, penalty=penaltyx, npop=50, gtol=50, disp=True, full_output=True, ftol=1e-50, maxiter=1750000, maxfun=1750000)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds,  constraints=cf, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=5, gtol=5, disp=True, full_output=True, maxiter=1750000, maxfun=1750000)
