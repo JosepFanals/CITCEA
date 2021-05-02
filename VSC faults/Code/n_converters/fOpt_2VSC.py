@@ -164,6 +164,18 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     x8*x8 + x9*x9 -1 <= 0
     x10*x10 + x11*x11 -1 <= 0
     """
+
+    def suma1(x):
+        return x[0] + x[2] + x[4]
+    
+    def suma2(x):
+        return x[1] + x[3] + x[5]
+
+    def suma3(x):
+        return x[6] + x[8] + x[10]
+
+    def suma4(x):
+        return x[7] + x[9] + x[11]
    
 
     def penalty1(x):
@@ -207,6 +219,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     def penaltyx(x):
         return 0.0
 
+
     eqn_c = simplify(equations_c, all=True)
     import mystic.constraints as mc
     cf_tot2 = generate_constraint(generate_solvers(eqn_c), join=mc.and_)
@@ -232,13 +245,15 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=5, gtol=5, disp=True, full_output=True, maxiter=1750000, maxfun=1750000)
 
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=all_cons, penalty=all_pens, npop=50, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000)
-    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penaltyx, npop=10, gtol=8, disp=True, full_output=True, ftol=1e-10, maxiter=1750000, maxfun=1750000)
+    # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penaltyx, npop=5, gtol=8, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+    # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraint=all_cons, penalty=penaltyx, npop=5, gtol=8, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=all_cons, penalty=penaltyx, npop=5, gtol=8, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
     
 
     I_sol = result
     # ff_obj = obj_fun(I_sol)
     # I_sol = sol.x
-    # print(I_sol)
+    print(I_sol)
 
     # Manage results
     # print(I_sol[1])
