@@ -167,31 +167,43 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
    
 
     def penalty1(x):
-        return x[0] * x[0] + x[1] * x[1] - 1
+        # return x[0] * x[0] + x[1] * x[1] - 1
+        return x[0]**2 + x[1]**2 - 1
 
     def penalty2(x):
-        return x[2] * x[2] + x[3] * x[3] - 1
+        # return x[2] * x[2] + x[3] * x[3] - 1
+        return x[2]**2 + x[3]**2 - 1
 
     def penalty3(x):
-        return x[4] * x[4] + x[5] * x[5] - 1
+        # return x[4] * x[4] + x[5] * x[5] - 1
+        return x[4]**2 + x[5]**2 - 1
 
     def penalty4(x):
-        return x[6] * x[6] + x[7] * x[7] - 1
+        # return x[6] * x[6] + x[7] * x[7] - 1
+        return x[6]**2 + x[7]**2 - 1
 
     def penalty5(x):
-        return x[8] * x[8] + x[9] * x[9] - 1
+        # return x[8] * x[8] + x[9] * x[9] - 1
+        return x[8]**2 + x[9]**2 - 1
 
     def penalty6(x):
-        return x[10] * x[10] + x[11] * x[11] - 1
+        # return x[10] * x[10] + x[11] * x[11] - 1
+        return x[10]**2 + x[11]**2 - 1
 
     import mystic as my
 
-    @my.penalty.quadratic_inequality(penalty1)
-    @my.penalty.quadratic_inequality(penalty2)
-    @my.penalty.quadratic_inequality(penalty3)
-    @my.penalty.quadratic_inequality(penalty4)
-    @my.penalty.quadratic_inequality(penalty5)
-    @my.penalty.quadratic_inequality(penalty6)
+    # @my.penalty.quadratic_inequality(penalty1)
+    # @my.penalty.quadratic_inequality(penalty2)
+    # @my.penalty.quadratic_inequality(penalty3)
+    # @my.penalty.quadratic_inequality(penalty4)
+    # @my.penalty.quadratic_inequality(penalty5)
+    # @my.penalty.quadratic_inequality(penalty6)
+    @my.penalty.lagrange_inequality(penalty1)
+    @my.penalty.lagrange_inequality(penalty2)
+    @my.penalty.lagrange_inequality(penalty3)
+    @my.penalty.lagrange_inequality(penalty4)
+    @my.penalty.lagrange_inequality(penalty5)
+    @my.penalty.lagrange_inequality(penalty6)
     def penaltyx(x):
         return 0.0
 
@@ -204,7 +216,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
 
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),]
-    # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
+    # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-5, 'maxiter':10000})
 
 
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10000, gtol=10000, disp=True, full_output=True, ftol=1e-14, maxiter=15000, maxfun=15000)
@@ -220,9 +232,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=5, gtol=5, disp=True, full_output=True, maxiter=1750000, maxfun=1750000)
 
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=all_cons, penalty=all_pens, npop=50, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000)
-    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, constraints=all_cons, penalty=all_pens, npop=50, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000)
+    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penaltyx, npop=10, gtol=8, disp=True, full_output=True, ftol=1e-10, maxiter=1750000, maxfun=1750000)
     
-
 
     I_sol = result
     # ff_obj = obj_fun(I_sol)

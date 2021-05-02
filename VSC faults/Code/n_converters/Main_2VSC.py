@@ -19,12 +19,12 @@ lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t = [0.22, -0.97, 0.01, 1, -0.23, -0.03, 0.28, -0.96, -0.02, 1, -0.26, -0.04]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_test_'
+type_f = 'opt_LG_'
 folder = 'Results_2conv_RX_v1/'
 
 # RX variation
 n_p = 50
-[RX_vec, Zin_vec] = fZ_rx(0.5, 1.5, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+[RX_vec, Zin_vec] = fZ_rx(1.5, 0.5, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(15, 200, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
