@@ -6,6 +6,7 @@ from mystic.symbolic import generate_penalty, generate_conditions
 from mystic.solvers import fmin, fmin_powell, diffev, diffev2
 from mystic.penalty import quadratic_equality, quadratic_inequality
 # from mystic.symbolic import absval
+import mystic.symbolic as ms
 
 from scipy.optimize import minimize
 from scipy.optimize.optimize import _minimize_scalar_bounded
@@ -128,6 +129,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         a6 = x[10] ** 2 + x[11] ** 2
         return (max(a1, a2, a3, a4, a5, a6) - target)
 
+
     # @quadratic_equality(condition=penalty_mean, kwds={'target':1.0})
     @quadratic_inequality(condition=penalty_mean, kwds={'target':1.0})
     def penalty(x):
@@ -141,7 +143,29 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     x7 + x9 + x11 == 0
     """
 
+    equations_tot = """
+    x0 ** 2 + x1 ** 2 - 1 < 0
+    x2 ** 2 + x3 ** 2 - 1 < 0
+    x4 ** 2 + x5 ** 2 - 1 < 0
+    x6 ** 2 + x7 ** 2 - 1 < 0
+    x8 ** 2 + x9 ** 2 - 1 < 0
+    x10 ** 2 + x11 ** 2 - 1 < 0
+    x0 + x2 + x4 == 0
+    x1 + x3 + x5 == 0
+    x6 + x8 + x10 == 0
+    x7 + x9 + x11 == 0
+    """
+
+    eqn_tot = simplify(equations_tot, all=True)
+    print(eqn_tot)
+
+    import mystic.constraints as mc
+
     cf = generate_constraint(generate_solvers(simplify(equations_c)))
+    cf_tot = generate_constraint(generate_solvers(simplify(equations_tot)))
+    cf_tot2 = generate_constraint(generate_solvers(equations_tot), join=mc.and_)
+    
+
 
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),]
     # sol = minimize(objective_f, Ii_t, method='SLSQP', constraints=cons, bounds=bnds, options={'ftol':1e-12, 'maxiter':10000})
@@ -152,7 +176,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # result = fmin(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-8)
     # result = fmin_powell(obj_fun, x0=Ii_t, bounds=bnds, constraints=cf, npop=10, gtol=10, disp=False, ftol=1e-13)
     # result = fmin_powell(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=10, disp=True, full_output=True, ftol=1e-5, maxiter=1750000, maxfun=1750000, scale=0.5, cross=0.5)
-    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
+    result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf_tot, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds,  constraints=cf, npop=10, gtol=5, disp=True, full_output=True, ftol=1e-15, maxiter=1750000, maxfun=1750000)
     # result = diffev(cost=obj_fun, x0=Ii_t, bounds=bnds, penalty=penalty, constraints=cf, npop=5, gtol=5, disp=True, full_output=True, maxiter=1750000, maxfun=1750000)
 

@@ -23,8 +23,8 @@ type_f = 'opt_test_'
 folder = 'Results_2conv_RX_v1/'
 
 # RX variation
-n_p = 200
-[RX_vec, Zin_vec] = fZ_rx(0.05, 3, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+n_p = 50
+[RX_vec, Zin_vec] = fZ_rx(0.05, 2, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(15, 200, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
