@@ -13,19 +13,19 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [10000, 0, 0]  # Yab, Ybc, Yac
-Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
+Y_con = [10000, 10, 10]  # Yab, Ybc, Yac
+Y_gnd = [25, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
-Ii_t = [0.66, -0.75, -0.65, 0.76, -0.01, -0.01, 0.72, -0.6, -0.61, 0.79, -0.11, -0.19]  # currents initialization: Ia1re, Ia1im, ...
+Ii_t = [0.12, -0.99, -0.52, 0.86, 0.40, 0.14, -0.16, -0.99, 0.22, 0.98, -0.06, 0.01]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t = [0.22, -0.97, 0.01, 1, -0.23, -0.03, 0.28, -0.96, -0.02, 1, -0.26, -0.04]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
 type_f = 'opt_LLG_'
-folder = 'Results_2conv_Zf_v1/'
+folder = 'Results_2conv_RX_v1/'
 
 # RX variation
 n_p = 50
-# [RX_vec, Zin_vec] = fZ_rx(2, 0.5, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(5, 55, n_p)  # for values big enough to have a severe fault
+[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+# Yf_vec = fY_fault(5, 55, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
 Vp1_vec = []
@@ -49,11 +49,11 @@ for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    Y_gnd = [Yf_vec[iik], 0, 0]
+    # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    # Zv1 = Zin_vec[iik]
+    Zv1 = Zin_vec[iik]
     # lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
 
 
@@ -105,8 +105,8 @@ for iik in range(n_p):
 
 
 # Save csv
-x_vec = Yf_vec
-# x_vec = RX_vec
+# x_vec = Yf_vec
+x_vec = RX_vec
 # x_vec = lam1_vec
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
