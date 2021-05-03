@@ -13,13 +13,13 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [25, 0, 0]  # Yab, Ybc, Yac
-Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
+Y_con = [10000, 0, 0]  # Yab, Ybc, Yac
+Y_gnd = [25, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
-Ii_t = [0.9977, 0.068, -0.5578, 0.83, -0.44, -0.898, 0.8668, 0.4988, -0.8656, 0.5008, -0.001, -0.9997]  # currents initialization: Ia1re, Ia1im, ...
+Ii_t = [0.9942, 0.1075, -0.9941, -0.109, -0.000132, 0.00149, 0.6149, -0.7886, -0.6195, 0.785, 0.0046, 0.00361]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t = [0.22, -0.97, 0.01, 1, -0.23, -0.03, 0.28, -0.96, -0.02, 1, -0.26, -0.04]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LL_'
+type_f = 'opt_LLG_'
 folder = 'Results_2conv_RX_v1/'
 
 # RX variation
