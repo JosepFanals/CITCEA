@@ -857,6 +857,32 @@ INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LG_Vn1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LG_Vn2.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LG_f_obj.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Ip1re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Ip2re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Ip1im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Ip2im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_In1re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_In2re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_In1im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_In2im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Vp1.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Vp2.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Vn1.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_Vn2.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LL_f_obj.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Ip1re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Ip2re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Ip1im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Ip2im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_In1re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_In2re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_In1im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_In2im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Vp1.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Vp2.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Vn1.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Vn2.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_f_obj.csv
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
