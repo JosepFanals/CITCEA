@@ -620,7 +620,7 @@ The contributions of this paper are two-fold. On the one hand, it indicates the 
 
 
 \section{Problem formulation} \label{problem_f}
-Given a basic system as the one depicted in Figure \ref{fig:sys_p}, the goal is to optimize the voltages at the point of common coupling. The fault is symbolized by a fault impedance, which in reality can either represent a balanced or unbalanced fault.
+Given a generic system as the one depicted in Figure \ref{fig:sys_p}, the goal is to optimize the voltages at the point of common coupling. The fault is symbolized by a fault impedance, which in reality can either represent a balanced or unbalanced fault.
 
 \begin{figure}[!htb]\scriptsize \centering
 \begin{circuitikz}[european]
@@ -645,10 +645,89 @@ Given a basic system as the one depicted in Figure \ref{fig:sys_p}, the goal is 
 
 
 \end{circuitikz}
-\caption{Single-phase representation of the basic system under a fault}
+\caption{Single-phase representation of the generic system under fault conditions}
 \label{fig:sys_p}
 \end{figure}
-The VSC is typically modeled as three-phase voltage sources in series with the filters impedance of the form $\underline{Z}_z$. Its control strategy directly adjusts the voltages to so that currents can indirectly meet the references \cite{andani2018controller}. However, the approach followed here consists of treating it as a current source that injects a current $\underline{I}$ into the system. This is precisely the variable to control in order to improve the voltage $\underline{V}_p$. Such current it constrained to not provide any zero sequence component and simultaneously respecting the limits. Therefore, the optimization problem reads as
+
+
+\begin{figure}[!htb] \centering \tiny
+\begin{circuitikz}[american]
+\thicklines
+
+\draw (-2.75,2) to [isource, l_=$\underline{I}_{t}$] (-4.25,2);
+\draw (-4.25,0.7) to [R, l=$\underline{Z}_{t}$, european] (-2.75,0.7);
+\draw (-2.75,2) to [short] (-2.75,0.7);
+\draw (-4.25,2) to [short] (-4.25,0.7);
+\draw (-4.25,1.35) to [short, -*] (-4.5,1.35);
+\draw (-2.75,1.35) to [short, *-] (-2.5,1.35);
+\draw (-2.5,1.35) to [short] (-2.5,0);
+\draw (-2.75,0) to [short] (-2.25,0);
+% \draw (-2.5,0.7) to [short, -*] (-2.5,2);
+% \draw (-0.5,0.7) to [short, -*] (-0.5,2);
+% \draw (0,2) to [short] (0,0);
+% \draw (-0.25,0) to [short] (0.25,0);
+% \draw (-3,2) to [short] (-4,2);
+
+
+
+% \draw (2,0) to [sV, v_=$\underline{V}_{t}$] (2,2);
+% \draw (-1,2) to [R, l=$\underline{Z}_{t}$] (2,2);
+% \draw (1.75,0) to [short] (2.25,0);
+
+% \draw (-3,2) to [short] (-2.8,1);
+% \draw (-2.8,1) to [short] (-3.2,1);
+% \draw[-{Latex[length=3mm]}] (-3.2,1) to [short] (-3,0);
+% \draw (-3.25,0) to [short] (-2.75,0);
+
+\node at (-7,1.3) {PCC1};
+\node at (-9.5,2.6) {VSC1};
+\node at (-7,2.7) {$\underline{V}_{p1}$};
+\draw (-7,2) to [R, l=$\underline{Z}_{v1}$, european] (-5.5,2);
+\draw[line width=0.65mm] (-7,2.5) to [short] (-7,1.5);
+% \draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
+% \node at (-3,2.7) {$\underline{V}_{f}$};
+\draw (-9,2) to [R, l=$\underline{Z}_{x1}$, i=$\underline{I}_1$, european] (-7.0,2);
+\draw (-10.0,2) to [sdcac] (-9.0,2);
+
+\draw (-10.0,-0) to [sdcac] (-9.0,-0);
+\draw (-9,-0) to [R, l=$\underline{Z}_{x2}$, i=$\underline{I}_2$, european] (-7,-0);
+\draw (-7,-0) to [R, l=$\underline{Z}_{v2}$, european] (-5.5,-0);
+\draw[line width=0.65mm] (-7,0.5) to [short] (-7,-0.5);
+\node at (-7,-0.7) {PCC2};
+\node at (-9.5,0.6) {VSC2};
+\node at (-7,0.7) {$\underline{V}_{p2}$};
+
+\draw (-10.0,-2) to [sdcac] (-9.0,-2);
+\draw (-9,-2) to [R, l=$\underline{Z}_{xn}$, i=$\underline{I}_n$, european] (-7,-2);
+\draw (-7,-2) to [R, l=$\underline{Z}_{vn}$, european] (-5.5,-2);
+\draw[line width=0.65mm] (-7,-1.5) to [short] (-7,-2.5);
+\node at (-7,-2.7) {PCCn};
+\node at (-9.5,-1.4) {VSCn};
+\node at (-7,-1.3) {$\underline{V}_{pn}$};
+
+\draw[line width=0.4mm] (-4.5,2.5) to [short] (-4.5,-2.5);
+\draw[line width=0.4mm] (-5.5,2.5) to [short] (-5.5,-2.5);
+\draw[line width=0.4mm] (-4.5,2.5) to [short] (-5.5,2.5);
+\draw[line width=0.4mm] (-5.5,-2.5) to [short] (-4.5,-2.5);
+\node at (-5,0.0) {Grid $\mathbf{\un{Y}_g}$};
+
+\draw[line width=0.4mm, dotted] (-9.5,-0.6) to [short] (-9.5,-1.1);
+\draw[line width=0.4mm, dotted] (-8.0,-0.3) to [short] (-8.0,-1.4);
+\draw[line width=0.4mm, dotted] (-6.25,-0.3) to [short] (-6.25,-1.4);
+
+\end{circuitikz}
+\caption{Single-phase representation of a complete system}
+\label{fig:sys_n}
+\end{figure}
+
+
+VSCs are typically modeled as three-phase voltage sources in series with the filters impedance of the form $\underline{Z}_z$. The control strategy directly adjusts the voltages to so that currents can indirectly meet the references \cite{andani2018controller}. However, the approach followed here consists of treating it as a current source that injects a current $\underline{I}$ into the system. This is precisely the variable to control in order to improve the voltage $\underline{V}_p$.
+
+
+
+
+
+Such current it constrained to not provide any zero sequence component and simultaneously respecting the limits. Therefore, the optimization problem reads as
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}} \quad & \lambda^+|(1 - |\un{V}^+_p(\un{I}) |)| + \lambda^-|(0 - |\un{V}^-_p(\un{I})|)| \ , \\
