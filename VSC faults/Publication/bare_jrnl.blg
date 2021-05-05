@@ -16,45 +16,45 @@ Database file #1: bib.bib
 Warning--missing publisher in morren2006grid
 
 Done.
-You've used 23 entries,
+You've used 25 entries,
             4087 wiz_defined-function locations,
-            956 strings with 12546 characters,
-and the built_in function-call counts, 19426 in all, are:
-= -- 1616
-> -- 445
+            963 strings with 12843 characters,
+and the built_in function-call counts, 20297 in all, are:
+= -- 1672
+> -- 479
 < -- 188
-+ -- 247
-- -- 71
-* -- 934
-:= -- 2840
-add.period$ -- 51
-call.type$ -- 23
-change.case$ -- 22
++ -- 263
+- -- 79
+* -- 970
+:= -- 2974
+add.period$ -- 55
+call.type$ -- 25
+change.case$ -- 24
 chr.to.int$ -- 423
-cite$ -- 24
-duplicate$ -- 1364
-empty$ -- 1487
-format.name$ -- 91
-if$ -- 4557
+cite$ -- 26
+duplicate$ -- 1440
+empty$ -- 1569
+format.name$ -- 101
+if$ -- 4754
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 224
-newline$ -- 94
-num.names$ -- 23
-pop$ -- 488
+int.to.str$ -- 25
+missing$ -- 242
+newline$ -- 100
+num.names$ -- 25
+pop$ -- 541
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1520
+skip$ -- 1586
 stack$ -- 0
-substring$ -- 1037
-swap$ -- 1182
+substring$ -- 1039
+swap$ -- 1225
 text.length$ -- 47
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 23
+type$ -- 25
 warning$ -- 1
-while$ -- 94
-width$ -- 25
-write$ -- 254
+while$ -- 96
+width$ -- 27
+write$ -- 268
 (There was 1 warning)

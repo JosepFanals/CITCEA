@@ -144,15 +144,24 @@ M.~T. Andani, H.~Pourgharibshahi, Z.~Ramezani, and H.~Zargarzadeh, ``Controller
   power and energy conference (TPEC)}.\hskip 1em plus 0.5em minus 0.4em\relax
   IEEE, 2018, pp. 1--6.
 
-\bibitem{fortescue1918method}
-C.~L. Fortescue, ``Method of symmetrical co-ordinates applied to the solution
-  of polyphase networks,'' \emph{Transactions of the American Institute of
-  Electrical Engineers}, vol.~37, no.~2, pp. 1027--1140, 1918.
-
 \bibitem{taul2020modeling}
 M.~G. Taul, S.~Golestan, X.~Wang, P.~Davari, and F.~Blaabjerg, ``Modeling of
   converter synchronization stability under grid faults: The general case,''
   \emph{IEEE Journal of Emerging and Selected Topics in Power Electronics},
   2020.
+
+\bibitem{fortescue1918method}
+C.~L. Fortescue, ``Method of symmetrical co-ordinates applied to the solution
+  of polyphase networks,'' \emph{Transactions of the American Institute of
+  Electrical Engineers}, vol.~37, no.~2, pp. 1027--1140, 1918.
+
+\bibitem{mckerns2012building}
+M.~M. McKerns, L.~Strand, T.~Sullivan, A.~Fang, and M.~A. Aivazis, ``Building a
+  framework for predictive science,'' \emph{arXiv preprint arXiv:1202.1056},
+  2012.
+
+\bibitem{mckernsmystic}
+M.~McKerns, P.~Hung, and M.~Aivazis, ``mystic: highly-constrained non-convex
+  optimization and uq, 2009.''
 
 \end{thebibliography}
