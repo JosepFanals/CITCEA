@@ -2,7 +2,7 @@
 
 This repository is meant to include various works related to power systems developed during my internship in CITCEA. Right now it contains:
 
-- The computation of VSC operating points under unbalanced faults, looking for the optimal ones. This is the main work under development.
+- The computation of VSC operating points under unbalanced faults, looking for the optimal ones. This is the main work under development. You can check the [pdf file][1].
 - A program related to the Proper Generalised Decomposition to solve faster the power flow problem. It now provides results with an error between 1e-4 and 1e-7 pu.
 
 -----------------
@@ -15,12 +15,12 @@ There are a couple of ways to use the software found in this repository.
 
  - From the command line:
      - `git clone https://github.com/JosepFanals/CITCEA`
- - Or from the [CITCEA GitHub repository page][1]:
+ - Or from the [CITCEA GitHub repository page][2]:
      - Click the green **Clone or download** button, then **Open in Desktop**.
 
 2. Download the repository as a .zip file from the GitHub page:
 
- - Go to the [CITCEA GitHub repository page][1].
+ - Go to the [CITCEA GitHub repository page][2].
 
  - Click the green **Clone or download** button, then **Download ZIP**.
 
@@ -30,4 +30,5 @@ There are a couple of ways to use the software found in this repository.
 This works is distributed under the [MIT License](https://opensource.org/licenses/MIT).
 
 
-[1]: https://github.com/JosepFanals/CITCEA
+[1]: https://github.com/JosepFanals/CITCEA/blob/master/VSC%20faults/Publication/bare_jrnl.pdf
+[2]: https://github.com/JosepFanals/CITCEA
