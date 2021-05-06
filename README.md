@@ -2,7 +2,7 @@
 
 This repository is meant to include various works related to power systems developed during my internship in CITCEA. Right now it contains:
 
-- The computation of VSC operating points under unbalanced faults, looking for the optimal ones. This is the main work under development. You can check the [pdf file][1] pdf file.
+- The computation of VSC operating points under unbalanced faults, looking for the optimal ones. This is the main work under development. You can check the [pdf file][1].
 - A program related to the Proper Generalised Decomposition to solve faster the power flow problem. It now provides results with an error between 1e-4 and 1e-7 pu.
 
 -----------------
