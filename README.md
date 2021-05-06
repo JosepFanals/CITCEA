@@ -30,5 +30,5 @@ There are a couple of ways to use the software found in this repository.
 This works is distributed under the [MIT License](https://opensource.org/licenses/MIT).
 
 
-[1]: https://github.com/JosepFanals/CITCEA
+[1]: https://github.com/JosepFanals/CITCEA/blob/master/VSC%20faults/Publication/bare_jrnl.pdf
 [2]: https://github.com/JosepFanals/CITCEA
