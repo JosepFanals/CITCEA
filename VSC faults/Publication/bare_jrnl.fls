@@ -771,6 +771,10 @@ INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx5.tfm
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.vf
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Plots\Z_2conv.tex
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Plots\Z_2conv.tex
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Plots\Z_2conv.tex
@@ -883,8 +887,6 @@ INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Vn1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_Vn2.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_2conv_RX_v1\opt_LLG_f_obj.csv
-INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
-INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl

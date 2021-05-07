@@ -620,7 +620,8 @@ Two main contributions come from this paper. On the one hand, it indicates the p
 
 
 \section{Formulation} \label{problem_f}
-Figure \ref{fig:sys_n} depicts a generic system formed by $n$ converters where the goal is to optimize the voltages at the point of common coupling. VSCs are typically modeled as three-phase voltage sources in series with the filters' impedance of the form $\underline{Z}_z$. The control strategy directly adjusts the voltages so that currents can indirectly meet the references \cite{andani2018controller}. However, the approach followed here consists of treating them as current sources that inject a current of the form $\underline{I}_k$ into the system, i.e, into the grid denoted by $\mathbf{\underline{Y}_g}$. Such currents are precisely the variables to control in order to improve the voltages $\underline{V}_p$. 
+\subsection{System modeling}
+Figure \ref{fig:sys_n} depicts a generic system formed by $n$ converters where the goal is to optimize the voltages at the point of common coupling. The AC side of VSCs is typically modeled as three-phase voltage sources in series with the filters' impedance of the form $\underline{Z}_z$. Figure XX shows the average model of a VSC, a simplified representation that excludes the switching of the semiconductors. In this work, emphasis is placed on the AC side. The control strategy directly adjusts the voltages so that currents can indirectly meet the references \cite{andani2018controller}. However, the approach followed here consists of treating them as current sources that inject a current of the form $\underline{I}_k$ into the system, i.e, into the grid denoted by $\mathbf{\underline{Y}_g}$. Such currents are precisely the variables to control in order to improve the voltages $\underline{V}_p$. 
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -634,22 +635,24 @@ Figure \ref{fig:sys_n} depicts a generic system formed by $n$ converters where t
 \draw (-2.75,1.35) to [short, *-] (-2.5,1.35);
 \draw (-2.5,1.35) to [short] (-2.5,0);
 \draw (-2.75,0) to [short] (-2.25,0);
-% \draw (-2.5,0.7) to [short, -*] (-2.5,2);
-% \draw (-0.5,0.7) to [short, -*] (-0.5,2);
-% \draw (0,2) to [short] (0,0);
-% \draw (-0.25,0) to [short] (0.25,0);
-% \draw (-3,2) to [short] (-4,2);
 
+\end{circuitikz}
+\caption{Average model of a VSC}
+\label{fig:average_model}
+\end{figure}
 
+\begin{figure}[] \centering \tiny
+\begin{circuitikz}[american]
+\thicklines
 
-% \draw (2,0) to [sV, v_=$\underline{V}_{t}$] (2,2);
-% \draw (-1,2) to [R, l=$\underline{Z}_{t}$] (2,2);
-% \draw (1.75,0) to [short] (2.25,0);
-
-% \draw (-3,2) to [short] (-2.8,1);
-% \draw (-2.8,1) to [short] (-3.2,1);
-% \draw[-{Latex[length=3mm]}] (-3.2,1) to [short] (-3,0);
-% \draw (-3.25,0) to [short] (-2.75,0);
+\draw (-2.75,2) to [isource, l_=$\underline{I}_{t}$] (-4.25,2);
+\draw (-4.25,0.7) to [R, l=$\underline{Z}_{t}$, european] (-2.75,0.7);
+\draw (-2.75,2) to [short] (-2.75,0.7);
+\draw (-4.25,2) to [short] (-4.25,0.7);
+\draw (-4.25,1.35) to [short, -*] (-4.5,1.35);
+\draw (-2.75,1.35) to [short, *-] (-2.5,1.35);
+\draw (-2.5,1.35) to [short] (-2.5,0);
+\draw (-2.75,0) to [short] (-2.25,0);
 
 \node at (-7,1.3) {PCC1};
 \node at (-9.5,2.6) {VSC1};
@@ -691,6 +694,7 @@ Figure \ref{fig:sys_n} depicts a generic system formed by $n$ converters where t
 \caption{Single-phase representation of a complete system}
 \label{fig:sys_n}
 \end{figure}
+
 The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. Although both approaches are equally valid, working in the natural reference frame allows studying the system with greater flexibility, as only the elements of the admittance matrix $\mathbf{\underline{Y}_g}$ that depend on the fault admittances experience changes. Consequently, voltages and currents are related by
 \begin{equation}
 \setlength\arraycolsep{1.5pt}
@@ -738,12 +742,15 @@ In order to have a clearer comprehension of the voltages, they are converted int
     \un{V}^{c}_{pk} \\
   \end{pmatrix}\ ,
 \end{equation}
-where $a=e^{j\frac{2\pi}{3}}$. The zero sequence component of the voltages is a magnitude likely to become non-null under asymmetrical faults. Nevertheless, as VSC are unable to inject zero sequence currents, it will remain an uncontrolled variable in the sense that no efforts will be made towards reducing it. On the contrary, positive sequence voltages have to be maximized while negative sequence voltages have to be minimized. Current saturation restrictions imposed by the VSC characteristics have to be respected. This applies to each phase of each converter. Therefore, the generic optimization problem becomes
+where $a=e^{j\frac{2\pi}{3}}$. 
+
+\subsection{Optimization problem}
+Positive sequence voltages have to be maximized while negative sequence voltages have to be minimized. The zero sequence component of the voltages is a magnitude likely to become non-null under asymmetrical faults. Nevertheless, as VSC are unable to inject zero sequence currents, it will remain an uncontrolled variable in the sense that no efforts will be made towards reducing it. Current saturation restrictions imposed by the VSC characteristics have to be respected. This applies to each phase of each converter. Therefore, the generic optimization problem is
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - |\un{V}^+_{pk}(\un{I}) |)| + \lambda^-_k|(0 - |\un{V}^-_{pk}(\un{I})|)|\right] \ , \\
-\textrm{s.t.} \quad & \text{max}(\un{I}^{a}_k, \un{I}^{b}_k, \un{I}^{c}_k) \leq I_{\text{max,k}} \ \forall k \ ,\\
-  &\un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \ . \\
+\textrm{s.t.} \quad & \text{max}(\un{I}^{a}_k, \un{I}^{b}_k, \un{I}^{c}_k) \leq I_{\text{max,k}} \ \forall k \in [1,...,n] \ ,\\
+  &\un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \in [1,...,n] \ . \\
 \end{aligned}
 \label{eq:opt2}
 \end{equation}
