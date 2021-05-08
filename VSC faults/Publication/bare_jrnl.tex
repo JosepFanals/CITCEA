@@ -794,9 +794,9 @@ i.e., they contain the $a$, $b$ and $c$ phase values. Voltages and currents are 
 \end{equation} 
 In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1/\un{Z}_f$ are added by observation, where $\un{Z}_f$ denotes the fault impedance. 
 
-These variables are related via the $\mathbf{\un{Y}_{vk}}$ admittance submatrices, which represent the connection between the point of common coupling PCCk and the corresponding node of the grid. 
+On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation. 
 
-where matrices of the form $\mathbf{\underline{Y}_{vk}}$ stand for the connection between the point of common coupling of bus $k$ and the grid, whereas $\mathbf{\underline{Y}_g}$ changes depending on the fault characteristics.  Each specific voltage and current object is composed by three elements, one related to each phase. Voltages are expressed as a transformation of currents by computing the inverse of the general admittance matrix. 
+Voltages are expressed as a transformation of currents by computing the inverse of the general admittance matrix. 
 
 In order to have a clearer comprehension of the voltages, they are converted into symmetrical components by means of Fortescue's transformation\cite{fortescue1918method}:
 \begin{equation}
