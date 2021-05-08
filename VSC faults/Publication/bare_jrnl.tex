@@ -764,7 +764,7 @@ The relationship between currents and voltages can be established with an analys
     \mathbf{0} & \mathbf{\un{Y}_{v2}} & \dots & \mathbf{0} & -\mathbf{\un{Y'}_{v2}}\\
     \vdots & \vdots & \ddots & \vdots & \vdots \\
     \mathbf{0} & \mathbf{0} & \dots & \mathbf{\un{Y}_{vn}} & -\mathbf{\un{Y'}_{vn}}\\
-    -\mathbf{\un{Y'}_{v1}} & -\mathbf{\un{Y'}_{v2}} & \dots & -\mathbf{\un{Y'}_{vn}} & \mathbf{\un{Y}_g}
+    -\mathbf{\un{Y'}^T_{v1}} & -\mathbf{\un{Y'}^T_{v2}} & \dots & -\mathbf{\un{Y'}^T_{vn}} & \mathbf{\un{Y}_g}
     % -\mathbf{\un{Y}_{v1}} & -\mathbf{\un{Y}_{v2}} & \mathbf{\un{Y}_{f}}\\
 \end{pmatrix}
 \begin{pmatrix}
@@ -794,11 +794,10 @@ i.e., they contain the $a$, $b$ and $c$ phase values. Voltages and currents are 
 \end{equation} 
 In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1/\un{Z}_f$ are added by observation, where $\un{Z}_f$ denotes the fault impedance. 
 
-On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation. 
+On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are null except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}^T_{vk}}$ are $3\times 3n_g$ objects that are constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constitued by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
 
-Voltages are expressed as a transformation of currents by computing the inverse of the general admittance matrix. 
-
-In order to have a clearer comprehension of the voltages, they are converted into symmetrical components by means of Fortescue's transformation\cite{fortescue1918method}:
+The final goal of the modeling is the obtention of voltages. They are computed from \eqref{eq:nconv} by operating the product between the inverse of the full admittance matrix and the currents' vector. 
+In order to have a clearer comprehension of the voltages, they are eventually converted into symmetrical components by means of Fortescue's transformation\cite{fortescue1918method}:
 \begin{equation}
   \begin{pmatrix}
     \un{V}^{0}_{pk} \\
