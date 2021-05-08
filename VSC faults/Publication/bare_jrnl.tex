@@ -748,7 +748,7 @@ Power systems are likely to involve more than a single converter. Therefore, the
 \label{fig:sys_n}
 \end{figure}
 
-The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. Although both approaches are equally valid, working in the natural reference frame allows studying the system with greater flexibility, as only the elements of the admittance matrix $\mathbf{\underline{Y}_g}$ that depend on the fault admittances experience changes. No other modifications in the topology have to be considered. Consequently, voltages and currents are related by
+The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. Although both approaches are equally valid, working in the natural reference frame allows studying the system with greater flexibility, as only the particular elements of the admittance matrices that depend on the fault admittance experience changes. No other modifications in the topology have to be considered. Consequently, voltages and currents are related by
 \begin{equation}
 \setlength\arraycolsep{1.5pt}
     \begin{split}
@@ -773,11 +773,28 @@ The relationship between currents and voltages can be established with an analys
     \vdots \\
     \mathbf{\un{V}_{pn}} \\
     \mathbf{\un{V}_g}
-\end{pmatrix},
+\end{pmatrix}.
 \end{split}
 \label{eq:nconv}
 \end{equation}
-where vector currents of the form $\mathbf{\un{I}_k} = \left[\un{I}^{(a)}_k, \un{I}^{(b)}_k, \un{I}^{(c)}_k \right]^T$, i.e., they contain the $a$, $b$ and $c$ phase currents. The same applies to the voltages $\mathbf{\un{V}_{pk}} = \left[\un{V}^{(a)}_{pk}, \un{V}^{(b)}_{pk}, \un{V}^{(c)}_{pk} \right]^T$. These variables are related via admittance submatrices as $\mathbf{\un{Y}_{vk}}$, which represent the connection between the point of common coupling PCCk and the corresponding node of the grid. 
+For a given converter $k$, its injected currents and its associated voltages at the point of common coupling are further developed as 
+\begin{equation}
+  \begin{cases}
+    \mathbf{\un{I}_k} = \left[\un{I}^{(a)}_k, \un{I}^{(b)}_k, \un{I}^{(c)}_k \right]^T \ , \\
+    \mathbf{\un{V}_{pk}} = [\un{V}^{(a)}_{pk}, \un{V}^{(b)}_{pk}, \un{V}^{(c)}_{pk}]^T \ ,
+  \end{cases}
+\end{equation}
+i.e., they contain the $a$, $b$ and $c$ phase values. Voltages and currents are related via admittance matrices of the form $\mathbf{\un{Y}_{vk}}$, which in normal operating conditions follow
+\begin{equation}
+  \mathbf{\un{Y}_{vk}} = \begin{pmatrix}
+   \frac{1}{\un{Z}_{vk}} & 0 & 0 \\
+   0 & \frac{1}{\un{Z}_{vk}} & 0 \\
+   0 & 0 & \frac{1}{\un{Z}_{vk}} \\
+  \end{pmatrix} \ .
+\end{equation} 
+In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1/\un{Z}_f$ are added by observation, where $\un{Z}_f$ denotes the fault impedance. 
+
+These variables are related via the $\mathbf{\un{Y}_{vk}}$ admittance submatrices, which represent the connection between the point of common coupling PCCk and the corresponding node of the grid. 
 
 where matrices of the form $\mathbf{\underline{Y}_{vk}}$ stand for the connection between the point of common coupling of bus $k$ and the grid, whereas $\mathbf{\underline{Y}_g}$ changes depending on the fault characteristics.  Each specific voltage and current object is composed by three elements, one related to each phase. Voltages are expressed as a transformation of currents by computing the inverse of the general admittance matrix. 
 
