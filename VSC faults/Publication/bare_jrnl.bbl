@@ -164,4 +164,8 @@ M.~M. McKerns, L.~Strand, T.~Sullivan, A.~Fang, and M.~A. Aivazis, ``Building a
 M.~McKerns, P.~Hung, and M.~Aivazis, ``mystic: highly-constrained non-convex
   optimization and uq, 2009.''
 
+\bibitem{nationalgrid}
+N.~Grid, ``The grid code, issue 6, revision 1,''
+  \url{https://www.nationalgrideso.com/document/162271/download}, 2021.
+
 \end{thebibliography}
