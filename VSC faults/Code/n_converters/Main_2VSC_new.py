@@ -19,13 +19,13 @@ lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [0.9942, 0.1075, -0.9941, -0.109, -0.000132, 0.00149, 0.6149, -0.7886, -0.6195, 0.785, 0.0046, 0.00361]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t = [0.22, -0.97, 0.01, 1, -0.23, -0.03, 0.28, -0.96, -0.02, 1, -0.26, -0.04]  # currents initialization: Ia1re, Ia1im, ...
 # Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LLG_'
-folder = 'Results_2conv_RX_v1/'
+type_f = 'opt_3x_'
+folder = 'Results_2conv_Zf_v2/'
 
 # RX variation
 n_p = 50
-[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-# Yf_vec = fY_fault(5, 55, n_p)  # for values big enough to have a severe fault
+# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+Yf_vec = fY_fault(5, 250, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
 Vp1_vec = []
@@ -47,7 +47,7 @@ f_vec = []
 # Optimize cases
 for iik in range(n_p):
     # Initialize data
-    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
@@ -108,6 +108,10 @@ for iik in range(n_p):
 x_vec = Yf_vec
 # x_vec = RX_vec
 # x_vec = lam1_vec
+
+for ll in range(len(x_vec)):  # to store Zf and not Yf
+    x_vec[ll] = 1 / x_vec[ll]
+
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
 fPlots(x_vec, Vp1_vec, folder + type_f + 'Vp1')
