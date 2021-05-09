@@ -794,7 +794,7 @@ i.e., they contain the $a$, $b$ and $c$ phase values. Voltages and currents are 
 \end{equation} 
 In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1/\un{Z}_f$ are added by observation, where $\un{Z}_f$ denotes the fault impedance. 
 
-On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are null except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}^T_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constitued by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
+On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are null except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constitued by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
 
 The final goal of the modeling is the obtention of voltages. They are computed from \eqref{eq:nconv} by operating the product between the inverse of the full admittance matrix and the currents' vector. 
 In order to have a clearer comprehension of the voltages, they are eventually converted into symmetrical components by means of Fortescue's transformation\cite{fortescue1918method}:
@@ -881,6 +881,43 @@ Constants $k_p$ and $k_n$ are initially set at 2.5. If necessary, they are dynam
 \section{Single converter case study} \label{1conv}
 Fill this
 
+\begin{figure}[!htb] \centering \tiny
+\begin{circuitikz}[american]
+\thicklines
+
+\draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
+\draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
+\draw (-2,0.7) to [short] (-2,2);
+\draw (-0.5,0.7) to [short] (-0.5,2);
+\draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
+\draw (-0.25,1.35) to [short] (-0.25,0);
+\draw (-0.5,0) to [short] (-0.0,0);
+\draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
+
+\draw[line width=0.65mm] (-2.5,0.85) to [short] (-2.5,1.85);
+\draw (-2.5,1.35) to [short] (-2.3,0.35);
+\draw (-2.3,0.35) to [short] (-2.7,0.35);
+\draw[-{Latex[length=3mm]}] (-2.7,0.35) to [short] (-2.5,-0.65);
+\draw (-2.75,-0.65) to [short] (-2.25,-0.65);
+
+% \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
+\draw (-2.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
+\draw (-5,1.35) to [short] (-5.125, 1.35);
+\draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
+\draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
+\draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
+\draw (-6.875, 1.35) to [short] (-7.125, 1.35);
+\draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
+\node at (-7.625,1.95) {VSC1};
+\node at (-5.125,2.05) {$\underline{V}_{p1}$};
+
+\node at (-2.5,2.05) {$\underline{V}_{f}$};
+
+\end{circuitikz}
+\caption{Single-phase representation of the single converter system under study}
+\label{fig:sys_p1}
+\end{figure}
+
 
 \section{Two converter case study} \label{2conv}
 Fill this
@@ -933,13 +970,9 @@ Fill this
 
 \node at (-2.5,2.05) {$\underline{V}_{f}$};
 
-
-
-
-
 \end{circuitikz}
 \caption{Single-phase representation of the two-converter system under study}
-\label{fig:sys_p}
+\label{fig:sys_p2}
 \end{figure}
 
 
