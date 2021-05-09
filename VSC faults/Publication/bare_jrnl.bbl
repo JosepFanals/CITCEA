@@ -90,9 +90,9 @@ A.~Camacho, M.~Castilla, J.~Miret, L.~G. de~Vicu{\~n}a, and R.~Guzman,
 
 \bibitem{ree_gc}
 \BIBentryALTinterwordspacing
-R.~E. de~España. (2016) Información sobre implementación de códigos de red
-  de conexión. textos de los códigos de red de conexió europeos. reglamento
-  2016/631. [Online]. Available:
+{Red Eléctrica de España}. (2016) Información sobre implementación de
+  códigos de red de conexión. textos de los códigos de red de conexió
+  europeos. reglamento 2016/631. [Online]. Available:
   \url{https://www.esios.ree.es/es/pagina/codigos-red-conexion}
 \BIBentrySTDinterwordspacing
 
@@ -165,7 +165,7 @@ M.~McKerns, P.~Hung, and M.~Aivazis, ``mystic: highly-constrained non-convex
   optimization and uq, 2009.''
 
 \bibitem{nationalgrid}
-N.~Grid, ``The grid code, issue 6, revision 1,''
+{National Grid}, ``The grid code, issue 6, revision 1,''
   \url{https://www.nationalgrideso.com/document/162271/download}, 2021.
 
 \end{thebibliography}
