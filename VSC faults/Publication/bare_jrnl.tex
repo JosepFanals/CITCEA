@@ -992,6 +992,44 @@ Fill this
   \label{tab:param}
 \end{table}
 
+\begin{figure}[!htb] \centering \tiny
+\begin{circuitikz}[american]
+\thicklines
+
+\draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
+\draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
+\draw (-2,0.7) to [short] (-2,2);
+\draw (-0.5,0.7) to [short] (-0.5,2);
+\draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
+\draw (-0.25,1.35) to [short] (-0.25,0);
+\draw (-0.5,0) to [short] (-0.0,0);
+\draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
+
+\draw[line width=0.65mm] (-2.5,0.85) to [short] (-2.5,1.85);
+\draw (-2.5,1.35) to [short] (-2.3,0.35);
+\draw (-2.3,0.35) to [short] (-2.7,0.35);
+\draw[-{Latex[length=3mm]}] (-2.7,0.35) to [short] (-2.5,-0.65);
+\draw (-2.75,-0.65) to [short] (-2.25,-0.65);
+
+% \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
+\draw (-2.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
+\draw (-5,1.35) to [short] (-5.125, 1.35);
+\draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
+\draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
+\draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
+\draw (-6.875, 1.35) to [short] (-7.125, 1.35);
+\draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
+\node at (-7.625,1.95) {VSC1};
+\node at (-5.125,2.05) {$\underline{V}_{p1}$};
+
+\node at (-2.5,2.05) {$\underline{V}_{f}$};
+
+\end{circuitikz}
+\caption{Single-phase representation of the single converter connected to a system with a submarine cable}
+\label{fig:sys_c1}
+\end{figure}
+
+
 \input{Plots/Z_2conv.tex}
 \input{Plots/RX_2conv.tex}
 
