@@ -1005,12 +1005,13 @@ Fill this
 \draw (-0.5,0) to [short] (-0.0,0);
 \draw (-2.0,1.35) to [short, *-] (-2.2,1.35);
 
-\draw (-3.5,1.35) to [short] (-3.3,1.35);
+\draw (-3.5,1.35) to [short] (-3.25,1.35);
 \draw[line width=0.25mm] (-3.25,1.35) ellipse (0.05 and 0.1);
-\draw[line width=0.25mm] (-2.25,1.35) ellipse (0.05 and 0.1);
+% \draw[line width=0.25mm] (-2.25,1.35) ellipse (0.05 and 0.1);
 \draw[line width=0.25mm] (-3.25,1.45) to [short] (-2.25,1.45);
 \draw[line width=0.25mm] (-3.25,1.25) to [short] (-2.25,1.25);
 \node at (-2.75,1.55) {cable};
+\draw[line width=0.25mm] (-2.25,1.25) arc(-90:90:0.05 and 0.1);
 
 \draw[line width=0.65mm] (-3.5,0.85) to [short] (-3.5,1.85);
 \draw (-3.5,1.35) to [short] (-3.35,0.35);
@@ -1032,7 +1033,7 @@ Fill this
 \node at (-3.5,2.05) {$\underline{V}_{f}$};
 
 \end{circuitikz}
-\caption{Single-phase representation of the single converter connected to a system with a submarine cable}
+\caption{Single-phase representation of the single converter connected to a system with a cable}
 \label{fig:sys_c1}
 \end{figure}
 
