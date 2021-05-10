@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex bare_jrnl"] 1620687255 "bare_jrnl.aux" "bare_jrnl.bbl" "bare_jrnl" 1620687437
+["bibtex bare_jrnl"] 1620688970 "bare_jrnl.aux" "bare_jrnl.bbl" "bare_jrnl" 1620688983
   "C:/Users/Josep/AppData/Roaming/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "bare_jrnl.aux" 1620687436 6252 81552539aa60b15355fa45cbd204511d "pdflatex"
+  "bare_jrnl.aux" 1620688982 6693 ab699daf8b8b92f8a0d180b390e1aefd "pdflatex"
   "bib.bib" 1620517710 9531 404c938d98ad2326beab6cc94fc9d44a ""
   (generated)
   "bare_jrnl.bbl"
   "bare_jrnl.blg"
-["pdflatex"] 1620687426 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf" "bare_jrnl" 1620687437
+["pdflatex"] 1620688970 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf" "bare_jrnl" 1620688983
   "C:/Users/Josep/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1609175857 9258828 5dd0ab4e26541be02491e4983b78ef70 ""
   "C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1620217618 329507 8d537e87a4ae22aa7f369e5216d8bd12 ""
   "C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458477487 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -345,14 +345,14 @@
   "Data/Results_2conv_Zf_v2/opt_LL_f_obj.csv" 1620604582 1989 ec73b947e75a32ff0edf830d951d1daa ""
   "Plots/RX_2conv.tex" 1620521702 27219 c6bc2f3447a718e4abcc5fdeb070eacd ""
   "Plots/Z_2conv.tex" 1620606471 30216 bb863e6876fb1988cfdbd5064f56ba6d ""
-  "bare_jrnl.aux" 1620687436 6252 81552539aa60b15355fa45cbd204511d "pdflatex"
-  "bare_jrnl.bbl" 1620687256 7947 64e6db51ad51f0eead0590ae6f9bdd5a "bibtex bare_jrnl"
-  "bare_jrnl.tex" 1620687424 71734 d8daf9125737561db55be34e71223204 ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.aux" 1620687436 6252 81552539aa60b15355fa45cbd204511d ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" 1620687424 71734 d8daf9125737561db55be34e71223204 ""
+  "bare_jrnl.aux" 1620688982 6693 ab699daf8b8b92f8a0d180b390e1aefd "pdflatex"
+  "bare_jrnl.bbl" 1620688970 7947 64e6db51ad51f0eead0590ae6f9bdd5a "bibtex bare_jrnl"
+  "bare_jrnl.tex" 1620688957 72951 298f150f07bbbc47a0629fbee2f36eb5 ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.aux" 1620688982 6693 ab699daf8b8b92f8a0d180b390e1aefd ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" 1620688957 72951 298f150f07bbbc47a0629fbee2f36eb5 ""
   (generated)
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf"
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.log"
   "bare_jrnl.pdf"
   "bare_jrnl.log"
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.log"
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf"
   "bare_jrnl.aux"

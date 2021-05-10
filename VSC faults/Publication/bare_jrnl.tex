@@ -879,9 +879,9 @@ Constants $k_p$ and $k_n$ are initially set at 2.5. If necessary, they are dynam
 
 
 \section{Single converter case study} \label{1conv}
-Fill this
+The analysis is first performed considering a one-converter case study as the one depicted in Figure \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground, line to line or double line to ground). The goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
-\begin{figure}[!htb] \centering \tiny
+\begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
 \thicklines
 
@@ -918,11 +918,78 @@ Fill this
 \label{fig:sys_p1}
 \end{figure}
 
+\subsection{Exemplification}
+The methodology to optimize voltages under a given fault is shortly described with the intention of presenting the main steps involved. 
+
+\subsection{Results}
+Unless noted otherwise, the corresponding baseline parameters are indicated in Table \ref{tab:param}. 
+\begin{table}\centering
+  \caption{System parameters for the one-converter case}
+  \begin{tabular}{cc}
+    \hline
+    Parameter & Value \\
+    \hline
+     $\un{V}_t$ & $1.00$ \\
+     $I_{\text{max}}$ & $1.00$ \\
+     $\un{Z}_{v1}$ & $0.01+j0.05$ \\
+    %  $\un{Z}_{v2}$ & $0.01+j0.06$ \\
+     $\un{Z}_{t}$ & $0.01+j0.1$ \\
+     $[\lambda_1^+, \lambda_1^-]$ & $[1,1]$\\
+     \hline
+  \end{tabular}
+  \label{tab:param}
+\end{table}
+
+\begin{figure}[] \centering \tiny
+\begin{circuitikz}[american]
+\thicklines
+
+\draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
+\draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
+\draw (-2,0.7) to [short] (-2,2);
+\draw (-0.5,0.7) to [short] (-0.5,2);
+\draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
+\draw (-0.25,1.35) to [short] (-0.25,0);
+\draw (-0.5,0) to [short] (-0.0,0);
+\draw (-2.0,1.35) to [short, *-] (-2.2,1.35);
+
+\draw (-3.5,1.35) to [short] (-3.25,1.35);
+\draw[line width=0.25mm] (-3.25,1.35) ellipse (0.05 and 0.1);
+% \draw[line width=0.25mm] (-2.25,1.35) ellipse (0.05 and 0.1);
+\draw[line width=0.25mm] (-3.25,1.45) to [short] (-2.25,1.45);
+\draw[line width=0.25mm] (-3.25,1.25) to [short] (-2.25,1.25);
+\node at (-2.75,1.55) {cable};
+\draw[line width=0.25mm] (-2.25,1.25) arc(-90:90:0.05 and 0.1);
+
+\draw[line width=0.65mm] (-3.5,0.85) to [short] (-3.5,1.85);
+\draw (-3.5,1.35) to [short] (-3.35,0.35);
+\draw (-3.35,0.35) to [short] (-3.75,0.35);
+\draw[-{Latex[length=3mm]}] (-3.75,0.35) to [short] (-3.55,-0.65);
+\draw (-3.80,-0.65) to [short] (-3.30,-0.65);
+
+% \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
+\draw (-3.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
+\draw (-5,1.35) to [short] (-5.125, 1.35);
+\draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
+\draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
+\draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
+\draw (-6.875, 1.35) to [short] (-7.125, 1.35);
+\draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
+\node at (-7.625,1.95) {VSC1};
+\node at (-5.125,2.05) {$\underline{V}_{p1}$};
+
+\node at (-3.5,2.05) {$\underline{V}_{f}$};
+
+\end{circuitikz}
+\caption{Single-phase representation of the single converter connected to a system with a cable}
+\label{fig:sys_c1}
+\end{figure}
+
 
 \section{Two converter case study} \label{2conv}
 Fill this
 
-\begin{figure}[!htb] \centering \tiny
+\begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
 \thicklines
 
@@ -976,7 +1043,7 @@ Fill this
 \end{figure}
 
 \begin{table}\centering
-  \caption{System parameters}
+  \caption{System parameters for the two converter case}
   \begin{tabular}{cc}
     \hline
     Parameter & Value \\
@@ -991,51 +1058,6 @@ Fill this
   \end{tabular}
   \label{tab:param}
 \end{table}
-
-\begin{figure}[!htb] \centering \tiny
-\begin{circuitikz}[american]
-\thicklines
-
-\draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
-\draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
-\draw (-2,0.7) to [short] (-2,2);
-\draw (-0.5,0.7) to [short] (-0.5,2);
-\draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
-\draw (-0.25,1.35) to [short] (-0.25,0);
-\draw (-0.5,0) to [short] (-0.0,0);
-\draw (-2.0,1.35) to [short, *-] (-2.2,1.35);
-
-\draw (-3.5,1.35) to [short] (-3.25,1.35);
-\draw[line width=0.25mm] (-3.25,1.35) ellipse (0.05 and 0.1);
-% \draw[line width=0.25mm] (-2.25,1.35) ellipse (0.05 and 0.1);
-\draw[line width=0.25mm] (-3.25,1.45) to [short] (-2.25,1.45);
-\draw[line width=0.25mm] (-3.25,1.25) to [short] (-2.25,1.25);
-\node at (-2.75,1.55) {cable};
-\draw[line width=0.25mm] (-2.25,1.25) arc(-90:90:0.05 and 0.1);
-
-\draw[line width=0.65mm] (-3.5,0.85) to [short] (-3.5,1.85);
-\draw (-3.5,1.35) to [short] (-3.35,0.35);
-\draw (-3.35,0.35) to [short] (-3.75,0.35);
-\draw[-{Latex[length=3mm]}] (-3.75,0.35) to [short] (-3.55,-0.65);
-\draw (-3.80,-0.65) to [short] (-3.30,-0.65);
-
-% \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
-\draw (-3.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
-\draw (-5,1.35) to [short] (-5.125, 1.35);
-\draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
-\draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
-\draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
-\draw (-6.875, 1.35) to [short] (-7.125, 1.35);
-\draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
-\node at (-7.625,1.95) {VSC1};
-\node at (-5.125,2.05) {$\underline{V}_{p1}$};
-
-\node at (-3.5,2.05) {$\underline{V}_{f}$};
-
-\end{circuitikz}
-\caption{Single-phase representation of the single converter connected to a system with a cable}
-\label{fig:sys_c1}
-\end{figure}
 
 
 \input{Plots/Z_2conv.tex}
