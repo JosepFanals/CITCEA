@@ -17,10 +17,10 @@ Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [0.6055, -0.7924, -0.6547, 0.1574, -0.000, 0.6354, 0.6149, -0.7886, -0.6195, 0.785, 0.0046, 0.00361]  # currents initialization: Ia1re, Ia1im, ...
-
-Ii_t = [ 0.9558,  0.2942, -0.7328,  0.6805, -0.2229, -0.9749,  0.9476,  0.3196, -0.7551, 0.6557, -0.1925, -0.9753]
+Ii_t = [ 0.5504, -0.8349, -0.6717,  0.7409,  0.1212,  0.094,   0.7819, -0.6235, -0.6883, 0.7255, -0.0936, -0.102 ]
+# Ii_t = [ 0.9558,  0.2942, -0.7328,  0.6805, -0.2229, -0.9749,  0.9476,  0.3196, -0.7551, 0.6557, -0.1925, -0.9753]
 # Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LL_'
+type_f = 'opt_LLG_'
 folder = 'Results_2conv_Zf_v2/'
 
 # RX variation
@@ -51,9 +51,9 @@ for iik in range(n_p):
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    Y_con = [Yf_vec[iik], 0, 0]
-    # Y_con = [1000, 0, 0]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
+    Y_con = [10000, 0, 0]
+    Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
     # lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
 
