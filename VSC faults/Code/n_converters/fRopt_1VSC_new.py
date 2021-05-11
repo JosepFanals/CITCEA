@@ -4,7 +4,7 @@ import numpy as np
 import mystic.symbolic as ms
 import mystic.solvers as my
 import mystic.math as mm
-from mystic.penalty import quadratic_equality
+from mystic.penalty import quadratic_equality, lagrange_equality, linear_equality, uniform_equality
 from Functions import xabc_to_012, x012_to_abc, build_static_objects, build_static_objects1 
 np.set_printoptions(precision=4)
 
@@ -74,9 +74,9 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     # see: https://stackoverflow.com/questions/51892741/constrained-global-optimization-tuning-mystic
 
-    @quadratic_equality(penalty_A, k=1e12)  # vary k accordingly
-    @quadratic_equality(penalty_B, k=1e12)
-    @quadratic_equality(penalty_C, k=1e12)
+    @uniform_equality(penalty_A)  # vary k=1e12 accordingly
+    @uniform_equality(penalty_B)
+    @uniform_equality(penalty_C)
     def penalty(x):
         return 0.0
 
