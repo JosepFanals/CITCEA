@@ -12,16 +12,18 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [0, 0, 0]  # Yab, Ybc, Yac
+Y_con = [100000, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
-Ii_t = [-0.4617, -0.8829, -0.5376, 0.8432, 0.9992, 0.04]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_3x_'
+# Ii_t = [ 0.0392, -0.9994, -0.3263,  0.9454,  0.2873,  0.0537]
+# Ii_t = [0.3425, -0.8573, -0.5876, 0.8092, 0.2452, 0.048]
+Ii_t = [0.386,  -0.9225, -0.5516,  0.8341,  0.1656,  0.0884]
+type_f = 'opt_LLG_'
 folder = 'Results_1conv_Zf_v1/'
 
 # RX variation
-n_p = 50
+n_p = 200
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 Yf_vec = fY_fault(10, 100, n_p)
 
@@ -39,9 +41,9 @@ f_vec = []
 # Optimize cases
 for iik in range(n_p):
     # Initialize data
-    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
+    Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
