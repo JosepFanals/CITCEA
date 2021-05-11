@@ -1,6 +1,7 @@
 import numpy as np
 # from fOptimal_2VSC import fOptimal
 from fOpt_1VSC_new import fOptimal_mystic
+from fRopt_1VSC_new import fROptimal_mystic
 from Plots import fPlots
 from Functions import fZ_rx, fY_fault, x012_to_abc
 import pandas as pd
@@ -19,7 +20,7 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [ 0.0392, -0.9994, -0.3263,  0.9454,  0.2873,  0.0537]
 # Ii_t = [0.3425, -0.8573, -0.5876, 0.8092, 0.2452, 0.048]
 Ii_t = [0.386,  -0.9225, -0.5516,  0.8341,  0.1656,  0.0884]
-type_f = 'opt_LLG_'
+type_f = 'ropt_LLG_'
 folder = 'Results_1conv_Zf_v1/'
 
 # RX variation
@@ -52,7 +53,8 @@ for iik in range(n_p):
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
