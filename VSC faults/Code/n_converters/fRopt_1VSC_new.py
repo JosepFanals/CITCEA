@@ -4,7 +4,7 @@ import numpy as np
 import mystic.symbolic as ms
 import mystic.solvers as my
 import mystic.math as mm
-from mystic.penalty import quadratic_equality, lagrange_equality, linear_equality, uniform_equality
+from mystic.penalty import quadratic_equality, lagrange_equality, linear_equality, uniform_equality, uniform_inequality
 from Functions import xabc_to_012, x012_to_abc, build_static_objects, build_static_objects1 
 np.set_printoptions(precision=4)
 
@@ -71,12 +71,25 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         V_p1_abc = Vv_v[0:3]
         return np.imag(V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
 
+    def suma_re(x):
+        return x[0] + x[2] + x[4]
+
+    def suma_im(x):
+        return x[1] + x[3] + x[5]
+
+    def ia_max(x):
+        return x[0]*x[0] + x[1]*x[1] - 1
+    
+    def ib_max(x):
+        return x[2]*x[2] + x[3]*x[3] - 1
+
+    def ic_max(x):
+        return x[4]*x[4] + x[5]*x[5] - 1
+
 
     # see: https://stackoverflow.com/questions/51892741/constrained-global-optimization-tuning-mystic
 
-    @uniform_equality(penalty_A)  # vary k=1e12 accordingly
-    @uniform_equality(penalty_B)
-    @uniform_equality(penalty_C)
+    @uniform_equality(ia_max, k=1e10)  # vary k=1e12 accordingly
     def penalty(x):
         return 0.0
 
@@ -84,7 +97,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
     # sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
-    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=100, ftol=1e-50, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
 
