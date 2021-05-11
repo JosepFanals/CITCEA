@@ -107,11 +107,11 @@ for iik in range(n_p):
 
 # Save csv
 x_vec = Yf_vec
-# x_vec = RX_vec
-# x_vec = lam1_vec
-
 for ll in range(len(x_vec)):  # to store Zf and not Yf
     x_vec[ll] = 1 / x_vec[ll]
+
+# x_vec = RX_vec
+# x_vec = lam1_vec
 
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
