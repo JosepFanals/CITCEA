@@ -38,13 +38,20 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     Iabc_n = [1, 1, 1]
     kpn = 2.0
     fr = 1
-    tol = 1e-4
+    tol = 1e-3
     count = 0
+    Iabc_max = 0
+    v1 = 1
+    v2 = 0
+    v1_p = 0.5
+    v2_p = 0.5
 
-    # for kk in range(100):  # change for a while
-    while abs(Iabc[0] - Iabc_n[0]) > tol or abs(Iabc[1] - Iabc_n[1]) > tol or abs(Iabc[2] - Iabc_n[2]) > tol:
+    # while abs(Iabc[0] - Iabc_n[0]) > tol or abs(Iabc[1] - Iabc_n[1]) > tol or abs(Iabc[2] - Iabc_n[2]) > tol or Iabc_max > 1:
+    while abs(v1 - v1_p) > tol or abs(v2 - v2_p) > tol or Iabc_max > 1:
+    # while abs(Iabc[0] - Iabc_n[0]) > tol or abs(Iabc[1] - Iabc_n[1]) > tol or abs(Iabc[2] - Iabc_n[2]) > tol or Iabc_max > 1:
         count += 1
-        print(count)
+        # print(fr, count)
+        # print(abs(Iabc[0]), abs(Iabc[1]), abs(Iabc[2]))
         Iabc_n[:] = Iabc[:]
         v1v2 = f_V1V2(Iabc)
         v1 = v1v2[0]
@@ -74,19 +81,26 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         i1 = i1 * np.exp(-1j * ang1)
         i2 = i2 * np.exp(-1j * ang2)
 
-        print('i1v1: ', i1, v1)
-        print('i2v2: ', i2, v2)
+        # print('i1v1: ', i1, v1)
+        # print('i2v2: ', i2, v2)
         
         i012 = [0, i1, i2]
         Iabc = x012_to_abc(i012)
         # print('Iabc: ', Iabc)
         Iabc_max = max(abs(Iabc[0]), abs(Iabc[1]), abs(Iabc[2]))
 
+        # if Iabc_max > 1 and count == 1:
+        #     fr = 1 / Iabc_max
+        # elif Iabc_max > 1:
+        #     fr -= 0.001
+        # else:
+        #     fr = 1
+
         if Iabc_max > 1:
-            # fr = 1 / Iabc_max
-            fr -= 0.0001
+            fr = 1 / Iabc_max
         else:
             fr = 1
+        print(fr)
 
 
     return [i1, i2, abs(v1), abs(v2), Iabc]
