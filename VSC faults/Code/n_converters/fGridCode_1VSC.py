@@ -6,12 +6,12 @@ np.set_printoptions(precision=4)
 def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     # Functions
-    def volt_solution(x):
+    def volt_solution1(x):
         m1_inv = static_objects[0]
         Ig_v = static_objects[1] 
 
         Ii_v = np.zeros((6,1), dtype=complex)
-        Ii_v[0:3] = [[x[0] + 1j * x[1]], [x[2] + 1j * x[3]], [x[4] + 1j * x[5]]]
+        Ii_v[0:3] = [[x[0]], [x[1]], [x[2]]]
         Ii_v[3:6] = [Ig_v[0], Ig_v[1], Ig_v[2]]
 
         Vv_v = np.dot(m1_inv, Ii_v)
@@ -22,7 +22,7 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # OPTIMIZE
     def f_V1V2(x):
         x = np.asarray(x)
-        Vv_v = volt_solution(x)
+        Vv_v = volt_solution1(x)
         V_p1_abc = Vv_v[0:3]
         V_p1_012 = xabc_to_012(V_p1_abc)
 
@@ -36,7 +36,7 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     kpn = 2.5
     fr = 1
 
-    for kk in range(100):
+    for kk in range(100):  # change for a while
         v1v2 = f_V1V2(Iabc)
         v1 = v1v2[0]
         v2 = v1v2[1]
@@ -56,7 +56,7 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
             i2 = 0
 
         ang1 = np.angle(v1)
-        ang2 = np.angel(v2)
+        ang2 = np.angle(v2)
         i1 = i1 * np.exp(1j * (ang1 - np.pi / 2))
         i2 = i2 * np.exp(1j * (ang2 + np.pi / 2))
         
@@ -70,6 +70,6 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
             fr = 1
 
 
-    return [abs(i1), abs(i2), abs(v1), abs(v2), Iabc]
+    return [i1, i2, abs(v1), abs(v2), Iabc]
     # return I_sol
 
