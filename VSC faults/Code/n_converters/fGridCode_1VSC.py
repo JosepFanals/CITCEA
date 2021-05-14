@@ -11,8 +11,10 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         Ig_v = static_objects[1] 
 
         Ii_v = np.zeros((6,1), dtype=complex)
+        # Ii_v[0:3] = [[x[0]], [x[1]], [x[2]]]
         Ii_v[0:3] = [[x[0]], [x[1]], [x[2]]]
         Ii_v[3:6] = [Ig_v[0], Ig_v[1], Ig_v[2]]
+        # print('Ii_v: ', Ii_v)
 
         Vv_v = np.dot(m1_inv, Ii_v)
         return Vv_v
@@ -33,10 +35,17 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         return [Vp1, Vn1]
 
     Iabc = [0, 0, 0]
-    kpn = 2.5
+    Iabc_n = [1, 1, 1]
+    kpn = 2.0
     fr = 1
+    tol = 1e-4
+    count = 0
 
-    for kk in range(100):  # change for a while
+    # for kk in range(100):  # change for a while
+    while abs(Iabc[0] - Iabc_n[0]) > tol or abs(Iabc[1] - Iabc_n[1]) > tol or abs(Iabc[2] - Iabc_n[2]) > tol:
+        count += 1
+        print(count)
+        Iabc_n[:] = Iabc[:]
         v1v2 = f_V1V2(Iabc)
         v1 = v1v2[0]
         v2 = v1v2[1]
@@ -59,13 +68,23 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         ang2 = np.angle(v2)
         i1 = i1 * np.exp(1j * (ang1 - np.pi / 2))
         i2 = i2 * np.exp(1j * (ang2 + np.pi / 2))
+
+        v1 = abs(v1) * np.exp(-1j * ang1)
+        v2 = abs(v2) * np.exp(-1j * ang2)
+        i1 = i1 * np.exp(-1j * ang1)
+        i2 = i2 * np.exp(-1j * ang2)
+
+        print('i1v1: ', i1, v1)
+        print('i2v2: ', i2, v2)
         
         i012 = [0, i1, i2]
         Iabc = x012_to_abc(i012)
+        # print('Iabc: ', Iabc)
         Iabc_max = max(abs(Iabc[0]), abs(Iabc[1]), abs(Iabc[2]))
 
         if Iabc_max > 1:
-            fr = 1 / Iabc_max
+            # fr = 1 / Iabc_max
+            fr -= 0.0001
         else:
             fr = 1
 
