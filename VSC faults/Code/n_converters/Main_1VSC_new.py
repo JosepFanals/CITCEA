@@ -14,21 +14,19 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [0, 0, 0]  # Yab, Ybc, Yac
+Y_con = [10, 10, 10]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
-# Ii_t = [ 0.0392, -0.9994, -0.3263,  0.9454,  0.2873,  0.0537]
-# Ii_t = [0.4728, -0.8812, -0.4726, 0.8813, -0.3604, -0.9315]
-Ii_t = [0.4426, -0.8967, -0.4275, 0.904, 0.3713, -0.9219]
-# Ii_t = [0.336, -0.5944, -0.686, 0.0345, 0.3533, 0.6121]
-type_f = 'ropt_LL_'
-folder = 'Results_1conv_Zf_v1/'
+# Ii_t = [0.0168, -0.6161, -0.7091, 0.7052, 0.6924, -0.089]
+Ii_t = [0.00, -1, -0.866,  0.500,  0.866,  0.5] 
+type_f = 'opt_3x_'
+folder = 'Results_1conv_RX_v1/'
 
 # RX variation
-n_p = 100
-# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(20, 70, n_p)
+n_p = 500
+[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+# Yf_vec = fY_fault(20, 70, n_p)
 
 # Store data
 Vp1_vec = []
@@ -48,16 +46,16 @@ for iik in range(n_p):
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    Y_con = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    # Zv1 = Zin_vec[iik]
+    Zv1 = Zin_vec[iik]
     # Zt = Zv1  # I try this
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
@@ -85,11 +83,11 @@ for iik in range(n_p):
     print(Ii_t)
 
 # Save csv
-x_vec = Yf_vec
-for ll in range(len(x_vec)):  # to store Zf and not Yf
-    x_vec[ll] = 1 / x_vec[ll]
+# x_vec = Yf_vec
+# for ll in range(len(x_vec)):  # to store Zf and not Yf
+#     x_vec[ll] = 1 / x_vec[ll]
 
-# x_vec = RX_vec
+x_vec = RX_vec
 
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
