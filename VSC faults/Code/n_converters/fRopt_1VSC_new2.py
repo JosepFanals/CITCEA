@@ -4,11 +4,11 @@ import numpy as np
 import mystic.symbolic as ms
 import mystic.solvers as my
 import mystic.math as mm
-from mystic.penalty import quadratic_equality, lagrange_equality, linear_equality, uniform_equality, uniform_inequality, quadratic_inequality
+from mystic.penalty import quadratic_equality, lagrange_equality, linear_equality, uniform_equality, uniform_inequality
 from Functions import xabc_to_012, x012_to_abc, build_static_objects, build_static_objects1 
 np.set_printoptions(precision=4)
 
-def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
+def fROptimal2_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     # Functions
     def volt_solution(x):
@@ -89,14 +89,14 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     # see: https://stackoverflow.com/questions/51892741/constrained-global-optimization-tuning-mystic
 
-    @quadratic_inequality(ia_max, k=1e10)  # vary k=1e12 accordingly
-    @quadratic_inequality(ib_max, k=1e10)  # vary k=1e12 accordingly
-    @quadratic_inequality(ic_max, k=1e10)  # vary k=1e12 accordingly
-    @quadratic_equality(suma_re, k=1e10)
-    @quadratic_equality(suma_im, k=1e10)
-    @quadratic_equality(penalty_A, k=1e10)
-    @quadratic_equality(penalty_B, k=1e10)
-    @quadratic_equality(penalty_C, k=1e10)
+    @uniform_inequality(ia_max, k=1e10)  # vary k=1e12 accordingly
+    @uniform_inequality(ib_max, k=1e10)  # vary k=1e12 accordingly
+    @uniform_inequality(ic_max, k=1e10)  # vary k=1e12 accordingly
+    @uniform_equality(suma_re, k=1e10)
+    @uniform_equality(suma_im, k=1e10)
+    @uniform_equality(penalty_A, k=1e10)
+    @uniform_equality(penalty_B, k=1e10)
+    @uniform_equality(penalty_C, k=1e10)
     def penalty(x):
         return 0.0
 
@@ -104,7 +104,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
     # sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
-    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=100, ftol=1e-50, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
 

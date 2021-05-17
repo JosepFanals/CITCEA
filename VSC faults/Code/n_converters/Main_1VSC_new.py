@@ -2,6 +2,7 @@ import numpy as np
 # from fOptimal_2VSC import fOptimal
 from fOpt_1VSC_new import fOptimal_mystic
 from fRopt_1VSC_new import fROptimal_mystic
+from fRopt_1VSC_new2 import fROptimal2_mystic
 from fGridCode_1VSC import fGridCode
 from Plots import fPlots
 from Functions import fZ_rx, fY_fault, x012_to_abc
@@ -21,14 +22,15 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [1,  0.00, -1, 0.0 , 0.0,-0.0]
 # Ii_t = [1, 1, 1, 1, 1, 1]
 # Ii_t = [-0.2012,  0.2415,  0.0137 , 0.0613 , 0.1873 ,-0.3029]
-Ii_t = [0, 0, 0, 0, 0, 0]
+Ii_t = [-0.0053, -0.9999, -0.788, 0.5101, 0.9048, 0.4257]
+# Ii_t = [0, 0, 0, 0, 0, 0]
 type_f = 'ropt_LG_'
 folder = 'Results_1conv_RX_v1/'
 
 # RX variation
 n_p = 100
-[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-# Yf_vec = fY_fault(20, 70, n_p)
+# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+Yf_vec = fY_fault(20, 70, n_p)
 
 # Store data
 Vp1_vec = []
@@ -50,14 +52,15 @@ for iik in range(n_p):
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
-    Zv1 = Zin_vec[iik]
+    Y_gnd = [Yf_vec[iik], 0, 0]
+    # Zv1 = Zin_vec[iik]
     # Zt = Zv1  # I try this
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fROptimal2_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
@@ -85,11 +88,11 @@ for iik in range(n_p):
     print(Ii_t)
 
 # Save csv
-# x_vec = Yf_vec
-# for ll in range(len(x_vec)):  # to store Zf and not Yf
-#     x_vec[ll] = 1 / x_vec[ll]
+x_vec = Yf_vec
+for ll in range(len(x_vec)):  # to store Zf and not Yf
+    x_vec[ll] = 1 / x_vec[ll]
 
-x_vec = RX_vec
+# x_vec = RX_vec
 
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
