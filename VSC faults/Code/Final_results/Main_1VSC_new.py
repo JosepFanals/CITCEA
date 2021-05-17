@@ -15,8 +15,8 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [10, 10, 10]  # Yab, Ybc, Yac
-Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
+Y_con = [10000, 0, 0]  # Yab, Ybc, Yac
+Y_gnd = [10, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [-0.0427, -0.9496, -0.726,   0.7005,  0.7682,  0.2516]
@@ -24,12 +24,14 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [-0.0202, -0.6153, -0.9266, 0.3618,  0.9463,  0.2534]
 # Ii_t = [-0.0165, -0.5088, -0.7695, 0.1467, 0.7876, 0.319]
 # Ii_t = [-0.0293, -0.9996, -0.851,   0.5251,  0.8803,  0.4745]
-Ii_t = [0.0123, 0.0054, -0.7732, -0.1013,  0.7608,  0.0961]
-type_f = 'ropt_3x_'
+# Ii_t = [0.0123, 0.0054, -0.7732, -0.1013,  0.7608,  0.0961]
+Ii_t = [ 0.0389, -0.0754, -0.1837, -0.0004,  0.1449,  0.0756]
+# Ii_t = [ 0.0129,  0.002,  -0.0753,  0.2016,  0.0623, -0.2036]
+type_f = 'gc_LLG_'
 folder = 'Results_1conv_RX_v1/'
 
 # RX variation
-n_p = 100
+n_p = 200
 [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(20, 70, n_p)
 
@@ -61,7 +63,6 @@ for iik in range(n_p):
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fROptimal2_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])

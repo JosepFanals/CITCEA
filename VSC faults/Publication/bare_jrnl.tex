@@ -673,17 +673,22 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Figu
 \draw (5.7,-0.25) to [sV] (6.8,-0.25);
 \draw (6.8,2.25) to [short] (6.8,-0.25);
 
-\draw[line width=0.4mm, dotted] (4.325,3) to [short] (4.325,-0.85);
-\draw[line width=0.4mm, dotted] (4.325,3) to [short] (6.95,3);
-\draw[line width=0.4mm, dotted] (4.325,-0.85) to [short] (6.95,-0.85);
-\draw[line width=0.4mm, dotted] (6.95,3) to [short] (6.95,-0.85);
+\draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (4.4,-0.9);
+\draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (6.95,3.05);
+\draw[line width=0.4mm, dotted] (4.4,-0.9) to [short] (6.95,-0.9);
+\draw[line width=0.4mm, dotted] (6.95,3.05) to [short] (6.95,-0.9);
 
 \draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (0.5,-0.9);
-\draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (2.95,3.05);
-\draw[line width=0.4mm, dotted] (2.95,3.05) to [short] (2.95,-0.9);
-\draw[line width=0.4mm, dotted] (0.5,-0.9) to [short] (2.95,-0.9);
+\draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (4.3,3.05);
+\draw[line width=0.4mm, dotted] (4.3,3.05) to [short] (4.3,-0.9);
+\draw[line width=0.4mm, dotted] (0.5,-0.9) to [short] (4.3,-0.9);
 
-\node at (1.725,3.2) {VSC average model};
+\draw (2.5,-1.3) to [sdcac] (2.5,-2.3);
+% \draw (2.0, -1.3) to [short] (0.5, -0.9);
+% \draw (3.0, -1.3) to [short] (4.3, -0.9);
+\node[rotate=-90] at (2.5,-1.12) {$\equiv$};
+
+\node at (2.5,3.2) {VSC average model};
 \node at (5.6375,3.15) {Grid};
 
 
@@ -692,7 +697,7 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Figu
 \label{fig:average_model}
 \end{figure}
 
-Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Figure \ref{fig:sys_n} presents the modeling for a system with $n$ converters connected to a grid with $n_g$ buses represented by its admittance matrix $\mathbf{\un{Y}_g}$. In addition, the grid has been modeled with a Norton equivalent instead of a Thevenin equivalent for simplification purposes. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
+Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Figure \ref{fig:sys_n} presents the modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Norton equivalent. Compared to dealing with a Thevenin equivalent, the Norton equivalent simplifies the formulation since it does not create an additional bus. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -707,31 +712,41 @@ Power systems are likely to involve more than a single converter. Therefore, the
 \draw (-2.5,1.35) to [short] (-2.5,0);
 \draw (-2.75,0) to [short] (-2.25,0);
 
-\node at (-7,1.3) {PCC1};
+\node at (-8,1.3) {PCC1};
 \node at (-9.5,2.6) {VSC1};
-\node at (-7,2.7) {$\underline{V}_{p1}$};
-\draw (-7,2) to [R, l=$\underline{Z}_{v1}$, european, -*] (-5.5,2);
-\draw[line width=0.65mm] (-7,2.5) to [short] (-7,1.5);
+\node at (-8,2.7) {$\underline{V}_{p1}$};
+\draw (-7.5,2) to [R, l=$\underline{Z}_{v1}$, european] (-6,2);
+\draw[line width=0.65mm] (-8,2.5) to [short] (-8,1.5);
 % \draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
 % \node at (-3,2.7) {$\underline{V}_{f}$};
-\draw (-9,2) to [R, l=$\underline{Z}_{z1}$, i=$\underline{I}_1$, european] (-7.0,2);
+% \draw (-9,2) to [R, l=$\underline{Z}_{z1}$, i=$\underline{I}_1$, european] (-7.0,2);
 \draw (-10.0,2) to [sdcac] (-9.0,2);
+\draw (-6,2) to [short, -*] (-5.5,2); 
 
 \draw (-10.0,-0) to [sdcac] (-9.0,-0);
-\draw (-9,-0) to [R, l=$\underline{Z}_{z2}$, i=$\underline{I}_2$, european] (-7,-0);
-\draw (-7,-0) to [R, l=$\underline{Z}_{v2}$, european, -*] (-5.5,-0);
-\draw[line width=0.65mm] (-7,0.5) to [short] (-7,-0.5);
-\node at (-7,-0.7) {PCC2};
+% \draw (-9,-0) to [R, l=$\underline{Z}_{z2}$, i=$\underline{I}_2$, european] (-7,-0);
+\draw (-7.5,-0) to [R, l=$\underline{Z}_{v2}$, european] (-6,-0);
+\draw[line width=0.65mm] (-8,0.5) to [short] (-8,-0.5);
+\node at (-8,-0.7) {PCC2};
 \node at (-9.5,0.6) {VSC2};
-\node at (-7,0.7) {$\underline{V}_{p2}$};
+\node at (-8,0.7) {$\underline{V}_{p2}$};
+\draw (-6,0) to [short, -*] (-5.5,0); 
+\draw (-7.5,2) to [short] (-8,2);
+\draw (-7.5,0) to [short] (-8,0);
+\draw (-7.5,-2) to [short] (-8,-2);
+
+\draw (-9,2) to [short, i=$\un{I}_1$] (-8,2);
+\draw (-9,0) to [short, i=$\un{I}_2$] (-8,0);
+\draw (-9,-2) to [short, i=$\un{I}_3$] (-8,-2);
 
 \draw (-10.0,-2) to [sdcac] (-9.0,-2);
-\draw (-9,-2) to [R, l=$\underline{Z}_{zn}$, i=$\underline{I}_n$, european] (-7,-2);
-\draw (-7,-2) to [R, l=$\underline{Z}_{vn}$, european, -*] (-5.5,-2);
-\draw[line width=0.65mm] (-7,-1.5) to [short] (-7,-2.5);
-\node at (-7,-2.7) {PCCn};
+% \draw (-9,-2) to [R, l=$\underline{Z}_{zn}$, i=$\underline{I}_n$, european] (-7,-2);
+\draw (-7.5,-2) to [R, l=$\underline{Z}_{vn}$, european] (-6,-2);
+\draw[line width=0.65mm] (-8,-1.5) to [short] (-8,-2.5);
+\node at (-8,-2.7) {PCCn};
 \node at (-9.5,-1.4) {VSCn};
-\node at (-7,-1.3) {$\underline{V}_{pn}$};
+\node at (-8,-1.3) {$\underline{V}_{pn}$};
+\draw (-6,-2) to [short, -*] (-5.5,-2); 
 
 \draw[line width=0.4mm] (-4.5,2.5) to [short] (-4.5,-2.5);
 \draw[line width=0.4mm] (-5.5,2.5) to [short] (-5.5,-2.5);
@@ -740,8 +755,8 @@ Power systems are likely to involve more than a single converter. Therefore, the
 \node at (-5,0.0) {Grid $\mathbf{\un{Y}_g}$};
 
 \draw[line width=0.4mm, dotted] (-9.5,-0.6) to [short] (-9.5,-1.1);
-\draw[line width=0.4mm, dotted] (-8.0,-0.3) to [short] (-8.0,-1.4);
-\draw[line width=0.4mm, dotted] (-6.25,-0.3) to [short] (-6.25,-1.4);
+% \draw[line width=0.4mm, dotted] (-8.0,-0.3) to [short] (-8.0,-1.4);
+\draw[line width=0.4mm, dotted] (-6.75,-0.3) to [short] (-6.75,-1.4);
 
 \end{circuitikz}
 \caption{Single-phase representation of a complete system}
@@ -904,7 +919,8 @@ The analysis is first performed considering a one-converter case study as the on
 \draw (-2.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
 \draw (-5,1.35) to [short] (-5.125, 1.35);
 \draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
-\draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
+% \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
+\draw (-6.875, 1.35) to [short] (-5.625, 1.35);
 \draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
 \draw (-6.875, 1.35) to [short] (-7.125, 1.35);
 \draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
@@ -974,7 +990,8 @@ Unless noted otherwise, the corresponding baseline parameters are indicated in T
 \draw (-3.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
 \draw (-5,1.35) to [short] (-5.125, 1.35);
 \draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
-\draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
+% \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
+\draw (-6.875, 1.35) to [short] (-5.625, 1.35);
 \draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
 \draw (-6.875, 1.35) to [short] (-7.125, 1.35);
 \draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
@@ -1030,7 +1047,8 @@ Fill this
 \draw (-3.75, 0.55) to [R, l_=$\un{Z}_{v2}$, european] (-5.0, 0.55);
 \draw (-5,0.55) to [short] (-5.125, 0.55);
 \draw (-5.625, 0.55) to [short, i=$\un{I}_2$] (-5.125, 0.55);
-\draw (-6.875, 0.55) to [R, l=$\un{Z}_{z2}$, european] (-5.625, 0.55);
+% \draw (-6.875, 0.55) to [R, l=$\un{Z}_{z2}$, european] (-5.625, 0.55);
+\draw (-6.875, 0.55) to [short] (-5.625, 0.55);
 \draw[line width=0.65mm] (-5.125,0.05) to [short] (-5.125,1.05);
 \draw (-6.875, 0.55) to [short] (-7.125, 0.55);
 \draw (-7.125, 0.55) to [sdcac] (-8.125, 0.55);
@@ -1041,7 +1059,8 @@ Fill this
 \draw (-3.75, 2.1) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 2.1);
 \draw (-5,2.1) to [short] (-5.125, 2.1);
 \draw (-5.625, 2.1) to [short, i=$\un{I}_1$] (-5.125, 2.1);
-\draw (-6.875, 2.1) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 2.1);
+% \draw (-6.875, 2.1) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 2.1);
+\draw (-6.875, 2.1) to [short] (-5.625, 2.1);
 \draw[line width=0.65mm] (-5.125,1.6) to [short] (-5.125,2.6);
 \draw (-6.875, 2.1) to [short] (-7.125, 2.1);
 \draw (-7.125, 2.1) to [sdcac] (-8.125, 2.1);
@@ -1073,9 +1092,10 @@ Fill this
 \end{table}
 
 
-\input{Plots/Z_1conv.tex}
-\input{Plots/Z_2conv.tex}
-\input{Plots/RX_2conv.tex}
+% \input{Plots/Z_1conv.tex}
+\input{Plots/RX_1conv.tex}
+% \input{Plots/Z_2conv.tex}
+% \input{Plots/RX_2conv.tex}
 
 
 \newpage
