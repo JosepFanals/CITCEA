@@ -57,7 +57,8 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         x = np.asarray(x)
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]
-        return np.imag(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]))
+        print(np.real(V_p1_abc[0] * np.conj(x[0] + 1j * x[1])))
+        return np.real(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]))
 
     def penalty_B(x):
         x = np.asarray(x)
@@ -79,7 +80,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         q_ff = np.imag(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]) + V_p1_abc[1] * np.conj(x[2] + 1j * x[3]) + V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
         print('active: ', p_ff)
         # print('reactive: ', q_ff)
-        return np.real(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]) + V_p1_abc[1] * np.conj(x[2] + 1j * x[3]) + V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
+        return p_ff
 
 
     def suma_re(x):
@@ -103,9 +104,9 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     @quadratic_inequality(ia_max)  # vary k=1e12 accordingly
     @quadratic_inequality(ib_max)  # vary k=1e12 accordingly
     @quadratic_inequality(ic_max)  # vary k=1e12 accordingly
-    @quadratic_equality(suma_re, k=1e5)
-    @quadratic_equality(suma_im, k=1e5)
-    @quadratic_equality(penalty_P)
+    @quadratic_equality(suma_re)
+    @quadratic_equality(suma_im)
+    @quadratic_inequality(penalty_A, k=1e10)
     def penalty(x):
         return 0.0
 
@@ -113,7 +114,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
     # sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
-    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=100, ftol=1e-50, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
 

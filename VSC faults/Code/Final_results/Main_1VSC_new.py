@@ -2,6 +2,7 @@ import numpy as np
 # from fOptimal_2VSC import fOptimal
 from fOpt_1VSC_new import fOptimal_mystic
 from fRopt_1VSC_new import fROptimal_mystic
+from fRopt_1VSC_new2 import fROptimal2_mystic
 from fGridCode_1VSC import fGridCode
 from Plots import fPlots
 from Functions import fZ_rx, fY_fault, x012_to_abc
@@ -14,25 +15,23 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [0, 0, 0]  # Yab, Ybc, Yac
+Y_con = [10, 10, 10]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
-# Ii_t = [1,  0.00, -1, 0.0 , 0.0,-0.0]
-# Ii_t = [1, 1, 1, 1, 1, 1]
-# Ii_t = [-0.2012,  0.2415,  0.0137 , 0.0613 , 0.1873 ,-0.3029]
-# Ii_t = [-0.0053, -0.9999, -0.788, 0.5101, 0.9048, 0.4257]
-Ii_t = [-0.0378, -0.8893, -0.7517,  0.4758,  0.7868,  0.4102]
-# Ii_t = [-0.3125, -0.0678, -0.6859,  0.0272,  0.9985,  0.0406]
-# Ii_t = [ 0.0045, -0.0948, -0.0825,  0.0209,  0.0779,  0.0737]
-# Ii_t = [0, 0, 0, 0, 0, 0]
+# Ii_t = [-0.0427, -0.9496, -0.726,   0.7005,  0.7682,  0.2516]
+# Ii_t = [-0.0311, -0.6252, -0.933, 0.3607, 0.9635, 0.264]
+# Ii_t = [-0.0202, -0.6153, -0.9266, 0.3618,  0.9463,  0.2534]
+# Ii_t = [-0.0165, -0.5088, -0.7695, 0.1467, 0.7876, 0.319]
+# Ii_t = [-0.0293, -0.9996, -0.851,   0.5251,  0.8803,  0.4745]
+Ii_t = [0.0123, 0.0054, -0.7732, -0.1013,  0.7608,  0.0961]
 type_f = 'ropt_3x_'
 folder = 'Results_1conv_RX_v1/'
 
 # RX variation
 n_p = 100
-# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(20, 70, n_p)
+[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+# Yf_vec = fY_fault(20, 70, n_p)
 
 # Store data
 Vp1_vec = []
@@ -51,18 +50,19 @@ for iik in range(n_p):
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    Y_gnd = [Yf_vec[iik], 0, 0]
+    # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    # Zv1 = Zin_vec[iik]
+    Zv1 = Zin_vec[iik]
     # Zt = Zv1  # I try this
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fROptimal2_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
@@ -89,11 +89,11 @@ for iik in range(n_p):
     print(Ii_t)
 
 # Save csv
-x_vec = Yf_vec
-for ll in range(len(x_vec)):  # to store Zf and not Yf
-    x_vec[ll] = 1 / x_vec[ll]
+# x_vec = Yf_vec
+# for ll in range(len(x_vec)):  # to store Zf and not Yf
+    # x_vec[ll] = 1 / x_vec[ll]
 
-# x_vec = RX_vec
+x_vec = RX_vec
 
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
