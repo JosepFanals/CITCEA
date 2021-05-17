@@ -26,13 +26,15 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         x = np.asarray(x)
         Vv_v = volt_solution1(x)
         V_p1_abc = Vv_v[0:3]
+        # print('power: ', V_p1_abc[0] * np.conj(x[0]) + V_p1_abc[1] * np.conj(x[1]) + V_p1_abc[2] * np.conj(x[2]))
         V_p1_012 = xabc_to_012(V_p1_abc)
 
         Vp1 = V_p1_012[1]
         Vn1 = V_p1_012[2]
+        V01 = V_p1_012[0]
 
         # suma = lam_vec[0] * abs(1 - abs(Vp1)) + lam_vec[1] * abs(0 - abs(Vn1)) 
-        return [Vp1, Vn1]
+        return [V01, Vp1, Vn1]
 
     Iabc = [0, 0, 0]
     Iabc_n = [1, 1, 1]
@@ -53,8 +55,8 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         # print(abs(Iabc[0]), abs(Iabc[1]), abs(Iabc[2]))
         Iabc_n[:] = Iabc[:]
         v1v2 = f_V1V2(Iabc)
-        v1 = v1v2[0]
-        v2 = v1v2[1]
+        v1 = v1v2[1]
+        v2 = v1v2[2]
         
         if abs(v1) < 0.5:
             i1 = fr * 1
