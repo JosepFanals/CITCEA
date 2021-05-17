@@ -89,14 +89,14 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     # see: https://stackoverflow.com/questions/51892741/constrained-global-optimization-tuning-mystic
 
-    @quadratic_inequality(ia_max, k=1e10)  # vary k=1e12 accordingly
-    @quadratic_inequality(ib_max, k=1e10)  # vary k=1e12 accordingly
-    @quadratic_inequality(ic_max, k=1e10)  # vary k=1e12 accordingly
-    @quadratic_equality(suma_re, k=1e40)
-    @quadratic_equality(suma_im, k=1e40)
-    @quadratic_equality(penalty_A, k=1e10)
-    @quadratic_equality(penalty_B, k=1e10)
-    @quadratic_equality(penalty_C, k=1e10)
+    @quadratic_inequality(ia_max)  # vary k=1e12 accordingly
+    @quadratic_inequality(ib_max)  # vary k=1e12 accordingly
+    @quadratic_inequality(ic_max)  # vary k=1e12 accordingly
+    @quadratic_equality(suma_re)
+    @quadratic_equality(suma_im)
+    @quadratic_equality(penalty_A)
+    @quadratic_equality(penalty_B)
+    @quadratic_equality(penalty_C)
     def penalty(x):
         return 0.0
 

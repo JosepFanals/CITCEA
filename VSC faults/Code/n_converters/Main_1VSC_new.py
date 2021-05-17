@@ -14,19 +14,15 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [1000, 0, 0]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [10, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
-# Ii_t = [0.0168, -0.6161, -0.7091, 0.7052, 0.6924, -0.089]
-# Ii_t = [0.5371, -0.8422, -0.6518, 0.7584, 0.1149, 0.0838] 
-# Ii_t = [0.7366, -0.6761, -0.7728,  0.6347,  0.0366,   0.0415]
-# Ii_t = [0.7573, -0.653,  -0.7881,  0.6157 , 0.0309 , 0.0372]
-# Ii_t = [ 0.9461, -0.1748, -0.9856 , 0.1696 , 0.0396,  0.0051]
-# Ii_t = [ 0.9717, -0.0923, -0.9961 , 0.0886 , 0.0245 , 0.0036]
-# Ii_t = [ 0.98 ,  -0.0321, -0.9996 , 0.0306 , 0.0197 , 0.0015]
-Ii_t = [ 0.9883,  0.0068, -1,      0.0151 , 0.0117 ,-0.0219]
-type_f = 'opt_LLG_'
+# Ii_t = [1,  0.00, -1, 0.0 , 0.0,-0.0]
+# Ii_t = [1, 1, 1, 1, 1, 1]
+# Ii_t = [-0.2012,  0.2415,  0.0137 , 0.0613 , 0.1873 ,-0.3029]
+Ii_t = [0, 0, 0, 0, 0, 0]
+type_f = 'ropt_LG_'
 folder = 'Results_1conv_RX_v1/'
 
 # RX variation
@@ -60,8 +56,8 @@ for iik in range(n_p):
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
