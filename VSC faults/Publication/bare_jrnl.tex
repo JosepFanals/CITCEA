@@ -920,14 +920,13 @@ Three parametric studies are performed. One considers variations in the fault im
 % \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
 \draw (-2.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
 \draw (-5,1.35) to [short] (-5.125, 1.35);
-\draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
 % \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
-\draw (-6.875, 1.35) to [short] (-5.625, 1.35);
-\draw[line width=0.65mm] (-6,1.85) to [short] (-6,0.85);
-\draw (-6.875, 1.35) to [short] (-7.125, 1.35);
-\draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
-\node at (-7.625,1.95) {VSC1};
-\node at (-6,2.05) {$\underline{V}_{p1}$};
+% \draw (-6.875, 1.35) to [short] (-5.625, 1.35);
+\draw[line width=0.65mm] (-5.0,1.85) to [short] (-5.0,0.85);
+\draw (-5.8, 1.35) to [sdcac] (-6.8, 1.35);
+\node at (-6.8,1.95) {VSC1};
+\node at (-5.0,2.05) {$\underline{V}_{p1}$};
+\draw (-5.8,1.35) to [short, i=$\un{I}_1$] (-5.0,1.35);
 
 \node at (-2.5,2.05) {$\underline{V}_{f}$};
 
@@ -990,17 +989,19 @@ Unless noted otherwise, the corresponding baseline parameters are indicated in T
 \draw[-{Latex[length=3mm]}] (-3.75,0.35) to [short] (-3.55,-0.65);
 \draw (-3.80,-0.65) to [short] (-3.30,-0.65);
 
+\draw (-6.3, 1.35) to [short, i=$\un{I}_1$] (-5.5, 1.35);
 % \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
-\draw (-3.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
+\draw (-3.9,1.35) to [short] (-3.5,1.35);
+\draw (-3.9, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
 \draw (-5,1.35) to [short] (-5.125, 1.35);
-\draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
+% \draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
 % \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
-\draw (-6.875, 1.35) to [short] (-5.625, 1.35);
-\draw[line width=0.65mm] (-6,1.85) to [short] (-6,0.85);
-\draw (-6.875, 1.35) to [short] (-7.125, 1.35);
-\draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
-\node at (-7.625,1.95) {VSC1};
-\node at (-6,2.05) {$\underline{V}_{p1}$};
+\draw[line width=0.65mm] (-5.5,1.85) to [short] (-5.5,0.85);
+\draw (-5.5,1.35) to [short] (-5.125, 1.35);
+% \draw (-6.875, 1.35) to [short] (-7.125, 1.35);
+\draw (-6.3, 1.35) to [sdcac] (-7.3, 1.35);
+\node at (-6.8,1.95) {VSC1};
+\node at (-5.5,2.05) {$\underline{V}_{p1}$};
 
 \node at (-3.5,2.05) {$\underline{V}_{f}$};
 
@@ -1050,26 +1051,28 @@ Fill this
 \draw (-3.25, 0.55) to [short] (-3.75, 0.55);
 \draw (-3.75, 0.55) to [R, l_=$\un{Z}_{v2}$, european] (-5.0, 0.55);
 \draw (-5,0.55) to [short] (-5.125, 0.55);
-\draw (-5.625, 0.55) to [short, i=$\un{I}_2$] (-5.125, 0.55);
+\draw (-6.3, 0.55) to [short, i=$\un{I}_2$] (-5.5, 0.55);
 % \draw (-6.875, 0.55) to [R, l=$\un{Z}_{z2}$, european] (-5.625, 0.55);
-\draw (-6.875, 0.55) to [short] (-5.625, 0.55);
-\draw[line width=0.65mm] (-6,0.05) to [short] (-6,1.05);
-\draw (-6.875, 0.55) to [short] (-7.125, 0.55);
-\draw (-7.125, 0.55) to [sdcac] (-8.125, 0.55);
-\node at (-7.625,1.15) {VSC2};
-\node at (-6,1.25) {$\underline{V}_{p2}$};
+% \draw (-6.875, 0.55) to [short] (-5.625, 0.55);
+\draw[line width=0.65mm] (-5.5,0.05) to [short] (-5.5,1.05);
+% \draw (-6.875, 0.55) to [short] (-7.125, 0.55);
+\draw (-6.3, 0.55) to [sdcac] (-7.3, 0.55);
+\draw (-5.5, 0.55) to [short] (-5.0, 0.55);
+\node at (-6.8,1.15) {VSC2};
+\node at (-5.5,1.25) {$\underline{V}_{p2}$};
 
 \draw (-3.25, 2.1) to [short] (-3.75, 2.1);
 \draw (-3.75, 2.1) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 2.1);
 \draw (-5,2.1) to [short] (-5.125, 2.1);
-\draw (-5.625, 2.1) to [short, i=$\un{I}_1$] (-5.125, 2.1);
+\draw (-6.3, 2.1) to [short, i=$\un{I}_1$] (-5.5, 2.1);
+\draw (-5.5, 2.1) to [short] (-5.0, 2.1);
 % \draw (-6.875, 2.1) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 2.1);
-\draw (-6.875, 2.1) to [short] (-5.625, 2.1);
-\draw[line width=0.65mm] (-6,1.6) to [short] (-6,2.6);
-\draw (-6.875, 2.1) to [short] (-7.125, 2.1);
-\draw (-7.125, 2.1) to [sdcac] (-8.125, 2.1);
-\node at (-7.625,2.7) {VSC1};
-\node at (-6,2.80) {$\underline{V}_{p1}$};
+% \draw (-6.875, 2.1) to [short] (-5.625, 2.1);
+\draw[line width=0.65mm] (-5.5,1.6) to [short] (-5.5,2.6);
+\draw (-5.8, 2.1) to [short] (-6.3, 2.1);
+\draw (-6.3, 2.1) to [sdcac] (-7.3, 2.1);
+\node at (-6.8,2.7) {VSC1};
+\node at (-5.5,2.80) {$\underline{V}_{p1}$};
 
 \node at (-2.5,2.05) {$\underline{V}_{f}$};
 
