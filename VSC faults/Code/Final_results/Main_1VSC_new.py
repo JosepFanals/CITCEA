@@ -3,6 +3,8 @@ import numpy as np
 from fOpt_1VSC_new import fOptimal_mystic
 from fRopt_1VSC_new import fROptimal_mystic
 from fRopt_1VSC_new2 import fROptimal2_mystic
+from fROPT_1VSC_SLSQP import fROptimal_SLSQP
+from fOPT_1VSC_SLSQP import fOptimal_SLSQP
 from fGridCode_1VSC import fGridCode
 from Plots import fPlots
 from Functions import fZ_rx, fY_fault, x012_to_abc
@@ -15,7 +17,7 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [10000, 0, 0]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [10, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
@@ -27,7 +29,7 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [0.0123, 0.0054, -0.7732, -0.1013,  0.7608,  0.0961]
 Ii_t = [ 0.0389, -0.0754, -0.1837, -0.0004,  0.1449,  0.0756]
 # Ii_t = [ 0.0129,  0.002,  -0.0753,  0.2016,  0.0623, -0.2036]
-type_f = 'gc_LLG_'
+type_f = 'ropt_3x_'
 folder = 'Results_1conv_RX_v1/'
 
 # RX variation
@@ -62,8 +64,10 @@ for iik in range(n_p):
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fOptimal_SLSQP(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fROptimal_SLSQP(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
@@ -86,8 +90,8 @@ for iik in range(n_p):
 
     Ii_t = x_opt[4][0]
 
-    print(ff_obj)
-    print(Ii_t)
+    # print(ff_obj)
+    # print(Ii_t)
 
 # Save csv
 # x_vec = Yf_vec
