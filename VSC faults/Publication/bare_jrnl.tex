@@ -896,6 +896,8 @@ Constants $k_p$ and $k_n$ are initially set at 2.0. If necessary, they are dynam
 \section{Single converter case study} \label{1conv}
 The analysis is first performed considering a one-converter case study as the one depicted in Figure \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground, line to line or double line to ground). The goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
+Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, i.e., the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$ is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. 
+
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
 \thicklines
@@ -921,11 +923,11 @@ The analysis is first performed considering a one-converter case study as the on
 \draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
 % \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
 \draw (-6.875, 1.35) to [short] (-5.625, 1.35);
-\draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
+\draw[line width=0.65mm] (-6,1.85) to [short] (-6,0.85);
 \draw (-6.875, 1.35) to [short] (-7.125, 1.35);
 \draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
 \node at (-7.625,1.95) {VSC1};
-\node at (-5.125,2.05) {$\underline{V}_{p1}$};
+\node at (-6,2.05) {$\underline{V}_{p1}$};
 
 \node at (-2.5,2.05) {$\underline{V}_{f}$};
 
@@ -936,7 +938,9 @@ The analysis is first performed considering a one-converter case study as the on
 
 % \subsection{Exemplification}
 \subsection{Fault impedance variation analysis}
+
 \subsection{$R/X$ variation analysis}
+
 \subsection{Cable length variation analysis}
 The methodology to optimize voltages under a given fault is shortly described with the intention of presenting the main steps involved. 
 
@@ -992,11 +996,11 @@ Unless noted otherwise, the corresponding baseline parameters are indicated in T
 \draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
 % \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
 \draw (-6.875, 1.35) to [short] (-5.625, 1.35);
-\draw[line width=0.65mm] (-5.125,1.85) to [short] (-5.125,0.85);
+\draw[line width=0.65mm] (-6,1.85) to [short] (-6,0.85);
 \draw (-6.875, 1.35) to [short] (-7.125, 1.35);
 \draw (-7.125, 1.35) to [sdcac] (-8.125, 1.35);
 \node at (-7.625,1.95) {VSC1};
-\node at (-5.125,2.05) {$\underline{V}_{p1}$};
+\node at (-6,2.05) {$\underline{V}_{p1}$};
 
 \node at (-3.5,2.05) {$\underline{V}_{f}$};
 
@@ -1049,11 +1053,11 @@ Fill this
 \draw (-5.625, 0.55) to [short, i=$\un{I}_2$] (-5.125, 0.55);
 % \draw (-6.875, 0.55) to [R, l=$\un{Z}_{z2}$, european] (-5.625, 0.55);
 \draw (-6.875, 0.55) to [short] (-5.625, 0.55);
-\draw[line width=0.65mm] (-5.125,0.05) to [short] (-5.125,1.05);
+\draw[line width=0.65mm] (-6,0.05) to [short] (-6,1.05);
 \draw (-6.875, 0.55) to [short] (-7.125, 0.55);
 \draw (-7.125, 0.55) to [sdcac] (-8.125, 0.55);
 \node at (-7.625,1.15) {VSC2};
-\node at (-5.125,1.25) {$\underline{V}_{p2}$};
+\node at (-6,1.25) {$\underline{V}_{p2}$};
 
 \draw (-3.25, 2.1) to [short] (-3.75, 2.1);
 \draw (-3.75, 2.1) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 2.1);
@@ -1061,11 +1065,11 @@ Fill this
 \draw (-5.625, 2.1) to [short, i=$\un{I}_1$] (-5.125, 2.1);
 % \draw (-6.875, 2.1) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 2.1);
 \draw (-6.875, 2.1) to [short] (-5.625, 2.1);
-\draw[line width=0.65mm] (-5.125,1.6) to [short] (-5.125,2.6);
+\draw[line width=0.65mm] (-6,1.6) to [short] (-6,2.6);
 \draw (-6.875, 2.1) to [short] (-7.125, 2.1);
 \draw (-7.125, 2.1) to [sdcac] (-8.125, 2.1);
 \node at (-7.625,2.7) {VSC1};
-\node at (-5.125,2.80) {$\underline{V}_{p1}$};
+\node at (-6,2.80) {$\underline{V}_{p1}$};
 
 \node at (-2.5,2.05) {$\underline{V}_{f}$};
 
@@ -1092,10 +1096,10 @@ Fill this
 \end{table}
 
 
-% \input{Plots/Z_1conv.tex}
+\input{Plots/Z_1conv.tex}
 \input{Plots/RX_1conv.tex}
-% \input{Plots/Z_2conv.tex}
-% \input{Plots/RX_2conv.tex}
+\input{Plots/Z_2conv.tex}
+\input{Plots/RX_2conv.tex}
 
 
 \newpage
