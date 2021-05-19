@@ -970,6 +970,20 @@ where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ r
 \end{equation}
 where $\un{Y}_{v1}=1/\un{Z}_{v1}$ and $\un{Y}_t=1/\un{Z}_t$. 
 
+On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent on the fault and therefore, it is built by observation. The optimization problem for the one case converter reads 
+\begin{equation}
+\begin{aligned}
+\min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1} \quad & \lambda^+_1|(1 - |\un{V}^+_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1)|)| \\
+ &+ \lambda^-_1|(0 - |\un{V}^-_{pk}(\un{I}^a_1, \un{I}^b_1, \un{I}^c)|)| \ , \\
+\textrm{s.t.} \quad & \text{max}(\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1) \leq I_{\text{max,1}} \ ,\\
+  &\un{I}^a_1 + \un{I}^b_1 + \un{I}^{c}_1 = 0 \ , \\
+\end{aligned}
+\label{eq:opt_1c}
+\end{equation}
+
+% put the algorithm 
+
+
 \subsection{$R/X$ variation analysis}
 
 \subsection{Cable length variation analysis}

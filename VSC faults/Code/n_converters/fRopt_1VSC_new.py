@@ -57,19 +57,20 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         x = np.asarray(x)
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]
-        return np.imag(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]))
+        print(np.real(V_p1_abc[0] * np.conj(x[0] + 1j * x[1])))
+        return np.real(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]))
 
     def penalty_B(x):
         x = np.asarray(x)
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]
-        return np.imag(V_p1_abc[1] * np.conj(x[2] + 1j * x[3]))
+        return np.real(V_p1_abc[1] * np.conj(x[2] + 1j * x[3]))
 
     def penalty_C(x):
         x = np.asarray(x)
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]
-        return np.imag(V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
+        return np.real(V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
 
     def suma_re(x):
         return x[0] + x[2] + x[4]
@@ -89,14 +90,14 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     # see: https://stackoverflow.com/questions/51892741/constrained-global-optimization-tuning-mystic
 
-    @quadratic_inequality(ia_max, k=1e-2)  # vary k=1e12 accordingly
-    @quadratic_inequality(ib_max, k=1e-2)  # vary k=1e12 accordingly
-    @quadratic_inequality(ic_max, k=1e-2)  # vary k=1e12 accordingly
-    @quadratic_equality(suma_re, k=1e-2)
-    @quadratic_equality(suma_im, k=1e-2)
-    @quadratic_equality(penalty_A, k=1e-2)
-    @quadratic_equality(penalty_B, k=1e-2)
-    @quadratic_equality(penalty_C, k=1e-2)
+    @quadratic_inequality(ia_max, k=1)  # vary k=1e12 accordingly
+    @quadratic_inequality(ib_max, k=1)  # vary k=1e12 accordingly
+    @quadratic_inequality(ic_max, k=1)  # vary k=1e12 accordingly
+    @quadratic_equality(suma_re, k=1)
+    @quadratic_equality(suma_im, k=1)
+    @quadratic_equality(penalty_A, k=1)
+    @quadratic_equality(penalty_B, k=1)
+    @quadratic_equality(penalty_C, k=1)
     def penalty(x):
         return 0.0
 
@@ -104,7 +105,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
     # sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
-    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=200, ftol=1e-50, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=penalty, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
 

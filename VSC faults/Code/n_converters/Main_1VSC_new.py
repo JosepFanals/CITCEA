@@ -23,7 +23,12 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [1, 1, 1, 1, 1, 1]
 # Ii_t = [-0.2012,  0.2415,  0.0137 , 0.0613 , 0.1873 ,-0.3029]
 # Ii_t = [-0.0053, -0.9999, -0.788, 0.5101, 0.9048, 0.4257]
-Ii_t = [-0.0378, -0.8893, -0.7517,  0.4758,  0.7868,  0.4102]
+# Ii_t = [-0.0378, -0.8893, -0.7517,  0.4758,  0.7868,  0.4102]
+# Ii_t = [-0.0024, -0.1514, -0.1284,  0.0788,  0.1339,  0.0728]
+# Ii_t = [-0.0235, -0.1644, -0.1288,  0.1027,  0.1552,  0.0603]
+# Ii_t = [-0.0916, -0.193,  -0.1226,  0.1768,  0.2131,  0.0187]
+# Ii_t = [-0.1312, -0.2235, -0.1298,  0.2269  ,0.2596 , 0.0004]
+Ii_t = [-0.1347,  -0.2274, -0.1314,  0.2339,  0.2664,  0.0004]
 # Ii_t = [ 0.0045, -0.0948, -0.0825,  0.0209,  0.0779,  0.0737]
 # Ii_t = [0, 0, 0, 0, 0, 0]
 type_f = 'ropt_3x_'
@@ -31,8 +36,8 @@ folder = 'Results_1conv_RX_v1/'
 
 # RX variation
 n_p = 100
-# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(20, 70, n_p)
+[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+# Yf_vec = fY_fault(20, 70, n_p)
 
 # Store data
 Vp1_vec = []
@@ -49,13 +54,13 @@ f_vec = []
 for iik in range(n_p):
     print(iik)
     # Initialize data
-    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    # Zv1 = Zin_vec[iik]
+    Zv1 = Zin_vec[iik]
     # Zt = Zv1  # I try this
 
     # Call optimization
@@ -90,11 +95,11 @@ for iik in range(n_p):
     print(Ii_t)
 
 # Save csv
-x_vec = Yf_vec
-for ll in range(len(x_vec)):  # to store Zf and not Yf
-    x_vec[ll] = 1 / x_vec[ll]
+# x_vec = Yf_vec
+# for ll in range(len(x_vec)):  # to store Zf and not Yf
+    # x_vec[ll] = 1 / x_vec[ll]
 
-# x_vec = RX_vec
+x_vec = RX_vec
 
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
