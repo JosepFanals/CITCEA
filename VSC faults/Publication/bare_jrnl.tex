@@ -827,6 +827,7 @@ In order to have a clearer comprehension of the voltages, they are eventually co
     \un{V}^{b}_{pk} \\
     \un{V}^{c}_{pk} \\
   \end{pmatrix}\ ,
+  \label{eq:fortescue}
 \end{equation}
 where $a=e^{j\frac{2\pi}{3}}$. 
 
@@ -852,6 +853,7 @@ In order to improve voltages during faults, grid code control rules typically im
       |\un{I}^+_k| = k_p(0.9 - |\un{V}^+_{pk}|) & 0.5 \leq |\un{V}^+_{pk}| < 0.9 \\
       |\un{I}^+_k| = 1 & |\un{V}^+_{pk}| < 0.5  \\
    \end{cases}
+   \label{eq:gc1}
 \end{equation}
 whereas for the negative sequence
 \begin{equation}
@@ -860,6 +862,7 @@ whereas for the negative sequence
       |\un{I}^-_k| = k_n(|\un{V}^-_{pk}| - 0.1) & 0.1 \leq |\un{V}^-_{pk}| < 0.5 \\
       |\un{I}^-_k| = 1 & |\un{V}^-_{pk}| > 0.5 \\
    \end{cases}
+   \label{eq:gc2}
 \end{equation}
 Constants $k_p$ and $k_n$ are initially set at 2.0. If necessary, they are dynamically adjusted so that no current limitations are exceeded. 
 
@@ -924,7 +927,7 @@ Three parametric studies are performed. One considers variations in the fault im
 % \draw (-6.875, 1.35) to [short] (-5.625, 1.35);
 \draw[line width=0.65mm] (-5.0,1.85) to [short] (-5.0,0.85);
 \draw (-5.8, 1.35) to [sdcac] (-6.8, 1.35);
-\node at (-6.8,1.95) {VSC1};
+\node at (-6.3,1.95) {VSC1};
 \node at (-5.0,2.05) {$\underline{V}_{p1}$};
 \draw (-5.8,1.35) to [short, i=$\un{I}_1$] (-5.0,1.35);
 
@@ -950,11 +953,11 @@ For a single converter system as the one depicted in Figure \ref{fig:sys_p1}, th
  \left(\mathbf{\un{Y}_{v}} + \mathbf{\un{Y}_f}\right) 
 \begin{pmatrix}
     \un{V}^{a}_{p1} \\
-    \un{I}^{b}_{p1} \\
-    \un{I}^{c}_{p1} \\
-    \un{I}^{a}_f \\
-    \un{I}^{b}_f \\
-    \un{I}^{c}_f \\
+    \un{V}^{b}_{p1} \\
+    \un{V}^{c}_{p1} \\
+    \un{V}^{a}_f \\
+    \un{V}^{b}_f \\
+    \un{V}^{c}_f \\
   \end{pmatrix} ,
 \end{equation}
 where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constitued by the admittances that intervene in the fault. This way, the admittance matrices are defined as
@@ -967,6 +970,7 @@ where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ r
     0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t & 0\\
     0 & 0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t\\
   \end{pmatrix}
+  \label{eq:Yvmat}
 \end{equation}
 where $\un{Y}_{v1}=1/\un{Z}_{v1}$ and $\un{Y}_t=1/\un{Z}_t$. 
 
@@ -974,23 +978,14 @@ On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent o
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1} \quad & \lambda^+_1|(1 - |\un{V}^+_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1)|)| \\
- &+ \lambda^-_1|(0 - |\un{V}^-_{pk}(\un{I}^a_1, \un{I}^b_1, \un{I}^c)|)| \ , \\
+ &+ \lambda^-_1|(0 - |\un{V}^-_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1)|)| \ , \\
 \textrm{s.t.} \quad & \text{max}(\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1) \leq I_{\text{max,1}} \ ,\\
   &\un{I}^a_1 + \un{I}^b_1 + \un{I}^{c}_1 = 0 \ , \\
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
+The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values, since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Figure \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
-% put the algorithm 
-
-
-\subsection{$R/X$ variation analysis}
-
-\subsection{Cable length variation analysis}
-The methodology to optimize voltages under a given fault is shortly described with the intention of presenting the main steps involved. 
-
-% \subsection{Basic system results}
-Unless noted otherwise, the corresponding baseline parameters are indicated in Table \ref{tab:param}. 
 \begin{table}\centering
   \caption{System parameters for the one-converter case}
   \begin{tabular}{cc}
@@ -1007,6 +1002,136 @@ Unless noted otherwise, the corresponding baseline parameters are indicated in T
   \end{tabular}
   \label{tab:param}
 \end{table}
+Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Figure \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. The OPT case stands for the solution to \eqref{eq:opt_1c}; GC represents the solution obtained with the grid code expressions \eqref{eq:gc1} and \eqref{eq:gc2}. The results suggest that the optimal case is the preferred one, as its associated objective function is always the smallest, as expected. However, the GC solution does not substantially differ from it. In all cases the VSC operates at saturation conditions, yet the distribution of currents varies.  
+
+\begin{figure}[!htb]\centering \tiny
+    \begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, ytick distance={0.2}, xmin=0.03, xmax=0.07, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/ropt_3x_Ip1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/ropt_3x_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/ropt_3x_In1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_In1re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/ropt_3x_In1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_In1im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/ropt_3x_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Vp1.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.01)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax=0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/ropt_3x_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Vn1.csv};
+                %   \legend{OPT, ROPT, GC};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+        \vspace{-0.2cm}
+\begin{center}
+\begin{subfigure}[!htb]{0.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=9.4cm, height=3.51cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, xmin=0.03, xmax=0.07, axis line style = thick, ytick distance = {0.04},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_f_obj.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/ropt_3x_f_obj.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_f_obj.csv};
+                  \legend{OPT, ROPT, GC};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance, one converter case}
+    \label{fig:Zf_1conv_3x}
+  \end{figure}
+Negative sequence currents are null, just like it could be foreseen for any balanced fault. The GC solution only injects imaginary positive sequence as real currents are not allowed by definition. The OPT solution achieves the optimal distribution of currents. The current capabilities of the converter are roughly equally attributed to the real and imaginary positivie sequence currents. Despite these differences, the GC solution is not significantly worse than the optimal. 
+
+% maybe I can study the same but with larger Zx so it does not operate saturated
+
+% \begin{algorithmic}
+% \STATE $V\gets$ AllUnigramsInTraining($D$)
+% \STATE $N\gets$ NumberOfTweets($D$)
+%  \FORALL{$c \in C$}
+%   \STATE $N_c \gets$ Number of tweets in Class $c$
+%   \STATE \begin{equation}prior(c) = \frac{N_c}{N}\end{equation}
+%   \STATE $Tweets_c \gets $All Tweets in class $c$
+%   \FORALL{$t \in V$}
+%     \STATE $T_ct$ = No. of times term $t$ appeared in $Tweets_c$
+%   \ENDFOR
+%   \FORALL{$t \in V$}
+%     \STATE \begin{equation}prob[t][c] = \frac{T_ct}{\sum^{t'}T_ct'+ 1}\end{equation}
+%   \ENDFOR
+% \ENDFOR
+% \end{algorithmic}
+
+% put the algorithm 
+
+
+\subsection{$R/X$ variation analysis}
+
+\subsection{Cable length variation analysis}
+The methodology to optimize voltages under a given fault is shortly described with the intention of presenting the main steps involved. 
+
+% \subsection{Basic system results}
+
+
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1144,6 +1269,9 @@ Fill this
   \label{tab:param2}
 \end{table}
 
+\newpage
+\clearpage
+\section{////////////PLOTS////////////}
 
 \input{Plots/Z_1conv.tex}
 \input{Plots/RX_1conv.tex}
