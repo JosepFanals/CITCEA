@@ -937,6 +937,38 @@ Three parametric studies are performed. One considers variations in the fault im
 
 % \subsection{Exemplification}
 \subsection{Fault impedance variation analysis}
+For a single converter system as the one depicted in Figure \ref{fig:sys_p1}, the fault impedance connected to the bus at voltage $\un{V}_f$ is responsible for identify the fault. Explicitly, voltages and currents are related by
+\begin{equation}
+  \begin{pmatrix}
+    \un{I}^{a}_1 \\
+    \un{I}^{b}_1 \\
+    \un{I}^{c}_1 \\
+    \un{I}^{a}_t \\
+    \un{I}^{b}_t \\
+    \un{I}^{c}_t \\
+  \end{pmatrix} = 
+ \left(\mathbf{\un{Y}_{v}} + \mathbf{\un{Y}_f}\right) 
+\begin{pmatrix}
+    \un{V}^{a}_{p1} \\
+    \un{I}^{b}_{p1} \\
+    \un{I}^{c}_{p1} \\
+    \un{I}^{a}_f \\
+    \un{I}^{b}_f \\
+    \un{I}^{c}_f \\
+  \end{pmatrix} ,
+\end{equation}
+where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constitued by the admittances that intervene in the fault. This way, the admittance matrices are defined as
+\begin{equation}\scriptsize
+  \mathbf{\un{Y}_v} = \begin{pmatrix}
+    \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1} & 0 & 0\\
+    0 & \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1} & 0\\
+    0 & 0 & \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1}\\
+    - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t & 0 & 0\\
+    0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t & 0\\
+    0 & 0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t\\
+  \end{pmatrix}
+\end{equation}
+where $\un{Y}_{v1}=1/\un{Z}_{v1}$ and $\un{Y}_t=1/\un{Z}_t$. 
 
 \subsection{$R/X$ variation analysis}
 

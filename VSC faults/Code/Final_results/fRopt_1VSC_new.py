@@ -4,7 +4,7 @@ import numpy as np
 import mystic.symbolic as ms
 import mystic.solvers as my
 import mystic.math as mm
-from mystic.penalty import quadratic_equality, lagrange_equality, linear_equality, uniform_equality, uniform_inequality, quadratic_inequality
+from mystic.penalty import quadratic_equality, lagrange_equality, linear_equality, uniform_equality, uniform_inequality, quadratic_inequality, barrier_inequality, linear_inequality, lagrange_inequality
 from Functions import xabc_to_012, x012_to_abc, build_static_objects, build_static_objects1 
 np.set_printoptions(precision=4)
 
@@ -65,13 +65,15 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         x = np.asarray(x)
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]
-        print(np.real(V_p1_abc[1] * np.conj(x[2] + 1j * x[3])))
+        # print(np.real(V_p1_abc[1] * np.conj(x[2] + 1j * x[3])))
+        print(np.real(V_p1_abc[2] * np.conj(x[4] + 1j * x[5])))
         return np.real(V_p1_abc[1] * np.conj(x[2] + 1j * x[3]))
 
     def penalty_C(x):
         x = np.asarray(x)
         Vv_v = volt_solution(x)
         V_p1_abc = Vv_v[0:3]
+        print(np.real(V_p1_abc[2] * np.conj(x[4] + 1j * x[5])))
         return np.real(V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
 
     def penalty_P(x):
@@ -80,7 +82,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         V_p1_abc = Vv_v[0:3]
         p_ff = np.real(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]) + V_p1_abc[1] * np.conj(x[2] + 1j * x[3]) + V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
         q_ff = np.imag(V_p1_abc[0] * np.conj(x[0] + 1j * x[1]) + V_p1_abc[1] * np.conj(x[2] + 1j * x[3]) + V_p1_abc[2] * np.conj(x[4] + 1j * x[5]))
-        print('active: ', p_ff)
+        # print('active: ', p_ff)
         # print('reactive: ', q_ff)
         return p_ff
 
@@ -110,7 +112,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     @quadratic_equality(suma_im, k=1e10)
     @quadratic_inequality(penalty_A, k=1e10)
     @quadratic_inequality(penalty_B, k=1e10)
-    @quadratic_inequality(penalty_C, k=1e10)
+    @linear_inequality(penalty_C, k=1e20)
     def penalty(x):
         return 0.0
 
@@ -123,6 +125,7 @@ def fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     I_sol = sol
 
     I1_abc = [I_sol[0][0] + 1j * I_sol[0][1], I_sol[0][2] + 1j * I_sol[0][3], I_sol[0][4] + 1j * I_sol[0][5]]
+    print(I1_abc)
     V_f = volt_solution(I_sol[0])
     V_p1_012 = xabc_to_012(V_f[0:3])
     Ip1_012 = xabc_to_012(I1_abc)
