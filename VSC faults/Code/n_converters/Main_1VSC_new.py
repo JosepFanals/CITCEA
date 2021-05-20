@@ -4,6 +4,7 @@ from fOpt_1VSC_new import fOptimal_mystic
 from fRopt_1VSC_new import fROptimal_mystic
 from fRopt_1VSC_new2 import fROptimal2_mystic
 from fGridCode_1VSC import fGridCode
+from fGC_static import fGC_static
 from Plots import fPlots
 from Functions import fZ_rx, fY_fault, x012_to_abc
 import pandas as pd
@@ -25,13 +26,13 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [-0.4331, -0.8344, -0.563,   0.8265,  0.9962,  0.0076]
 Ii_t = [-0.2003, -0.3512, -0.2041,  0.3493,  0.4044,  0.0024]
 # Ii_t = [0, 0, 0, 0, 0, 0]
-type_f = 'gc_3x_'
-folder = 'Results_1conv_Zf_sat_v1/'
+type_f = 'sta_3x_'
+folder = 'Results_1conv_Zf_v1/'
 
 # RX variation
 n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(0.5, 2, n_p)
+Yf_vec = fY_fault(10, 50, n_p)
 
 # Store data
 Vp1_vec = []
