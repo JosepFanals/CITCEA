@@ -15,29 +15,23 @@ V_mod = 1
 Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [10, 10, 10]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 # lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [1,  0.00, -1, 0.0 , 0.0,-0.0]
 # Ii_t = [1, 1, 1, 1, 1, 1]
 # Ii_t = [-0.2012,  0.2415,  0.0137 , 0.0613 , 0.1873 ,-0.3029]
-# Ii_t = [-0.0053, -0.9999, -0.788, 0.5101, 0.9048, 0.4257]
-# Ii_t = [-0.0378, -0.8893, -0.7517,  0.4758,  0.7868,  0.4102]
-# Ii_t = [-0.0024, -0.1514, -0.1284,  0.0788,  0.1339,  0.0728]
-# Ii_t = [-0.0235, -0.1644, -0.1288,  0.1027,  0.1552,  0.0603]
-# Ii_t = [-0.0916, -0.193,  -0.1226,  0.1768,  0.2131,  0.0187]
-# Ii_t = [-0.1312, -0.2235, -0.1298,  0.2269  ,0.2596 , 0.0004]
-Ii_t = [-0.1347,  -0.2274, -0.1314,  0.2339,  0.2664,  0.0004]
-# Ii_t = [ 0.0045, -0.0948, -0.0825,  0.0209,  0.0779,  0.0737]
+# Ii_t = [-0.4331, -0.8344, -0.563,   0.8265,  0.9962,  0.0076]
+Ii_t = [-0.2003, -0.3512, -0.2041,  0.3493,  0.4044,  0.0024]
 # Ii_t = [0, 0, 0, 0, 0, 0]
-type_f = 'ropt_3x_'
-folder = 'Results_1conv_RX_v1/'
+type_f = 'gc_3x_'
+folder = 'Results_1conv_Zf_sat_v1/'
 
 # RX variation
 n_p = 100
-[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-# Yf_vec = fY_fault(20, 70, n_p)
+# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+Yf_vec = fY_fault(0.5, 2, n_p)
 
 # Store data
 Vp1_vec = []
@@ -54,21 +48,21 @@ f_vec = []
 for iik in range(n_p):
     print(iik)
     # Initialize data
-    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    Zv1 = Zin_vec[iik]
+    # Zv1 = Zin_vec[iik]
     # Zt = Zv1  # I try this
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fROptimal2_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
@@ -93,13 +87,14 @@ for iik in range(n_p):
 
     print(ff_obj)
     print(Ii_t)
+    # print(Ii_t[0]**2 + Ii_t[1]**2)
 
 # Save csv
-# x_vec = Yf_vec
-# for ll in range(len(x_vec)):  # to store Zf and not Yf
-    # x_vec[ll] = 1 / x_vec[ll]
+x_vec = Yf_vec
+for ll in range(len(x_vec)):  # to store Zf and not Yf
+    x_vec[ll] = 1 / x_vec[ll]
 
-x_vec = RX_vec
+# x_vec = RX_vec
 
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)

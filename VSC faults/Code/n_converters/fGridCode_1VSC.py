@@ -47,7 +47,7 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     v2_p = 0.5
 
     # while abs(v1 - v1_p) > tol or abs(v2 - v2_p) > tol or Iabc_max > 1:
-    while Iabc_max > 1 or Iabc_max < 0.99:
+    while Iabc_max > 1 or Iabc_max < 0.98:
         count += 1
         # print(fr, count)
         # print(abs(Iabc[0]), abs(Iabc[1]), abs(Iabc[2]))

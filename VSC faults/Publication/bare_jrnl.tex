@@ -375,6 +375,7 @@
 \usetikzlibrary{arrows.meta}
 \usepackage{tikz}
 \usepackage{circuitikz}
+\usepackage[colorinlistoftodos]{todonotes}
 
 \begin{document}
 %
@@ -864,7 +865,17 @@ whereas for the negative sequence
    \end{cases}
    \label{eq:gc2}
 \end{equation}
-Constants $k_p$ and $k_n$ are initially set at 2.0. If necessary, they are dynamically adjusted so that no current limitations are exceeded. 
+Both constants $k_p$ and $k_n$ are set at $1.25$. This value was found to be the theoretical maximum so that current limitations are not reached in the worst case scenario where $|\un{V}^+_{pk}|=0.5$ and $|\un{V}^-_{pk}|=0.5$.
+
+The application of the grid code rules implies that maximum phase currents are hardly ever equal to the maximum allowed by the VSC, even when strong faults occur. Thus, an adaptative control can be formulated so that currents tend to the maximum permitted value while the droop characteristic is preserved. This strategy is denoted by ADA, as in essence it consists of an adaptative mechanism. In order to fairly compare between methodologies, $k_p$ and $k_n$ are always equal. A central goal of this paper is concerned with determining beforehand the value of $k_p=k_n$, i.e., independently of fault voltages. % check this is the case!
+
+\subsection{Summary of support techniques}
+The paper evaluates and compares three support strategies, which are:
+\begin{itemize}
+  \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution.
+  \item GC: is the application of the grid code rules shown in \eqref{eq:gc1} and \eqref{eq:gc2}, with $k_p=k_n=1.25$. It should generate the less convenient solution out of the three analyzed strategies. 
+  \item ADA: mimics the grid code rules from \eqref{eq:gc1} and \eqref{eq:gc2} with an adapted value of the constants $k_p=k_n$ so that the VSC operates close to the current limitations. 
+\end{itemize}
 
 % \begin{equation}
 % \begin{aligned}
@@ -1101,7 +1112,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
     \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance, one converter case}
     \label{fig:Zf_1conv_3x}
   \end{figure}
-Negative sequence currents are null, just like it could be foreseen for any balanced fault. The GC solution only injects imaginary positive sequence as real currents are not allowed by definition. The OPT solution achieves the optimal distribution of currents. The current capabilities of the converter are roughly equally attributed to the real and imaginary positivie sequence currents. Despite these differences, the GC solution is not significantly worse than the optimal. 
+Negative sequence currents are null, just like it could be foreseen for any balanced fault. The GC solution only injects imaginary positive sequence as real currents are not allowed by definition. The OPT solution achieves the optimal distribution of currents. The current capabilities of the converter are roughly equally attributed to the real and imaginary positive sequence currents. Despite these differences, the GC solution is not significantly worse than the optimal. 
 
 % maybe I can study the same but with larger Zx so it does not operate saturated
 
