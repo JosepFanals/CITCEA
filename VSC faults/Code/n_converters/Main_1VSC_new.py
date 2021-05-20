@@ -26,13 +26,13 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [-0.4331, -0.8344, -0.563,   0.8265,  0.9962,  0.0076]
 Ii_t = [-0.2003, -0.3512, -0.2041,  0.3493,  0.4044,  0.0024]
 # Ii_t = [0, 0, 0, 0, 0, 0]
-type_f = 'sta_3x_'
+type_f = 'gc_LG_'
 folder = 'Results_1conv_Zf_v1/'
 
 # RX variation
 n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(10, 50, n_p)
+Yf_vec = fY_fault(100, 200, n_p)
 
 # Store data
 Vp1_vec = []
@@ -49,9 +49,9 @@ f_vec = []
 for iik in range(n_p):
     print(iik)
     # Initialize data
-    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    # Y_gnd = [Yf_vec[iik], 0, 0]
+    Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
@@ -64,6 +64,7 @@ for iik in range(n_p):
     # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fROptimal2_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fGC_static(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
