@@ -48,7 +48,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     pens = ms.generate_penalty(ms.generate_conditions(equations_p))
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
-    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=100, ftol=1e-40, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=10, ftol=1e-20, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
 

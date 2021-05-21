@@ -24,15 +24,17 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [1, 1, 1, 1, 1, 1]
 # Ii_t = [-0.2012,  0.2415,  0.0137 , 0.0613 , 0.1873 ,-0.3029]
 # Ii_t = [-0.4331, -0.8344, -0.563,   0.8265,  0.9962,  0.0076]
-Ii_t = [-0.2003, -0.3512, -0.2041,  0.3493,  0.4044,  0.0024]
+# Ii_t = [-0.2003, -0.3512, -0.2041,  0.3493,  0.4044,  0.0024]
+# Ii_t = [-0.2166, -0.689, -0.7213, 0.6928, 0.9376, -0.0038]
+Ii_t = [ 0.7741, -0.5318, -0.8425,  0.5388,  0.0688, -0.0066]
 # Ii_t = [0, 0, 0, 0, 0, 0]
-type_f = 'gc_LG_'
+type_f = 'gc_LL_'
 folder = 'Results_1conv_Zf_v1/'
 
 # RX variation
 n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(100, 200, n_p)
+Yf_vec = fY_fault(5, 50, n_p)
 
 # Store data
 Vp1_vec = []
@@ -47,12 +49,12 @@ f_vec = []
 
 # Optimize cases
 for iik in range(n_p):
-    print(iik)
+    # print(iik)
     # Initialize data
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
-    Y_gnd = [Yf_vec[iik], 0, 0]
-    # Y_con = [Yf_vec[iik], 0, 0]
+    # Y_gnd = [Yf_vec[iik], 0, 0]
+    Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
@@ -87,7 +89,7 @@ for iik in range(n_p):
 
     Ii_t = x_opt[4][0]
 
-    print(ff_obj)
+    # print(ff_obj)
     print(Ii_t)
     # print(Ii_t[0]**2 + Ii_t[1]**2)
 

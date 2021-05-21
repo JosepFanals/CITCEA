@@ -55,14 +55,14 @@ def fGC_static(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         v1 = v1v2[0]
         v2 = v1v2[1]
         
-        if abs(v1) < 0.5:
+        if abs(v1) < 0.4:
             i1 = 1
         elif abs(v1) < 0.9:
             i1 = kpn * (0.9 - abs(v1))
         else:
             i1 = 0
         
-        if abs(v2) > 0.5:
+        if abs(v2) > 0.6:
             i2 = 1
         elif abs(v2) > 0.1:
             i2 = kpn * (abs(v2) - 0.1)
@@ -85,6 +85,8 @@ def fGC_static(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         Iabc_max = max(abs(Iabc[0]), abs(Iabc[1]), abs(Iabc[2]))
         print('Imax: ', Iabc_max)
 
+    if Iabc_max > 1:
+        print('ERRRRRRRRRRRRRRRROR', i1, i2, v1, v2)
 
 
     return [i1, i2, abs(v1), abs(v2), Iabc]
