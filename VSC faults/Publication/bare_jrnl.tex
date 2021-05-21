@@ -1112,7 +1112,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
     \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance, one converter case}
     \label{fig:Zf_1conv_3x}
   \end{figure}
-Significantly different results are obtained in the case of a line to line fault, as shown in Figure \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be non-null for the negative sequence. 
+Significantly different results are obtained in the case of a line to line fault, as shown in Figure \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be non-null for the imaginary part of the negative sequence. While the OPT solution specifies almost constant current values in $I^+_{re}$, $I^+_{im}$ and $I^-_{im}$, much more varying currents are injected in the case of ADA and GC. Thanks to the adaptative control, both $I^+_{im}$ and $I^-_{im}$ are larger than in the GC situation. Consequently, more voltage support is provided, which causes ADA to be a near-optimal solution despite not injecting any active power, specially for large values of $\un{Z}_x$. 
 
 
 \begin{figure}[!htb]\centering \tiny
@@ -1208,6 +1208,29 @@ Significantly different results are obtained in the case of a line to line fault
     \caption{Influence of the currents on the objective function for the line to line with a varying fault admittance, one converter case}
     \label{fig:Zf_1conv_LL}
   \end{figure}
+In essence, ADA does not retain the same linear droop characteristics than the GC rules defined in \eqref{eq:gc1} and \eqref{eq:gc2}. Figure \ref{fig:Zf_1conv_LL2} shows the coupling between the constants $k_p=k_n$ and the positive and negatives sequence voltages for a line to line fault with $\un{Z}_x \in [0.005,0.17]$. In fact, the evolutions are quadratic, which suggests that a quadratic dependence between injected sequence currents and voltages would result in more optimal operating points. % talk about the symmetry between voltages, and that it happens for all unbalanced faults??
+
+
+\begin{figure}[]\centering \tiny
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=8cm, height=4.0cm}
+              \begin{axis}[grid=major, ylabel={$|V|$}, xlabel={$k_p=k_n$}, /pgf/number format/.cd, legend style={at={(0.98,0.3)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, ytick distance={0.1}, xmin=1.4, xmax=3.2, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=semicolon] {Data/Results_1conv_Zf_v1/kV1_LL.csv};
+                  \addplot[very thick, gray] table[x=x, y=y, col sep=semicolon] {Data/Results_1conv_Zf_v1/kV2_LL.csv};
+              \legend{$|\un{V}^+|$, $|\un{V}^-|$};
+              \end{axis}
+          \end{tikzpicture}
+    \caption{Dependence between constants $k_p=k_n$ and the sequence voltages in the ADA approach for a line to line fault}
+    \label{fig:Zf_1conv_LL2}
+  \end{figure}
+
+
+% plot i1 vs v1 and i2 vs v2
+
+% show a plot of the value that the k takes for ADA for the previous LL fault. 
+
+% for this reason, we propose a quadratic profile... Tune it heuristically. And test it.
 
 
 
@@ -1232,7 +1255,8 @@ Significantly different results are obtained in the case of a line to line fault
 % put the algorithm 
 
 
-\subsection{$R/X$ variation analysis}
+\subsection{$R_1/X_1$ variation analysis}
+The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle of the $\un{Z}_{v1}$ impedance, while the absolute value is preserved. The imaginary part of the currents (reactive component) tends to be superior to the real part (active component) for a small $R_1/X_1$ ratio. % continue this
 
 \subsection{Cable length variation analysis}
 The methodology to optimize voltages under a given fault is shortly described with the intention of presenting the main steps involved. 

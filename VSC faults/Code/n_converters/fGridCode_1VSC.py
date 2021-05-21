@@ -36,7 +36,8 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
 
     Iabc = [0, 0, 0]
     Iabc_n = [1, 1, 1]
-    kpn = 2.0
+    # kpn = 2.0
+    kpn = 1.25
     fr = 1
     tol = 1e-3
     count = 0
@@ -87,7 +88,8 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         Iabc = x012_to_abc(i012)
         # print('Iabc: ', Iabc)
         Iabc_max = max(abs(Iabc[0]), abs(Iabc[1]), abs(Iabc[2]))
-        print('Imax: ', Iabc_max)
+        # print('Imax: ', Iabc_max)
+        # print('fr, i1, i2: ', fr, i1, i2)
 
         # if Iabc_max > 1 and count == 1:
         #     fr = 1 / Iabc_max
@@ -102,6 +104,11 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
             fr += 0.0001
         # print(fr)
 
+    
+    # print('fr, i1, i2: ', fr, i1, i2)
+    # print(fr)
+    # print(abs(v2[0]))
+    print(fr)
 
     return [i1, i2, abs(v1), abs(v2), Iabc]
     # return I_sol

@@ -28,13 +28,13 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [-0.2166, -0.689, -0.7213, 0.6928, 0.9376, -0.0038]
 Ii_t = [ 0.7741, -0.5318, -0.8425,  0.5388,  0.0688, -0.0066]
 # Ii_t = [0, 0, 0, 0, 0, 0]
-type_f = 'sta_3x_'
-folder = 'Results_1conv_Zf_v1/'
+type_f = 'gc_LL_'
+folder = 'Results_1conv_Zf_sat_v1/'
 
 # RX variation
-n_p = 100
+n_p = 400
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(10, 50, n_p)
+Yf_vec = fY_fault(1, 200, n_p)
 
 # Store data
 Vp1_vec = []
@@ -65,8 +65,8 @@ for iik in range(n_p):
     # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fROptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # x_opt = fROptimal2_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fGC_static(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fGC_static(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
@@ -90,7 +90,7 @@ for iik in range(n_p):
     Ii_t = x_opt[4][0]
 
     # print(ff_obj)
-    print(Ii_t)
+    # print(Ii_t)
     # print(Ii_t[0]**2 + Ii_t[1]**2)
 
 # Save csv
@@ -131,3 +131,6 @@ axs[2, 0].set_title('f')
 
 # plt.plot(x_vec, Ip1_re_vec)
 plt.show()
+
+# for kk in range(len(x_vec)):
+    # print(x_vec[kk])
