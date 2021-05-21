@@ -972,14 +972,15 @@ For a single converter system as the one depicted in Figure \ref{fig:sys_p1}, th
   \end{pmatrix} ,
 \end{equation}
 where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constitued by the admittances that intervene in the fault. This way, the admittance matrices are defined as
-\begin{equation}\scriptsize
+\begin{equation}
+  \scriptsize
   \mathbf{\un{Y}_v} = \begin{pmatrix}
     \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1} & 0 & 0\\
     0 & \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1} & 0\\
     0 & 0 & \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1}\\
     - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t & 0 & 0\\
     0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t & 0\\
-    0 & 0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t\\
+    0 & 0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t\\ \normalsize
   \end{pmatrix}
   \label{eq:Yvmat}
 \end{equation}
@@ -1208,7 +1209,7 @@ Significantly different results are obtained in the case of a line to line fault
     \caption{Influence of the currents on the objective function for the line to line with a varying fault admittance, one converter case}
     \label{fig:Zf_1conv_LL}
   \end{figure}
-In essence, ADA does not retain the same linear droop characteristics than the GC rules defined in \eqref{eq:gc1} and \eqref{eq:gc2}. Figure \ref{fig:Zf_1conv_LL2} shows the coupling between the constants $k_p=k_n$ and the positive and negatives sequence voltages for a line to line fault with $\un{Z}_x \in [0.005,0.17]$. In fact, the evolutions are quadratic, which suggests that a quadratic dependence between injected sequence currents and voltages would result in more optimal operating points. % talk about the symmetry between voltages, and that it happens for all unbalanced faults??
+In essence, ADA does not retain the same linear droop characteristics than the GC rules defined in \eqref{eq:gc1} and \eqref{eq:gc2}. Figure \ref{fig:Zf_1conv_LL2} shows the coupling between the constants $k_p=k_n$ and the positive and negatives sequence voltages for a line to line fault with $\un{Z}_x \in [0.005,0.17]$. The evolutions are quadratic, which suggests that a linear dependence between injected sequence currents and voltages would not result in near-optimal operating points. % talk about the symmetry between voltages, and that it happens for all unbalanced faults?? k = factor * V+ ^ 1.5
 
 
 \begin{figure}[]\centering \tiny
