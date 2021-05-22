@@ -1116,7 +1116,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
 Significantly different results are obtained in the case of a line to line fault, as shown in Figure \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be non-null for the imaginary part of the negative sequence. While the OPT solution specifies almost constant current values in $I^+_{re}$, $I^+_{im}$ and $I^-_{im}$, much more varying currents are injected in the case of ADA and GC. Thanks to the adaptative control, both $I^+_{im}$ and $I^-_{im}$ are larger than in the GC situation. Consequently, more voltage support is provided, which causes ADA to be a near-optimal solution despite not injecting any active power, specially for large values of $\un{Z}_x$. 
 
 
-\begin{figure}[!htb]\centering \tiny
+\begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1257,10 +1257,115 @@ In essence, ADA does not retain the same linear droop characteristics than the G
 
 
 \subsection{$R_1/X_1$ variation analysis}
-The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle of the $\un{Z}_{v1}$ impedance, while the absolute value is preserved. The imaginary part of the currents (reactive component) tends to be superior to the real part (active component) for a small $R_1/X_1$ ratio. % continue this
+The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle of the $\un{Z}_{v1}$ impedance, while the absolute value is preserved. The imaginary part of the currents (reactive component) tends to be superior than the real part (active component) for a small $R_1/X_1$ ratio. The currents evolve asymptotically, in the sense that even if the resistive part of the impedance is substantially larger than the reactance, the same prioritization applies. The ADA strategy dedicates most of its current capability to inject negative sequence reactive current, whereas the optimal solution tends to balance the currents not only between sequences but also between real and imaginary parts. Although ADA injects larger currents (by definition the saturation is forced), it does not provide a more favorable solution that the classical grid code GC. Differences are small, yet operating the VSC at its maximum current capabilities has a detrimental effect on the negative sequence voltage. 
+
+
+\begin{figure}[]\centering \tiny
+    \begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vp1.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vn1.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+        \vspace{-0.2cm}
+\begin{center}
+\begin{subfigure}[!htb]{0.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=9.4cm, height=3.51cm}
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, xmin=0.5, xmax=5, axis line style = thick, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_f_obj.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_f_obj.csv};
+                  \legend{OPT, ADA, GC};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the line to ground fault with a varying $R_1/X_1$ ratio and $\un{Z}_{ag}=0.1$}
+    \label{fig:RX_1conv_LG}
+  \end{figure}
+Noticeably, the objective function is further minimized in the OPT case. In percentual terms there is an approximate 40\% improvement with respect to the GC approach. This is achieved balancing the currents. When the VSC operates at the optimal conditions, it takes full advantage of the current capabilities, just like it happened in the line to line fault shown in Figure \ref{fig:Zf_1conv_LL}. Thus, a line to ground fault with a predominant resistive characteristic is much more prone to being improved by means of adequately distributing the currents across sequences and real/imaginary parts. Across all range of $R_1/X_1$ values analyzed in Figure \ref{fig:RX_1conv_LG}, the injected active power remains between 0.405 and 0.401 whereas the reactive power is around 0.486 to 0.461. In short, the injection of active power has a positive contribution. 
+
 
 \subsection{Cable length variation analysis}
-The methodology to optimize voltages under a given fault is shortly described with the intention of presenting the main steps involved. 
+Figure \ref{fig:sys_c1} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. 
+
+\begin{equation}
+  \begin{cases}
+    \un{V}'_{t} = \frac{\un{Z}_p\un{Z}_p}{2\un{Z}_t\un{Z}_p + \un{Z}_p\un{Z}_s + \un{Z}_p\un{Z}_p + \un{Z}_t\un{Z}_s} \vspace{0.2cm} \\
+    \un{Z}'_t = \frac{\un{Z}_p\un{Z}_p\un{Z}_t + \un{Z}_p\un{Z}_p\un{Z}_s + \un{Z}_p\un{Z}_s\un{Z}_t}{2\un{Z}_p\un{Z}_t + \un{Z}_s\un{Z}_p + \un{Z}_s\un{Z}_t + \un{Z}_p\un{Z}_p}
+  \end{cases}
+\end{equation}
+
+% put table Cheah, plot of V and Z (like in previous work), extract results and comment some case
 
 % \subsection{Basic system results}
 
@@ -1406,8 +1511,8 @@ Fill this
 \clearpage
 \section{////////////PLOTS////////////}
 
-\input{Plots/Z_1conv.tex}
-% \input{Plots/RX_1conv.tex}
+% \input{Plots/Z_1conv.tex}
+\input{Plots/RX_1conv.tex}
 % \input{Plots/Z_2conv.tex}
 % \input{Plots/RX_2conv.tex}
 
