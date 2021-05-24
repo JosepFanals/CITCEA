@@ -385,7 +385,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Positive and negative sequence currents optimization to improve voltages under unbalanced faults}
+\title{Positive and negative sequence current injection to improve voltages under unbalanced faults}
 %
 %
 % author names and IEEE memberships
@@ -1266,7 +1266,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv};
               % \legend{BF, OPT};
@@ -1279,7 +1279,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv};
                 % \legend{OPT};
@@ -1291,7 +1291,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1re.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1re.csv};
                 % \legend{BF, OPT};
@@ -1304,7 +1304,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1im.csv};
                   \end{axis}
@@ -1315,7 +1315,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vp1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vp1.csv};
                 % \legend{BF, OPT};
@@ -1328,7 +1328,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vn1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vn1.csv};
                   \end{axis}
@@ -1341,7 +1341,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
                   \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, xmin=0.5, xmax=5, axis line style = thick, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_f_obj.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_f_obj.csv};
                   \legend{OPT, ADA, GC};
@@ -1459,34 +1459,6 @@ The analysis performed considers a cable with a varying length, up to 75 km. Its
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
-
-% \begin{subfigure}[!htb]{0.12\textwidth}
-%       \centering
-%           \begin{tikzpicture}[trim axis right,trim axis left]
-%               \pgfplotsset{width=4.5cm, height=3.5cm}
-%               \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
-%                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv};
-%                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv};
-%               % \legend{BF, OPT};
-%               \end{axis}
-%           \end{tikzpicture}
-%     \end{subfigure}
-%     \hspace{2.35cm}
-%     \begin{subfigure}[!htb]{0.12\textwidth}
-%         \centering
-%             \begin{tikzpicture}[trim axis right,trim axis left]
-%                 \pgfplotsset{width=4.5cm, height=3.5cm}
-%                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
-%                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
-%                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv};
-%                 % \legend{OPT};
-%                 \end{axis}
-%             \end{tikzpicture}
-%       \end{subfigure}
-
-
     \caption{Influence of the cable distance on the Thevenin voltage and impedance}
     \label{fig:dist_th}
   \end{figure}
@@ -1506,7 +1478,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, ytick distance={0.1}, xmin=1, xmax=75, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1re.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Ip1re.csv};
               % \legend{BF, OPT};
@@ -1519,7 +1491,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Ip1im.csv};
                 % \legend{OPT};
@@ -1531,7 +1503,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1re.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_In1re.csv};
                 % \legend{BF, OPT};
@@ -1544,7 +1516,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=75, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_In1im.csv};
                   \end{axis}
@@ -1555,7 +1527,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vp1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vp1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vp1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Vp1.csv};
                 % \legend{BF, OPT};
@@ -1568,7 +1540,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=75, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vn1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vn1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vn1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Vn1.csv};
                   \end{axis}
@@ -1581,7 +1553,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
                   \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={5}, xmin=1, xmax=75, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_f_obj.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_f_obj.csv};
                   \legend{OPT, ADA, GC};

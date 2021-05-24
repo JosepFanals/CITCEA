@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  24 MAY 2021 23:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  24 MAY 2021 23:23
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
 ("c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
@@ -1300,7 +1300,7 @@ Overfull \hbox (21.12085pt too wide) in paragraph at lines 1460--1461
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1503.
+               Default added (so using `tbp') on input line 1475.
 
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -1321,7 +1321,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Ip1re.csv}
 
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1514--1515
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1486--1487
  [][] 
  []
 
@@ -1344,7 +1344,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Ip1im.csv}
 
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1527--1528
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1499--1500
  [][] 
  []
 
@@ -1367,7 +1367,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_In1re.csv}
 
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1539--1540
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1511--1512
  [][] 
  []
 
@@ -1390,7 +1390,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_In1im.csv}
 
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1551--1552
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1523--1524
  [][] 
  []
 
@@ -1413,7 +1413,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Vp1.csv}
 
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1563--1564
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1535--1536
  [][] 
  []
 
@@ -1436,7 +1436,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Vn1.csv}
 
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1575--1576
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1547--1548
  [][] 
  []
 
@@ -1460,13 +1460,13 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (16.05707pt too wide) in paragraph at lines 1589--1590
+Overfull \hbox (16.05707pt too wide) in paragraph at lines 1561--1562
  [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1606.
+               Default added (so using `tbp') on input line 1578.
 
 [6] [7
 
@@ -1494,13 +1494,13 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  44481 strings out of 479696
  1203478 string characters out of 19617135
- 21943406 words of memory out of 40000000
+ 21943402 words of memory out of 40000000
  60887 multiletter control sequences out of 15000+200000
  448101 words of font info for 117 fonts, out of 20000000 for 9000
  1144 hyphenation exceptions out of 8191
  94i,23n,98p,2259b,2508s stack positions out of 5000i,500n,10000p,20000000b,50000s
 {C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (9 pages, 408592 bytes).
+Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (9 pages, 408573 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
