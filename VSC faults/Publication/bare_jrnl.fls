@@ -890,6 +890,10 @@ INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_RX
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_RX_v1\opt_LG_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_RX_v1\gc_LG_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_RX_v1\sta_LG_f_obj.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\cable\Vth_re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\cable\Vth_im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\cable\Zth_re.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\cable\Zth_im.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_cable_v1\opt_LL_Ip1re.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_cable_v1\gc_LL_Ip1re.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_cable_v1\sta_LL_Ip1re.csv

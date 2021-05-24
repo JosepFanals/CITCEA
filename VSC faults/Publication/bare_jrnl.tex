@@ -1356,35 +1356,7 @@ Noticeably, the objective function is further minimized in the OPT case. In perc
 
 
 \subsection{Cable length variation analysis}
-Figure \ref{fig:sys_c2} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. 
-
-\begin{equation}
-  \begin{cases}
-    \un{V}'_{t} = \frac{\un{Z}_p\un{Z}_p}{2\un{Z}_t\un{Z}_p + \un{Z}_p\un{Z}_s + \un{Z}_p\un{Z}_p + \un{Z}_t\un{Z}_s} \vspace{0.2cm} \\
-    \un{Z}'_t = \frac{\un{Z}_p\un{Z}_p\un{Z}_t + \un{Z}_p\un{Z}_p\un{Z}_s + \un{Z}_p\un{Z}_s\un{Z}_t}{2\un{Z}_p\un{Z}_t + \un{Z}_s\un{Z}_p + \un{Z}_s\un{Z}_t + \un{Z}_p\un{Z}_p}
-  \end{cases}
-\end{equation}
-The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them.
-\begin{table}\centering
-  \renewcommand{\arraystretch}{1.1}
-  \caption{System parameters for the one-converter case}
-  \begin{tabular}{ccc}
-    \hline
-    Parameter & Value & Units \\
-    \hline
-    $\un{Z}_s$ & $6.674\cdot 10^{-5} + j2.597\cdot 10^{-4}$ & pu/km \\ 
-    $\un{Z}_p$ & $-j77.372$ & pu$\cdot$km \\
-     \hline
-  \end{tabular}
-  \label{tab:cable}
-\end{table}
-
-
-% put table Cheah, plot of V and Z (like in previous work), extract results and comment some case
-
-% \subsection{Basic system results}
-
-
+Figure \ref{fig:sys_c2} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1434,6 +1406,98 @@ The data selected to model the cable are extracted from \cite{cheah2017offshore}
 \caption{Single-phase representation of the single converter connected to a system with a cable}
 \label{fig:sys_c2}
 \end{figure}
+
+
+
+\begin{table}\centering
+  \renewcommand{\arraystretch}{1.1}
+  \caption{System parameters for the one-converter case}
+  \begin{tabular}{ccc}
+    \hline
+    Parameter & Value & Units \\
+    \hline
+    $\un{Z}_s$ & $6.674\cdot 10^{-5} + j2.597\cdot 10^{-4}$ & pu/km \\ 
+    $\un{Z}_p$ & $-j77.372$ & pu$\cdot$km \\
+     \hline
+  \end{tabular}
+  \label{tab:cable}
+\end{table}
+
+
+
+\begin{equation}
+  \begin{cases}
+    \un{V}'_{t} = \frac{\un{Z}_p\un{Z}_p}{2\un{Z}_t\un{Z}_p + \un{Z}_p\un{Z}_s + \un{Z}_p\un{Z}_p + \un{Z}_t\un{Z}_s} \vspace{0.2cm} \\
+    \un{Z}'_t = \frac{\un{Z}_p\un{Z}_p\un{Z}_t + \un{Z}_p\un{Z}_p\un{Z}_s + \un{Z}_p\un{Z}_s\un{Z}_t}{2\un{Z}_p\un{Z}_t + \un{Z}_s\un{Z}_p + \un{Z}_s\un{Z}_t + \un{Z}_p\un{Z}_p}
+  \end{cases}
+\end{equation}
+Similarly as before, a Norton equivalent is preferred. The current $\un{I}'_t$ is simply equal to $\un{V}'_t/\un{Z}'_t$, which yields a basic system as the one in Figure \ref{fig:sys_p1}. 
+
+The analysis performed considers a cable with a varying length, up to 75 km. Its impact on the Thevenin equivalent parameters is shown in Figure \ref{fig:dist_th}. The voltage experiences a subtle increase, while the imaginary part of the equivalent impedance grows considerably with distance, yet the $\Re({\un{Z}'_t}) / \Im({\un{Z}'_t})$ ratio tends to rise. 
+
+\begin{figure}[]\centering \tiny
+    \begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=4.0cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Voltage (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.2,...,1.2}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=75]
+              \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Vth_re.csv};
+              \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Vth_im.csv};
+               \legend{$\Re (\underline{V}'_{t})$, $\Im (\underline{V}'_{t})$};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=4.0cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Impedance (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks = false, ytick={0, 0.01,..., 0.1}, xmin=0, xmax=75]
+                \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Zth_re.csv};
+                \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Zth_im.csv};
+                \legend{$\Re (\underline{Z}'_{t})$, $\Im (\underline{Z}'_{t})$};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+% \begin{subfigure}[!htb]{0.12\textwidth}
+%       \centering
+%           \begin{tikzpicture}[trim axis right,trim axis left]
+%               \pgfplotsset{width=4.5cm, height=3.5cm}
+%               \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
+%                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv};
+%                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv};
+%               % \legend{BF, OPT};
+%               \end{axis}
+%           \end{tikzpicture}
+%     \end{subfigure}
+%     \hspace{2.35cm}
+%     \begin{subfigure}[!htb]{0.12\textwidth}
+%         \centering
+%             \begin{tikzpicture}[trim axis right,trim axis left]
+%                 \pgfplotsset{width=4.5cm, height=3.5cm}
+%                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+%                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
+%                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
+%                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv};
+%                 % \legend{OPT};
+%                 \end{axis}
+%             \end{tikzpicture}
+%       \end{subfigure}
+
+
+    \caption{Influence of the cable distance on the Thevenin voltage and impedance}
+    \label{fig:dist_th}
+  \end{figure}
+  
+
+The cases OPT, ADA and GC are again evalauted, as depicted in Figure \ref{fig:cable_1conv_LL2}. The OPT situation unveils that, contrary to ADA and GC, imaginary currents ought to be rather stable. While in practical terms its positive sequence voltage is the same as the one from the standard grid code (GC), the negative sequence voltage becomes about 10\% lower. Therefore it can be stated that the optimization yields the most favorable value in general terms, although as it is the case here, some sequence may be worse off than the other options. Compared to GC, ADA maximizes the positive sequence voltage mainly by injecting larger negative sequence imaginary currents. However, an improvement of about 2\% in the objective function may not justify operating the converter at its maximum current capabilities.
+
+Increasing the cable distance causes the negative sequence voltage to grow, while the positive sequence voltage also tends to grow. This phenomena differs from the profiles obtained in Figures \ref{fig:Zf_1conv_LL} and \ref{fig:RX_1conv_LG}, where both voltages either simultaneously approached the objective value (1 and 0 respectively), or distanced from it.
+
+
+
 
 
 \begin{figure}[]\centering \tiny
@@ -1516,7 +1580,7 @@ The data selected to model the cable are extracted from \cite{cheah2017offshore}
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={10}, xmin=1, xmax=75, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={5}, xmin=1, xmax=75, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_f_obj.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_f_obj.csv};
@@ -1526,7 +1590,7 @@ The data selected to model the cable are extracted from \cite{cheah2017offshore}
         \end{subfigure}
     \end{center}
     \caption{Influence of the currents on the objective function for a line to line fault with a varying cable distance}
-    \label{fig:RX_1conv_LL2}
+    \label{fig:cable_1conv_LL2}
   \end{figure}
 
 
