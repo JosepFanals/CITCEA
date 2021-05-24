@@ -1356,7 +1356,7 @@ Noticeably, the objective function is further minimized in the OPT case. In perc
 
 
 \subsection{Cable length variation analysis}
-Figure \ref{fig:sys_c1} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. 
+Figure \ref{fig:sys_c2} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. 
 
 \begin{equation}
   \begin{cases}
@@ -1366,13 +1366,14 @@ Figure \ref{fig:sys_c1} represents a third case regarding single converter syste
 \end{equation}
 The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them.
 \begin{table}\centering
+  \renewcommand{\arraystretch}{1.1}
   \caption{System parameters for the one-converter case}
   \begin{tabular}{ccc}
     \hline
     Parameter & Value & Units \\
     \hline
-    $\un{Z}_s$ & $6.674\cdot 10^{-5} + j2.597\cdot 10^{-4}$ & pu/km\\
-    $\un{Z}p$ & $-j77.372$ & pu$\cdot$km \\
+    $\un{Z}_s$ & $6.674\cdot 10^{-5} + j2.597\cdot 10^{-4}$ & pu/km \\ 
+    $\un{Z}_p$ & $-j77.372$ & pu$\cdot$km \\
      \hline
   \end{tabular}
   \label{tab:cable}
@@ -1389,22 +1390,23 @@ The data selected to model the cable are extracted from \cite{cheah2017offshore}
 \begin{circuitikz}[american]
 \thicklines
 
-\draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
-\draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
-\draw (-2,0.7) to [short] (-2,2);
+\draw (1.0,2) to [isource, l_=$\underline{I}_{t}$] (-0.5,2);
+\draw (-0.5,0.7) to [R, l=$\underline{Z}_{t}$, european] (1.0,0.7);
 \draw (-0.5,0.7) to [short] (-0.5,2);
-\draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
-\draw (-0.25,1.35) to [short] (-0.25,0);
-\draw (-0.5,0) to [short] (-0.0,0);
-\draw (-2.0,1.35) to [short, *-] (-2.2,1.35);
+\draw (1,0.7) to [short] (1,2);
+\draw (1,1.35) to [short, *-] (1.25,1.35);
+\draw (1.25,1.35) to [short] (1.25,0);
+\draw (1,0) to [short] (1.5,0);
+% \draw (-2.0,1.35) to [short, *-] (-2.2,1.35);
 
-\draw (-3.5,1.35) to [short] (-3.25,1.35);
-\draw[line width=0.25mm] (-3.25,1.35) ellipse (0.05 and 0.1);
-% \draw[line width=0.25mm] (-2.25,1.35) ellipse (0.05 and 0.1);
-\draw[line width=0.25mm] (-3.25,1.45) to [short] (-2.25,1.45);
-\draw[line width=0.25mm] (-3.25,1.25) to [short] (-2.25,1.25);
-\node at (-2.75,1.55) {cable};
-\draw[line width=0.25mm] (-2.25,1.25) arc(-90:90:0.05 and 0.1);
+\draw (-0.5,1.35) to [R, l_=$\underline{Z}_s$, european, *-] (-3.0,1.35);
+\draw (-1.0, 1.35) to [R, l_=$\underline{Z}_p$, european] (-1.0, -0.5);
+\draw (-2.5, 1.35) to [R, l=$\underline{Z}_p$, european] (-2.5, -0.5);
+\draw (-3.0,1.35) to [short] (-3.5,1.35);
+\draw (-0.75, -0.5) to [short] (-1.25,-0.5);
+\draw (-2.75, -0.5) to [short] (-2.25,-0.5);
+
+
 
 \draw[line width=0.65mm] (-3.5,0.85) to [short] (-3.5,1.85);
 \draw (-3.5,1.35) to [short] (-3.35,0.35);
@@ -1430,7 +1432,7 @@ The data selected to model the cable are extracted from \cite{cheah2017offshore}
 
 \end{circuitikz}
 \caption{Single-phase representation of the single converter connected to a system with a cable}
-\label{fig:sys_c1}
+\label{fig:sys_c2}
 \end{figure}
 
 
@@ -1616,7 +1618,7 @@ Fill this
 \section{////////////PLOTS////////////}
 
 % \input{Plots/Z_1conv.tex}
-\input{Plots/RX_1conv.tex}
+% \input{Plots/RX_1conv.tex}
 % \input{Plots/Z_2conv.tex}
 % \input{Plots/RX_2conv.tex}
 
