@@ -800,7 +800,11 @@ For a given converter $k$, its injected currents and its associated voltages at 
     \mathbf{\un{V}_{pk}} = [\un{V}^{(a)}_{pk}, \un{V}^{(b)}_{pk}, \un{V}^{(c)}_{pk}]^T 
   \end{cases}
 \end{equation}
-i.e., they contain the $a$, $b$ and $c$ phase values. Voltages and currents are related via admittance matrices of the form $\mathbf{\un{Y}_{vk}}$, which in normal operating conditions follow
+i.e., they contain the $a$, $b$ and $c$ phase values. Since VSCs cannot inject zero sequence currents, the formulation of the problem also imposes
+\begin{equation}
+  \un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \in [1,...,n] \ . 
+\end{equation}
+Voltages and currents are related via admittance matrices of the form $\mathbf{\un{Y}_{vk}}$, which in normal operating conditions follow
 \begin{equation}
   \mathbf{\un{Y}_{vk}} = \begin{pmatrix}
    \frac{1}{\un{Z}_{vk}} & 0 & 0 \\
@@ -838,7 +842,6 @@ Positive sequence voltages have to be maximized while negative sequence voltages
 \begin{aligned}
 \min_{\un{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - |\un{V}^+_{pk}(\un{I}) |)| + \lambda^-_k|(0 - |\un{V}^-_{pk}(\un{I})|)|\right] \ , \\
 \textrm{s.t.} \quad & \text{max}(\un{I}^{a}_k, \un{I}^{b}_k, \un{I}^{c}_k) \leq I_{\text{max,k}} \ \forall k \in [1,...,n] \ ,\\
-  &\un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \in [1,...,n] \ , \\
 \end{aligned}
 \label{eq:opt2}
 \end{equation}
@@ -847,34 +850,39 @@ where the positive and negative sequence components of voltages $\un{V}_{pk}$ ar
 The results gathered in this paper are computed with Python 3.9.1 and the aid of the Mystic package, a highly-constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1e-6$. 
 
 \subsection{Grid code rules}
-In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as piecewise functions, for the positive sequence
+In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions, for the positive sequence
 \begin{equation}
 \begin{cases} 
-      |\un{I}^+_k| = 0 & |\un{V}^+_{pk}|\geq 0.9  \\
-      |\un{I}^+_k| = k_p(0.9 - |\un{V}^+_{pk}|) & 0.4 \leq |\un{V}^+_{pk}| < 0.9 \\
-      |\un{I}^+_k| = I_{\text{max},k} & |\un{V}^+_{pk}| < 0.4  \\
+      |\un{I}^+_k| = 0 & |\un{V}^+_{pk}|\geq V^{+}_{\text{high}}  \\
+      |\un{I}^+_k| = k_p(V^+_{\text{high}} - |\un{V}^+_{pk}|) & V^{+}_{\text{low}} \leq |\un{V}^+_{pk}| < V^+_{\text{high}} \\
+      |\un{I}^+_k| = I_{\text{max},k} & |\un{V}^+_{pk}| < V^+_{\text{low}}  \\
    \end{cases}
    \label{eq:gc1}
 \end{equation}
 whereas for the negative sequence
 \begin{equation}
 \begin{cases} 
-      |\un{I}^-_k| = 0 & |\un{V}^-_{pk}|\leq 0.1 \\
-      |\un{I}^-_k| = k_n(|\un{V}^-_{pk}| - 0.1) & 0.1 \leq |\un{V}^-_{pk}| < 0.6 \\
-      |\un{I}^-_k| = I_{\text{max},k} & |\un{V}^-_{pk}| > 0.6 \\
+      |\un{I}^-_k| = 0 & |\un{V}^-_{pk}|\leq V^-_{\text{low}} \\
+      |\un{I}^-_k| = k_n(|\un{V}^-_{pk}| - V^-_{\text{low}}) & V^-_{\text{low}} \leq |\un{V}^-_{pk}| < V^-_{\text{high}} \\
+      |\un{I}^-_k| = I_{\text{max},k} & |\un{V}^-_{pk}| > V^-_{\text{high}} \\
    \end{cases}
    \label{eq:gc2}
 \end{equation}
-Both constants $k_p$ and $k_n$ are set at $1.25I_{\text{max},k}$. This value was empirically found to be large enough so that currents approached the limitations without exceeding them. 
-
-The application of the grid code rules implies that maximum phase currents are hardly ever equal to the maximum allowed by the VSC, even when strong faults occur. Thus, an adaptative control can be formulated so that currents tend to the maximum permitted value while the droop characteristic is preserved. This strategy is denoted by ADA, as in essence it consists of an adaptative mechanism. In order to fairly compare between methodologies, $k_p$ and $k_n$ are always equal. A central goal of this paper is concerned with determining beforehand the value of $k_p=k_n$, i.e., independently of fault voltages. % check this is the case!
+where the values of the constants are gathered in Table \ref{tab:param_gc}. Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. Because of this, the application of the grid code rules implies that maximum phase currents are hardly ever equal to the maximum allowed by the VSC, even when strong faults occur. Thus, an adaptative control can be formulated so that currents tend to the maximum permitted value while the droop characteristic is preserved. This strategy is denoted by ADA, as in essence it consists of an adaptative mechanism. In order to fairly compare between methodologies, $k_p$ and $k_n$ are always equal. The expressions for the ADA strategy are reduced to
+\begin{equation}
+  \begin{cases}
+    |\underline{I}_k^+| = k_p(V^+_{\text{high}} - |\underline{V}^+_{pk}|) \\
+    |\underline{I}_k^-| = k_n(|\underline{V}^-_{pk}| - V^-_{\text{low}})
+  \end{cases}
+\end{equation}
+that is, the ADA control always mimics a droop characteristic, although this is not necessarily linear as $k_p$ and $k_n$ vary.
 
 \subsection{Summary of support techniques}
 The paper evaluates and compares three support strategies, which are:
 \begin{itemize}
   \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution.
   \item GC: is the application of the grid code rules shown in \eqref{eq:gc1} and \eqref{eq:gc2}, with $k_p=k_n=1.25$. It should generate the less convenient solution out of the three analyzed strategies. 
-  \item ADA: mimics the grid code rules from \eqref{eq:gc1} and \eqref{eq:gc2} with an adapted value of the constants $k_p=k_n$ so that the VSC operates close to the current limitations. 
+  \item ADA: resembles the grid code rules from \eqref{eq:gc1} and \eqref{eq:gc2} with an adapted value of the constants $k_p=k_n$ so that the VSC operates close to the current limitations. 
 \end{itemize}
 
 % \begin{equation}
@@ -992,11 +1000,10 @@ On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent o
 \min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1} \quad & \lambda^+_1|(1 - |\un{V}^+_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1)|)| \\
  &+ \lambda^-_1|(0 - |\un{V}^-_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1)|)| \ , \\
 \textrm{s.t.} \quad & \text{max}(\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1) \leq I_{\text{max,1}} \ ,\\
-  &\un{I}^a_1 + \un{I}^b_1 + \un{I}^{c}_1 = 0 \ , \\
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
-The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values, since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Figure \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
+Because of the nature of the converter, it is also imposed that the sum of the three phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values, since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Figure \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
 \begin{table}\centering
   \caption{System parameters for the one-converter case}
@@ -1023,7 +1030,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
               \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, ytick distance={0.2}, xmin=0.03, xmax=0.07, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Ip1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Ip1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -1036,7 +1043,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Ip1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -1050,7 +1057,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_In1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_In1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_In1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1063,7 +1070,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_In1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_In1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_In1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
@@ -1076,7 +1083,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Vp1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Vp1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Vp1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1089,7 +1096,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.01)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax=0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Vn1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Vn1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Vn1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Vn1.csv};
                 %   \legend{OPT, ROPT, GC};
                   \end{axis}
@@ -1103,7 +1110,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                   \pgfplotsset{width=9.4cm, height=3.51cm}
                   \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.01,0.01)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, xmin=0.03, xmax=0.07, axis line style = thick, ytick distance = {0.04},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_f_obj.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_f_obj.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_f_obj.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_f_obj.csv};
                   \legend{OPT, GC, ADA};  % sta: static = GC, gc: ADA
                   \end{axis}
@@ -1123,7 +1130,7 @@ Significantly different results are obtained in the case of a line to line fault
               \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, ytick distance={0.1}, xmin=0.12, xmax=0.17, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Ip1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Ip1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Ip1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -1136,7 +1143,7 @@ Significantly different results are obtained in the case of a line to line fault
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.12, xmax=0.17, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Ip1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Ip1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -1148,7 +1155,7 @@ Significantly different results are obtained in the case of a line to line fault
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.12, xmax=0.17, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_In1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_In1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_In1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1161,7 +1168,7 @@ Significantly different results are obtained in the case of a line to line fault
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.12, xmax=0.17, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},   scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_In1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_In1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_In1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
@@ -1172,7 +1179,7 @@ Significantly different results are obtained in the case of a line to line fault
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.12, xmax=0.17, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Vp1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Vp1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Vp1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1185,7 +1192,7 @@ Significantly different results are obtained in the case of a line to line fault
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.08,0.35)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.12, xmax=0.17, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Vn1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Vn1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Vn1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Vn1.csv};
                 %   \legend{OPT, ROPT};
                   \end{axis}
@@ -1199,7 +1206,7 @@ Significantly different results are obtained in the case of a line to line fault
                   \pgfplotsset{width=9.4cm, height=3.51cm}
                   \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, xmin=0.12, xmax=0.17, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, ytick distance = {0.04},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_f_obj.csv};
-                  \addplot[very thick, dashed, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_f_obj.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_f_obj.csv};
                   \addplot[very thick, dashed, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_f_obj.csv};
                   \legend{OPT, GC, ADA};
                   \end{axis}
@@ -1267,7 +1274,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
               \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -1280,7 +1287,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -1292,7 +1299,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1re.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1305,7 +1312,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1im.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
@@ -1316,7 +1323,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vp1.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vp1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1329,7 +1336,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vn1.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vn1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vn1.csv};
                   \end{axis}
               \end{tikzpicture}
@@ -1342,7 +1349,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                   \pgfplotsset{width=9.4cm, height=3.51cm}
                   \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, xmin=0.5, xmax=5, axis line style = thick, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_f_obj.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_f_obj.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_f_obj.csv};
                   \legend{OPT, ADA, GC};
                   \end{axis}
@@ -1479,7 +1486,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
               \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, ytick distance={0.1}, xmin=1, xmax=75, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1re.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
@@ -1492,7 +1499,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
@@ -1504,7 +1511,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1re.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1re.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1517,7 +1524,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=75, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1im.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1im.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
@@ -1528,7 +1535,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vp1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vp1.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vp1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1541,7 +1548,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
                   \pgfplotsset{width=4.5cm, height=3.5cm}
                   \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=75, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vn1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vn1.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vn1.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Vn1.csv};
                   \end{axis}
               \end{tikzpicture}
@@ -1554,7 +1561,7 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
                   \pgfplotsset{width=9.4cm, height=3.51cm}
                   \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={5}, xmin=1, xmax=75, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_f_obj.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_f_obj.csv};
                   \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_f_obj.csv};
                   \legend{OPT, ADA, GC};
                   \end{axis}
@@ -1569,8 +1576,8 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
 
 
 
-\section{Two converter case study} \label{2conv}
-Fill this
+\section{Two-converter case study} \label{2conv}
+A two-converter case is proposed in order to spot the interaction between both and compare the performance of the optimization with the grid code rules. Figure \ref{fig:sys_p2} shows a single-phase representation of the system under study. The converters are coupled to the grid by means of slightly different impedances $\un{Z}_{v1}$ and $\un{Z}_{v2}$. Table \ref{tab:param2} shows their values together with other input data. 
 
 \subsection{Fault impedance variation analysis}
 \subsection{$R/X$ variation analysis}
@@ -1649,8 +1656,103 @@ Fill this
   \label{tab:param2}
 \end{table}
 
-\newpage
-\clearpage
+
+\begin{figure}[!htb]\centering \tiny
+    \begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, ytick distance={0.1}, xmin=0.004, xmax=0.1, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip2re.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.004, xmax=0.1, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip2im.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.004, xmax=0.1, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In2re.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.004, xmax=0.1, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In2im.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+
+
+      \begin{subfigure}[!htb]{.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.004, xmax=0.1, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, ymax=0.5]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vp2.csv};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      \hspace{2.35cm}
+      \begin{subfigure}[!htb]{.12\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=4.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.05)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.004, xmax=0.1, ytick distance = {0.05}, ymax=0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vn2.csv};
+                  \legend{VSC1, VSC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+        \vspace{-0.2cm}
+\begin{center}
+\begin{subfigure}[!htb]{0.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=9.4cm, height=3.51cm}
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, xmin=0.004, xmax=0.1, axis line style = thick, ytick distance = {0.2},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, ymin=1.1]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_f_obj.csv};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+    \end{center}
+    \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance}
+    \label{fig:Zf_2conv_3x}
+  \end{figure}
+
+
+
+
+
+
+% \newpage
+% \clearpage
 \section{////////////PLOTS////////////}
 
 % \input{Plots/Z_1conv.tex}
@@ -1659,8 +1761,8 @@ Fill this
 % \input{Plots/RX_2conv.tex}
 
 
-\newpage
-\clearpage
+% \newpage
+% \clearpage
 
 
 
@@ -1700,6 +1802,24 @@ Fill this
 % use section* for acknowledgment
 \section*{Acknowledgment}
 Fill this.
+
+\appendix
+\begin{table}[!htb]\centering
+  \caption{Grid code constants}
+  \begin{tabular}{cc}
+    \hline
+    Parameter & Value \\
+    \hline
+     $V^+_{\text{high}}$ & 0.9 \\
+     $V^+_{\text{low}}$ & 0.4 \\
+     $V^-_{\text{high}}$ & 0.6 \\
+     $V^-_{\text{low}}$ & 0.1 \\
+     $k_p$ & 1.25 \\
+     $k_n$ & 1.25 \\
+     \hline
+  \end{tabular}
+  \label{tab:param_gc}
+\end{table}
 
 
 % Can use something like this to put references on a page

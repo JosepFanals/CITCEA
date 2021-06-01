@@ -36,7 +36,7 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [ 0.8894, -0.3522, -0.9263,  0.3771,  0.0371, -0.025 ]
 # Ii_t = [0, 0, 0, 0, 0, 0]
 type_f = 'sta_LL_'
-folder = 'Results_1conv_cable_v1/'
+folder = 'Results_1conv_Zf_sat_v1/'
 
 # RX variation
 n_p = 100
@@ -89,8 +89,8 @@ for iik in range(1, n_p):
 
     # Cable:
     # x_opt = fOptimal_mystic(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fGridCode(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)  # adaptative
-    x_opt = fGC_static(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fGridCode(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)  # adaptative
+    # x_opt = fGC_static(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
@@ -116,7 +116,7 @@ for iik in range(1, n_p):
     # print(max(np.sqrt(Ii_t[0] ** 2 + Ii_t[1] ** 2), np.sqrt(Ii_t[2] ** 2 + Ii_t[3] ** 2), np.sqrt(Ii_t[4] ** 2 + Ii_t[5] ** 2)))
 
     # print(ff_obj)
-    print(Ii_t)
+    # print(Ii_t)
     # print(Ii_t[0]**2 + Ii_t[1]**2)
 
 # Save csv
