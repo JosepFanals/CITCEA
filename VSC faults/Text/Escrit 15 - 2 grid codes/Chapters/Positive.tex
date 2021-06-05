@@ -1,0 +1,72 @@
+\section{Positive current prioritization}
+Given a generic disposition of positive and negative voltages as shown in Fig. \ref{fig:p1}, we are concerned with determining the maximum negative sequence current capacity.
+
+\begin{figure}[!htb]\centering
+    \incfig{v1}
+    \caption{General representation of positive and negative sequence currents and voltages}
+    \label{fig:p1}
+\end{figure}
+Currents are delayed or advanced $\frac{\pi}{2}$ in order to only inject reactive power. As limitations are imposed in the phases (natural reference frame), currents are transformed as follows
+\begin{equation}
+    \begin{pmatrix}
+        \underline{I}_a \\
+        \underline{I}_b \\
+        \underline{I}_c \\
+    \end{pmatrix}
+    = \begin{pmatrix}
+        1 & 1 & 1 \\
+        1 & \underline{a}^2 & \underline{a} \\
+        1 & \underline{a} & \underline{a}^2 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 \\
+        \underline{I}^+ \\
+        \underline{I}^-
+    \end{pmatrix}  
+\end{equation}
+where $\underline{a}=e^{j\frac{2\pi}{3}}$ and the zero sequence current is forced to be null. Then, phase currents are expressed as
+\begin{equation}
+    \begin{cases}
+    \underline{I}_a = \underline{I}^+ + \underline{I}^- \\
+    \underline{I}_b = \underline{a}^2 \underline{I}^+ + \underline{a}\underline{I}^- \\
+    \underline{I}_c = \underline{a}\underline{I}^+ + \underline{a}^2\underline{I}^- \\
+    \end{cases}
+\end{equation}
+It is now convenient to write the previous expressions without the operator $a$ explicitly shown:
+\begin{equation}
+    \begin{cases}
+    \underline{I}_a = \underline{I}^+_a + \underline{I}^-_a \\
+    \underline{I}_b = \underline{I}^+_b + \underline{I}^-_b \\
+    \underline{I}_c = \underline{I}^+_c + \underline{I}^-_c \\
+    \end{cases}
+\end{equation}
+where $\underline{I}^+_c = \underline{a}\underline{I}^+$ and $\underline{I}^-_c = \underline{a}^2\underline{I}^-$, and analogously for other phases. All three cases have to be computed, yet the smallest negative sequence current (i.e., \texttt{min}$({I}^-_a, {I}^-_b, {I}^-_c)$) acts as the most restrictive option. 
+
+Next, all phase currents are set to its maximum value, denoted by $I_{\text{max}}$. Thus, squaring them:
+\begin{equation}
+    \begin{cases}
+        I_{\text{max}}^2 = (I^+_{a,re} + I^-_{a,re})^2 + (I^+_{a,im} + t_a I^-_{a,re})^2 \\
+        I_{\text{max}}^2 = (I^+_{b,re} + I^-_{b,re})^2 + (I^+_{b,im} + t_b I^-_{b,re})^2 \\
+        I_{\text{max}}^2 = (I^+_{c,re} + I^-_{c,re})^2 + (I^+_{c,im} + t_c I^-_{c,re})^2 \\
+    \end{cases}
+    \label{eq:ii1}
+\end{equation}
+which has to be solved for $I^-_{a,re}, I^-_{b,re}$ and $I^-_{c,re}$, where $t_a$, $t_b$ and $t_c$ represent the proportion between the imaginary and the real part of the particular negative sequence components. In other words, if phasor $\underline{I}^-$ is at an angle $\alpha$, as indicated in Fig. \ref{fig:p1}, then:
+\begin{equation}
+    \begin{cases}
+        t_a \equiv \tan(\alpha) = \frac{I^-_{a,im}}{I^-_{a,re}} \\
+        t_b \equiv \tan(\alpha + \frac{2\pi}{3}) = \frac{I^-_{b,im}}{I^-_{b,re}} \\
+        t_c \equiv \tan(\alpha - \frac{2\pi}{3}) = \frac{I^-_{c,im}}{I^-_{c,re}} \\
+    \end{cases}
+\end{equation}
+The final step is to solve each one of the three quadratic equations that are derived from \eqref{eq:ii1}, select the appropriate solution according to the already known direction, and compute the absolute value of these negative sequence currents 
+\begin{equation}
+    \begin{cases}
+        I^-_{a} = \sqrt{(I^-_{a,re})^2 + (t_a I^-_{a,re})^2} \\
+        I^-_{b} = \sqrt{(I^-_{b,re})^2 + (t_b I^-_{b,re})^2} \\
+        I^-_{c} = \sqrt{(I^-_{c,re})^2 + (t_c I^-_{c,re})^2} \\
+    \end{cases}
+\end{equation}
+
+
+\section{Negative current prioritization}

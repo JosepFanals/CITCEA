@@ -98,6 +98,7 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
         # else:
         #     fr = 1
 
+
         if Iabc_max > 1:
             fr += -0.00001
         else:
@@ -109,6 +110,9 @@ def fGridCode(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # print(fr)
     # print(abs(v2[0]))
     # print(fr * kpn)
+
+
+    print(i012)
 
     return [i1, i2, abs(v1), abs(v2), Iabc]
     # return I_sol

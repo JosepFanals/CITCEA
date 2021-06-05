@@ -39,7 +39,7 @@ type_f = 'sta_LL_'
 folder = 'Results_1conv_Zf_sat_v1/'
 
 # RX variation
-n_p = 100
+n_p = 10
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(5, 50, n_p)
 
@@ -118,6 +118,8 @@ for iik in range(1, n_p):
     # print(ff_obj)
     # print(Ii_t)
     # print(Ii_t[0]**2 + Ii_t[1]**2)
+
+    # print(x_opt)
 
 # Save csv
 # x_vec = Yf_vec
