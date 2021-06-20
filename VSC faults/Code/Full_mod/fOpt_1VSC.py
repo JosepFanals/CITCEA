@@ -59,7 +59,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     Ip1_1 = Ip1_012[1] * np.exp(-1j * np.angle(V_p1_012[1]))
     Ip1_2 = Ip1_012[2] * np.exp(-1j * np.angle(V_p1_012[2]))
 
-    print(V_p1_012[1] * np.conj(Ip1_1) + V_p1_012[2] * np.conj(Ip1_2))
+    print('Power: ', V_p1_012[1] * np.conj(Ip1_1) + V_p1_012[2] * np.conj(Ip1_2))
 
     return [Ip1_1, Ip1_2, abs(V_p1_012[1]), abs(V_p1_012[2]), I_sol]
     # return I_sol

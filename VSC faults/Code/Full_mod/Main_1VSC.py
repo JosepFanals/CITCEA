@@ -92,7 +92,7 @@ for iik in range(0, n_p):
     # print(max(np.sqrt(Ii_t[0] ** 2 + Ii_t[1] ** 2), np.sqrt(Ii_t[2] ** 2 + Ii_t[3] ** 2), np.sqrt(Ii_t[4] ** 2 + Ii_t[5] ** 2)))
 
     # print(ff_obj)
-    print(Ii_t)
+    print('ABC currents: ', Ii_t)
     # print(Ii_t[0]**2 + Ii_t[1]**2)
 
     # print(x_opt)
