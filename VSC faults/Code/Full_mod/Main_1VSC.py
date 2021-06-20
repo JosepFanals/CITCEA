@@ -1,5 +1,7 @@
 import numpy as np
 from fOpt_1VSC import fOptimal_mystic
+from fGCP_1VSC import fGCP_1vsc
+from fGCN_1VSC import fGCN_1vsc
 from Plots import fPlots
 from Functions_main import fZ_rx, fY_fault, x012_to_abc
 import pandas as pd
@@ -17,8 +19,8 @@ Y_con = [10, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 Ii_t = [ 0.8894, -0.3522, -0.9263,  0.3771,  0.0371, -0.025 ]
-type_f = 'opt_LL_'
-folder = 'Results_1conv_opt/'
+type_f = 'gcn_LL_'
+folder = 'Results_1conv/'
 
 # RX variation
 n_p = 50
@@ -60,7 +62,9 @@ for iik in range(0, n_p):
 
 
     # Call optimization
-    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
+    x_opt = fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
     
 
     # Cable:
@@ -76,26 +80,14 @@ for iik in range(0, n_p):
     
     In1_re_vec.append(np.real(x_opt[1][0]))
     In1_im_vec.append(np.imag(x_opt[1][0]))
-    # f_vec.append(np.abs(x_opt[8][0]))
 
     I_vsc1 = [0, x_opt[0][0], x_opt[1][0]]
     I_vsc1_abc = x012_to_abc(I_vsc1)
 
-    # ----------------------------
-
-    # ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2)
     ff_obj = lam_vec[0] * abs((1 - abs(Vp1_vec[-1]))) + lam_vec[1] * abs((0 + abs(Vn1_vec[-1])))
     f_vec.append(ff_obj)
 
-    Ii_t = x_opt[4][0]
-    # print(abs(max(abs(Ii_t))))
-    # print(max(np.sqrt(Ii_t[0] ** 2 + Ii_t[1] ** 2), np.sqrt(Ii_t[2] ** 2 + Ii_t[3] ** 2), np.sqrt(Ii_t[4] ** 2 + Ii_t[5] ** 2)))
 
-    # print(ff_obj)
-    print('ABC currents: ', Ii_t)
-    # print(Ii_t[0]**2 + Ii_t[1]**2)
-
-    # print(x_opt)
 
 # Save csv
 x_vec = Yf_vec
