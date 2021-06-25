@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  20 JUN 2021 16:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  26 JUN 2021 01:55
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
 ("c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
@@ -1769,10 +1769,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 44585 strings out of 479696
- 1204906 string characters out of 19617135
- 22010412 words of memory out of 40000000
- 60944 multiletter control sequences out of 15000+200000
+ 44627 strings out of 479696
+ 1206182 string characters out of 19617135
+ 22010871 words of memory out of 40000000
+ 60986 multiletter control sequences out of 15000+200000
  448101 words of font info for 117 fonts, out of 20000000 for 9000
  1144 hyphenation exceptions out of 8191
  94i,23n,98p,2259b,2512s stack positions out of 5000i,500n,10000p,20000000b,50000s
