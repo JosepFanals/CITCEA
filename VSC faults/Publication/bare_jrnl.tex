@@ -868,21 +868,35 @@ whereas for the negative sequence
    \end{cases}
    \label{eq:gc2}
 \end{equation}
-where the values of the constants are gathered in Table \ref{tab:param_gc}. Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. Because of this, the application of the grid code rules implies that maximum phase currents are hardly ever equal to the maximum allowed by the VSC, even when strong faults occur. Thus, an adaptative control can be formulated so that currents tend to the maximum permitted value while the droop characteristic is preserved. This strategy is denoted by ADA, as in essence it consists of an adaptative mechanism. In order to fairly compare between methodologies, $k_p$ and $k_n$ are always equal. The expressions for the ADA strategy are reduced to
-\begin{equation}
-  \begin{cases}
-    |\underline{I}_k^+| = k_p(V^+_{\text{high}} - |\underline{V}^+_{pk}|) \\
-    |\underline{I}_k^-| = k_n(|\underline{V}^-_{pk}| - V^-_{\text{low}})
-  \end{cases}
-\end{equation}
-that is, the ADA control always mimics a droop characteristic, although this is not necessarily linear as $k_p$ and $k_n$ vary.
+where the values of the constants are gathered in Table \ref{tab:param_gc}. Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The converter would therefore operate at saturated conditions during extreme faults because either the positive sequence voltage would reach the lower threshold $V^+_{\text{low}}$ or the negative sequence voltage would surpass the upper threshold $V^-_{\text{high}}$. However, in severe faults it is still possible that both limits are surpassed, or at least, approached. In case \eqref{eq:gc1} and \eqref{eq:gc2} where applied simultaneously, the required current to be injected by the VSC could potentially exceed the $I_{\text{max},k}$ limitation. Thus, it makes sense to establish a prioritization. 
+
+This paper considers the two straightforward prioritizations. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the maximum allowed negative sequence current so as not to exceed the current limitations in any phase. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
+
+Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. 
+
+\begin{figure}[]\centering
+ \begin{tikzpicture}
+   \draw (-3,0) -- (3,0);
+   \draw (0,-3) -- (0,3);
+   \draw (0,0) -- (2,1);
+   \draw (0,0) -- (1,-2);
+ \end{tikzpicture} 
+  \caption{Overview of positive and negative sequence voltages and currents following grid code rules}
+  \label{fig:map}
+\end{figure}
+
+
+% draw figure in tikz, like the one in inkscape
+
+
+
 
 \subsection{Summary of support techniques}
 The paper evaluates and compares three support strategies, which are:
 \begin{itemize}
   \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution.
-  \item GC: is the application of the grid code rules shown in \eqref{eq:gc1} and \eqref{eq:gc2}, with $k_p=k_n=1.25$. It should generate the less convenient solution out of the three analyzed strategies. 
-  \item ADA: resembles the grid code rules from \eqref{eq:gc1} and \eqref{eq:gc2} with an adapted value of the constants $k_p=k_n$ so that the VSC operates close to the current limitations. 
+  \item GCP: is the application of the grid code rule shown in \eqref{eq:gc1}. It prioritizes positive sequence current injection. 
+  \item GCN: follows the grid code negative sequence current injection shown in \eqref{eq:gc2}. Just like GCP, the converter will continuously operate under saturation conditions. 
 \end{itemize}
 
 % \begin{equation}
