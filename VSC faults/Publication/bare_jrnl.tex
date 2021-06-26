@@ -872,21 +872,84 @@ where the values of the constants are gathered in Table \ref{tab:param_gc}. Cons
 
 This paper considers the two straightforward prioritizations. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the maximum allowed negative sequence current so as not to exceed the current limitations in any phase. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
 
-Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. 
+Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. Phase currents are related to zero, positive and negative sequence components by
+\begin{equation}
+  \begin{pmatrix}
+    \un{I}_a \\
+    \un{I}_b \\
+    \un{I}_c \\
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    1 & 1 & 1 \\
+    1 & \un{a}^2 & \un{a}\\
+    1 & \un{a} & \un{a}^2\\
+  \end{pmatrix} 
+  \begin{pmatrix}
+    \un{I}^0 \\
+    \un{I}^+ \\
+    \un{I}^- \\
+  \end{pmatrix}
+  \label{eq:Ifort1}
+\end{equation}
+where $\un{I}^0$ is null as the VSC is incapable of injecting it. The $k$ index related to identifying a given VSC has been ommited to alleviate the notation. Explicitly, \eqref{eq:Ifort1} becomes
+\begin{equation}
+  \begin{cases}
+    \un{I}_a = \un{I}^+ + \un{I}^- \\
+    \un{I}_b = \un{a}^2\un{I}^+ + \un{a}\un{I}^- \\
+    \un{I}_c = \un{a}\un{I}^+ + \un{a}^2\un{I}^- \\
+  \end{cases}
+\end{equation}
+Then, the absolute value of the three phase currents are set to the limit $I_\text{max}$. The goal of doing so is to determine the maximum current that causes one phase to reach saturation while the two others operate under the limits. This will act as the most restrictive option. Consequently, squaring the currents yields
+\begin{equation}
+  \begin{cases}
+    I_{\text{max}}^2 = (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
+    I_{\text{max}}^2 = (-\frac{1}{2}I^+_{re} + \frac{\sqrt{3}}{2}I^+_{im} - \frac{1}{2}I^-_{re} - \frac{\sqrt{3}}{2}I^-_{im})^2 \\ 
+    \hspace{1cm}+ (-\frac{1}{2}I^+_{im} - \frac{\sqrt{3}}{2}I^+_{re} - \frac{1}{2}I^-_{im} + \frac{\sqrt{3}}{2}I^-_{re})^2 \\
+    I_{\text{max}}^2 = (-\frac{1}{2}I^+_{re} - \frac{\sqrt{3}}{2}I^+_{im} - \frac{1}{2}I^-_{re} + \frac{\sqrt{3}}{2}I^-_{im})^2\\
+    \hspace{1cm}+ (\frac{\sqrt{3}}{2}I^+_{re} - \frac{1}{2}I^+_{im} - \frac{\sqrt{3}}{2}I^-_{re} - \frac{1}{2}I^-_{im})^2 
+  \end{cases}
+  \label{eq:Ifin}
+\end{equation}
+It can be seen that each phase current, set at the allowed maximum, depends on four components, that is, $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$. When the positive sequence is prioritized (GCP), the grid code rules in \eqref{eq:gc1} determine the absolute value of the positive sequence current while its direction in the complex plane is extracted by shifting it $-\frac{\pi}{2}$ with respect to $\un{V}^+$, as seen in Fig. \ref{fig:map}. Thus, $I^+_{re}$ and $I^+_{im}$ would be known beforehand, and only the two remaining components $I^-_{re}$ and $I^-_{im}$ have to be computed from \eqref{eq:Ifin} for each phase. To do so, one component has to be expressed as a function of the other. This carries no extra complexity considering that phasor $\un{V}^-$ is fully known, and so the direction of $\un{I}^-$ has to be shifted $\frac{\pi}{2}$ from it. Making use of the relation 
+\begin{equation}
+  \tan(\alpha^-) = \frac{I^-_{im}}{I^-_{re}} \ ,
+  \label{eq:tann}
+\end{equation}
+current $I^-_{im}$ can be expressed as a function of $I^-_{re}$, for instance, and therefore there is only one unknown in each expression of \eqref{eq:Ifin}. Then, the resulting quadratic equations are solved for $I^-_{re}$ and the associated $I^-_{im}$ is found with \eqref{eq:tann}. 
+
+Note that six $[I^-_{re},I^-_{im}]$ pairs of solutions would be obtained in total. Three of them have to be discarded because they do not follow the preestablished direction of $\un{I}^-$ (due to the quadratic characteristic of \eqref{eq:Ifin}). Out of the reamining three, the one with the smallest absolute value is picked. This way it is ensured that current saturation is only reached in one phase, while the other two operate below their limits. 
+
+An analogous procedure as the one described above applies to computing the positive sequence current in case the negative sequence component is prioritized (GCN). 
 
 \begin{figure}[]\centering
  \begin{tikzpicture}
-   \draw (-3,0) -- (3,0);
-   \draw (0,-3) -- (0,3);
-   \draw (0,0) -- (2,1);
-   \draw (0,0) -- (1,-2);
+   \draw[->] (-2.5,0) -- (2.5,0);
+   \draw[->] (0,-2.5) -- (0,2.5);
+   \draw[-{Latex[length=2mm]}] (0,0) -- (2,1);
+   \draw[-{Latex[length=2mm]}] (0,0) -- (0.5,1);
+   \draw[-{Latex[length=2mm]}] (0,0) -- (1,-2);
+   \draw[-{Latex[length=2mm]}] (0,0) -- (-1,0.5);
+   \node at (2.7, 0) {$\Re$};
+   \node at (0, 2.7) {$\Im$};
+   \node at (0.5, 1.25) {$\un{V}^-_{pk}$};
+   \node at (2, 1.25) {$\un{V}^+_{pk}$};
+   \node at (1, -2.25) {$\un{I}^+_k$};
+   \node at (-1, 0.75) {$\un{I}^-_k$};
+   \draw (-0.15,0.075) -- (-0.075,0.225);
+   \draw (-0.075,0.225) -- (0.075,0.15);
+   \draw (0.15,0.075) -- (0.225,-0.075);
+   \draw (0.225,-0.075) -- (0.075,-0.15);
+   \draw[-{Latex[length=1.5mm]}] (0.5,0) arc (0:153.44:0.5); 
+   \draw[-{Latex[length=1.5mm]}] (0.65,0) arc (0:-63.44:0.65); 
+   \node at (0.9, -0.3) {${\alpha}^+$};
+   \node at (-0.25, 0.7) {${\alpha}^-$};
  \end{tikzpicture} 
   \caption{Overview of positive and negative sequence voltages and currents following grid code rules}
   \label{fig:map}
 \end{figure}
 
 
-% draw figure in tikz, like the one in inkscape
+% explain the prioritization, equations
 
 
 
@@ -894,9 +957,9 @@ Consider a generic distribution of positive and negative sequence voltages in th
 \subsection{Summary of support techniques}
 The paper evaluates and compares three support strategies, which are:
 \begin{itemize}
-  \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution.
+  \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution. Both active and reactive powers can be injected.
   \item GCP: is the application of the grid code rule shown in \eqref{eq:gc1}. It prioritizes positive sequence current injection. 
-  \item GCN: follows the grid code negative sequence current injection shown in \eqref{eq:gc2}. Just like GCP, the converter will continuously operate under saturation conditions. 
+  \item GCN: follows the grid code negative sequence current injection shown in \eqref{eq:gc2}. Just like GCP, the current limitation is reached in one phase, and only reactive power can be injected. 
 \end{itemize}
 
 % \begin{equation}
