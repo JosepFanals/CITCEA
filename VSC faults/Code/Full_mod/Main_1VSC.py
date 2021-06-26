@@ -15,11 +15,11 @@ Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
 Zs_i = 6.674e-5 + 1j * 2.597e-4  # series impedances in pu/km
 Zp_i = - 1j * 77.372  # parallel impedance in pu.km
-Y_con = [10, 0, 0]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
-Ii_t = [ 0.8894, -0.3522, -0.9263,  0.3771,  0.0371, -0.025 ]
-type_f = 'gcn_LL_'
+Ii_t =  [-0.5015, -0.8652, -0.4985,  0.8669,  1.    , -0.0018]
+type_f = 'opt_3x_'
 folder = 'Results_1conv/'
 
 # RX variation
@@ -43,10 +43,10 @@ dist_vec = []
 for iik in range(0, n_p):
     # print(iik)
     # Initialize data
-    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    Y_con = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
@@ -62,9 +62,10 @@ for iik in range(0, n_p):
 
 
     # Call optimization
-    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    Ii_t = x_opt[4][0]
     # x_opt = fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
-    x_opt = fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
+    # x_opt = fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
     
 
     # Cable:

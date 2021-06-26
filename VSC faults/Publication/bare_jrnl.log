@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  26 JUN 2021 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  26 JUN 2021 19:33
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
 ("c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
@@ -605,11 +605,7 @@ File: tikzlibrarypositioning.code.tex 2020/12/01 v3.1.7a (3.1.7a)
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count322
 \l__pdf_internal_box=\box67
-) ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.aux"
-
-LaTeX Warning: Label `fig:Zf_1conv_LL' multiply defined.
-
-)
+) ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.aux")
 \openout1 = `bare_jrnl.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 380.
@@ -760,15 +756,15 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_3x_Ip1re.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcp_3x_Ip1re.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_3x_Ip1re.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Ip1re.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1114--1115
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1114--1115
  [][] 
  []
 
@@ -783,15 +779,15 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_3x_Ip1im.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcp_3x_Ip1im.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_3x_Ip1im.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Ip1im.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1127--1128
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1127--1128
  [][] 
  []
 
@@ -806,15 +802,15 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_3x_In1re.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcp_3x_In1re.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_3x_In1re.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_In1re.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1141--1142
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1141--1142
  [][] 
  []
 
@@ -829,15 +825,15 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_3x_In1im.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcp_3x_In1im.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_3x_In1im.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_In1im.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1153--1154
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1153--1154
  [][] 
  []
 
@@ -852,15 +848,15 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_3x_Vp1.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcp_3x_Vp1.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_3x_Vp1.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Vp1.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1167--1168
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1167--1168
  [][] 
  []
 
@@ -875,15 +871,15 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_3x_Vn1.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcp_3x_Vn1.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_3x_Vn1.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Vn1.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1180--1181
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1180--1181
  [][] 
  []
 
@@ -898,699 +894,19 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_3x_f_obj.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcp_3x_f_obj.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_3x_f_obj.csv}
+PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (16.05798pt too wide) in paragraph at lines 1194--1195
+Overfull \hbox (16.04883pt too wide) in paragraph at lines 1194--1195
  [][] 
  []
 
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1203.
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_LL_Ip1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_LL_Ip1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_LL_Ip1re.csv}
-
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1214--1215
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_LL_Ip1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_LL_Ip1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_LL_Ip1im.csv}
-
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1227--1228
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_LL_In1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_LL_In1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_LL_In1re.csv}
-
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1239--1240
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_LL_In1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_LL_In1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_LL_In1im.csv}
-
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1251--1252
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_LL_Vp1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_LL_Vp1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_LL_Vp1.csv}
-
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1263--1264
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_LL_Vn1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_LL_Vn1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_LL_Vn1.csv}
-
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1276--1277
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_LL_f_obj.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/sta_LL_f_obj.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/gc_LL_f_obj.csv}
-Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (16.0534pt too wide) in paragraph at lines 1290--1291
- [][] 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1299.
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/kV1_LL.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_Zf_v1/kV2_LL.csv}
-Missing character: There is no ; in font nullfont!
-[5]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1347.
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv}
-
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1358--1359
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv}
-
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1371--1372
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_In1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_In1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_In1re.csv}
-
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1383--1384
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_In1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_In1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_In1im.csv}
-
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1395--1396
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Vp1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Vp1.csv}
-
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1407--1408
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Vn1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Vn1.csv}
-
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1419--1420
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_f_obj.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_f_obj.csv}
-Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (16.0557pt too wide) in paragraph at lines 1433--1434
- [][] 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1445.
-
-[6]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1522.
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/cable/Vth_re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/cable/Vth_im.csv}
-Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1532--1533
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/cable/Zth_re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/cable/Zth_im.csv}
-Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1544--1545
- [][] 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1559.
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Ip1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Ip1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Ip1re.csv}
-
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1570--1571
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Ip1im.csv}
-
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1583--1584
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_In1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_In1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_In1re.csv}
-
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1595--1596
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_In1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_In1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_In1im.csv}
-
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1607--1608
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Vp1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Vp1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Vp1.csv}
-
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1619--1620
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Vn1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Vn1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Vn1.csv}
-
-Overfull \hbox (21.12024pt too wide) in paragraph at lines 1631--1632
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_f_obj.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_f_obj.csv}
-Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (16.05707pt too wide) in paragraph at lines 1645--1646
- [][] 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1662.
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip2re.csv}
-
-Overfull \hbox (21.11865pt too wide) in paragraph at lines 1747--1748
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip2im.csv}
-
-Overfull \hbox (21.11865pt too wide) in paragraph at lines 1759--1760
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In1re.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In2re.csv}
-
-Overfull \hbox (21.11865pt too wide) in paragraph at lines 1772--1773
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In1im.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In2im.csv}
-
-Overfull \hbox (21.11865pt too wide) in paragraph at lines 1783--1784
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vp1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vp2.csv}
-
-Overfull \hbox (21.11865pt too wide) in paragraph at lines 1796--1797
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vn1.csv}
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vn2.csv}
-Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (21.11865pt too wide) in paragraph at lines 1808--1809
- [][] 
- []
-
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_f_obj.csv}
-
-Overfull \hbox (16.05432pt too wide) in paragraph at lines 1819--1820
- [][] 
- []
-
-("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\Plots/Z_1conv_gc_new.tex"
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
@@ -1610,7 +926,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1re.csv}
 
-Overfull \hbox (21.11963pt too wide) in paragraph at lines 12--13
+Overfull \hbox (21.11963pt too wide) in paragraph at lines 1213--1214
  [][] 
  []
 
@@ -1633,7 +949,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1im.csv}
 
-Overfull \hbox (21.11963pt too wide) in paragraph at lines 25--26
+Overfull \hbox (21.11963pt too wide) in paragraph at lines 1226--1227
  [][] 
  []
 
@@ -1656,7 +972,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_In1re.csv}
 
-Overfull \hbox (21.11963pt too wide) in paragraph at lines 37--38
+Overfull \hbox (21.11963pt too wide) in paragraph at lines 1238--1239
  [][] 
  []
 
@@ -1679,7 +995,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_In1im.csv}
 
-Overfull \hbox (21.11963pt too wide) in paragraph at lines 49--50
+Overfull \hbox (21.11963pt too wide) in paragraph at lines 1250--1251
  [][] 
  []
 
@@ -1702,7 +1018,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Vp1.csv}
 
-Overfull \hbox (21.11963pt too wide) in paragraph at lines 61--62
+Overfull \hbox (21.11963pt too wide) in paragraph at lines 1262--1263
  [][] 
  []
 
@@ -1725,7 +1041,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Vn1.csv}
 
-Overfull \hbox (21.11963pt too wide) in paragraph at lines 74--75
+Overfull \hbox (21.11963pt too wide) in paragraph at lines 1275--1276
  [][] 
  []
 
@@ -1749,18 +1065,507 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (16.05066pt too wide) in paragraph at lines 88--89
+Overfull \hbox (16.05066pt too wide) in paragraph at lines 1289--1290
  [][] 
  []
 
-) [7]
+[5]
 
-LaTeX Warning: Text page 8 contains only floats.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1304.
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv}
+
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1315--1316
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv}
+
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1328--1329
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_In1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_In1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_In1re.csv}
+
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1340--1341
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_In1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_In1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_In1im.csv}
+
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1352--1353
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Vp1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Vp1.csv}
+
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1364--1365
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_Vn1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_Vn1.csv}
+
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1376--1377
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/gc_LG_f_obj.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_RX_v1/sta_LG_f_obj.csv}
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (16.0557pt too wide) in paragraph at lines 1390--1391
+ [][] 
+ []
 
 
-Overfull \vbox (4.04941pt too high) has occurred while \output is active []
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1402.
 
- ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl" [8]
+[6]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1479.
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/cable/Vth_re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/cable/Vth_im.csv}
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1489--1490
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/cable/Zth_re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/cable/Zth_im.csv}
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1501--1502
+ [][] 
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1516.
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Ip1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Ip1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Ip1re.csv}
+
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1527--1528
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Ip1im.csv}
+
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1540--1541
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_In1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_In1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_In1re.csv}
+
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1552--1553
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_In1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_In1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_In1im.csv}
+
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1564--1565
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Vp1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Vp1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Vp1.csv}
+
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1576--1577
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_Vn1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_Vn1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_Vn1.csv}
+
+Overfull \hbox (21.12024pt too wide) in paragraph at lines 1588--1589
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/gc_LL_f_obj.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_cable_v1/sta_LL_f_obj.csv}
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (16.05707pt too wide) in paragraph at lines 1602--1603
+ [][] 
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1619.
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip2re.csv}
+
+Overfull \hbox (21.11865pt too wide) in paragraph at lines 1704--1705
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Ip2im.csv}
+
+Overfull \hbox (21.11865pt too wide) in paragraph at lines 1716--1717
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In1re.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In2re.csv}
+
+Overfull \hbox (21.11865pt too wide) in paragraph at lines 1729--1730
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In1im.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_In2im.csv}
+
+Overfull \hbox (21.11865pt too wide) in paragraph at lines 1740--1741
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vp1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vp2.csv}
+
+Overfull \hbox (21.11865pt too wide) in paragraph at lines 1753--1754
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vn1.csv}
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_Vn2.csv}
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (21.11865pt too wide) in paragraph at lines 1765--1766
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_2conv_Zf_v2/opt_3x_f_obj.csv}
+
+Overfull \hbox (16.05432pt too wide) in paragraph at lines 1776--1777
+ [][] 
+ []
+
+[7] ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.bbl"
 Underfull \hbox (badness 1803) in paragraph at lines 159--162
 []\OT1/ptm/m/n/8 M. M. McK-erns, L. Strand, T. Sul-li-van, A. Fang, and M. A.
  []
@@ -1770,27 +1575,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--170
 []\OT1/ptm/m/n/8 National Grid, ``The grid code, is-sue 6, re-vi-sion 1,''
  []
 
-) [9
+[8]) [9
 
 ] ("c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.aux")
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.5pt have occurred.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 44680 strings out of 479696
- 1207468 string characters out of 19617135
- 22003731 words of memory out of 40000000
- 61039 multiletter control sequences out of 15000+200000
+ 44587 strings out of 479696
+ 1205376 string characters out of 19617135
+ 21847272 words of memory out of 40000000
+ 60955 multiletter control sequences out of 15000+200000
  448101 words of font info for 117 fonts, out of 20000000 for 9000
  1144 hyphenation exceptions out of 8191
- 94i,23n,98p,2259b,2512s stack positions out of 5000i,500n,10000p,20000000b,50000s
+ 94i,23n,98p,2259b,2508s stack positions out of 5000i,500n,10000p,20000000b,50000s
 {C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (9 pages, 442891 bytes).
+Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (9 pages, 389347 bytes).
 PDF statistics:
  132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

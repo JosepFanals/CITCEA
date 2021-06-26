@@ -23,7 +23,7 @@ def fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 
 	Iconv_abc = [0, 0, 0]
 	Iconv_abc_prev = [1, 1, 1]
-	tol = 1e-4
+	tol = 1e-3
 
 	# loop
 	while abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol:

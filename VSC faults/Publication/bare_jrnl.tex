@@ -995,7 +995,7 @@ The paper evaluates and compares three support strategies, which are:
 \section{Single converter case study} \label{1conv}
 The analysis is first performed considering a one-converter case study as the one depicted in Figure \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground, line to line or double line to ground). The goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
-Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, i.e., the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$ is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. 
+Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. 
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1098,17 +1098,17 @@ Because of the nature of the converter, it is also imposed that the sum of the t
   \end{tabular}
   \label{tab:param}
 \end{table}
-Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Figure \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. The results suggest that the OPT case is the preferred one, as its associated objective function is always the smallest, as expected. This optimal solution is achieved by distributing the currents between the real and imaginary parts. The current capabilities are roughly equally attributed among both. The ADA solution and the GC one present only slight differences, so varying the slope of the grid code current definitions does not yield remarkable benefits. However, this consitutes a particular scenario since no negative sequence current ought to be injected. The only difference between ADA and GC is that the former specifies a moderately higher current.
+Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Figure \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. The results suggest that the OPT case is the preferred one, as its associated objective function is always the smallest, as expected. This optimal solution is achieved by distributing the currents between the real and imaginary parts. The imaginary current remains slightly larger than the real current (in absolute value). This is the main difference between OPT and the grid code implementation found in GCP and GCN. These two strategies always specify a null real current in both sequences, and in this case, they employ their full capability for the imaginary positive sequence current. Therefore, their objective functions and voltage profiles become identical, simply put, because this is a balanced fault. 
 
 \begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, ytick distance={0.2}, xmin=0.03, xmax=0.07, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, ytick distance={0.2}, xmin=0.03, xmax=0.1, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1re.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Ip1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_Ip1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -1118,10 +1118,10 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.03, xmax=0.1, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1132,10 +1132,10 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.03, xmax=0.1, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_In1re.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_In1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_In1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_In1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1145,10 +1145,10 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.03, xmax=0.1, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_In1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_In1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_In1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_In1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1158,10 +1158,10 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.03, xmax=0.07, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.03, xmax=0.1, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Vp1.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Vp1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Vp1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1171,10 +1171,10 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.01)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.03, xmax=0.07, ytick distance = {0.05}, ymax=0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.01)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.03, xmax=0.1, ytick distance = {0.05}, ymax=0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Vn1.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_Vn1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Vn1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_Vn1.csv};
                 %   \legend{OPT, ROPT, GC};
                   \end{axis}
               \end{tikzpicture}
@@ -1185,11 +1185,11 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.01,0.01)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, xmin=0.03, xmax=0.07, axis line style = thick, ytick distance = {0.04},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.01,0.01)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, xmin=0.03, xmax=0.1, axis line style = thick, ytick distance = {0.04},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_f_obj.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_3x_f_obj.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_f_obj.csv};
-                  \legend{OPT, GC, ADA};  % sta: static = GC, gc: ADA
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_f_obj.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_f_obj.csv};
+                  \legend{OPT, GCP, GCN};  % sta: static = GC, gc: ADA
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1197,18 +1197,17 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
     \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance, one converter case}
     \label{fig:Zf_1conv_3x}
   \end{figure}
-Significantly different results are obtained in the case of a line to line fault, as shown in Figure \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be non-null for the imaginary part of the negative sequence. While the OPT solution specifies almost constant current values in $I^+_{re}$, $I^+_{im}$ and $I^-_{im}$, much more varying currents are injected in the case of ADA and GC. Thanks to the adaptative control, both $I^+_{im}$ and $I^-_{im}$ are larger than in the GC situation. Consequently, more voltage support is provided, which causes ADA to be a near-optimal solution despite not injecting any active power, specially for large values of $\un{Z}_x$. 
+Significantly different results are obtained in the case of a line to line fault, as shown in Figure \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be non-null for the imaginary part of the negative sequence. Even though the real current is kept at zero for GCP and GCN, their imaginary currents tend to approach the optimal value for large fault impedances. For low fault impedances, GCP prioritizes injecting current in the positive sequence whereas GCN does the same for the negative sequence, as expected. As a consequence, positive sequence voltages in the case of GCP are always superior to the ones obtained with GCN, and the contrary applies to the negative sequence voltages. Even though OPT looks for a balance between the positive and the negative sequence voltages, as seen from the optimization function in \eqref{eq:opt_1c}, it is able to reach higher positive sequence voltage values than GCP. This happens for moderate values of $\un{Z}_x$. In the end, there is an almost constant minimal difference between OPT and both GCP and GCN. All three objective functions are nearly the same. 
 
-
-\begin{figure}[]\centering \tiny
+\begin{figure}[!htb]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, ytick distance={0.1}, xmin=0.12, xmax=0.17, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Ip1re.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Ip1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Ip1re.csv};
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, ytick distance={0.1}, xmin=0.02, xmax=0.1, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Ip1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Ip1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -1218,10 +1217,10 @@ Significantly different results are obtained in the case of a line to line fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.12, xmax=0.17, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Ip1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Ip1im.csv};
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.02, xmax=0.1, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1230,10 +1229,10 @@ Significantly different results are obtained in the case of a line to line fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.12, xmax=0.17, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_In1re.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_In1re.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_In1re.csv};
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.02, xmax=0.1, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_In1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_In1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1243,10 +1242,10 @@ Significantly different results are obtained in the case of a line to line fault
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.12, xmax=0.17, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},   scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_In1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_In1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_In1im.csv};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.02, xmax=0.1, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},   scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_In1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_In1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1254,10 +1253,10 @@ Significantly different results are obtained in the case of a line to line fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.12, xmax=0.17, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Vp1.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Vp1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Vp1.csv};
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.02, xmax=0.1, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Vp1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1267,10 +1266,10 @@ Significantly different results are obtained in the case of a line to line fault
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.08,0.35)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.12, xmax=0.17, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_Vn1.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_Vn1.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_Vn1.csv};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.08,0.35)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.02, xmax=0.1, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Vn1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Vn1.csv};
                 %   \legend{OPT, ROPT};
                   \end{axis}
               \end{tikzpicture}
@@ -1281,11 +1280,11 @@ Significantly different results are obtained in the case of a line to line fault
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.5)},anchor=south east,legend columns=1, xmin=0.12, xmax=0.17, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, ytick distance = {0.04},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_LL_f_obj.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/sta_LL_f_obj.csv};
-                  \addplot[very thick, dashed, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_LL_f_obj.csv};
-                  \legend{OPT, GC, ADA};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.45)},anchor=south east,legend columns=1, xmin=0.02, xmax=0.1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, ytick distance = {0.04},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_f_obj.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_f_obj.csv};
+                  \addplot[very thick, dashed, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_f_obj.csv};
+                  \legend{OPT, GCP, GCN};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1293,51 +1292,9 @@ Significantly different results are obtained in the case of a line to line fault
     \caption{Influence of the currents on the objective function for the line to line with a varying fault admittance, one converter case}
     \label{fig:Zf_1conv_LL}
   \end{figure}
-In essence, ADA does not retain the same linear droop characteristics than the GC rules defined in \eqref{eq:gc1} and \eqref{eq:gc2}. Figure \ref{fig:Zf_1conv_LL2} shows the coupling between the constants $k_p=k_n$ and the positive and negatives sequence voltages for a line to line fault with $\un{Z}_x \in [0.005,0.17]$. The evolutions are quadratic, which suggests that a linear dependence between injected sequence currents and voltages would not result in near-optimal operating points. % talk about the symmetry between voltages, and that it happens for all unbalanced faults?? k = factor * V+ ^ 1.5
 
 
-\begin{figure}[]\centering \tiny
-      \centering
-          \begin{tikzpicture}[trim axis right,trim axis left]
-              \pgfplotsset{width=8cm, height=4.0cm}
-              \begin{axis}[grid=major, ylabel={$|V|$}, xlabel={$k_p=k_n$}, /pgf/number format/.cd, legend style={at={(0.98,0.3)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.2}, axis line style = thick, ytick distance={0.1}, xmin=1.4, xmax=3.2, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=semicolon] {Data/Results_1conv_Zf_v1/kV1_LL.csv};
-                  \addplot[very thick, gray] table[x=x, y=y, col sep=semicolon] {Data/Results_1conv_Zf_v1/kV2_LL.csv};
-              \legend{$|\un{V}^+|$, $|\un{V}^-|$};
-              \end{axis}
-          \end{tikzpicture}
-    \caption{Dependence between constants $k_p=k_n$ and the sequence voltages in the ADA approach for a line to line fault}
-    \label{fig:Zf_1conv_LL2}
-  \end{figure}
-
-
-% plot i1 vs v1 and i2 vs v2
-
-% show a plot of the value that the k takes for ADA for the previous LL fault. 
-
-% for this reason, we propose a quadratic profile... Tune it heuristically. And test it.
-
-
-
-% maybe I can study the same but with larger Zx so it does not operate saturated
-
-% \begin{algorithmic}
-% \STATE $V\gets$ AllUnigramsInTraining($D$)
-% \STATE $N\gets$ NumberOfTweets($D$)
-%  \FORALL{$c \in C$}
-%   \STATE $N_c \gets$ Number of tweets in Class $c$
-%   \STATE \begin{equation}prior(c) = \frac{N_c}{N}\end{equation}
-%   \STATE $Tweets_c \gets $All Tweets in class $c$
-%   \FORALL{$t \in V$}
-%     \STATE $T_ct$ = No. of times term $t$ appeared in $Tweets_c$
-%   \ENDFOR
-%   \FORALL{$t \in V$}
-%     \STATE \begin{equation}prob[t][c] = \frac{T_ct}{\sum^{t'}T_ct'+ 1}\end{equation}
-%   \ENDFOR
-% \ENDFOR
-% \end{algorithmic}
-
-% put the algorithm 
+%&&&&&&&&&&&&&&&&&&&&&& edit what is below
 
 
 \subsection{$R_1/X_1$ variation analysis}
@@ -1832,7 +1789,7 @@ A two-converter case is proposed in order to spot the interaction between both a
 % \clearpage
 \section{////////////PLOTS////////////}
 
-\input{Plots/Z_1conv_gc_new.tex}
+% \input{Plots/Z_1conv_gc_new.tex}
 
 % \input{Plots/Z_1conv.tex}
 % \input{Plots/RX_1conv.tex}

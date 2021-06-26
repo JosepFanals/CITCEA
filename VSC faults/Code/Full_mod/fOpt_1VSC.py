@@ -48,7 +48,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     pens = ms.generate_penalty(ms.generate_conditions(equations_p))
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
-    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=4, ftol=1e-4, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=10, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
 
@@ -60,7 +60,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     Ip1_2 = Ip1_012[2] * np.exp(-1j * np.angle(V_p1_012[2]))
 
     print('Power: ', V_p1_012[1] * np.conj(Ip1_1) + V_p1_012[2] * np.conj(Ip1_2))
-    print('Currents: ', Ii_t)
+    print('Currents: ', I_sol[0])
+    print('Negative sequence voltage: ', abs(V_p1_012[2]))
 
     return [Ip1_1, Ip1_2, abs(V_p1_012[1]), abs(V_p1_012[2]), I_sol]
     # return I_sol
