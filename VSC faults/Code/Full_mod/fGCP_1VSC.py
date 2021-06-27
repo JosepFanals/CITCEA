@@ -23,10 +23,16 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 
 	Iconv_abc = [0, 0, 0]
 	Iconv_abc_prev = [1, 1, 1]
-	tol = 1e-3
+	tol = 1e-4
+	compt = 0
+	compt_lim = 1000
 
 	# loop
-	while abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol:
+	while (abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol) and compt < compt_lim:
+		compt += 1
+		# print(Iconv_abc)
+		# print(Iconv_abc_prev)
+		# print(compt)
 		Iconv_abc_prev = Iconv_abc
 		Vv_v = volt_solution(Iconv_abc)
 		V_p1_abc = Vv_v[0:3]
@@ -41,7 +47,7 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		Vphigh = 0.9
 		Vplow = 0.4
 		kp = 2
-		margin = 0.01 
+		margin = 0.0001 
 
 
 		# Grid code positive sequence
@@ -64,8 +70,8 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		Inn = min(abs(Iann), abs(Ibnn), abs(Icnn)) * np.exp(1j * (np.angle(Vn) + np.pi / 2))
 		Ipp = Ip * np.exp(1j * (np.angle(Vp) - np.pi / 2))
 
-		print(Ipp)
-		print(Inn)
+		# print(Ipp)
+		# print(Inn)
 
 		Iconv_012 = [0, Ipp, Inn]
 		Iconv_abc = x012_to_abc(Iconv_012)

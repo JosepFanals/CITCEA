@@ -497,7 +497,7 @@ VSC, Grid-Support, Reference Optimization, Asymmetrical Fault, Current Saturatio
 % and "HIS" in caps to complete the first word.
 \IEEEPARstart{T}{he} rise in renewable energies has carried along with it the inclusion of Voltage Source Converters (VSC) as a means of coupling energetic resources to the grid while providing controllability \cite{imhof2014power, eren2011control, blaabjerg2015power}. Adopting such power electronics equipment has induced a progressive shrinkage on synchronous generators' influence in power systems. The high flexibility of VSC control enables advanced grid-support control, which could enhance the system performance during the fault and ensure a fast recovery after the fault clearance. However, compared to electrical machines, VSCs cannot withstand overloads \cite{abdou2013improving}. Indeed, current (and also voltage) limitations cause VSC to behave differently. They reach what is called a saturated state. Many equilibrium points may arise as a result of that, especially in grids formed by multiple converters operating in critical conditions. The solution to such systems is also likely to become an arduous task to compute, as saturation states are defined by non-linear equations, or in more detail, by piecewise functions. 
 
-Not only do currents have to be constrained to not exceed the limitations, but they also have to collaborate on improving the voltages \cite{morren2006grid}. This becomes visible when looking at the requirements imposed by Transmission System Operators (TSO) in its grid codes \cite{erlich2006advanced, zhang2015coordinated}. Although this was not the case years ago, when wind power represented a small percentage of the electricity mix, nowadays wind power plants have to control active and reactive power \cite{mohseni2012review}. Besides, they have to transiently support the faults. The latter aspect is often referred to as low voltage ride through (LVRT) \cite{tsili2009review, conroy2007low}. The traditional approach to raise the voltage at the point of common coupling is to inject reactive power proportionally to the severity of the fault \cite{mohseni2012review, haddadi2020negative}. During the analysis of faults, it is often the case that voltages are decomposed into positive, negative, and zero sequence values. By doing so, the study of the fault is expected to be simplified, and in addition to that, some intuition can be build from inspecting the positive and negative sequence voltages. A concerning unbalanced fault is such that substantially decreases the positive sequence voltage with respect to the nominal voltage while the negative sequence voltage increases. Both sequences have to be thoroughly controlled, as discussed in \cite{haddadi2020negative, camacho2017positive}.
+Not only do currents have to be constrained to not exceed the limitations, but they also have to collaborate on improving the voltages \cite{morren2006grid}. This becomes visible when looking at the requirements imposed by Transmission System Operators (TSO) in its grid codes \cite{erlich2006advanced, zhang2015coordinated}. Although this was not the case years ago, when wind power represented a small percentage of the electricity mix, nowadays wind power plants have to control active and reactive power \cite{mohseni2012review}. Besides, they have to transiently support the faults. The latter aspect is often referred to as low voltage ride through (LVRT) \cite{tsili2009review, conroy2007low}. The traditional approach to raise the voltage at the point of common coupling is to inject reactive power proportionally to the severity of the fault \cite{mohseni2012review, haddadi2020negative}. During the analysis of faults, it is often the case that voltages are decomposed into positive, negative, and zero sequence values. By doing so, the study of the fault is expected to be simplified, and in addition to that, some intuition can be built from inspecting the positive and negative sequence voltages. A concerning unbalanced fault is such that substantially decreases the positive sequence voltage with respect to the nominal voltage while the negative sequence voltage increases. Both sequences have to be thoroughly controlled, as discussed in \cite{haddadi2020negative, camacho2017positive}.
 
 Nevertheless, for the most part, grid codes only specify reactive power injection during faults \cite{ree_gc, paspatis2019voltage}. %check this
 This is because transmission networks are often considered to have an inductive characteristic. The influence of the grid impedance characteristics of the system optimized under an equilibrium state is covered in \cite{camacho2017positive}, where the authors express the currents to inject as a function of the voltage and the impedances. A recursive relation between the voltage and the current is found, which invalidates the possibility of working with a closed-form expression from where to compute the optimal currents solution. Expressions of the same nature are proposed in \cite{camacho2012flexible}, where instead of attempting to solve the optimization problem, a control parameter is introduced. This takes various values, but no analysis is carried out to determine the optimal choice. The effect of varying this control parameter is studied in \cite{guo2013asymmetrical}, although it is not computed with a systematic approach, but rather, manually. Reference \cite{shabestary2016analytical} proposes a maximum allowed support (MAS) control scheme that is said to provide the maximum voltage support and simultaneously satisfying the current limitations. The study does not explicitly indicate how the current is distributed among the real and the imaginary positive and negative sequence components, and variations in input parameters are rather limited. Another voltage support scheme is presented in \cite{dai2015novel}, where the injected currents depend neither on the active power nor the filter resistance. In addition, positive and negative sequence grid voltage values are imposed, which facilitates the obtention of the steady-state current values. A variation of the grid code requirements is depicted in \cite{shabestary2018asymmetrical}. The authors found it to provide better results than conventional grid codes. The majority of the grid support strategies described above are compared and summarized in \cite{shabestary2018overview}. It is worth mentioning that the systems under study considered in these references include a single VSC. Further conclusions are expected to be extracted from examining a two-converter case study.
@@ -622,7 +622,7 @@ Two main contributions come from this paper. On the one hand, it indicates the p
 
 \section{Formulation} \label{problem_f}
 \subsection{System modeling}
-VSCs are elements that interconnect DC systems with AC systems. As shown in Figure \ref{fig:average_model}, they can be modeled following the so-called average model, where the switchings of the semiconductors are excluded. The VSC has been assumed to be connected to the AC grid with a filter in between denoted by $\un{Z}_z$. The control strategy of the VSC consists of adjusting the voltages appropriately so that currents can indirectly meet the references \cite{andani2018controller}. 
+VSCs are elements that interconnect DC systems with AC systems. As shown in Fig. \ref{fig:average_model}, they can be modeled following the so-called average model, where the switchings of the semiconductors are excluded. The VSC has been assumed to be connected to the AC grid with a filter in between denoted by $\un{Z}_z$. The control strategy of the VSC consists of adjusting the voltages appropriately so that currents can indirectly meet the references \cite{andani2018controller}. 
 
 % Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Figure \ref{fig:sys_n} presents the modeling for a system with $n$ converters connected to a grid with $n_g$ buses represented by its admittance matrix $\mathbf{\un{Y}_g}$. In addition, the grid has been modeled with a Norton equivalent instead of a Thevenin equivalent for simplification purposes. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
@@ -698,7 +698,7 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Figu
 \label{fig:average_model}
 \end{figure}
 
-Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Figure \ref{fig:sys_n} presents the modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Norton equivalent. Compared to dealing with a Thevenin equivalent, the Norton equivalent simplifies the formulation since it does not create an additional bus. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
+Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Fig. \ref{fig:sys_n} presents the modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Norton equivalent. Compared to dealing with a Thevenin equivalent, the Norton equivalent simplifies the formulation since it does not create an additional bus. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -993,7 +993,7 @@ The paper evaluates and compares three support strategies, which are:
 
 
 \section{Single converter case study} \label{1conv}
-The analysis is first performed considering a one-converter case study as the one depicted in Figure \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground, line to line or double line to ground). The goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
+The analysis is first performed considering a one-converter case study as the one depicted in Fig. \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground, line to line or double line to ground). The goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
 Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. 
 
@@ -1036,7 +1036,7 @@ Three parametric studies are performed. One considers variations in the fault im
 
 % \subsection{Exemplification}
 \subsection{Fault impedance variation analysis}
-For a single converter system as the one depicted in Figure \ref{fig:sys_p1}, the fault impedance connected to the bus at voltage $\un{V}_f$ is responsible for identify the fault. Explicitly, voltages and currents are related by
+For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the fault impedance connected to the bus at voltage $\un{V}_f$ is responsible for identify the fault. Explicitly, voltages and currents are related by
 \begin{equation}
   \begin{pmatrix}
     \un{I}^{a}_1 \\
@@ -1080,7 +1080,7 @@ On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent o
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
-Because of the nature of the converter, it is also imposed that the sum of the three phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values, since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Figure \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
+Because of the nature of the converter, it is also imposed that the sum of the three phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values, since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
 \begin{table}\centering
   \caption{System parameters for the one-converter case}
@@ -1098,7 +1098,7 @@ Because of the nature of the converter, it is also imposed that the sum of the t
   \end{tabular}
   \label{tab:param}
 \end{table}
-Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Figure \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. The results suggest that the OPT case is the preferred one, as its associated objective function is always the smallest, as expected. This optimal solution is achieved by distributing the currents between the real and imaginary parts. The imaginary current remains slightly larger than the real current (in absolute value). This is the main difference between OPT and the grid code implementation found in GCP and GCN. These two strategies always specify a null real current in both sequences, and in this case, they employ their full capability for the imaginary positive sequence current. Therefore, their objective functions and voltage profiles become identical, simply put, because this is a balanced fault. 
+Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Fig. \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. The results suggest that the OPT case is the preferred one, as its associated objective function is always the smallest, as expected. This optimal solution is achieved by distributing the currents between the real and imaginary parts. The imaginary current remains slightly larger than the real current (in absolute value). This is the main difference between OPT and the grid code implementation found in GCP and GCN. These two strategies always specify a null real current in both sequences, and in this case, they employ their full capability for the imaginary positive sequence current. Therefore, their objective functions and voltage profiles become identical, simply put, because this is a balanced fault. 
 
 \begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
@@ -1197,7 +1197,7 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
     \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance, one converter case}
     \label{fig:Zf_1conv_3x}
   \end{figure}
-Significantly different results are obtained in the case of a line to line fault, as shown in Figure \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be non-null for the imaginary part of the negative sequence. Even though the real current is kept at zero for GCP and GCN, their imaginary currents tend to approach the optimal value for large fault impedances. For low fault impedances, GCP prioritizes injecting current in the positive sequence whereas GCN does the same for the negative sequence, as expected. As a consequence, positive sequence voltages in the case of GCP are always superior to the ones obtained with GCN, and the contrary applies to the negative sequence voltages. Even though OPT looks for a balance between the positive and the negative sequence voltages, as seen from the optimization function in \eqref{eq:opt_1c}, it is able to reach higher positive sequence voltage values than GCP. This happens for moderate values of $\un{Z}_x$. In the end, there is an almost constant minimal difference between OPT and both GCP and GCN. All three objective functions are nearly the same. 
+Significantly different results are obtained in the case of a line to line fault, as shown in Fig. \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be non-null for the imaginary part of the negative sequence. Even though the real current is kept at zero for GCP and GCN, their imaginary currents tend to approach the optimal value for large fault impedances. For low fault impedances, GCP prioritizes injecting current in the positive sequence whereas GCN does the same for the negative sequence, as expected. As a consequence, positive sequence voltages in the case of GCP are always superior to the ones obtained with GCN, and the contrary applies to the negative sequence voltages. Even though OPT looks for a balance between the positive and the negative sequence voltages, as seen from the optimization function in \eqref{eq:opt_1c}, it is able to reach higher positive sequence voltage values than GCP. This happens for moderate values of $\un{Z}_x$. In the end, there is an almost constant minimal difference between OPT and both GCP and GCN. All three objective functions become nearly the same. 
 
 \begin{figure}[!htb]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
@@ -1298,7 +1298,7 @@ Significantly different results are obtained in the case of a line to line fault
 
 
 \subsection{$R_1/X_1$ variation analysis}
-The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle of the $\un{Z}_{v1}$ impedance, while the absolute value is preserved. The imaginary part of the currents (reactive component) tends to be superior than the real part (active component) for a small $R_1/X_1$ ratio. The currents evolve asymptotically, in the sense that even if the resistive part of the impedance is substantially larger than the reactance, the same prioritization applies. The ADA strategy dedicates most of its current capability to inject negative sequence reactive current, whereas the optimal solution tends to balance the currents not only between sequences but also between real and imaginary parts. Although ADA injects larger currents (by definition the saturation is forced), it does not provide a more favorable solution that the classical grid code GC. Differences are small, yet operating the VSC at its maximum current capabilities has a detrimental effect on the negative sequence voltage. 
+The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle of the $\un{Z}_{v1}$ impedance, while the absolute value is preserved. The goal of this study is to determine how this affects the distribution of currents between the real and the imaginary part. The results in Fig. \ref{fig:RX_1conv_LG} for the OPT case show that despite an increase in the resistive part of the impedance, the currents remain nearly constant for all the range of values. Most of the current capability is dedicated to $I^+_{im}$ and $I^-_{re}$. The converter injects a non-negligible active power, as the injected complex power remains around $0.30+j0.45$. 
 
 
 \begin{figure}[]\centering \tiny
@@ -1308,8 +1308,8 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
               \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Ip1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -1319,10 +1319,10 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1333,8 +1333,8 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                 \pgfplotsset{width=4.5cm, height=3.5cm}
                 \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1re.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_In1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1344,10 +1344,10 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1im.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_In1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_In1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1355,10 +1355,10 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vp1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vp1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1368,10 +1368,10 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Vn1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_Vn1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Vn1.csv};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1381,23 +1381,23 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, xmin=0.5, xmax=5, axis line style = thick, ytick distance = {0.05},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, xmin=0.5, xmax=5, axis line style = thick, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_f_obj.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/sta_LG_f_obj.csv};
-                  \legend{OPT, ADA, GC};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_f_obj.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_f_obj.csv};
+                  \legend{OPT, GCP, GCN};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the line to ground fault with a varying $R_1/X_1$ ratio and $\un{Z}_{ag}=0.1$}
+    \caption{Influence of the currents on the objective function for the line to ground fault with a varying $R_1/X_1$ ratio and a fault impedance $\un{Z}_{ag}=0.01$}
     \label{fig:RX_1conv_LG}
   \end{figure}
-Noticeably, the objective function is further minimized in the OPT case. In percentual terms there is an approximate 40\% improvement with respect to the GC approach. This is achieved balancing the currents. When the VSC operates at the optimal conditions, it takes full advantage of the current capabilities, just like it happened in the line to line fault shown in Figure \ref{fig:Zf_1conv_LL}. Thus, a line to ground fault with a predominant resistive characteristic is much more prone to being improved by means of adequately distributing the currents across sequences and real/imaginary parts. Across all range of $R_1/X_1$ values analyzed in Figure \ref{fig:RX_1conv_LG}, the injected active power remains between 0.405 and 0.401 whereas the reactive power is around 0.486 to 0.461. In short, the injection of active power has a positive contribution. 
-
+For large $R_1/X_1$ differences between the objective functions of OPT and GCP and GCN are acute due to the incapability of injecting real current. The OPT option achieves a larger positive sequence voltage than both GCP and GCN for all range of values. Although the negative sequence voltage obtained with OPT is initially larger, it is further reduced with increases in $R_1/X_1$, whereas this same voltage tends to grow for GCP and GCN. 
+Despite the fact that GCP prioritizes active current, as the fault is not extreme and it has been imposed that the converter has to operate under saturated conditions, the GCP strategy injects more current in the negative sequence than in the positive sequence. The contrary applies to the GCN option. Therefore, GCN yields larger $|V^+|$ and $|V^-|$ voltages compared to GCP. In the end, the objective function is practically the same for both choices. 
 
 \subsection{Cable length variation analysis}
-Figure \ref{fig:sys_c2} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
+Fig. \ref{fig:sys_c2} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1472,16 +1472,16 @@ Figure \ref{fig:sys_c2} represents a third case regarding single converter syste
     \un{Z}'_t = \frac{\un{Z}_p\un{Z}_p\un{Z}_t + \un{Z}_p\un{Z}_p\un{Z}_s + \un{Z}_p\un{Z}_s\un{Z}_t}{2\un{Z}_p\un{Z}_t + \un{Z}_s\un{Z}_p + \un{Z}_s\un{Z}_t + \un{Z}_p\un{Z}_p}
   \end{cases}
 \end{equation}
-Similarly as before, a Norton equivalent is preferred. The current $\un{I}'_t$ is simply equal to $\un{V}'_t/\un{Z}'_t$, which yields a basic system as the one in Figure \ref{fig:sys_p1}. 
+Similarly as before, a Norton equivalent is preferred. The current $\un{I}'_t$ is simply equal to $\un{V}'_t/\un{Z}'_t$, which yields a basic system as the one in Fig. \ref{fig:sys_p1}. 
 
-The analysis performed considers a cable with a varying length, up to 75 km. Its impact on the Thevenin equivalent parameters is shown in Figure \ref{fig:dist_th}. The voltage experiences a subtle increase, while the imaginary part of the equivalent impedance grows considerably with distance, yet the $\Re({\un{Z}'_t}) / \Im({\un{Z}'_t})$ ratio tends to rise. 
+The analysis performed considers a cable with a varying length, up to 100 km. Its impact on the Thevenin equivalent parameters is shown in Fig. \ref{fig:dist_th}. The voltage experiences a subtle increase, while the imaginary part of the equivalent impedance grows considerably with distance, yet the $\Re({\un{Z}'_t}) / \Im({\un{Z}'_t})$ ratio tends to rise. 
 
 \begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=4.0cm}
-              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Voltage (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.2,...,1.2}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=75]
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Voltage (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, ytick={0.0,0.2,...,1.2}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, xmin=0, xmax=100]
               \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Vth_re.csv};
               \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Vth_im.csv};
                \legend{$\Re (\underline{V}'_{t})$, $\Im (\underline{V}'_{t})$};
@@ -1493,7 +1493,7 @@ The analysis performed considers a cable with a varying length, up to 75 km. Its
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=4.0cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Impedance (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks = false, ytick={0, 0.01,..., 0.1}, xmin=0, xmax=75]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={Impedance (pu)}, /pgf/number format/.cd, legend style={at={(0.95,0.35)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick={0,20,...,100}, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled y ticks = false, ytick={0, 0.02,..., 0.1}, xmin=0, xmax=100]
                 \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/cable/Zth_re.csv};
                 \addplot[very thick, gray] table[x=x, y=y, col sep=comma] {Data/cable/Zth_im.csv};
                 \legend{$\Re (\underline{Z}'_{t})$, $\Im (\underline{Z}'_{t})$};
@@ -1505,12 +1505,7 @@ The analysis performed considers a cable with a varying length, up to 75 km. Its
   \end{figure}
   
 
-The cases OPT, ADA and GC are again evalauted, as depicted in Figure \ref{fig:cable_1conv_LL2}. The OPT situation unveils that, contrary to ADA and GC, imaginary currents ought to be rather stable. While in practical terms its positive sequence voltage is the same as the one from the standard grid code (GC), the negative sequence voltage becomes about 10\% lower. Therefore it can be stated that the optimization yields the most favorable value in general terms, although as it is the case here, some sequence may be worse off than the other options. Compared to GC, ADA maximizes the positive sequence voltage mainly by injecting larger negative sequence imaginary currents. However, an improvement of about 2\% in the objective function may not justify operating the converter at its maximum current capabilities.
-
-Increasing the cable distance causes the negative sequence voltage to grow, while the positive sequence voltage also tends to grow. This phenomena differs from the profiles obtained in Figures \ref{fig:Zf_1conv_LL} and \ref{fig:RX_1conv_LG}, where both voltages either simultaneously approached the objective value (1 and 0 respectively), or distanced from it.
-
-
-
+The options OPT, GCP and GCN are again evalauted, as depicted in Fig. \ref{fig:cable_1conv_LL2}. Increasing the cable distance causes the negative sequence voltage to grow, while the positive sequence voltage also tends to grow. This phenomena differs from the profiles obtained in Fig. \ref{fig:Zf_1conv_LL} and \ref{fig:RX_1conv_LG}, where both voltages either simultaneously approached the objective value (1 and 0 respectively), or distanced from it. Thus, it makes sense that larger distances imply a lower $I^+_{im}$ current in the case of the grid code implementation, while the less convenient growing negative sequence voltages force an increment in $I^-_{im}$. Most of the current capability is precisely devoted to this negative sequence imaginary current. The OPT option achieves a more favorable objective function value than GCP and GCN by keeping the positive sequence currents practically constant, increasing $I^-_{re}$ (in absolute vlaue), and decreasing $I^-_{im}$, which is the inverse trend followed by GCP and GCN. Surprisingly, in the OPT case, the VSC would have to inject a tiny negative active power, that is, this active power should flow from the grid to the converter. 
 
 
 \begin{figure}[]\centering \tiny
@@ -1518,10 +1513,10 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, ytick distance={0.1}, xmin=1, xmax=75, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, ytick distance={0.05}, xmin=1, xmax=100, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1re.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Ip1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Ip1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Ip1re.csv};
               % \legend{BF, OPT};
               \end{axis}
           \end{tikzpicture}
@@ -1531,10 +1526,10 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Ip1im.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1543,10 +1538,10 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1re.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_In1re.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_In1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_In1re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1556,10 +1551,10 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=75, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=100, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1im.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_In1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_In1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1567,10 +1562,10 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=75, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vp1.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vp1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Vp1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1580,10 +1575,10 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=75, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick,  xmin=1, xmax=100, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Vn1.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Vn1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_Vn1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Vn1.csv};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1593,25 +1588,26 @@ Increasing the cable distance causes the negative sequence voltage to grow, whil
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.17)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={5}, xmin=1, xmax=75, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.07)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={5}, xmin=1, xmax=100, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_f_obj.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/sta_LL_f_obj.csv};
-                  \legend{OPT, ADA, GC};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_f_obj.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_f_obj.csv};
+                  \legend{OPT, GCP, GCN};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for a line to line fault with a varying cable distance}
+    \caption{Influence of the currents on the objective function for a line to line fault with $\un{Z}_{ab}=0.1$ and a varying cable distance}
     \label{fig:cable_1conv_LL2}
   \end{figure}
 
 
 
+  % redo this here below
 
 
 \section{Two-converter case study} \label{2conv}
-A two-converter case is proposed in order to spot the interaction between both and compare the performance of the optimization with the grid code rules. Figure \ref{fig:sys_p2} shows a single-phase representation of the system under study. The converters are coupled to the grid by means of slightly different impedances $\un{Z}_{v1}$ and $\un{Z}_{v2}$. Table \ref{tab:param2} shows their values together with other input data. 
+A two-converter case is proposed in order to spot the interaction between both and compare the performance of the optimization with the grid code rules. Fig. \ref{fig:sys_p2} shows a single-phase representation of the system under study. The converters are coupled to the grid by means of slightly different impedances $\un{Z}_{v1}$ and $\un{Z}_{v2}$. Table \ref{tab:param2} shows their values together with other input data. 
 
 \subsection{Fault impedance variation analysis}
 \subsection{$R/X$ variation analysis}

@@ -15,17 +15,23 @@ Zv1 = 0.01 + 0.05 * 1j
 Zt = 0.01 + 0.1 * 1j
 Zs_i = 6.674e-5 + 1j * 2.597e-4  # series impedances in pu/km
 Zp_i = - 1j * 77.372  # parallel impedance in pu.km
-Y_con = [0, 0, 0]  # Yab, Ybc, Yac
+Y_con = [10, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
-Ii_t =  [-0.5015, -0.8652, -0.4985,  0.8669,  1.    , -0.0018]
-type_f = 'opt_3x_'
+# Ii_t = [ 9.0280e-01, -4.3010e-01, -9.0256e-01,  4.3066e-01, -2.3368e-04, -5.3266e-04]
+# Ii_t =  [ 9.1726e-01, -3.9566e-01, -9.1679e-01,  3.9950e-01, -4.1136e-04, -3.8410e-03]
+# Ii_t = [ 0.9009, -0.0267, -0.8841,  0.4674, -0.0166, -0.4406]
+# Ii_t = [ 0.8985,  0.0038, -0.8075,  0.59,   -0.0909, -0.5939]
+# Ii_t = [ 0.9096,  0.0041, -0.817,   0.5767, -0.0924, -0.5809]
+# Ii_t = [ 0.9108,  0.0043, -0.8171,  0.5766, -0.0936, -0.5811]
+Ii_t = [ 0.911,   0.0044, -0.817,   0.5767, -0.0939, -0.5812]
+type_f = 'gcp_LG_'
 folder = 'Results_1conv/'
 
 # RX variation
-n_p = 50
+n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(5, 50, n_p)
+# Yf_vec = fY_fault(5, 50, n_p)
 
 # Store data
 Vp1_vec = []
@@ -40,10 +46,10 @@ f_vec = []
 dist_vec = []
 
 # Optimize cases
-for iik in range(0, n_p):
+for iik in range(1, n_p):
     # print(iik)
     # Initialize data
-    Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
+    # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
@@ -54,24 +60,27 @@ for iik in range(0, n_p):
 
 
     # Cable
-    # dist_vec.append(iik)
-    # Zp = Zp_i / iik 
-    # Zs = Zs_i * iik
-    # Vth_1 = V_mod * Zp * Zp / (2 * Zt * Zp + Zp * Zs + Zp * Zp + Zt * Zs) 
-    # Ztt = (Zp * Zp * Zt + Zs * Zp * Zp + Zt * Zs * Zp) / (2 * Zp * Zt + Zp * Zp + Zs * Zp + Zt * Zs)
+    # iik = iik / 10  # remove
+    dist_vec.append(iik)
+    Zp = Zp_i / iik 
+    Zs = Zs_i * iik
+    Vth_1 = V_mod * Zp * Zp / (2 * Zt * Zp + Zp * Zs + Zp * Zp + Zt * Zs) 
+    Ztt = (Zp * Zp * Zt + Zs * Zp * Zp + Zt * Zs * Zp) / (2 * Zp * Zt + Zp * Zp + Zs * Zp + Zt * Zs)
 
 
     # Call optimization
-    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    Ii_t = x_opt[4][0]
+    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # Ii_t = x_opt[4][0]
     # x_opt = fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
     # x_opt = fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
     
 
     # Cable:
-    # x_opt = fOptimal_mystic(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fGridCode(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)  # adaptative
-    # x_opt = fGC_static(abs(Vth_1), Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fOptimal_mystic(Vth_1, Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # Ii_t = x_opt[4][0]
+    x_opt = fGCP_1vsc(Vth_1, Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec)
+    # x_opt = fGCN_1vsc(Vth_1, Imax, Zv1, Ztt, Y_con, Y_gnd, lam_vec)
+
 
     Vp1_vec.append(x_opt[2][0])
     Vn1_vec.append(x_opt[3][0])
@@ -91,13 +100,13 @@ for iik in range(0, n_p):
 
 
 # Save csv
-x_vec = Yf_vec
-for ll in range(len(x_vec)):  # to store Zf and not Yf
-    x_vec[ll] = 1 / x_vec[ll]
+# x_vec = Yf_vec
+# for ll in range(len(x_vec)):  # to store Zf and not Yf
+    # x_vec[ll] = 1 / x_vec[ll]
 
 # x_vec = RX_vec
 
-# x_vec = dist_vec
+x_vec = dist_vec
 
 pcnt = 1
 n_pp = int((1-pcnt) * n_p)
