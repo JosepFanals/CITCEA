@@ -1,7 +1,7 @@
 import numpy as np
 from fOpt_2VSC import fOptimal_mystic
 from fGCP_2VSC import fGCP_2vsc
-# from fGCN_2VSC import fGCN_2vsc
+from fGCN_2VSC import fGCN_2vsc
 from Plots import fPlots
 from Functions_main import fZ_rx, fY_fault, x012_to_abc, f_lam, predictive
 import pandas as pd
@@ -14,17 +14,23 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [0, 0, 0]  # Yab, Ybc, Yac
+Y_con = [10, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
-Ii_t = [ 0.5504, -0.8349, -0.6717,  0.7409,  0.1212,  0.094,   0.7819, -0.6235, -0.6883, 0.7255, -0.0936, -0.102 ]
-type_f = 'gcn_LG_'
+# Ii_t = [ 0.3773, -0.9262, -0.0663,  0.9977, -0.3111, -0.0713,  0.41,   -0.9122, -0.1685, 0.9857, -0.2415, -0.0733]
+# Ii_t = [ 0.841,   0.533,  -0.8871,  0.4602,  0.0468, -0.9933,  0.5829,  0.0047, -0.8003, 0.6003,  0.2194, -0.6048]
+# Ii_t = [ 0.8458,  0.5332, -0.8884,  0.4591,  0.0426, -0.9926,  0.8899,  0.0047, -0.8004, 0.6001, -0.0889, -0.606 ]
+# Ii_t = [ 0.8458,  0.5332, -0.8884,  0.4591,  0.0426, -0.9926,  0.8899,  0.0047, -0.8004, 0.6001, -0.0889, -0.606 ]
+# Ii_t = [ 0.7483,  0.6631, -0.9487,  0.3164,  0.201,  -0.9797,  0.86,    0.5101, -0.872, 0.4896,  0.0122, -0.9998]
+# Ii_t = [ 0.6717,  0.7408, -0.9775,  0.2111,  0.306,  -0.9521,  0.8568,  0.5156, -0.8751, 0.4842,  0.0184, -0.9999]
+Ii_t = [ 0.7017,  0.7125, -0.968,   0.2514,  0.2663, -0.9639,  0.8506,  0.5259, -0.8808,  0.4736,  0.0304, -0.9996]
+type_f = 'opt_LL_'
 folder = 'Results_2conv/'
 
 # RX variation
-n_p = 50
-# [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(30, 80, n_p)  # for values big enough to have a severe fault
+n_p = 100
+[RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
+# Yf_vec = fY_fault(20, 200, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
 Vp1_vec = []
@@ -50,16 +56,15 @@ for iik in range(n_p):
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
-    Y_con = [0, 0, 0]
-    Y_gnd = [Yf_vec[iik], 0, 0]
-    # Zv1 = Zin_vec[iik]
+    # Y_con = [0, 0, 0]
+    # Y_gnd = [Yf_vec[iik], 0, 0]
+    Zv1 = Zin_vec[iik]
     # lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
 
 
     # Call optimization
-    # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fGCP_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec)
+    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fGCP_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec)
     # x_opt = fGCN_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec)
 
     Vp1_vec.append(x_opt[4][0])
@@ -88,20 +93,22 @@ for iik in range(n_p):
     ff_obj = lam_vec[0] * abs(1 - abs(Vp1_vec[-1])) + lam_vec[1] * abs(0 - abs(Vn1_vec[-1])) + lam_vec[2] * abs(1 - abs(Vp2_vec[-1])) + lam_vec[3] * abs(0 - abs(Vn2_vec[-1]))
     f_vec.append(ff_obj)
 
-    # Iit2 = x_opt[8][0]
-    # print(Iit2)
-    # Ii_t = Iit2
+    # only uncomment for OPT
+    Iit2 = x_opt[8][0]
+    print(Iit2)
+    Ii_t = Iit2
     # print(abs(Vp1_vec[-1]), abs(Vp2_vec[-1]), abs(Vn1_vec[-1]), abs(Vn2_vec[-1]))
 
 
 
 
 # Save csv
-x_vec = Yf_vec
-for ll in range(len(x_vec)):  # to store Zf and not Yf
-    x_vec[ll] = 1 / x_vec[ll]
+# x_vec = Yf_vec
+# for ll in range(len(x_vec)):  # to store Zf and not Yf
+    # x_vec[ll] = 1 / x_vec[ll]
 
-# x_vec = RX_vec
+x_vec = RX_vec
+
 # x_vec = lam1_vec
 
 pcnt = 1

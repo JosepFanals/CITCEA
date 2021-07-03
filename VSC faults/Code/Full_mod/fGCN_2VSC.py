@@ -8,16 +8,16 @@ def fGCN_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec):
 
 	# Functions
 	def volt_solution(x):
-        	m1_inv = static_objects[0]
-        	Ig_v = static_objects[1] 
+		m1_inv = static_objects[0]
+		Ig_v = static_objects[1] 
 
-        	Ii_v = np.zeros((9,1), dtype=complex)
+		Ii_v = np.zeros((9,1), dtype=complex)
 		Ii_v[0:3] = [[x[0]], [x[1]], [x[2]]]
 		Ii_v[3:6] = [[x[3]], [x[4]], [x[5]]]
 		Ii_v[6:9] = [Ig_v[0], Ig_v[1], Ig_v[2]]
 
-        	Vv_v = np.dot(m1_inv, Ii_v)
-        	return Vv_v
+		Vv_v = np.dot(m1_inv, Ii_v)
+		return Vv_v
 
 	static_objects = build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd)
 
@@ -35,7 +35,7 @@ def fGCN_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec):
 		compt += 1
 		Iconv_abc_prev_1 = Iconv_abc_1
 		Iconv_abc_prev_2 = Iconv_abc_2
-		Iconv_abc = [Iconv_abc_1[0], Iconv_abc_1[1], Iconv_abc_1[2], Iconv_abc_2[3], Iconv_abc_2[4], Iconv_abc_2[5]]
+		Iconv_abc = [Iconv_abc_1[0], Iconv_abc_1[1], Iconv_abc_1[2], Iconv_abc_2[0], Iconv_abc_2[1], Iconv_abc_2[2]]
 
 		Vv_v = volt_solution(Iconv_abc)
 		V_p1_abc = Vv_v[0:3]

@@ -65,7 +65,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
     # SOLVE
-    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=20, ftol=1e-10, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=4, ftol=1e-4, full_output=True, maxiter=100000, maxfun=100000)
     # sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=40, ftol=1e-10, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
@@ -84,5 +84,8 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     Ip1_2 = Ip1_012[2] * np.exp(-1j * np.angle(V_p1_012[2]))
     Ip2_1 = Ip2_012[1] * np.exp(-1j * np.angle(V_p2_012[1]))
     Ip2_2 = Ip2_012[2] * np.exp(-1j * np.angle(V_p2_012[2]))
+
+    print(max(abs(I1_abc[0]), abs(I1_abc[1]), abs(I1_abc[2])))
+    print(max(abs(I2_abc[0]), abs(I1_abc[1]), abs(I1_abc[2])))
 
     return [Ip1_1, Ip1_2, Ip2_1, Ip2_2, abs(V_p1_012[1]), abs(V_p1_012[2]), abs(V_p2_012[1]), abs(V_p2_012[2]), I_sol]

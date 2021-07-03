@@ -1607,10 +1607,7 @@ The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:c
 
 
 \section{Two-converter case study} \label{2conv}
-A two-converter case is proposed in order to spot the interaction between both and compare the performance of the optimization with the grid code rules. Fig. \ref{fig:sys_p2} shows a single-phase representation of the system under study. The converters are coupled to the grid by means of slightly different impedances $\un{Z}_{v1}$ and $\un{Z}_{v2}$. Table \ref{tab:param2} shows their values together with other input data. 
-
-\subsection{Fault impedance variation analysis}
-\subsection{$R/X$ variation analysis}
+A two-converter case is proposed in order to spot the interaction between both converters and compare the performance of the optimization with the grid code rules. Fig. \ref{fig:sys_p2} shows a single-phase representation of the system under study. The converters are coupled to the grid by means of slightly different impedances $\un{Z}_{v1}$ and $\un{Z}_{v2}$. Table \ref{tab:param2} shows their values together with other input data. 
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1686,16 +1683,34 @@ A two-converter case is proposed in order to spot the interaction between both a
   \label{tab:param2}
 \end{table}
 
+Analogous to the one-converter situation, the optimization problem becomes
+\begin{equation}
+\begin{aligned}
+\min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1, \un{I}^{a}_2, \un{I}^{b}_2, \un{I}^{c}_2} \quad & \lambda^+_1|(1 - |\un{V}^+_{p1}|)| + \lambda^-_1|(0 - |\un{V}^-_{p1}|)| \\
+& + \lambda^+_2|(1 - |\un{V}^+_{p2}|)| + \lambda^-_2|(0 - |\un{V}^-_{p2}|)| , \\
+\textrm{s.t.} \quad & \text{max}(\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1) \leq I_{\text{max,1}} \ ,\\
+& \text{max}(\un{I}^{a}_2, \un{I}^{b}_2, \un{I}^{c}_2) \leq I_{\text{max,2}}\\
+\end{aligned}
+\label{eq:opt_2c}
+\end{equation}
+where the dependence of the currents on the voltages has been omitted. The application of the grid code is the same as before, in the sense that the injection of current $\un{I}_1$ only depends on $\un{V}_{p1}$, and $\un{I}_2$ is only a function of $\un{V}_{p2}$. 
 
-\begin{figure}[!htb]\centering \tiny
+\subsection{Fault impedance variation analysis}
+The results associated to a line to ground fault with a varying fault impedance are shown in Fig. \ref{fig:Zf_2conv_LG}. Differences in the objective function are negligible for small values of $\un{Z}_x$, that is, for strong faults. Nevertheless, the converter operates in saturated conditions in all cases. Due to the fact that $\un{Z}_{v1}\neq \un{Z}_{v2}$, the distribution of the current capability varies. For instance, in the positive sequence, VSC2 injects more imaginary current (in absolute value), which makes sense considering that $\Im(\un{Z}_{v2})>\Im(\un{Z}_{v1})$. However, the absolute value of $I^-_{im}$ becomes larger for VSC1, which seems counterintuitive. Since the fault is for the most part not extreme ($|V^+|\approx 0.75$ and $|V^-|\approx 0.25$), GCP ends up injecting more negative sequence current whereas GCN injects more positive sequence current. This is translated into having larger positive sequence voltages for GCN and smaller negative sequence voltages for GCP. The same pattern was observed in Fig. \ref{fig:RX_1conv_LG}. OPT remains as the choice that balances both sequences and manages to minimize the objective function. 
+
+
+\begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, ytick distance={0.1}, xmin=0.004, xmax=0.1, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip2re.csv};
-              % \legend{BF, OPT};
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, ytick distance={0.02}, xmin=0.01, xmax=0.035, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Ip1re.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Ip2re.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Ip1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Ip2re.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Ip1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Ip2re.csv};
               \end{axis}
           \end{tikzpicture}
     \end{subfigure}
@@ -1704,9 +1719,13 @@ A two-converter case is proposed in order to spot the interaction between both a
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.004, xmax=0.1, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Ip2im.csv};
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, xmin=0.01, xmax=0.035, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Ip1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Ip2im.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Ip2im.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Ip2im.csv};
                 % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1717,9 +1736,13 @@ A two-converter case is proposed in order to spot the interaction between both a
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.004, xmax=0.1, ytick distance = {0.05}, ymax = 0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In1re.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In2re.csv};
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, xmin=0.01, xmax=0.035, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_In1re.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_In2re.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_In1re.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_In2re.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_In1re.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_In2re.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1729,9 +1752,13 @@ A two-converter case is proposed in order to spot the interaction between both a
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.004, xmax=0.1, ytick distance = {0.05}, ymax = 0.1, ymin = -0.1,  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_In2im.csv};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick,  xmin=0.01, xmax=0.035, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_In1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_In2im.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_In1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_In2im.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_In1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_In2im.csv};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1741,9 +1768,13 @@ A two-converter case is proposed in order to spot the interaction between both a
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.004, xmax=0.1, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, ymax=0.5]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vp1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vp2.csv};
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, xmin=0.01, xmax=0.035, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ytick distance = {0.03}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vp1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vp2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vp2.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vp2.csv};
                 % \legend{BF, OPT};
                 \end{axis}
             \end{tikzpicture}
@@ -1753,10 +1784,14 @@ A two-converter case is proposed in order to spot the interaction between both a
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.05)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick,  xmin=0.004, xmax=0.1, ytick distance = {0.05}, ymax=0.1, ymin=-0.1, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vn1.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_Vn2.csv};
-                  \legend{VSC1, VSC2};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.05)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick,  xmin=0.01, xmax=0.035, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vn1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vn2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vn2.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vn2.csv};
+                  % \legend{VSC1, VSC2};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
@@ -1766,24 +1801,30 @@ A two-converter case is proposed in order to spot the interaction between both a
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, xmin=0.004, xmax=0.1, axis line style = thick, ytick distance = {0.2},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, ymin=1.1]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_3x_f_obj.csv};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.23,0.05)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.003}, xmin=0.01, xmax=0.035, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled x ticks=false, ytick distance={0.05}, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymin=0.8, xmin = 0.003]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_f_obj.csv};
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_f_obj.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_f_obj.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_f_obj.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_f_obj.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_f_obj.csv};
+                  \legend{VSC2 OPT, VSC1 OPT, VSC2 GCP, VSC1 GCP, VSC2 GCN, VSC1 GCN};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance}
-    \label{fig:Zf_2conv_3x}
+    \caption{Influence of the currents on the objective function for the line to ground fault with a varying fault impedance}
+    \label{fig:Zf_2conv_LG}
   \end{figure}
 
 
-
-
+\subsection{$R/X$ variation analysis}
+The angle variation of the impedance of connection is applied to only $\un{Z}_{v1}$ in order to spot more clearly the differences in the distribution of currents between the sequences. 
 
 
 % \newpage
 % \clearpage
-\section{////////////PLOTS////////////}
+% \section{////////////PLOTS////////////}
 
 % \input{Plots/Z_1conv_gc_new.tex}
 
