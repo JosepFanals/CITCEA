@@ -870,7 +870,7 @@ whereas for the negative sequence
 \end{equation}
 where the values of the constants are gathered in Table \ref{tab:param_gc}. Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The converter would therefore operate at saturated conditions during extreme faults because either the positive sequence voltage would reach the lower threshold $V^+_{\text{low}}$ or the negative sequence voltage would surpass the upper threshold $V^-_{\text{high}}$. However, in severe faults it is still possible that both limits are surpassed, or at least, approached. In case \eqref{eq:gc1} and \eqref{eq:gc2} where applied simultaneously, the required current to be injected by the VSC could potentially exceed the $I_{\text{max},k}$ limitation. Thus, it makes sense to establish a prioritization. 
 
-This paper considers the two straightforward prioritizations. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the maximum allowed negative sequence current so as not to exceed the current limitations in any phase. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
+This paper considers the two straightforward prioritizations. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the maximum allowed negative sequence current so as not to exceed the current limitations in any phase. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations, the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
 
 Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. Phase currents are related to zero, positive and negative sequence components by
 \begin{equation}
@@ -899,7 +899,7 @@ where $\un{I}^0$ is null as the VSC is incapable of injecting it. The $k$ index 
     \un{I}_c = \un{a}\un{I}^+ + \un{a}^2\un{I}^- \\
   \end{cases}
 \end{equation}
-Then, the absolute value of the three phase currents are set to the limit $I_\text{max}$. The goal of doing so is to determine the maximum current that causes one phase to reach saturation while the two others operate under the limits. This will act as the most restrictive option. Consequently, squaring the currents yields
+Then, the absolute value of the three phase currents is set to the limit $I_\text{max}$. The goal of doing so is to determine the maximum current that causes one phase to reach saturation while the two others operate under the limits. This will act as the most restrictive option. Consequently, squaring the currents yields
 \begin{equation}
   \begin{cases}
     I_{\text{max}}^2 = (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
@@ -917,7 +917,7 @@ It can be seen that each phase current, set at the allowed maximum, depends on f
 \end{equation}
 current $I^-_{im}$ can be expressed as a function of $I^-_{re}$, for instance, and therefore there is only one unknown in each expression of \eqref{eq:Ifin}. Then, the resulting quadratic equations are solved for $I^-_{re}$ and the associated $I^-_{im}$ is found with \eqref{eq:tann}. 
 
-Note that six $[I^-_{re},I^-_{im}]$ pairs of solutions would be obtained in total. Three of them have to be discarded because they do not follow the preestablished direction of $\un{I}^-$ (due to the quadratic characteristic of \eqref{eq:Ifin}). Out of the reamining three, the one with the smallest absolute value is picked. This way it is ensured that current saturation is only reached in one phase, while the other two operate below their limits. 
+Note that six $[I^-_{re},I^-_{im}]$ pairs of solutions would be obtained in total. Three of them have to be discarded because they do not follow the pre-established direction of $\un{I}^-$ (due to the quadratic characteristic of \eqref{eq:Ifin}). Out of the remaining three, the one with the smallest absolute value is picked. This way it is ensured that current saturation is only reached in one phase, while the other two operate below their limits. 
 
 An analogous procedure as the one described above applies to computing the positive sequence current in case the negative sequence component is prioritized (GCN). 
 
@@ -1071,7 +1071,7 @@ where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ r
 \end{equation}
 where $\un{Y}_{v1}=1/\un{Z}_{v1}$ and $\un{Y}_t=1/\un{Z}_t$. 
 
-On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent on the fault and therefore, it is built by observation. The optimization problem for the one case converter reads 
+On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent on the fault, and therefore, it is built by observation. The optimization problem for the one case converter reads 
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1} \quad & \lambda^+_1|(1 - |\un{V}^+_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1)|)| \\
@@ -1080,7 +1080,7 @@ On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent o
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
-Because of the nature of the converter, it is also imposed that the sum of the three phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values, since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
+Because of the nature of the converter, it is also imposed that the sum of the three phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
 \begin{table}\centering
   \caption{System parameters for the one-converter case}
@@ -1393,11 +1393,11 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
     \caption{Influence of the currents on the objective function for the line to ground fault with a varying $R_1/X_1$ ratio and a fault impedance $\un{Z}_{ag}=0.01$}
     \label{fig:RX_1conv_LG}
   \end{figure}
-For large $R_1/X_1$ differences between the objective functions of OPT and GCP and GCN are acute due to the incapability of injecting real current. The OPT option achieves a larger positive sequence voltage than both GCP and GCN for all range of values. Although the negative sequence voltage obtained with OPT is initially larger, it is further reduced with increases in $R_1/X_1$, whereas this same voltage tends to grow for GCP and GCN. 
+For large $R_1/X_1$ differences between the objective functions of OPT and GCP and GCN are acute due to the incapability of injecting real current. The OPT option achieves a larger positive sequence voltage than both GCP and GCN for all ranges of values. Although the negative sequence voltage obtained with OPT is initially larger, it is further reduced with increases in $R_1/X_1$, whereas this same voltage tends to grow for GCP and GCN. 
 Despite the fact that GCP prioritizes active current, as the fault is not extreme and it has been imposed that the converter has to operate under saturated conditions, the GCP strategy injects more current in the negative sequence than in the positive sequence. The contrary applies to the GCN option. Therefore, GCN yields larger $|V^+|$ and $|V^-|$ voltages compared to GCP. In the end, the objective function is practically the same for both choices. 
 
 \subsection{Cable length variation analysis}
-Fig. \ref{fig:sys_c2} represents a third case regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
+Fig. \ref{fig:sys_c2} represents the third parametric study regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1474,7 +1474,7 @@ Fig. \ref{fig:sys_c2} represents a third case regarding single converter systems
 \end{equation}
 Similarly as before, a Norton equivalent is preferred. The current $\un{I}'_t$ is simply equal to $\un{V}'_t/\un{Z}'_t$, which yields a basic system as the one in Fig. \ref{fig:sys_p1}. 
 
-The analysis performed considers a cable with a varying length, up to 100 km. Its impact on the Thevenin equivalent parameters is shown in Fig. \ref{fig:dist_th}. The voltage experiences a subtle increase, while the imaginary part of the equivalent impedance grows considerably with distance, yet the $\Re({\un{Z}'_t}) / \Im({\un{Z}'_t})$ ratio tends to rise. 
+The analysis performed considers a cable with a varying length, up to 100 km. Its impact on the Thevenin equivalent parameters are shown in Fig. \ref{fig:dist_th}. The voltage experiences a subtle increase, while the imaginary part of the equivalent impedance grows considerably with distance, yet the $\Re({\un{Z}'_t}) / \Im({\un{Z}'_t})$ ratio tends to rise. 
 
 \begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
@@ -1505,7 +1505,7 @@ The analysis performed considers a cable with a varying length, up to 100 km. It
   \end{figure}
   
 
-The options OPT, GCP and GCN are again evalauted, as depicted in Fig. \ref{fig:cable_1conv_LL2}. Increasing the cable distance causes the negative sequence voltage to grow, while the positive sequence voltage also tends to grow. This phenomena differs from the profiles obtained in Fig. \ref{fig:Zf_1conv_LL} and \ref{fig:RX_1conv_LG}, where both voltages either simultaneously approached the objective value (1 and 0 respectively), or distanced from it. Thus, it makes sense that larger distances imply a lower $I^+_{im}$ current in the case of the grid code implementation, while the less convenient growing negative sequence voltages force an increment in $I^-_{im}$. Most of the current capability is precisely devoted to this negative sequence imaginary current. The OPT option achieves a more favorable objective function value than GCP and GCN by keeping the positive sequence currents practically constant, increasing $I^-_{re}$ (in absolute vlaue), and decreasing $I^-_{im}$, which is the inverse trend followed by GCP and GCN. Surprisingly, in the OPT case, the VSC would have to inject a tiny negative active power, that is, this active power should flow from the grid to the converter. 
+The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:cable_1conv_LL2}. Increasing the cable distance causes the negative sequence voltage to grow, while the positive sequence voltage also tends to grow. This phenomenon differs from the profiles obtained in Fig. \ref{fig:Zf_1conv_LL} and \ref{fig:RX_1conv_LG}, where both voltages either simultaneously approached the objective value (1 and 0 respectively), or distanced from it. Thus, it makes sense that larger distances imply a lower $I^+_{im}$ current in the case of the grid code implementation, while the less convenient growing negative sequence voltages force an increment in $I^-_{im}$. Most of the current capability is precisely devoted to this negative sequence imaginary current. The OPT option achieves a more favorable objective function value than GCP and GCN by keeping the positive sequence currents practically constant, increasing $I^-_{re}$ (in absolute value), and decreasing $I^-_{im}$, which is the inverse trend followed by GCP and GCN. Surprisingly, in the OPT case, the VSC would have to inject a tiny negative active power, that is, this active power should flow from the grid to the converter. 
 
 
 \begin{figure}[]\centering \tiny

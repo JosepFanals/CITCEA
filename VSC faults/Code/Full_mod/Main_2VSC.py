@@ -1,8 +1,9 @@
 import numpy as np
-# from fOptimal_2VSC import fOptimal
-from fOpt_2VSC_new import fOptimal_mystic
+from fOpt_2VSC import fOptimal_mystic
+from fGCP_2VSC import fGCP_2vsc
+# from fGCN_2VSC import fGCN_2vsc
 from Plots import fPlots
-from Functions import fZ_rx, fY_fault, x012_to_abc, f_lam, predictive
+from Functions_main import fZ_rx, fY_fault, x012_to_abc, f_lam, predictive
 import pandas as pd
 np.set_printoptions(precision=4)
 import matplotlib.pyplot as plt
@@ -16,17 +17,14 @@ Zt = 0.01 + 0.1 * 1j
 Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
-# Ii_t = [0.6055, -0.7924, -0.6547, 0.1574, -0.000, 0.6354, 0.6149, -0.7886, -0.6195, 0.785, 0.0046, 0.00361]  # currents initialization: Ia1re, Ia1im, ...
 Ii_t = [ 0.5504, -0.8349, -0.6717,  0.7409,  0.1212,  0.094,   0.7819, -0.6235, -0.6883, 0.7255, -0.0936, -0.102 ]
-# Ii_t = [ 0.9558,  0.2942, -0.7328,  0.6805, -0.2229, -0.9749,  0.9476,  0.3196, -0.7551, 0.6557, -0.1925, -0.9753]
-# Ii_t0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # currents initialization: Ia1re, Ia1im, ...
-type_f = 'opt_LLG_'
-folder = 'Results_2conv_Zf_v2/'
+type_f = 'gcn_LG_'
+folder = 'Results_2conv/'
 
 # RX variation
 n_p = 50
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(10, 50, n_p)  # for values big enough to have a severe fault
+Yf_vec = fY_fault(30, 80, n_p)  # for values big enough to have a severe fault
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 # Store data
 Vp1_vec = []
@@ -52,7 +50,7 @@ for iik in range(n_p):
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Y_con = [Yf_vec[iik], 0, 0]
-    Y_con = [10000, 0, 0]
+    Y_con = [0, 0, 0]
     Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
     # lam_vec = [lam1_vec[iik], 1 - lam1_vec[iik], 0, 0]
@@ -60,7 +58,9 @@ for iik in range(n_p):
 
     # Call optimization
     # x_opt = fOptimal(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    x_opt = fGCP_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec)
+    # x_opt = fGCN_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec)
 
     Vp1_vec.append(x_opt[4][0])
     Vp2_vec.append(x_opt[6][0])
@@ -85,22 +85,13 @@ for iik in range(n_p):
 
     # ----------------------------
 
-    # ff_obj = np.real(lam_vec[0] * (1 - Vp1_vec[-1] * np.conj(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + Vn1_vec[-1] * np.conj(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - Vp2_vec[-1] * np.conj(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + Vn2_vec[-1] * np.conj(Vn2_vec[-1])) ** 2)
-    # ff_obj = np.real(lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 + lam_vec[2] * (1 - abs(Vp2_vec[-1])) ** 2 + lam_vec[3] * (0 + abs(Vn2_vec[-1])) ** 2)
-    # ff_obj = lam_vec[0] * (1 - abs(Vp1_vec[-1])) + lam_vec[1] * (0 + abs(Vn1_vec[-1])) + lam_vec[2] * (1 - abs(Vp2_vec[-1])) + lam_vec[3] * (0 + abs(Vn2_vec[-1]))
-    # ff_obj = lam_vec[0] * (1 - abs(Vp1_vec[-1])) ** 2 + lam_vec[1] * (0 + abs(Vn1_vec[-1])) ** 2 
     ff_obj = lam_vec[0] * abs(1 - abs(Vp1_vec[-1])) + lam_vec[1] * abs(0 - abs(Vn1_vec[-1])) + lam_vec[2] * abs(1 - abs(Vp2_vec[-1])) + lam_vec[3] * abs(0 - abs(Vn2_vec[-1]))
     f_vec.append(ff_obj)
-    # print(ff_obj)
 
-    # Ii_t = [np.real(I_vsc1_abc[0]), np.imag(I_vsc1_abc[0]), np.real(I_vsc1_abc[1]), np.imag(I_vsc1_abc[1]), np.real(I_vsc1_abc[2]), np.imag(I_vsc1_abc[2]),  np.real(I_vsc2_abc[0]), np.imag(I_vsc2_abc[0]), np.real(I_vsc2_abc[1]), np.imag(I_vsc2_abc[1]), np.real(I_vsc2_abc[2]), np.imag(I_vsc2_abc[2])]
-    # Ii_t = x_opt[8][0]
-    Iit2 = x_opt[8][0]
-    # print(Ii_t)
-    print(Iit2)
-    Ii_t = Iit2
-
-    print(abs(Vp1_vec[-1]), abs(Vp2_vec[-1]), abs(Vn1_vec[-1]), abs(Vn2_vec[-1]))
+    # Iit2 = x_opt[8][0]
+    # print(Iit2)
+    # Ii_t = Iit2
+    # print(abs(Vp1_vec[-1]), abs(Vp2_vec[-1]), abs(Vn1_vec[-1]), abs(Vn2_vec[-1]))
 
 
 

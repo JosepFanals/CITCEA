@@ -1,19 +1,12 @@
 # from Main import Vp1_vec
 import numpy as np
-
-# from mystic.symbolic import generate_constraint, generate_solvers, simplify
-# from mystic.symbolic import generate_penalty, generate_conditions
-# from mystic.solvers import fmin, fmin_powell, diffev, diffev2
-# from mystic.penalty import quadratic_equality, quadratic_inequality
-# import mystic.symbolic as ms
-
 import numpy as np
 import mystic.symbolic as ms
 import mystic.solvers as my
 import mystic.math as mm
 
 
-from Functions import xabc_to_012, x012_to_abc, build_static_objects 
+from Functions_main import xabc_to_012, x012_to_abc, build_static_objects 
 np.set_printoptions(precision=4)
 
 def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
@@ -76,6 +69,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     # sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=40, ftol=1e-10, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol
+    print(I_sol[0][:])
 
     # Manage results
    
