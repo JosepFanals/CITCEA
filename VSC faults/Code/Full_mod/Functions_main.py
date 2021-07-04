@@ -116,9 +116,17 @@ def fZ_rx(lim1, lim2, n_p, Zthmod):
 
 
 def fY_fault(lim1, lim2, n_p):
-    diff = lim1 - lim2
+    bb1 = 1 / lim1
+    bb2 = 1 / lim2
+    # diff = lim1 - lim2
+    # incr = diff / n_p
+    # Zff = np.arange(lim2, lim1, incr)
+
+    diff = bb1 - bb2
     incr = diff / n_p
-    Zff = np.arange(lim2, lim1, incr)
+    Zff = np.arange(bb2, bb1, incr)
+    for ll in range(len(Zff)):
+        Zff[ll] = 1 / Zff[ll]
 
     return Zff
 

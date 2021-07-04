@@ -21,18 +21,21 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 
 	static_objects = build_static_objects1(V_mod, Zv1, Zt, Y_con, Y_gnd)
 
-	Iconv_abc = [0, 0, 0]
-	Iconv_abc_prev = [1, 1, 1]
+	Iconv_abc = [0.2, 0.2, 0.2]
+	Iconv_abc_prev = [0.1, 0.1, 0.1]
 	tol = 1e-4
 	compt = 0
-	compt_lim = 1000
+	compt_lim = 10
+	trobat = False
 
+	print('begin')
 	# loop
-	while (abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol) and compt < compt_lim:
+	# while (abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol) and compt < compt_lim:
+	while (abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol) and compt < compt_lim and trobat is False:
 		compt += 1
-		# print(Iconv_abc)
+		# print(Iconv_abc, Iconv_abc_prev)
 		# print(Iconv_abc_prev)
-		# print(compt)
+		print(compt)
 		Iconv_abc_prev = Iconv_abc
 		Vv_v = volt_solution(Iconv_abc)
 		V_p1_abc = Vv_v[0:3]
@@ -47,7 +50,7 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		Vphigh = 0.9
 		Vplow = 0.4
 		kp = 2
-		margin = 0.0001 
+		margin = 0.001 
 
 
 		# Grid code positive sequence
@@ -72,14 +75,22 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 
 		# print(Ipp)
 		# print(Inn)
+		# print(abs(Iann), abs(Ibnn), abs(Icnn))
+		# print(Ip)
+
 
 		Iconv_012 = [0, Ipp, Inn]
 		Iconv_abc = x012_to_abc(Iconv_012)
+		# print(max(abs(Iconv_abc[0]), abs(Iconv_abc[1]), abs(Iconv_abc[2])))
+		# print(abs(Iconv_abc[0]), abs(Iconv_abc[1]), abs(Iconv_abc[2]))
+		# print(np.real(Iconv_abc[0]), np.imag(Iconv_abc[0]), np.real(Iconv_abc[1]), np.imag(Iconv_abc[1]), np.real(Iconv_abc[2]), np.imag(Iconv_abc[2]))
 
 	# end loop
 
 	Ip1_1 = Ipp * np.exp(-1j * np.angle(Vp))
 	In1_1 = Inn * np.exp(-1j * np.angle(Vn))
+	print(Ip1_1)
+	print(In1_1)
 	return [Ip1_1, In1_1, abs(Vp), abs(Vn)]
 
 

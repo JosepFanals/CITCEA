@@ -18,17 +18,16 @@ Zp_i = - 1j * 77.372  # parallel impedance in pu.km
 Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Ycg
 lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
-# Ii_t = [ 0.911,   0.0044, -0.817,   0.5767, -0.0939, -0.5812]
-# Ii_t = [ 0.9164,  0.0046, -0.8183,  0.575,  -0.0981, -0.5795]
-# Ii_t = [ 0.9611,  0.006,  -0.7984,  0.6022, -0.1626, -0.6081]
-Ii_t =  [ 9.2990e-01,  1.1609e-04, -7.8668e-01,  4.9834e-01, -1.4339e-01, -4.9820e-01]
-type_f = 'opt_LG_'
+# Ii_t = [0.8178, 0.4075, -0.8483, 0.5295, 0.0305, -0.9371]
+# Ii_t = [ 0.824, 0.4774, -0.8523,  0.5216,  0.0281, -0.9989]
+Ii_t = [ 0.8563,  0.5165, -0.8756,  0.4832,  0.0193, -0.9998]
+type_f = 'gcp_3x_'
 folder = 'Results_1conv_largerZ/'
 
 # RX variation
-n_p = 1000
+n_p = 200
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(1.2, 50, n_p)
+Yf_vec = fY_fault(2, 50, n_p)
 
 # Store data
 Vp1_vec = []
@@ -46,10 +45,11 @@ dist_vec = []
 for iik in range(0, n_p):
     # print(iik)
     # Initialize data
+    Y_con = [0.999 * Yf_vec[iik], Yf_vec[iik], 1.001 * Yf_vec[iik]]  # test fixing
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    Y_con = [Yf_vec[iik], 0, 0]
+    # Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
@@ -66,9 +66,9 @@ for iik in range(0, n_p):
 
 
     # Call optimization
-    x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
-    Ii_t = x_opt[4][0]  # uncomment only for OPT
-    # x_opt = fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
+    # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
+    # Ii_t = x_opt[4][0]  # uncomment only for OPT
+    x_opt = fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
     # x_opt = fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
     
 
