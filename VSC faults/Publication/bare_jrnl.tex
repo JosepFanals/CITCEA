@@ -1204,7 +1204,7 @@ Significantly different results are obtained in the case of a line to line fault
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.05}, axis line style = thick, ytick distance={0.05}, xmin=0.04, xmax=0.28, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax=0.1, ymin=-0.1]
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, ytick distance={0.05}, xmin=0.05, xmax=0.6, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ymax=0.1, ymin=-0.1]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Ip1re.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Ip1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1re.csv};
@@ -1217,7 +1217,7 @@ Significantly different results are obtained in the case of a line to line fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.05}, axis line style = thick, xmin=0.04, xmax=0.28, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, xmin=0.05, xmax=0.6, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Ip1im.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Ip1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1im.csv};
@@ -1229,7 +1229,7 @@ Significantly different results are obtained in the case of a line to line fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.05}, axis line style = thick, xmin=0.04, xmax=0.28, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, xmin=0.05, xmax=0.6, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_In1re.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_In1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_In1re.csv};
@@ -1242,9 +1242,10 @@ Significantly different results are obtained in the case of a line to line fault
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.05}, axis line style = thick,  xmin=0.04, xmax=0.28, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},   scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_In1im.csv};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick,  xmin=0.05, xmax=0.6, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},   scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_In1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_In1im.csv};
+                  % \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_In1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_In1im.csv};
                   \end{axis}
               \end{tikzpicture}
@@ -1253,9 +1254,10 @@ Significantly different results are obtained in the case of a line to line fault
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.05}, axis line style = thick, xmin=0.04, xmax=0.28, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Vp1.csv};
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|V^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, xmin=0.05, xmax=0.6, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Vp1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Vp1.csv};
+                  % \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Vp1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Vp1.csv};
                 % \legend{BF, OPT};
                 \end{axis}
@@ -1266,9 +1268,10 @@ Significantly different results are obtained in the case of a line to line fault
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.08,0.35)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.05}, axis line style = thick,  xmin=0.04, xmax=0.28, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Vn1.csv};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$|V^-|$}, /pgf/number format/.cd, legend style={at={(0.08,0.35)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick,  xmin=0.05, xmax=0.6, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Vn1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Vn1.csv};
+                  % \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Vn1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Vn1.csv};
                 %   \legend{OPT, ROPT};
                   \end{axis}
@@ -1280,11 +1283,12 @@ Significantly different results are obtained in the case of a line to line fault
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.45)},anchor=south east,legend columns=1, xmin=0.04, xmax=0.28, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, ytick distance = {0.1},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_f_obj.csv};
+                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.45)},anchor=south east,legend columns=1, xmin=0.05, xmax=0.6, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.04}, axis line style = thick, ytick distance = {0.2},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_f_obj.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_f_obj.csv};
+                  % \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_f_obj.csv};
                   \addplot[very thick, dashed, green] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_f_obj.csv};
-                  \legend{OPT, GCP, GCN};
+                  \legend{GCP, OPT, GCN};
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}

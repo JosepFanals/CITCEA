@@ -27,10 +27,10 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 	Inn = 0.5 + 0 * 1j
 	Ipp_prev = 0.1 + 0.1 * 1j
 	Inn_prev = 0.2 + 0.2 * 1j
-	tol = 1e-5
-	fr = 0.3  # relaxation factor
+	tol = 1e-4
+	fr = 0.1  # relaxation factor
 	compt = 0
-	compt_lim = 100
+	compt_lim = 200
 	trobat = False
 
 	print('begin')
@@ -90,6 +90,7 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		# with relaxation
 		Ipp = Ipp_prev + fr * (Ipp - Ipp_prev)
 		Inn = Inn_prev + fr * (Inn - Inn_prev)
+
 
 
 		Iconv_012 = [0, Ipp, Inn]

@@ -853,17 +853,17 @@ INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_In1re.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcp_LL_In1re.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcn_LL_In1re.csv
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_In1im.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcp_LL_In1im.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_In1im.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcn_LL_In1im.csv
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_Vp1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcp_LL_Vp1.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_Vp1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcn_LL_Vp1.csv
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_Vn1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcp_LL_Vn1.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_Vn1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcn_LL_Vn1.csv
-INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcp_LL_f_obj.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcn_LL_f_obj.csv
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
