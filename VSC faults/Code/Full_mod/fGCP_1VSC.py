@@ -23,9 +23,9 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 
 	Iconv_abc = [0.2, 0.2, 0.2]
 	Iconv_abc_prev = [0.1, 0.1, 0.1]
-	tol = 1e-4
+	tol = 1e-3
 	compt = 0
-	compt_lim = 10
+	compt_lim = 10000
 	trobat = False
 
 	print('begin')
@@ -35,7 +35,7 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		compt += 1
 		# print(Iconv_abc, Iconv_abc_prev)
 		# print(Iconv_abc_prev)
-		print(compt)
+		# print(compt)
 		Iconv_abc_prev = Iconv_abc
 		Vv_v = volt_solution(Iconv_abc)
 		V_p1_abc = Vv_v[0:3]
@@ -60,23 +60,25 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		elif Vpabs <= Vplow:
 			Ip = Imax
 
-		Ia_p, ta, ang_na = CurrentP_data(Vp, Ip, Vn, 'a')
-		Ib_p, tb, ang_nb = CurrentP_data(Vp, Ip, Vn, 'b')
-		Ic_p, tc, ang_nc = CurrentP_data(Vp, Ip, Vn, 'c')
+
+		if Ip < Imax:
+			Ia_p, ta, ang_na = CurrentP_data(Vp, Ip, Vn, 'a')
+			Ib_p, tb, ang_nb = CurrentP_data(Vp, Ip, Vn, 'b')
+			Ic_p, tc, ang_nc = CurrentP_data(Vp, Ip, Vn, 'c')
 
 
-		# Calculation of max negative sequence current:
-		Iann = Inmax(Ia_p, ta, Imax, ang_na, margin)
-		Ibnn = Inmax(Ib_p, tb, Imax, ang_nb, margin)
-		Icnn = Inmax(Ic_p, tc, Imax, ang_nc, margin)
+			# Calculation of max negative sequence current:
+			Iann = Inmax(Ia_p, ta, Imax, ang_na, margin)
+			Ibnn = Inmax(Ib_p, tb, Imax, ang_nb, margin)
+			Icnn = Inmax(Ic_p, tc, Imax, ang_nc, margin)
 
-		Inn = min(abs(Iann), abs(Ibnn), abs(Icnn)) * np.exp(1j * (np.angle(Vn) + np.pi / 2))
+			Inn = min(abs(Iann), abs(Ibnn), abs(Icnn)) * np.exp(1j * (np.angle(Vn) + np.pi / 2))
+		
+		else:
+			Inn = 0
+
 		Ipp = Ip * np.exp(1j * (np.angle(Vp) - np.pi / 2))
 
-		# print(Ipp)
-		# print(Inn)
-		# print(abs(Iann), abs(Ibnn), abs(Icnn))
-		# print(Ip)
 
 
 		Iconv_012 = [0, Ipp, Inn]
@@ -86,6 +88,7 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		# print(np.real(Iconv_abc[0]), np.imag(Iconv_abc[0]), np.real(Iconv_abc[1]), np.imag(Iconv_abc[1]), np.real(Iconv_abc[2]), np.imag(Iconv_abc[2]))
 
 	# end loop
+	print(compt)
 
 	Ip1_1 = Ipp * np.exp(-1j * np.angle(Vp))
 	In1_1 = Inn * np.exp(-1j * np.angle(Vn))

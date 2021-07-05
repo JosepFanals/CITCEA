@@ -21,7 +21,7 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [0.8178, 0.4075, -0.8483, 0.5295, 0.0305, -0.9371]
 # Ii_t = [ 0.824, 0.4774, -0.8523,  0.5216,  0.0281, -0.9989]
 Ii_t = [ 0.8563,  0.5165, -0.8756,  0.4832,  0.0193, -0.9998]
-type_f = 'gcp_3x_'
+type_f = 'gcp_LL_'
 folder = 'Results_1conv_largerZ/'
 
 # RX variation
@@ -45,11 +45,11 @@ dist_vec = []
 for iik in range(0, n_p):
     # print(iik)
     # Initialize data
-    Y_con = [0.999 * Yf_vec[iik], Yf_vec[iik], 1.001 * Yf_vec[iik]]  # test fixing
+    # Y_con = [0.999 * Yf_vec[iik], Yf_vec[iik], 1.001 * Yf_vec[iik]]  # test fixing
     # Y_con = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], Yf_vec[iik], Yf_vec[iik]]
     # Y_gnd = [Yf_vec[iik], 0, 0]
-    # Y_con = [Yf_vec[iik], 0, 0]
+    Y_con = [Yf_vec[iik], 0, 0]
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
     # Zv1 = Zin_vec[iik]
