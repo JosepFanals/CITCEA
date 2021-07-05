@@ -21,11 +21,11 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [0.8178, 0.4075, -0.8483, 0.5295, 0.0305, -0.9371]
 # Ii_t = [ 0.824, 0.4774, -0.8523,  0.5216,  0.0281, -0.9989]
 Ii_t = [ 0.8563,  0.5165, -0.8756,  0.4832,  0.0193, -0.9998]
-type_f = 'gcp_LL_'
+type_f = 'gcn_LL_'
 folder = 'Results_1conv_largerZ/'
 
 # RX variation
-n_p = 200
+n_p = 50
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 Yf_vec = fY_fault(2, 50, n_p)
 
@@ -68,8 +68,8 @@ for iik in range(0, n_p):
     # Call optimization
     # x_opt = fOptimal_mystic(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec, Ii_t)
     # Ii_t = x_opt[4][0]  # uncomment only for OPT
-    x_opt = fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
-    # x_opt = fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
+    # x_opt = fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
+    x_opt = fGCN_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec)
     
 
     # Cable:

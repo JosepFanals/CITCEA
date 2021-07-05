@@ -23,15 +23,20 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 
 	Iconv_abc = [0.2, 0.2, 0.2]
 	Iconv_abc_prev = [0.1, 0.1, 0.1]
-	tol = 1e-3
+	Ipp = 0.3 + 0 * 1j
+	Inn = 0.5 + 0 * 1j
+	Ipp_prev = 0.1 + 0.1 * 1j
+	Inn_prev = 0.2 + 0.2 * 1j
+	tol = 1e-5
+	fr = 0.3  # relaxation factor
 	compt = 0
-	compt_lim = 10000
+	compt_lim = 100
 	trobat = False
 
 	print('begin')
 	# loop
 	# while (abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol) and compt < compt_lim:
-	while (abs(Iconv_abc[0] - Iconv_abc_prev[0]) > tol or abs(Iconv_abc[1] - Iconv_abc_prev[1]) > tol or abs(Iconv_abc[2] - Iconv_abc_prev[2]) > tol) and compt < compt_lim and trobat is False:
+	while (abs(Ipp - Ipp_prev) > tol or abs(Inn - Inn_prev) > tol) and compt < compt_lim:
 		compt += 1
 		# print(Iconv_abc, Iconv_abc_prev)
 		# print(Iconv_abc_prev)
@@ -40,6 +45,9 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 		Vv_v = volt_solution(Iconv_abc)
 		V_p1_abc = Vv_v[0:3]
 		V_p1_012 = xabc_to_012(V_p1_abc)
+
+		Ipp_prev = Ipp
+		Inn_prev = Inn
 
 		Vp = V_p1_012[1]
 		Vn = V_p1_012[2]
@@ -79,6 +87,9 @@ def fGCP_1vsc(V_mod, Imax, Zv1, Zt, Y_con, Y_gnd, lam_vec):
 
 		Ipp = Ip * np.exp(1j * (np.angle(Vp) - np.pi / 2))
 
+		# with relaxation
+		Ipp = Ipp_prev + fr * (Ipp - Ipp_prev)
+		Inn = Inn_prev + fr * (Inn - Inn_prev)
 
 
 		Iconv_012 = [0, Ipp, Inn]
