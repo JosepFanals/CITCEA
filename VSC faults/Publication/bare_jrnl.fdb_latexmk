@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex bare_jrnl"] 1625481568 "bare_jrnl.aux" "bare_jrnl.bbl" "bare_jrnl" 1625482515
+["bibtex bare_jrnl"] 1625862992 "bare_jrnl.aux" "bare_jrnl.bbl" "bare_jrnl" 1625863228
   "C:/Users/Josep/AppData/Roaming/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "bare_jrnl.aux" 1625482514 7961 c5433cde6bb62d89af6860b860cfe4f5 "pdflatex"
+  "bare_jrnl.aux" 1625863228 7961 7d6e052966e4acd3f4a09f6a60c606fe "pdflatex"
   "bib.bib" 1621810332 9717 11f2ea9831cd185c289e57763416ade5 ""
   (generated)
   "bare_jrnl.blg"
   "bare_jrnl.bbl"
-["pdflatex"] 1625482499 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf" "bare_jrnl" 1625482515
+["pdflatex"] 1625863213 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf" "bare_jrnl" 1625863228
   "C:/Users/Josep/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1609175857 9258828 5dd0ab4e26541be02491e4983b78ef70 ""
   "C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1621519277 329507 8d537e87a4ae22aa7f369e5216d8bd12 ""
   "C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458477487 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -288,6 +288,12 @@
   "Data/Results_1conv_Zf_new_gc/opt_LL_Vn1.csv" 1625480337 2003 edd6b17e42f9f802e09d4d2ac5aa7f3d ""
   "Data/Results_1conv_Zf_new_gc/opt_LL_Vp1.csv" 1625480337 1950 fb77941d8c61c4a339ff50e1a167aa04 ""
   "Data/Results_1conv_Zf_new_gc/opt_LL_f_obj.csv" 1625480337 1981 b3cfb15f2185ef139fdd613ea585c48a ""
+  "Data/Results_1conv_Zf_new_gc/res_gcn_LL_In.csv" 1625862762 2072 4cdd573f2df7f301f77987a4d2cbe44e ""
+  "Data/Results_1conv_Zf_new_gc/res_gcn_LL_Ip.csv" 1625862669 2075 e0688377b4d96f5571eb0824b27ae179 ""
+  "Data/Results_1conv_Zf_new_gc/res_gcp_LL_In.csv" 1625862810 3198 99b5cce025bf6c9ee755d9bf43c2c1e2 ""
+  "Data/Results_1conv_Zf_new_gc/res_gcp_LL_Ip.csv" 1625862788 3457 e75a2057642386968c06fd1e013846b3 ""
+  "Data/Results_1conv_Zf_new_gc/res_opt_LL_In.csv" 1625862850 2079 f50a656f1f47d7d47df3ca7b5f68a406 ""
+  "Data/Results_1conv_Zf_new_gc/res_opt_LL_Ip.csv" 1625862842 2133 9117b16b5071f86c567ccb87ec08f67f ""
   "Data/Results_1conv_Zf_v1/gcn_3x_In1im.csv" 1624724800 1260 0479db6c4700a10f7fff3b992a2fc365 ""
   "Data/Results_1conv_Zf_v1/gcn_3x_In1re.csv" 1624724800 1277 92e1b50941be87898eca3b872b19b6b1 ""
   "Data/Results_1conv_Zf_v1/gcn_3x_Ip1im.csv" 1624724800 1865 1417d9ab45654c9bb3681650f78570c5 ""
@@ -412,14 +418,14 @@
   "Data/cable/Vth_re.csv" 1615757099 2449 f599545114875657533054cc3550bdf0 ""
   "Data/cable/Zth_im.csv" 1615757099 2567 abfa7f8cbf7bff19de53418befe91eef ""
   "Data/cable/Zth_re.csv" 1615757099 2635 63045ef51a4370f41cd4e600213cb84f ""
-  "bare_jrnl.aux" 1625482514 7961 c5433cde6bb62d89af6860b860cfe4f5 "pdflatex"
-  "bare_jrnl.bbl" 1625481568 8113 dc69819732462907e66c6d07d03543cd "bibtex bare_jrnl"
-  "bare_jrnl.tex" 1625482498 154588 9cb9173155e0fb9158ac8ffe54f3c869 ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.aux" 1625482514 7961 c5433cde6bb62d89af6860b860cfe4f5 ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" 1625482498 154588 9cb9173155e0fb9158ac8ffe54f3c869 ""
+  "bare_jrnl.aux" 1625863228 7961 7d6e052966e4acd3f4a09f6a60c606fe "pdflatex"
+  "bare_jrnl.bbl" 1625862992 8113 dc69819732462907e66c6d07d03543cd "bibtex bare_jrnl"
+  "bare_jrnl.tex" 1625863212 157016 cb593143879c367388d45adb58e7775a ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.aux" 1625863228 7961 7d6e052966e4acd3f4a09f6a60c606fe ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" 1625863212 157016 cb593143879c367388d45adb58e7775a ""
   (generated)
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.log"
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf"
-  "bare_jrnl.pdf"
-  "bare_jrnl.aux"
   "bare_jrnl.log"
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf"
+  "bare_jrnl.aux"
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.log"
+  "bare_jrnl.pdf"

@@ -1200,6 +1200,32 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
 Significantly different results are obtained in the case of a line to line fault, as shown in Fig. \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be almost null in the positive sequence, so most current capability is employed for the negative sequence. Severe faults require a large real current (in absolute value), whereas in the case of less extreme faults, the imaginary current tends to the maximum, i.e, 1. Even though the real current is kept at zero for GCP and GCN, their imaginary currents vary significantly across the range of $\un{Z}_x$ values. GCP tends to approach the results provided by OPT for large $\un{Z}_x$, whereas GCN evolves in the contrary direction. That is, for low fault impedances, GCP prioritizes injecting current in the positive sequence whereas GCN does the same for the negative sequence, as expected. As a consequence, positive sequence voltages in the case of GCP are initially superior to the ones obtained with GCN, and the contrary applies to the negative sequence voltages. The situation is reversed around $\un{Z}_x\approx 0.1$. Since the fault is not that severe, much of the current capability is employed in the non-prioritized sequence in order to reach saturation. In the end, there is an almost constant minimal difference between OPT and GCP, as their objective functions are nearly the same. Therefore, there is not a single optimal solution. 
 
 \begin{figure}[!htb]\centering \tiny
+\begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|{I}^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, ytick distance={0.2}, xmin=0.05, xmax=0.6, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/res_opt_LL_Ip.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/res_gcp_LL_Ip.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/res_gcn_LL_Ip.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|{I}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, xmin=0.05, xmax=0.6, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/res_opt_LL_In.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/res_gcp_LL_In.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/res_gcn_LL_In.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1517,7 +1543,7 @@ The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:c
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, ytick distance={0.05}, xmin=1, xmax=100, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, ytick distance={0.05}, xmin=1, xmax=100, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1re.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Ip1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Ip1re.csv};
@@ -1530,7 +1556,7 @@ The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:c
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Ip1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Ip1im.csv};
@@ -1542,7 +1568,7 @@ The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:c
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_In1re.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_In1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_In1re.csv};

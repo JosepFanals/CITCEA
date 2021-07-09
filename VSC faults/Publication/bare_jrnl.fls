@@ -844,6 +844,12 @@ INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_v1\opt_3x_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_v1\gcp_3x_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_v1\gcn_3x_f_obj.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\res_opt_LL_Ip.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\res_gcp_LL_Ip.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\res_gcn_LL_Ip.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\res_opt_LL_In.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\res_gcp_LL_In.csv
+INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\res_gcn_LL_In.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_Ip1re.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcp_LL_Ip1re.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcn_LL_Ip1re.csv
