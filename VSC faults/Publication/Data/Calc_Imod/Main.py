@@ -1,9 +1,10 @@
 import numpy as np
 import pandas as pd
 
-folder = 'LL_Zf_1conv/'
-file1 = 'opt_LL_In1re.csv'
-file2 = 'opt_LL_In1im.csv'
+folder = 'LL_RX_2conv/'
+file1 = 'gcn_LL_In2re.csv'
+file2 = 'gcn_LL_In2im.csv'
+file_result = 'res_gcn_LL_In2.csv'
 
 df1 = pd.read_csv(folder+file1)
 df2 = pd.read_csv(folder+file2)
@@ -15,7 +16,6 @@ for ll in range(len(df3)):
 df4 = df3.drop(columns=['y','y2'])
 df5 = df4.rename(columns={"mod": "y"})
 
-file_result = 'res_opt_LL_In.csv'
 print(df5)
 # print(folder_result)
 df5.to_csv(folder+file_result)

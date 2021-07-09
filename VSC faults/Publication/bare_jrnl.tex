@@ -1332,6 +1332,32 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
 
 
 \begin{figure}[]\centering \tiny
+\begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|{I}^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_opt_LG_Ip.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcp_LG_Ip.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcn_LG_Ip.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|{I}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_opt_LG_In.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcp_LG_In.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcn_LG_In.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1539,6 +1565,32 @@ The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:c
 
 
 \begin{figure}[]\centering \tiny
+\begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|{I}^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, ytick distance={0.05}, xmin=1, xmax=100, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/res_opt_LL_Ip.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/res_gcp_LL_Ip.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/res_gcn_LL_Ip.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$|{I}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/res_opt_LL_In.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/res_gcp_LL_In.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/res_gcn_LL_In.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1734,6 +1786,38 @@ The results associated to a line to ground fault with a varying fault impedance 
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|{I}^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, ytick distance={0.1}, xmin=0.01, xmax=0.035, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LG_Ip1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LG_Ip2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LG_Ip1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LG_Ip2.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LG_Ip1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LG_Ip2.csv};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|{I}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, xmin=0.01, xmax=0.035, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LG_In1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LG_In2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LG_In1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LG_In2.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LG_In1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LG_In2.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+
+    \begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
               \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, ytick distance={0.02}, xmin=0.01, xmax=0.035, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Ip1re.csv};
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Ip2re.csv};
@@ -1852,6 +1936,38 @@ The results associated to a line to ground fault with a varying fault impedance 
 The angle variation of the impedance of connection is applied to only $\un{Z}_{v1}$ in order to spot more clearly the differences in the distribution of currents between the sequences. For a line to line fault with $\un{Z}_x=10$, Fig. \ref{fig:Zf_2conv_LL} indicates that since $R_2/X_2$ is constant, the currents injected by VSC2 experience tiny changes. On the contrary, the currents injected by VSC1 change more significantly. The optimal strategy is to inject null currents in the positive sequence so that all current capability is employed to reduce the negative sequence voltage. This same approach was found to be optimal in the one-converter case, as shown in Fig. \ref{fig:Zf_1conv_LL}. As a consequence, the positive sequence voltage in the OPT case becomes smaller than the one obtained for GCP and GCN, yet the reduction on the negative sequence voltage is more substantial, which causes the objective function to be reduced by more than 10\%. Out of the multiple faults analyzed in this paper, this is the one where differences in the objective function are larger.  
 
 \begin{figure}[]\centering \tiny
+    \begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|{I}^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.1}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LL_Ip1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LL_Ip2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LL_Ip1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LL_Ip2.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LL_Ip1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LL_Ip2.csv};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$|{I}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LL_In1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_opt_LL_In2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LL_In1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcp_LL_In2.csv};
+                  \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LL_In1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/res_gcn_LL_In2.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
+
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
