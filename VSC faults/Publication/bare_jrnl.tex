@@ -454,7 +454,7 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-Grid faults constitute a series of unfortunate events that compromise power systems. With the increasing integration of renewables and their associated power electronics converters, the injected currents are controllable, but at the same time, they have to be limited so as not to damage the semiconductors. This poses the challenge to determine the combination of currents that improves the most the voltages at the point of common coupling. In this paper, such an issue is approached from an optimization perspective. Solving the optimization problem allows comparing its solutions with respect to the ones obtained by following the grid code control laws. Two fundamental scenarios are presented: one with a single converter, and another with two converters. Several parameters are varied for all kinds of faults to spot the changes on the currents, such as the severity of the fault, the distance of a hypothetical submarine cable, and the resistive/inductive ratio of the impedances. Overall the results indicate that injecting only reactive power is not always the preferable choice. While grid codes are not optimal, they can be regarded as near-optimal decision rules.
+Grid faults constitute a series of unfortunate events that compromise power systems. With the increasing integration of renewables and their associated power electronics converters, the injected currents are controllable, but at the same time, they have to be limited so as not to damage the semiconductors. This poses the challenge to determine the combination of currents that improves the voltages at the point of common coupling. In this paper, such an issue is approached from an optimization perspective. Solving the optimization problem allows comparing its solutions with respect to the ones obtained by following the grid code control laws. Two fundamental scenarios are presented: one with a single converter, and another with two converters. Several parameters are varied for all kinds of faults to spot the changes on the currents, such as the severity of the fault, the distance of a hypothetical submarine cable, and the resistive/inductive ratio of the impedances. Overall, the results indicate that injecting only reactive power is not always the preferable choice. However, grid codes can be regarded as near-optimal decision rules, since their solution only differs slightly from the optimal one.
 \end{abstract}
 
 % Note that keywords are not normally used for peer review papers.
@@ -503,9 +503,10 @@ Nevertheless, for the most part, grid codes only specify reactive power injectio
 This is because transmission networks are often considered to have an inductive characteristic. The influence of the grid impedance characteristics of the system optimized under an equilibrium state is covered in \cite{camacho2017positive}, where the authors express the currents to inject as a function of the voltage and the impedances. A recursive relation between the voltage and the current is found, which invalidates the possibility of working with a closed-form expression from where to compute the optimal currents solution. Expressions of the same nature are proposed in \cite{camacho2012flexible}, where instead of attempting to solve the optimization problem, a control parameter is introduced. This takes various values, but no analysis is carried out to determine the optimal choice. The effect of varying this control parameter is studied in \cite{guo2013asymmetrical}, although it is not computed with a systematic approach, but rather, manually. Reference \cite{shabestary2016analytical} proposes a maximum allowed support (MAS) control scheme that is said to provide the maximum voltage support and simultaneously satisfying the current limitations. The study does not explicitly indicate how the current is distributed among the real and the imaginary positive and negative sequence components, and variations in input parameters are rather limited. Another voltage support scheme is presented in \cite{dai2015novel}, where the injected currents depend neither on the active power nor the filter resistance. In addition, positive and negative sequence grid voltage values are imposed, which facilitates the obtention of the steady-state current values. A variation of the grid code requirements is depicted in \cite{shabestary2018asymmetrical}. The authors found it to provide better results than conventional grid codes. The majority of the grid support strategies described above are compared and summarized in \cite{shabestary2018overview}. It is worth mentioning that the systems under study considered in these references include a single VSC. Further conclusions are expected to be extracted from examining a two-converter case study.
 
 This paper proposes a methodology to identify the optimized system equilibrium point during the fault considering converters' current limitations. 
-Two other control rules are implemented. One focuses on solving the optimization problem but in addition to the other constraints, it is restricted to only injecting reactive power. The third control rule follows the implementation of grid code specifications with its characteristic droop profile. These three options are tested for both balanced and unbalanced faults, where this last category includes the line to ground, the line to line, and the double line to ground faults. First, a basic system with a single converter is studied. Then, the analysis is repeated for a system with two converters in order to identify their interaction in saturated states.
+Two other control rules are implemented. They both follow the conventional droop profile found in grid codes, yet one prioritizes positive sequence current whereas the other prioritizes negative sequence current. The two of them are restricted to only injecting reactive power.
+These three options are tested for both balanced and unbalanced faults, where this last category includes the line to ground and the line to line fault. First, a basic system with a single converter is studied. Then, the analysis is repeated for a system with two converters in order to identify their interaction in saturated states.
 
-Two main contributions come from this paper. On the one hand, it indicates the preferable injected currents under diverse conditions. A deeper understanding of the optimality of the solutions is expected to be gained from it. On the other hand, comparisons between the optimal solution and the one obtained by following the grid code are presented. An assessment about the convenience of grid codes to support faults can be derived, which should be useful when proposing future modifications in order to evolve towards more resilient grids.
+This paper presents two main contributions. On the one hand, it indicates the preferable injected currents under diverse conditions. A deeper understanding of the optimality of the solutions is expected to be gained from it. On the other hand, comparisons between the optimal solution and the one obtained by following the grid code are presented. An assessment about the convenience of grid codes to support faults can be derived, which should be useful when proposing future modifications in order to evolve towards more resilient grids.
 
 % The structure of the paper is as follows. Section \ref{problem_f} formulates the optimization problem and details the methodology employed. Section \ref{1conv} presents the results together with the corresponding discussion for a single converter case. Section \ref{2conv} analyzes similar situations for a basic power system with two converters. Finally, Section \ref{concl} concludes this work.  
 % and write this paragraph
@@ -814,7 +815,7 @@ Voltages and currents are related via admittance matrices of the form $\mathbf{\
 \end{equation} 
 In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1/\un{Z}_f$ are added by observation, where $\un{Z}_f$ denotes the fault impedance. 
 
-On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are null except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constitued by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
+On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation, where $n_g$ is the number of buses found in this passive $\mathbf{\un{Y}_g}$ grid. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are null except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constituted by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
 
 The final goal of the modeling is the obtention of voltages. They are computed from \eqref{eq:nconv} by operating the product between the inverse of the full admittance matrix and the currents' vector. 
 In order to have a clearer comprehension of the voltages, they are eventually converted into symmetrical components by means of Fortescue's transformation\cite{fortescue1918method}:
@@ -837,7 +838,7 @@ In order to have a clearer comprehension of the voltages, they are eventually co
 where $a=e^{j\frac{2\pi}{3}}$. 
 
 \subsection{Optimization problem}
-Positive sequence voltages have to be maximized while negative sequence voltages have to be minimized. The zero sequence component of the voltages is a magnitude likely to become non-null under asymmetrical faults. Nevertheless, as VSC are unable to inject zero sequence currents, it will remain an uncontrolled variable in the sense that no efforts will be made towards reducing it. Current saturation restrictions imposed by the VSC characteristics have to be respected. This applies to each phase of each converter. Therefore, the generic optimization problem is
+Positive sequence voltages have to be maximized while negative sequence voltages have to be minimized. The zero sequence component of the voltages is a magnitude likely to become non-null under asymmetrical faults. Nevertheless, as VSCs are unable to inject zero sequence currents, it will remain an uncontrolled variable in the sense that no efforts will be made towards reducing it. Current saturation restrictions imposed by the VSC characteristics have to be respected. This applies to each phase of each converter. Therefore, the generic optimization problem is
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - |\un{V}^+_{pk}(\un{I}) |)| + \lambda^-_k|(0 - |\un{V}^-_{pk}(\un{I})|)|\right] \ , \\
@@ -845,9 +846,9 @@ Positive sequence voltages have to be maximized while negative sequence voltages
 \end{aligned}
 \label{eq:opt2}
 \end{equation}
-where the positive and negative sequence components of voltages $\un{V}_{pk}$ are symbolically expressed as functions of the currents, and $I_{\text{max,k}}$ is the maximum allowed current by the $k$ converter. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decreases substantially during faults. Ignoring voltage limitations tends to be a commonality in the literature as well. 
+where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors, the positive and negative sequence components of voltages $\un{V}_{pk}$ are symbolically expressed as functions of the currents, and $I_{\text{max,k}}$ is the maximum allowed current by the $k$ converter. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decrease substantially during faults. Ignoring voltage limitations tends to be a commonality in the literature as well. 
 
-The results gathered in this paper are computed with Python 3.9.1 and the aid of the Mystic package, a highly-constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1e-6$. 
+The results gathered in this paper are computed with Python 3.9.1 and the aid of the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1e-6$. 
 
 \subsection{Grid code rules}
 In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions, for the positive sequence
@@ -863,16 +864,16 @@ whereas for the negative sequence
 \begin{equation}
 \begin{cases} 
       |\un{I}^-_k| = 0 & |\un{V}^-_{pk}|\leq V^-_{\text{low}} \\
-      |\un{I}^-_k| = k_n(|\un{V}^-_{pk}| - V^-_{\text{low}}) & V^-_{\text{low}} \leq |\un{V}^-_{pk}| < V^-_{\text{high}} \\
+      |\un{I}^-_k| = k_n(|\un{V}^-_{pk}| - V^-_{\text{low}}) & V^-_{\text{low}} < |\un{V}^-_{pk}| \leq V^-_{\text{high}} \\
       |\un{I}^-_k| = I_{\text{max},k} & |\un{V}^-_{pk}| > V^-_{\text{high}} \\
    \end{cases}
    \label{eq:gc2}
 \end{equation}
-where the values of the constants are gathered in Table \ref{tab:param_gc}. Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The converter would therefore operate at saturated conditions during extreme faults because either the positive sequence voltage would reach the lower threshold $V^+_{\text{low}}$ or the negative sequence voltage would surpass the upper threshold $V^-_{\text{high}}$. However, in severe faults it is still possible that both limits are surpassed, or at least, approached. In case \eqref{eq:gc1} and \eqref{eq:gc2} where applied simultaneously, the required current to be injected by the VSC could potentially exceed the $I_{\text{max},k}$ limitation. Thus, it makes sense to establish a prioritization. 
+where the values of the constants are gathered in Table \ref{tab:param_gc}. Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The converter would therefore operate at saturated conditions during extreme faults because either the positive sequence voltage would reach the lower threshold $V^+_{\text{low}}$ or the negative sequence voltage would surpass the upper threshold $V^-_{\text{high}}$. However, in severe faults, it is still possible that both limits are surpassed, or at least, approached. In case \eqref{eq:gc1} and \eqref{eq:gc2} were applied simultaneously, the required current to be injected by the VSC could potentially exceed the $I_{\text{max},k}$ limitation. Thus, it makes sense to establish a prioritization. 
 
 This paper considers the two straightforward prioritizations. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the maximum allowed negative sequence current so as not to exceed the current limitations in any phase. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations, the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
 
-Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. Phase currents are related to zero, positive and negative sequence components by
+Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. Phase currents are related to zero, positive, and negative sequence components by
 \begin{equation}
   \begin{pmatrix}
     \un{I}_a \\
@@ -891,7 +892,7 @@ Consider a generic distribution of positive and negative sequence voltages in th
   \end{pmatrix}
   \label{eq:Ifort1}
 \end{equation}
-where $\un{I}^0$ is null as the VSC is incapable of injecting it. The $k$ index related to identifying a given VSC has been ommited to alleviate the notation. Explicitly, \eqref{eq:Ifort1} becomes
+where $\un{I}^0$ is null as the VSC is incapable of injecting it. The $k$ index related to identifying a given VSC has been omitted to alleviate the notation. Explicitly, \eqref{eq:Ifort1} becomes
 \begin{equation}
   \begin{cases}
     \un{I}_a = \un{I}^+ + \un{I}^- \\
@@ -899,7 +900,7 @@ where $\un{I}^0$ is null as the VSC is incapable of injecting it. The $k$ index 
     \un{I}_c = \un{a}\un{I}^+ + \un{a}^2\un{I}^- \\
   \end{cases}
 \end{equation}
-Then, the absolute value of the three phase currents is set to the limit $I_\text{max}$. The goal of doing so is to determine the maximum current that causes one phase to reach saturation while the two others operate under the limits. This will act as the most restrictive option. Consequently, squaring the currents yields
+Then, the absolute value of the three-phase currents is set to the limit $I_\text{max}$. The goal of doing so is to determine the maximum current that causes one phase to reach saturation while the two others operate under the limits. This will act as the most restrictive option. Consequently, squaring the currents yields
 \begin{equation}
   \begin{cases}
     I_{\text{max}}^2 = (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
@@ -993,7 +994,7 @@ The paper evaluates and compares three support strategies, which are:
 
 
 \section{Single converter case study} \label{1conv}
-The analysis is first performed considering a one-converter case study as the one depicted in Fig. \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground, line to line or double line to ground). The goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
+The analysis is first performed considering a one-converter case study as the one depicted in Fig. \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground or line to line). Double line to ground faults are not covered in this study, not because they are unfeasible to be studied, but because there is a direct connection between the two faulted phases. This causes variations from a parametric study to have an almost null influence on the results. In any case, the goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
 Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. 
 
@@ -1036,7 +1037,7 @@ Three parametric studies are performed. One considers variations in the fault im
 
 % \subsection{Exemplification}
 \subsection{Fault impedance variation analysis}
-For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the fault impedance connected to the bus at voltage $\un{V}_f$ is responsible for identify the fault. Explicitly, voltages and currents are related by
+For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the fault impedance connected to the bus at voltage $\un{V}_f$ is responsible for identifying the fault. Explicitly, voltages and currents are related by
 \begin{equation}
   \begin{pmatrix}
     \un{I}^{a}_1 \\
@@ -1056,7 +1057,7 @@ For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the 
     \un{V}^{c}_f \\
   \end{pmatrix} ,
 \end{equation}
-where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constitued by the admittances that intervene in the fault. This way, the admittance matrices are defined as
+where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constituted by the admittances that intervene in the fault. This way, the admittance matrices are defined as
 \begin{equation}
   \scriptsize
   \mathbf{\un{Y}_v} = \begin{pmatrix}
@@ -1080,7 +1081,7 @@ On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent o
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
-Because of the nature of the converter, it is also imposed that the sum of the three phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
+Because of the nature of the converter, it is also imposed that the sum of the three-phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
 \begin{table}\centering
   \caption{System parameters for the one-converter case}
@@ -1194,10 +1195,10 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the balanced fault with a varying fault admittance, one converter case}
+    \caption{Influence of the currents for a balanced fault with a varying fault impedance, one-converter case}
     \label{fig:Zf_1conv_3x}
   \end{figure}
-Significantly different results are obtained in the case of a line to line fault, as shown in Fig. \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be almost null in the positive sequence, so most current capability is employed for the negative sequence. Severe faults require a large real current (in absolute value), whereas in the case of less extreme faults, the imaginary current tends to the maximum, i.e, 1. Even though the real current is kept at zero for GCP and GCN, their imaginary currents vary significantly across the range of $\un{Z}_x$ values. GCP tends to approach the results provided by OPT for large $\un{Z}_x$, whereas GCN evolves in the contrary direction. That is, for low fault impedances, GCP prioritizes injecting current in the positive sequence whereas GCN does the same for the negative sequence, as expected. As a consequence, positive sequence voltages in the case of GCP are initially superior to the ones obtained with GCN, and the contrary applies to the negative sequence voltages. The situation is reversed around $\un{Z}_x\approx 0.1$. Since the fault is not that severe, much of the current capability is employed in the non-prioritized sequence in order to reach saturation. In the end, there is an almost constant minimal difference between OPT and GCP, as their objective functions are nearly the same. Therefore, there is not a single optimal solution. 
+Significantly different results are obtained in the case of a line to line fault, as shown in Fig. \ref{fig:Zf_1conv_LL}. This unbalanced fault causes the optimal currents to be almost null in the positive sequence, so the majority of the current capability is employed for the negative sequence. Severe faults require a large real current (in absolute value), whereas in the case of less extreme faults, the imaginary current tends to the maximum, i.e, 1. Even though the real current is kept at zero for GCP and GCN, their imaginary currents vary significantly across the range of $\un{Z}_x$ values. GCP tends to approach the results provided by OPT for large $\un{Z}_x$, whereas GCN evolves on the contrary direction. That is, for low fault impedances, GCP prioritizes injecting current in the positive sequence whereas GCN does the same for the negative sequence, as expected. As a consequence, positive sequence voltages in the case of GCP are initially superior to the ones obtained with GCN, and the contrary applies to the negative sequence voltages. The situation is reversed around $\un{Z}_x\approx 0.1$. Since the fault is not that severe, much of the current capability is employed in the non-prioritized sequence in order to reach saturation. In the end, there is an almost constant minimal difference between OPT and GCP, as their objective functions are nearly the same. Therefore, there is not a single optimal solution. 
 
 \begin{figure}[!htb]\centering \tiny
 \begin{subfigure}[!htb]{0.12\textwidth}
@@ -1319,7 +1320,7 @@ Significantly different results are obtained in the case of a line to line fault
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the line to line with a varying fault admittance, one converter case}
+    \caption{Influence of the currents for a line to line fault with a varying fault impedance, one-converter case}
     \label{fig:Zf_1conv_LL}
   \end{figure}
 
@@ -1446,14 +1447,14 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the line to ground fault with a varying $R_1/X_1$ ratio and a fault impedance $\un{Z}_{ag}=0.01$}
+    \caption{Influence of the currents for the line to ground fault with a varying $R_1/X_1$ ratio and a fault impedance $\un{Z}_{ag}=0.01$, one-converter case}
     \label{fig:RX_1conv_LG}
   \end{figure}
 For large $R_1/X_1$ differences between the objective functions of OPT and GCP and GCN are acute due to the incapability of injecting real current. The OPT option achieves a larger positive sequence voltage than both GCP and GCN for all ranges of values. Although the negative sequence voltage obtained with OPT is initially larger, it is further reduced with increases in $R_1/X_1$, whereas this same voltage tends to grow for GCP and GCN. 
 Despite the fact that GCP prioritizes active current, as the fault is not extreme and it has been imposed that the converter has to operate under saturated conditions, the GCP strategy injects more current in the negative sequence than in the positive sequence. The contrary applies to the GCN option. Therefore, GCN yields larger $|V^+|$ and $|V^-|$ voltages compared to GCP. In the end, the objective function is practically the same for both choices. 
 
 \subsection{Cable length variation analysis}
-Fig. \ref{fig:sys_c2} represents the third parametric study regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
+Fig. \ref{fig:sys_c2} represents the third parametric study regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per-unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1530,7 +1531,7 @@ Fig. \ref{fig:sys_c2} represents the third parametric study regarding single con
 \end{equation}
 Similarly as before, a Norton equivalent is preferred. The current $\un{I}'_t$ is simply equal to $\un{V}'_t/\un{Z}'_t$, which yields a basic system as the one in Fig. \ref{fig:sys_p1}. 
 
-The analysis performed considers a cable with a varying length, up to 100 km. Its impact on the Thevenin equivalent parameters are shown in Fig. \ref{fig:dist_th}. The voltage experiences a subtle increase, while the imaginary part of the equivalent impedance grows considerably with distance, yet the $\Re({\un{Z}'_t}) / \Im({\un{Z}'_t})$ ratio tends to rise. 
+The analysis performed considers a cable with a varying length, up to 100 km. Its impact on the Thevenin equivalent parameters is shown in Fig. \ref{fig:dist_th}. The voltage experiences a subtle increase, while the imaginary part of the equivalent impedance grows considerably with distance, yet the $\Re({\un{Z}'_t}) / \Im({\un{Z}'_t})$ ratio tends to rise. 
 
 \begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
@@ -1556,12 +1557,12 @@ The analysis performed considers a cable with a varying length, up to 100 km. It
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
-    \caption{Influence of the cable distance on the Thevenin voltage and impedance}
+    \caption{Thevenin voltage and impedance depending on the cable distance}
     \label{fig:dist_th}
   \end{figure}
   
 
-The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:cable_1conv_LL2}. Increasing the cable distance causes the negative sequence voltage to grow, while the positive sequence voltage also tends to grow. This phenomenon differs from the profiles obtained in Fig. \ref{fig:Zf_1conv_LL} and \ref{fig:RX_1conv_LG}, where both voltages either simultaneously approached the objective value (1 and 0 respectively), or distanced from it. Thus, it makes sense that larger distances imply a lower $I^+_{im}$ current in the case of the grid code implementation, while the less convenient growing negative sequence voltages force an increment in $I^-_{im}$. Most of the current capability is precisely devoted to this negative sequence imaginary current. The OPT option achieves a more favorable objective function value than GCP and GCN by keeping the positive sequence currents practically constant, increasing $I^-_{re}$ (in absolute value), and decreasing $I^-_{im}$, which is the inverse trend followed by GCP and GCN. Surprisingly, in the OPT case, the VSC would have to inject a tiny negative active power, that is, this active power should flow from the grid to the converter. 
+The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:cable_1conv_LL2}. Increasing the cable distance causes the negative sequence voltage to grow, while the positive sequence voltage also tends to grow. This phenomenon mostly differs from the profiles obtained in Fig. \ref{fig:Zf_1conv_LL} and \ref{fig:RX_1conv_LG}, where both voltages either simultaneously approached the objective value (1 and 0 respectively), or distanced from it. Thus, it makes sense that larger distances imply a lower $I^+_{im}$ current in the case of the grid code implementation, while the less convenient growing negative sequence voltages force an increment in $I^-_{im}$. Most of the current capability is precisely devoted to this negative sequence imaginary current. The OPT option achieves a more favorable objective function value than GCP and GCN by keeping the positive sequence currents practically constant, increasing $I^-_{re}$ (in absolute value), and decreasing $I^-_{im}$, which is the inverse trend followed by GCP and GCN. Surprisingly, in the OPT case, the VSC would have to inject a tiny negative active power, that is, this active power should flow from the grid to the converter. 
 
 
 \begin{figure}[]\centering \tiny
@@ -1679,7 +1680,7 @@ The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:c
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for a line to line fault with $\un{Z}_{ab}=0.1$ and a varying cable distance}
+    \caption{Influence of the currents for a line to line fault with $\un{Z}_{ab}=0.1$ and a varying cable distance, one-converter case}
     \label{fig:cable_1conv_LL2}
   \end{figure}
 
@@ -1757,7 +1758,7 @@ A two-converter case is proposed in order to spot the interaction between both c
      $\un{V}_t$ & $1.00$ \\
      $I_{\text{max}}$ & $1.00$ \\
      $\un{Z}_{v1}$ & $0.01+j0.05$ \\
-     $\un{Z}_{v2}$ & $0.01+j0.06$ \\
+     $\un{Z}_{v2}$ & $0.02+j0.06$ \\
      $\un{Z}_{t}$ & $0.01+j0.1$ \\
      $[\lambda_1^+, \lambda_1^-, \lambda_2^+, \lambda_2^-]$ & $[1, 1, 1, 1]$\\
      \hline
@@ -1778,7 +1779,7 @@ Analogous to the one-converter situation, the optimization problem becomes
 where the dependence of the currents on the voltages has been omitted. The application of the grid code is the same as before, in the sense that the injection of current $\un{I}_1$ only depends on $\un{V}_{p1}$, and $\un{I}_2$ is only a function of $\un{V}_{p2}$. 
 
 \subsection{Fault impedance variation analysis}
-The results associated to a line to ground fault with a varying fault impedance are shown in Fig. \ref{fig:Zf_2conv_LG}. Differences in the objective function are negligible for small values of $\un{Z}_x$, that is, for strong faults. Nevertheless, the converter operates in saturated conditions in all cases. Due to the fact that $\un{Z}_{v1}\neq \un{Z}_{v2}$, the distribution of the current capability varies. For instance, in the positive sequence, VSC2 injects more imaginary current (in absolute value), which makes sense considering that $\Im(\un{Z}_{v2})>\Im(\un{Z}_{v1})$. However, the absolute value of $I^-_{im}$ becomes larger for VSC1, which seems counterintuitive. Since the fault is for the most part not extreme ($|V^+|\approx 0.75$ and $|V^-|\approx 0.25$), GCP ends up injecting more negative sequence current whereas GCN injects more positive sequence current. This is translated into having larger positive sequence voltages for GCN and smaller negative sequence voltages for GCP. A similar pattern was observed in Fig. \ref{fig:RX_1conv_LG}. OPT remains as the choice that balances both sequences and manages to minimize the objective function. 
+The results associated with a line to ground fault with a varying fault impedance are shown in Fig. \ref{fig:Zf_2conv_LG}. Differences in the objective function are negligible for small values of $\un{Z}_x$, that is, for strong faults. Nevertheless, the converter operates in saturated conditions in all cases. Due to the fact that $\un{Z}_{v1}\neq \un{Z}_{v2}$, the distribution of the current capability varies. For instance, in the positive sequence, VSC2 injects more imaginary current (in absolute value), which makes sense considering that $\Im(\un{Z}_{v2})>\Im(\un{Z}_{v1})$. However, the absolute value of $I^-_{im}$ becomes larger for VSC1, which seems counterintuitive. Since the fault is for the most part not extreme ($|V^+|\approx 0.75$ and $|V^-|\approx 0.25$), GCP ends up injecting more negative sequence current whereas GCN injects more positive sequence current. This is translated into having larger positive sequence voltages for GCN and smaller negative sequence voltages for GCP. A similar pattern was observed in Fig. \ref{fig:RX_1conv_LG}. OPT balances both sequences and manages to minimize the objective function. 
 
 
 \begin{figure}[]\centering \tiny
@@ -1927,13 +1928,13 @@ The results associated to a line to ground fault with a varying fault impedance 
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the line to ground fault with a varying fault impedance}
+    \caption{Influence of the currents for the line to ground fault with a varying fault impedance in a two-converter case}
     \label{fig:Zf_2conv_LG}
   \end{figure}
 
 
 \subsection{$R/X$ variation analysis}
-The angle variation of the impedance of connection is applied to only $\un{Z}_{v1}$ in order to spot more clearly the differences in the distribution of currents between the sequences. For a line to line fault with $\un{Z}_x=10$, Fig. \ref{fig:Zf_2conv_LL} indicates that since $R_2/X_2$ is constant, the currents injected by VSC2 experience tiny changes. On the contrary, the currents injected by VSC1 change more significantly. The optimal strategy is to inject null currents in the positive sequence so that all current capability is employed to reduce the negative sequence voltage. This same approach was found to be optimal in the one-converter case, as shown in Fig. \ref{fig:Zf_1conv_LL}. As a consequence, the positive sequence voltage in the OPT case becomes smaller than the one obtained for GCP and GCN, yet the reduction on the negative sequence voltage is more substantial, which causes the objective function to be reduced by more than 10\%. Out of the multiple faults analyzed in this paper, this is the one where differences in the objective function are larger.  
+The angle variation of the impedance of connection is applied to only $\un{Z}_{v1}$ in order to spot more clearly the differences in the distribution of currents between the sequences. For a line to line fault with $\un{Z}_x=0.1$, Fig. \ref{fig:Zf_2conv_LL} indicates that since $R_2/X_2$ is constant, the currents injected by VSC2 experience tiny changes. On the contrary, the currents injected by VSC1 change more significantly. The optimal strategy is to inject null currents in the positive sequence so that all current capability is employed to reduce the negative sequence voltage. A similar approach was found to be optimal in the one-converter case, as shown in Fig. \ref{fig:Zf_1conv_LL}. As a consequence, the positive sequence voltage in the OPT case becomes smaller than the one obtained for GCP and GCN, yet the reduction on the negative sequence voltage is more substantial, which causes the objective function to be reduced by more than 10\%. Out of the multiple faults analyzed in this paper, this is the one where differences in the objective function are larger.  
 
 \begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
@@ -2081,7 +2082,7 @@ The angle variation of the impedance of connection is applied to only $\un{Z}_{v
               \end{tikzpicture}
         \end{subfigure}
     \end{center}
-    \caption{Influence of the currents on the objective function for the line to ground fault with a varying $R_1/X_1$ ratio and $\un{Z}_x=10$}
+    \caption{Influence of the currents for the line to line fault with a varying $R_1/X_1$ ratio and $\un{Z}_x=10$ in a two-converter case}
     \label{fig:Zf_2conv_LL}
   \end{figure}
 
@@ -2112,7 +2113,7 @@ The angle variation of the impedance of connection is applied to only $\un{Z}_{v
 
 
 \section{Conclusion}\label{concl}
-Fill this
+This paper has proposed an optimization scheme to improve the voltages under faults. Such strategy has been compared with conventional grid codes, where either positive or negative currents are prioritized and the converter is forced to operate under saturation conditions by only injecting reactive power. Several parameters have been swept, such as the fault impedance, the angle of the interconnecting impedance, and the length of a submarine cable, either for one or two-converter cases. In most situations, the distribution of currents derived from the optimization differs considerably from the currents injected following the grid codes. Yet, the optimization function, which in turn depends on the positive and negative sequence voltages, rarely improves by more than 10\%. Differences are especially tiny for severe faults. Thus, this work concludes that there are no large improvements to be gained by employing other rules. Grid codes are already near-optimal choices, even if no active power is injected. 
 
 
 
@@ -2149,7 +2150,7 @@ Fill this
 Fill this.
 
 \appendix
-\begin{table}[!htb]\centering
+\begin{table}[!h]\centering
   \caption{Grid code constants}
   \begin{tabular}{cc}
     \hline
