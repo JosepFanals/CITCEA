@@ -771,7 +771,7 @@ Power systems are likely to involve more than a single converter. Therefore, the
 \label{fig:sys_n}
 \end{figure}
 
-The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. For greater simplicity, in this paper, the circuits are modeled following the natural reference frame. Consequently, voltages and currents are related by
+The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. For greater simplicity, in this paper, the circuits are modeled following the natural reference frame. Consequently, voltages and currents are related by:
 \begin{equation}
 \setlength\arraycolsep{1.5pt}
     \begin{split}
@@ -800,7 +800,7 @@ The relationship between currents and voltages can be established with an analys
 \end{split}
 \label{eq:nconv}
 \end{equation}
-For a given converter $k$ connected to bus $k$, its injected currents and the voltages at the point of common coupling are further developed as 
+For a given converter $k$ connected to bus $k$, its injected currents and the voltages at the point of common coupling are further developed as:
 \begin{equation}
   \begin{cases}
     \mathbf{\un{I}_k} = \left[\un{I}^{(a)}_k, \un{I}^{(b)}_k, \un{I}^{(c)}_k \right]^T \\
@@ -811,7 +811,7 @@ i.e., they contain the $a$, $b$ and $c$ phase values. Since this paper assumes V
 \begin{equation}
   \un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \in [1,...,n] \ . 
 \end{equation}
-Voltages and currents are related via admittance matrices of the form $\mathbf{\un{Y}_{vk}}$, which in normal operating conditions follow
+Voltages and currents are related via admittance matrices of the form $\mathbf{\un{Y}_{vk}}$, which in normal operating conditions follow:
 \begin{equation}
   \mathbf{\un{Y}_{vk}} = \begin{pmatrix}
    \frac{1}{\un{Z}_{vk}} & 0 & 0 \\
@@ -857,7 +857,7 @@ where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors for positive and neg
 The results gathered in this paper are computed with Python 3.9.1 using the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1e-6$. 
 
 \subsection{Grid code rules}
-In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions, for the positive sequence
+In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions, for the positive sequence:
 \begin{equation}
 \begin{cases} 
       |\un{I}^+_k| = 0 & |\un{V}^+_{pk}|\geq V^{+}_{\text{high}}  \\
@@ -866,7 +866,7 @@ In order to improve voltages during faults, grid code control rules typically im
    \end{cases}
    \label{eq:gc1}
 \end{equation}
-whereas for the negative sequence
+whereas for the negative sequence:
 \begin{equation}
 \begin{cases} 
       |\un{I}^-_k| = 0 & |\un{V}^-_{pk}|\leq V^-_{\text{low}} \\
@@ -907,7 +907,7 @@ where $\un{I}^0$ is zero as the VSC is incapable of injecting it. The $k$ index 
     \un{I}_c = \un{a}\un{I}^+ + \un{a}^2\un{I}^- \\
   \end{cases}
 \end{equation}
-Then, the absolute value of the three-phase currents is set to the limit $I_\text{max}$. The goal of doing so is to determine the maximum current that causes one phase to reach saturation while the two others operate under the limits. This will act as the most restrictive option. Consequently, squaring the currents yields
+Then, the absolute value of the three-phase currents is set to the limit $I_\text{max}$. The goal of doing so is to determine the maximum current that causes one phase to reach saturation while the two others operate under the limits. This will act as the most restrictive option. Consequently, squaring the currents yields:
 \begin{equation}
   \begin{cases}
     I_{\text{max}}^2 = (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
@@ -918,12 +918,12 @@ Then, the absolute value of the three-phase currents is set to the limit $I_\tex
   \end{cases}
   \label{eq:Ifin}
 \end{equation}
-It can be seen that each phase current, set at the allowed maximum, depends on four components, that is, $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$. When the positive sequence is prioritized (GCP), the grid code rules in \eqref{eq:gc1} determine the absolute value of the positive sequence current while its direction in the complex plane is extracted by shifting it $-\frac{\pi}{2}$ with respect to $\un{V}^+$, as seen in Fig. \ref{fig:map}. Thus, $I^+_{re}$ and $I^+_{im}$ would be known beforehand, and only the two remaining components $I^-_{re}$ and $I^-_{im}$ have to be computed from \eqref{eq:Ifin} for each phase. To do so, one component has to be expressed as a function of the other. This carries no extra complexity considering that phasor $\un{V}^-$ is fully known, and so the direction of $\un{I}^-$ has to be shifted $\frac{\pi}{2}$ from it. Making use of the relation 
+It can be seen that each phase current, set at the allowed maximum, depends on four components, that is, $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$. When the positive sequence is prioritized (GCP), the grid code rules in \eqref{eq:gc1} determine the absolute value of the positive sequence current while its direction in the complex plane is extracted by shifting it $-\frac{\pi}{2}$ with respect to $\un{V}^+$, as seen in Fig. \ref{fig:map}. Thus, $I^+_{re}$ and $I^+_{im}$ would be known beforehand, and only the two remaining components $I^-_{re}$ and $I^-_{im}$ have to be computed from \eqref{eq:Ifin} for each phase. To do so, one component has to be expressed as a function of the other. This carries no extra complexity considering that phasor $\un{V}^-$ is fully known, and so the direction of $\un{I}^-$ has to be shifted $\frac{\pi}{2}$ from it. Making use of the relation such that:
 \begin{equation}
   \tan(\alpha^-) = \frac{I^-_{im}}{I^-_{re}} \ ,
   \label{eq:tann}
 \end{equation}
-current $I^-_{im}$ can be expressed as a function of $I^-_{re}$, for instance, and therefore there is only one unknown in each expression of \eqref{eq:Ifin}. Then, the resulting quadratic equations are solved for $I^-_{re}$ and the associated $I^-_{im}$ is found with \eqref{eq:tann}. 
+where current $I^-_{im}$ can be expressed as a function of $I^-_{re}$, for instance, and therefore there is only one unknown in each expression of \eqref{eq:Ifin}. Then, the resulting quadratic equations are solved for $I^-_{re}$ and the associated $I^-_{im}$ is found with \eqref{eq:tann}. 
 
 Note that six $[I^-_{re},I^-_{im}]$ pairs of solutions would be obtained in total. Three of them have to be discarded because they do not follow the pre-established direction of $\un{I}^-$ (due to the quadratic characteristic of \eqref{eq:Ifin}). Out of the remaining three, the one with the smallest absolute value is picked. This way it is ensured that current saturation is only reached in one phase, while the other two operate below their limits. 
 
@@ -1037,6 +1037,8 @@ Three parametric studies are performed. One considers variations in the fault im
 
 \node at (-2.5,2.05) {$\underline{V}_{f}$};
 
+\node at (-5,0.7) {PCC1};
+
 \end{circuitikz}
 \caption{Single-phase representation of the single converter system under study}
 \label{fig:sys_p1}
@@ -1044,7 +1046,7 @@ Three parametric studies are performed. One considers variations in the fault im
 
 % \subsection{Exemplification}
 \subsection{Fault impedance variation analysis}
-For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the fault impedance connected to the bus at voltage $\un{V}_f$ is responsible for identifying the fault. Explicitly, voltages and currents are related by
+For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the fault impedance connected to the bus at voltage $\un{V}_f$ represents the event of short-circuit in this case. Explicitly, voltages and currents are related by:
 \begin{equation}
   \begin{pmatrix}
     \un{I}^{a}_1 \\
@@ -1064,7 +1066,7 @@ For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the 
     \un{V}^{c}_f \\
   \end{pmatrix} ,
 \end{equation}
-where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constituted by the admittances that intervene in the fault. This way, the admittance matrices are defined as
+where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constituted by the admittances that intervene in the fault and has the same size as $\mathbf{\un{Y}_v}$. The short-circuit impedance is included as the corresponding elements in $\mathbf{\un{Y}_f}$ while other elements are equal to 0. This way, the admittance matrices are defined as:
 \begin{equation}
   \scriptsize
   \mathbf{\un{Y}_v} = \begin{pmatrix}
@@ -1079,7 +1081,7 @@ where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ r
 \end{equation}
 where $\un{Y}_{v1}=1/\un{Z}_{v1}$ and $\un{Y}_t=1/\un{Z}_t$. 
 
-On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent on the fault, and therefore, it is built by observation. The optimization problem for the one case converter reads 
+On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent on the fault, and therefore, it is built by observation. The optimization problem for the one case converter reads: 
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1} \quad & \lambda^+_1|(1 - |\un{V}^+_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1)|)| \\
@@ -1088,7 +1090,7 @@ On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent o
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
-Because of the nature of the converter, it is also imposed that the sum of the three-phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta$, being $\delta=1e-6$ for example. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $n$ scenarios, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
+Because of the nature of the converter, it is also imposed that the sum of the three-phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta=1e-6$. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $n$ scenarios with different fault impedance values, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
 \begin{table}\centering
   \caption{System parameters for the one-converter case}
@@ -1106,7 +1108,7 @@ Because of the nature of the converter, it is also imposed that the sum of the t
   \end{tabular}
   \label{tab:param}
 \end{table}
-Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Fig. \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. The results suggest that the OPT case is the preferred one, as its associated objective function is always the smallest, as expected. This optimal solution is achieved by distributing the currents between the real and imaginary parts. The imaginary current remains slightly larger than the real current (in absolute value). This is the main difference between OPT and the grid code implementation found in GCP and GCN. These two strategies always specify a null real current in both sequences, and in this case, they employ their full capability for the imaginary positive sequence current. Therefore, their objective functions and voltage profiles become identical, simply put, because this is a balanced fault. 
+Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Fig. \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. It has been considered to be fully resistive. The results suggest that the OPT case is the preferred one, as its associated objective function is always the smallest, as expected. This optimal solution is achieved by distributing the currents between the real and imaginary parts. The imaginary current remains slightly larger than the real current (in absolute value). This is the main difference between OPT and the grid code implementation found in GCP and GCN. These two strategies always specify a null real current in both sequences, and in this case, the converter employs the full capability for the imaginary positive sequence current. Therefore, their objective functions and voltage profiles become identical in this case with a balanced fault. 
 
 \begin{figure}[]\centering \tiny
     \begin{subfigure}[!htb]{0.12\textwidth}
@@ -1461,7 +1463,7 @@ For large $R_1/X_1$ differences between the objective functions of OPT and GCP a
 Despite the fact that GCP prioritizes active current, as the fault is not extreme and it has been imposed that the converter has to operate under saturated conditions, the GCP strategy injects more current in the negative sequence than in the positive sequence. The contrary applies to the GCN option. Therefore, GCN yields larger $|V^+|$ and $|V^-|$ voltages compared to GCP. In the end, the objective function is practically the same for both choices. 
 
 \subsection{Cable length variation analysis}
-Fig. \ref{fig:sys_c2} represents the third parametric study regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per-unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by
+Fig. \ref{fig:sys_c2} represents the third parametric study regarding single converter systems, which deals with a hypothetical submarine cable modeled with its $\pi$ equivalent. The data selected to model the cable are extracted from \cite{cheah2017offshore} and adapted to per-unit values. Table \ref{tab:cable} presents them. The followed approach to analyze the system is identical to the previous ones, except for the reduction of the set of elements including the cable and the grid. The corresponding Thevenin equivalent is defined by:
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1773,7 +1775,7 @@ A two-converter case is proposed in order to spot the interaction between both c
   \label{tab:param2}
 \end{table}
 
-Analogous to the one-converter situation, the optimization problem becomes
+Analogous to the one-converter situation, the optimization problem becomes:
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1, \un{I}^{a}_2, \un{I}^{b}_2, \un{I}^{c}_2} \quad & \lambda^+_1|(1 - |\un{V}^+_{p1}|)| + \lambda^-_1|(0 - |\un{V}^-_{p1}|)| \\
