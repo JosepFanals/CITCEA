@@ -1111,6 +1111,32 @@ Because of the nature of the converter, it is also imposed that the sum of the t
 Solving the problem with the aforementioned steps for a balanced fault yields the results shown in Fig. \ref{fig:Zf_1conv_3x}, where impedance $\un{Z}_x$ denotes the fault impedance connected to each phase. It has been considered to be fully resistive. The results suggest that the OPT case is the preferred one, as its associated objective function is always the smallest, as expected. This optimal solution is achieved by distributing the currents between the real and imaginary parts. The imaginary current remains slightly larger than the real current (in absolute value). This is the main difference between OPT and the grid code implementation found in GCP and GCN. These two strategies always specify a null real current in both sequences, and in this case, the converter employs the full capability for the imaginary positive sequence current. Therefore, their objective functions and voltage profiles become identical in this case with a balanced fault. 
 
 \begin{figure}[]\centering \tiny
+\begin{subfigure}[!htb]{0.12\textwidth}
+      \centering
+          \begin{tikzpicture}[trim axis right,trim axis left]
+              \pgfplotsset{width=4.5cm, height=3.5cm}
+              \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|{I}^+|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, ytick distance={0.005}, ymax = 1.01, ymin = 0.99, xmin=0.03, xmax=0.1, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/res_opt_3x_Ip1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/res_gcp_3x_Ip1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/res_gcn_3x_Ip1.csv};
+              % \legend{BF, OPT};
+              \end{axis}
+          \end{tikzpicture}
+    \end{subfigure}
+    \hspace{2.35cm}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$\un{Z}_x$}, ylabel={$|{I}^-|$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, ymax = 0.01, ymin = -0.01, xmin=0.03, xmax=0.1, ytick distance = {0.005}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/res_opt_3x_In1.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/res_gcp_3x_In1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/res_gcn_3x_In1.csv};
+                % \legend{OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]

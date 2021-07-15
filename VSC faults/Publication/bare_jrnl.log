@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  15 JUL 2021 23:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2020.12.28)  16 JUL 2021 00:11
 entering extended mode
 **"c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
 ("c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex"
@@ -750,6 +750,76 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_Zf_v1/res_opt_3x_Ip1.csv}
+
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_v1/res_opt_3x_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1119.
+
+ [warning /pgfplots/warning/empty column name]
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_Zf_v1/res_gcp_3x_Ip1.csv}
+
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_v1/res_gcp_3x_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1120.
+
+ [warning /pgfplots/warning/empty column name]
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_Zf_v1/res_gcn_3x_Ip1.csv}
+
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_v1/res_gcn_3x_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1121.
+
+ [warning /pgfplots/warning/empty column name]
+
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1124--1125
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_Zf_v1/res_opt_3x_In1.csv}
+
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_v1/res_opt_3x_In1.csv' has an empty column name; replacing it by '0'' on input line 1132.
+
+ [warning /pgfplots/warning/empty column name]
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_Zf_v1/res_gcp_3x_In1.csv}
+
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_v1/res_gcp_3x_In1.csv' has an empty column name; replacing it by '0'' on input line 1133.
+
+ [warning /pgfplots/warning/empty column name]
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+PGFPlots: reading {Data/Results_1conv_Zf_v1/res_gcn_3x_In1.csv}
+
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_v1/res_gcn_3x_In1.csv' has an empty column name; replacing it by '0'' on input line 1134.
+
+ [warning /pgfplots/warning/empty column name]
+
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1137--1138
+ [][] 
+ []
+
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/opt_3x_Ip1re.csv}
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -764,7 +834,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Ip1re.csv}
 
-Overfull \hbox (21.11887pt too wide) in paragraph at lines 1124--1125
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1150--1151
  [][] 
  []
 
@@ -787,7 +857,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Ip1im.csv}
 
-Overfull \hbox (21.11887pt too wide) in paragraph at lines 1137--1138
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1163--1164
  [][] 
  []
 
@@ -810,7 +880,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_In1re.csv}
 
-Overfull \hbox (21.11887pt too wide) in paragraph at lines 1151--1152
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1177--1178
  [][] 
  []
 
@@ -833,7 +903,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_In1im.csv}
 
-Overfull \hbox (21.11887pt too wide) in paragraph at lines 1163--1164
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1189--1190
  [][] 
  []
 
@@ -856,7 +926,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Vp1.csv}
 
-Overfull \hbox (21.11887pt too wide) in paragraph at lines 1177--1178
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1203--1204
  [][] 
  []
 
@@ -879,7 +949,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_Vn1.csv}
 
-Overfull \hbox (21.11887pt too wide) in paragraph at lines 1190--1191
+Overfull \hbox (21.11887pt too wide) in paragraph at lines 1216--1217
  [][] 
  []
 
@@ -903,11 +973,14 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_v1/gcn_3x_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (16.04883pt too wide) in paragraph at lines 1204--1205
+Overfull \hbox (16.04883pt too wide) in paragraph at lines 1230--1231
  [][] 
  []
 
-[5]
+
+Underfull \vbox (badness 3417) has occurred while \output is active []
+
+ [5]
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
@@ -916,7 +989,7 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/res_opt_LL_Ip.csv}
 
 
-Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_opt_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1218.
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_opt_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1244.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -926,7 +999,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/res_gcp_LL_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcp_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1219.
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcp_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1245.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -936,11 +1009,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/res_gcn_LL_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcn_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1220.
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcn_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1246.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1223--1224
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1249--1250
  [][] 
  []
 
@@ -951,7 +1024,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/res_opt_LL_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_opt_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1231.
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_opt_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1257.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -961,7 +1034,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/res_gcp_LL_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcp_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1232.
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcp_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1258.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -971,11 +1044,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/res_gcn_LL_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcn_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1233.
+Package pgfplots Warning: Table 'Data/Results_1conv_Zf_new_gc/res_gcn_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1259.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1236--1237
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1262--1263
  [][] 
  []
 
@@ -998,7 +1071,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1re.csv}
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1249--1250
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1275--1276
  [][] 
  []
 
@@ -1021,7 +1094,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1im.csv}
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1262--1263
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1288--1289
  [][] 
  []
 
@@ -1044,7 +1117,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_In1re.csv}
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1274--1275
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1300--1301
  [][] 
  []
 
@@ -1067,7 +1140,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_In1im.csv}
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1287--1288
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1313--1314
  [][] 
  []
 
@@ -1090,7 +1163,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Vp1.csv}
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1300--1301
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1326--1327
  [][] 
  []
 
@@ -1113,7 +1186,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_Vn1.csv}
 
-Overfull \hbox (21.11627pt too wide) in paragraph at lines 1314--1315
+Overfull \hbox (21.11627pt too wide) in paragraph at lines 1340--1341
  [][] 
  []
 
@@ -1137,13 +1210,13 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_Zf_new_gc/gcn_LL_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (16.05875pt too wide) in paragraph at lines 1329--1330
+Overfull \hbox (16.05875pt too wide) in paragraph at lines 1355--1356
  [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1344.
+               Default added (so using `tbp') on input line 1370.
 
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -1152,7 +1225,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/res_opt_LG_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_opt_LG_Ip.csv' has an empty column name; replacing it by '0'' on input line 1350.
+Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_opt_LG_Ip.csv' has an empty column name; replacing it by '0'' on input line 1376.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1162,7 +1235,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/res_gcp_LG_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcp_LG_Ip.csv' has an empty column name; replacing it by '0'' on input line 1351.
+Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcp_LG_Ip.csv' has an empty column name; replacing it by '0'' on input line 1377.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1172,11 +1245,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/res_gcn_LG_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcn_LG_Ip.csv' has an empty column name; replacing it by '0'' on input line 1352.
+Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcn_LG_Ip.csv' has an empty column name; replacing it by '0'' on input line 1378.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1355--1356
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1381--1382
  [][] 
  []
 
@@ -1187,7 +1260,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/res_opt_LG_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_opt_LG_In.csv' has an empty column name; replacing it by '0'' on input line 1363.
+Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_opt_LG_In.csv' has an empty column name; replacing it by '0'' on input line 1389.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1197,7 +1270,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/res_gcp_LG_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcp_LG_In.csv' has an empty column name; replacing it by '0'' on input line 1364.
+Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcp_LG_In.csv' has an empty column name; replacing it by '0'' on input line 1390.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1207,11 +1280,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/res_gcn_LG_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcn_LG_In.csv' has an empty column name; replacing it by '0'' on input line 1365.
+Package pgfplots Warning: Table 'Data/Results_1conv_RX_v1/res_gcn_LG_In.csv' has an empty column name; replacing it by '0'' on input line 1391.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1368--1369
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1394--1395
  [][] 
  []
 
@@ -1234,7 +1307,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/gcn_LG_Ip1re.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1381--1382
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1407--1408
  [][] 
  []
 
@@ -1257,7 +1330,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/gcn_LG_Ip1im.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1394--1395
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1420--1421
  [][] 
  []
 
@@ -1280,7 +1353,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/gcn_LG_In1re.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1406--1407
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1432--1433
  [][] 
  []
 
@@ -1303,7 +1376,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/gcn_LG_In1im.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1418--1419
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1444--1445
  [][] 
  []
 
@@ -1326,7 +1399,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/gcn_LG_Vp1.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1430--1431
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1456--1457
  [][] 
  []
 
@@ -1349,7 +1422,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/gcn_LG_Vn1.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1442--1443
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1468--1469
  [][] 
  []
 
@@ -1373,18 +1446,21 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_RX_v1/gcn_LG_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (16.0557pt too wide) in paragraph at lines 1456--1457
+Overfull \hbox (16.0557pt too wide) in paragraph at lines 1482--1483
  [][] 
  []
 
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1468.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[6]
+ [6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1545.
+               Default added (so using `tbp') on input line 1494.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1571.
 
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -1400,7 +1476,7 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/cable/Vth_im.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1555--1556
+Overfull \hbox (21.11932pt too wide) in paragraph at lines 1581--1582
  [][] 
  []
 
@@ -1418,13 +1494,13 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/cable/Zth_im.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (21.11932pt too wide) in paragraph at lines 1567--1568
+Overfull \hbox (21.11932pt too wide) in paragraph at lines 1593--1594
  [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1577.
+               Default added (so using `tbp') on input line 1603.
 
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -1433,7 +1509,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/res_opt_LL_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_opt_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1583.
+Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_opt_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1609.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1443,7 +1519,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/res_gcp_LL_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcp_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1584.
+Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcp_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1610.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1453,11 +1529,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/res_gcn_LL_Ip.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcn_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1585.
+Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcn_LL_Ip.csv' has an empty column name; replacing it by '0'' on input line 1611.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1588--1589
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1614--1615
  [][] 
  []
 
@@ -1468,7 +1544,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/res_opt_LL_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_opt_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1596.
+Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_opt_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1622.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1478,7 +1554,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/res_gcp_LL_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcp_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1597.
+Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcp_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1623.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1488,11 +1564,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/res_gcn_LL_In.csv}
 
-Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcn_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1598.
+Package pgfplots Warning: Table 'Data/Results_1conv_cable_v1/res_gcn_LL_In.csv' has an empty column name; replacing it by '0'' on input line 1624.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1601--1602
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1627--1628
  [][] 
  []
 
@@ -1515,7 +1591,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/gcn_LL_Ip1re.csv}
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1614--1615
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1640--1641
  [][] 
  []
 
@@ -1538,7 +1614,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/gcn_LL_Ip1im.csv}
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1627--1628
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1653--1654
  [][] 
  []
 
@@ -1561,7 +1637,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/gcn_LL_In1re.csv}
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1639--1640
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1665--1666
  [][] 
  []
 
@@ -1584,7 +1660,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/gcn_LL_In1im.csv}
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1651--1652
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1677--1678
  [][] 
  []
 
@@ -1607,7 +1683,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/gcn_LL_Vp1.csv}
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1663--1664
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1689--1690
  [][] 
  []
 
@@ -1630,7 +1706,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/gcn_LL_Vn1.csv}
 
-Overfull \hbox (21.1213pt too wide) in paragraph at lines 1675--1676
+Overfull \hbox (21.1213pt too wide) in paragraph at lines 1701--1702
  [][] 
  []
 
@@ -1654,21 +1730,18 @@ Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_1conv_cable_v1/gcn_LL_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (16.05707pt too wide) in paragraph at lines 1689--1690
+Overfull \hbox (16.05707pt too wide) in paragraph at lines 1715--1716
  [][] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1704.
+               Default added (so using `tbp') on input line 1730.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
+[7]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1794.
+               Default added (so using `tbp') on input line 1820.
 
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -1677,7 +1750,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LG_Ip1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1800.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1826.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1687,7 +1760,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LG_Ip2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1801.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1827.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1697,7 +1770,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LG_Ip1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1802.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1828.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1707,7 +1780,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LG_Ip2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1803.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1829.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1717,7 +1790,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LG_Ip1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1804.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1830.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1727,11 +1800,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LG_Ip2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1805.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1831.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1807--1808
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1833--1834
  [][] 
  []
 
@@ -1742,7 +1815,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LG_In1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_In1.csv' has an empty column name; replacing it by '0'' on input line 1815.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_In1.csv' has an empty column name; replacing it by '0'' on input line 1841.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1752,7 +1825,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LG_In2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_In2.csv' has an empty column name; replacing it by '0'' on input line 1816.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LG_In2.csv' has an empty column name; replacing it by '0'' on input line 1842.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1762,7 +1835,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LG_In1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_In1.csv' has an empty column name; replacing it by '0'' on input line 1817.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_In1.csv' has an empty column name; replacing it by '0'' on input line 1843.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1772,7 +1845,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LG_In2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_In2.csv' has an empty column name; replacing it by '0'' on input line 1818.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LG_In2.csv' has an empty column name; replacing it by '0'' on input line 1844.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1782,7 +1855,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LG_In1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_In1.csv' has an empty column name; replacing it by '0'' on input line 1819.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_In1.csv' has an empty column name; replacing it by '0'' on input line 1845.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -1792,11 +1865,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LG_In2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_In2.csv' has an empty column name; replacing it by '0'' on input line 1820.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LG_In2.csv' has an empty column name; replacing it by '0'' on input line 1846.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1823--1824
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1849--1850
  [][] 
  []
 
@@ -1837,7 +1910,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LG_Ip2re.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1839--1840
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1865--1866
  [][] 
  []
 
@@ -1878,7 +1951,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LG_Ip2im.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1855--1856
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1881--1882
  [][] 
  []
 
@@ -1919,7 +1992,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LG_In2re.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1872--1873
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1898--1899
  [][] 
  []
 
@@ -1960,7 +2033,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LG_In2im.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1887--1888
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1913--1914
  [][] 
  []
 
@@ -2001,7 +2074,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LG_Vp2.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1904--1905
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1930--1931
  [][] 
  []
 
@@ -2042,7 +2115,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LG_Vn2.csv}
 
-Overfull \hbox (21.12085pt too wide) in paragraph at lines 1920--1921
+Overfull \hbox (21.12085pt too wide) in paragraph at lines 1946--1947
  [][] 
  []
 
@@ -2085,7 +2158,7 @@ PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LG_f_obj.csv}
 Missing character: There is no ; in font nullfont!
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1949.
+               Default added (so using `tbp') on input line 1975.
 
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
@@ -2094,7 +2167,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LL_Ip1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1955.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1981.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2104,7 +2177,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LL_Ip2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1956.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1982.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2114,7 +2187,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LL_Ip1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1957.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1983.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2124,7 +2197,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LL_Ip2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1958.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1984.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2134,7 +2207,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LL_Ip1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1959.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_Ip1.csv' has an empty column name; replacing it by '0'' on input line 1985.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2144,11 +2217,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LL_Ip2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1960.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_Ip2.csv' has an empty column name; replacing it by '0'' on input line 1986.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1962--1963
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 1988--1989
  [][] 
  []
 
@@ -2159,7 +2232,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LL_In1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_In1.csv' has an empty column name; replacing it by '0'' on input line 1970.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_In1.csv' has an empty column name; replacing it by '0'' on input line 1996.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2169,7 +2242,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_opt_LL_In2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_In2.csv' has an empty column name; replacing it by '0'' on input line 1971.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_opt_LL_In2.csv' has an empty column name; replacing it by '0'' on input line 1997.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2179,7 +2252,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LL_In1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_In1.csv' has an empty column name; replacing it by '0'' on input line 1972.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_In1.csv' has an empty column name; replacing it by '0'' on input line 1998.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2189,7 +2262,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcp_LL_In2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_In2.csv' has an empty column name; replacing it by '0'' on input line 1973.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcp_LL_In2.csv' has an empty column name; replacing it by '0'' on input line 1999.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2199,7 +2272,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LL_In1.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_In1.csv' has an empty column name; replacing it by '0'' on input line 1974.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_In1.csv' has an empty column name; replacing it by '0'' on input line 2000.
 
  [warning /pgfplots/warning/empty column name]
 Missing character: There is no . in font nullfont!
@@ -2209,11 +2282,11 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/res_gcn_LL_In2.csv}
 
-Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_In2.csv' has an empty column name; replacing it by '0'' on input line 1975.
+Package pgfplots Warning: Table 'Data/Results_2conv_Zf_v2/res_gcn_LL_In2.csv' has an empty column name; replacing it by '0'' on input line 2001.
 
  [warning /pgfplots/warning/empty column name]
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1978--1979
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 2004--2005
  [][] 
  []
 
@@ -2254,7 +2327,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LL_Ip2re.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 1994--1995
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 2020--2021
  [][] 
  []
 
@@ -2295,7 +2368,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LL_Ip2im.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 2010--2011
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 2036--2037
  [][] 
  []
 
@@ -2336,7 +2409,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LL_In2re.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 2027--2028
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 2053--2054
  [][] 
  []
 
@@ -2377,7 +2450,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LL_In2im.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 2042--2043
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 2068--2069
  [][] 
  []
 
@@ -2418,7 +2491,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LL_Vp2.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 2059--2060
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 2085--2086
  [][] 
  []
 
@@ -2459,7 +2532,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 PGFPlots: reading {Data/Results_2conv_Zf_v2/gcn_LL_Vn2.csv}
 
-Overfull \hbox (21.11856pt too wide) in paragraph at lines 2075--2076
+Overfull \hbox (21.11856pt too wide) in paragraph at lines 2101--2102
  [][] 
  []
 
@@ -2523,15 +2596,15 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 44855 strings out of 479696
- 1210540 string characters out of 19617135
- 22012437 words of memory out of 40000000
- 61119 multiletter control sequences out of 15000+200000
+ 44880 strings out of 479696
+ 1210978 string characters out of 19617135
+ 22012898 words of memory out of 40000000
+ 61132 multiletter control sequences out of 15000+200000
  448101 words of font info for 117 fonts, out of 20000000 for 9000
  1144 hyphenation exceptions out of 8191
  94i,23n,98p,2392b,2508s stack positions out of 5000i,500n,10000p,20000000b,50000s
 {C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (10 pages, 456246 bytes).
+Output written on "c:/Users\Josep\Desktop\CITCEA\VSC faults\Publication\bare_jrnl.pdf" (10 pages, 457518 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

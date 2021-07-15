@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex bare_jrnl"] 1626385815 "bare_jrnl.aux" "bare_jrnl.bbl" "bare_jrnl" 1626386040
+["bibtex bare_jrnl"] 1626386206 "bare_jrnl.aux" "bare_jrnl.bbl" "bare_jrnl" 1626387085
   "C:/Users/Josep/AppData/Roaming/MiKTeX/bibtex/bst/ieeetran/IEEEtran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "bare_jrnl.aux" 1626386040 7887 e7b3112eda2e99d98676782662ea44a7 "pdflatex"
+  "bare_jrnl.aux" 1626387085 7887 f57dd99266f935441906b0d4494d9758 "pdflatex"
   "bib.bib" 1621810332 9717 11f2ea9831cd185c289e57763416ade5 ""
   (generated)
   "bare_jrnl.blg"
   "bare_jrnl.bbl"
-["pdflatex"] 1626386023 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf" "bare_jrnl" 1626386040
+["pdflatex"] 1626387069 "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf" "bare_jrnl" 1626387085
   "C:/Users/Josep/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1609175857 9258828 5dd0ab4e26541be02491e4983b78ef70 ""
   "C:/Users/Josep/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1625997649 371670 812e35040f29f9488c0e4a831a6139ff ""
   "C:/Users/Josep/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458477487 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -321,6 +321,12 @@
   "Data/Results_1conv_Zf_v1/opt_3x_Vn1.csv" 1624726468 2151 1d9c1d40ac0699066125803fa3b3c213 ""
   "Data/Results_1conv_Zf_v1/opt_3x_Vp1.csv" 1624726468 2039 b311e349b6839d0f83b38eab9319815d ""
   "Data/Results_1conv_Zf_v1/opt_3x_f_obj.csv" 1624726468 2000 1babde59baabd0d758490ec961908a9e ""
+  "Data/Results_1conv_Zf_v1/res_gcn_3x_In1.csv" 1626386552 1326 086b60c509c789c9c6f7c34f13b07f95 ""
+  "Data/Results_1conv_Zf_v1/res_gcn_3x_Ip1.csv" 1626386544 1566 85b6639c8367945f69b70c2e772c88a3 ""
+  "Data/Results_1conv_Zf_v1/res_gcp_3x_In1.csv" 1626386506 1678 248abb721c30a7463f65809fa73aa444 ""
+  "Data/Results_1conv_Zf_v1/res_gcp_3x_Ip1.csv" 1626386513 1371 59e233d14a488296be69ebcd58bed53e ""
+  "Data/Results_1conv_Zf_v1/res_opt_3x_In1.csv" 1626386469 2273 185368687e6fdd83f0dff1798b93fd83 ""
+  "Data/Results_1conv_Zf_v1/res_opt_3x_Ip1.csv" 1626386438 2076 3e0b98e69f755d8e6700877bac98b250 ""
   "Data/Results_1conv_cable_v1/gcn_LL_In1im.csv" 1624801685 2446 051f6fd6c16282c3ebe09f94d5689bbc ""
   "Data/Results_1conv_cable_v1/gcn_LL_In1re.csv" 1624801685 2798 35ab3fda51f6a84677493e59da94df6d ""
   "Data/Results_1conv_cable_v1/gcn_LL_Ip1im.csv" 1624801685 2610 a3d08d516cea4baf619ef2239400f851 ""
@@ -454,14 +460,14 @@
   "Data/cable/Vth_re.csv" 1615757099 2449 f599545114875657533054cc3550bdf0 ""
   "Data/cable/Zth_im.csv" 1615757099 2567 abfa7f8cbf7bff19de53418befe91eef ""
   "Data/cable/Zth_re.csv" 1615757099 2635 63045ef51a4370f41cd4e600213cb84f ""
-  "bare_jrnl.aux" 1626386040 7887 e7b3112eda2e99d98676782662ea44a7 "pdflatex"
-  "bare_jrnl.bbl" 1626385816 8113 dc69819732462907e66c6d07d03543cd "bibtex bare_jrnl"
-  "bare_jrnl.tex" 1626386021 169942 1a18355b05c4acf9713fc28cbee8ebb4 ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.aux" 1626386040 7887 e7b3112eda2e99d98676782662ea44a7 ""
-  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" 1626386021 169942 1a18355b05c4acf9713fc28cbee8ebb4 ""
+  "bare_jrnl.aux" 1626387085 7887 f57dd99266f935441906b0d4494d9758 "pdflatex"
+  "bare_jrnl.bbl" 1626386206 8113 dc69819732462907e66c6d07d03543cd "bibtex bare_jrnl"
+  "bare_jrnl.tex" 1626387067 172399 3879d976f565704576a7824170ee8368 ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.aux" 1626387085 7887 f57dd99266f935441906b0d4494d9758 ""
+  "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.tex" 1626387067 172399 3879d976f565704576a7824170ee8368 ""
   (generated)
-  "bare_jrnl.aux"
+  "bare_jrnl.log"
   "bare_jrnl.pdf"
   "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.pdf"
   "c:/Users/Josep/Desktop/CITCEA/VSC faults/Publication/bare_jrnl.log"
-  "bare_jrnl.log"
+  "bare_jrnl.aux"
