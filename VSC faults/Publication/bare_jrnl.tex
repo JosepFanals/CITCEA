@@ -629,7 +629,7 @@ This paper presents two main contributions. On the one hand, it indicates the pr
 
 \section{Formulation} \label{problem_f}
 \subsection{System modeling}
-VSCs are elements that interconnect DC systems with AC systems. As shown in Fig. \ref{fig:average_model}, they can be modeled following the so-called average model, where the switchings of the semiconductors are excluded. The VSC has been assumed to be connected to the AC grid with a filter in between denoted by $\un{Z}_z$. The control strategy of the VSC consists of adjusting the voltages appropriately so that currents can indirectly meet the references \cite{andani2018controller}. 
+VSCs are elements that interconnect DC systems with AC systems. As shown in Fig. \ref{fig:average_model}, they can be modeled following the so-called average model. The VSC has been assumed to be connected to the AC grid with a filter in between denoted by $\un{Z}_z$. The control strategy of the VSC consists of adjusting the voltages appropriately so that currents can indirectly meet the references \cite{andani2018controller}. 
 
 % Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Figure \ref{fig:sys_n} presents the modeling for a system with $n$ converters connected to a grid with $n_g$ buses represented by its admittance matrix $\mathbf{\un{Y}_g}$. In addition, the grid has been modeled with a Norton equivalent instead of a Thevenin equivalent for simplification purposes. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
@@ -705,7 +705,7 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Fig.
 \label{fig:average_model}
 \end{figure}
 
-Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Fig. \ref{fig:sys_n} presents the modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Norton equivalent. Compared to dealing with a Thevenin equivalent, the Norton equivalent simplifies the formulation since it does not create an additional bus. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
+Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Fig. \ref{fig:sys_n} presents the generic modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Norton equivalent. A Thevenin equivalent would be valid as well. However, the Norton equivalent simplifies the formulation since it does not create an additional bus. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k \ \forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -771,7 +771,7 @@ Power systems are likely to involve more than a single converter. Therefore, the
 \label{fig:sys_n}
 \end{figure}
 
-The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. Although both approaches are equally valid, working in the natural reference frame allows studying the system with greater flexibility, as only the particular elements of the admittance matrices that depend on the fault admittance experience changes. No other modifications in the topology have to be considered. Consequently, voltages and currents are related by
+The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. For greater simplicity, in this paper, the circuits are modeled following the natural reference frame. Consequently, voltages and currents are related by
 \begin{equation}
 \setlength\arraycolsep{1.5pt}
     \begin{split}
@@ -800,14 +800,14 @@ The relationship between currents and voltages can be established with an analys
 \end{split}
 \label{eq:nconv}
 \end{equation}
-For a given converter $k$, its injected currents and its associated voltages at the point of common coupling are further developed as 
+For a given converter $k$ connected to bus $k$, its injected currents and the voltages at the point of common coupling are further developed as 
 \begin{equation}
   \begin{cases}
     \mathbf{\un{I}_k} = \left[\un{I}^{(a)}_k, \un{I}^{(b)}_k, \un{I}^{(c)}_k \right]^T \\
     \mathbf{\un{V}_{pk}} = [\un{V}^{(a)}_{pk}, \un{V}^{(b)}_{pk}, \un{V}^{(c)}_{pk}]^T 
   \end{cases}
 \end{equation}
-i.e., they contain the $a$, $b$ and $c$ phase values. Since VSCs cannot inject zero sequence currents, the formulation of the problem also imposes
+i.e., they contain the $a$, $b$ and $c$ phase values. Since this paper assumes VSCs to be connected to the system by only three wires, there is no zero sequence current. Thus, the formulation of the problem also imposes
 \begin{equation}
   \un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \in [1,...,n] \ . 
 \end{equation}
@@ -821,7 +821,7 @@ Voltages and currents are related via admittance matrices of the form $\mathbf{\
 \end{equation} 
 In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1/\un{Z}_f$ are added by observation, where $\un{Z}_f$ denotes the fault impedance. 
 
-On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation, where $n_g$ is the number of buses found in this passive $\mathbf{\un{Y}_g}$ grid. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are null except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constituted by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
+On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation, where $n_g$ is the number of buses found in this passive $\mathbf{\un{Y}_g}$ grid. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are zero except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constituted by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
 
 The final goal of the modeling is the obtention of voltages. They are computed from \eqref{eq:nconv} by operating the product between the inverse of the full admittance matrix and the currents' vector. 
 In order to have a clearer comprehension of the voltages, they are eventually converted into symmetrical components by means of Fortescue's transformation\cite{fortescue1918method}:
@@ -844,7 +844,7 @@ In order to have a clearer comprehension of the voltages, they are eventually co
 where $a=e^{j\frac{2\pi}{3}}$. 
 
 \subsection{Optimization problem}
-Positive sequence voltages have to be maximized while negative sequence voltages have to be minimized. The zero sequence component of the voltages is a magnitude likely to become non-null under asymmetrical faults. Nevertheless, as VSCs are unable to inject zero sequence currents, it will remain an uncontrolled variable in the sense that no efforts will be made towards reducing it. Current saturation restrictions imposed by the VSC characteristics have to be respected. This applies to each phase of each converter. Therefore, the generic optimization problem is
+Positive sequence voltages have to be maximized while negative sequence voltages have to be minimized. The zero sequence component of the voltages is a magnitude likely to become non-null under asymmetrical faults. Nevertheless, as VSCs are unable to inject zero sequence currents, it will remain an uncontrolled variable in the sense that no efforts will be made towards reducing it. Current saturation restrictions imposed by the VSC characteristics have to be respected. This applies to each phase of each converter. Therefore, the generic optimization problem is expressed as:
 \begin{equation}
 \begin{aligned}
 \min_{\un{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - |\un{V}^+_{pk}(\un{I}) |)| + \lambda^-_k|(0 - |\un{V}^-_{pk}(\un{I})|)|\right] \ , \\
@@ -852,9 +852,9 @@ Positive sequence voltages have to be maximized while negative sequence voltages
 \end{aligned}
 \label{eq:opt2}
 \end{equation}
-where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors, the positive and negative sequence components of voltages $\un{V}_{pk}$ are symbolically expressed as functions of the currents, and $I_{\text{max,k}}$ is the maximum allowed current by the $k$ converter. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decrease substantially during faults. Ignoring voltage limitations tends to be a commonality in the literature as well. 
+where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors for positive and negative voltage magnitudes, the positive and negative sequence components of voltages $\un{V}_{pk}$ are symbolically expressed as functions of the currents, and $I_{\text{max,k}}$ is the maximum allowed current by the $k$ converter for each phase. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decrease substantially during faults. Ignoring voltage limitations tends to be a commonality in the literature as well. 
 
-The results gathered in this paper are computed with Python 3.9.1 and the aid of the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1e-6$. 
+The results gathered in this paper are computed with Python 3.9.1 using the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1e-6$. 
 
 \subsection{Grid code rules}
 In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions, for the positive sequence
@@ -875,9 +875,10 @@ whereas for the negative sequence
    \end{cases}
    \label{eq:gc2}
 \end{equation}
-where the values of the constants are gathered in Table \ref{tab:param_gc}. Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The converter would therefore operate at saturated conditions during extreme faults because either the positive sequence voltage would reach the lower threshold $V^+_{\text{low}}$ or the negative sequence voltage would surpass the upper threshold $V^-_{\text{high}}$. However, in severe faults, it is still possible that both limits are surpassed, or at least, approached. In case \eqref{eq:gc1} and \eqref{eq:gc2} were applied simultaneously, the required current to be injected by the VSC could potentially exceed the $I_{\text{max},k}$ limitation. Thus, it makes sense to establish a prioritization. 
+%where the values of the constants are gathered in Table \ref{tab:param_gc}. 
+Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The converter would therefore operate at saturated conditions during extreme faults because either the positive sequence voltage would reach the lower threshold $V^+_{\text{low}}$ or the negative sequence voltage would surpass the upper threshold $V^-_{\text{high}}$. However, in severe faults, it is still possible that both limits are surpassed, or at least, approached. In case \eqref{eq:gc1} and \eqref{eq:gc2} were applied simultaneously, the required current to be injected by the VSC could potentially exceed the $I_{\text{max},k}$ limitation. Thus, it makes sense to establish a prioritization. 
 
-This paper considers the two straightforward prioritizations. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the maximum allowed negative sequence current so as not to exceed the current limitations in any phase. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations, the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
+This paper considers the two straightforward prioritizations for voltage support operation of converters following grid codes. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the remaining maximum allowed current in the negative sequence. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations, the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
 
 Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. Phase currents are related to zero, positive, and negative sequence components by
 \begin{equation}
@@ -898,7 +899,7 @@ Consider a generic distribution of positive and negative sequence voltages in th
   \end{pmatrix}
   \label{eq:Ifort1}
 \end{equation}
-where $\un{I}^0$ is null as the VSC is incapable of injecting it. The $k$ index related to identifying a given VSC has been omitted to alleviate the notation. Explicitly, \eqref{eq:Ifort1} becomes
+where $\un{I}^0$ is zero as the VSC is incapable of injecting it. The $k$ index related to identifying a given VSC has been omitted to alleviate the notation. Explicitly, \eqref{eq:Ifort1} becomes
 \begin{equation}
   \begin{cases}
     \un{I}_a = \un{I}^+ + \un{I}^- \\
@@ -1002,7 +1003,7 @@ The paper evaluates and compares three support strategies, which are:
 \section{Single converter case study} \label{1conv}
 The analysis is first performed considering a one-converter case study as the one depicted in Fig. \ref{fig:sys_p1}. A fault is caused at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground or line to line). Double line to ground faults are not covered in this study, not because they are unfeasible to be studied, but because there is a direct connection between the two faulted phases. This causes variations from a parametric study to have an almost null influence on the results. In any case, the goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
-Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. 
+Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. Regarding the grid codes, the values of the constants are gathered in Table \ref{tab:param_gc}. They remain the same for all studies.
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
