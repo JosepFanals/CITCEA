@@ -705,7 +705,7 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Fig.
 \label{fig:average_model}
 \end{figure}
 
-Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Fig. \ref{fig:sys_n} presents the generic modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Norton equivalent. A Thevenin equivalent would be valid as well. However, the Norton equivalent simplifies the formulation since it does not create an additional bus. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k \ \forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
+Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Fig. \ref{fig:sys_n} presents the generic modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Thevenin equivalent. A Norton equivalent would be valid as well, and in fact, it simplifies the formulation since it does not create an additional bus. Therefore, the mathematical model ends up using a Norton equivalent. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k \ \forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1019,14 +1019,22 @@ Three parametric studies are performed. One considers variations in the fault im
 \begin{circuitikz}[american]
 \thicklines
 
-\draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
-\draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
-\draw (-2,0.7) to [short] (-2,2);
-\draw (-0.5,0.7) to [short] (-0.5,2);
-\draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
-\draw (-0.25,1.35) to [short] (-0.25,0);
-\draw (-0.5,0) to [short] (-0.0,0);
-\draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
+% \draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
+% \draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
+
+\draw (-2,1.35) to [R, l=$\underline{Z}_{t}$, european] (-0.5,1.35);
+\draw (-0.5, 1.35) to [short] (-0.25, 1.35);
+\draw (-0.25,1.35) to [sV, l_=$\underline{V}_t$] (-0.25,-0.5);
+\draw (-0.0,-0.5) to [short] (-0.5,-0.5);
+\draw (-2,1.35) to [short] (-2.5,1.35);
+
+
+% \draw (-2,0.7) to [short] (-2,2);
+% \draw (-0.5,0.7) to [short] (-0.5,2);
+% \draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
+% \draw (-0.25,1.35) to [short] (-0.25,0);
+% \draw (-0.5,0) to [short] (-0.0,0);
+% \draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
 
 \draw[line width=0.65mm] (-2.5,0.85) to [short] (-2.5,1.85);
 \draw (-2.5,1.35) to [short] (-2.3,0.35);
@@ -1505,16 +1513,26 @@ Fig. \ref{fig:sys_c2} represents the third parametric study regarding single con
 \begin{circuitikz}[american]
 \thicklines
 
-\draw (1.0,2) to [isource, l_=$\underline{I}_{t}$] (-0.5,2);
-\draw (-0.5,0.7) to [R, l=$\underline{Z}_{t}$, european] (1.0,0.7);
-\draw (-0.5,0.7) to [short] (-0.5,2);
-\draw (1,0.7) to [short] (1,2);
-\draw (1,1.35) to [short, *-] (1.25,1.35);
-\draw (1.25,1.35) to [short] (1.25,0);
-\draw (1,0) to [short] (1.5,0);
+\draw (-0.5,1.35) to [R, l=$\underline{Z}_{t}$, european] (1,1.35);
+\draw (1,1.35) to [short] (1.25,1.35);
+\draw (-0.5, 1.35) to [short] (-0.75, 1.35);
+\draw (1.25,1.35) to [sV, l_=$\underline{V}_t$] (1.25,-0.5);
+\draw (1,-0.5) to [short] (1.5,-0.5);
+% \draw (-2,1.35) to [short] (-2.5,1.35);
+
+
+
+% \draw (1.0,2) to [isource, l_=$\underline{I}_{t}$] (-0.5,2);
+% \draw (-0.5,0.7) to [R, l=$\underline{Z}_{t}$, european] (1.0,0.7);
+% \draw (-0.5,0.7) to [short] (-0.5,2);
+% \draw (1,0.7) to [short] (1,2);
+% \draw (1,1.35) to [short, *-] (1.25,1.35);
+% \draw (1.25,1.35) to [short] (1.25,0);
+% \draw (1,0) to [short] (1.5,0);
+
 % \draw (-2.0,1.35) to [short, *-] (-2.2,1.35);
 
-\draw (-0.5,1.35) to [R, l_=$\underline{Z}_s$, european, *-] (-3.0,1.35);
+\draw (-0.5,1.35) to [R, l_=$\underline{Z}_s$, european] (-3.0,1.35);
 \draw (-1.0, 1.35) to [R, l_=$\underline{Z}_p$, european] (-1.0, -0.5);
 \draw (-2.5, 1.35) to [R, l=$\underline{Z}_p$, european] (-2.5, -0.5);
 \draw (-3.0,1.35) to [short] (-3.5,1.35);
@@ -1741,14 +1759,20 @@ A case study with two VSCs is analyzed in this Section in order to spot the inte
 \begin{circuitikz}[american]
 \thicklines
 
-\draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
-\draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
-\draw (-2,0.7) to [short] (-2,2);
-\draw (-0.5,0.7) to [short] (-0.5,2);
-\draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
-\draw (-0.25,1.35) to [short] (-0.25,0);
-\draw (-0.5,0) to [short] (-0.0,0);
-\draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
+\draw (-2,1.35) to [R, l=$\underline{Z}_{t}$, european] (-0.5,1.35);
+\draw (-0.5,1.35) to [short] (-0.25,1.35);
+\draw (-2, 1.35) to [short] (-2.5, 1.35);
+\draw (-0.25,1.35) to [sV, l_=$\underline{V}_t$] (-0.25,-0.5);
+\draw (0,-0.5) to [short] (-0.5,-0.5);
+
+% \draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
+% \draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
+% \draw (-2,0.7) to [short] (-2,2);
+% \draw (-0.5,0.7) to [short] (-0.5,2);
+% \draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
+% \draw (-0.25,1.35) to [short] (-0.25,0);
+% \draw (-0.5,0) to [short] (-0.0,0);
+% \draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
 
 \draw[line width=0.65mm] (-2.5,0.85) to [short] (-2.5,1.85);
 \draw (-2.5,1.35) to [short] (-2.3,0.35);
