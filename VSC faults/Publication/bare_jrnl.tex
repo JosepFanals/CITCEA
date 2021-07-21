@@ -386,7 +386,7 @@
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
 % \title{Positive and negative sequence current injection to improve voltages under unbalanced faults}
-\title{On the solution of optimized voltage-support operation of VSC considering converter limitations}
+\title{Optimized voltage-support operation of VSC considering converter limitations}
 %
 %
 % author names and IEEE memberships
@@ -455,8 +455,8 @@
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-Grid faults constitute a series of unfortunate events that compromise power systems. With the increasing integration of renewables and their associated power electronics converters, the injected currents are controllable, but at the same time, they have to be limited so as not to damage the semiconductors. This poses the challenge to determine the combination of currents that improves the voltages at the point of common coupling. In this paper, such an issue is approached from an optimization perspective. 
-Numerical case studies have been included with different types and depths of short-circuit fault. The optimized solutions have been compared with the operation points obtained following grid-codes.
+Grid faults are unfortunate events that compromise power systems. With the increasing integration of renewables and their associated power electronics converters, the injected currents are controllable, but at the same time, they have to be limited so as not to damage the converter. This poses the challenge to determine the combination of currents that improves the voltages at the point of common coupling. In this paper, such an issue is approached from an optimization perspective. 
+A formulation for the analysis of faults in a generic system is presented. Numerical cases involving one and two converters have been studied with different types and depths of short-circuit faults. The optimized solutions have been compared with the operation points obtained following grid-codes.
 Overall, the results indicate that injecting only reactive power is not always the preferable choice. However, grid codes can be regarded as near-optimal decision rules, since their solution only differs slightly from the optimal one.
 \end{abstract}
 
@@ -498,7 +498,7 @@ VSC, Grid-Support, Optimization, Asymmetrical Fault, Current Saturation
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-\IEEEPARstart{T}{he} rise in renewable energies has carried along with the inclusion of Voltage Source Converters (VSC) as a means of coupling energetic resources to the grid while providing controllability \cite{imhof2014power, eren2011control, blaabjerg2015power}. Adopting such power electronics equipment has induced a progressive shrinkage on synchronous generators' influence in power systems. The high flexibility of VSC control enables advanced grid-support control, which could enhance the system performance during the fault and ensure a fast recovery after the fault clearance. However, compared to electrical machines, VSCs cannot withstand overloads \cite{abdou2013improving}. Such current-saturation modifies VSCs' operation modes and must be considered in the power system computational analysis. 
+\IEEEPARstart{T}{he} rise in renewable energies has been implemented with the inclusion of Voltage Source Converters (VSC) as a means of coupling energetic resources to the grid while providing controllability \cite{imhof2014power, eren2011control, blaabjerg2015power}. Adopting such power electronics equipment has induced a progressive shrinkage on synchronous generators' influence in power systems. The high flexibility of VSC control enables advanced grid-support control, which could enhance the system performance during the fault and ensure a fast recovery after the fault clearance. However, compared to electrical machines, VSCs cannot withstand overloads \cite{abdou2013improving}. Such current-saturation modifies VSCs' operation modes and must be considered in the power system computational analysis. 
 
 % Indeed, current (and also voltage) limitations cause VSC to behave differently. They reach what is called a saturated state. Many equilibrium points may arise as a result of that, especially in grids formed by multiple converters operating in critical conditions. The solution to such systems is also likely to become an arduous task to compute, as saturation states are defined by non-linear equations, or in more detail, by piecewise functions. 
 
@@ -512,7 +512,7 @@ This is because transmission networks are often considered to have an inductive 
 This paper proposes a methodology to identify the optimized system equilibrium point during the fault considering converters' current limitations. The optimized operation points are compared with the results obtained from conventional grid codes. In these grid codes, two different strategies are implemented: one prioritizes positive sequence current whereas the other prioritizes negative sequence current. They are both restricted to only injecting reactive power.
 The optimized solution and the grid codes are tested for balanced and unbalanced faults, where this last category includes the line to ground and the line to line fault. First, a basic system with a single converter is studied. Then, the analysis is repeated for a system with two converters in order to identify their interaction.
 
-This paper presents two main contributions. On the one hand, it indicates the preferable injected currents under diverse conditions. A deeper understanding of the optimality of the solutions is expected to be gained from it. On the other hand, comparisons between the optimal solution and the results obtained from grid codes are presented. An assessment about the convenience of grid codes to support faults can be derived, which should be useful when proposing future improvements in order to evolve towards more resilient grids.
+This paper presents two main contributions. On the one hand, it indicates the preferable injected currents under diverse conditions. A deeper understanding of the optimality of the solutions is expected to be gained from it. On the other hand, comparisons between the optimal solution and the results obtained from grid codes are presented. According to the cases under study, the optimal results tend to differ more from grid codes in two-converter cases than in one-converter scenarios. An assessment about the convenience of grid codes to support faults can be derived, which should be useful when proposing future improvements in order to evolve towards more resilient grids.
 
 % The structure of the paper is as follows. Section \ref{problem_f} formulates the optimization problem and details the methodology employed. Section \ref{1conv} presents the results together with the corresponding discussion for a single converter case. Section \ref{2conv} analyzes similar situations for a basic power system with two converters. Finally, Section \ref{concl} concludes this work.  
 % and write this paragraph
@@ -770,7 +770,8 @@ Power systems are likely to involve more than a single converter. Therefore, the
 \draw[line width=0.4mm] (-5.5,2.5) to [short] (-5.5,-2.5);
 \draw[line width=0.4mm] (-4.5,2.5) to [short] (-5.5,2.5);
 \draw[line width=0.4mm] (-5.5,-2.5) to [short] (-4.5,-2.5);
-\node at (-5,0.0) {Grid $\mathbf{\un{Y}_g}$};
+\node at (-5,-1) {Grid $\mathbf{\un{Y}_g}$};
+\node at (-5,1.35) {Node $g$};
 
 \draw[line width=0.4mm, dotted] (-9.5,-0.6) to [short] (-9.5,-1.1);
 % \draw[line width=0.4mm, dotted] (-8.0,-0.3) to [short] (-8.0,-1.4);
@@ -781,7 +782,7 @@ Power systems are likely to involve more than a single converter. Therefore, the
 \label{fig:sys_n}
 \end{figure}
 
-The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. For greater simplicity, in this paper, the circuits are modeled following the natural reference frame. Consequently, voltages and currents are related by:
+The relationship between currents and voltages can be established with an analysis in the natural reference frame or by employing symmetrical components as in \cite{taul2020modeling}. For greater simplicity, in this paper, the circuits are modeled following the natural reference frame. Consequently, the magnitudes depicted in Fig. \ref{fig:sys_n} are related by:
 \begin{equation}
 \setlength\arraycolsep{1.5pt}
     \begin{split}
@@ -813,8 +814,8 @@ The relationship between currents and voltages can be established with an analys
 For a given converter $k$ connected to bus $k$, its injected currents and the voltages at the point of common coupling are further developed as:
 \begin{equation}
   \begin{cases}
-    \mathbf{\un{I}_k} = \left[\un{I}^{(a)}_k, \un{I}^{(b)}_k, \un{I}^{(c)}_k \right]^T \\
-    \mathbf{\un{V}_{pk}} = [\un{V}^{(a)}_{pk}, \un{V}^{(b)}_{pk}, \un{V}^{(c)}_{pk}]^T 
+    \mathbf{\un{I}_k} = \left[\un{I}^{a}_k, \un{I}^{b}_k, \un{I}^{c}_k \right]^T \\
+    \mathbf{\un{V}_{pk}} = [\un{V}^{a}_{pk}, \un{V}^{b}_{pk}, \un{V}^{c}_{pk}]^T 
   \end{cases}
 \end{equation}
 i.e., they contain the $a$, $b$ and $c$ phase values. Since this paper assumes VSCs to be connected to the system by only three wires, there is no zero sequence current. Thus, the formulation of the problem also imposes
