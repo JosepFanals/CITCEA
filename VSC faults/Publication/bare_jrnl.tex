@@ -984,30 +984,6 @@ When the positive sequence is prioritized (GCP):
   \end{equation}
 \end{enumerate}
 
-
-
-To do so, one component has to be expressed as a function of the other. This carries no extra complexity considering that phasor $\un{V}^-$ is fully known, and so the direction of $\un{I}^-$ has to be shifted $\frac{\pi}{2}$ from it. Making use of the relation such that:
-\begin{equation}
-  \tan(\alpha^-) = \frac{I^-_{im}}{I^-_{re}} \ ,
-  \label{eq:tann}
-\end{equation}
-where current $I^-_{im}$ can be expressed as a function of $I^-_{re}$, for instance, and therefore there is only one unknown in each expression of \eqref{eq:Ifin}. Then, the resulting quadratic equations are solved for $I^-_{re}$ and the associated $I^-_{im}$ is found with \eqref{eq:tann}. 
-
-Note that six $[I^-_{re},I^-_{im}]$ pairs of solutions would be obtained in total. Three of them have to be discarded because they do not follow the pre-established direction of $\un{I}^-$ (due to the quadratic characteristic of \eqref{eq:Ifin}). Out of the remaining three, the one with the smallest absolute value is picked. This way it is ensured that current saturation is only reached in one phase, while the other two operate below their limits. 
-
-
-When the prioritization applies to the negative sequence (GCN):
-
-\begin{enumerate}
-\item The absolute value of the negative sequence current is obtained from \eqref{eq:gc2}. Its direction in the complex plane is found by shifting it $+\frac{\pi}{2}$ with respect to $\un{V}^-$. Consequently, $I^-_{re}$ and $I^-_{im}$ are computed directly. The two unknowns in this case are $I^+_{re}$ and $I^+_{im}$. 
-
-
-\end{enumerate}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{figure}[]\centering
  \begin{tikzpicture}
    \draw[->] (-2.5,0) -- (2.5,0);
@@ -1036,18 +1012,85 @@ When the prioritization applies to the negative sequence (GCN):
 \end{figure}
 
 
-% explain the prioritization, equations
+
+
+Similarly, when the prioritization is applied to the negative sequence (GCN):
+
+\begin{enumerate}
+
+\item Angles $\alpha^+$ and $\alpha^-$ are computed by knowing the phasors $\un{V}^+$, $\un{V}^-$, and shifting them $\pm \frac{\pi}{2}$ as only reactive power has to be injected:
+  \begin{equation}
+    \begin{cases}
+      \alpha^+ = \angle (\un{V}^+) - \frac{\pi}{2} \\
+      \alpha^- = \angle (\un{V}^-) + \frac{\pi}{2} \\ 
+    \end{cases}
+  \end{equation}
+  \item The absolute value of the negative sequence current is computed from \eqref{eq:gc2}, with its angle being equal to $\alpha^-$. Thus, the phasor $\un{I}^-$ is known, and also $I^-_{re}$ and $I^-_{im}$.
+  \item The two remaining unknowns are $I^+_{re}$ and $I^+_{im}$. One component can be expressed as a function of the other:
+  \begin{equation}
+    I^+_{im} = \tan(\alpha^+) I^+_{re} \ .
+    \label{eq:alphp}
+  \end{equation}
+  \item At this point, the only unkown is $I^+_{re}$. The three equations in \eqref{eq:Ifin} are solved for $I^+_{re}$. The solutions can be grouped in an array, expressed as $[I^{a1+}_{re}, I^{a2+}_{re}, I^{b1+}_{re}, I^{b2+}_{re}, I^{c1+}_{re}, I^{c2+}_{re}]$. 
+  \item With \eqref{eq:alphp} and the six $I^+_{re}$ currents, the array of $I^+_{im}$ elements is found:  $[I^{a1+}_{im}, I^{a2+}_{im}, I^{b1+}_{im}, I^{b2+}_{im}, I^{c1+}_{im}, I^{c2+}_{im}]$.
+  \item Three of the six pairs of $I^+_{re}$ and $I^+_{im}$ currents are not valid. The reason is that although they obey \eqref{eq:alphp}, they are in the wrong quadrant. This yields three remaining pairs of currents $[I^{a+}_{re}, I^{b+}_{re}, I^{c+}_{re}]$ and $[I^{a+}_{im}, I^{b+}_{im}, I^{c+}_{im}]$.
+  \item The currents are compacted as:
+  \begin{equation}
+    \begin{cases}
+    \un{I}^{a+} = I^{a+}_{re} + jI^{a+}_{im} \\
+    \un{I}^{b+} = I^{b+}_{re} + jI^{b+}_{im} \\
+    \un{I}^{c+} = I^{c+}_{re} + jI^{c+}_{im} \\
+    \end{cases}
+  \end{equation}
+  \item The current with the smallest absolute value is the relevant one, as it ensures that no limitations would be exceeded. Thus, the final positive sequence current becomes:
+  \begin{equation}
+    I^+ = \min\left(I^{a+}, I^{b+}, I^{c+}\right) \ .
+  \end{equation}
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{figure}[]\centering
+%  \begin{tikzpicture}
+%    \draw[->] (-2.5,0) -- (2.5,0);
+%    \draw[->] (0,-2.5) -- (0,2.5);
+%    \draw[-{Latex[length=2mm]}] (0,0) -- (2,1);
+%    \draw[-{Latex[length=2mm]}] (0,0) -- (0.5,1);
+%    \draw[-{Latex[length=2mm]}] (0,0) -- (1,-2);
+%    \draw[-{Latex[length=2mm]}] (0,0) -- (-1,0.5);
+%    \node at (2.7, 0) {$\Re$};
+%    \node at (0, 2.7) {$\Im$};
+%    \node at (0.5, 1.25) {$\un{V}^-_{pk}$};
+%    \node at (2, 1.25) {$\un{V}^+_{pk}$};
+%    \node at (1, -2.25) {$\un{I}^+_k$};
+%    \node at (-1, 0.75) {$\un{I}^-_k$};
+%    \draw (-0.15,0.075) -- (-0.075,0.225);
+%    \draw (-0.075,0.225) -- (0.075,0.15);
+%    \draw (0.15,0.075) -- (0.225,-0.075);
+%    \draw (0.225,-0.075) -- (0.075,-0.15);
+%    \draw[-{Latex[length=1.5mm]}] (0.5,0) arc (0:153.44:0.5); 
+%    \draw[-{Latex[length=1.5mm]}] (0.65,0) arc (0:-63.44:0.65); 
+%    \node at (0.9, -0.3) {${\alpha}^+$};
+%    \node at (-0.25, 0.7) {${\alpha}^-$};
+%  \end{tikzpicture} 
+%   \caption{Overview of positive and negative sequence voltages and currents following grid code rules}
+%   \label{fig:map}
+% \end{figure}
 
 
 
 
-\subsection{Summary of support techniques}
-The paper evaluates and compares three support strategies, which are:
-\begin{itemize}
-  \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution. Both active and reactive powers can be injected.
-  \item GCP: is the application of the grid code rule shown in \eqref{eq:gc1}. It prioritizes positive sequence current injection. 
-  \item GCN: follows the grid code negative sequence current injection shown in \eqref{eq:gc2}. Just like GCP, the current limitation is reached in one phase, and only reactive power can be injected. 
-\end{itemize}
+
+
+% \subsection{Summary of support techniques}
+% The paper evaluates and compares three support strategies, which are:
+% \begin{itemize}
+%   \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution. Both active and reactive powers can be injected.
+%   \item GCP: is the application of the grid code rule shown in \eqref{eq:gc1}. It prioritizes positive sequence current injection. 
+%   \item GCN: follows the grid code negative sequence current injection shown in \eqref{eq:gc2}. Just like GCP, the current limitation is reached in one phase, and only reactive power can be injected. 
+% \end{itemize}
 
 % \begin{equation}
 % \begin{aligned}
