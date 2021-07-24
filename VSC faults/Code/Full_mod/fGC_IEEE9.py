@@ -5,7 +5,7 @@ from Yadm_IEEE9 import Z_IEEE9
 np.set_printoptions(precision=4)
 
 
-def fGCP_2vsc(V_mod, Imax, Zfault, type_fault, bus_fault, lam_vec):
+def fGC_2vsc(V_mod, Imax, Zfault, type_fault, bus_fault, lam_vec):
 
 	# Functions
 	def volt_solution(x):
@@ -32,15 +32,13 @@ def fGCP_2vsc(V_mod, Imax, Zfault, type_fault, bus_fault, lam_vec):
 
 	tol = 1e-4
 	compt = 0
-	compt_lim = 300
+	compt_lim = 1000
 
 	# loop
 	while (abs(Iconv_abc_1[0] - Iconv_abc_prev_1[0]) > tol or abs(Iconv_abc_1[1] - Iconv_abc_prev_1[1]) > tol or abs(Iconv_abc_1[2] - Iconv_abc_prev_1[2]) > tol or abs(Iconv_abc_2[0] - Iconv_abc_prev_2[0]) > tol or abs(Iconv_abc_2[1] - Iconv_abc_prev_2[1]) > tol or abs(Iconv_abc_2[2] - Iconv_abc_prev_2[2]) > tol) and compt < compt_lim:
 		compt += 1
 		Iconv_abc_prev_1 = Iconv_abc_1
 		Iconv_abc_prev_2 = Iconv_abc_2
-		
-
 		Iconv_abc = [Iconv_abc_1[0], Iconv_abc_1[1], Iconv_abc_1[2], Iconv_abc_2[0], Iconv_abc_2[1], Iconv_abc_2[2]]
 
 		Vv_v = volt_solution(Iconv_abc)
@@ -61,7 +59,7 @@ def fGCP_2vsc(V_mod, Imax, Zfault, type_fault, bus_fault, lam_vec):
 		Vpabs2 = np.abs(Vp2)
 		Vphigh = 0.9
 		Vplow = 0.4
-		kp = 2
+		kp = 2  # exact value to match the droop
 		margin = 0.0001 
 
 
@@ -78,28 +76,30 @@ def fGCP_2vsc(V_mod, Imax, Zfault, type_fault, bus_fault, lam_vec):
 		elif Vpabs2 <= Vplow:
 			Ip2 = Imax
 
-		Ia_p1, ta1, ang_na1 = CurrentP_data(Vp1, Ip1, Vn1, 'a')
-		Ib_p1, tb1, ang_nb1 = CurrentP_data(Vp1, Ip1, Vn1, 'b')
-		Ic_p1, tc1, ang_nc1 = CurrentP_data(Vp1, Ip1, Vn1, 'c')
+		# Ia_p1, ta1, ang_na1 = CurrentP_data(Vp1, Ip1, Vn1, 'a')
+		# Ib_p1, tb1, ang_nb1 = CurrentP_data(Vp1, Ip1, Vn1, 'b')
+		# Ic_p1, tc1, ang_nc1 = CurrentP_data(Vp1, Ip1, Vn1, 'c')
 
-		Ia_p2, ta2, ang_na2 = CurrentP_data(Vp2, Ip2, Vn2, 'a')
-		Ib_p2, tb2, ang_nb2 = CurrentP_data(Vp2, Ip2, Vn2, 'b')
-		Ic_p2, tc2, ang_nc2 = CurrentP_data(Vp2, Ip2, Vn2, 'c')
+		# Ia_p2, ta2, ang_na2 = CurrentP_data(Vp2, Ip2, Vn2, 'a')
+		# Ib_p2, tb2, ang_nb2 = CurrentP_data(Vp2, Ip2, Vn2, 'b')
+		# Ic_p2, tc2, ang_nc2 = CurrentP_data(Vp2, Ip2, Vn2, 'c')
 
-		# Calculation of max negative sequence current:
-		Iann1 = Inmax(Ia_p1, ta1, Imax, ang_na1, margin)
-		Ibnn1 = Inmax(Ib_p1, tb1, Imax, ang_nb1, margin)
-		Icnn1 = Inmax(Ic_p1, tc1, Imax, ang_nc1, margin)
+		# # Calculation of max negative sequence current:
+		# Iann1 = Inmax(Ia_p1, ta1, Imax, ang_na1, margin)
+		# Ibnn1 = Inmax(Ib_p1, tb1, Imax, ang_nb1, margin)
+		# Icnn1 = Inmax(Ic_p1, tc1, Imax, ang_nc1, margin)
 
-		Iann2 = Inmax(Ia_p2, ta2, Imax, ang_na2, margin)
-		Ibnn2 = Inmax(Ib_p2, tb2, Imax, ang_nb2, margin)
-		Icnn2 = Inmax(Ic_p2, tc2, Imax, ang_nc2, margin)
+		# Iann2 = Inmax(Ia_p2, ta2, Imax, ang_na2, margin)
+		# Ibnn2 = Inmax(Ib_p2, tb2, Imax, ang_nb2, margin)
+		# Icnn2 = Inmax(Ic_p2, tc2, Imax, ang_nc2, margin)
 
-		Inn1 = min(abs(Iann1), abs(Ibnn1), abs(Icnn1)) * np.exp(1j * (np.angle(Vn1) + np.pi / 2))
+		# Inn1 = min(abs(Iann1), abs(Ibnn1), abs(Icnn1)) * np.exp(1j * (np.angle(Vn1) + np.pi / 2))
 		Ipp1 = Ip1 * np.exp(1j * (np.angle(Vp1) - np.pi / 2))
+		Inn1 = 0
 
-		Inn2 = min(abs(Iann2), abs(Ibnn2), abs(Icnn2)) * np.exp(1j * (np.angle(Vn2) + np.pi / 2))
+		# Inn2 = min(abs(Iann2), abs(Ibnn2), abs(Icnn2)) * np.exp(1j * (np.angle(Vn2) + np.pi / 2))
 		Ipp2 = Ip2 * np.exp(1j * (np.angle(Vp2) - np.pi / 2))
+		Inn2 = 0
 
 
 		Iconv_012_1 = [0, Ipp1, Inn1]

@@ -2,6 +2,7 @@ import numpy as np
 from fOpt_IEEE9 import fOptimal_mystic
 from fGCP_IEEE9 import fGCP_2vsc
 from fGCN_IEEE9 import fGCN_2vsc
+from fGC_IEEE9 import fGC_2vsc
 from Plots import fPlots
 from Functions_main import fZ_rx, fY_fault, x012_to_abc, f_lam, predictive
 import pandas as pd
@@ -14,19 +15,22 @@ Imax = 1
 Zv1 = 0.01 + 0.05 * 1j
 Zv2 = 0.02 + 0.06 * 1j
 Zt = 0.01 + 0.1 * 1j
-Y_con = [10, 0, 0]  # Yab, Ybc, Yac
+Y_con = [0, 0, 0]  # Yab, Ybc, Yac
 Y_gnd = [0, 0, 0]  # Yag, Ybg, Yc
 lam_vec = [1, 1, 1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t =  [0.2328, -0.9725, -0.9587,  0.2847,  0.7258,  0.6879,  0.3496, -0.9369, -0.9862, 0.1658,  0.6366,  0.7712]
-Ii_t = [ 0.2312, -0.9729, -0.9582,  0.2862,  0.7269,  0.6867,  0.3467, -0.938,  -0.9857, 0.1688,  0.639,   0.7692]
-type_f = 'gcn_3x_'
+# Ii_t = [ 0.2312, -0.9729, -0.9582,  0.2862,  0.7269,  0.6867,  0.3467, -0.938,  -0.9857, 0.1688,  0.639,   0.7692]
+# Ii_t = [ 0.5864, -0.8101, -0.6008,  0.7994,  0.0144,  0.0106,  0.3009, -0.9341, -0.9309, 0.3656,  0.6305, 0.5684]
+# Ii_t = [ 0.5953, -0.8036, -0.609,   0.7932,  0.0137,  0.0103,  0.6258, -0.78,   -0.9295,  0.3688,  0.3037,  0.4112]
+Ii_t = [ 0.5954, -0.8035, -0.6089,  0.7933,  0.0135,  0.0101,  0.5547, -0.8321, -0.7937, 0.6084,  0.239,   0.2239]
+type_f = 'opt_LL_'
 folder = 'Results_IEEE9/'
 
 # RX variation
 n_p = 100
 # [RX_vec, Zin_vec] = fZ_rx(5, 0.1, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
-Yf_vec = fY_fault(10, 200, n_p)  # for values big enough to have a severe fault
-type_fault = '3x'
+Yf_vec = fY_fault(20, 100, n_p)  # for values big enough to have a severe fault
+type_fault = 'LL'
 bus_fault = 8
 # lam1_vec = f_lam(1.0, 0.0, n_p)
 
@@ -62,9 +66,10 @@ for iik in range(n_p):
 
 
     # Call optimization
-    # x_opt = fOptimal_mystic(V_mod, Imax, 1 / Yf_vec[iik], type_fault, bus_fault, lam_vec, Ii_t)
+    x_opt = fOptimal_mystic(V_mod, Imax, 1 / Yf_vec[iik], type_fault, bus_fault, lam_vec, Ii_t)
     # x_opt = fGCP_2vsc(V_mod, Imax, 1 / Yf_vec[iik], type_fault, bus_fault, lam_vec)
-    x_opt = fGCN_2vsc(V_mod, Imax, 1 / Yf_vec[iik], type_fault, bus_fault, lam_vec)
+    # x_opt = fGCN_2vsc(V_mod, Imax, 1 / Yf_vec[iik], type_fault, bus_fault, lam_vec)
+    # x_opt = fGC_2vsc(V_mod, Imax, 2 / Yf_vec[iik], type_fault, bus_fault, lam_vec)
 
     Vp1_vec.append(x_opt[4][0])
     Vp2_vec.append(x_opt[6][0])
