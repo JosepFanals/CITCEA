@@ -1,32 +1,36 @@
 import numpy as np
 from Functions_pn import Inmax, CurrentP_data
 from Functions_main import xabc_to_012, x012_to_abc, build_static_objects, build_static_objects1 
+from Yadm_IEEE9 import Z_IEEE9
 np.set_printoptions(precision=4)
 
 
-def fGCP_2vsc(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec):
+def fGCP_2vsc(V_mod, Imax, Zfault, type_fault, bus_fault, lam_vec):
 
 	# Functions
 	def volt_solution(x):
-        	m1_inv = static_objects[0]
-        	Ig_v = static_objects[1] 
+        	m1_inv, Ig_v, n_bus = Z_IEEE9('Datafiles/IEEE9.txt', Zfault, type_fault, bus_fault, V_mod)
+        	# m1_inv = static_objects[0]
+        	# Ig_v = static_objects[1] 
 
-        	Ii_v = np.zeros((9,1), dtype=complex)
+        	# Ii_v = np.zeros((9,1), dtype=complex)
+
+        	Ii_v = np.zeros((n_bus * 3, 1), dtype=complex)
         	Ii_v[0:3] = [[x[0]], [x[1]], [x[2]]]
         	Ii_v[3:6] = [[x[3]], [x[4]], [x[5]]]
-        	Ii_v[6:9] = [Ig_v[0], Ig_v[1], Ig_v[2]]
+        	Ii_v[6:9] = [[Ig_v[0]], [Ig_v[1]], [Ig_v[2]]]
 
         	Vv_v = np.dot(m1_inv, Ii_v)
         	return Vv_v
 
-	static_objects = build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd)
+	# static_objects = build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd)
 
 	Iconv_abc_1 = [0, 0, 0]
 	Iconv_abc_prev_1 = [1, 1, 1]
 	Iconv_abc_2 = [0, 0, 0]
 	Iconv_abc_prev_2 = [1, 1, 1]
 
-	tol = 1e-1
+	tol = 1e-4
 	compt = 0
 	compt_lim = 1000
 

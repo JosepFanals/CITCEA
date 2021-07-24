@@ -7,24 +7,28 @@ import mystic.math as mm
 
 
 from Functions_main import xabc_to_012, x012_to_abc, build_static_objects 
+from Yadm_IEEE9 import Z_IEEE9
 np.set_printoptions(precision=4)
 
-def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
+# def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
+def fOptimal_mystic(V_mod, Imax, Zfault, type_fault, bus_fault, lam_vec, Ii_t):
 
     # Functions
     def volt_solution(x):
-        m1_inv = static_objects[0]
-        Ig_v = static_objects[1] 
+        m1_inv, Ig_v, n_bus = Z_IEEE9('Datafiles/IEEE9.txt', Zfault, type_fault, bus_fault, V_mod)
+        # m1_inv = static_objects[0]
+        # Ig_v = static_objects[1] 
 
-        Ii_v = np.zeros((9,1), dtype=complex)
+        # Ii_v = np.zeros((9,1), dtype=complex)
+        Ii_v = np.zeros((n_bus * 3, 1), dtype=complex)
         Ii_v[0:3] = [[x[0] + 1j * x[1]], [x[2] + 1j * x[3]], [x[4] + 1j * x[5]]]
         Ii_v[3:6] = [[x[6] + 1j * x[7]], [x[8] + 1j * x[9]], [x[10] + 1j * x[11]]]
-        Ii_v[6:9] = [Ig_v[0], Ig_v[1], Ig_v[2]]
+        Ii_v[6:9] = [[Ig_v[0]], [Ig_v[1]], [Ig_v[2]]]
 
         Vv_v = np.dot(m1_inv, Ii_v)
         return Vv_v
     
-    static_objects = build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd)
+    # static_objects = build_static_objects(V_mod, Zv1, Zv2, Zt, Y_con, Y_gnd)
 
     # OPTIMIZE
     def obj_fun(x):
@@ -65,7 +69,7 @@ def fOptimal_mystic(V_mod, Imax, Zv1, Zv2, Zt, Y_con, Y_gnd, lam_vec, Ii_t):
     bnds = [(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax),(-Imax, Imax)]
 
     # SOLVE
-    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=4, ftol=1e-4, full_output=True, maxiter=100000, maxfun=100000)
+    sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=5, ftol=1e-5, full_output=True, maxiter=100000, maxfun=100000)
     # sol = my.diffev(obj_fun, Ii_t, penalty=pens, disp=True, bounds=bnds, gtol=40, ftol=1e-10, full_output=True, maxiter=100000, maxfun=100000)
 
     I_sol = sol

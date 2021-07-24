@@ -10,7 +10,7 @@ import pandas as pd
 # bus_ff = 8  # original bus with the fault
 
 
-def Z_IEEE9(file, Zfault, type_fault, bus_ff):
+def Z_IEEE9(file, Zfault, type_fault, bus_ff, Vmod):
 
 	# Input data, I know what the system IEEE looks like
 	bus_slack = 1 - 1
@@ -86,7 +86,8 @@ def Z_IEEE9(file, Zfault, type_fault, bus_ff):
 	Rt = bus_data['R'][index_branch_slack]
 	Xt = bus_data['X'][index_branch_slack]
 	Zt = Rt + 1j * Xt
-	Vt = 1.04  # or set it to 1.00?
+	# Vt = 1.04  # or set it to 1.00?
+	Vt = Vmod
 	a = 1 * np.exp(1j * np.pi * 120 / 180)
 	Vta = Vt 
 	Vtb = Vt * a ** 2
@@ -118,4 +119,4 @@ def Z_IEEE9(file, Zfault, type_fault, bus_ff):
 	# Final impedance matrix
 	Zmat = np.linalg.inv(Yfinal)
 
-	return Zmat, 
+	return Zmat, Ig_v, n_bu - 1
