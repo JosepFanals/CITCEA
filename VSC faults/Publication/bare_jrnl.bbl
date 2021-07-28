@@ -155,6 +155,10 @@ C.~L. Fortescue, ``Method of symmetrical co-ordinates applied to the solution
   of polyphase networks,'' \emph{Transactions of the American Institute of
   Electrical Engineers}, vol.~37, no.~2, pp. 1027--1140, 1918.
 
+\bibitem{nationalgrid}
+{National Grid}, ``The grid code, issue 6, revision 1,''
+  \url{https://www.nationalgrideso.com/document/162271/download}, 2021.
+
 \bibitem{mckerns2012building}
 M.~M. McKerns, L.~Strand, T.~Sullivan, A.~Fang, and M.~A. Aivazis, ``Building a
   framework for predictive science,'' \emph{arXiv preprint arXiv:1202.1056},
@@ -163,10 +167,6 @@ M.~M. McKerns, L.~Strand, T.~Sullivan, A.~Fang, and M.~A. Aivazis, ``Building a
 \bibitem{mckernsmystic}
 M.~McKerns, P.~Hung, and M.~Aivazis, ``mystic: highly-constrained non-convex
   optimization and uq, 2009.''
-
-\bibitem{nationalgrid}
-{National Grid}, ``The grid code, issue 6, revision 1,''
-  \url{https://www.nationalgrideso.com/document/162271/download}, 2021.
 
 \bibitem{cheah2017offshore}
 M.~Cheah, ``Offshore wind integration through high voltage direct current

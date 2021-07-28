@@ -76,6 +76,8 @@
 \usepackage{balance}
 %\usepackage{flushend}
 \usepackage{lettrine}
+\usepackage{tikz}
+\usetikzlibrary{matrix,decorations.pathreplacing} 
 
 
 % Some very useful LaTeX packages include:
@@ -376,6 +378,7 @@
 \usepackage{tikz}
 \usepackage{circuitikz}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{arydshln,leftidx,mathtools}
 
 \begin{document}
 %
@@ -634,31 +637,85 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Fig.
 % Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Figure \ref{fig:sys_n} presents the modeling for a system with $n$ converters connected to a grid with $n_g$ buses represented by its admittance matrix $\mathbf{\un{Y}_g}$. In addition, the grid has been modeled with a Norton equivalent instead of a Thevenin equivalent for simplification purposes. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
 
+% \begin{figure}[] \centering \tiny
+% \begin{circuitikz}[american]
+% \thicklines
+
+% \draw (0,0) to [C] (0,2);
+% \draw (1.0,0) to [isource, i=$I_{dc}$] (1.0,2);
+% \node at (-0.25,1.3) {$C_{dc}$};
+% \draw (1,2) to [short, -*] (0,2);
+% \draw (1,0) to [short, -*] (0,0);
+% \draw (0,2) to [short, -*] (-0.6,2);
+% \draw (0,0) to [short, -*] (-0.6,0);
+% \draw[line width=0.4mm] (-0.6,2.5) to [short] (-0.6,-0.5);
+% \draw[line width=0.4mm] (-1.5,2.5) to [short] (-1.5,-0.5);
+% \draw[line width=0.4mm] (-1.5,2.5) to [short] (-0.6,2.5);
+% \draw[line width=0.4mm] (-1.5,-0.5) to [short] (-0.6,-0.5);
+% \node[rotate=00] at (-1.05,1.0) {DC syst.};
+
+% \draw (1.75,2.25) to [controlled sinusoidal voltage source, l=$\underline{V}_v$] (3.0,2.25);
+% \draw (1.75,1) to [controlled sinusoidal voltage source, *-] (3.0,1);
+% \draw (1.75,-0.25) to [controlled sinusoidal voltage source] (3.0,-0.25);
+% \draw (1.75,2.25) to [short] (1.75,-0.25);
+
+% \draw (3.0,1) to [R, european] (4.2,1);
+% \draw (4.4,1) to [R, european] (5.7,1);
+% \draw (4.2,1) to [short] (4.4,1);
+% \draw (5.7,1) to [sV, -*] (6.8,1);
+
+% \draw (3.0,2.25) to [R, european, l=$\underline{Z}_z$] (4.2,2.25);
+% \draw (4.4,2.25) to [R, european, l=$\underline{Z}_t$] (5.7,2.25);
+% \draw (4.2,2.25) to [short] (4.4,2.25);
+% \draw (5.7,2.25) to [sV, l=$\underline{V}_t$] (6.8,2.25);
+
+% \draw (3.0,-0.25) to [R, european] (4.2,-0.25);
+% \draw (4.4,-0.25) to [R, european, l=$\underline{Z}_t$] (5.7,-0.25);
+% \draw (4.2,-0.25) to [short] (4.4,-0.25);
+% \draw (5.7,-0.25) to [sV] (6.8,-0.25);
+% \draw (6.8,2.25) to [short] (6.8,-0.25);
+
+% \draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (4.4,-0.9);
+% \draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (6.95,3.05);
+% \draw[line width=0.4mm, dotted] (4.4,-0.9) to [short] (6.95,-0.9);
+% \draw[line width=0.4mm, dotted] (6.95,3.05) to [short] (6.95,-0.9);
+
+% \draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (0.5,-0.9);
+% \draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (4.3,3.05);
+% \draw[line width=0.4mm, dotted] (4.3,3.05) to [short] (4.3,-0.9);
+% \draw[line width=0.4mm, dotted] (0.5,-0.9) to [short] (4.3,-0.9);
+
+% \draw (2.5,-1.3) to [sdcac] (2.5,-2.3);
+% % \draw (2.0, -1.3) to [short] (0.5, -0.9);
+% % \draw (3.0, -1.3) to [short] (4.3, -0.9);
+% \node[rotate=-90] at (2.5,-1.12) {$\equiv$};
+
+% \node at (2.5,3.2) {VSC average model};
+% \node at (5.6375,3.15) {Grid};
+
+
+% \end{circuitikz}
+% \caption{Average model of a VSC connected to the grid}
+% \label{fig:average_model}
+% \end{figure}
+
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
 \thicklines
 
-% \draw (-2.75,2) to [isource, l_=$\underline{I}_{t}$] (-4.25,2);
-% \draw (-4.25,0.7) to [R, l=$\underline{Z}_{t}$, european] (-2.75,0.7);
-% \draw (-2.75,2) to [short] (-2.75,0.7);
-% \draw (-4.25,2) to [short] (-4.25,0.7);
-% \draw (-4.25,1.35) to [short, -*] (-4.5,1.35);
-% \draw (-2.75,1.35) to [short, *-] (-2.5,1.35);
-% \draw (-2.5,1.35) to [short] (-2.5,0);
-% \draw (-2.75,0) to [short] (-2.25,0);
-
-\draw (0,0) to [C] (0,2);
+% \draw (0,0) to [C] (0,2);
 \draw (1.0,0) to [isource, i=$I_{dc}$] (1.0,2);
-\node at (-0.25,1.3) {$C_{dc}$};
-\draw (1,2) to [short, -*] (0,2);
-\draw (1,0) to [short, -*] (0,0);
-\draw (0,2) to [short, -*] (-0.6,2);
-\draw (0,0) to [short, -*] (-0.6,0);
-\draw[line width=0.4mm] (-0.6,2.5) to [short] (-0.6,-0.5);
-\draw[line width=0.4mm] (-1.5,2.5) to [short] (-1.5,-0.5);
-\draw[line width=0.4mm] (-1.5,2.5) to [short] (-0.6,2.5);
-\draw[line width=0.4mm] (-1.5,-0.5) to [short] (-0.6,-0.5);
-\node[rotate=00] at (-1.05,1.0) {DC syst.};
+\node at (-1.2,1) {$V_{dc}$};
+\draw (1,2) to [short] (0,2);
+\draw (1,0) to [short] (0,0);
+\draw (0,2) to [short, -*] (-0.5,2);
+\draw (0,0) to [short, -*] (-0.5,0);
+\draw (-0.5,0) to [V] (-0.5,2);
+% \draw[line width=0.4mm] (-0.6,2.5) to [short] (-0.6,-0.5);
+% \draw[line width=0.4mm] (-1.5,2.5) to [short] (-1.5,-0.5);
+% \draw[line width=0.4mm] (-1.5,2.5) to [short] (-0.6,2.5);
+% \draw[line width=0.4mm] (-1.5,-0.5) to [short] (-0.6,-0.5);
+% \node[rotate=00] at (-1.05,1.0) {DC syst.};
 
 \draw (1.75,2.25) to [controlled sinusoidal voltage source, l=$\underline{V}_v$] (3.0,2.25);
 \draw (1.75,1) to [controlled sinusoidal voltage source, *-] (3.0,1);
@@ -666,38 +723,36 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Fig.
 \draw (1.75,2.25) to [short] (1.75,-0.25);
 
 \draw (3.0,1) to [R, european] (4.2,1);
-\draw (4.4,1) to [R, european] (5.7,1);
-\draw (4.2,1) to [short] (4.4,1);
-\draw (5.7,1) to [sV, -*] (6.8,1);
+% \draw (4.4,1) to [R, european] (5.7,1);
+\draw (4.2,1) to [short, -*] (4.8,1);
+% \draw (5.7,1) to [sV, -*] (6.8,1);
 
 \draw (3.0,2.25) to [R, european, l=$\underline{Z}_z$] (4.2,2.25);
-\draw (4.4,2.25) to [R, european, l=$\underline{Z}_t$] (5.7,2.25);
-\draw (4.2,2.25) to [short] (4.4,2.25);
-\draw (5.7,2.25) to [sV, l=$\underline{V}_t$] (6.8,2.25);
+% \draw (4.4,2.25) to [R, european, l=$\underline{Z}_t$] (5.7,2.25);
+\draw (4.2,2.25) to [short, -*] (4.8,2.25);
+% \draw (5.7,2.25) to [sV, l=$\underline{V}_t$] (6.8,2.25);
 
 \draw (3.0,-0.25) to [R, european] (4.2,-0.25);
-\draw (4.4,-0.25) to [R, european, l=$\underline{Z}_t$] (5.7,-0.25);
-\draw (4.2,-0.25) to [short] (4.4,-0.25);
-\draw (5.7,-0.25) to [sV] (6.8,-0.25);
-\draw (6.8,2.25) to [short] (6.8,-0.25);
+% \draw (4.4,-0.25) to [R, european, l=$\underline{Z}_t$] (5.7,-0.25);
+\draw (4.2,-0.25) to [short, -*] (4.8,-0.25);
+% \draw (5.7,-0.25) to [sV] (6.8,-0.25);
+% \draw (6.8,2.25) to [short] (6.8,-0.25);
 
-\draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (4.4,-0.9);
-\draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (6.95,3.05);
-\draw[line width=0.4mm, dotted] (4.4,-0.9) to [short] (6.95,-0.9);
-\draw[line width=0.4mm, dotted] (6.95,3.05) to [short] (6.95,-0.9);
+\draw[line width=0.4mm] (4.8,3.05) to [short] (4.8,-0.9);
+\draw[line width=0.4mm] (4.8,3.05) to [short] (6.0,3.05);
+\draw[line width=0.4mm] (4.8,-0.9) to [short] (6.0,-0.9);
+\draw[line width=0.4mm] (6.0,3.05) to [short] (6.0,-0.9);
 
-\draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (0.5,-0.9);
-\draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (4.3,3.05);
+\draw[line width=0.4mm, dotted] (0.3,3.05) to [short] (0.3,-0.9);
+\draw[line width=0.4mm, dotted] (0.3,3.05) to [short] (4.3,3.05);
 \draw[line width=0.4mm, dotted] (4.3,3.05) to [short] (4.3,-0.9);
-\draw[line width=0.4mm, dotted] (0.5,-0.9) to [short] (4.3,-0.9);
+\draw[line width=0.4mm, dotted] (0.3,-0.9) to [short] (4.3,-0.9);
 
-\draw (2.5,-1.3) to [sdcac] (2.5,-2.3);
-% \draw (2.0, -1.3) to [short] (0.5, -0.9);
-% \draw (3.0, -1.3) to [short] (4.3, -0.9);
-\node[rotate=-90] at (2.5,-1.12) {$\equiv$};
+\draw (2.4,-1.3) to [sdcac] (2.4,-2.3);
+\node[rotate=-90] at (2.4,-1.12) {$\equiv$};
 
-\node at (2.5,3.2) {VSC average model};
-\node at (5.6375,3.15) {Grid};
+\node at (2.4,3.2) {VSC average model};
+\node at (5.4,1) {AC syst.};
 
 
 \end{circuitikz}
@@ -705,23 +760,23 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Fig.
 \label{fig:average_model}
 \end{figure}
 
-Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Fig. \ref{fig:sys_n} presents the generic modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{\un{Y}_g}$, and an active part, modeled with a Thevenin equivalent. A Norton equivalent would be valid as well, and in fact, it simplifies the formulation since it does not create an additional bus. Therefore, the mathematical model ends up using a Norton equivalent. The analysis of short-circuits faults can be performed in the natural reference frame or in symmetrical components as in \cite{taul2020modeling}. For greater simplicity, in this paper, the circuits are modeled following the natural reference frame.
+Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Fig. \ref{fig:sys_n} presents the generic modeling for a system with $n$ converters. They are connected to a grid which has been split into a passive part, only formed by impedances and denoted by its admittance matrix $\mathbf{{Y}_g}$, and an active part, modeled with a Thevenin equivalent. A Norton equivalent would be valid as well, and in fact, it simplifies the formulation since it does not create an additional bus. Therefore, the mathematical model ends up using a Norton equivalent. The analysis of short-circuits faults can be performed in the natural reference frame or in symmetrical components as in \cite{taul2020modeling}. For greater simplicity, in this paper, the circuits are modeled following the natural reference frame.
 
-The VSCs are treated as current sources that inject currents of the form of $\mathbf{\un{I}_k} \ \forall k\in[1,...,n]$. These current vectors, expressed in the natural reference frame, are further developed as:
+The VSCs are treated as current sources that inject currents of the form of $\mathbf{{I}_k} \ \forall k\in[1,...,n]$. These current vectors, expressed in the natural reference frame, are further developed as:
 \begin{equation}
-    \mathbf{\un{I}_k} = \left[\un{I}^{a}_k, \un{I}^{b}_k, \un{I}^{c}_k \right]^T \ .
+    \mathbf{{I}_k} = \left[\un{I}^{a}_k, \un{I}^{b}_k, \un{I}^{c}_k \right]^T \ .
 \end{equation}
 Since this paper assumes VSCs to be connected to the system by only three wires, there is no zero sequence current. Thus, the formulation of the problem also imposes:
 \begin{equation}
   \un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \in [1,...,n] \ . 
 \end{equation}
-Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages $\mathbf{\un{V}_{pk}}$ ought to be improved. Again, these vectors are constituted by the three phase voltages, that is:
+Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages $\mathbf{{V}_{pk}}$ ought to be improved. Again, these vectors are constituted by the three phase voltages, that is:
 \begin{equation}
-    \mathbf{\un{V}_{pk}} = \left[\un{V}^{a}_{pk}, \un{V}^{b}_{pk}, \un{V}^{c}_{pk}\right]^T \ .
+    \mathbf{{V}_{pk}} = \left[\un{V}^{a}_{pk}, \un{V}^{b}_{pk}, \un{V}^{c}_{pk}\right]^T \ .
 \end{equation}
-Voltages and currents are related via admittance submatrices of the form $\mathbf{\un{Y}_{vk}}$, which in normal operating conditions follow:
+Voltages and currents are related via admittance submatrices of the form $\mathbf{{Y}_{vk}}$, which in normal operating conditions follow:
 \begin{equation}
-  \mathbf{\un{Y}_{vk}} = \begin{pmatrix}
+  \mathbf{{Y}_{vk}} = \begin{pmatrix}
    \frac{1}{\un{Z}_{vk}} & 0 & 0 \\
    0 & \frac{1}{\un{Z}_{vk}} & 0 \\
    0 & 0 & \frac{1}{\un{Z}_{vk}} \\
@@ -738,109 +793,137 @@ In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1
 
 % \draw (-2.75,2) to [isource, l_=$\underline{I}_{t}$] (-4.25,2);
 % \draw (-4.25,0.7) to [R, l=$\underline{Z}_{t}$, european] (-2.75,0.7);
-\draw (-4.25,1.35) to [R, l=$\underline{Z}_{t}$, european] (-2.75,1.35);
+\draw (-4.25,1.35) to [R, l=$\underline{Z}_{t}$, european] (-3,1.35);
 \draw (-4.25,1.35) to [short, -*] (-4.5,1.35);
 
-\draw (-2.75,1.35) to [short] (-2.5,1.35);
-\draw (-2.5,1.35) to [sV, l_=$\underline{V}_t$] (-2.5,-0.5);
-\draw (-2.25, -0.5) to [short] (-2.75,-0.5);
-
-
-% \draw (-2.75,2) to [short] (-2.75,0.7);
-% \draw (-4.25,2) to [short] (-4.25,0.7);
-% \draw (-4.25,1.35) to [short, *-*] (-4.5,1.35);
-% \draw (-2.75,1.35) to [short, *-] (-2.5,1.35);
-% \draw (-2.5,1.35) to [short] (-2.5,0);
-% \draw (-2.75,0) to [short] (-2.25,0);
+\draw (-3,1.35) to [short] (-2.75,1.35);
+\draw (-2.75,1.35) to [sV, l_=$\underline{V}_t$] (-2.75,-0.5);
+\draw (-2.5, -0.5) to [short] (-3,-0.5);
 
 
 
-\node at (-8,1.3) {PCC1};
-\node at (-9.5,2.6) {VSC1};
-\node at (-8,2.7) {$\underline{V}_{p1}$};
-\draw (-7.5,2) to [R, l=$\underline{Z}_{v1}$, european] (-6,2);
-\draw[line width=0.65mm] (-8,2.5) to [short] (-8,1.5);
-% \draw[line width=0.65mm] (-3,2.5) to [short] (-3,1.5);
-% \node at (-3,2.7) {$\underline{V}_{f}$};
-% \draw (-9,2) to [R, l=$\underline{Z}_{z1}$, i=$\underline{I}_1$, european] (-7.0,2);
-\draw (-10.0,2) to [sdcac] (-9.0,2);
-\draw (-6,2) to [short, -*] (-5.5,2); 
+\node at (-7.5,1.3) {PCC1};
+\node at (-8.75,2.6) {VSC1};
+\node at (-7.5,2.7) {$\underline{V}_{p1}$};
+\draw (-7,2) to [R, l=$\underline{Z}_{v1}$, european] (-5.75,2);
+\draw[line width=0.65mm] (-7.5,2.5) to [short] (-7.5,1.5);
+\draw (-9.25,2) to [sdcac] (-8.25,2); % critic line
+\draw (-5.75,2) to [short, -*] (-5.5,2); 
 
-\draw (-10.0,-0) to [sdcac] (-9.0,-0);
-% \draw (-9,-0) to [R, l=$\underline{Z}_{z2}$, i=$\underline{I}_2$, european] (-7,-0);
-\draw (-7.5,-0) to [R, l=$\underline{Z}_{v2}$, european] (-6,-0);
-\draw[line width=0.65mm] (-8,0.5) to [short] (-8,-0.5);
-\node at (-8,-0.7) {PCC2};
-\node at (-9.5,0.6) {VSC2};
-\node at (-8,0.7) {$\underline{V}_{p2}$};
-\draw (-6,0) to [short, -*] (-5.5,0); 
-\draw (-7.5,2) to [short] (-8,2);
-\draw (-7.5,0) to [short] (-8,0);
-\draw (-7.5,-2) to [short] (-8,-2);
+\draw (-9.25,-0) to [sdcac] (-8.25,-0);
+\draw (-7,-0) to [R, l=$\underline{Z}_{v2}$, european] (-5.75,-0);
+\draw[line width=0.65mm] (-7.5,0.5) to [short] (-7.5,-0.5);
+\node at (-7.5,-0.7) {PCC2};
+\node at (-8.75,0.6) {VSC2};
+\node at (-7.5,0.7) {$\underline{V}_{p2}$};
+\draw (-5.75,0) to [short, -*] (-5.5,0); 
 
-\draw (-9,2) to [short, i=$\un{I}_1$] (-8,2);
-\draw (-9,0) to [short, i=$\un{I}_2$] (-8,0);
-\draw (-9,-2) to [short, i=$\un{I}_3$] (-8,-2);
+\draw (-7.0,2) to [short] (-8,2);
+\draw (-7.0,0) to [short] (-8,0);
+\draw (-7.0,-2) to [short] (-8,-2);
 
-\draw (-10.0,-2) to [sdcac] (-9.0,-2);
-% \draw (-9,-2) to [R, l=$\underline{Z}_{zn}$, i=$\underline{I}_n$, european] (-7,-2);
-\draw (-7.5,-2) to [R, l=$\underline{Z}_{vn}$, european] (-6,-2);
-\draw[line width=0.65mm] (-8,-1.5) to [short] (-8,-2.5);
-\node at (-8,-2.7) {PCCn};
-\node at (-9.5,-1.4) {VSCn};
-\node at (-8,-1.3) {$\underline{V}_{pn}$};
-\draw (-6,-2) to [short, -*] (-5.5,-2); 
+\draw (-8.25,2) to [short, i=$\un{I}_1$] (-7.5,2);
+\draw (-8.25,0) to [short, i=$\un{I}_2$] (-7.5,0);
+\draw (-8.25,-2) to [short, i=$\un{I}_n$] (-7.5,-2);
+
+\draw (-9.25,-2) to [sdcac] (-8.25,-2);
+\draw (-7,-2) to [R, l=$\underline{Z}_{vn}$, european] (-5.75,-2);
+\draw[line width=0.65mm] (-7.5,-1.5) to [short] (-7.5,-2.5);
+\node at (-7.5,-2.7) {PCCn};
+\node at (-8.75,-1.4) {VSCn};
+\node at (-7.5,-1.3) {$\underline{V}_{pn}$};
+\draw (-5.75,-2) to [short, -*] (-5.5,-2); 
 
 \draw[line width=0.4mm] (-4.5,2.5) to [short] (-4.5,-2.5);
 \draw[line width=0.4mm] (-5.5,2.5) to [short] (-5.5,-2.5);
 \draw[line width=0.4mm] (-4.5,2.5) to [short] (-5.5,2.5);
 \draw[line width=0.4mm] (-5.5,-2.5) to [short] (-4.5,-2.5);
-\node at (-5,-1) {Grid $\mathbf{\un{Y}_g}$};
+\node at (-5,-1) {Grid $\mathbf{{Y}_g}$};
 \node at (-5,1.35) {Node $g$};
 
-\draw[line width=0.4mm, dotted] (-9.5,-0.6) to [short] (-9.5,-1.1);
-% \draw[line width=0.4mm, dotted] (-8.0,-0.3) to [short] (-8.0,-1.4);
-\draw[line width=0.4mm, dotted] (-6.75,-0.3) to [short] (-6.75,-1.4);
+\draw[line width=0.4mm, dotted] (-8.75,-0.6) to [short] (-8.75,-1.1);
+\draw[line width=0.4mm, dotted] (-6.375,-0.3) to [short] (-6.375,-1.4);
+
+
+
+\draw (-10.25,1.4) to [V, *-*] (-10.25,2.6);
+\draw (-10.25,-0.6) to [V, *-*] (-10.25,0.6);
+\draw (-10.25,-2.6) to [V, *-*] (-10.25,-1.4);
+
+\draw (-10.25,2.6) to [short] (-9.75,2.6);
+\draw (-10.25,0.6) to [short] (-9.75,0.6);
+\draw (-10.25,-1.4) to [short] (-9.75,-1.4);
+
+\draw (-9.75,2.6) to [short] (-9.5,2.35);
+\draw (-9.75,0.6) to [short] (-9.5,0.35);
+\draw (-9.75,-1.4) to [short] (-9.5,-1.65);
+
+\draw (-10.25,1.4) to [short] (-9.75,1.4);
+\draw (-10.25,-0.6) to [short] (-9.75,-0.6);
+\draw (-10.25,-2.6) to [short] (-9.75,-2.6);
+
+\draw (-9.75,1.4) to [short] (-9.5,1.65);
+\draw (-9.75,-0.6) to [short] (-9.5,-0.35);
+\draw (-9.75,-2.6) to [short] (-9.5,-2.35);
+
+\draw (-9.5,2.35) to [short] (-9.25,2.35);
+\draw (-9.5,0.35) to [short] (-9.25,0.35);
+\draw (-9.5,-1.65) to [short] (-9.25,-1.65);
+
+\draw (-9.5,1.65) to [short] (-9.25,1.65);
+\draw (-9.5,-0.35) to [short] (-9.25,-0.35);
+\draw (-9.5,-2.35) to [short] (-9.25,-2.35);
 
 \end{circuitikz}
 \caption{Single-phase representation of a complete system}
 \label{fig:sys_n}
 \end{figure}
 
-The admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation, where $n_g$ is the number of buses found in this passive $\mathbf{\un{Y}_g}$ grid. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid $\mathbf{\un{Y}_g}$. All its elements are zero except for three entries that consider the currents from the Norton equivalent of the grid. 
+The admittance matrix $\mathbf{{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation, where $n_g$ is the number of buses found in this passive $\mathbf{{Y}_g}$ grid. The vector $\mathbf{{I}_t}$ has dimensions $3\times n_g$ and accounts for the injected currents into the grid $\mathbf{{Y}_g}$. All its elements are zero except for three entries that consider the currents from the Norton equivalent of the grid. 
 
 Consequently, the magnitudes depicted in Fig. \ref{fig:sys_n} are finally related by:
 \begin{equation}
 \setlength\arraycolsep{1.5pt}
     \begin{split}
     \begin{pmatrix}
-        \mathbf{\underline{I}_1} \\
-        \mathbf{\underline{I}_2} \\
+        \mathbf{{I}_1} \\
+        \mathbf{{I}_2} \\
         \vdots\\
-        \mathbf{\underline{I}_n} \\
-        \mathbf{\un{I}_t}
+        \mathbf{{I}_n} \\
+        \mathbf{{I}_t}
     \end{pmatrix} = 
 \begin{pmatrix}
-    \mathbf{\un{Y}_{v1}} & \mathbf{0} & \dots & \mathbf{0} & -\mathbf{\un{Y'}_{v1}}\\
-    \mathbf{0} & \mathbf{\un{Y}_{v2}} & \dots & \mathbf{0} & -\mathbf{\un{Y'}_{v2}}\\
+    \mathbf{{Y}_{v1}} & \mathbf{0} & \dots & \mathbf{0} & -\mathbf{{Y'}_{v1}}\\
+    \mathbf{0} & \mathbf{{Y}_{v2}} & \dots & \mathbf{0} & -\mathbf{{Y'}_{v2}}\\
     \vdots & \vdots & \ddots & \vdots & \vdots \\
-    \mathbf{0} & \mathbf{0} & \dots & \mathbf{\un{Y}_{vn}} & -\mathbf{\un{Y'}_{vn}}\\
-    -\mathbf{\un{Y'}^T_{v1}} & -\mathbf{\un{Y'}^T_{v2}} & \dots & -\mathbf{\un{Y'}^T_{vn}} & \mathbf{\un{Y}_g}
+    \mathbf{0} & \mathbf{0} & \dots & \mathbf{{Y}_{vn}} & -\mathbf{{Y'}_{vn}}\\
+    -\mathbf{{Y'}^T_{v1}} & -\mathbf{{Y'}^T_{v2}} & \dots & -\mathbf{{Y'}^T_{vn}} & \mathbf{{Y}_g}
     % -\mathbf{\un{Y}_{v1}} & -\mathbf{\un{Y}_{v2}} & \mathbf{\un{Y}_{f}}\\
 \end{pmatrix}
 \begin{pmatrix}
-    \mathbf{\un{V}_{p1}} \\
-    \mathbf{\un{V}_{p2}} \\
+    \mathbf{{V}_{p1}} \\
+    \mathbf{{V}_{p2}} \\
     \vdots \\
-    \mathbf{\un{V}_{pn}} \\
-    \mathbf{\un{V}_g}
+    \mathbf{{V}_{pn}} \\
+    \mathbf{{V}_g}
 \end{pmatrix},
 \end{split}
 \label{eq:nconv}
 \end{equation}
-where matrices of the form $\mathbf{\un{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. It is worth noting that in a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constituted by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
+where matrices of the form $\mathbf{{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by zeros and only three $1/\un{Z}_{vk}$ elements. For instance, considering $\un{Z}_{v1}$ is connected to the first bus of the grid $\mathbf{Y}_g$, the corresponding $\mathbf{{Y'}_{v1}}$ matrix becomes:
+
+\begin{equation}
+  \mathbf{{Y'}_{v1}} = \begin{pmatrix}
+   \frac{1}{\un{Z}_{v1}} & 0 & 0 & 0 & 0 & 0 & \dots & 0 & 0 & 0\\
+   0 & \frac{1}{\un{Z}_{v1}} & 0 & 0 & 0 & 0 & \dots & 0 & 0 & 0\\
+   0 & 0 & \frac{1}{\un{Z}_{v1}} & 0 & 0 & 0 & \dots & 0 & 0 & 0\\
+  \end{pmatrix} \ .
+\end{equation} 
 
 
+% put equation to show explicitly how Y'vk is
+
+% It is worth noting that in a realistic scenario, the grid $\mathbf{{Y}_g}$ may be partially constituted by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
 
 % On the contrary, the admittance matrix $\mathbf{\un{Y}_g}$ is a $3n_g \times 3n_g$ matrix also built by observation, where $n_g$ is the number of buses found in this passive $\mathbf{\un{Y}_g}$ grid. The object $\mathbf{\un{I}_t}$ is a vector of dimensions $3\times n_g$ which accounts for the injected currents into the grid denoted by $\mathbf{\un{Y}_g}$. All its elements are zero except for three entries that consider the injected currents from the Norton equivalent of the grid. Matrices of the form $\mathbf{\un{Y'}_{vk}}$ are $3\times 3n_g$ objects constituted by elements $1/\un{Z}_{vk}$. In a realistic scenario, the grid $\mathbf{\un{Y}_g}$ may be partially constituted by active and reactive power loads, i.e., PQ buses. They can be either ignored if the current they consume is assessed to be comparatively smaller than the fault current, or they can be modeled as constant admittances. No PQ loads have been considered in the case studies shown in this paper. 
 
@@ -875,14 +958,13 @@ Positive sequence voltages have to approach the nominal voltage while negative s
 % \end{equation}
 \begin{equation}
 \begin{aligned}
-\min_{\un{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - {V}^+_{pk}(\un{I}) )| + \lambda^-_k|(0 - {V}^-_{pk}(\un{I}))|\right] \ , \\
+\min \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - {V}^+_{pk})| + \lambda^-_k|(0 - {V}^-_{pk})|\right] \ , \\
 \textrm{s.t.} \quad & \text{max}\left({I}^{a}_k, {I}^{b}_k, {I}^{c}_k\right) \leq I_{\text{max,}k} \ \forall k \in [1,...,n] \ ,\\
+& \text{Eq. \eqref{eq:nconv}}
 \end{aligned}
 \label{eq:opt2}
 \end{equation}
 where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors for positive and negative voltage magnitudes, the positive and negative sequence components of voltages $\un{V}_{pk}$ are symbolically expressed as functions of the whole currents $\un{I}$ involved in the system, and $I_{\text{max,}k}$ is the maximum allowed current by the $k$ converter for each phase. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decrease substantially during faults. This assumption is numerically validated in the case studies.
-
-The results gathered in this paper are computed with Python 3.9.1 using the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1\cdot 10^{-6}$. 
 
 \subsection{Grid code rules}
 In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions, for the positive sequence:
@@ -1125,7 +1207,9 @@ Similarly, when the prioritization is applied to the negative sequence (GCN):
 \section{Single converter case study} \label{1conv}
 The analysis is first performed considering a one-converter case study as the one depicted in Fig. \ref{fig:sys_p1}. A fault is forced at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground or line to line). Double line to ground faults are not covered in this study, not because they are unfeasible to be analyzed, but because there is a direct connection between the two faulted phases. This causes variations from a parametric study to have an almost null influence on the results. In any case, the goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
-Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. Regarding the grid codes, the values of the constants are gathered in Table \ref{tab:param_gc}. They remain the same for all studies.
+Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. Regarding the grid codes, the values of the constants are gathered in Table \ref{tab:param_gc}. They remain the same for all studies. The results gathered in this paper are computed with Python 3.9.1 using the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1\cdot 10^{-6}$. 
+
+
 
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
@@ -1186,7 +1270,7 @@ For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the 
     \un{I}^{b}_t \\
     \un{I}^{c}_t \\
   \end{pmatrix} = 
- \left(\mathbf{\un{Y}_{v}} + \mathbf{\un{Y}_f}\right) 
+ \left(\mathbf{{Y}_{v}} + \mathbf{{Y}_f}\right) 
 \begin{pmatrix}
     \un{V}^{a}_{p1} \\
     \un{V}^{b}_{p1} \\
@@ -1195,32 +1279,36 @@ For a single converter system as the one depicted in Fig. \ref{fig:sys_p1}, the 
     \un{V}^{b}_f \\
     \un{V}^{c}_f \\
   \end{pmatrix} ,
+  \label{eq:full_1convx}
 \end{equation}
-where the admittance matrix has been split into two parts: $\mathbf{\un{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{\un{Y}_f}$ is constituted by the admittances that intervene in the fault and has the same size as $\mathbf{\un{Y}_v}$. The short-circuit impedance is included as the corresponding elements in $\mathbf{\un{Y}_f}$ while other elements are equal to 0. This way, the admittance matrices are defined as:
+where the admittance matrix has been split into two parts: $\mathbf{{Y}_v}$ represents the non-faulted admittance matrix of the system, whereas $\mathbf{{Y}_f}$ is constituted by the admittances that intervene in the fault and has the same size as $\mathbf{{Y}_v}$. The short-circuit impedance is included as the corresponding elements in $\mathbf{{Y}_f}$ while other elements are equal to 0. This way, the admittance matrices are defined as:
 \begin{equation}
   \scriptsize
-  \mathbf{\un{Y}_v} = \begin{pmatrix}
+  \setlength{\arraycolsep}{3pt}
+  \mathbf{Y_v} = 
+  {\left( \begin{array}{ccc:ccc}
     \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1} & 0 & 0\\
     0 & \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1} & 0\\
     0 & 0 & \un{Y}_{v1} & 0 & 0 & -\un{Y}_{v1}\\
+    \hdashline
     - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t & 0 & 0\\
     0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t & 0\\
-    0 & 0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t\\ \normalsize
-  \end{pmatrix}
+    0 & 0 & - \un{Y}_{v1} & 0 & 0 & \un{Y}_{v1} + \un{Y}_t\\
+  \end{array} \right)}{}
   \label{eq:Yvmat}
 \end{equation}
 where $\un{Y}_{v1}=1/\un{Z}_{v1}$ and $\un{Y}_t=1/\un{Z}_t$. 
 
-On the other hand, the fault admittance $\mathbf{\un{Y}_f}$ is fully dependent on the fault, and therefore, it is built by observation. The optimization problem for the one case converter reads: 
+On the other hand, the fault admittance $\mathbf{{Y}_f}$ is fully dependent on the fault, and therefore, it is built by observation. The optimization problem for the one case converter reads: 
 \begin{equation}
 \begin{aligned}
-\min_{\un{I}^{a}_1, \un{I}^{b}_1, \un{I}^{c}_1} \quad & \lambda^+_1|(1 - {V}^+_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1))| \\
- &+ \lambda^-_1|(0 - {V}^-_{p1}(\un{I}^a_1, \un{I}^b_1, \un{I}^c_1))| \ , \\
+\min \quad & \lambda^+_1|(1 - {V}^+_{p1})| + \lambda^-_1|(0 - {V}^-_{p1})| \ , \\
 \textrm{s.t.} \quad & \text{max}({I}^{a}_1, {I}^{b}_1, {I}^{c}_1) \leq I_{\text{max,1}} \ ,\\
+& \text{Eq. \eqref{eq:full_1convx}}
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
-Because of the nature of the converter, it is also imposed that the sum of the three-phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{\un{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{\un{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta=1\cdot 10^{-6}$. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $n$ scenarios with different fault impedance values, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
+Because of the nature of the converter, it is also imposed that the sum of the three-phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c} up to a given relative precision $\delta=1\cdot 10^{-6}$. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $n$ scenarios with different fault impedance values, this process is repeated $n$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
 \begin{table}\centering
   \caption{System parameters for the one-converter case}
