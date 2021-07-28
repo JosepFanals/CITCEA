@@ -2527,45 +2527,51 @@ This paper has proposed an optimization scheme to improve the grid voltage suppo
     %     \end{subfigure}
 
 
-    %   \begin{subfigure}[!htb]{.12\textwidth}
-    %     \centering
-    %         \begin{tikzpicture}[trim axis right,trim axis left]
-    %             \pgfplotsset{width=4.5cm, height=3.5cm}
-    %             \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, xmin=0.01, xmax=0.035, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ytick distance = {0.03}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-    %               \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vp1.csv};
-    %               \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vp2.csv};
-    %               \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vp1.csv};
-    %               \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vp2.csv};
-    %               \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vp1.csv};
-    %               \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vp2.csv};
-    %             % \legend{BF, OPT};
-    %             \end{axis}
-    %         \end{tikzpicture}
-    %   \end{subfigure}
-    %   \hspace{2.35cm}
-    %   \begin{subfigure}[!htb]{.12\textwidth}
-    %       \centering
-    %           \begin{tikzpicture}[trim axis right,trim axis left]
-    %               \pgfplotsset{width=4.5cm, height=3.5cm}
-    %               \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.05)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick,  xmin=0.01, xmax=0.035, ytick distance = {0.02}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-    %               \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vn1.csv};
-    %               \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/opt_LG_Vn2.csv};
-    %               \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vn1.csv};
-    %               \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcp_LG_Vn2.csv};
-    %               \addplot[very thick, violet] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vn1.csv};
-    %               \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_2conv_Zf_v2/gcn_LG_Vn2.csv};
-    %               % \legend{VSC1, VSC2};
-    %               \end{axis}
-    %           \end{tikzpicture}
-    %     \end{subfigure}
-    %     \vspace{-0.2cm}
+      \begin{subfigure}[!htb]{0.4\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=7.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, axis line style = thick, xmin=0.01, xmax=0.035, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, ytick distance = {0.03}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Vp1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Vp2.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Vp1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Vp2.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Vp1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Vp2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Vp1.csv};
+                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Vp2.csv};
+                  % \legend{OPT1, OPT2, GCP1, GCP2, GCN1, GCN2, GC1, GC2};
+                % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+      % \hspace{2.35cm}
+      \vspace{0.4cm}
+      \begin{subfigure}[!htb]{0.4\textwidth}
+          \centering
+              \begin{tikzpicture}[trim axis right,trim axis left]
+                  \pgfplotsset{width=7.5cm, height=3.5cm}
+                  \begin{axis}[grid=major, xlabel={${Z}_{x}$}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(1.02,0.02), row sep=0.13cm},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick,  xmin=0.01, xmax=0.05, ytick distance = {0.04}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Vn1.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Vn2.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Vn1.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Vn2.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Vn1.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Vn2.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Vn1.csv};
+                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Vn2.csv};
+                  \legend{OPT1, OPT2, GCP1, GCP2, GCN1, GCN2, GC1, GC2};
+                  \end{axis}
+              \end{tikzpicture}
+        \end{subfigure}
+        \vspace{-0.2cm}
 % \begin{center}
 \begin{subfigure}[!htb]{0.4\textwidth}
           % \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   % \pgfplotsset{width=9.4cm, height=3.51cm}
                   \pgfplotsset{width=7.5cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={$\un{Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(1.03,0.05)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, xmin=0.01, xmax=0.05, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled x ticks=false, ytick distance={0.05}, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin = 0.010]
+                  \begin{axis}[grid=major, xlabel={${Z}_{x}$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(1.03,0.05)},anchor=south west,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.005}, xmin=0.01, xmax=0.05, axis line style = thick, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=4}, scaled x ticks=false, ytick distance={0.05}, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, xmin = 0.010]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_f_obj.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_f_obj.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_f_obj.csv};
