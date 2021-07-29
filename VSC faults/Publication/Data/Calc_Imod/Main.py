@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
 
-folder = 'LL_cable_1conv/'
-file1 = 'gc_LL_Ip1re.csv'
-file2 = 'gc_LL_Ip1im.csv'
-file_result = 'res_gc_LL_Ip.csv'
+folder = 'LL_IEEE9_2conv/'
+file1 = 'opt_LL_Ip1re.csv'
+file2 = 'opt_LL_Ip1im.csv'
+file_result = 'res_opt_LL_Ip1.csv'
 
 df1 = pd.read_csv(folder+file1)
 df2 = pd.read_csv(folder+file2)
