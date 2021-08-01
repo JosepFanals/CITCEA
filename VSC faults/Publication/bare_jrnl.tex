@@ -1068,8 +1068,6 @@ Three parametric studies are performed. One considers variations in the fault im
 \begin{circuitikz}[american]
 \thicklines
 
-% \draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
-% \draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
 
 \draw (-2,1.35) to [R, l=$\underline{Z}_{t}$, european] (-0.5,1.35);
 \draw (-0.5, 1.35) to [short] (-0.25, 1.35);
@@ -1078,31 +1076,29 @@ Three parametric studies are performed. One considers variations in the fault im
 \draw (-2,1.35) to [short] (-2.5,1.35);
 
 
-% \draw (-2,0.7) to [short] (-2,2);
-% \draw (-0.5,0.7) to [short] (-0.5,2);
-% \draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
-% \draw (-0.25,1.35) to [short] (-0.25,0);
-% \draw (-0.5,0) to [short] (-0.0,0);
-% \draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
 
 \draw[line width=0.65mm] (-2.5,0.85) to [short] (-2.5,1.85);
-\draw (-2.5,1.35) to [short] (-2.3,0.35);
-\draw (-2.3,0.35) to [short] (-2.7,0.35);
-\draw[-{Latex[length=3mm]}] (-2.7,0.35) to [short] (-2.5,-0.65);
-\draw (-2.75,-0.65) to [short] (-2.25,-0.65);
 
-% \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
+\draw[-{Latex[length=2mm]}, red] (-2.2, 1.9) to [short] (-2.5,1.35);
+\draw[red] (-2.4, 1.9) to [short] (-2.2,1.9);
+\draw[red] (-2.2, 2.26667) to [short] (-2.4,1.9);
+
+% \draw (-2.5,1.35) to [short] (-2.3,0.35);
+% \draw (-2.3,0.35) to [short] (-2.7,0.35);
+% \draw[-{Latex[length=3mm]}] (-2.7,0.35) to [short] (-2.5,-0.65);
+% \draw (-2.75,-0.65) to [short] (-2.25,-0.65);
+
+
+
 \draw (-2.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
 \draw (-5,1.35) to [short] (-5.125, 1.35);
-% \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
-% \draw (-6.875, 1.35) to [short] (-5.625, 1.35);
 \draw[line width=0.65mm] (-5.0,1.85) to [short] (-5.0,0.85);
 \draw (-5.8, 1.35) to [sdcac] (-6.8, 1.35);
 \node at (-6.3,1.95) {VSC1};
 \node at (-5.0,2.05) {$\underline{V}_{p1}$};
 \draw (-5.8,1.35) to [short, i=$\un{I}_1$] (-5.0,1.35);
 
-\node at (-2.5,2.05) {$\underline{V}_{f}$};
+\node at (-2.5,0.65) {$\underline{V}_{f}$};
 
 \node at (-5,0.7) {PCC1};
 
@@ -1625,13 +1621,19 @@ Fig. \ref{fig:sys_c2} represents the third parametric study regarding single con
 % \draw[-{Latex[length=3mm]}] (-3.75,0.35) to [short] (-3.55,-0.65);
 % \draw (-3.80,-0.65) to [short] (-3.30,-0.65);
 
+\draw[-{Latex[length=2mm]}, red] (-4.2, 1.9) to [short] (-4.5,1.35);
+\draw[red] (-4.4, 1.9) to [short] (-4.2,1.9);
+\draw[red] (-4.2, 2.26667) to [short] (-4.4,1.9);
+
+
+
 \draw (-6.3, 1.35) to [short, i=$\un{I}_1$] (-5.9, 1.35);
 \draw (-4.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.9, 1.35);
 \draw[line width=0.65mm] (-5.9,1.85) to [short] (-5.9,0.85);
 \draw (-6.3, 1.35) to [sdcac] (-7.3, 1.35);
 \node at (-6.8,1.95) {VSC1};
 \node at (-5.9,2.05) {$\underline{V}_{p1}$};
-\node at (-4.5,2.05) {$\underline{V}_{f}$};
+\node at (-4.65,0.7) {$\underline{V}_{f}$};
 
 
 \draw (-8.3,0.75) to [V, *-*] (-8.3,1.95);
