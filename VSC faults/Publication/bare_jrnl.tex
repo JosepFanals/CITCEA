@@ -1057,83 +1057,6 @@ A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $
 \end{figure}
 
 
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \begin{figure}[]\centering
-%  \begin{tikzpicture}
-%    \draw[->] (-2.5,0) -- (2.5,0);
-%    \draw[->] (0,-2.5) -- (0,2.5);
-%    \draw[-{Latex[length=2mm]}] (0,0) -- (2,1);
-%    \draw[-{Latex[length=2mm]}] (0,0) -- (0.5,1);
-%    \draw[-{Latex[length=2mm]}] (0,0) -- (1,-2);
-%    \draw[-{Latex[length=2mm]}] (0,0) -- (-1,0.5);
-%    \node at (2.7, 0) {$\Re$};
-%    \node at (0, 2.7) {$\Im$};
-%    \node at (0.5, 1.25) {$\un{V}^-_{pk}$};
-%    \node at (2, 1.25) {$\un{V}^+_{pk}$};
-%    \node at (1, -2.25) {$\un{I}^+_k$};
-%    \node at (-1, 0.75) {$\un{I}^-_k$};
-%    \draw (-0.15,0.075) -- (-0.075,0.225);
-%    \draw (-0.075,0.225) -- (0.075,0.15);
-%    \draw (0.15,0.075) -- (0.225,-0.075);
-%    \draw (0.225,-0.075) -- (0.075,-0.15);
-%    \draw[-{Latex[length=1.5mm]}] (0.5,0) arc (0:153.44:0.5); 
-%    \draw[-{Latex[length=1.5mm]}] (0.65,0) arc (0:-63.44:0.65); 
-%    \node at (0.9, -0.3) {${\alpha}^+$};
-%    \node at (-0.25, 0.7) {${\alpha}^-$};
-%  \end{tikzpicture} 
-%   \caption{Overview of positive and negative sequence voltages and currents following grid code rules}
-%   \label{fig:map}
-% \end{figure}
-
-
-
-
-
-
-% \subsection{Summary of support techniques}
-% The paper evaluates and compares three support strategies, which are:
-% \begin{itemize}
-%   \item OPT: corresponds to the solution of the optimization problem in \eqref{eq:opt2}, particularized for each system. It provides, by definition, the best solution. Both active and reactive powers can be injected.
-%   \item GCP: is the application of the grid code rule shown in \eqref{eq:gc1}. It prioritizes positive sequence current injection. 
-%   \item GCN: follows the grid code negative sequence current injection shown in \eqref{eq:gc2}. Just like GCP, the current limitation is reached in one phase, and only reactive power can be injected. 
-% \end{itemize}
-
-% \begin{equation}
-% \begin{aligned}
-% \min_{\un{I}} \quad & \lambda^+|(1 - |\un{V}^+_p(\un{I}) |)| + \lambda^-|(0 - |\un{V}^-_p(\un{I})|)| \ , \\
-% \textrm{s.t.} \quad & \text{max}(\un{I}^{a}, \un{I}^{b}, \un{I}^{c}) \leq I_{\text{max}} \ ,\\
-%   &\un{I}^a + \un{I}^b + \un{I}^{c} = 0 \ , \\
-% \end{aligned}
-% \label{eq:opt1}
-% \end{equation}
-% where the positive and negative sequence components of voltage $\un{V}_p$ are symbolically expressed as functions of the currents, and $I_{\text{max}}$ is the maximum allowed current by the converter. Considering that faults are strong enough so that the converter is incapable of raising the voltage $|\un{V}^{+}_p(\un{I})|$ to values higher than the maximum allowed voltage, the optimization problem can be rewritten:
-% \begin{equation}
-% \begin{aligned}
-% \min_{\un{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+(1 - |\un{V}^+_{pk}(\un{I}) |) + \lambda^-_k(0 - |\un{V}^-_{pk}(\un{I})|)\right] \ , \\
-% \textrm{s.t.} \quad & \text{max}(\un{I}^{a}_k, \un{I}^{b}_k, \un{I}^{c}_k) \leq I_{\text{max,k}} \ \forall k \ ,\\
-%   &\un{I}^a_k + \un{I}^b_k + \un{I}^{c}_k = 0 \ \forall k \ . \\
-% \end{aligned}
-% \label{eq:opt2}
-% \end{equation}
-% Removing the outer absolute values has been proved to be beneficial in terms of computational time. 
-
-
-
-
-
-% \subsection{Two-converter case}
-
-% place figure of the two-converter case
-
-% basically put equations, talk about the package to optimize. Maybe this section will be rather short.
-
-
 \section{Single converter case study} \label{1conv}
 The analysis is first performed considering a one-converter case study as the one depicted in Fig. \ref{fig:sys_p1}. A fault is forced at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground or line to line). Double line to ground faults are not covered in this study, not because they are unfeasible to be analyzed, but because there is a direct connection between the two faulted phases. This causes variations from a parametric study to have an almost null influence on the results. In any case, the goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
@@ -1550,7 +1473,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.1, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_opt_LG_Ip.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcp_LG_Ip.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcn_LG_Ip.csv};
@@ -1564,7 +1487,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.1, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_opt_LG_In.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcp_LG_In.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/res_gcn_LG_In.csv};
@@ -1578,7 +1501,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
               \pgfplotsset{width=4.5cm, height=3.5cm}
-              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.5, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+              \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, ytick distance={0.05}, xmin=0.1, xmax=5, scaled y ticks=false, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1re.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Ip1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Ip1re.csv};
@@ -1592,7 +1515,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.1, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Ip1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Ip1im.csv};
@@ -1605,7 +1528,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{re}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.1, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1re.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_In1re.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_In1re.csv};
@@ -1619,7 +1542,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^-_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.1, xmax=5, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_In1im.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_In1im.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_In1im.csv};
@@ -1631,7 +1554,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
                 \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.5, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$V^+$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.1, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vp1.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Vp1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Vp1.csv};
@@ -1645,7 +1568,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=4.5cm, height=3.5cm}
-                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.5, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$V^-$}, /pgf/number format/.cd, legend style={at={(0.98,0.23)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick,  xmin=0.1, xmax=5, ytick distance = {0.01}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Vn1.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Vn1.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Vn1.csv};
@@ -1659,7 +1582,7 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.28)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, xmin=0.5, xmax=5, axis line style = thick, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.25)},anchor=south east,legend columns=-1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.5}, xmin=0.1, xmax=5, axis line style = thick, ytick distance = {0.01},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_f_obj.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_f_obj.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_f_obj.csv};
@@ -1901,7 +1824,7 @@ The options OPT, GCP and GCN are again evaluated, as depicted in Fig. \ref{fig:c
           \centering
               \begin{tikzpicture}[trim axis right,trim axis left]
                   \pgfplotsset{width=9.4cm, height=3.51cm}
-                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.98,0.07)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={5}, xmin=1, xmax=100, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
+                  \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={$f$}, /pgf/number format/.cd, legend style={at={(0.99,0.04)},anchor=south east,legend columns=-1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={5}, xmin=1, xmax=100, axis line style = thick, ytick distance = {0.02},  yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3},]
                   \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_f_obj.csv};
                   \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_f_obj.csv};
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_f_obj.csv};
