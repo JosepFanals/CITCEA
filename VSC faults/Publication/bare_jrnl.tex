@@ -1029,42 +1029,6 @@ A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $
   \end{algorithm}
 
 
-
-\begin{enumerate}
-
-  % \item Angles $\alpha^+$ and $\alpha^-$ are computed by knowing the phasors $\un{V}^+$, $\un{V}^-$, and shifting them $\pm \frac{\pi}{2}$ as only reactive power has to be injected:
-  % \begin{equation}
-  %   \begin{cases}
-  %     \alpha^+ = \angle (\un{V}^+) - \frac{\pi}{2} \\
-  %     \alpha^- = \angle (\un{V}^-) + \frac{\pi}{2} \\ 
-  %   \end{cases}
-  % \end{equation}
-  % where $\angle$ denotes the function that extracts the angle of a complex magnitude.
-
-
-  \item The absolute value of the positive sequence current is found with the grid code rules in \eqref{eq:gc1}. Its angle is equal to $\alpha^+$. Thus, $\un{I}^+$ is fully known, and this implies that $I^+_{re}$ and $I^+_{im}$ also are. 
-  \item There are two remaining unknowns: $I^-_{re}$ and $I^-_{im}$. One component can be expressed as a function of the other. For instance:
-  \begin{equation}
-    I^-_{im} = \tan(\alpha^-) I^-_{re} \ .
-    \label{eq:alphn}
-  \end{equation}
-  \item At this point, only $I^-_{re}$ acts as an unkown. The three equations in \eqref{eq:Ifin} are solved in order to find $I^-_{re}$. Consequently, there are 6 solutions (two for each of the three quadratic equations). The solutions can be grouped in an array, expressed as $[I^{a1-}_{re}, I^{a2-}_{re}, I^{b1-}_{re}, I^{b2-}_{re}, I^{c1-}_{re}, I^{c2-}_{re}]$. 
-  \item Employing \eqref{eq:alphn} and the six $I^-_{re}$ elements, the corresponding array of $I^-_{im}$ elements is found. Generically, this is $[I^{a1-}_{im}, I^{a2-}_{im}, I^{b1-}_{im}, I^{b2-}_{im}, I^{c1-}_{im}, I^{c2-}_{im}]$.
-  \item Out of the six pairs of $I^-_{re}$ and $I^-_{im}$ currents, three of them have to be discarded. The reason is that although they obey the tangent relation in \eqref{eq:alphn}, they are placed in the wrong quadrant. This yields three remaining pairs of currents $[I^{a-}_{re}, I^{b-}_{re}, I^{c-}_{re}]$ and $[I^{a-}_{im}, I^{b-}_{im}, I^{c-}_{im}]$, that is, there is only one valid solution for each of the three equations in \eqref{eq:Ifin}. 
-  \item The currents are compacted as:
-  \begin{equation}
-    \begin{cases}
-    \un{I}^{a-} = I^{a-}_{re} + jI^{a-}_{im} \\
-    \un{I}^{b-} = I^{b-}_{re} + jI^{b-}_{im} \\
-    \un{I}^{c-} = I^{c-}_{re} + jI^{c-}_{im} \\
-    \end{cases}
-  \end{equation}
-  \item The current with the smallest absolute value is the one to pick, because this way only one phase will be at saturated conditions. Thus, the final negative sequence current becomes:
-  \begin{equation}
-    I^- = \min\left(I^{a-}, I^{b-}, I^{c-}\right) \ .
-  \end{equation}
-\end{enumerate}
-
 \begin{figure}[]\centering
  \begin{tikzpicture}
    \draw[->] (-2.5,0) -- (2.5,0);
@@ -1095,39 +1059,6 @@ A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $
 
 
 
-Similarly, when the prioritization is applied to the negative sequence (GCN):
-
-\begin{enumerate}
-
-\item Angles $\alpha^+$ and $\alpha^-$ are computed by knowing the phasors $\un{V}^+$, $\un{V}^-$, and shifting them $\pm \frac{\pi}{2}$ as only reactive power has to be injected:
-  \begin{equation}
-    \begin{cases}
-      \alpha^+ = \angle (\un{V}^+) - \frac{\pi}{2} \\
-      \alpha^- = \angle (\un{V}^-) + \frac{\pi}{2} \\ 
-    \end{cases}
-  \end{equation}
-  \item The absolute value of the negative sequence current is computed from \eqref{eq:gc2}, with its angle being equal to $\alpha^-$. Thus, the phasor $\un{I}^-$ is known, and also $I^-_{re}$ and $I^-_{im}$.
-  \item The two remaining unknowns are $I^+_{re}$ and $I^+_{im}$. One component can be expressed as a function of the other:
-  \begin{equation}
-    I^+_{im} = \tan(\alpha^+) I^+_{re} \ .
-    \label{eq:alphp}
-  \end{equation}
-  \item At this point, the only unkown is $I^+_{re}$. The three equations in \eqref{eq:Ifin} are solved for $I^+_{re}$. The solutions can be grouped in an array, expressed as $[I^{a1+}_{re}, I^{a2+}_{re}, I^{b1+}_{re}, I^{b2+}_{re}, I^{c1+}_{re}, I^{c2+}_{re}]$. 
-  \item With \eqref{eq:alphp} and the six $I^+_{re}$ currents, the array of $I^+_{im}$ elements is found:  $[I^{a1+}_{im}, I^{a2+}_{im}, I^{b1+}_{im}, I^{b2+}_{im}, I^{c1+}_{im}, I^{c2+}_{im}]$.
-  \item Three of the six pairs of $I^+_{re}$ and $I^+_{im}$ currents are not valid. The reason is that although they obey \eqref{eq:alphp}, they are in the wrong quadrant. This yields three remaining pairs of currents $[I^{a+}_{re}, I^{b+}_{re}, I^{c+}_{re}]$ and $[I^{a+}_{im}, I^{b+}_{im}, I^{c+}_{im}]$.
-  \item The currents are compacted as:
-  \begin{equation}
-    \begin{cases}
-    \un{I}^{a+} = I^{a+}_{re} + jI^{a+}_{im} \\
-    \un{I}^{b+} = I^{b+}_{re} + jI^{b+}_{im} \\
-    \un{I}^{c+} = I^{c+}_{re} + jI^{c+}_{im} \\
-    \end{cases}
-  \end{equation}
-  \item The current with the smallest absolute value is the relevant one, as it ensures that no limitations would be exceeded. Thus, the final positive sequence current becomes:
-  \begin{equation}
-    I^+ = \min\left(I^{a+}, I^{b+}, I^{c+}\right) \ .
-  \end{equation}
-\end{enumerate}
 
 
 
