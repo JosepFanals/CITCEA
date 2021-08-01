@@ -168,6 +168,26 @@ INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\keyval.sty
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\keyval.sty
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\keyval.sty
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\keyval.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Roaming\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\graphicx.sty
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\graphicx.sty
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\tex\latex\graphics\graphicx.sty
@@ -841,6 +861,8 @@ INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.v
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmri7t.vf
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmri8r.tfm
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
@@ -865,8 +887,6 @@ INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr7t.tfm
-INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
-INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_v1\res_opt_3x_Ip1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_v1\res_gcp_3x_Ip1.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_v1\res_gcn_3x_Ip1.csv
@@ -939,6 +959,8 @@ INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\opt_LL_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gcn_LL_f_obj.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_Zf_new_gc\gc_LL_f_obj.csv
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\vf\adobe\times\ptmr7t.vf
+INPUT C:\Users\Josep\AppData\Local\Programs\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_RX_v1\res_opt_LG_Ip.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_RX_v1\res_gcp_LG_Ip.csv
 INPUT c:\Users\Josep\Desktop\CITCEA\VSC faults\Publication\Data\Results_1conv_RX_v1\res_gcn_LG_Ip.csv

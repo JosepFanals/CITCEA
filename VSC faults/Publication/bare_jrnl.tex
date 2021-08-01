@@ -60,6 +60,7 @@
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
+\usepackage{algorithm}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
@@ -976,12 +977,59 @@ It is also convenient to define the angles of the positive and negative sequence
       \alpha^+ = \angle (\un{V}^+) - \frac{\pi}{2} \\
       \alpha^- = \angle (\un{V}^-) + \frac{\pi}{2} \\ 
     \end{cases}
+    \label{eq:alphas1}
   \end{equation}
   where $\angle$ denotes the function that extracts the angle of a complex magnitude. By shifting the angles of the currents $\pm \frac{\pi}{2}$ rad with respect to the corresponding voltage, only reactive power is injected. 
 
-A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$ from \eqref{eq:Ifin} is described step-by-step. Algorithm 
+A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$ from \eqref{eq:Ifin} is described step-by-step. Algorithm \ref{algo:gcp} contains the methodology to be employed when the positive sequence is prioritized (GCP).
 
-When the positive sequence is prioritized (GCP):
+
+\begin{algorithm}[H]
+  \caption{Current calculation for the GCP strategy}
+  \begin{algorithmic}[1]
+  \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+  \renewcommand{\algorithmicensure}{\textbf{Output:}}
+  \REQUIRE $\un{V}^+$, $\un{V}^-$
+  \ENSURE $I^+_{re}$, $I^+_{im}$, $I^-_{re}$, $I^-_{im}$ 
+  % \\ \textit{Initialisation} :
+   \STATE Compute $\alpha^+$ and $\alpha^-$ from \eqref{eq:alphas1}.
+   \STATE Use \eqref{eq:gc1} to find $I^+$. Since $\alpha^+$ is known, $I^+_{re}$ and $I^+_{im}$ are directly found.
+   \STATE Substitute $I^-_{im}$ by $I^-_{re} \tan(\alpha^-)$ in \eqref{eq:Ifin} and solve the three equations for $I^-_{re}$. 
+   \STATE Group the six solutions (two for each equation) as $[I^{a1-}_{re}, I^{a2-}_{re}, I^{b1-}_{re}, I^{b2-}_{re}, I^{c1-}_{re}, I^{c2-}_{re}]$.  
+   \STATE Since $I^-_{im} = \tan(\alpha^-) I^-_{re}$, calculate the six associated currents $[I^{a1-}_{im}, I^{a2-}_{im}, I^{b1-}_{im}, I^{b2-}_{im}, I^{c1-}_{im}, I^{c2-}_{im}]$. 
+   \STATE Select the three pairs of currents placed in the correct quadrant according to the value of $\alpha^-$. Denote them by $[I^{a-}_{re}, I^{b-}_{re}, I^{c-}_{re}]$ and $[I^{a-}_{im}, I^{b-}_{im}, I^{c-}_{im}]$.
+   \STATE Compute currents $\un{I}^{a-} = I^{a-}_{re} + jI^{a-}_{im}$, $\un{I}^{b-} = I^{b-}_{re} + jI^{b-}_{im}$ and $\un{I}^{c-} = I^{c-}_{re} + jI^{c-}_{im}$.
+   \STATE Finally, $I^- = \min\left(I^{a-}, I^{b-}, I^{c-}\right)$. Currents $I^-_{re}$ and $I^-_{im}$ are directly calculated as $\alpha^-$ has already been found.
+  \RETURN $I^+_{re}$, $I^+_{im}$, $I^-_{re}$, $I^-_{im}$.
+  \end{algorithmic}
+  \label{algo:gcp}
+  \end{algorithm}
+
+  Similarly, Algorithm \ref{algo:gcn} details the procedure to follow in case the negative sequence is prioritized (GCN).
+
+\begin{algorithm}[H]
+  \caption{Current calculation for the GCN strategy}
+  \begin{algorithmic}[1]
+  \renewcommand{\algorithmicrequire}{\textbf{Input:}}
+  \renewcommand{\algorithmicensure}{\textbf{Output:}}
+  \REQUIRE $\un{V}^+$, $\un{V}^-$
+  \ENSURE $I^+_{re}$, $I^+_{im}$, $I^-_{re}$, $I^-_{im}$ 
+  % \\ \textit{Initialisation} :
+   \STATE Compute $\alpha^+$ and $\alpha^-$ from \eqref{eq:alphas1}.
+   \STATE Use \eqref{eq:gc2} to find $I^-$. Since $\alpha^-$ is known, $I^-_{re}$ and $I^-_{im}$ are directly found.
+   \STATE Substitute $I^+_{im}$ by $I^+_{re} \tan(\alpha^+)$ in \eqref{eq:Ifin} and solve the three equations for $I^+_{re}$. 
+   \STATE Group the six solutions (two for each equation) as $[I^{a1+}_{re}, I^{a2+}_{re}, I^{b1+}_{re}, I^{b2+}_{re}, I^{c1+}_{re}, I^{c2+}_{re}]$.  
+   \STATE Since $I^+_{im} = \tan(\alpha^+) I^+_{re}$, calculate the six associated currents $[I^{a1+}_{im}, I^{a2+}_{im}, I^{b1+}_{im}, I^{b2+}_{im}, I^{c1+}_{im}, I^{c2+}_{im}]$. 
+   \STATE Select the three pairs of currents placed in the correct quadrant according to the value of $\alpha^+$. Denote them by $[I^{a+}_{re}, I^{b+}_{re}, I^{c+}_{re}]$ and $[I^{a+}_{im}, I^{b+}_{im}, I^{c+}_{im}]$.
+   \STATE Compute currents $\un{I}^{a+} = I^{a+}_{re} + jI^{a+}_{im}$, $\un{I}^{b+} = I^{b+}_{re} + jI^{b+}_{im}$ and $\un{I}^{c+} = I^{c+}_{re} + jI^{c+}_{im}$.
+   \STATE Finally, $I^+ = \min\left(I^{a+}, I^{b+}, I^{c+}\right)$. Currents $I^+_{re}$ and $I^+_{im}$ are directly calculated as $\alpha^+$ has already been found.
+  \RETURN $I^+_{re}$, $I^+_{im}$, $I^-_{re}$, $I^-_{im}$.
+  \end{algorithmic}
+  \label{algo:gcn}
+  \end{algorithm}
+
+
+
 \begin{enumerate}
 
   % \item Angles $\alpha^+$ and $\alpha^-$ are computed by knowing the phasors $\un{V}^+$, $\un{V}^-$, and shifting them $\pm \frac{\pi}{2}$ as only reactive power has to be injected:
