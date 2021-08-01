@@ -637,68 +637,6 @@ VSCs are elements that interconnect DC systems with AC systems. As shown in Fig.
 % Power systems are likely to involve more than a single converter. Therefore, the modeling is approached from a generalized perspective. Figure \ref{fig:sys_n} presents the modeling for a system with $n$ converters connected to a grid with $n_g$ buses represented by its admittance matrix $\mathbf{\un{Y}_g}$. In addition, the grid has been modeled with a Norton equivalent instead of a Thevenin equivalent for simplification purposes. The VSCs are treated as current sources that inject currents of the form of $\un{I}_k\forall k\in[1,...,n]$. Additional impedances denoted by $\un{Z}_{vk}$ connect the point of common coupling to the grid. Such point of common coupling is precisely where the voltages ought to be improved. 
 
 
-% \begin{figure}[] \centering \tiny
-% \begin{circuitikz}[american]
-% \thicklines
-
-% \draw (0,0) to [C] (0,2);
-% \draw (1.0,0) to [isource, i=$I_{dc}$] (1.0,2);
-% \node at (-0.25,1.3) {$C_{dc}$};
-% \draw (1,2) to [short, -*] (0,2);
-% \draw (1,0) to [short, -*] (0,0);
-% \draw (0,2) to [short, -*] (-0.6,2);
-% \draw (0,0) to [short, -*] (-0.6,0);
-% \draw[line width=0.4mm] (-0.6,2.5) to [short] (-0.6,-0.5);
-% \draw[line width=0.4mm] (-1.5,2.5) to [short] (-1.5,-0.5);
-% \draw[line width=0.4mm] (-1.5,2.5) to [short] (-0.6,2.5);
-% \draw[line width=0.4mm] (-1.5,-0.5) to [short] (-0.6,-0.5);
-% \node[rotate=00] at (-1.05,1.0) {DC syst.};
-
-% \draw (1.75,2.25) to [controlled sinusoidal voltage source, l=$\underline{V}_v$] (3.0,2.25);
-% \draw (1.75,1) to [controlled sinusoidal voltage source, *-] (3.0,1);
-% \draw (1.75,-0.25) to [controlled sinusoidal voltage source] (3.0,-0.25);
-% \draw (1.75,2.25) to [short] (1.75,-0.25);
-
-% \draw (3.0,1) to [R, european] (4.2,1);
-% \draw (4.4,1) to [R, european] (5.7,1);
-% \draw (4.2,1) to [short] (4.4,1);
-% \draw (5.7,1) to [sV, -*] (6.8,1);
-
-% \draw (3.0,2.25) to [R, european, l=$\underline{Z}_z$] (4.2,2.25);
-% \draw (4.4,2.25) to [R, european, l=$\underline{Z}_t$] (5.7,2.25);
-% \draw (4.2,2.25) to [short] (4.4,2.25);
-% \draw (5.7,2.25) to [sV, l=$\underline{V}_t$] (6.8,2.25);
-
-% \draw (3.0,-0.25) to [R, european] (4.2,-0.25);
-% \draw (4.4,-0.25) to [R, european, l=$\underline{Z}_t$] (5.7,-0.25);
-% \draw (4.2,-0.25) to [short] (4.4,-0.25);
-% \draw (5.7,-0.25) to [sV] (6.8,-0.25);
-% \draw (6.8,2.25) to [short] (6.8,-0.25);
-
-% \draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (4.4,-0.9);
-% \draw[line width=0.4mm, dotted] (4.4,3.05) to [short] (6.95,3.05);
-% \draw[line width=0.4mm, dotted] (4.4,-0.9) to [short] (6.95,-0.9);
-% \draw[line width=0.4mm, dotted] (6.95,3.05) to [short] (6.95,-0.9);
-
-% \draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (0.5,-0.9);
-% \draw[line width=0.4mm, dotted] (0.5,3.05) to [short] (4.3,3.05);
-% \draw[line width=0.4mm, dotted] (4.3,3.05) to [short] (4.3,-0.9);
-% \draw[line width=0.4mm, dotted] (0.5,-0.9) to [short] (4.3,-0.9);
-
-% \draw (2.5,-1.3) to [sdcac] (2.5,-2.3);
-% % \draw (2.0, -1.3) to [short] (0.5, -0.9);
-% % \draw (3.0, -1.3) to [short] (4.3, -0.9);
-% \node[rotate=-90] at (2.5,-1.12) {$\equiv$};
-
-% \node at (2.5,3.2) {VSC average model};
-% \node at (5.6375,3.15) {Grid};
-
-
-% \end{circuitikz}
-% \caption{Average model of a VSC connected to the grid}
-% \label{fig:average_model}
-% \end{figure}
-
 \begin{figure}[] \centering \tiny
 \begin{circuitikz}[american]
 \thicklines
@@ -850,6 +788,10 @@ In case a fault occurs at the buses interconnected by $\un{Z}_{vk}$, elements $1
 \draw (-10.25,-0.6) to [V, *-*] (-10.25,0.6);
 \draw (-10.25,-2.6) to [V, *-*] (-10.25,-1.4);
 
+\node at (-10.7,2.5) {$V_{dc1}$};
+\node at (-10.7,0.5) {$V_{dc2}$};
+\node at (-10.7,-1.5) {$V_{dcn}$};
+
 \draw (-10.25,2.6) to [short] (-9.75,2.6);
 \draw (-10.25,0.6) to [short] (-9.75,0.6);
 \draw (-10.25,-1.4) to [short] (-9.75,-1.4);
@@ -967,7 +909,7 @@ Positive sequence voltages have to approach the nominal voltage while negative s
 where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors for positive and negative voltage magnitudes, the positive and negative sequence components of voltages $\un{V}_{pk}$ are symbolically expressed as functions of the whole currents $\un{I}$ involved in the system, and $I_{\text{max,}k}$ is the maximum allowed current by the $k$ converter for each phase. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decrease substantially during faults. This assumption is numerically validated in the case studies.
 
 \subsection{Grid code rules}
-In order to improve voltages during faults, grid code control rules typically impose injections of currents proportional to the voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions, for the positive sequence:
+In order to improve voltages during faults, grid code control rules typically impose injections of positive sequence currents proportional to the positive sequence voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions:
 \begin{equation}
 \begin{cases} 
       {I}^+_k = 0 & {V}^+_{pk}\geq V^{+}_{\text{high}}  \\
@@ -976,7 +918,7 @@ In order to improve voltages during faults, grid code control rules typically im
    \end{cases}
    \label{eq:gc1}
 \end{equation}
-whereas for the negative sequence:
+The most basic of the four voltage support strategies analyzed in this paper, which will be denoted by GC, is precisely the application of \eqref{eq:gc1}. A similar proportionality can be established in the negative sequence:
 \begin{equation}
 \begin{cases} 
       {I}^-_k = 0 & {V}^-_{pk}\leq V^-_{\text{low}} \\
@@ -985,9 +927,9 @@ whereas for the negative sequence:
    \end{cases}
    \label{eq:gc2}
 \end{equation}
-Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The converter would therefore operate at saturated conditions during extreme faults because either the positive sequence voltage would reach the lower threshold $V^+_{\text{low}}$ or the negative sequence voltage would surpass the upper threshold $V^-_{\text{high}}$. However, in severe faults, it is still possible that both limits are surpassed, or at least, approached. In case \eqref{eq:gc1} and \eqref{eq:gc2} were applied simultaneously, the required current to be injected by the VSC could potentially exceed the $I_{\text{max},k}$ limitation. Thus, it makes sense to establish a prioritization. 
+Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The unfavorable consequence of applying \eqref{eq:gc1} and \eqref{eq:gc2} simultaneously is that the nominal current of the converter could be exceeded. Indeed, during extreme faults, the positive sequence voltage could reach the lower threshold $V^+_{\text{low}}$ and the negative sequence voltage could surpass the upper threshold $V^-_{\text{high}}$. One way to fight against this problem can consist of injecting only positive or negative sequence currents; for example, the fundamental GC option only injects positive sequence current. However, this strategy is likely to be suboptimal. In case the voltages do not exceed these lower or upper thresholds, the converter would still be capable of injecting some current in the non-prioritized sequence up to reaching saturation. 
 
-This paper considers the two straightforward prioritizations for voltage support operation of converters following grid codes. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the remaining maximum allowed current in the negative sequence. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations, the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
+One contribution of this paper is the proposal of a methodology to determine the available current margin.The two direct prioritizations are covered. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the remaining maximum allowed current in the negative sequence. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations, the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
 
 Consider a generic distribution of positive and negative sequence voltages in the complex plane, as in Fig. \ref{fig:map}. Phase currents are related to zero, positive, and negative sequence components by
 \begin{equation}
@@ -1017,8 +959,7 @@ where $\un{I}^0$ is zero as the VSC is incapable of injecting it. The $k$ index 
   \end{cases}
   \label{eq:Iphaseb}
 \end{equation}
-The goal is to determine the maximum current that respects the limitations. To do so, all three phase currents are set to the maximum allowed current. It is know beforehand that not all three phases will operate at saturation. Yet, one can imagine that if currents are gradually increased, one phase will reach saturation before the others. This will act as the most restrictive option. Consequently, the phase currents in \eqref{eq:Iphaseb} are squared in order to express them as functions of $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$:
-
+The goal is to determine the maximum current that respects the limitations. To do so, all three phase currents are set to the maximum allowed current. It is known beforehand that not all three phases will operate at saturation. Yet, one can imagine that if currents are gradually increased, one phase will reach saturation before the others. This will act as the most restrictive option. Consequently, the phase currents in \eqref{eq:Iphaseb} are squared in order to express them as functions of $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$:
 \begin{equation}
   \begin{cases}
     I_{\text{max}}^2 = (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
@@ -1029,20 +970,30 @@ The goal is to determine the maximum current that respects the limitations. To d
   \end{cases}
   \label{eq:Ifin}
 \end{equation}
-
-A procedure to find these four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$ from \eqref{eq:Ifin} is described step-by-step. 
-
-When the positive sequence is prioritized (GCP):
-\begin{enumerate}
-
-  \item Angles $\alpha^+$ and $\alpha^-$ are computed by knowing the phasors $\un{V}^+$, $\un{V}^-$, and shifting them $\pm \frac{\pi}{2}$ as only reactive power has to be injected:
+It is also convenient to define the angles of the positive and negative sequence currents, which are $\alpha^+$ and $\alpha^-$ respectively:
   \begin{equation}
     \begin{cases}
       \alpha^+ = \angle (\un{V}^+) - \frac{\pi}{2} \\
       \alpha^- = \angle (\un{V}^-) + \frac{\pi}{2} \\ 
     \end{cases}
   \end{equation}
-  where $\angle$ denotes the function that extracts the angle of a complex magnitude.
+  where $\angle$ denotes the function that extracts the angle of a complex magnitude. By shifting the angles of the currents $\pm \frac{\pi}{2}$ rad with respect to the corresponding voltage, only reactive power is injected. 
+
+A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$ from \eqref{eq:Ifin} is described step-by-step. Algorithm 
+
+When the positive sequence is prioritized (GCP):
+\begin{enumerate}
+
+  % \item Angles $\alpha^+$ and $\alpha^-$ are computed by knowing the phasors $\un{V}^+$, $\un{V}^-$, and shifting them $\pm \frac{\pi}{2}$ as only reactive power has to be injected:
+  % \begin{equation}
+  %   \begin{cases}
+  %     \alpha^+ = \angle (\un{V}^+) - \frac{\pi}{2} \\
+  %     \alpha^- = \angle (\un{V}^-) + \frac{\pi}{2} \\ 
+  %   \end{cases}
+  % \end{equation}
+  % where $\angle$ denotes the function that extracts the angle of a complex magnitude.
+
+
   \item The absolute value of the positive sequence current is found with the grid code rules in \eqref{eq:gc1}. Its angle is equal to $\alpha^+$. Thus, $\un{I}^+$ is fully known, and this implies that $I^+_{re}$ and $I^+_{im}$ also are. 
   \item There are two remaining unknowns: $I^-_{re}$ and $I^-_{im}$. One component can be expressed as a function of the other. For instance:
   \begin{equation}
@@ -1252,6 +1203,18 @@ Three parametric studies are performed. One considers variations in the fault im
 \node at (-2.5,2.05) {$\underline{V}_{f}$};
 
 \node at (-5,0.7) {PCC1};
+
+
+\draw (-7.8,0.75) to [V, *-*] (-7.8,1.95);
+\node at (-8.25,1.85) {$V_{dc1}$};
+\draw (-7.8,1.95) to [short] (-7.3,1.95);
+\draw (-7.3,1.95) to [short] (-7.05,1.7);
+\draw (-7.8,0.75) to [short] (-7.3,0.75);
+\draw (-7.3,0.75) to [short] (-7.05,1);
+\draw (-7.05,1.7) to [short] (-6.8,1.7);
+\draw (-7.05,1) to [short] (-6.8,1);
+
+
 
 \end{circuitikz}
 \caption{Single-phase representation of the single converter system under study}
@@ -1740,55 +1703,45 @@ Fig. \ref{fig:sys_c2} represents the third parametric study regarding single con
 \begin{circuitikz}[american]
 \thicklines
 
-\draw (-0.5,1.35) to [R, l=$\underline{Z}_{t}$, european] (1,1.35);
-\draw (1,1.35) to [short] (1.25,1.35);
-\draw (-0.5, 1.35) to [short] (-0.75, 1.35);
-\draw (1.25,1.35) to [sV, l_=$\underline{V}_t$] (1.25,-0.5);
-\draw (1,-0.5) to [short] (1.5,-0.5);
-% \draw (-2,1.35) to [short] (-2.5,1.35);
+\draw (-2.4,1.35) to [R, l=$\underline{Z}_{t}$, european] (-1.2,1.35);
+\draw (-1.0,1.35) to [sV, l_=$\underline{V}_t$] (-1.0,-0.5);
+\draw (-1.25,-0.5) to [short] (-0.75,-0.5);
+\draw (-1.2,1.35) to [short] (-1,1.35);
+
+\draw (-2.4,1.35) to [R, l_=$\underline{Z}_s$, european] (-4.3,1.35);
+\draw (-2.6, 1.35) to [R, l_=$\underline{Z}_p$, european] (-2.6, -0.5);
+\draw (-4.1, 1.35) to [R, l=$\underline{Z}_p$, european] (-4.1, -0.5);
+\draw (-2.35, -0.5) to [short] (-2.85,-0.5);
+\draw (-3.85, -0.5) to [short] (-4.35,-0.5);
+\draw (-4.3,1.35) to [short] (-4.5,1.35);
 
 
 
-% \draw (1.0,2) to [isource, l_=$\underline{I}_{t}$] (-0.5,2);
-% \draw (-0.5,0.7) to [R, l=$\underline{Z}_{t}$, european] (1.0,0.7);
-% \draw (-0.5,0.7) to [short] (-0.5,2);
-% \draw (1,0.7) to [short] (1,2);
-% \draw (1,1.35) to [short, *-] (1.25,1.35);
-% \draw (1.25,1.35) to [short] (1.25,0);
-% \draw (1,0) to [short] (1.5,0);
+\draw[line width=0.65mm] (-4.5,0.85) to [short] (-4.5,1.85);
+% \draw (-3.5,1.35) to [short] (-3.35,0.35);
+% \draw (-3.35,0.35) to [short] (-3.75,0.35);
+% \draw[-{Latex[length=3mm]}] (-3.75,0.35) to [short] (-3.55,-0.65);
+% \draw (-3.80,-0.65) to [short] (-3.30,-0.65);
 
-% \draw (-2.0,1.35) to [short, *-] (-2.2,1.35);
-
-\draw (-0.5,1.35) to [R, l_=$\underline{Z}_s$, european] (-3.0,1.35);
-\draw (-1.0, 1.35) to [R, l_=$\underline{Z}_p$, european] (-1.0, -0.5);
-\draw (-2.5, 1.35) to [R, l=$\underline{Z}_p$, european] (-2.5, -0.5);
-\draw (-3.0,1.35) to [short] (-3.5,1.35);
-\draw (-0.75, -0.5) to [short] (-1.25,-0.5);
-\draw (-2.75, -0.5) to [short] (-2.25,-0.5);
-
-
-
-\draw[line width=0.65mm] (-3.5,0.85) to [short] (-3.5,1.85);
-\draw (-3.5,1.35) to [short] (-3.35,0.35);
-\draw (-3.35,0.35) to [short] (-3.75,0.35);
-\draw[-{Latex[length=3mm]}] (-3.75,0.35) to [short] (-3.55,-0.65);
-\draw (-3.80,-0.65) to [short] (-3.30,-0.65);
-
-\draw (-6.3, 1.35) to [short, i=$\un{I}_1$] (-5.5, 1.35);
-% \draw (-3.25, 1.35) to [short] (-3.75, 1.35);
-\draw (-3.9,1.35) to [short] (-3.5,1.35);
-\draw (-3.9, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 1.35);
-\draw (-5,1.35) to [short] (-5.125, 1.35);
-% \draw (-5.625, 1.35) to [short, i=$\un{I}_1$] (-5.125, 1.35);
-% \draw (-6.875, 1.35) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 1.35);
-\draw[line width=0.65mm] (-5.5,1.85) to [short] (-5.5,0.85);
-\draw (-5.5,1.35) to [short] (-5.125, 1.35);
-% \draw (-6.875, 1.35) to [short] (-7.125, 1.35);
+\draw (-6.3, 1.35) to [short, i=$\un{I}_1$] (-5.9, 1.35);
+\draw (-4.5, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (-5.9, 1.35);
+\draw[line width=0.65mm] (-5.9,1.85) to [short] (-5.9,0.85);
 \draw (-6.3, 1.35) to [sdcac] (-7.3, 1.35);
 \node at (-6.8,1.95) {VSC1};
-\node at (-5.5,2.05) {$\underline{V}_{p1}$};
+\node at (-5.9,2.05) {$\underline{V}_{p1}$};
+\node at (-4.5,2.05) {$\underline{V}_{f}$};
 
-\node at (-3.5,2.05) {$\underline{V}_{f}$};
+
+\draw (-8.3,0.75) to [V, *-*] (-8.3,1.95);
+\node at (-8.8,1.8) {$V_{dc1}$};
+\draw (-8.3,1.95) to [short] (-7.8,1.95);
+\draw (-7.8,1.95) to [short] (-7.55,1.7);
+\draw (-8.3,0.75) to [short] (-7.8,0.75);
+\draw (-7.8,0.75) to [short] (-7.55,1);
+\draw (-7.55,1.7) to [short] (-7.3,1.7);
+\draw (-7.55,1) to [short] (-7.3,1);
+
+
 
 \end{circuitikz}
 \caption{Single-phase representation of the single converter connected to a system with a cable}
