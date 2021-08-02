@@ -1060,7 +1060,7 @@ A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $
 \section{Single converter case study} \label{1conv}
 The analysis is first performed considering a one-converter case study as the one depicted in Fig. \ref{fig:sys_p1}. A fault is forced at the point of connection of the grid. The impedances that model the fault are set accordingly to the type of fault, i.e., balanced or unbalanced (line to ground or line to line). Double line to ground faults are not covered in this study, not because they are unfeasible to be analyzed, but because there is a direct connection between the two faulted phases. This causes variations from a parametric study to have an almost null influence on the results. In any case, the goal is to improve the voltage $\un{V}_{p1}$ by injecting the optimal $\un{I}^a_1$, $\un{I}^b_1$ and $\un{I}^c_1$ currents.
 
-Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. Regarding the grid codes, the values of the constants are gathered in Table \ref{tab:param_gc}. They remain the same for all studies. The results gathered in this paper are computed with Python 3.9.1 using the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1\cdot 10^{-6}$. 
+Three parametric studies are performed. One considers variations in the fault impedance. This case is explicitly described in order to exemplify the formulation. Another study analyzes a varying $R_1/X_1$ ratio, which stands for the proportion between the resistive and the inductive parts that compose the impedance $\un{Z}_{v1}$. This ratio is modified while the absolute value of the impedance is kept constant. The third case presents the effect of increasing the distance of a hypothetical submarine cable. Regarding the grid codes, the values of the constants are gathered in Table \ref{tab:param_gc}. They remain the same for all studies. The results gathered in this paper are computed with Python 3.9.1 using the Mystic package, a highly constrained non-convex optimization framework \cite{mckerns2012building, mckernsmystic}. A differential global optimization solver has been employed with a relative precision up to $1\cdot 10^{-6}$. Nevertheless, other softwares can be equally valid to solve the same problem.
 
 
 
@@ -1852,62 +1852,114 @@ A case study with two VSCs is analyzed in this Section in order to spot the inte
 \begin{circuitikz}[american]
 \thicklines
 
-\draw (-2,1.35) to [R, l=$\underline{Z}_{t}$, european] (-0.5,1.35);
-\draw (-0.5,1.35) to [short] (-0.25,1.35);
-\draw (-2, 1.35) to [short] (-2.5, 1.35);
-\draw (-0.25,1.35) to [sV, l_=$\underline{V}_t$] (-0.25,-0.5);
-\draw (0,-0.5) to [short] (-0.5,-0.5);
 
-% \draw (-0.5,2) to [isource, l_=$\underline{I}_{t}$] (-2,2);
-% \draw (-2,0.7) to [R, l=$\underline{Z}_{t}$, european] (-0.5,0.7);
-% \draw (-2,0.7) to [short] (-2,2);
-% \draw (-0.5,0.7) to [short] (-0.5,2);
-% \draw (-0.5,1.35) to [short, *-] (-0.25,1.35);
-% \draw (-0.25,1.35) to [short] (-0.25,0);
-% \draw (-0.5,0) to [short] (-0.0,0);
-% \draw (-2.0,1.35) to [short, *-] (-2.5,1.35);
+% \draw (0,0.75) to [V, *-*] (0,1.95);
+% \node at (-0.45,1.85) {$V_{dc1}$};
+% \draw (0,1.95) to [short] (0.5,1.95);
+% \draw (0.5,1.95) to [short] (0.75,1.7);
+% \draw (0,0.75) to [short] (0.5,0.75);
+% \draw (0.5,0.75) to [short] (0.75,1);
+% \draw (0.75,1.7) to [short] (1,1.7);
+% \draw (0.75,1) to [short] (1,1);
 
-\draw[line width=0.65mm] (-2.5,0.85) to [short] (-2.5,1.85);
-\draw (-2.5,1.35) to [short] (-2.3,0.35);
-\draw (-2.3,0.35) to [short] (-2.7,0.35);
-\draw[-{Latex[length=3mm]}] (-2.7,0.35) to [short] (-2.5,-0.65);
-\draw (-2.75,-0.65) to [short] (-2.25,-0.65);
 
-\draw (-2.5,1.6) to [short] (-3.25, 1.6);
-\draw (-2.5,1.05) to [short] (-3.25, 1.05);
-\draw (-3.25, 1.6) to [short] (-3.25, 2.1);
-\draw (-3.25, 1.05) to [short] (-3.25, 0.55);
+% \draw (2, 1.35) to [sdcac] (1, 1.35);
 
-\draw (-3.25, 0.55) to [short] (-3.75, 0.55);
-\draw (-3.75, 0.55) to [R, l_=$\un{Z}_{v2}$, european] (-5.0, 0.55);
-\draw (-5,0.55) to [short] (-5.125, 0.55);
-\draw (-6.3, 0.55) to [short, i=$\un{I}_2$] (-5.5, 0.55);
-% \draw (-6.875, 0.55) to [R, l=$\un{Z}_{z2}$, european] (-5.625, 0.55);
-% \draw (-6.875, 0.55) to [short] (-5.625, 0.55);
-\draw[line width=0.65mm] (-5.5,0.05) to [short] (-5.5,1.05);
-% \draw (-6.875, 0.55) to [short] (-7.125, 0.55);
-\draw (-6.3, 0.55) to [sdcac] (-7.3, 0.55);
-\draw (-5.5, 0.55) to [short] (-5.0, 0.55);
-\node at (-6.8,1.15) {VSC2};
-\node at (-5.5,1.25) {$\underline{V}_{p2}$};
+% \draw (2, 1.35) to [short, i=$\un{I}_1$] (2.4, 1.35);
+% \draw (3.8, 1.35) to [R, l_=$\un{Z}_{v1}$, european] (2.4, 1.35);
+% \draw[line width=0.65mm] (2.4,1.85) to [short] (2.4,0.85);
+% \node at (2.4,2.05) {$\underline{V}_{p1}$};
 
-\draw (-3.25, 2.1) to [short] (-3.75, 2.1);
-\draw (-3.75, 2.1) to [R, l_=$\un{Z}_{v1}$, european] (-5.0, 2.1);
-\draw (-5,2.1) to [short] (-5.125, 2.1);
-\draw (-6.3, 2.1) to [short, i=$\un{I}_1$] (-5.5, 2.1);
-\draw (-5.5, 2.1) to [short] (-5.0, 2.1);
-% \draw (-6.875, 2.1) to [R, l=$\un{Z}_{z1}$, european] (-5.625, 2.1);
-% \draw (-6.875, 2.1) to [short] (-5.625, 2.1);
-\draw[line width=0.65mm] (-5.5,1.6) to [short] (-5.5,2.6);
-\draw (-5.8, 2.1) to [short] (-6.3, 2.1);
-\draw (-6.3, 2.1) to [sdcac] (-7.3, 2.1);
-\node at (-6.8,2.7) {VSC1};
-\node at (-5.5,2.80) {$\underline{V}_{p1}$};
+% VSC1
+\draw (1.2,0) to [V, *-*] (0,0);
+\node at (1.2,-0.45) {$V_{dc1}$};
+\draw (1.2,0) to [short] (1.2,0.5);
+\draw (0,0) to [short] (0,0.5);
+\draw (1.2,0.5) to [short] (0.95,0.75);
+\draw (0,0.5) to [short] (0.25,0.75);
+\draw (0.95, 0.75) to [short] (0.95,1);
+\draw (0.25,0.75) to [short] (0.25,1);
 
-\node at (-2.5,2.05) {$\underline{V}_{f}$};
+\draw (0.6,2) to [sacdc] (0.6,1);
+\draw (0.6,2) to [short, i=$\un{I}_1$] (0.6,2.4);
+\draw[line width=0.65mm] (0.1,2.4) to [short] (1.1,2.4);
+\draw (0.6,2.4) to [short] (0.6,2.9);
+\draw (0.6,2.9) to [R, l=$\un{Z}_{v1}$, european] (2,2.9);
+\node at (1.4,1.5) {VSC1};
+\node at (1.4,2.4) {$\un{V}_{p1}$};
+
+% VSC2
+\draw (7,0) to [V, *-*] (8.2,0);
+\node at (7,-0.45) {$V_{dc2}$};
+\draw (8.2,0) to [short] (8.2,0.5);
+\draw (7,0) to [short] (7,0.5);
+\draw (8.2,0.5) to [short] (7.95,0.75);
+\draw (7,0.5) to [short] (7.25,0.75);
+\draw (7.95, 0.75) to [short] (7.95,1);
+\draw (7.25,0.75) to [short] (7.25,1);
+
+\draw (8.1,1.5) to [sacdc] (7.1,1.5);
+\draw (7.6,2) to [short, i_=$\un{I}_2$] (7.6,2.4);
+\draw[line width=0.65mm] (7.1,2.4) to [short] (8.1,2.4);
+\draw (7.6,2.4) to [short] (7.6,2.9);
+\draw (7.6,2.9) to [R, l_=$\un{Z}_{v2}$, european] (6.2,2.9);
+\node at (6.8,1.5) {VSC2};
+\node at (6.8,2.4) {$\un{V}_{p2}$};
+
+% Yg
+\draw (2,2.9) to [short] (2.5,2.9);
+\draw (6.2,2.9) to [short] (5.7,2.9);
+\draw[line width=0.4mm] (2.5,4) to [short] (5.7,4);
+\draw[line width=0.4mm] (2.5,4) to [short] (2.5,0.2);
+\draw[line width=0.4mm] (5.7,4) to [short] (5.7,0.2);
+\draw[line width=0.4mm] (2.5,0.2) to [short] (5.7,0.2);
+
+\draw (2.5,2.9) to [short] (5.7,2.9);
+\draw[line width=0.65mm] (3,3.2) to [short] (3,2.6);
+\draw[line width=0.65mm] (5.2,3.2) to [short] (5.2,2.6);
+\draw[line width=0.65mm] (4.1,3.2) to [short] (4.1,2.6);
+
+\draw[line width=0.65mm] (3,1.8) to [short] (3.6,1.8);
+\draw[line width=0.65mm] (5.2,1.8) to [short] (4.6,1.8);
+\draw[line width=0.65mm] (3.8,0.7) to [short] (4.4,0.7);
+
+\draw[-{Latex[length=2mm]}, red] (4.4, 3.45) to [short] (4.1,2.9);
+\draw[red] (4.2, 3.45) to [short] (4.4,3.45);
+\draw[red] (4.4, 3.816667) to [short] (4.2,3.45);
+
+\draw (3,2.75) to [short] (3.3,2.75);
+\draw (3.3,2.75) to [short] (3.3, 1.8);
+\draw (5.2, 2.75) to [short] (4.9,2.75);
+\draw (4.9,2.75) to [short] (4.9,1.8);
+
+\draw (3.3,1.8) to [short] (3.3,1);
+\draw (3.3,1) to [short] (3.95,1);
+\draw (3.95,1) to [short] (3.95,0.7);
+
+\draw (4.9,1.8) to [short] (4.9,1);
+\draw (4.9,1) to [short] (4.25,1);
+\draw (4.25,1) to [short] (4.25,0.7);
+
+\draw (4.1,0.7) to [short] (4.1,0.0);
+\draw (4.1,0.0) to [R, l=$\un{Z}_t$, european] (4.1,-1.4);
+\draw (4.1,-1.4) to [sV, l=$\un{V}_t$] (4.1,-2.8);
+\draw (3.85,-2.8) to [short] (4.35,-2.8);
+\draw[line width=0.65mm] (3.6,-1.5) to [short] (4.6,-1.5);
+
+\node at (4.9,-1.5) {bus 1};
+\node at (0.3,2.55) {bus 2};
+\node at (7.9,2.55) {bus 3};
+
+\node at (4.4,0.55) {bus 4};
+\node at (5.2,1.65) {bus 6};
+\node at (3.0,1.65) {bus 5};
+
+\node at (3.0,3.35) {bus 7};
+\node at (4.1,2.5) {bus 8};
+\node at (5.2,3.35) {bus 9};
 
 \end{circuitikz}
-\caption{Single-phase representation of the two-converter system under study}
+\caption{Simplistic single-phase representation of the two-converter IEEE 9-bus system under study}
 \label{fig:sys_p2}
 \end{figure}
 
