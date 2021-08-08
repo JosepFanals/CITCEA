@@ -64,6 +64,8 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{mathtools}
+\renewcommand{\algorithmiccomment}[1]{//#1}
 
 \usepackage{pgfplots} % per a graficar amb LaTeX
 \pgfplotsset{samples=2000} % número màxim de punts d'una corba que genera ell, canviar
@@ -912,6 +914,7 @@ where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors for positive and neg
 \subsection{Grid code rules}
 In order to improve voltages during faults, grid code control rules typically impose injections of positive sequence currents proportional to the positive sequence voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions:
 \begin{equation}
+  f^+(V^+_{pk}) \coloneqq 
 \begin{cases} 
       {I}^+_k = 0 & {V}^+_{pk}\geq V^{+}_{\text{high}}  \\
       {I}^+_k = k_p(V^+_{\text{high}} - {V}^+_{pk}) & V^{+}_{\text{low}} \leq {V}^+_{pk} < V^+_{\text{high}} \\
@@ -921,6 +924,7 @@ In order to improve voltages during faults, grid code control rules typically im
 \end{equation}
 The most basic of the four voltage support strategies analyzed in this paper, which will be denoted by GC, is precisely the application of \eqref{eq:gc1}. A similar proportionality can be established in the negative sequence:
 \begin{equation}
+  f^-(V^-_{pk}) \coloneqq 
 \begin{cases} 
       {I}^-_k = 0 & {V}^-_{pk}\leq V^-_{\text{low}} \\
       {I}^-_k = k_n({V}^-_{pk} - V^-_{\text{low}}) & V^-_{\text{low}} < {V}^-_{pk} \leq V^-_{\text{high}} \\
@@ -962,6 +966,7 @@ where $\un{I}^0$ is zero as the VSC is incapable of injecting it. The $k$ index 
 \end{equation}
 The goal is to determine the maximum current that respects the limitations. To do so, all three phase currents are set to the maximum allowed current. It is known beforehand that not all three phases will operate at saturation. Yet, one can imagine that if currents are gradually increased, one phase will reach saturation before the others. This will act as the most restrictive option. Consequently, the phase currents in \eqref{eq:Iphaseb} are squared in order to express them as functions of $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$:
 \begin{equation}
+  g = 
   \begin{cases}
     I_{\text{max}}^2 = (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
     I_{\text{max}}^2 = (-\frac{1}{2}I^+_{re} + \frac{\sqrt{3}}{2}I^+_{im} - \frac{1}{2}I^-_{re} - \frac{\sqrt{3}}{2}I^-_{im})^2 \\ 
@@ -974,8 +979,8 @@ The goal is to determine the maximum current that respects the limitations. To d
 It is also convenient to define the angles of the positive and negative sequence currents, which are $\alpha^+$ and $\alpha^-$ respectively:
   \begin{equation}
     \begin{cases}
-      \alpha^+ = \angle (\un{V}^+) - \frac{\pi}{2} \\
-      \alpha^- = \angle (\un{V}^-) + \frac{\pi}{2} \\ 
+      \alpha^+ = \angle (\un{V}^+_p) - \frac{\pi}{2} \\
+      \alpha^- = \angle (\un{V}^-_p) + \frac{\pi}{2} \\ 
     \end{cases}
     \label{eq:alphas1}
   \end{equation}
@@ -989,13 +994,12 @@ A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $
   \begin{algorithmic}[1]
   \renewcommand{\algorithmicrequire}{\textbf{Input:}}
   \renewcommand{\algorithmicensure}{\textbf{Output:}}
-  \REQUIRE $\un{V}^+$, $\un{V}^-$
+  \REQUIRE $\un{V}^+_p$, $\un{V}^-_p$, $\alpha^+$, $\alpha^-$
   \ENSURE $I^+_{re}$, $I^+_{im}$, $I^-_{re}$, $I^-_{im}$ 
   % \\ \textit{Initialisation} :
-   \STATE Compute $\alpha^+$ and $\alpha^-$ from \eqref{eq:alphas1}.
-   \STATE Use \eqref{eq:gc1} to find $I^+$. Since $\alpha^+$ is known, $I^+_{re}$ and $I^+_{im}$ are directly found.
-   \STATE Substitute $I^-_{im}$ by $I^-_{re} \tan(\alpha^-)$ in \eqref{eq:Ifin} and solve the three equations for $I^-_{re}$. 
-   \STATE Group the six solutions (two for each equation) as $[I^{a1-}_{re}, I^{a2-}_{re}, I^{b1-}_{re}, I^{b2-}_{re}, I^{c1-}_{re}, I^{c2-}_{re}]$.  
+   \STATE $I^+ = f^+(V^+_p)$; \hfill\COMMENT{i.e., use \eqref{eq:gc1}}
+   \STATE $I^+_{re} = \Re(I^+\angle \alpha^+)$; $I^+_{im} = \Im(I^+\angle \alpha^+)$;
+   \STATE $I^-_{im}\equiv I^-_{re} \tan(\alpha^-)$; $\mathbf{I^-_{re,v}} = solve(g(I^-_{re}))$; \hfill\COMMENT{the 6 $I^-_{re}$ solutions from \eqref{eq:Ifin} stored in $\mathbf{I^-_{re,v}}$}
    \STATE Since $I^-_{im} = \tan(\alpha^-) I^-_{re}$, calculate the six associated currents $[I^{a1-}_{im}, I^{a2-}_{im}, I^{b1-}_{im}, I^{b2-}_{im}, I^{c1-}_{im}, I^{c2-}_{im}]$. 
    \STATE Select the three pairs of currents placed in the correct quadrant according to the value of $\alpha^-$. Denote them by $[I^{a-}_{re}, I^{b-}_{re}, I^{c-}_{re}]$ and $[I^{a-}_{im}, I^{b-}_{im}, I^{c-}_{im}]$.
    \STATE Compute currents $\un{I}^{a-} = I^{a-}_{re} + jI^{a-}_{im}$, $\un{I}^{b-} = I^{b-}_{re} + jI^{b-}_{im}$ and $\un{I}^{c-} = I^{c-}_{re} + jI^{c-}_{im}$.
