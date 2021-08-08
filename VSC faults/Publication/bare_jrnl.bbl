@@ -172,4 +172,8 @@ M.~McKerns, P.~Hung, and M.~Aivazis, ``mystic: highly-constrained non-convex
 M.~Cheah, ``Offshore wind integration through high voltage direct current
   systems,'' Ph.D. dissertation, Cardiff University, 2017.
 
+\bibitem{pscad}
+{PSCAD}, ``Knowledge base. ieee 09 bus system,''
+  \url{https://www.pscad.com/knowledge-base/article/25}, 2021.
+
 \end{thebibliography}
