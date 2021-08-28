@@ -512,7 +512,7 @@ Not only do currents have to be constrained to not exceed the limitations, but t
 Besides, power converters have to transiently provide support in case of short-circuit faults. The latter aspect is often referred to as low voltage ride through (LVRT) \cite{tsili2009review, conroy2007low}. The traditional approach to raise the voltage is to inject reactive current proportionally to the voltage droop \cite{mohseni2012review, haddadi2020negative}. During the analysis of faults, it is often the case that voltages are decomposed into positive, negative, and zero sequence values. By doing so, the study of the fault is expected to be simplified, and in addition to that, some intuition can be built from inspecting the positive and negative sequence voltages. A concerning unbalanced fault is such that substantially decreases the positive sequence voltage with respect to the nominal voltage while the negative sequence voltage increases. Both sequences have to be thoroughly controlled by power converters, as discussed in \cite{haddadi2020negative, camacho2017positive}.
 
 Nevertheless, for the most part, grid codes only require reactive power injection for voltage support during short-circuit faults \cite{ree_gc, paspatis2019voltage}.
-This is because transmission networks are often considered to have an inductive characteristic. The influence of the grid impedance on the system's optimized operation points is covered in \cite{camacho2017positive}, where the authors express the current injection as a function of the voltage and the impedances. A recursive relation between the voltage and the current is found, which invalidates the possibility of working with a closed-form expression from where to compute the optimal currents solution. Expressions of the same nature are proposed in \cite{camacho2012flexible}, where instead of attempting to solve the optimization problem, a control parameter is introduced. This takes various values, but no analysis is carried out to determine the optimal choice. The effect of varying this control parameter is studied in \cite{guo2013asymmetrical}, although it is not computed with a systematic approach, but rather, manually. Reference \cite{shabestary2016analytical} proposes a maximum allowed support (MAS) control scheme that could provide the maximum voltage support and simultaneously satisfying the current limitations. This study does not explicitly indicate how the current is distributed among the real and the imaginary positive and negative sequence components, and variations in input parameters are rather limited. Another voltage support scheme is presented in \cite{dai2015novel}, where the injected currents depend neither on the active power nor the filter resistance. In addition, positive and negative sequence grid voltage values are imposed, which facilitates the obtention of the steady-state current values. A variation of the grid code requirements is depicted in \cite{shabestary2018asymmetrical}. The authors found that it provided better results than conventional grid codes by dynamically adjusting the positive and negative sequence voltage's reference. However, a purely inductive system was considered for its calculation. The majority of the grid support strategies described above are compared and summarized in \cite{shabestary2018overview}. It is worth mentioning that the systems under study considered in these references include a single VSC. Further conclusions are expected to be extracted from examining case studies with multiple converters.
+This is because transmission networks are often considered to have an inductive characteristic. The influence of the grid impedance on the system's optimized operation points is covered in \cite{camacho2017positive}, where the authors express the current injection as a function of the voltage and the impedances. A recursive relation between the voltage and the current is found. However, it is only intended to be used in a trivial system with a single converter connected to a grid equivalent. Expressions of the same nature are proposed in \cite{camacho2012flexible}, where instead of attempting to solve the optimization problem, a control parameter is introduced. This takes various values, but no analysis is carried out to determine the optimal choice. The effect of varying this control parameter is studied in \cite{guo2013asymmetrical}, although it is not computed with a systematic approach, but rather, manually. Reference \cite{shabestary2016analytical} proposes a maximum allowed support (MAS) control scheme that could provide the maximum voltage support and simultaneously satisfying the current limitations. This study does not explicitly indicate how the current is distributed among the real and the imaginary positive and negative sequence components, and variations in input parameters are rather limited. Another voltage support scheme is presented in \cite{dai2015novel}, where the injected currents depend neither on the active power nor the filter resistance. In addition, positive and negative sequence grid voltage values are imposed, which facilitates the obtention of the steady-state current values. A variation of the grid code requirements is depicted in \cite{shabestary2018asymmetrical}. The authors found that it provided better results than conventional grid codes by dynamically adjusting the positive and negative sequence voltage's reference. However, a purely inductive system was considered for its calculation. The majority of the grid support strategies described above are compared and summarized in \cite{shabestary2018overview}. It is worth mentioning that the systems under study considered in these references include a single VSC. Further conclusions are expected to be extracted from examining case studies with multiple converters.
 
 This paper proposes a methodology to identify the optimized system equilibrium point during the fault considering converters' current limitations. The optimized operation points are compared with the results obtained from a conventional grid code, and also, with adaptations of this fundamental grid code. In such modified grid codes, two different strategies are implemented: one prioritizes positive sequence current whereas the other prioritizes negative sequence current. They are both restricted to only injecting reactive power.
 The optimized solution and the grid codes are tested for balanced and unbalanced faults, where this last category includes the line to ground and the line to line fault. First, a basic system with a single converter is studied. Then, the analysis is performed for a system derived from the IEEE 9-bus case with two converters.
@@ -930,7 +930,7 @@ The most basic of the four voltage support strategies analyzed in this paper, wh
    \end{cases}
    \label{eq:gc2}
 \end{equation}
-Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The unfavorable consequence of applying \eqref{eq:gc1} and \eqref{eq:gc2} simultaneously is that the nominal current of the converter could be exceeded. Indeed, during extreme faults, the positive sequence voltage could reach the lower threshold $V^+_{\text{low}}$ and the negative sequence voltage could surpass the upper threshold $V^-_{\text{high}}$. One way to fight against this problem can consist of injecting only positive or negative sequence currents; for example, the fundamental GC option only injects positive sequence current. However, this strategy is likely to be suboptimal. In case the voltages do not exceed these lower or upper thresholds, the converter would still be capable of injecting some current in the non-prioritized sequence up to reaching saturation. 
+Constants $k_p$ and $k_n$, which represent the slope of the droop, are set as fixed quantities. The unfavorable consequence of applying \eqref{eq:gc1} and \eqref{eq:gc2} simultaneously is that the nominal current of the converter could be exceeded. Indeed, during extreme faults, the positive sequence voltage could reach the lower threshold $V^+_{\text{low}}$ and the negative sequence voltage could surpass the upper threshold $V^-_{\text{high}}$. One way to address this problem can consist of injecting only positive or negative sequence currents; for example, the fundamental GC option only injects positive sequence current. However, this strategy is likely to be suboptimal. In case the voltages do not exceed these lower or upper thresholds, the converter would still be capable of injecting some current in the non-prioritized sequence up to reaching saturation. 
 
 One contribution of this paper is the proposal of a methodology to determine the available current margin. The two direct prioritizations are covered. One strategy is to have the positive sequence current following \eqref{eq:gc1} and injecting the remaining maximum allowed current in the negative sequence. This methodology will be commonly referred to as GCP. The other option, abbreviated as GCN, is concerned with obeying \eqref{eq:gc2} and analogously injecting the maximum positive sequence current that respects the limits. During all situations, the converters work under saturated conditions (current limits reached) as the non-prioritized current is set to the allowed maximum. Also, only reactive power is injected. The procedure to determine the non-prioritized current is depicted below.
 
@@ -953,7 +953,7 @@ Consider a generic distribution of positive and negative sequence voltages in th
   \end{pmatrix}
   \label{eq:Ifort1}
 \end{equation}
-where $\un{I}^0$ is zero as the VSC is incapable of injecting it. The $k$ index related to identifying a given VSC has been omitted to alleviate the notation. Explicitly, \eqref{eq:Ifort1} becomes:
+where $\un{I}^0$ is zero as the three-wire VSC is incapable of injecting it. The $k$ index related to identifying a given VSC has been omitted to alleviate the notation. Explicitly, \eqref{eq:Ifort1} becomes:
 \begin{equation}
   \begin{cases}
     \un{I}^a = \un{I}^+ + \un{I}^- \\
@@ -962,14 +962,14 @@ where $\un{I}^0$ is zero as the VSC is incapable of injecting it. The $k$ index 
   \end{cases}
   \label{eq:Iphaseb}
 \end{equation}
-The goal is to determine the maximum current that respects the limitations. To do so, all three phase currents are set to the maximum allowed current. It is known beforehand that not all three phases will operate at saturation. Yet, one can imagine that if currents are gradually increased, one phase will reach saturation before the others. This will act as the most restrictive option. Consequently, the phase currents in \eqref{eq:Iphaseb} are squared in order to express them as functions of $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$:
+The goal is to determine the maximum current that respects the limitations. It is known beforehand that not all three phases will operate at saturation; most likely, one phase will reach saturation while the others remain under the limit. The phase currents in \eqref{eq:Iphaseb} are squared in order to express them as functions of $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $I^-_{im}$:
 \begin{equation}
   g \coloneqq 
   \begin{cases}
-    I_{\text{max}}^2 = (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
-    I_{\text{max}}^2 = (-\frac{1}{2}I^+_{re} + \frac{\sqrt{3}}{2}I^+_{im} - \frac{1}{2}I^-_{re} - \frac{\sqrt{3}}{2}I^-_{im})^2 \\ 
+    I_{\text{max}}^2 \leq (I^+_{re} + I^-_{re})^2 + (I^+_{im} + I^-_{im})^2 \\ 
+    I_{\text{max}}^2 \leq (-\frac{1}{2}I^+_{re} + \frac{\sqrt{3}}{2}I^+_{im} - \frac{1}{2}I^-_{re} - \frac{\sqrt{3}}{2}I^-_{im})^2 \\ 
     \hspace{1cm}+ (-\frac{1}{2}I^+_{im} - \frac{\sqrt{3}}{2}I^+_{re} - \frac{1}{2}I^-_{im} + \frac{\sqrt{3}}{2}I^-_{re})^2 \\
-    I_{\text{max}}^2 = (-\frac{1}{2}I^+_{re} - \frac{\sqrt{3}}{2}I^+_{im} - \frac{1}{2}I^-_{re} + \frac{\sqrt{3}}{2}I^-_{im})^2\\
+    I_{\text{max}}^2 \leq (-\frac{1}{2}I^+_{re} - \frac{\sqrt{3}}{2}I^+_{im} - \frac{1}{2}I^-_{re} + \frac{\sqrt{3}}{2}I^-_{im})^2\\
     \hspace{1cm}+ (\frac{\sqrt{3}}{2}I^+_{re} - \frac{1}{2}I^+_{im} - \frac{\sqrt{3}}{2}I^-_{re} - \frac{1}{2}I^-_{im})^2 
   \end{cases}
   \label{eq:Ifin}
@@ -1036,7 +1036,7 @@ A procedure to find the four components $I^+_{re}$, $I^+_{im}$, $I^-_{re}$ and $
   \end{algorithmic}
   \label{algo:gcn}
   \end{algorithm}
-  In essence, the algorithms compute one sequence current with the basic grid codes. The other sequence current is found by solving \eqref{eq:Ifin}, where the imaginary component is expressed as a function of the real component. Note that 6 solutions are obtained as there are 3 quadratic equations, yet only 3 pairs of solutions (one per phase) satisfy the direction imposed by either $\alpha^+$ or $\alpha^-$. Out of these 3 options, the one with the minimum absolute value is picked. 
+  In essence, the algorithms compute one sequence current with the basic grid codes. The other sequence current is found by solving \eqref{eq:Ifin}, where the inequalities are turned into equalities to find the most extreme values. The imaginary component is expressed as a function of the real component (that is, $I^-_{im} \equiv I^-_{re}\tan \alpha^-$ for GCP or $I^+_{im} \equiv I^+_{re}\tan \alpha^+$ for GCN). This allows to operate with a single unknown. Note that 6 solutions are obtained as there are 3 quadratic equations, yet only 3 pairs of solutions (one per phase) satisfy the direction imposed by either $\alpha^+$ or $\alpha^-$. Out of these 3 options, the one with the minimum absolute value is picked. 
 
 % \begin{algorithm}[H]
 %   \caption{Current calculation for the GCN strategy}
@@ -1263,21 +1263,6 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
           \end{tikzpicture}
     \end{subfigure}
     \hspace{2.35cm}
-    \begin{subfigure}[!htb]{0.12\textwidth}
-        \centering
-            \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.03, xmax=0.1, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_Ip1im.csv};
-                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1im.csv};
-                % \legend{OPT};
-                \end{axis}
-            \end{tikzpicture}
-      \end{subfigure}
-
-
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1288,6 +1273,19 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_In1re.csv};
                   \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_In1re.csv};
                 % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.02}, axis line style = thick, xmin=0.03, xmax=0.1, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/opt_3x_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcp_3x_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gcn_3x_Ip1im.csv};
+                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_v1/gc_3x_Ip1im.csv};
+                % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
@@ -1304,8 +1302,6 @@ Solving the problem with the aforementioned steps for a balanced fault yields th
                   \end{axis}
               \end{tikzpicture}
         \end{subfigure}
-
-
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1397,19 +1393,6 @@ Significantly different results are obtained in the case of a line to line fault
           \end{tikzpicture}
     \end{subfigure}
     \hspace{2.35cm}
-    \begin{subfigure}[!htb]{0.12\textwidth}
-        \centering
-            \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, xmin=0.05, xmax=0.6, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Ip1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1im.csv};
-                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gc_LL_Ip1im.csv};
-                % \legend{OPT};
-                \end{axis}
-            \end{tikzpicture}
-      \end{subfigure}
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1420,6 +1403,19 @@ Significantly different results are obtained in the case of a line to line fault
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_In1re.csv};
                   \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gc_LL_In1re.csv};
                 % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.1}, axis line style = thick, xmin=0.05, xmax=0.6, ytick distance = {0.2}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled y ticks=false,  scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/opt_LL_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcp_LL_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gcn_LL_Ip1im.csv};
+                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_Zf_new_gc/gc_LL_Ip1im.csv};
+                % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
@@ -1523,7 +1519,6 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
-
     \begin{subfigure}[!htb]{0.12\textwidth}
       \centering
           \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1538,19 +1533,6 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
           \end{tikzpicture}
     \end{subfigure}
     \hspace{2.35cm}
-    \begin{subfigure}[!htb]{0.12\textwidth}
-        \centering
-            \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.1, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Ip1im.csv};
-                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
-                % \legend{OPT};
-                \end{axis}
-            \end{tikzpicture}
-      \end{subfigure}
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1561,6 +1543,19 @@ The $R_1/X_1$ variation analysis performs a swept for a range of a varying angle
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_In1re.csv};
                   \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_In1re.csv};
                 % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={$R_1/X_1$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={1}, axis line style = thick, xmin=0.1, xmax=5, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/opt_LG_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcp_LG_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gcn_LG_Ip1im.csv};
+                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_RX_v1/gc_LG_Ip1im.csv};
+                % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
@@ -1786,19 +1781,6 @@ The multiple strategies are again evaluated, as depicted in Fig. \ref{fig:cable_
           \end{tikzpicture}
     \end{subfigure}
     \hspace{2.35cm}
-    \begin{subfigure}[!htb]{0.12\textwidth}
-        \centering
-            \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Ip1im.csv};
-                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv};
-                % \legend{OPT};
-                \end{axis}
-            \end{tikzpicture}
-      \end{subfigure}
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
@@ -1809,6 +1791,19 @@ The multiple strategies are again evaluated, as depicted in Fig. \ref{fig:cable_
                   \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_In1re.csv};
                   \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_In1re.csv};
                 % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={Distance (km)}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={15}, axis line style = thick, xmin=1, xmax=100, ytick distance = {0.05}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/opt_LL_Ip1im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcp_LL_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gcn_LL_Ip1im.csv};
+                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_1conv_cable_v1/gc_LL_Ip1im.csv};
+                % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
@@ -2051,25 +2046,6 @@ As can be deduced from Fig. \ref{fig:sys_p2}, a short-circuit fault is forced in
           \end{tikzpicture}
     \end{subfigure}
     \hspace{2.35cm}
-    \begin{subfigure}[!htb]{0.12\textwidth}
-        \centering
-            \begin{tikzpicture}[trim axis right,trim axis left]
-                \pgfplotsset{width=4.5cm, height=3.5cm}
-                \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.01, xmax=0.05, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
-                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Ip1im.csv};
-                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Ip2im.csv};
-                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Ip1im.csv};
-                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Ip2im.csv};
-                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Ip1im.csv};
-                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Ip2im.csv};
-                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Ip1im.csv};
-                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Ip2im.csv};
-                % \legend{OPT};
-                \end{axis}
-            \end{tikzpicture}
-      \end{subfigure}
-
-
       \begin{subfigure}[!htb]{.12\textwidth}
         \centering
             \begin{tikzpicture}[trim axis right,trim axis left]
@@ -2084,6 +2060,23 @@ As can be deduced from Fig. \ref{fig:sys_p2}, a short-circuit fault is forced in
                   \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_In1re.csv};
                   \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_In2re.csv};
                 % \legend{BF, OPT};
+                \end{axis}
+            \end{tikzpicture}
+      \end{subfigure}
+    \begin{subfigure}[!htb]{0.12\textwidth}
+        \centering
+            \begin{tikzpicture}[trim axis right,trim axis left]
+                \pgfplotsset{width=4.5cm, height=3.5cm}
+                \begin{axis}[grid=major, xlabel={${Z}_x$}, ylabel={${I}^+_{im}$}, /pgf/number format/.cd, legend style={at={(0.98,0.15)},anchor=south east,legend columns=1, draw=none, inner sep=0pt,fill=gray!10}, xtick distance={0.01}, axis line style = thick, xmin=0.01, xmax=0.05, ytick distance = {0.1}, yticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}, scaled x ticks=false, xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=3}]
+                  \addplot[very thick, black] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Ip1im.csv};
+                  \addplot[very thick, black, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/opt_LL_Ip2im.csv};
+                  \addplot[very thick, red] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Ip1im.csv};
+                  \addplot[very thick, red, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcp_LL_Ip2im.csv};
+                  \addplot[very thick, green] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Ip1im.csv};
+                  \addplot[very thick, green, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gcn_LL_Ip2im.csv};
+                  \addplot[very thick, cyan] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Ip1im.csv};
+                  \addplot[very thick, cyan, dashed] table[x=x, y=y, col sep=comma] {Data/Results_IEEE9/gc_LL_Ip2im.csv};
+                % \legend{OPT};
                 \end{axis}
             \end{tikzpicture}
       \end{subfigure}
