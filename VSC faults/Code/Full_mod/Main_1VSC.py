@@ -23,12 +23,17 @@ lam_vec = [1, 1]  # V1p, V2p, V1n, V2n
 # Ii_t = [ 0.1212, -0.9927, -0.1575,  0.9875,  0.0362,  0.0054]
 # Ii_t = [ 0.1254, -0.9922, -0.1602,  0.9871,  0.0349,  0.0053]
 # Ii_t = [ 0.1519, -0.9884, -0.1774,  0.9841,  0.0255,  0.0045]
-Ii_t = [ 0.1563, -0.9878, -0.1773,  0.9842,  0.021,   0.0038]
-type_f = 'opt_LG_'
-folder = 'Results_1conv_largerZ/'
+# Ii_t = [ 0.1563, -0.9878, -0.1773,  0.9842,  0.021,   0.0038]
+# Ii_t = [0, -0.6992, -0.63761, 0.72124, 0.63721, -0.021981]
+# Ii_t = [-0.0707, -0.7104, -0.6971, 0.7145, 0.7678, -0.0042]
+Ii_t = [-0.4893, -0.8721, -0.5107, 0.8598, 1, 0]
+
+type_f = 'opt_3x_'
+# folder = 'Results_1conv_largerZ/'
+folder = '/home/josep/Work/CITCEA/VSC faults/Code/Full_mod/Results_1conv_largerZ/'
 
 # RX variation
-n_p = 200
+n_p = 400
 [RX_vec, Zin_vec] = fZ_rx(5, 0.01, n_p, abs(Zv1))  # lim1, lim2, n_p, Zthmod
 # Yf_vec = fY_fault(5, 50, n_p)
 # Store data
@@ -56,7 +61,7 @@ for iik in range(0, n_p):
     # Y_con = [1000, 0, 0]
     # Y_gnd = [Yf_vec[iik], 0, 0]
 
-    # Zv1 = Zin_vec[iik]
+    Zv1 = Zin_vec[iik]
     # Zt = Zv1  # I try this (better delete)
 
 
