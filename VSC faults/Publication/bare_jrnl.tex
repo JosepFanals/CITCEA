@@ -900,14 +900,22 @@ Positive sequence voltages have to approach the nominal voltage while negative s
 % \end{aligned}
 % \label{eq:opt2}
 % \end{equation}
+% \begin{equation}
+% \begin{aligned}
+% \min_{\mathbf{I_1},...,\mathbf{I_n} \in \mathbf{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - {V}^+_{pk}(\mathbf{I}))| + \lambda^-_k|(0 - {V}^-_{pk}(\mathbf{I}))|\right] \ , \\
+% \textrm{s.t.} \quad & \text{max}\left({I}^{a}_k, {I}^{b}_k, {I}^{c}_k\right) \leq I_{\text{max,}k} \ \forall k \in [1,...,n] \ ,\\
+% \end{aligned}
+% \label{eq:opt2}
+% \end{equation}
 \begin{equation}
 \begin{aligned}
-\min_{\mathbf{I_1},...,\mathbf{I_n} \in \mathbf{I}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - {V}^+_{pk}(\mathbf{I}))| + \lambda^-_k|(0 - {V}^-_{pk}(\mathbf{I}))|\right] \ , \\
+\min_{\mathbf{I_1},...,\mathbf{I_n}} \quad & \sum_{k=1}^n\left[\lambda_k^+|(1 - {V}^+_{pk})| + \lambda^-_k|(0 - {V}^-_{pk})|\right] \ , \\
 \textrm{s.t.} \quad & \text{max}\left({I}^{a}_k, {I}^{b}_k, {I}^{c}_k\right) \leq I_{\text{max,}k} \ \forall k \in [1,...,n] \ ,\\
+                    & \text{Eq. \ref{eq:nconv}} \ ,\\
 \end{aligned}
 \label{eq:opt2}
 \end{equation}
-where $\lambda^+_k$ and $\lambda^-_k$ are weighting factors for positive and negative voltage magnitudes, the positive and negative sequence components of voltages $\un{V}_{pk}$ are symbolically expressed as functions of the whole current vector $\mathbf{I}$ which corresponds to the left-hand side of \eqref{eq:nconv}, and $I_{\text{max,}k}$ is the maximum allowed current by the $k$ converter for each phase. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decrease substantially during faults. This assumption is numerically validated in the case studies.
+where $\mathbf{I_1},...,\mathbf{I_n}$ are the injected currents by the converters, $\lambda^+_k$ and $\lambda^-_k$ denote weighting factors for positive and negative voltage magnitudes, $\un{V}^+_{pk}$ and $\un{V}^-_{pk}$ are the positive and negative sequence voltages to improve, and $I_{\text{max,}k}$ is the maximum allowed current by the $k$ converter for each phase. It has been assumed that voltages at each phase of the converter do not surpass the limitations, which seems a fair assumption considering that voltages decrease substantially during faults. This assumption is numerically validated in the case studies.
 
 \subsection{Grid code rules}
 In order to improve voltages during faults, grid code control rules typically impose injections of positive sequence currents proportional to the positive sequence voltage drop \cite{nationalgrid, mohseni2012review}. When defined as generic piecewise functions:
@@ -1194,12 +1202,13 @@ where $\un{Y}_{v1}=1/\un{Z}_{v1}$ and $\un{Y}_t=1/\un{Z}_t$.
 On the other hand, the fault admittance $\mathbf{{Y}_f}$ is fully dependent on the fault, and therefore, it is built by observation. The optimization problem for the one case converter reads: 
 \begin{equation}
 \begin{aligned}
-\min_{\mathbf{I_1} \in \mathbf{I}} \quad & \lambda^+_1|(1 - {V}^+_{p1}(\mathbf{I}))| + \lambda^-_1|(0 - {V}^-_{p1}(\mathbf{I}))| \ , \\
+  \min_{\mathbf{I_1}} \quad & \lambda^+_1|(1 - {V}^+_{p1})| + \lambda^-_1|(0 - {V}^-_{p1})| \ , \\
 \textrm{s.t.} \quad & \text{max}({I}^{a}_1, {I}^{b}_1, {I}^{c}_1) \leq I_{\text{max,1}} \ ,\\
+                    & \text{Eq. \ref{eq:full_1convx}} \ ,\\
 \end{aligned}
 \label{eq:opt_1c}
 \end{equation}
-where the vector $\mathbf{I}$ represents the left-hand of \eqref{eq:full_1convx}, and $\mathbf{I_1}$ contains the currents $\un{I}^a_1, \un{I}^b_1, \un{I}^c_1$ for which the optimization problem is actually solved for. 
+where $\mathbf{I_1}$ contains the currents $\un{I}^a_1, \un{I}^b_1, \un{I}^c_1$ for which the optimization problem is actually solved for. 
 Because of the nature of the converter, it is also imposed that the sum of the three-phase currents becomes null. The procedure to solve the optimization problem is first responsible for initializing the admittances matrices $\mathbf{{Y}_v}$ as in \eqref{eq:Yvmat}, and then, constructing $\mathbf{{Y}_f}$. Next, currents are initialized to a random array of values, for instance. The Mystic package is subsequently called to solve the optimization problem stated in \eqref{eq:opt_1c}. Positive and negative sequence voltages are evaluated to determine the optimality of the solution by means of \eqref{eq:fortescue}. In the case of sweeping a range of $m$ scenarios with different fault impedance values, this process is repeated $m$ times. Currents are eventually also transformed to positive and negative sequence values since the final goal is to evaluate their values in this frame of reference. Unless noted otherwise, the corresponding baseline parameters of the system in Fig. \ref{fig:sys_p1} are indicated in Table \ref{tab:param}. 
 
 \begin{table}\centering
@@ -1978,14 +1987,15 @@ This Section presents a two-converter case in order to spot the differences in t
 Analogous to the one-converter situation, the optimization problem becomes:
 \begin{equation}
 \begin{aligned}
-\min_{\mathbf{I_1},\mathbf{I_2} \in \mathbf{I}} \quad & \lambda^+_1|(1 - {V}^+_{p1}(\mathbf{I}))| + \lambda^-_1|(0 - {V}^-_{p1}(\mathbf{I}))| \\
-& + \lambda^+_2|(1 - {V}^+_{p2}(\mathbf{I}))| + \lambda^-_2|(0 - {V}^-_{p2}(\mathbf{I}))| , \\
+\min_{\mathbf{I_1},\mathbf{I_2}} \quad & \lambda^+_1|(1 - {V}^+_{p1})| + \lambda^-_1|(0 - {V}^-_{p1})| \\
+& + \lambda^+_2|(1 - {V}^+_{p2})| + \lambda^-_2|(0 - {V}^-_{p2})| , \\
 \textrm{s.t.} \quad & \text{max}({I}^{a}_1, {I}^{b}_1, {I}^{c}_1) \leq I_{\text{max,1}} \ , \\
 & \text{max}({I}^{a}_2, {I}^{b}_2, {I}^{c}_2) \leq I_{\text{max,2}} \ ,\\
+& \text{Particular Eq. \ref{eq:nconv}} \ ,\\
 \end{aligned}
 \label{eq:opt_2c}
 \end{equation}
-where all $\lambda$ have been set to 1.0, and the dependence between currents and voltages comes from the particularized Eq. \eqref{eq:nconv}. The application of the GC, GCP and GCN strategies is the same as before, in the sense that the injection of current $\un{I}_1$ only depends on $\un{V}_{p1}$, and $\un{I}_2$ is expressed as a function of $\un{V}_{p2}$. 
+where all $\lambda$ have been set to 1.0. The application of the GC, GCP and GCN strategies is the same as before, in the sense that the injection of current $\mathbf{I_1}$ only depends on $\un{V}_{p1}$, and $\mathbf{I_2}$ is expressed as a function of $\un{V}_{p2}$. 
 
 As can be deduced from Fig. \ref{fig:sys_p2}, a short-circuit fault is forced in bus 8. Fig. \ref{fig:Zf_ieee9_LL} shows the most representative results for this line to line short-circuit fault with a changing fault impedance. The OPT choice prioritizes $I^+$, mainly its imaginary part. This helps at obtaining the largest $V^+$. Contrarily, the suggested grid codes GCP and GCN inject a larger $I^-$ current, which of course, is purely imaginary. Their associated $V^+$ values are inferior to the ones obtained with OPT, yet their $V^-$ voltage is also smaller. As a result, there is little difference in the objective function, which makes GCP and GCN near optimal strategies. On the other hand, the basic grid code GC injects a small current as the fault is not extremely severe. Only about 25\% of the full current capability of the converters is employed. Thus, there are relevant differences in the objective function between GC and the rest of the options. Operating with saturated converters is beneficial when trying to improve voltages under short-circuit faults. 
  
